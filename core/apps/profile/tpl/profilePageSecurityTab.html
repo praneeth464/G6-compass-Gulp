@@ -1,0 +1,54 @@
+<h2>Security</h2>
+
+<form id="profilePageSecurityTabForm" class="form-horizontal" method="POST" action="ajax/profilePageSecurityTab_success.json">
+    <fieldset>
+        <div class="control-group">
+            <label class="control-label" for="input01">Login ID</label>
+            <div class="controls">
+                <label class="checkbox">LOGINID</label>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="profilePageSecurityTabNewPassword">New Password</label>
+            <div class="controls">
+                <input type="password" id="profilePageSecurityTabNewPassword" name="profilePageSecurityTabNewPassword" class="span4" data-tooltip="xyzzy">
+                <i class="icon-lock"></i>
+            </div>
+        </div>
+
+        <div class="control-group validateme" data-validate-flags="match" data-validate-match="profilePageSecurityTabNewPassword" data-validate-fail-msgs='{"nonempty" : "Please reenter the password for confirmation.","match" : "Passwords do not match."}'>
+            <label class="control-label" for="profilePageSecurityTabConfirmNewPassword">Confirm New Password</label>
+            <div class="controls">
+                <input type="password" id="profilePageSecurityTabConfirmNewPassword" name="profilePageSecurityTabConfirmNewPassword" class="span4">
+                <i class="icon-lock"></i>
+            </div>
+        </div>
+
+        <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please select a security question."}'>
+            <label class="control-label" for="profilePageSecurityTabQuestion">Security Question</label>
+            <div class="controls">
+                <select id="profilePageSecurityTabQuestion" name="profilePageSecurityTabQuestion" class="span4 saveField">
+                    <option>something</option>
+                    <option>2</option>
+                    <option selected="selected">User's previous security question</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter security question answer."}'>
+            <label class="control-label" for="profilePageSecurityTabAnswer">Answer</label>
+            <div class="controls">
+                <input type="text" id="profilePageSecurityTabAnswer" name="profilePageSecurityTabAnswer" class="span4 saveField" value="User's previous security question answer">
+            </div>
+        </div>
+
+        <fieldset id="profilePageSecurityTabFieldsetActions" class="form-actions">
+            <button id="profilePageSecurityTabButtonSave" name="triggeredBy" value="profilePageSecurityTabButtonSave" class="btn btn-primary" type="submit">Save</button>
+            <button id="profilePageSecurityTabButtonCancel" name="triggeredBy" value="profilePageSecurityTabButtonCancel" class="btn">Reset</button>
+        </fieldset>
+
+    </fieldset>
+</form>

@@ -1,0 +1,45 @@
+{{#eq nameId "search"}}
+<div class="purlCelebrateSearch">
+    <form id="purlCelebrateSearchForm">
+        <label for="purlCelebrateNameInput">Search</label>
+        <div class="input-append validateme searchWrap dropdown"
+            data-validate-fail-msgs='{"minlength":"Enter at least 2 characters to start"}'
+            data-validate-flags='minlength'
+            data-validate-min-length="2">
+            <input name="purlCelebrateNameInput" id="purlCelebrateNameInput" type="text" placeholder="Last Name"
+                    data-autocomp-delay="500"
+                    data-autocomp-min-chars="2"
+                    data-autocomp-url="ajax/participantSearch_autocomp_firstName.json">
+            <ul class="dropdown-menu purlSearchDropdownMenu" role="menu"
+                data-msg-instruction="Start typing please."
+                data-msg-no-results="No results found, please refine text.">
+                <!-- dynamic -->
+            </ul>
+            <button class="btn searchBtn"><i class="icon-search"></i></button>
+            <div class="spinnerWrap"></div>
+        </div>
+        <div class="searchList" style="display: none" data-msg-no-results="No celebrations found, please refine search."> 
+             <!-- dynamic from purlCelebrateSearchItem.html -->
+        </div>
+    </form>
+</div>
+{{else}}
+<div class="purlCelebrateTableWrapper">
+   <table class="purlCelebrateTable table table-bordered table-striped">
+        {{#if tableColumns}}
+        <thead>
+            <tr>{{! NOTE: the Handlebars tags in this block are broken onto different lines in a strange way because of an IE whitespace bug}}
+            {{#each tableColumns}}<th class="{{#if sortable}} sortable{{/if}}{{#if sortedOn}} sorted{{else}} unsorted{{/if}}{{#if sortedBy}} {{sortedBy}}{{/if}}" data-sort-by-id="{{id}}" data-sorted-on="{{sortedOn}}" data-sorted-by="{{sortedBy}}" {{#if colSpan}} colspan="{{colSpan}}" {{/if}}> {{#if sortable}}<a href="{{sortUrl}}">{{displayName}} {{#unless sortedByDesc}}<i class="icon-sort-up"></i>{{else}}<i class="icon-sort-down"></i>{{/unless}}</a>{{else}}{{displayName}}{{/if}}</th>{{/each}}
+            </tr>
+        </thead>
+        {{/if}}
+        {{#if celebrations}}
+        <tbody>
+            {{#celebrations}}
+            <tr><td><img src="{{avatarUrl}}" alt="" class="avatar" /><a href="#" class="profile-popover" data-participant-ids="[{{id}}]">{{firstName}} {{lastName}}</a></td><td>{{promotion}}</td><td>{{expirationDate}}</td><td>{{#if contributeUrl}}<a href="{{contributeUrl}}" class="btn btn-primary"> Contribute</a>{{else}}<a href="{{viewUrl}}" class="btn btn-primary">View</a>{{/if}}</td></tr>
+            {{/celebrations}}
+        </tbody>
+        {{/if}}
+    </table> 
+</div>
+{{/eq}}

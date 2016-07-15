@@ -1,0 +1,31 @@
+<?php sleep(1); ?>
+
+<div class="row">
+    {{#if byPromo}}
+    <div class="{{#if byBehavior}}span6{{else}}span12{{/if}} byPromo">
+        <h3>By Promotion</h3>
+
+        <div class="chartContainer" id="chartContainer_{{type}}"></div>
+    </div><!-- /.byPromo -->
+    {{/if}}
+
+    {{#if byBehavior}}
+    <div class="{{#if byPromo}}span6{{else}}span12{{/if}} byBehavior">
+        <h3>By Behavior</h3>
+
+        <div class="wrapper">
+            <ul class="behaviors">
+        {{#each byBehavior}}
+                <li class="behavior">
+                    {{#if iconUrl}}<img src="{{iconUrl}}" alt="{{name}}" class="icon">{{/if}}
+                    <h4 class="name">{{name}}</h4>
+                    <div class="progress">
+                        <div class="bar" style="width:{{percent}}%"></div>{{count}}
+                    </div>
+                </li>
+        {{/each}}
+            </ul>
+        </div>
+    </div><!-- /.byBehavior -->
+    {{/if}}
+</div><!-- /.row -->

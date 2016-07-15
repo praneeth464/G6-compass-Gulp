@@ -1,0 +1,94 @@
+{{!debug}}
+<!-- if there are errors, they will render here -->
+{{#if isError}}
+<div class="alert alert-error">
+    {{#eq errorType "mismatch"}}There was a problem submitting your response. Please try again. <code>(questionId mismatch)</code>{{/eq}}
+
+    {{#eq errorType "noserveranswer"}}There was a problem scoring your response. Please try again. <code>(server answer missing)</code>{{/eq}}
+</div>
+{{/if}}
+
+<!-- the action attribute will be used to post the answers -->
+<form id="quizAnswersForm" method="post">
+    <p class="lead">{{{text}}}</p>
+
+    <!-- include any necessary hidden inputs here -->
+    <input type="hidden" value="{{quizId}}" id="quizId" name="quizId" />
+    <input type="hidden" value="{{id}}" id="questionId" name="questionId" />
+    <input type="hidden" value="{{claimId}}" id="claimId" name="claimId" />
+
+    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please select an option"}'>
+    {{#each answers}}
+        <div class="controls{{#if ../selectedAnswerId}}{{#if isCorrect}} isCorrect{{/if}}{{/if}}{{#eq ../selectedAnswerId id}} {{#if ../../answeredCorrectly}}correctAnswer{{else}}incorrectAnswer{{/if}}{{/eq}}">
+            <label class="radio">
+                <input type="radio" name="selectedAnswer" value="{{id}}" {{#if ../selectedAnswerId}}disabled="disabled"{{/if}} {{#eq id ../selectedAnswerId}}checked="checked"{{/eq}}>
+                <span class="optlabel">
+                    {{#if ../selectedAnswerId}}
+                        {{#eq ../../selectedAnswerId id}}
+                            {{#if ../../../answeredCorrectly}}
+                            <i class="icon-ok-sign correctAnswer"></i>
+                            {{else}}
+                            <i class="icon-remove-sign incorrectAnswer"></i>
+                            {{/if}}
+                        {{else}}
+                            {{#if isCorrect}}<i class="icon-ok"></i>{{/if}}
+                        {{/eq}}
+                    {{/if}}
+
+                    {{text}}
+                </span>
+            </label>
+        </div>
+    {{/each}}
+    </div>
+
+    {{#if selectedAnswerId}}
+    <!-- This is currently hidden by CSS. Seems unncessary but I can bring it back if there are howls of protest -->
+    <p class="lead results">
+        {{#if answeredCorrectly}}
+        <i class="icon-ok-sign correctAnswer"></i>
+        {{else}}
+        <i class="icon-remove-sign incorrectAnswer"></i>
+        {{/if}}
+        The correct answer is <strong>{{correctAnswerText}}</strong>.
+    </p>
+    {{/if}}
+
+    {{#if answeredCorrectly}}
+        {{#if correctAnswerExplanation}}
+        <p class="correctAnswerExplanation">
+            {{#each correctAnswerExplanation}}<span>{{this}}</span>{{/each}}
+        </p>
+        {{/if}}
+    {{else}}
+        {{#if incorrectAnswerExplanation}}
+        <p class="incorrectAnswerExplanation">
+            <span>{{incorrectAnswerExplanation}}</span>
+        </p>
+        {{/if}}
+    {{/if}}
+
+    <div class="stepContentControls form-actions pullBottomUp">
+        {{#if selectedAnswerId}}
+            {{#if _isLast}}
+            <button class="btn btn-primary nextBtn">
+                View Results <i class="icon-chevron-right"></i>
+            </button>
+            {{else}}
+            <button class="btn btn-primary nextQuestionBtn">
+                Next Question <i class="icon-chevron-right"></i>
+            </button>
+            <button class="btn saveForLaterBtn">
+                Save for Later
+            </button>
+            {{/if}}
+        {{else}}
+        <button class="btn btn-primary submitQuestionBtn">
+            Submit Answer
+        </button>
+        <button class="btn saveForLaterBtn">
+            Save for Later
+        </button>
+        {{/if}}
+    </div>
+</form>

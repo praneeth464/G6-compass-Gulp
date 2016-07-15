@@ -1,0 +1,71 @@
+// Partial-specific variables (uncomment to use)
+// =========================
+$global_bodyBgColor: #000;
+// $global_bodyGradType: ; // body background gradients will not be visible in IE7/8
+// $global_bodyGradMeta: ; // top would be an ideal value // only applies when a gradient type has been set
+// $global_bodyGradStops: ;
+// $global_bodyBgImgUrlPath:  ; // setting this to $appImagesPath points at core/base/img. Leave blank to use images in this skin
+$global_bodyBgImg: "bg.jpg";
+$global_bodyBgImgPosition: center;     // default 0% 0%
+$global_bodyBgImgRepeat: no-repeat;       // default repeat
+// $global_bodyBgImgSize: ;         // default auto
+// $global_bodyBgImgAttachment: ;   // default fixed
+
+// $global_outerWrapper_restrictWidth: ;
+// if the above variable is false, none of these will apply
+// $global_outerWrapper_bgColor: ;
+// $global_outerWrapper_borderWidth: ;
+// $global_outerWrapper_borderColor: ;
+// $global_outerWrapper_boxShadow: ;
+
+// $global_header_bgColor: ;
+// $global_header_gradMeta: ; // top would be an ideal value // only applies when a background color has been set
+// $global_header_gradStops: ;
+// $global_header_borderTopWidth: ;
+// $global_header_borderTopColor: ;
+// $global_header_borderBottomWidth: ;
+// $global_header_borderBottomColor: ;
+
+// $global_header_bgColorMobile: ;
+// $global_header_gradMetaMobile: ; // top would be an ideal value // only applies when a background color has been set
+// $global_header_gradStopsMobile: ;
+// $global_header_borderTopWidthMobile: ;
+// $global_header_borderTopColorMobile: ;
+// $global_header_borderBottomWidthMobile: ;
+// $global_header_borderBottomColorMobile: ;
+
+// $global_header_textColorMobile: ;
+
+// $global_footer_pinnedFooter: ;
+
+// $global_footer_bgColor: ;
+// $global_footer_gradMeta: ; // top would be an ideal value // only applies when a background color has been set
+// $global_footer_gradStops: ;
+// $global_footer_borderTopWidth: ;
+// $global_footer_borderTopColor: ;
+// $global_footer_borderBottomWidth: ;
+// $global_footer_borderBottomColor: ;
+
+// $global_footerView_borderTopWidth: ;
+// $global_footerView_borderTopColor: ;
+
+// please reference the core SCSS before changing the following three variables. They are quite sensitive.
+// $global_footer_height: ;
+// $global_footer_height1200: ;
+// $global_footer_height768: ;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "partials/global";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// Partial-specific code for this skin
+// ==================================================

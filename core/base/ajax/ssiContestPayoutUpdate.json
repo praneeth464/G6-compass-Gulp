@@ -1,0 +1,30 @@
+<?php
+header('Content-Type: application/json');
+sleep(1);
+?>
+{
+    "messages":[
+        {
+            "type":"success",
+            "name":"Approve Success",
+            "isSuccess": true,
+            "text":"Some text explaining the nature of the success.",
+            "data" : {
+                "totalPayout": "4,500"
+            }
+        }
+    ]
+}
+<?php /*
+{
+    "messages":[
+        {
+            "type":"serverCommand",
+            "command":"modal",
+            "name":"Name of error",
+            "text":"Details of error"
+        }
+    ],
+    "totalPayout": "4,500"
+}
+*/ ?>

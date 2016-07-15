@@ -1,0 +1,17 @@
+<?php usleep(.5*1000000); ?>
+{
+  "messages": [],
+  "chart": {},
+  "data": [
+
+  	{
+  	"label":"Have Logged In",
+  	"value": "10"
+  	},
+  	{
+  	"label":"Have Not Logged In",
+  	"value": "203"
+  	}
+
+  ]
+}

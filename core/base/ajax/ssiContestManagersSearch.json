@@ -1,0 +1,13 @@
+<?php
+
+require_once('paxGenerator/paxGenerator.php');
+
+sleep(1);
+
+?>
+
+{
+    "messages":[],
+    "participants": <?php generatePaxesJson(300) ?>
+}
+

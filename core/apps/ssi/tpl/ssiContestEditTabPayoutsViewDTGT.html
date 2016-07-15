@@ -1,0 +1,83 @@
+<div id="_msgLockPageBottom" style="display:none">
+    Please select an Activity<br>
+    and Payout type first.
+</div>
+
+<h4 class="defaultName"></h4>
+
+<!-- JAVA: i18n these -->
+<div id="_msgPoints" style="display:none">points</div>
+<div id="_msgUnits" style="display:none"></div>
+
+
+<h5>Activity Type</h5>
+<div class="control-group validateme"
+    data-validate-flags="nonempty"
+    data-validate-fail-msgs="{&quot;nonempty&quot; : &quot;Please make a choice&quot;}">
+    <label class="radio" for="measureActivityCurrency">
+        <input type="radio" class="measureTypeRadio autoBind" id="measureActivityCurrency" name="measureType" value="currency" data-model-key="measureType">
+        Currency
+    </label>
+    <div class="currencyTypeWrapper" style="display:none">
+        <div>Currency Type</div>
+        <select name="currencyTypeSelect" class="autoBind" id="currencyTypeSelect" data-model-key="currencyTypeId">
+            <!--subTpl.currencyTypeOptions=
+            {{#currencyTypes}}
+                <option value="{{id}}">{{name}}</option>
+            {{/currencyTypes}}
+            subTpl-->
+        </select>
+    </div>
+    <label class="radio" for="measureActivityUnits">
+        <input type="radio" class="measureTypeRadio autoBind" id="measureActivityUnits" name="measureType" value="units" data-model-key="measureType">
+        Units/Number
+    </label>
+</div>
+
+<hr class="section">
+
+<h5>Payout Type</h5>
+<div class="control-group validateme"
+    data-validate-flags="nonempty"
+    data-validate-fail-msgs="{&quot;nonempty&quot; : &quot;Please make a choice&quot;}">
+    <label class="radio" for="payoutTypePoints">
+        <input type="radio" class="payoutTypeRadio autoBind" id="payoutTypePoints" name="payoutType" value="points" data-model-key="payoutType">
+        Points
+    </label>
+    <label class="radio" for="payoutTypeOther">
+        <input type="radio" class="payoutTypeRadio autoBind" id="payoutTypeOther" name="payoutType" value="other" data-model-key="payoutType">
+        Other
+        <i class="icon-info-sign pageView_help"
+        data-help-content="[explanation of what 'other' is]"></i>
+    </label>
+    <div class="otherPayoutTypeWrapper" style="display:none">
+        <div>Value of Award In</div>
+        <select name="otherPayoutTypeSelect" class="autoBind" id="otherPayoutTypeSelect" data-model-key="otherPayoutTypeId">
+            <!-- dyn using subTpl.currencyTypeOptions -->
+        </select>
+    </div>
+</div>
+
+<div class="billToRoot"></div>
+
+<hr class="section">
+
+<div class="includeStackRankingWrapper">
+    <div class="control-group">
+        <label class="checkbox" for="includeStackRanking">
+            <input type="checkbox" class="includeStackRankingInput autoBind" id="includeStackRanking" name="includeStackRanking" data-model-key="includeStackRanking">
+            <strong>Include Stack Ranking</strong>
+            <i class="icon-info-sign pageView_help"
+                data-help-content="[explanation of what 'include stack ranking' is]"></i>
+        </label>
+    </div>
+</div>
+
+<hr class="section">
+
+<h5>Add Contest Activities <small>You may add up to 10 activities</small></h5>
+
+<div id="ssiDTGTActivityCollectionViewWrapper">
+    <!-- SSEContestEditDTGTActivityCollectionView -->
+</div><!-- /#ssiContestEditDTGTActivityCollectionView -->
+

@@ -1,0 +1,139 @@
+
+
+<div id="homeAppPageView" class="noTopNav">
+    <div class="moduleContainerViewElement">
+
+        <!-- dynamic content -->
+
+    </div> <!-- /.moduleContainerViewElement -->
+</div><!-- /#homeAppPageView -->
+
+
+<!-- MODULES SETUP -->
+<script>
+
+    //Main Home Application Setup Function
+    $(document).ready(function(){
+        var isSubset = typeof G5.props.urlParams.moduleSubset != 'undefined',
+            allModules,moduleSubset;
+
+        //instantiate HomeApp
+        window.hapv = new HomeAppPageView({
+            el : $('#homeAppPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                     url : 'javascript:history.back();'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Throwdown',
+            isFooterSheets : false
+        });
+
+        // Every Module in the World
+        // Listed in order by appName
+        allModules = [
+            /*
+             * Throwdown modules
+             */
+            {
+                name: 'throwdownMatchModule',
+                appName: 'throwdown',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'4x2', order:1},
+                    'throwdown':{size:'4x2', order:1}
+                }
+            },
+            {
+                name: 'throwdownPromoSelectModule',
+                appName: 'throwdown',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'4x2', order:1},
+                    'throwdown':{size:'2x2', order:2}
+                }
+            },
+            {
+                name:'smackTalkModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'throwdown',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'2x2', order:1},
+                    'throwdown':{size:'4x2', order:3}
+                }
+            },
+            {
+                name: 'throwdownRankingsModule',
+                appName: 'throwdown',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'2x2', order:1},
+                    'throwdown':{size:'2x2', order:4}
+                }
+            },
+            {
+                name:'throwdownNewsModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'throwdown',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'2x1', order:1},
+                    'throwdown':{size:'2x1', order:5}
+                }
+            },
+            {
+                name:'throwdownTrainingCampModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'throwdown',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'2x1', order:1},
+                    'throwdown':{size:'2x1', order:6}
+                }
+            },
+            {
+                name:'throwdownStandingsModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'throwdown',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'2x1', order:1},
+                    'throwdown':{size:'2x1', order:7}
+                }
+            },
+            {
+                name: 'throwdownAllMatchesModule',
+                appName: 'throwdown',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'4x2', order:1},
+                    'throwdown':{size:'4x2', order:1}
+                }
+            }
+        ]; // allModules
+
+
+        // FE Development only
+        if(isSubset) {
+            hapv.doDevMode(allModules);
+        } else {
+
+            //ADD MODULES
+            hapv.homeApp.moduleCollection.reset(allModules);
+        }
+
+
+
+    });
+
+</script>

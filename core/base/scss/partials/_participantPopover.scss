@@ -1,0 +1,155 @@
+// Partial-specific variables
+// =========================
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+.participantPopoverQtip {
+    max-width: 350px !important; // make the qtip allow wider than default 280px
+    min-width: 0px;
+
+    .spinnerBox {
+        width: 60px;
+        height: 60px;
+        padding: 20px;
+    }
+
+    &.elevate {
+        z-index: 999999999 !important;
+    }
+}
+
+
+.participantPopover {
+    margin: 7px 3px;
+    max-height: 250px;
+    // min-width:300px;
+    min-width: 310px;
+    margin-right: 20px;
+    overflow-y: auto;
+
+    &.long-list {
+        // min-width:262px;
+        // margin-right: 20px;
+        .naked-name-link {
+            // font-size: 12px;
+        }
+    }
+
+    .row {
+        margin: 0;
+    }
+
+    .multiProfile {
+        margin: 0;
+
+        .profile-popover-left {
+            padding: 0 8px 0 0;
+            width: 32px;
+
+            img {
+                width: 32px;
+                height: 32px;
+            }
+        }
+        .profile-popover-right {
+            line-height: 11px;
+
+            img {
+                padding-right: 4px;
+            }
+        }
+    }
+
+    .closePopoverBtn {
+        position: absolute;
+        right: 10px;
+        top: 6px;
+    }
+
+    .popover-badge {
+        float:left;
+        margin-right:4px;
+        img{
+            width:35px;
+        }
+    }
+
+    .profile-popover-info {
+        p {
+            margin: 0 0 6px 0;
+            span + span:before {
+                content: '\2022\00a0';
+            }
+            // IE7 bullet separators
+            span {
+                //*background-image: expression(this.runtimeStyle.backgroundImage="none",this.innerHTML = 'x'+this.innerHTML);
+                // IE7... OUCH
+                *zoom: expression( this.runtimeStyle.zoom="1", this.insertBefore( document.createElement("i"), this.firstChild ).innerHTML="&bull; " );
+            }
+            span:first-child i {
+                // IE7... BOO!
+                display:none;
+            }
+        }
+    }
+
+    .profile-popover-links {
+        span + span:before {
+            content: '\2022\00a0';
+        }
+        // IE7 bullet separators
+        span {
+            //*background-image: expression(this.runtimeStyle.backgroundImage="none",this.innerHTML = 'x'+this.innerHTML);
+            // IE7... OUCH
+            *zoom: expression( this.runtimeStyle.zoom="1", this.insertBefore( document.createElement("i"), this.firstChild ).innerHTML="&bull; " );
+        }
+        span:first-child i {
+            // IE7... BOO!
+            display:none;
+        }
+
+    }
+
+    /* ----- PROFILE POPOVER IMAGES ----- */
+    .profile-popover-left {
+        float: left;
+        padding: 0 12px 0 0;
+        width: 48px;
+        // margin: 0 0 0 10px;
+    }
+
+    .profile-popover-right,
+    .profile-popover-right .nav-list {
+        float: left;
+        // max-width: 290px; // max-width was increased to allow the recognize, follow, etc links to fit on one line for throwdown since 'player stats' was added as a link
+        max-width: 250px; // max-width can't be more than 250px or the layout of this popover breaks. The overall popover can't be widened because mobile is only 320px wide.
+        margin-bottom: 1px; // this fixes bug #3143. Don't know why Chrome/Win shows a scrollbar whereas Chrome/Mac doesn't
+    }
+
+    .profile-popover-right .nav-list li {
+        float: left;
+        margin: 0 20px 0 0;
+    }
+
+    .profile-popover-left-sm {
+        float: left;
+        width: 35px;
+        margin: 0 0 0 30px;
+    }
+
+    .profile-popover-right-sm {
+        float: left;
+        width: 180px;
+    }
+
+    .profile-slider-sm {
+        height: 150px;
+        overflow-y: auto;
+    }
+}
+
+

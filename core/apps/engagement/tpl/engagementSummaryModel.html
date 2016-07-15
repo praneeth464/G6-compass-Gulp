@@ -1,0 +1,60 @@
+<?php //sleep(1); ?>
+<!--
+    each rate string has special CM keys containing the full translated string for the "X of Y team members have achieved the target" text
+    the key output will have a {0} and {1} placeholders where the numbers of people are inserted
+    this allows the translations to have plain text and the numbers in any order
+    we embed this CM output as a tplVariables in our engagementSummaryModel Handlebars template
+    we also have subTpls embedded in our engagementSummaryModel Handlebars template
+    we pass the various values from the JSON to the subTpls, then replace the {0} and {1} with the rendered output
+    the final string is assigned to rateFormatted in the JSON to be passed to the main template
+-->
+
+<!--tplVariable.rate= "{0} of {1} team members have achieved the target" tplVariable-->
+<!--tplVariable.rateScore= "{0} of {1} team members have achieved the goal" tplVariable-->
+<!--subTpl.teamMemMetTarget= <span class="teamMemMetTarget">{{teamMemMetTarget}}</span> subTpl-->
+<!--subTpl.teamMemCount= <span class="teamMemCount">{{teamMemCount}}</span> subTpl-->
+
+
+<h3 class="title">
+        <span>
+            <a class="titleLink" href="{{#eq mode "team"}} layout.html?tplPath=apps/engagement/tpl/&amp;tpl=engagementPageTeamDashboard.html#{{type}} {{else}} layout.html?tpl=profilePage&amp;tplPath=apps/profile/tpl/#tab/Dashboard/{{type}} {{/eq}}">
+                {{title}}
+            </a>
+            <a href="#" class="showDescription"><i class="icon-info-sign"></i></a>
+        </span>
+</h3>
+
+<p class="meta"><span class="timeframe">for this month</span> <span class="sep">&#8226;</span> <span class="asof">as of {{asof}}</span></p>
+
+<div class="summary">
+    <div>
+        {{#and isScoreActive areTargetsShown}}
+        <span class="target">
+            <i class="icon-g5-engagement"></i>
+            <strong>{{target}}{{#eq type "score"}}<span class="pct">%</span>{{/eq}}</strong>
+            {{#ueq type "score"}}<span>{{targetLabel}}</span>{{/ueq}}
+        </span>
+        {{else}}
+            {{#unless isScoreActive}}
+            <i class="icon-g5-engagement-{{type}} decorator"></i>
+            {{/unless}}
+        {{/and}}
+        <span class="actual">
+            <a href="{{#eq mode "team"}} layout.html?tplPath=apps/engagement/tpl/&amp;tpl=engagementPageTeamDashboard.html#{{type}} {{else}} layout.html?tpl=profilePage&amp;tplPath=apps/profile/tpl/#tab/Dashboard/{{type}} {{/eq}}">
+                <strong>{{actual}}{{#eq type "score"}}<sup>%</sup>{{/eq}}</strong>
+            </a>
+            {{#ueq type "score"}}<span>{{actualLabel}}</span>{{/ueq}}
+            {{#if isScoreActive}}<span class="meter meterAch"></span><span class="meter"></span>{{/if}}
+        </span>
+    </div>
+
+    <p class="description">{{description}}</p>
+</div><!-- /.summary -->
+
+<div class="extended">
+    <p class="avgTeamMem">Team Member Average: <strong>{{avgTeamMem}}</strong></p>
+    <p class="avgCompany">Company Average: <strong>{{avgCompany}}{{#eq type "score"}}%{{/eq}}</strong></p>
+    {{#eq mode "team"}}{{#if isScoreActive}}<p class="rate">{{{rateFormatted}}}</p>{{/if}}{{/eq}}
+
+    {{#if reportUrl}}<p class="report"><a href="{{reportUrl}}" {{#if isLargeAudienceEnabled}}class="largeAudience"{{/if}}><i class="icon-bar-chart"></i> {{reportTitle}}</a></p>{{/if}}
+</div><!-- /.extended -->

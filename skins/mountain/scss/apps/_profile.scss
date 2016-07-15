@@ -1,0 +1,25 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $profile_shellTopperUserFontFullString: ; // font-style font-variant font-weight font-size[req]/line-height font-family[req]
+// $profile_shellTopperPointsFontFullString: ; // font-style font-variant font-weight font-size[req]/line-height font-family[req]
+// $profile_shellTopperPointsAltTextColor: ;
+
+// $profile_badgesTab_badgeDateEarnedTextColor: ;
+
+// $profile_proxiesTab_highlightedPaxBgColor: ;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "profile/scss/profile";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

@@ -1,0 +1,23 @@
+<?php
+header('Content-Type: application/json');
+
+require_once('paxGenerator/paxGenerator.php');
+
+if (isset($_POST['id']) && preg_match('/other$/', $_POST['id'])) {
+    $ed = array(
+        'activityDescription' => 'Activity description from server',
+        'activityAmount' => "1,500.0100",
+        'activityDate' => "03/15/2014",
+        'payoutDescription' => "lipsum",
+        'payoutValue' => "100"
+    );
+} else {
+    $ed = array(
+        'activityDescription' => 'Activity description from server',
+        'activityAmount' => "1,500.5000",
+        'payoutValue' => "200",
+        'activityDate' => "03/15/2014"
+    );
+}
+
+generatePaxesPaginatedJson(20,500,$ed);

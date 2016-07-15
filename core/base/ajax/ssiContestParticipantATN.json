@@ -1,0 +1,60 @@
+<?php require_once('paxGenerator/paxGenerator.php'); sleep(2); ?>
+
+<?php
+
+$m = $_POST['method'];
+
+if( $m =='calcTotal' || $m == 'sameForAll' ) {
+
+    ?>
+    {
+        "messages":[],
+        "contestJson": {
+            "objectiveAmountTotal": 100000,
+            "objectivePayoutTotal": 10000,
+            "bonusPayoutTotal": 3000,
+            "bonusPayoutCapTotal": 5000,
+            "maxPayout": 10000,
+            "maxPayoutWithBonus": 15000,
+            "maxPotential": 100000
+        }
+    }
+    <?php
+
+} else if( $m=='saveAsDraft' ) {
+
+// saveAsDraft should return a forwarding url -- going to the list page
+?>
+
+{
+    "forwardUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiManagerPage.html#index&FYI_thisIsFrom=ssiContestParticipantATN.json.forwardUrl"
+}
+
+<?php
+
+} else if( $m=='cancelAtn' ) {
+
+// saveAsDraft should return a forwarding url -- going to the list page
+?>
+
+{
+    "forwardUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiContestSummaryATN.html&FYI_thisIsFrom=ssiContestParticipantATN.json.forwardUrl"
+}
+<?php
+
+
+} else {
+
+    $ed = array(
+        'activityDescription' => 'Activity description from server',
+        'objectiveAmount' => 1500,
+        'objectivePayoutDescription' => "$50 gift card",
+        'objectivePayout' => 50,
+        'userId' => 123456 // java provides this id (id of actual user instead of contest-user) for pax popover
+    );
+
+    generatePaxesPaginatedJson(5,500,$ed);
+
+}
+
+?>

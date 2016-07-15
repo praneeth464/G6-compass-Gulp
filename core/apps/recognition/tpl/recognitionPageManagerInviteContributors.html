@@ -1,0 +1,221 @@
+<!-- PURL - MANAGER INVITE CONTRIBUTORS TO PURL -->
+
+
+<!-- =====================================================================
+    DATA FORM (java/struts generated)
+
+    METHOD and ACTION from this form will be used on the 'send form' below.
+
+    Values:
+        Promo/Node - to be sent with pax search requests
+        contributors - pre-selected contributors
+        preselectedLocked - is the preselected list editable?
+
+    ====================================================================== -->
+
+<form id="dataForm" class="recognitionDataForm" action="/biplatformdemoemployee/recognitionWizard/submitRecognitionSinglePage.do" method="post">
+
+    <!-- method -->
+    <input type="hidden" name="method" value="prepareForward" />
+
+    <!-- recip id -->
+    <input type="hidden" name="recipientId" value="1234" />
+
+    <!-- promotion id and node id -->
+    <input type="hidden" name="promotionId" value="95559" />
+    <input type="hidden" name="nodeId" value="23456" />
+
+    <!-- is this form 'launched as' mode? -->
+    <input type="hidden" name="isLaunchedAs" value="false" />
+
+    <!-- is the preselected list of contributors editable? -->
+    <input type="hidden" name="preselectedLocked" value="true" />
+
+    <!-- PURL contributor beans (PURL ONLY) -->
+    <input type="hidden" name="claimContributorFormBeansCount" value="4" />
+
+    <input type="hidden" name="claimContributorFormBeans[0].id" value="999" />
+    <input type="hidden" name="claimContributorFormBeans[0].countryCode" value="de" />
+    <input type="hidden" name="claimContributorFormBeans[0].countryName" value="Germany" />
+    <input type="hidden" name="claimContributorFormBeans[0].firstName" value="Billy" />
+    <input type="hidden" name="claimContributorFormBeans[0].lastName" value="Smith" />
+    <input type="hidden" name="claimContributorFormBeans[0].orgName" value="Organific Org." />
+    <input type="hidden" name="claimContributorFormBeans[0].departmentName" value="Departific Dept." />
+    <input type="hidden" name="claimContributorFormBeans[0].jobName" value="Jobtastic Job" />
+    <input type="hidden" name="claimContributorFormBeans[0].contribType" value="additional" />
+    <input type="hidden" name="claimContributorFormBeans[0].sourceType" value="team" />
+    <input type="hidden" name="claimContributorFormBeans[0].invitationSent" value="true" />
+    <input type="hidden" name="claimContributorFormBeans[0].invitationSentDate" value="03/30/2013" />
+    <input type="hidden" name="claimContributorFormBeans[0].invitationSentDateSort" value="20130330" />
+
+    <input type="hidden" name="claimContributorFormBeans[1].id" value="888" />
+    <input type="hidden" name="claimContributorFormBeans[1].countryCode" value="us" />
+    <input type="hidden" name="claimContributorFormBeans[1].countryName" value="United States" />
+    <input type="hidden" name="claimContributorFormBeans[1].firstName" value="Bradley" />
+    <input type="hidden" name="claimContributorFormBeans[1].lastName" value="Smithson" />
+    <input type="hidden" name="claimContributorFormBeans[1].orgName" value="Some Org." />
+    <input type="hidden" name="claimContributorFormBeans[1].departmentName" value="Some Dept." />
+    <input type="hidden" name="claimContributorFormBeans[1].jobName" value="Some Job" />
+    <input type="hidden" name="claimContributorFormBeans[1].contribType" value="preselected" />
+    <input type="hidden" name="claimContributorFormBeans[1].sourceType" value="social" />
+    <input type="hidden" name="claimContributorFormBeans[1].invitationSent" value="false" />
+    <input type="hidden" name="claimContributorFormBeans[1].invitationSentDate" value="02/30/2013" />
+    <input type="hidden" name="claimContributorFormBeans[1].invitationSentDateSort" value="20130230" />
+
+    <input type="hidden" name="claimContributorFormBeans[2].id" value="boomer.bunson@gmail.com" />
+    <input type="hidden" name="claimContributorFormBeans[2].email" value="boomer.bunson@gmail.com" />
+    <input type="hidden" name="claimContributorFormBeans[2].firstName" value="Boomerang" />
+    <input type="hidden" name="claimContributorFormBeans[2].lastName" value="Bunson" />
+    <input type="hidden" name="claimContributorFormBeans[2].contribType" value="other" />
+    <input type="hidden" name="claimContributorFormBeans[2].sourceType" value="other" />
+    <input type="hidden" name="claimContributorFormBeans[2].invitationSent" value="false" />
+    <input type="hidden" name="claimContributorFormBeans[2].invitationSentDate" value="" />
+    <input type="hidden" name="claimContributorFormBeans[2].invitationSentDateSort" value="" />
+
+    <input type="hidden" name="claimContributorFormBeans[3].id" value="666" />
+    <input type="hidden" name="claimContributorFormBeans[3].countryCode" value="us" />
+    <input type="hidden" name="claimContributorFormBeans[3].countryName" value="United States" />
+    <input type="hidden" name="claimContributorFormBeans[3].firstName" value="Zed" />
+    <input type="hidden" name="claimContributorFormBeans[3].lastName" value="Zoot" />
+    <input type="hidden" name="claimContributorFormBeans[3].orgName" value="Some Org." />
+    <input type="hidden" name="claimContributorFormBeans[3].departmentName" value="Some Dept." />
+    <input type="hidden" name="claimContributorFormBeans[3].jobName" value="Some Job" />
+    <input type="hidden" name="claimContributorFormBeans[3].contribType" value="preselected" />
+    <input type="hidden" name="claimContributorFormBeans[3].sourceType" value="team" />
+    <input type="hidden" name="claimContributorFormBeans[3].invitationSent" value="true" />
+
+    <!-- PURL only, the set of pre-selected filters (Teams) -->
+    <textarea name="contributorTeamsSearchFilters" style="display:none">
+    {
+        "name":"Search by Recipient's Team",
+        "instruction":"Select Team",
+        "filters":[
+            {"type":"orgUnit", "typeName":"Team", "id":1234, "name":"Super long org name that never stops"},
+            {"type":"orgUnit", "typeName":"Team", "id":2345, "name":"Org Unit 51"},
+            {"type":"orgUnit", "typeName":"Team", "id":3456, "name":"Yet another Org/Node"},
+            {"type":"orgUnit", "typeName":"Team", "id":4576, "name":"Last Org/Node"}
+        ]
+    }
+    </textarea>
+
+    <!--
+        ERRORS
+        - these will be passed on into the display below
+        - must have class 'error'
+    -->
+    <div class="error">
+        <h4>The following errors occurred:</h4>
+        <ul>
+            <li>Recipient must be selected</li>
+            <li>Date for recipient send is not a date. Date must follow the format MM/DD/YYYY.</li>
+        </ul>
+    </div>
+
+
+
+</form><!-- /#dataForm -->
+<!-- =============== END - DATA FORM =================== -->
+
+
+
+<!-- =============== PAGE CONTENT ========================= -->
+<div id="recognitionPageManagerInviteContributorsView" class="recognitionPageManagerInviteContributors-liner page-content"><div class="row"> <!-- Select contributors -->
+        <div class="span12">
+
+            <!-- for errors -->
+            <div id="serverErrorsContainer" class="alert alert-block alert-error" style="display:none">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <!-- dynamic content from dataForm (struts form) -->
+            </div>
+
+            <!-- JSP generated -->
+            <div class="purlRecipientInfo">
+                <h4>[Firstname] [Lastname]</h4>
+                <h5>
+	                [Form Element 1] [Form Element 2] [Form Element 3] [Promotion Name]
+                </h5>
+            </div>
+            <!-- /JSP -->
+
+
+            <!-- SEND FORM
+                - this is not a struts form (but it uses the struts form @ the top to set its values)
+                - the action of this form will be taken from the #dataForm (struts) above
+                - this is the form displayed to the user
+                - JAVA: only i18n, and custom form input placeholders (if any) in this form
+            -->
+            <form id="sendForm" method="post">
+
+                <!-- method - populate from struts form -->
+                <input type="hidden" name="method" id="sendFormMethod" />
+
+                <!-- CONTRIBUTORS (PURL) -->
+                <fieldset class="formSection contributorsSection" id="recognitionFieldsetContributors">
+                    <div id="contributorsView">
+                        <!-- dynamic -->
+                    </div>
+                </fieldset><!-- /#recognitionFieldsetContributors -->
+
+                <!-- ACTIONS -->
+                <fieldset class="form-actions pullBottomUp">
+                    <button id="recognitionButtonCancel" class="btn cancelBtn">
+                        Cancel
+                    </button>
+
+                    <button class="btn purlBtn backBtn" style="display:none">
+                        &laquo; Back
+                    </button>
+                    <button class="btn btn-primary purlBtn nextBtn" style="display:none">
+                        Next &raquo;
+                    </button>
+
+                    <button id="recognitionButtonSend" type="submit" name="button" class="btn btn-primary sendBtn">
+                        Send
+                    </button>
+                </fieldset>
+
+            </form><!-- /#sendForm -->
+
+        </div><!-- /.span12 -->
+    </div><!-- eof Select contributors row -->
+
+
+    <!-- cancel dialog -->
+    <div class="inviteContribsCancelDialog" style="display:none">
+        <p>
+            <b>Cancel contributor modification?</b>
+        </p>
+        <p>
+            All changes will be discarded.
+        </p>
+        <p class="tc">
+            <button type="submit" id="inviteContribsCancelDialogConfirm" class="btn btn-primary">Yes</button>
+            <button type="submit" id="inviteContribsCancelDialogCancel" class="btn">No</button>
+        </p>
+    </div>
+
+</div> <!-- ./recognitionPageManagerInviteContributors-liner -->
+
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function(){
+        // attach the view to an existing DOM element
+        window.rpmicv = new RecognitionPageManagerInviteContributorsView({
+            el: $('#recognitionPageManagerInviteContributorsView'),
+            $dataForm: $('#dataForm'), //pass a reference to the 'data' form (struts populated)
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Add Contributors to PURL',
+            cancelUrl: 'layout.html'
+        });
+    });
+</script>

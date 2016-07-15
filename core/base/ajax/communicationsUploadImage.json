@@ -1,0 +1,13 @@
+<?php sleep(1); ?>
+{
+    "messages" : [
+            {
+            "type":"success",
+            "name":"Image Upload Success",
+            "isSuccess": true,
+            "text":"Some text explaining the nature of the success. If this is false, return the error message.",
+            "imageUrl": "http://www.placehold.it/628x308/52b152",
+            "imageSize": "imageSize4x2"
+            }
+        ]
+}

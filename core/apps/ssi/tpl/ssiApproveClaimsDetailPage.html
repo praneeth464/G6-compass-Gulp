@@ -1,0 +1,262 @@
+<div id="ssiApproveClaimsDetailPageView" class="page-content">
+
+    <div id="ssiApproveClaimsSummary">
+        <script id="ssiApproveClaimSummaryTpl" type="text/x-handlebars-template">
+        <div class="page-topper">
+            <div class="row">
+                <div class="span8">
+                    <h2>{{name}}</h2>
+                    <dl class="dl-horizontal">
+                        <dt>Approval Status</dt>
+                        {{#eq status "waiting_for_approval"}}<dd>Waiting for Approval</dd>{{/eq}}
+
+                        {{#eq status "approved"}}
+                        <dd>Approved</dd>
+
+                        <dt></dt>
+                        <dd>{{dateApproved}} by {{approvedBy}}</dd>
+                        {{/eq}}
+
+                        {{#eq status "denied"}}
+                        <dd>Denied</dd>
+
+                        <dt></dt>
+                        <dd>{{dateDenied}} by {{deniedBy}}</dd>
+                        <dt></dt>
+                        <dd>{{deniedReason}}</dd>
+                        {{/eq}}
+                    </dl>
+                </div>
+                <div class="span4 buttons text-right">
+                    {{#if showApproveDeny}}
+                    <form id="ssiApproveContest" method="post" action="layout.html?tplPath=apps/ssi/tpl/&tpl=ssiApproveClaimsPage.html" enctype="multipart/form-data">
+                        <input type="hidden" value="{{clientState}}" name="clientState" />
+                        <button type="submit" class="btn btn-primary ssiApproveContestBtn" name="status" value="approved">Approve</button>
+                        <button type="button" class="btn ssiDenyClaimBtn">Deny</button>
+                    </form>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+
+        <div class="row ssiClaimsSummaryDetails">
+            <div class="span12">
+                <dl class="dl-horizontal">
+                    <dt>Claim Number:</dt>
+                    <dd>{{id}}</dd>
+
+                    <dt>Date Submitted</dt>
+                    <dd>{{dateSubmitted}}</dd>
+
+                    <dt>Submitted By</dt>
+                    <dd>{{submittedBy}}</dd>
+                </dl>
+            </div>
+        </div>
+
+        {{#if activities}}
+            {{#eq contestType "dtgt"}}
+            <div class="row">
+                <div class="span12">
+                    <table class="ssiClaimActivitiesTable table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Activity</th>
+                                {{#eq measureType "currency"}}
+                                <th>Amount</th>
+                                {{else}}
+                                <th>Quantity</th>
+                                {{/eq}}
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {{#each activities}}
+                        <tr>
+                            <td>{{activityDescription}}</td>
+                            <td>{{activityAmount}}</td>
+                        </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {{else}}
+            <div class="row ssiClaimsSummaryDetails">
+                <div class="span12">
+                    <dl class="dl-horizontal">
+                        {{#each activities}}
+                            <dt>Activity:</dt>
+                            <dd>{{activityDescription}}</dd>
+
+                            {{#eq measureType "currency"}}
+                            <dt>Amount:</dt>
+                            {{else}}
+                            <dt>Quantity:</dt>
+                            {{/eq}}
+                            <dd>{{activityAmount}}</dd>
+                        {{/each}}
+                    </dl>
+                </div>
+            </div>
+            {{/eq}}
+        {{/if}}
+
+        <div class="row ssiClaimsSummaryDetails">
+            <div class="span12">
+               <dl class="dl-horizontal">
+                {{#each fields}}
+                    <dt>{{name}}</dt>
+                    {{#if docURL}}
+                    <dd><a href="{{docURL}}">{{description}}</a></dd>
+                    {{else}}
+                    <dd>{{#if description}}{{description}}{{else}}&nbsp;{{/if}}</dd>
+                    {{/if}}
+                {{/each}}
+                </dl>
+            </div>
+        </div>
+        </script>
+
+    </div>
+
+    <div class="row">
+        <div class="span12">
+            <a href="layout.html?tplPath=apps/ssi/tpl/&tpl=ssiApproveClaimsPage.html" class="btn">Back</a>
+        </div>
+    </div>
+
+
+    <div class="ssiDenyClaimPopover" style="display: none">
+        <!-- JAVA NOTE: Not sure what URL this needs to POST to -->
+        <form id="ssiDenyClaim" method="post" action="layout.html?tplPath=apps/ssi/tpl/&tpl=ssiApproveClaimsPage.html" enctype="multipart/form-data">
+            <div class="control-group validateme"
+                data-validate-fail-msgs='{"nonempty":"You must enter a reason for denial."}'
+                data-validate-flags='nonempty'>
+                <button type="button" class="close">&times;</button>
+                <label class="control-label">Reason For Denial</label>
+                <div class="commentTools">
+                    <span class="spellchecker dropdown">
+                        <button class="checkSpellingDdBtn btn dropdown-toggle"
+                                title="check spelling"
+                                type="button"
+                                data-toggle="dropdown">
+                            <i class="icon-check"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="check"><b>Check spelling</b></a></li>
+                        </ul>
+                    </span>
+                    Remaining Characters: <span class="remChars">&nbsp;</span>
+                </div>
+                <div class="controls">
+                    <div class="contribCommentWrapper">
+                        <textarea class="contribCommentInp" rows="4" maxlength="1000" placeholder="add a comment" name="comment"></textarea>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary ssiDenyClaimSubmit" name="status" value="denied">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div><!--/.ssiDenyClaimPopover-->
+</div><!--/#ssiApproveClaimsDetailPageView-->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+/* jshint ignore:start */
+    $(document).ready(function() {
+
+        var claimData;
+
+        // Provide a contest object if the page should load with a contest
+        claimData = {
+            "clientState":"soNATYCidY3+fme2ZYyXeqUqHijAz9LWP+nqfccH4dZsP5n7a59EfNdxrjin1QDSJzFFy1azGxU8\nGWsoUAGabVOwyCXOFR50cE7Nk9XuCliyygpu+sj2Yh1XYtRhcHOxtlLdthbQ3zQtpX3j4HXhdgIR\n9vx2v+Hc9Gfvcvgochh4U3uRAS8iMzDt8BR+kbNbPFB5GIgmvnybs3w8Ewat+Ea2JXCrw65wKDvb\nAyA+dEF/LTQLEtCtshOL/73vXnbmh5+yqmsJHJdSbvA2N42c0tBnzVPPSg8J7IGpKw==",
+            "name": "Super Summer Big Contest",
+            "status": "waiting_for_approval", // |waiting_for_approval|denied|approved
+            "contestType": "dtgt",
+            // "status": "approved",
+            // "status": "denied",
+            "dateApproved": "05/20/15", // if claim has been approved
+            "approvedBy": "Joe Manager", // who approved the claim
+            "dateDenied": "05/20/15", // if claim has been denied
+            "deniedBy": "Joe Manager", // who denied the claim
+            "deniedReason": "Some reason for denying the claim.",
+            "id": "123456789",
+            "dateSubmitted": "03/09/15",
+            "submittedBy": "Bob Smith",
+            "measureType": "units",
+            "showApproveDeny" : true,
+            "activities": [
+                {
+                    "activityDescription": "An activity description",
+                    "activityAmount": "1,500"
+                },
+                {
+                    "activityDescription": "Another activity description",
+                    "activityAmount": "$9,000"
+                }
+            ],
+            "fields": [
+                {
+                    "name": "Activity Date",
+                    "description": "05/22/15"
+                },
+                {
+                    "name": "Customer Name",
+                    "description": "Firstname Lastname"
+                },
+                {
+                    "name": "Company Name",
+                    "description": ""
+                },
+                {
+                    "name": "Address 1",
+                    "description": "123 Address"
+                },
+                {
+                    "name": "City",
+                    "description": "Minneapolis"
+                },
+                {
+                    "name": "State",
+                    "description": "MN"
+                },
+                {
+                    "name": "Zip Code",
+                    "description": "55403"
+                },
+                {
+                    "name": "Supporting Document",
+                    "description": "file.doc",
+                    "docURL": "http://path/to/document.doc"
+                },
+                {
+                    "name": "Field 1",
+                    "description": "Additional info"
+                },
+                {
+                    "name": "Another field",
+                    "description": "Some more info"
+                }
+            ]
+        };
+
+        //attach the view to an existing DOM element
+        var ssiNav = new SSIApproveClaimsDetailPageView({
+            el: $('#ssiApproveClaimsDetailPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'moduleSandbox.html'
+                }
+            },
+            pageTitle : 'Approve Contest',
+            claimData: claimData
+        });
+    });
+/* jshint ignore:end */
+</script>

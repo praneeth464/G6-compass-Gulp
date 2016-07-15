@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+	<title>Draw tool</title>
+	<script type="text/javascript" src="jquery.1.7.1.min.js"></script>
+	<script type="text/javascript" src="myDraw.js"></script>
+</head>
+<body>
+	
+	<div id="drawCanvas" style="position:relative; width:500px; height:300px; background:#CACACA; border:solid black 1px; overflow:hidden;"></div>
+	
+<script>
+	$(function(){
+		var drawCanvas = new myDraw('#drawCanvas');
+	})
+</script>
+</body>
+</html>

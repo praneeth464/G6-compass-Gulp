@@ -1,0 +1,55 @@
+{
+	"messages":[],
+
+	"ProfilePageAlertsTabAlerts":[
+	{
+		"sortDate": "2012-01-01",
+		"alertDate": "01/01/2012",
+		"alertText": "This is an example alert message.",
+		"isLink": true,
+		"alertLinkText" : "Add to Existing PURL",
+		"alertLinkUrl": "This is the link the alert would point to" 
+	},
+	{
+		"sortDate": "2012-01-02",
+		"alertDate": "01/02/2012",
+		"alertText": "This is an example alert message. It is a manager alert and has no action.",
+		"isLink": false,
+		"alertLinkText" : "",
+		"alertLinkUrl": "" 
+	},
+	{
+		"sortDate": "2012-01-03",
+		"alertDate": "01/03/2012",
+		"alertText": "Another alert message.",
+		"isLink": true,
+		"alertLinkText" : "Add to Existing PURL",
+		"alertLinkUrl": "This is the link the alert would point to" 
+	},
+	{
+		"sortDate": "2012-01-04",
+		"alertDate": "01/04/2012",
+		"alertText": "A fourth alert message.",
+		"isLink": true,
+		"alertLinkText" : "Review Approvals",
+		"alertLinkUrl": "This is the link the alert would point to" 
+	},
+	{
+		"sortDate": "2012-01-05",
+		"alertDate": "01/05/2012",
+		"alertText": "Alert message #5. It is also a manager message, so no action is available.",
+		"isLink": false,
+		"alertLinkText" : "",
+		"alertLinkUrl": "" 
+	},
+	{
+		"sortDate": "2012-02-01",
+		"alertDate": "02/01/2012",
+		"alertText": "This is an example alert message.",
+		"isLink": true,
+		"alertLinkText" : "Review Approvals",
+		"alertLinkUrl": "This is the link the alert would point to" 
+	}
+	]
+
+}

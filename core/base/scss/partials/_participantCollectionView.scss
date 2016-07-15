@@ -1,0 +1,54 @@
+// Partial-specific variables
+// =========================
+$participantCollectionView_thBorderBottomWidth: 1px !default;
+$participantCollectionView_thBorderBottomColor: $gray !default;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+.participantCollectionViewWrapper {
+    table {
+        width: 100%;
+        font-size: $baseFontSize;
+        line-height: 143%; // 14px -> 20px without using baseLineHeight
+
+        th {
+            padding-bottom: 6px;
+            font-size: 87.5%; // 14px -> 12px if baseFontSize is unchanged
+            text-align: center;
+            vertical-align: bottom;
+            @if $participantCollectionView_thBorderBottomWidth {
+                border-bottom: $participantCollectionView_thBorderBottomWidth solid $participantCollectionView_thBorderBottomColor;
+            }
+        }
+
+        .participant {
+            width: 50%;
+            text-align: left;
+        }
+        .type {
+            text-align: center;
+        }
+        .remove,
+        .edit {
+            width: 1%;
+            min-width: 30px;
+            padding-left: 6px;
+        }
+
+        .emptyMsg {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 479px) {
+            font-size: 87.5%;
+        }
+    }
+
+    &.emptyParticipantCollection th {
+        display: none !important;
+    }
+}

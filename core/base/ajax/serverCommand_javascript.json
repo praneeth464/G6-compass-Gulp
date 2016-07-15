@@ -1,0 +1,9 @@
+{
+	"messages":[
+		{
+		"type":"serverCommand",
+		"command":"javascript",
+		"javascript":"alert('I am from a JSON serverCommand where command=javascript');"
+		}
+	]
+}

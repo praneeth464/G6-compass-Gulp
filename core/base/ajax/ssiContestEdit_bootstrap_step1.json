@@ -1,0 +1,70 @@
+{
+    "currentStep": 1,
+    "defaultLanguage": "en_US",
+    "languages": [
+        {
+            "id": "en_US",
+            "name": "U.S. English"
+        },
+        {
+            "id": "sp",
+            "name": "Spanish"
+        },
+        {
+            "id": "zh",
+            "name": "Chinese"
+        },
+        {
+            "id": "de",
+            "name": "German"
+        }
+    ],
+
+
+    "namesTranslationCount": 3,
+    "names": [
+
+        {
+            "language": "en_US",
+            "text": "This is the en_US name."
+        }
+    ],
+
+    "startDate": "11/15/2014",
+    "endDate": "11/30/2014",
+    "tileStartDate": "11/15/2014",
+
+    "descriptionsTranslationCount": 2,
+    "descriptions": [
+        {
+            "language": "en_US",
+            "text": "This is the default description. It is bootrapped."
+        }
+    ],
+
+    "documentsTranslationCount": 3,
+    "documents": [
+        {
+            "language": "en_US",
+            "id": "path/to/doc0.pdf",
+            "name": "English PDF file",
+            "url": "path/to/doc_enUS.pdf",
+            "originalFilename": "origdocname.pdf"
+        }
+    ],
+
+    "includeMessage": false,
+    "messagesTranslationCount": 2,
+    "messages": [
+        {
+            "language": "en_US",
+            "text": "This is the default message. It is bootstrapped."
+        }
+    ],
+
+    "contestApprovers": [],
+
+    "billToTypes": [],
+    "billToTypeSelected": 2345,
+    "billToData": "DL123"
+}

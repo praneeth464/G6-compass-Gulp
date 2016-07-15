@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Websanova Paint</title>
+	<script type="text/javascript" src="inc/jquery.1.7.1.min.js"></script>
+    
+</head>
+<body>
+
+<canvas id="canvas1" width="150" height="150" style="display:none;">
+</canvas>
+<canvas id="canvas2" width="150" height="150" style="display:none;">
+</canvas>
+
+<script type="text/javascript">
+function draw(){
+  var canvas = document.getElementById('canvas1');
+  if (canvas.getContext){
+    var ctx = canvas.getContext('2d');
+ 
+    ctx.fillRect(25,25,100,100);
+    ctx.clearRect(45,45,60,60);
+    ctx.strokeRect(50,50,50,50);
+  }
+}
+
+function copyCat(){
+  sourceCanvas = document.getElementById('canvas1');
+  destinationCanvas = document.getElementById('canvas2');
+    var ctx2 = destinationCanvas.getContext('2d');
+  ctx2.drawImage(sourceCanvas, 0, 0);
+}
+
+function changeSource(){
+	sourceCanvas = document.getElementById('canvas1');
+	var ctx=sourceCanvas.getContext("2d");
+	ctx.fillStyle="#ccc";
+	ctx.fillRect(20,20,150,100);
+}
+
+function pasteBack(){
+	sourceCanvas = document.getElementById('canvas1');
+	endCanvas = document.getElementById('canvas2');
+	var ctx=sourceCanvas.getContext("2d");
+	ctx.drawImage(endCanvas, 0, 0);	
+}
+
+$(document).ready(function(e) {
+    draw();
+	$('#canvas1').show();
+	copyCat();
+	changeSource();
+	pasteBack();
+});
+</script>
+</body>
+</html>

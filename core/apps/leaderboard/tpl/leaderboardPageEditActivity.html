@@ -1,0 +1,217 @@
+<!-- ======== LEADERBOARD PAGE EDIT ACTIVITY ======== -->
+
+<div class="page-content" id="leaderboardPageView">
+
+    <div class="row">
+        <div class="span12">
+
+            <form id="leaderboardFormEditActivity" class="form-horizontal" action="formHandler.php" method="POST">
+
+                <!-- NOTE: this fieldset is used on the create and edit activity form pages -->
+                <fieldset id="leaderboardFieldsetActivity">
+
+                    <div class="control-group">
+                        <label class="control-label" for="activityDate">Activity Date <i class="icon-question-sign" data-popover-content="Placeholder Content"></i></label>
+                        <div class="controls">
+                            <span class="input-append datepickerTrigger"
+                                    data-date-format="mm/dd/yyyy"
+                                    data-date-language="en_US"
+                                    data-date-startdate="09/24/2012"
+                                    data-date-enddate="11/13/2012"
+                                    data-date-autoclose="true">
+                                <input type="text" id="activityDate" name="activityDate" placeholder="" value="09/30/2012" readonly="readonly" class="date"><button class="btn" type="button"><i class="icon-calendar"></i></button>
+                            </span>
+                            <span class="optional">(optional)</span>
+                        </div>
+                    </div>
+
+                    <h2>Add Activity</h2>
+
+                    <p>Your team members have been added to the leaderboard and are listed below. Please remove anyone who should not be included on the leaderboard.</p>
+
+                    <!-- Participant search view Element -->
+                    <div class="" id="participantSearchView" style="display:none"
+                        data-search-types='[{"id":"lastName","name":"Last Name"},{"id":"firstName","name":"First Name"},{"id":"location","name":"Location"},{"id":"jobTitle","name":"Job Title"},{"id":"department","name":"Department"}]'
+                        data-search-params='{"extraKey":"extraValue","anotherKey":"some value"}'
+                        data-autocomp-delay="500"
+                        data-autocomp-min-chars="2"
+                        data-autocomp-url="ajax/participantSearch_autocomp_firstName.json"
+                        data-search-url="ajax/participantSearchResults_follow.json"
+                        data-select-mode="multiple"
+                        data-msg-select-txt="add"
+                        data-msg-selected-txt="<i class='icon icon-ok'></i>"
+                        data-visibility-controls="showAndHide"
+                        data-msg-show-single="Add participant"
+                        data-msg-show="Add Participants"
+                        data-msg-hide="Done Adding">
+                        <!-- added by view -->
+                    </div>
+
+                    <div class="well container-splitter participantCollectionViewWrapper">
+
+                        <script id="particpantLeaderboardRowTpl" type="text/x-handlebars-template">
+                            <tr class="participant-item"
+                                    data-participant-cid="{{cid}}"
+                                    data-participant-id="{{id}}">
+
+                                <td class="participant">
+                                    <input type="hidden" name="pax[{{autoIndex}}].userId" value="{{id}}" />
+
+                                    <a class="participant-popover" href="#" data-participant-ids="[{{id}}]">
+                                        {{lastName}}, {{firstName}}
+                                    </a>
+                                </td>
+
+                                <td class="score number">
+                                    <input type="hidden" name="pax[{{autoIndex}}].score" value="{{#if score}}{{score}}{{else}}0{{/if}}" />
+
+                                    {{#if score}}{{score}}{{else}}0{{/if}}
+                                </td>
+
+                                <td class="newScore number">
+                                    <input type="text" name="pax[{{autoIndex}}].newScore" value="{{#if newScore}}{{newScore}}{{else}}0{{/if}}" class="number" data-number-type="decimal" />
+                                </td>
+
+                                <td class="remove">
+                                    <a class="remParticipantControl" title="remove this participant"><i class="icon-remove"></i></a>
+                                </td>
+
+                            </tr><!-- /.participant-item -->
+                        </script>
+
+                        <h3>Selected Participants</h3>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="participant">Participant</th>
+                                    <th class="score">Activity as of [today's date]</th>
+                                    <th class="newScore">Total Current Activity</th>
+                                    <th class="remove">Remove</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="participantsView"
+                                class="participantCollectionView"
+                                data-msg-empty="You have not added anyone."
+                                data-hide-on-empty="false">
+                            </tbody>
+                        </table>
+                        <!--
+                            used to keep track of the number of participants, req. a 'participantCount' class
+                            name is flexible
+                         -->
+                        <input type="hidden" name="paxCount" value="0" class="participantCount" />
+                    </div><!-- /.well.container-splitter.participantCollectionViewWrapper -->
+
+                </fieldset><!-- /#leaderboardFieldsetActivity -->
+
+
+                <!-- NOTE: this fieldset is used on all leaderboard form pages -->
+                <fieldset id="leaderboardFieldsetNotify">
+
+                    <div class="control-group">
+                        <label class="control-label checkbox">
+                            <input type="checkbox" id="notifyParticipants" name="notifyParticipants"> Notify Participants
+                        </label>
+                        <div class="controls hide validateme" data-validate-flags="maxlength" data-validate-fail-msgs='{"maxlength" : "Maximum number of characters exceeded. Please edit."}' data-validate-max-length="2000">
+                            <textarea rows="5" data-max-chars="2000" id="notifyMessage" name="notifyMessage" class="richtext"></textarea>
+                        </div>
+                    </div>
+
+                </fieldset><!-- /#leaderboardFieldsetNotify -->
+
+
+                <!-- NOTE:  -->
+                <fieldset id="leaderboardFieldsetActions" class="form-actions">
+
+                    <button type="submit" id="leaderboardButtonPreviewLeaderboard" name="button" value="leaderboardButtonPreviewLeaderboard" formaction="ajax/leaderboardCreateResponse_preview.json" class="btn btn-primary">Preview Leaderboard</button>
+                    <button type="submit" id="leaderboardButtonSaveDraft" name="button" value="leaderboardButtonSaveDraft" formaction="ajax/leaderboardCreateResponse_savedraft.json" class="btn btn-primary">Save Draft</button>
+                    <button type="submit" id="leaderboardButtonCancel" name="button" value="leaderboardButtonCancel" formaction="ajax/leaderboardCreateResponse_cancel.json" class="btn">Cancel</button>
+
+                </fieldset><!-- /#leaderboardFieldsetActions -->
+
+            </form><!-- /#leaderboardFormCreate -->
+
+        </div><!-- /.span12 -->
+    </div><!-- /.row -->
+
+</div><!-- /.page-content -->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function() {
+
+        // declare our variables for later use
+        var prefilledLeaders, lbpcec;
+
+        // if there are leaders that need to be prefilled into the leaderboard (either the creator's team members for a new board or the existing leaders on an edited board), build the object here.
+        prefilledLeaders = [
+            {
+                "id":"456",
+                "lastName":"Corwin",
+                "firstName":"Aaron",
+                "avatarUrl":"img/_samples/x-profile-pic3.jpg",
+                "orgName":"Organization D",
+                "departmentName":"Accounting",
+                "jobName":"Number Cruncher",
+                "countryName":"United States",
+                "countryCode":"us",
+                "score":0,
+                "newScore":0
+            },
+            {
+                "id":"457",
+                "lastName":"Gates",
+                "firstName":"Aaron",
+                "avatarUrl":"img/_samples/x-profile-pic3.jpg",
+                "orgName":"Organization D",
+                "departmentName":"Accounting",
+                "jobName":"Number Cruncher",
+                "countryName":"United States",
+                "countryCode":"us",
+                "score":0,
+                "newScore":0
+            },
+            {
+                "id":"458",
+                "lastName":"Williams",
+                "firstName":"Aaron",
+                "avatarUrl":"img/_samples/x-profile-pic3.jpg",
+                "orgName":"Organization D",
+                "departmentName":"Accounting",
+                "jobName":"Number Cruncher",
+                "countryName":"United States",
+                "countryCode":"us",
+                "score":0,
+                "newScore":0
+            }
+        ];
+
+        prefilledLeaders = <?php include('ajax/leaderboardPreSelectedPaxLessInfo.json'); ?>
+
+        //attach the view to an existing DOM element
+        window.lbpcec = new LeaderboardPageCreateEditCopyView({
+            el : $('#leaderboardPageView'),
+            mode : 'editActivity',
+            leaders : prefilledLeaders,
+            // NOTE: if it is desired that the participant search widget be open on page load, set this flag
+            addMoreParticipantsSearchOpen : false,
+            // NOTE: when the user is editing an active leaderboard, it would be smart to prompt a message to the participants by checking the "Notify Participants" checkbox and pre-filling a message in the textarea
+            notifyParticipantsOpen : false,
+            notifyParticipantsMessage : 'The [Promotion Name] leaderboard activity/standings have been updated.',
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html?tpl=leaderboardPage&tplPath=apps/leaderboard/tpl/#set/active/1236'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Edit Leaderboard Activity'
+        });
+
+    });
+</script>

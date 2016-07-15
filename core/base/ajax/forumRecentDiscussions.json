@@ -1,0 +1,195 @@
+<?php sleep(2); ?>
+{
+    "discussions": [
+        {
+            "topicId": 10,
+            "topicName": "About Apple",
+            "numberOfLikes": 0,
+            "numberOfReplies": 10,
+            "isLiked": false,
+            "author": {
+                "id": 5583,
+                "firstName": "Denny",
+                "lastName": "Davis",
+                "avatarUrl": "../../skins/default/img/avatar-blank-72.png"
+            },
+            "name": "I have a long question about the iphone 6",
+            "id": 10,
+            "text": "<p>When will iphone 6 arrives? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam imperdiet massa quis adipiscing lobortis. Duis consequat suscipit lorem, non lacinia ipsum facilisis vitae. Maecenas scelerisque diam nibh, eu consectetur tellus fringilla semper. Duis sed risus porta, blandit quam non, ultricies libero. Proin mattis commodo magna ut volutpat. Pellentesque sagittis nisi quis tempus posuere. Integer dictum nec turpis eu pellentesque. Cras condimentum turpis erat, ac euismod mauris vulputate sed. Integer feugiat, nisi id tempus mattis, lectus velit gravida felis, et rhoncus urna felis vitae magna. Nam ornare eleifend facilisis. Proin massa orci, commodo eget semper a, pellentesque ut odio. Sed placerat lacus in magna luctus lacinia. Vivamus scelerisque gravida metus, id porta elit ultrices at. Sed non diam sapien.<br></p>",
+            "date": "07/03/2013",
+            "time": "about an hour ago",
+            "comments": [
+                {
+                    "id": 23,
+                    "likedIds": "12, 23, 44",
+                    "commenter": {
+                        "id": 12,
+                        "firstName": "Willford",
+                        "lastName": "Brimley",
+                        "avatarUrl": "img/_samples/x-profile-pic1.jpg"
+                    },
+                    "numberOfLikes": 2,
+                    "isLiked": false,
+                    "comment": "Willford Brimley does not agree with the statments made in the above thread and detests the picture they illustrate!",
+                    "date": "06/15/2012",
+                    "time": "10:35:45 AM"
+                }
+            ]
+        },
+        {
+            "topicId": 10,
+            "topicName": "About Apple",
+            "numberOfLikes": 0,
+            "numberOfReplies": 12,
+            "isLiked": false,
+            "author": {
+                "id": 5583,
+                "firstName": "Denny",
+                "lastName": "Davis",
+                "avatarUrl": "../../skins/default/img/avatar-blank-72.png"
+            },
+            "name": "I have an even longer question about the iphone 6 than the previous person",
+            "id": 10,
+            "text": "<p>When will iphone 6 arrives? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam imperdiet massa quis adipiscing lobortis. Duis consequat suscipit lorem, non lacinia ipsum facilisis vitae. Maecenas scelerisque diam nibh, eu consectetur tellus fringilla semper. Duis sed risus porta, blandit quam non, ultricies libero. Proin mattis commodo magna ut volutpat. Pellentesque sagittis nisi quis tempus posuere. Integer dictum nec turpis eu pellentesque. Cras condimentum turpis erat, ac euismod mauris vulputate sed. Integer feugiat, nisi id tempus mattis, lectus velit gravida felis, et rhoncus urna felis vitae magna. Nam ornare eleifend facilisis. Proin massa orci, commodo eget semper a, pellentesque ut odio. Sed placerat lacus in magna luctus lacinia. Vivamus scelerisque gravida metus, id porta elit ultrices at. Sed non diam sapien.<br></p>",
+            "date": "07/03/2013",
+            "time": "11:12:59 AM"
+        },
+        {
+            "topicId": 11,
+            "topicName": "About Google",
+            "numberOfLikes": null,
+            "numberOfReplies": 0,
+            "isLiked": false,
+            "author": {
+                "id": null,
+                "firstName": null,
+                "lastName": null,
+                "avatarUrl": null
+            },
+            "name": null,
+            "id": null,
+            "text": null,
+            "date": null,
+            "time": null
+        },
+        {
+            "topicId": 12,
+            "topicName": "About Firefox",
+            "numberOfLikes": null,
+            "numberOfReplies": 0,
+            "isLiked": false,
+            "author": {
+                "id": null,
+                "firstName": null,
+                "lastName": null,
+                "avatarUrl": null
+            },
+            "name": null,
+            "id": null,
+            "text": null,
+            "date": null,
+            "time": null
+        }
+    ]
+}
+
+<?php /*
+
+
+
+
+{
+	"discussions": [
+		{
+			"author": {
+					"id": 45,
+					"firstName": "Jason",
+					"lastName": "Dickman",
+					"avatarUrl": "img/_samples/x-profile-pic1.jpg"
+			},
+			"topicId": 1,
+			"topicName": "Music & Movies",
+			"name": "Suggestions for Sugar Substitute for Substitute Sugar with a title that is too long to fit in the module.",
+			"id": 1,
+			"text": "Why do you guys like Chuck Norris so much? In 1969, Bruce Lee humiliated Chuck Norris in a 1 on 1 match in an arena in China. There are so many Martial Artists out there that can easily destroy Chuck. Bruce Lee Studied Old School Kung Fu and created his own Martial Arts. He was China's best traditional fighter.... All I am saying is that Chuck Norris is not as great as you guys rate him...",
+			"numberOfLikes": 17,
+			"numberOfReplies": 3,
+			"isLiked": false,
+			"date": "06/15/2012",
+			"time": "10:35:45 AM"
+		},
+		{
+			"author": {
+					"id": 45,
+					"firstName": "Jason",
+					"lastName": "Dickman",
+					"avatarUrl": "img/_samples/x-profile-pic1.jpg"
+			},
+			"topicId": 2,
+			"topicName": "Music & Movies",
+			"name": "Chuck Norris is overrated",
+			"id": 2,
+			"text": "Why do you guys like Chuck Norris so much? In 1969, Bruce Lee humiliated Chuck Norris in a 1 on 1 match in an arena in China. There are so many Martial Artists out there that can easily destroy Chuck. Bruce Lee Studied Old School Kung Fu and created his own Martial Arts. He was China's best traditional fighter.... All I am saying is that Chuck Norris is not as great as you guys rate him...",
+			"numberOfLikes": 17,
+			"numberOfReplies": 3,
+			"isLiked": false,
+			"date": "06/15/2012",
+			"time": "10:35:45 AM"
+		},
+		{
+			"author": {
+					"id": 45,
+					"firstName": "Jason",
+					"lastName": "Dickman",
+					"avatarUrl": "img/_samples/x-profile-pic1.jpg"
+			},
+			"topicId": 3,
+			"topicName": "Music & Movies",
+			"name": "like Chuck Norris so much? In 1969, Bruce Lee humiliated Chuck Norris in a 1 on",
+			"id": 3,
+			"text": "Why do you guys like Chuck Norris so much? In 1969, Bruce Lee humiliated Chuck Norris in a 1 on 1 match in an arena in China. There are so many Martial Artists out there that can easily destroy Chuck. Bruce Lee Studied Old School Kung Fu and created his own Martial Arts. He was China's best traditional fighter.... All I am saying is that Chuck Norris is not as great as you guys rate him...",
+			"numberOfLikes": 17,
+			"numberOfReplies": 3,
+			"isLiked": false,
+			"date": "06/15/2012",
+			"time": "10:35:45 AM"
+		},
+		{
+			"author": {
+					"id": 45,
+					"firstName": "Jason",
+					"lastName": "Dickman",
+					"avatarUrl": "img/_samples/x-profile-pic1.jpg"
+			},
+			"topicId": 4,
+			"topicName": "Music & Movies",
+			"name": "Suggest?",
+			"id": 4,
+			"text": "Why do you guys like Chuck Norris so much? In 1969, Bruce Lee humiliated Chuck Norris in a 1 on 1 match in an arena in China. There are so many Martial Artists out there that can easily destroy Chuck. Bruce Lee Studied Old School Kung Fu and created his own Martial Arts. He was China's best traditional fighter.... All I am saying is that Chuck Norris is not as great as you guys rate him...",
+			"numberOfLikes": 17,
+			"numberOfReplies": 3,
+			"isLiked": false,
+			"date": "06/15/2012",
+			"time": "10:35:45 AM"
+		},
+		{
+			"author": {
+					"id": 45,
+					"firstName": "Jason",
+					"lastName": "Dickman",
+					"avatarUrl": "img/_samples/x-profile-pic1.jpg"
+			},
+			"topicId": 5,
+			"topicName": "Music & Movies",
+			"name": "Suggestions for Sugar Substitute for Substitute Sugar",
+			"id": 5,
+			"text": "Why do you guys like Chuck Norris so much? In 1969, Bruce Lee humiliated Chuck Norris in a 1 on 1 match in an arena in China. There are so many Martial Artists out there that can easily destroy Chuck. Bruce Lee Studied Old School Kung Fu and created his own Martial Arts. He was China's best traditional fighter.... All I am saying is that Chuck Norris is not as great as you guys rate him...",
+			"numberOfLikes": 17,
+			"numberOfReplies": 3,
+			"isLiked": false,
+			"date": "06/15/2012",
+			"time": "10:35:45 AM"
+		}
+	]
+}
+*/ ?>

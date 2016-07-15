@@ -1,0 +1,25 @@
+{
+  "chart": {},
+  "data": [
+    {
+      "label": "Jan",
+      "value": "5"
+    },
+    {
+      "label": "Feb",
+      "value": "12"
+    },
+    {
+      "label": "Mar",
+      "value": "36"
+    },
+    {
+      "label": "April",
+      "value": "89"
+    },
+    {
+      "label": "May",
+      "value": "235"
+    }
+  ]
+}

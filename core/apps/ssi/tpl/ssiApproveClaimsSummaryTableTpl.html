@@ -1,0 +1,117 @@
+<div class="paginationControls pagination pagination-right"></div>
+<div class="emptyMsg alert" style="display:none">You have not added anyone.</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th class="sortHeader number">
+                Claim Number
+                <i data-sort="claimNumber" class="icon-sort"></i>
+            </th>
+            <th class="sortHeader date">
+                Date Submitted
+                <i data-sort="dateSubmitted" class="icon-sort"></i>
+            </th>
+            <th class="sortHeader">
+                Submitted By
+                <i data-sort="submitter" class="icon-sort"></i>
+            </th>
+            <th class="sortHeader">
+                Approved By
+                <i data-sort="approver" class="icon-sort"></i>
+            </th>
+            <th>
+                Activity
+            </th>
+            <th class="sortHeader">
+                Status
+                <i data-sort="status" class="icon-sort"></i>
+            </th>
+            {{#if canApprove}}
+            <th class="approveDenyBtns">
+                <form id="approveAllClaims" action="http://172.16.214.180:8888/G5-SSI-Phase-2/core/base/test.html">
+                    <input type="hidden" name="contestId" value="{{contestId}}">
+                    <input type="hidden" name="method" value="approveAll">
+                    <button class="btn btn-primary ssiApproveAllClaimsBtn hidden">
+                        Approve All
+                    </button>
+                </form>
+            </th>
+            {{/if}}
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<!-- <div class="paginationConts pagination pagination-right"></div> -->
+<div class="paginationControls pagination pagination-right"></div>
+
+<!--subTpl.recordRow=
+    <tr class="summary-item" data-participant-id="{{id}}">
+
+        <td class="number">
+            {{! JAVA NOTE: not sure how this url should be formatted }}
+            <a href="layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiApproveSpecificContestPageATN.html">{{claimNumber}}</a>
+        </td>
+
+        <td class="date">
+            {{dateSubmitted}}
+        </td>
+
+        <td>
+            {{submittedBy}}
+        </td>
+
+        <td>
+            {{approvedBy}}
+        </td>
+
+        <td>
+            {{#each activities}}
+                {{this}}<br>
+            {{/each}}
+        </td>
+
+        <td class="status">
+            {{statusDescription}}
+        </td>
+
+        {{#if extraJSON.canApprove}}
+        <td class="approveDenyBtns">
+            {{#eq status "waiting_for_approval"}}
+            <form action="http://172.16.214.180:8888/G5-SSI-Phase-2/core/base/test.html">
+                <input type="hidden" name="claimId" value="{{id}}">
+                <span class="approveModeButtons">
+                    <button type="submit" name="method" value="approve" class="btn btn-primary btn-small ssiApproveClaimBtn">
+                        Approve
+                    </button>
+                    <button class="btn btn-small ssiDenyClaimBtn" data-claim-id="{{id}}">
+                        Deny
+                    </button>
+                </span>
+            </form>
+            {{/eq}}
+        </td>
+        {{/if}}
+
+    </tr>
+
+subTpl-->
+
+<div class="noDataMessages row">
+    <span class="span12 hidden pending"><p>No pending claims.</p></span>
+    <span class="span12 hidden approved"><p>No approved claims.</p></span>
+    <span class="span12 hidden denied"><p>No denied claims.</p></span>
+    <span class="span12 hidden all"><p>No claims to display.</p></span>
+</div>
+
+{{#if canApprove}}
+<div class="row">
+    <div class="span12">
+        <input type="hidden" name="contestId" value="{{contestId}}">
+        <p>After approving claim(s), you must select “Done” to update your contest activity results.</p>
+        <button class="btn btn-primary ssiApproveClaimsUpdate" data-contest-id="{{contestId}}">Done</button>
+    </div>
+</div>
+{{/if}}

@@ -1,0 +1,181 @@
+<div class="row">
+    <div class="span12 clearfix">
+        <h3>
+            {{name}} Results
+        </h3>
+        {{#unless includeSubmitClaim}}
+        <a href="#URL_TO_UPDATE_RESULTS" class="btn btn-small btn-primary updateResultsBtn"><i class="icon-pencil"></i> Update Activity</a>
+        {{/unless}}
+    </div>
+    <div class="span12">
+        {{#if hasQualifiedPayouts}}
+            <p>These are your contest’s final results. If you have additional contest activity, you may update the activity now. Once the payouts are issued you cannot edit the participants’ results.</p>
+
+        {{else}}
+            {{#if includeSubmitClaim}}
+                <p>No participants qualified for payouts. You may either approve more claims or close the contest without issuing payouts.</p>
+            {{else}}
+                <p>No participants qualified for payouts. You may either update activity or close the contest without issuing payouts.</p>
+            {{/if}}
+        {{/if}}
+    </div>
+</div>
+
+<div class="row dtgtFormBtns">
+    <div class="span12">
+        <div class="form-actions pullBottomUp">
+            <!-- JAVA NOTE: add url to previous page -->
+            <a href="layout.html?tplPath=apps/ssi/tpl/&tpl=ssiCreatorPage.html#contest/{{id}}" class="btn">&laquo; Back</a>
+            {{#if hasQualifiedPayouts}}
+            <button type="button" class="btn btn-primary promptBtn">Issue Payout</button>
+            {{else}}
+            <button type="button" class="btn btn-primary promptBtnCloseContest">Close Contest</button>
+            {{/if}}
+        </div>
+    </div>
+</div>
+
+<!--subTpl.tableSection=
+<div class="row">
+    <div class="span12">
+        <hr class="section">
+
+        <h4>{{activityDescription}}</h4> <br>
+        <p>
+            {{#eq payoutType "points"}}
+                For every {{forEvery}},<br>
+                Earn {{willEarn}} points
+            {{/eq}}
+            {{#eq payoutType "other"}}
+                For every {{forEvery}},<br>
+                Earn {{payoutDescription}}
+            {{/eq}}
+        </p>
+        <p>
+            Minimum Qualifier: {{minQualifier}}
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span12">
+        <div class="paginationControls pagination pagination-right"></div>
+        <div class="emptyMsg alert" style="display:none">You have not added anyone.</div>
+
+            <table class="table table-bordered table-striped accentLastCol">
+                <thead>
+                    <tr>
+                        <th class="sortHeader">
+                            Participants
+                            <i data-sort="lastName" class="icon-sort"></i>
+                        </th>
+                        <th class="sortHeader number">
+                            Total Activity as of {{updatedOnDate}}
+                        </th>
+                        <th class="sortHeader number">
+                            Minimum Qualifier
+                        </th>
+                        <th class="sortHeader number">
+                            Activity Qualified for Payout
+                        </th>
+                        <th class="sortHeader number">
+                            # of Increments for Payout
+                        </th>
+
+                        {{#eq payoutType "other"}}
+                            <th class="sortHeader">
+                                Payout Description
+                            </th>
+                        {{/eq}}
+
+                        <th class="sortHeader columnEmphasis number">
+                            {{#eq payoutType "points"}}
+                                Payout
+                            {{/eq}}
+                            {{#eq payoutType "other"}}
+                                Payout Value
+                            {{/eq}}
+                        </th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr class="footerContent">
+                        <td class="totalDisp">
+                            Totals
+                        </td>
+                        <td class="totalDisp number">
+                            {{totalActivity}}
+                        </td>
+                        <td class="totalDisp">
+                        </td>
+                        <td class="totalDisp number">
+                            {{qualifiedActivity}}
+                        </td>
+                        <td class="totalDisp number">
+                            {{totalIncrementPayout}}
+                        </td>
+
+                        {{#eq payoutType "other"}}
+                            <td>
+                                &nbsp;
+                            </td>
+                        {{/eq}}
+
+                        <td class="totalDisp columnEmphasis number">
+                            {{#eq payoutType "points"}}
+                                {{totalPayout}} points
+                            {{/eq}}
+                            {{#eq payoutType "other"}}
+                                {{totalPayoutValue}}
+                            {{/eq}}
+                        </td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                </tbody>
+            </table>
+
+        <div class="paginationControls pagination pagination-right"></div>
+    </div>
+</div>
+subTpl-->
+
+<!--subTpl.recordRow=
+
+    <tr class="record-item" data-participant-id="{{id}}">
+
+        <td>
+            <a class="profile-popover" data-participant-ids="[{{id}}]">
+                {{lastName}}, {{firstName}}
+            </a>
+        </td>
+        <td class="number">
+            {{progress}}
+        </td>
+        <td class="number">
+            {{extraJSON.minQualifier}}
+        </td>
+        <td class="number">
+            {{qualifiedActivity}}
+        </td>
+        <td class="number">
+            {{payoutIncrements}}
+        </td>
+        {{#eq extraJSON.payoutType "other"}}
+            <td>
+                {{payoutDescription}}
+            </td>
+        {{/eq}}
+        <td class="number columnEmphasis">
+            {{#eq extraJSON.payoutType "points"}}
+                {{totalPayout}} points
+            {{/eq}}
+            {{#eq extraJSON.payoutType "other"}}
+                {{payoutValue}}
+            {{/eq}}
+        </td>
+
+    </tr>
+
+subTpl-->
+

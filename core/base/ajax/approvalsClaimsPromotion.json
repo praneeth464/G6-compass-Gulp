@@ -1,0 +1,291 @@
+<?php sleep(1); ?>
+{
+    "messages":[],
+
+    "claimsJson" : {
+        "_comment" : "This parameters object repeats a lot of data in the promotion object, but does so for convenience when retrieving values",
+        "parameters" : {
+            "promotionId" : 1234,
+            "claimStatus" : "open",
+            "startDate" : "09/04/2013",
+            "endDate" : "12/04/2013"
+        },
+
+        "promotion" : {
+            "id" : 1234,
+            "name" : "PromotionName",
+
+            "_comment" : "The timestamp can be different from the endDate in the parameters object! If the user picks a timeframe from the distant past, the results would still be as of the last time the job ran to process the claims",
+            "timestamp" : "10/01/2013",
+
+            "_comment" : "the 'type' and 'status' fields in the following array items might be pointless",
+            "stats" : [
+                {
+                    "type" : "claims",
+                    "status" : "submitted",
+                    "name" : "Claims Submitted",
+                    "count" : 239
+                },
+                {
+                    "type" : "claims",
+                    "status" : "pending",
+                    "name" : "Claims Pending",
+                    "count" : 10
+                },
+                {
+                    "type" : "products",
+                    "status" : "submitted",
+                    "name" : "Products Submitted",
+                    "count" : 15
+                },
+                {
+                    "type" : "products",
+                    "status" : "approved",
+                    "name" : "Products Approved",
+                    "count" : 12
+                },
+                {
+                    "type" : "products",
+                    "status" : "denied",
+                    "name" : "Products Denied",
+                    "count" : 3
+                },
+                {
+                    "type" : "products",
+                    "status" : "pending",
+                    "name" : "Products Pending",
+                    "count" : 2
+                }
+            ],
+
+            "claims" : {
+                "meta" : {
+                    "sortedOn" : "<?php if( isset($_GET['sortedOn']) ) { echo $_GET['sortedOn']; } else { ?>number<?php } ?>",
+                    "sortedBy" : "<?php if( isset($_GET['sortedBy']) ) { echo $_GET['sortedBy']; } else { ?>desc<?php } ?>",
+                    "maxRows" : 239,
+                    "rowsPerPage" : 10,
+                    "pageNumber" : <?php if( isset($_GET['pageNumber']) ) { echo $_GET['pageNumber']; } else { ?>1<?php } ?>,
+                    "exportUrl" : "//full/url/to/export.do",
+
+                    "columns" : [
+                        {
+                            "name" : "number",
+                            "text" : "Claim Number",
+                            "sortable" : true
+                        },
+                        {
+                            "name" : "date",
+                            "text" : "Date",
+                            "sortable" : true
+                        },
+                        {
+                            "name" : "submitter",
+                            "text" : "Submitter",
+                            "sortable" : true
+                        },
+                        {
+                            "name" : "approver",
+                            "text" : "Approver",
+                            "sortable" : false
+                        },
+                        {
+                            "name" : "products",
+                            "text" : "Item",
+                            "sortable" : false
+                        },
+                        {
+                            "name" : "status",
+                            "text" : "Status",
+                            "sortable" : false
+                        }
+                    ],
+
+                    "statuses" : [
+                        {
+                            "value" : "pend",
+                            "text" : "Pending"
+                        },
+                        {
+                            "value" : "approv",
+                            "text" : "Approve"
+                        },
+                        {
+                            "value" : "deny",
+                            "text" : "Deny",
+                            "reasons" : [
+                                {
+                                    "value" : 0,
+                                    "text" : "Just because I feel like denying"
+                                },
+                                {
+                                    "value" : 1,
+                                    "text" : "I hate you"
+                                }
+                            ]
+                        },
+                        {
+                            "value" : "hold",
+                            "text" : "Hold",
+                            "reasons" : [
+                                {
+                                    "value" : 0,
+                                    "text" : "Need more information"
+                                },
+                                {
+                                    "value" : 1,
+                                    "text" : "Meh"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "results" : [
+                    {
+                        "id" : 12349,
+                        "number" : 123456789,
+                        "date" : "09/26/2013",
+                        "submitter" : "John Doe",
+                        "_comment" : "'products' is always an array of product names",
+                        "products" : [
+                            {
+                                "id" : 123491,
+                                "name" : "ProductName1",
+                                "approver" : "Jane Smith",
+                                "_comment" : "If already processed, either 'approv' or 'deny'. If not processed, 'pend' or 'hold'.",
+                                "status" : "approv",
+                                "_comment" : "'statusReason' only applies for statuses that have a reasons array",
+                                "statusReason" : null
+                            }
+                        ]
+                    },
+                    {
+                        "id" : 12348,
+                        "number" : 123456788,
+                        "date" : "09/27/2013",
+                        "submitter" : "John Doe",
+                        "_comment" : "'products' is always an array of product names",
+                        "products" : [
+                            {
+                                "id" : 123481,
+                                "name" : "ProductName1",
+                                "approver" : "Jane Smith",
+                                "_comment" : "If already processed, either 'approv' or 'deny'. If not processed, 'pend' or 'hold'.",
+                                "status" : "deny",
+                                "_comment" : "'statusReason' only applies for statuses that have a reasons array",
+                                "statusReason" : "Just because"
+                            },
+                            {
+                                "id" : 123482,
+                                "name" : "ProductName2",
+                                "approver" : "John Smith",
+                                "_comment" : "If already processed, either 'approv' or 'deny'. If not processed, 'pend' or 'hold'.",
+                                "status" : "deny",
+                                "_comment" : "'statusReason' only applies for statuses that have a reasons array",
+                                "statusReason" : "Just because"
+                            }
+                        ]
+                    },
+                    {
+                        "id" : 12347,
+                        "number" : 123456787,
+                        "date" : "11/26/2013",
+                        "submitter" : "John Doe",
+                        "_comment" : "'products' is always an array of product names",
+                        "products" : [
+                            {
+                                "id" : 123471,
+                                "name" : "ProductName1",
+                                "approver" : null,
+                                "_comment" : "If already processed, either 'approv' or 'deny'. If not processed, 'pend' or 'hold'.",
+                                "status" : "hold",
+                                "_comment" : "'statusReason' only applies for statuses that have a reasons array",
+                                "statusReason" : "Need more information"
+                            },
+                            {
+                                "id" : 123472,
+                                "name" : "ProductName2",
+                                "approver" : null,
+                                "_comment" : "If already processed, either 'approv' or 'deny'. If not processed, 'pend' or 'hold'.",
+                                "status" : "hold",
+                                "_comment" : "'statusReason' only applies for statuses that have a reasons array",
+                                "statusReason" : "Need more information"
+                            }
+                        ]
+                    },
+                    {
+                        "id" : 12346,
+                        "number" : 123456786,
+                        "date" : "11/27/2013",
+                        "submitter" : "John Doe",
+                        "_comment" : "'products' is always an array of product names",
+                        "products" : [
+                            {
+                                "id" : 123461,
+                                "name" : "ProductName1",
+                                "approver" : null,
+                                "_comment" : "If already processed, either 'approv' or 'deny'. If not processed, 'pend' or 'hold'.",
+                                "status" : "pend",
+                                "_comment" : "'statusReason' only applies for statuses that have a reasons array",
+                                "statusReason" : null
+                            },
+                            {
+                                "id" : 123462,
+                                "name" : "ProductName2",
+                                "approver" : null,
+                                "_comment" : "If already processed, either 'approv' or 'deny'. If not processed, 'pend' or 'hold'.",
+                                "status" : "pend",
+                                "_comment" : "'statusReason' only applies for statuses that have a reasons array",
+                                "statusReason" : null
+                            }
+                        ]
+                    },
+                    {
+                        "id" : 12345,
+                        "number" : 123456786,
+                        "date" : "11/27/2013",
+                        "submitter" : "John Doe",
+                        "_comment" : "'products' is always an array of product names",
+                        "products" : [
+                            {
+                                "id" : 123451,
+                                "name" : "ProductName1",
+                                "approver" : null,
+                                "_comment" : "If already processed, either 'approv' or 'deny'. If not processed, 'pend' or 'hold'.",
+                                "status" : "pend",
+                                "_comment" : "'statusReason' only applies for statuses that have a reasons array",
+                                "statusReason" : null
+                            },
+                            {
+                                "id" : 123452,
+                                "name" : "ProductName2",
+                                "approver" : "Jones, Bob",
+                                "_comment" : "If already processed, either 'approv' or 'deny'. If not processed, 'pend' or 'hold'.",
+                                "status" : "approv",
+                                "_comment" : "'statusReason' only applies for statuses that have a reasons array",
+                                "statusReason" : null
+                            },
+                            {
+                                "id" : 123453,
+                                "name" : "ProductName3",
+                                "approver" : null,
+                                "_comment" : "If already processed, either 'approv' or 'deny'. If not processed, 'pend' or 'hold'.",
+                                "status" : "hold",
+                                "_comment" : "'statusReason' only applies for statuses that have a reasons array",
+                                "statusReason" : "Meh"
+                            },
+                            {
+                                "id" : 123454,
+                                "name" : "ProductName4",
+                                "approver" : "Smith, Jane",
+                                "_comment" : "If already processed, either 'approv' or 'deny'. If not processed, 'pend' or 'hold'.",
+                                "status" : "deny",
+                                "_comment" : "'statusReason' only applies for statuses that have a reasons array",
+                                "statusReason" : "Just because"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

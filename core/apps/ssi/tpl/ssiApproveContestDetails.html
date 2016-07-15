@@ -1,0 +1,147 @@
+<div class="page-topper">
+    <div class="row">
+        <div class="span8">
+            <h2>{{name}}</h2>
+            <dl class="dl-horizontal">
+                <dt>Approval Status</dt>
+
+                {{#if approvalRequired}}
+                {{#approvalLevels}}
+                <dd class="ssiApproverLevel">
+                    {{name}}:
+                    {{#if approved}}
+                        Approved By {{approvedBy}}
+                    {{else}}
+                        Waiting for Approval
+                        <a href="#" class="ssiApproverPopover">View Approvers</a>
+                        <div class="ssiApproverList" style="display: none">
+                            <ul>
+                                {{#approverList}}
+                                <li>{{name}}</li>
+                                {{/approverList}}
+                            </ul>
+                        </div>
+                    {{/if}}
+                </dd>
+                {{/approvalLevels}}
+
+                {{else}}
+                <dd>Waiting for Approval</dd>
+                {{/if}}
+            </dl>
+        </div>
+        <div class="span4 buttons text-right">
+            {{#if showApproveDeny}}
+            <form id="ssiApproveContest" method="post" action="layout.html?tplPath=../apps/approvals/tpl/&tpl=approvalsPageIndex.html" enctype="multipart/form-data">
+                <input type="hidden" value="{{clientState}}" name="clientState" />
+                <button type="submit" class="btn btn-primary ssiApproveContestBtn" name="status" value="approved">Approve</button>
+                <button type="button" class="btn ssiDenyContestBtn">Deny</button>
+            </form>
+            {{/if}}
+        </div>
+    </div>
+</div>
+
+<div class="row ssiDetailsAction">
+    <div class="span8">
+        <a href="#" class="ssiBackToSummary btn btn-primary">Back to Summary</a>
+    </div>
+</div>
+
+<div class="row ssiDetailsInvitees ssiDetailsSection" style="display:none">
+    <div class="ssiDetailsParticipants">
+        <div class="span12">
+            <h3>Participants</h3>
+            <p>The following people have been selected to participate in this contest.</p>
+
+            <div id="ssiParticipantTableTpl" class="ssiInviteesCollectionView">
+                <!-- dynamic content added from ssiApproveContestparticipantTableTpl.html-->
+            </div>
+        </div>
+    </div>
+
+    <div class="ssiDetailsManagers">
+        <div class="span12">
+            <h3>Managers</h3>
+            {{#if managersCount}}
+            <p>This contest is viewable to the following managers.</p>
+
+            <div id="ssiManagersTableTpl" class="ssiInviteesCollectionView">
+                <!-- dynamic content added from ssiApproveContestparticipantTableTpl.html-->
+            </div>
+            {{else}}
+            <p>No managers have been selected to view this contest.</p>
+            {{/if}}
+        </div>
+    </div>
+</div>
+
+<div class="row ssiDetailsLevels ssiDetailsSection" style="display:none">
+    <div class="span12">
+        <h3>Individual Baselines</h3>
+
+        <div class="ssiLevelsTableTpl">
+            <!-- dynamic content added from ssiApproveContestLevelsTableTpl.html-->
+        </div>
+    </div>
+</div>
+
+<div class="row ssiDetailsObjectives ssiDetailsSection" style="display:none">
+    <div class="span12">
+        <h3>Objectives and Payouts</h3>
+        <dl class="dl-horizontal">
+            <dt>Contest Goal</dt>
+            <dd>{{goal}}</dd>
+            <dt>Maximum Contest Potential</dt>
+            <dd>{{maximumPotential}}</dd>
+            <dt>Maximum Payout</dt>
+            <dd>{{maximumPayout}}</dd>
+
+            {{#eq payoutType "points"}}
+            {{#if includeBonus}}
+            <dt>Maximum Payout with Bonus</dt>
+            <dd>{{maximumPayoutBonus}}</dd>
+            {{/if}}
+            {{/eq}}
+        </dl>
+
+        <div class="ssiObjectivesTableTpl">
+            <!-- dynamic content added from ssiApproveContestObjectiveTableTpl.html-->
+        </div>
+    </div>
+</div>
+
+<div class="row ssiDetailsRanks ssiDetailsSection" style="display:none">
+    <div class="span12">
+        <h3>Ranks and Payouts</h3>
+
+        <dl class="dl-horizontal">
+            <dt>Contest Goal</dt>
+            <dd>{{goal}}</dd>
+            {{#eq payoutType "points"}}
+            <dt>Maximum Payout</dt>
+            <dd>{{maximumPayout}}</dd>
+            {{else}}
+            <dt>Maximum Payout Value</dt>
+            <dd>{{maximumPayout}}</dd>
+            {{/eq}}
+        </dl>
+
+      <!--  removing for phase 1
+      <div class="control-group">
+            <label for="ssiRankPayouts">Show Payouts For:</label>
+            <div class="controls">
+                <select id="ssiRankPayouts" name="ssiRankPayouts">
+                    <option value="all" name="All Participants">All Participants</option>
+                    <option value="region" name="Region">Region</option>
+                    <option value="district" name="District">District</option>
+                </select>
+            </div>
+        </div> -->
+
+        <div class="ssiRanksTableTpl">
+            <!-- dynamic content added from ssiApproveContestRanksTableTpl.html-->
+        </div>
+
+    </div>
+</div>

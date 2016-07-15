@@ -1,0 +1,358 @@
+<div class="page-topper">
+    <div class="row">
+        <div class="span8">
+            <h2>{{name}}</h2>
+            <dl class="dl-horizontal">
+                <dt>Approval Status</dt>
+
+                {{#if approvalRequired}}
+                {{#approvalLevels}}
+                <dd class="ssiApproverLevel">
+                    {{name}}:
+                    {{#if approved}}
+                        Approved By {{approvedBy}}
+                    {{else}}
+                        Waiting for Approval
+                        <a href="#" class="ssiApproverPopover" data-participant-ids="[{{id}}]">View Approvers</a>
+                        <div class="ssiApproverList" style="display: none">
+                            <ul>
+                                {{#approverList}}
+                                <li>{{name}}</li>
+                                {{/approverList}}
+                            </ul>
+                        </div>
+                    {{/if}}
+                </dd>
+                {{/approvalLevels}}
+
+                {{else}}
+                <dd>Waiting for Approval</dd>
+                {{/if}}
+            </dl>
+        </div>
+        <div class="span4 buttons text-right">
+            {{#if showApproveDeny}}
+            <form id="ssiApproveContest" method="post" action="layout.html?tplPath=../apps/approvals/tpl/&tpl=approvalsPageIndex.html" enctype="multipart/form-data">
+                <input type="hidden" value="{{clientState}}" name="clientState" />
+                <button type="submit" class="btn btn-primary ssiApproveContestBtn" name="status" value="approved">Approve</button>
+                <button type="button" class="btn ssiDenyContestBtn">Deny</button>
+            </form>
+            {{/if}}
+        </div>
+    </div>
+</div>
+
+<div class="row ssiSummaryDetails">
+    <div class="span12">
+        <dl class="dl-horizontal">
+            <dt>Created By</dt>
+            <dd>{{contestCreator}}</dd>
+            <dt>Contest Dates</dt>
+            <dd>{{startDate}} - {{endDate}}</dd>
+            <dt>Tile Start Date</dt>
+            <dd>{{tileStartDate}}</dd>
+            <dt>Contest Description</dt>
+            <dd>{{description}}
+                {{#if attachmentTitle}}<a href="{{attachmentUrl}}" class="ssiApproveDetailsAttachment">{{attachmentTitle}}</a>{{/if}}
+            </dd>
+            {{#if includeMessage}}
+                <dt>Email Message</dt>
+                <dd>{{{message}}}</dd>
+            {{/if}}
+        </dl>
+    </div>
+</div>
+
+<!-- Participants and Managers Section -->
+<div class="row ssiSummaryInvitees">
+    <div class="span12">
+        <h3>Participants and Managers <a href="#" class="ssiViewDetails" data-details-section="Invitees">View Details</a></h3>
+        <dl class="dl-horizontal">
+            <dt>Participants</dt>
+            <dd>{{participantsCount}} selected</dd>
+            <dt>Managers</dt>
+            <dd>{{#if managersCount}}{{managersCount}}{{else}}0{{/if}} selected</dd>
+        </dl>
+    </div>
+</div>
+
+{{#eq contestType "stepItUp"}}
+<!-- Levels and Payouts Section -->
+<div class="row ssiSummaryLevels">
+    <div class="span12">
+        <h3>Levels and Payouts</h3>
+        <dl class="dl-horizontal">
+            <dt>Activity Description</dt>
+            <dd>{{activityDescription}}</dd>
+            <dt>Measure Activity In</dt>
+            <dd>{{activityMeasuredName}}</dd>
+            <dt>Payout Type</dt>
+            <dd>{{payoutTypeName}}</dd>
+            {{#if individualBaseline}}
+            <dt>Individual Baseline</dt>
+            <dd><a href="#" class="ssiViewDetails" data-details-section="Levels">View Details</a></dd>
+            {{/if}}
+        </dl>
+
+        {{#each contestLevels}}
+        <h4>{{name}}</h4>
+        <dl class="dl-horizontal ssiContestLevels">
+            <dt>{{activityLabel}}</dt>
+            <dd>{{../activityMeasuredValue}}</dd>
+            {{#eq ../payoutType "points"}}
+            <dt>Payout</dt>
+            <dd>{{payout}}</dd>
+            {{else}}
+            <dt>Payout Description</dt>
+            <dd>{{payoutDescription}}</dd>
+            <dt>Payout Value</dt>
+            <dd>{{payout}}</dd>
+            {{/eq}}
+            {{#if badge.img}}
+            <dt>Badge</dt>
+            <dd><img src="{{badge.img}}" alt="{{badge.name}}" /> {{badge.name}}</dd>
+            {{/if}}
+        </dl>
+        {{/each}}
+
+        <dl class="dl-horizontal">
+            {{#if includeStackRanking}}
+            <dt>Stack Rank</dt>
+            <dd>Yes</dd>
+            {{/if}}
+
+            {{#if includeBonus}}
+            <dt>Bonus</dt>
+            <dd>{{bonus}}</dd>
+            <dt>Individual Bonus Cap</dt>
+            <dd>{{individualBonusCap}}</dd>
+            {{/if}}
+        </dl>
+    </div>
+</div>
+
+<!-- Contest Goal Section -->
+<div class="row ssiSummaryGoal">
+    <div class="span12">
+        <h3>Contest Goal</h3>
+        <dl class="dl-horizontal">
+            <dt>Maximum Contest Potential</dt>
+            <dd>{{maximumPotential}}</dd>
+            <dt>Your Contest Goal</dt>
+            <dd>{{goal}}</dd>
+            <dt>Maximum Payout</dt>
+            <dd>{{maximumPayout}}</dd>
+
+            {{#if includeBonus}}
+            <dt>Maximum Payout with Bonus</dt>
+            <dd>{{maximumPayoutBonus}}</dd>
+            {{/if}}
+
+            {{#if chargeContestTo}}
+            <dt>Charge Contest To</dt>
+            <dd>{{chargeContestTo}}</dd>
+            {{/if}}
+        </dl>
+    </div>
+</div>
+{{/eq}}
+
+{{#eq contestType "doThisGetThat"}}
+<!-- Activities and Payouts -->
+<div class="row ssiSummaryActivities">
+    <div class="span12">
+        <h3>Activities and Payouts</h3>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th rowspan="2">Activity Description</th>
+                    <th rowspan="2">For Every</th>
+                    <th {{#eq payoutType "other"}} colspan="2"{{/eq}}>Earn</th>
+                    <th rowspan="2">Minimum Qualifier</th>
+                    <th rowspan="2">Individual Payout Cap</th>
+
+                    {{#eq payoutType "points"}}
+                    <th rowspan="2">Maximum Activity Payout</th>
+
+                    {{else}}
+                    <th rowspan="2">Maximum Activity Payout Value</th>
+                    {{/eq}}
+
+                    <th rowspan="2">Activity Goal</th>
+                    <th rowspan="2">Maximum Activity Potential</th>
+                </tr>
+
+                {{#eq payoutType "other"}}
+                <tr>
+                    <th>Payout Description</th>
+                    <th>Value</th>
+                </tr>
+                {{/eq}}
+            </thead>
+
+            <tfoot>
+                <tr>
+                    <td {{#eq payoutType "points"}}colspan="5" {{else}} colspan="6"{{/eq}}>Total</td>
+                    <td colspan="1" class="tr">{{totalMaxPayout}}</td>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+            </tfoot>
+
+            <tbody>
+                {{#each activities}}
+                <tr>
+                    <td>{{description}}</td>
+                    <td class="tr">{{forEvery}}</td>
+
+                    {{#eq ../payoutType "points"}}
+                        <td class="tr">{{payoutAmount}}</td>
+                    {{else}}
+                        <td>{{valueDescription}}</td>
+                        <td class="tr">{{payoutAmount}}</td>
+                    {{/eq}}
+
+                    <td class="tr">{{minQualifier}}</td>
+                    <td class="tr">{{individualPayoutCap}}</td>
+                    <td class="tr">{{maxPayout}}</td>
+                    <td class="tr">{{goal}}</td>
+                    <td class="tr">{{maxPotential}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+        <dl class="dl-horizontal">
+            {{#if chargeContestTo}}
+            <dt>Charge Contest To</dt>
+            <dd>{{chargeContestTo}}</dd>
+            {{/if}}
+
+            {{#if includeStackRanking}}
+            <dt>Stack Rank</dt>
+            <dd>Yes</dd>
+            {{/if}}
+        </dl>
+    </div>
+</div>
+{{/eq}}
+
+{{#eq contestType "stackRank"}}
+<!-- Ranks and Payouts Section -->
+<div class="row ssiSummaryRanks">
+    <div class="span12">
+        <h3>Ranks and Payouts <a href="#" class="ssiViewDetails" data-details-section="Ranks">View Details</a></h3>
+        <dl class="dl-horizontal">
+            <dt>Activity Description</dt>
+            <dd>{{activityDescription}}</dd>
+            <dt>Measure Activity In</dt>
+            <dd>{{activityMeasuredName}}</dd>
+            {{#if minimumQualifier}}
+            <dt>Minimum Qualifier</dt>
+            <dd>{{minimumQualifier}}</dd>
+            {{/if}}
+            <dt>Your Contest Goal</dt>
+            <dd>{{goal}}</dd>
+            <dt>Maximum Payout</dt>
+            <dd>{{maximumPayout}}</dd>
+            {{#if chargeContestTo}}
+            <dt>Charge Contest To</dt>
+            <dd>{{chargeContestTo}}</dd>
+            {{/if}}
+            <dt># of Ranks to Payout</dt>
+            <dd>{{ranksToPayout}}</dd>
+        </dl>
+
+        <strong>Note: In the event that two or more participants finish the contest with the same rank, the maximum payout may change.</strong>
+
+        <!-- Removing for phase 1
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Org Type</th>
+                    <th>Payout Type</th>
+                    <th># Ranks to Payout</th>
+                    <th>Total Payout</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {{#each orgTypes}}
+                <tr>
+                    <td>{{name}}</td>
+                    <td>{{payoutTypeName}}</td>
+                    <td>{{ranksToPayout}}</td>
+                    <td>{{#if payoutAmount}} {{payoutAmount}} {{/if}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table> -->
+
+    </div>
+</div>
+{{/eq}}
+
+{{#eq contestType "objectives"}}
+<!-- Objectives and Payouts Section -->
+<div class="row ssiSummaryObjectives">
+    <div class="span12">
+       <h3>Objectives and Payouts <a href="#" class="ssiViewDetails" data-details-section="Objectives">View Details</a></h3>
+       <dl class="dl-horizontal">
+            <dt>Objective Description</dt>
+            <dd>{{activityDescription}}</dd>
+            <dt>Measure Objective in</dt>
+            <dd>{{activityMeasuredName}}</dd>
+            <dt>Objective</dt>
+            <dd>{{objectiveAmount}}</dd>
+
+            {{#eq payoutType "points"}}
+            <dt>Payout</dt>
+            <dd>{{payoutAmount}}</dd>
+
+            {{#if includeBonus}}
+            <dt>Bonus</dt>
+            <dd>{{bonus}}</dd>
+
+            <dt>Individual Bonus Cap</dt>
+            <dd>{{individualBonusCap}}</dd>
+            {{/if}}
+
+            {{else}}
+            <dt>Payout Description</dt>
+            <dd>{{payoutDescription}}</dd>
+            <dt>Payout Value</dt>
+            <dd>{{payoutAmount}}</dd>
+            {{/eq}}
+
+            {{#if badge.img}}
+            <dt>Badge</dt>
+            <dd><img src="{{badge.img}}" alt="{{badge.name}}" /> {{badge.name}}</dd>
+            {{/if}}
+
+            {{#if includeStackRanking}}
+            <dt>Stack Rank</dt>
+            <dd>Yes</dd>
+            {{/if}}
+
+            <dt>Maximum Contest Potential</dt>
+            <dd>{{maximumPotential}}</dd>
+            <dt>Contest Goal</dt>
+            <dd>{{goal}}</dd>
+            <dt>Maximum Payout</dt>
+            <dd>{{maximumPayout}}</dd>
+
+            {{#eq payoutType "points"}}
+            {{#if includeBonus}}
+            <dt>Maximum Payout with Bonus</dt>
+            <dd>{{maximumPayoutBonus}}</dd>
+            {{/if}}
+            {{/eq}}
+
+            {{#if chargeContestTo}}
+            <dt>Charge Contest To</dt>
+            <dd>{{chargeContestTo}}</dd>
+            {{/if}}
+        </dl>
+    </div>
+</div>
+{{/eq}}

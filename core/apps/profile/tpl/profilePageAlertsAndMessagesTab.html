@@ -1,0 +1,86 @@
+<h2>Alerts &amp; Messages</h2>
+
+<div class="row">
+    <div class="span12">
+        <table class="table table-striped table-bordered" id="profilePageAlertsTabAlerts">
+            <thead>
+                <tr>
+                    <th class="sortable alertsColumn unsorted ascending"><a href="#" data-sortBy="alertSubject" id="profilePageAlertsTabSortAlertsBySubject">Alerts <i class="icon-sort-down"></i><i class="icon-sort-up"></i></a></th>
+                    <th class="sortable datePostedColumn unsorted descending"><a href="#" data-sortBy="datePostedSort" id="profilePageAlertsTabSortAlertsByDatePosted">Date Posted <i class="icon-sort-down"></i><i class="icon-sort-up"></i></a></th>
+                    <th class="sortable dueDateColumn unsorted descending"><a data-sortBy="dueDateSort" href="#" id="profilePageAlertsTabSortAlertsByDueDate">Due Date <i class="icon-sort-down"></i><i class="icon-sort-up"></i></a></th>
+                    <th><span class="headerPadding">Actions</span></th>
+                </tr>
+            </thead>
+            <tbody id="profilePageAlertsTabAlertsCollection">
+                <!-- dynamic - profilePageAlertsTabAlerts.html -->
+            </tbody>
+        </table>
+
+        <div id="detailModal" class="modal-stack container hide fade" data-y-offset="adjust">
+            <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button"><i class="icon-remove"></i></button>
+                <h3 class='modalTitle'> <span class="typeText typeMessage">Message</span><span class="typeText typeAlert">Alert</span> - <span class="titleText"></span><!-- dynamic --> </h3>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <!--div class="modal-footer">
+                <a data-dismiss="modal" class="btn" href="#">Close</a>
+                <a data-dismiss="modal" class="btn btn-primary" href="#">Save changes</a>
+            </div-->
+        </div><!-- /.detailModal -->
+
+        <!--subTpl.detailViewBodyTpl=
+            <div class="row-fluid">
+                <div class="span9">
+                    {{#if alertText}}
+                    <p>{{{alertText}}}</p>
+                    {{else}}
+                    <iframe src="{{messageLinkUrl}}">
+                        Message detail here
+                    </iframe>
+                    {{/if}}
+                </div>
+
+                <div class="span3">
+                    <dl>
+                             {{#if messageDate}}<dt>Message Date:</dt><dd>{{messageDate}}</dd>{{/if}}
+                             {{#if datePostedDisplay}}<dt>Date Posted:</dt><dd>{{datePostedDisplay}}</dd>{{/if}}
+                             {{#if dueDateDisplay}}<dt>Due Date:</dt><dd>{{dueDateDisplay}}</dd>{{/if}}
+                            {{#if isLink}}
+                            <dt>Alert Actions:</dt><dd><a href="{{alertLinkUrl}}" {{#if openNewWindow}}target="_blank"{{/if}}class="btn btn-primary">{{alertLinkText}}</a></dd>
+                            {{/if}}
+                            {{#if isRemovable}}</br>
+                            <dd><a href="{{alertDismissUrl}}" class="btn dismiss btn-primary">{{alertDismissText}}</a></dd>
+                            {{/if}}
+                    </dl>
+                </div>
+            </div>
+        subTpl-->
+
+        <div class="alert alert-error hide">You currently have no alerts.</div>
+    </div><!-- /.span12 -->
+</div><!-- /.row -->
+
+<div class="row">
+    <div class="span12">
+        <div id="messagePaginationCounter" class="messagePaginationCounter"></div>
+        <div id="paginationControls" class="pagination pagination-right"></div>
+        <!--XXXsubTpl.paginationTpl=
+            NOTE: you can safely take the JSP conversion of core/base/tpl/paginationView.html and include it here. Then, remove the "XXX" above and the script will use that template instead of the remote one
+        subTpl-->
+
+        <table class="table table-striped table-bordered" id="profilePageAlertsTabMessages">
+            <thead>
+                <tr>
+                    <th class="sortable messagesColumn unsorted ascending"><a data-sortBy="messageTitle" href="#" id="profilePageAlertsTabSortMessagesByTitle">Messages <i class="icon-sort-down"></i><i class="icon-sort-up"></i></a></th>
+                    <th class="sortable messagesDateColumn unsorted descending"><a href="#" data-sortBy="sortDate" id="profilePageAlertsTabSortMessagesByDate">Date <i class="icon-sort-down"></i><i class="icon-sort-up"></i></a></th>
+                </tr>
+            </thead>
+            <tbody id="profilePageAlertsTabMessagesCollection">
+                <!-- dynamic - profilePageAlertsTabMessages.html -->
+            </tbody>
+        </table>
+        <div class="alert alert-error hide">You currently have no messages.</div>
+    </div><!-- /.span12 -->
+</div><!-- /.row -->

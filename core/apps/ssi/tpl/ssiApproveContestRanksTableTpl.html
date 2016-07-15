@@ -1,0 +1,49 @@
+<span>{{orgType}}</span>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Rank</th>
+
+            {{#eq payoutType "points"}}
+            <th>Payout</th>
+
+            {{else}}
+            <th>Payout Description</th>
+            <th>Value</th>
+            {{/eq}}
+
+            {{#if hasBadge}}<th>Badge</th>{{/if}}
+        </tr>
+    </thead>
+
+    <tfoot>
+        <tr>
+            <td {{#eq payoutType "other"}}colspan="2"{{/eq}}>Total</td>
+            <td>{{payoutTotal}}</td>
+            {{#if hasBadge}}<td>&nbsp;</td>{{/if}}
+        </tr>
+    </tfoot>
+
+    <tbody>
+        {{#each ranks}}
+        <tr>
+            <td>{{number}}</td>
+
+            {{#eq ../payoutType "points"}}
+            <td>{{payoutAmount}}</td>
+
+            {{else}}
+            <td>{{payoutDescription}}</td>
+            <td>{{payoutAmount}}</td>
+            {{/eq}}
+
+            {{#if ../hasBadge}}
+            <td>
+                {{#if badge.url}}<img src="{{badge.url}}" alt="{{badge.name}}" /> {{badge.name}}{{/if}}
+            </td>
+            {{/if}}
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

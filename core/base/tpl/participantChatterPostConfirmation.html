@@ -1,0 +1,25 @@
+<!-- ======== PARTICIPANT CHATTER POST CONFIRMATION PAGE ======== -->
+
+<div id="participantChatterConfirmationPageView" class="page-content">
+    <div class="row">
+        <div class="span12">
+
+            <h2>Some headline</h2>
+            <p>Some confirmation message.</p>
+            <p><a class="btn btn-primary" href="javascript:window.open('','_self').close();">Close</a></p>
+
+        </div><!-- /.span12 -->
+    </div><!-- /.row -->
+</div>
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function() {
+        G5.views.pcpc = new PageView({
+            el:$('#participantChatterConfirmationPageView'),
+            pageNav : {},
+            pageTitle : '',
+            loggedIn: false
+        });
+    });
+
+</script>

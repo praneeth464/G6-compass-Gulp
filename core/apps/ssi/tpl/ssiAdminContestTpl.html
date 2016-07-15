@@ -1,0 +1,269 @@
+{{! NOTE: these variables are set via javascript: }}
+{{!       isCreator, contestHtml }}
+
+<div class="row">
+	<div class="span12 creatorDetailsBtns backToContestWrap" style="display: none;">
+		<button type="button" class="btn btn-primary backToContest">Back to Contest</button>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span8 contestInfo">
+		<h2>{{name}}</h2>
+		{{#unless isCreator}}
+			<p>Contest Creator: {{creatorName}}</p>
+		{{/unless}}
+
+		{{#eq activityMeasuredIn "currency"}}
+			<p>Note the currency used for this contest is {{currencyAbbr}}</p>
+		{{/eq}}
+
+		<div class="partialDescription toggleDescriptionWrap">
+			{{description}}
+		</div>
+		<div class="fullDescription toggleDescriptionWrap">
+			{{description}}
+		</div>
+		<a href="#" class="activityDescriptionToggle hide readMore">Read More</a>
+		<a href="#" class="activityDescriptionToggle hide readLess">Read Less</a>
+	</div>
+	<div class="span4 text-right contestMeta">
+		<p class="contestDates">Starts {{startDate}} | Ends {{endDate}}</p>
+
+		{{#eq status "live"}}
+		{{#ueq daysToEnd "0"}}
+		<p class="daysToGo"><i class="icon icon-time"></i>
+			{{#eq daysToEnd "1"}}
+				Last Day
+			{{else}}
+				{{daysToEnd}} Days to go
+			{{/eq}}
+		</p>
+		{{else}}
+		<p class="daysToGo">Contest Over</p>
+		{{/ueq}}
+		{{/eq}}
+
+		{{#eq status "finalize_results"}}
+		<p class="daysToGo">Contest Over</p>
+		{{/eq}}
+
+		{{#eq status "pending"}}
+		<p class="daysToGo"><i class="icon icon-time"></i>
+			{{daysToStart}} {{#eq daysToStart "1"}}Day{{else}}Days{{/eq}} to start
+		</p>
+		{{/eq}}
+
+		<div class="contestAttachment">
+		{{#if attachmentUrl}}
+			<a href="{{attachmentUrl}}" title="">
+				{{#eq attachmentType "pdf"}}
+                <img src="../base/img/fileIcons/pdf34x34.png" alt=""><br>
+                {{else}}
+                    {{#eq attachmentType "word"}}
+                    <img src="../base/img/fileIcons/word34x34.png" alt=""><br>
+                    {{/eq}}
+                {{/eq}}
+				{{attachmentTitle}}
+			</a>
+		{{/if}}
+		</div>
+	</div>
+</div>
+
+{{#if isCreator}}
+<div class="row">
+	{{#if includeSubmitClaim}}
+		{{#eq claimDaysToEnd "0"}}
+		{{#ueq status "finalize_results"}}
+		{{#ueq status "closed"}}
+		<div class="span12 ssiContestEndActions">
+			<h4>Your Contest Has Ended!</h4>
+
+			<div class="row ssiContestEndSection">
+				<div class="span4">
+					<a href="layout.html?tplPath=apps/ssi/tpl/&tpl=ssiApproveClaimsPage.html" class="btn btn-primary">Approve Claims</a>
+				</div>
+				<div class="span7">
+					<p>Do you have more claims to approve? You may continue to approve claims until you close the contest.</p>
+				</div>
+			</div>
+			<div class="row ssiContestEndSection">
+				<div class="span4">
+					<a href="layout.html?tplPath=apps/ssi/tpl/&tpl=ssiApprovePayout.html" class="btn btn-primary">Close Contest & Issue Payouts</a>
+				</div>
+				<div class="span7">
+					<p>Are you ready to end the contest and issue payouts? Once payouts are issued you cannot edit the participants' activity.</p>
+				</div>
+			</div>
+		</div>
+		{{/ueq}}
+		{{/ueq}}
+		{{/eq}}
+	{{else}}
+		{{#eq daysToEnd "0"}}
+		{{#ueq status "finalize_results"}}
+		{{#ueq status "closed"}}
+		{{#unless payoutIssued}}
+			<div class="span12 ssiContestEndActions">
+				<h4>Your Contest Has Ended!</h4>
+
+				<div class="row ssiContestEndSection">
+					<div class="span4">
+                        <a href="layout.html?tplPath=apps/ssi/tpl/&tpl=ssiUpdateResultsPageView.html" class="btn btn-primary">Update Activity</a>
+					</div>
+					<div class="span7">
+						<p>Do you have more activity to include? You may continue to add activity until you close the contest.</p>
+					</div>
+				</div>
+				<div class="row ssiContestEndSection">
+					<div class="span4">
+						<a href="layout.html?tplPath=apps/ssi/tpl/&tpl=ssiApprovePayout.html" class="btn btn-primary">Close Contest & Issue Payouts</a>
+					</div>
+					<div class="span7">
+						<p>Are you ready to end the contest and issue payouts? Once payouts are issued you cannot edit the participants' activity.</p>
+					</div>
+				</div>
+			</div>
+		{{/unless}}
+		{{/ueq}}
+		{{/ueq}}
+		{{/eq}}
+	{{/if}}
+</div>
+{{/if}}
+
+<div class="row">
+	<div class="span7">
+		{{#ueq contestType "stackRank"}}
+		<p class="sectionTitle">
+			{{#ueq contestType "doThisGetThat"}}
+			{{activityDescription}}
+			{{else}}
+			Contest Activities
+			{{/ueq}}
+		</p>
+		{{#ueq status "pending"}}<p class="asOfDate">as of {{updatedOnDate}}</p>{{/ueq}}
+		{{/ueq}}
+	</div>
+
+	{{#if isCreator}}
+	<div class="span5 creatorDetailsBtns">
+		<div class="pullRightBtns">
+			{{#if includeSubmitClaim}}
+				{{#eq status "live"}}
+				{{#ueq claimDaysToEnd "0"}}
+					<a href="layout.html?tplPath=apps/ssi/tpl/&tpl=ssiApproveClaimsPage.html" class="btn btn-primary">Approve Claims</a>
+				{{/ueq}}
+				{{/eq}}
+			{{else}}
+				{{#eq status "live"}}
+				{{#ueq daysToEnd "0"}}
+					{{#unless payoutIssued}}
+						<a href="layout.html?tplPath=apps/ssi/tpl/&tpl=ssiUpdateResultsPageView.html" class="btn btn-primary">Update Activity</a>
+					{{/unless}}
+				{{/ueq}}
+				{{/eq}}
+			{{/if}}
+		</div>
+	</div>
+    {{/if}}
+</div>
+
+{{#eq daysToEnd "0"}}
+	<div class="statusBannerWrap">
+		<div class="row">
+			<div class="span12 statusBanner">
+				{{#eq status "finalize_results"}}
+					<h3>Final Results</h3>
+				{{else}}
+					{{#eq status "closed"}}
+						<h3>Final Results</h3>
+					{{else}}
+						{{#if isCreator}}
+						<h3>Update Final Results</h3>
+						{{else}}
+						<h3>Pending Results</h3>
+						{{/if}}
+					{{/eq}}
+				{{/eq}}
+			</div>
+		</div>
+	</div>
+{{/eq}}
+
+<div class="contestUniqueContentWrapper">
+	<div class="contestUniqueContent">
+		<div class="contestWrapper {{contestType}} {{#eq status "finalize_results"}}complete{{/eq}} {{#eq status "closed"}}complete{{/eq}}">
+			{{! triple curly brackets prevents Handlebars from processing the data }}
+			{{{contestHtml}}}
+		</div>
+
+		{{#or isCreator isManager}}
+
+			{{! stack rank is included in ssiCreatorStackRankTpl and ssiManagerStackRankTpl }}
+			{{#ueq contestType "stackRank"}}
+				{{#if isProgressLoaded}}
+				<div class="row">
+					<div class="span12 text-right exportBtns">
+						<div class="pullRightBtns">
+							<a href="#LINK_TO_EXPORT" class="exportCsvButton">
+								<span class="contestDetailsExport"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+				{{/if}}
+			{{/ueq}}
+		{{/or}}
+
+		{{#ueq contestType "stackRank"}}
+			<div class="adminContestDetails">
+				{{! contest details table}}
+			</div>
+		{{/ueq}}
+	</div>
+
+{{#if includeStackRanking}}
+	<div class="contestFullStackRankWrap" style="display:none">
+		{{! contest stack rank table}}
+
+		{{#unless isCreator}}
+		<div class="row">
+			<div class="span12">
+				<ul class="nav nav-tabs paginationTabs">
+					<li class="active">
+						<a href="#all" class="tabFilter" data-toggle="tab" data-filter="all">
+							All
+						</a>
+					</li>
+					<li>
+						<a href="#myTeam" class="tabFilter" data-toggle="tab" data-filter="team">
+							My Team
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		{{/unless}}
+		<div class="row">
+			<div class="span12">
+				<div class="stackRankBoard contestFullStackRank"
+					data-stackrank-offset=""
+					data-stackrank-limit="{{payoutCount}}"
+					data-stackrank-rowcount="11"
+					data-stackrank-tplname="leaderTpl">
+					{{! subTpl.leaderTpl}}
+				</div>
+				<div class="pagination pagination-right paginationControls"></div>
+			</div>
+		</div><!-- .row -->
+	</div>
+{{/if}}
+</div>
+
+<div class="row">
+	<div class="span12 creatorDetailsBtns backToContestWrap" style="display: none;">
+		<button type="button" class="btn btn-primary backToContest">Back to Contest</button>
+	</div>
+</div>

@@ -1,0 +1,39 @@
+{
+	"messages": [],
+
+	"awardRange": {
+			"max": 200,
+			"min": 1
+	},
+	"awardLevel": {
+        "id": 252,
+        "name": "Level 3",
+        "value": 39900
+    },
+	"fixedAward": 75,
+	"totalScore": 14,
+
+	"criteria":[
+		{
+			"criteriaId": 12347,
+			"criteriaWeight": 25,
+			"criteriaScore": 2,
+			"criteriaRating": "25",
+			"criteriaRatingId": 1
+		},
+		{
+			"criteriaId": 12346,
+			"criteriaWeight": 50,
+			"criteriaScore": 4,
+			"criteriaRating": "50",
+			"criteriaRatingId": 5
+		},
+		{
+			"criteriaId": 12345,
+			"criteriaWeight": 100,
+			"criteriaScore": 8,
+			"criteriaRating": "100",
+			"criteriaRatingId": 9
+		}
+	]
+}

@@ -1,0 +1,158 @@
+// Partial-specific variables
+// =========================
+$tables_stripedBordered_theadTextColor: $grayLighter !default;
+$tables_stripedBordered_theadBgColor: $gray !default;
+$tables_stripedBordered_theadSortControlColor: $grayDark !default;
+$tables_stripedBordered_theadSortedTextColor: $white !default;
+$tables_stripedBordered_theadSortedBgColor: $grayDark !default;
+$tables_stripedBordered_theadSortedSortControlColor: $grayLighter !default;
+
+$tables_stripedBordered_tfootFontWeight: bold !default;
+$tables_stripedBordered_tfootTextColor: false !default;
+$tables_stripedBordered_tfootBgColor: $grayLighter !default;
+
+$tables_bordered_borderRadius: 0 !default;
+
+$tables_striped_sortedColumnBgColorAdjustment: -5% !default;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+// ZEBRA-STRIPING (WITH BORDERS)
+// --------------
+.table-striped.table-bordered {
+    th {
+        color: $tables_stripedBordered_theadTextColor;
+        background-color: $tables_stripedBordered_theadBgColor;
+        @include fontSmoothing($tables_stripedBordered_theadTextColor, $tables_stripedBordered_theadBgColor);
+
+        a {
+            color: $tables_stripedBordered_theadTextColor;
+            background-color: $tables_stripedBordered_theadBgColor;
+        }
+
+        .sortControl {
+            @include inline-block;
+            vertical-align: top;
+            color: $tables_stripedBordered_theadSortControlColor;
+            padding-left: 4px;
+        }
+
+        .icon-sort,
+        .icon-sort-up,
+        .icon-sort-down {
+            line-height: 20px;
+            text-align: center;
+        }
+
+        &.sorted {
+            color: $tables_stripedBordered_theadSortedTextColor;
+            background-color: $tables_stripedBordered_theadSortedBgColor;
+            @include fontSmoothing($tables_stripedBordered_theadSortedTextColor, $tables_stripedBordered_theadSortedBgColor);
+
+            a {
+                color: $tables_stripedBordered_theadSortedTextColor;
+                background-color: $tables_stripedBordered_theadSortedBgColor;
+            }
+
+            .sortControl {
+                color: $tables_stripedBordered_theadSortedSortControlColor;
+            }
+        }
+    }
+
+    tfoot th,
+    tfoot td {
+        font-weight: $tables_stripedBordered_tfootFontWeight;
+        @if $tables_stripedBordered_tfootTextColor {
+            color: $tables_stripedBordered_tfootTextColor;
+        }
+        background-color: $tables_stripedBordered_tfootBgColor;
+
+        &.sorted {
+            background-color: adjust-color($tables_stripedBordered_tfootBgColor, $lightness: $tables_striped_sortedColumnBgColorAdjustment);
+        }
+    }
+}
+
+
+// BORDERED VERSION
+// ----------------
+// Note: this is duplicated from Bootstrap/_tables.scss because we can't specifically override the border radius only for that file. Darn.
+.table-bordered {
+    @if $tables_bordered_borderRadius != null and $tables_bordered_borderRadius != $baseBorderRadius {
+        @include border-radius($tables_bordered_borderRadius);
+
+        // For first th or td in the first row in the first thead or tbody
+        thead:first-child tr:first-child th:first-child,
+        tbody:first-child tr:first-child td:first-child {
+            -webkit-border-top-left-radius: $tables_bordered_borderRadius;
+            border-top-left-radius: $tables_bordered_borderRadius;
+            -moz-border-radius-topleft: $tables_bordered_borderRadius;
+        }
+        thead:first-child tr:first-child th:last-child,
+        tbody:first-child tr:first-child td:last-child {
+            -webkit-border-top-right-radius: $tables_bordered_borderRadius;
+            border-top-right-radius: $tables_bordered_borderRadius;
+            -moz-border-radius-topright: $tables_bordered_borderRadius;
+        }
+        // For first th or td in the first row in the first thead or tbody
+        thead:last-child tr:last-child th:first-child,
+        tbody:last-child tr:last-child td:first-child,
+        tfoot:last-child tr:last-child td:first-child {
+            @include border-radius(0 0 0 $tables_bordered_borderRadius);
+            -webkit-border-bottom-left-radius: $tables_bordered_borderRadius;
+            border-bottom-left-radius: $tables_bordered_borderRadius;
+            -moz-border-radius-bottomleft: $tables_bordered_borderRadius;
+        }
+        thead:last-child tr:last-child th:last-child,
+        tbody:last-child tr:last-child td:last-child,
+        tfoot:last-child tr:last-child td:last-child {
+            -webkit-border-bottom-right-radius: $tables_bordered_borderRadius;
+            border-bottom-right-radius: $tables_bordered_borderRadius;
+            -moz-border-radius-bottomright: $tables_bordered_borderRadius;
+        }
+
+        // Special fixes to round the left border on the first td/th
+        caption + thead tr:first-child th:first-child,
+        caption + tbody tr:first-child td:first-child,
+        colgroup + thead tr:first-child th:first-child,
+        colgroup + tbody tr:first-child td:first-child {
+            -webkit-border-top-left-radius: $tables_bordered_borderRadius;
+            border-top-left-radius: $tables_bordered_borderRadius;
+            -moz-border-radius-topleft: $tables_bordered_borderRadius;
+        }
+        caption + thead tr:first-child th:last-child,
+        caption + tbody tr:first-child td:last-child,
+        colgroup + thead tr:first-child th:last-child,
+        colgroup + tbody tr:first-child td:last-child {
+            -webkit-border-top-right-radius: $tables_bordered_borderRadius;
+            border-top-right-radius: $tables_bordered_borderRadius;
+            -moz-border-right-topleft: $tables_bordered_borderRadius;
+        }
+    }
+}
+
+
+// ZEBRA-STRIPING
+// --------------
+
+// Sorted column zebra-stripe styles
+.table-striped {
+  tbody {
+    > tr > .sorted {
+        @if $tableBackground == transparent {
+            background-color: adjust-color($pages_pageContentBgColor, $lightness: $tables_striped_sortedColumnBgColorAdjustment);
+        }
+        @else {
+            background-color: adjust-color($tableBackground, $lightness: $tables_striped_sortedColumnBgColorAdjustment);
+        }
+    }
+    > tr:nth-child(odd) > .sorted {
+        background-color: adjust-color($tableBackgroundAccent, $lightness: $tables_striped_sortedColumnBgColorAdjustment);
+    }
+  }
+}

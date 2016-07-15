@@ -1,0 +1,54 @@
+<form id="loginPageFormChangePass" action="?tplPath=base/tpl/&amp;tpl=modulesPage.html" method="POST" class="form-horizontal">
+    <input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="2cc2a145d27ff674e68987c115ff6d0a">
+    <input type="hidden" name="method" value="savePassword">
+
+    <fieldset id="securityQuestionFieldset">
+         <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter a new password."}'>
+            <label class="control-label">New Password</label>
+            <div class="controls">
+                <input type="password" name="newPassword" id="newPassword" value="">
+                <i class="icon-lock"></i>
+            </div>
+        </div>
+
+        <div class="control-group validateme" data-validate-flags="nonempty,match" data-validate-match="newPassword" data-validate-fail-msgs='{"nonempty" : "Please reenter the password for confirmation.","match" : "Passwords do not match."}'>
+            <label class="control-label">Confirm Password</label>
+            <div class="controls">
+                <input type="password" name="confirmNewPassword" id="confirmNewPassword" value="">
+                <i class="icon-lock"></i>
+            </div>
+        </div>
+
+        <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please select a security question."}'>
+            <label class="control-label">Security Question</label>
+            <div class="controls">
+                <select name="secretQuestion" id="secretQuestion" class="input-auto-width">
+                    <option value="">select one</option>
+                    <option value="city">In what city were you born?</option>
+                    <option value="fmdn">What is your father's middle name?</option>
+                    <option value="cartoon">What is your favorite cartoon character?</option>
+                    <option value="collteam">What is your favorite college sports team?</option>
+                    <option value="ice" selected="selected">What is your favorite ice cream flavor?</option>
+                    <option value="proteam">What is your favorite professional sports team?</option>
+                    <option value="mdn">What is your mother's maiden name?</option>
+                    <option value="nick">What is your nickname?</option>
+                    <option value="pet">What is your pet's name?</option>
+                    <option value="spmdn">What is your spouse's middle name?</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter security question answer."}'>
+            <label class="control-label" for="secretAnswer">Answer</label>
+            <div class="controls">
+                <input type="text" name="secretAnswer" id="secretAnswer" value="[Secret Answer from previous screen]">
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset class="form-actions">
+        <button type="submit" id="securityQuestionFormSubmit" name="button" value="securityQuestionFormSubmit" formaction="ajax/loginPageFormChangePassResponse.json" class="btn btn-primary">Submit</button>
+        <a href="?tplPath=base/tpl/&amp;tpl=loginPage.html" id="securityQuestionFormCancel" class="btn">Cancel</a>
+    </fieldset>
+
+</form>

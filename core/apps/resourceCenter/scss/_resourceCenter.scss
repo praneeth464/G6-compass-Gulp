@@ -1,0 +1,217 @@
+// App-specific variables
+// =========================
+$resourceCenter_bgColor: $g5ModuleBgColor !default;
+$resourceCenter_gradType: $g5ModuleGradType !default;
+$resourceCenter_gradMeta: $g5ModuleGradMeta !default;
+$resourceCenter_gradStops: $g5ModuleGradStops !default;
+
+$resourceCenter_iconColor: $g5ModuleIconColor !default;
+$resourceCenter_titleColor: $g5ModuleTitleColor !default;
+$resourceCenter_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$resourceCenter_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$resourceCenter_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$resourceCenter_linkColor: $white !default;
+$resourceCenter_linkHoverColor: $white !default;
+$resourceCenter_headlineColor: $g5ModuleTitleColor !default;
+$resourceCenter_headlineFontFullString: 32px/36px $g5ModuleTitleFontFamily !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.resourceCenter {
+
+} /* /.resourceCenter */
+
+/* ----- MODULE STYLES ----- */
+.module.resourceCenter {
+
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $resourceCenter_bgColor,
+            $gradType: $resourceCenter_gradType,
+            $gradMeta: $resourceCenter_gradMeta,
+            $gradStops: $resourceCenter_gradStops
+        );
+    }
+
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $resourceCenter_iconColor,
+            $titleColor: $resourceCenter_titleColor,
+            $titleFontFamily: $resourceCenter_titleFontFamily
+        );
+
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            @include g5HomeAppIconBoxReflect(-45px);
+        }
+    }
+
+    @include module_titleIconViewFontSizesWeights($resourceCenter_titleFontSizes, $resourceCenter_titleFontWeights);
+
+    a {
+        color: $resourceCenter_linkColor;
+        font-weight: bold;
+    }
+
+    a:hover {
+        color: $resourceCenter_linkHoverColor;
+    }
+
+    .wide-view {
+        h3 {
+            color: $resourceCenter_headlineColor;
+            font: $resourceCenter_headlineFontFullString;
+            // line-height: 1;
+            padding-top: 0;
+            display: inline-block;
+            // width: 120px;
+            vertical-align: middle;
+        }
+    }
+
+    span:hover {
+        text-decoration: none;
+    }
+
+    &.grid-dimension-1x1,
+    &.grid-dimension-2x1 {
+        .module-liner {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .wide-view,
+        .visitAppBtn {
+            display: none;
+        }
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        .title-icon-view {
+            h3 {
+                display: none;
+            }
+        }
+        .wide-view {
+            ul {
+                margin: 0 $g5ModulePadding;
+                overflow-y: auto;
+                list-style-type: none;
+                list-style-position: outside;
+            }
+        }
+    }
+
+    &.grid-dimension-2x2 {
+        .visitAppBtn {
+            display: none;
+        }
+
+        .title-icon-view {
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                top: 22.5%; //25%
+                left: 22.5%; //21%
+                @include g5HomeAppIconBoxReflect(-170px);
+            }
+            @include module_titleIconViewFonticonsSizes(1, 'resourcecenter', 'resourcecenter');
+        }
+
+        .wide-view {
+            position: relative;
+            z-index: 1;
+            padding-left: 0;
+            padding-right: 0;
+
+            h3 {
+                margin-right: 7%; // values lifted from _allModules.scss ==> &.grid-dimension-2x1 { .title-icon-view { h3 { ...
+                margin-left: 42%; // values lifted from _allModules.scss ==> &.grid-dimension-2x1 { .title-icon-view { h3 { ...
+                width: 51%; // leftovers from above
+                height: 108px - $baseLineHeight; // 108px = fonticon base unit height, $baseLineHeight = top + bottom margin on the h3
+            }
+            ul {
+                // module height * 2 - module gutter * 2 - module padding * 2 - (top/bottom margin of the h3 * 2) - (font size of the h3 * height of the h3)
+                height: ($g5ModuleUnit * 2) - ($g5ModuleGutter * 2) - ($g5ModulePadding * 2) - ($baseLineHeight / 2 * 2) - (36px * 2.333);
+            }
+        }
+    }
+
+    /* &.grid-dimension-4x2 {
+        .title-icon-view {
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                left: 25%;
+                @include g5HomeAppIconBoxReflect(-120px);
+            }
+        }
+        .wide-view {
+            padding-left: 50%;
+
+            h3 {
+                width: auto;
+            }
+            ul {
+                margin-left: 0;
+                // height needs to be dynamically calculated if we turn on this size in the allowedDimensions array for the module
+            }
+        }
+    }
+
+    &.grid-dimension-4x4 {
+        .title-icon-view {
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                top: 33%;
+                @include g5HomeAppIconBoxReflect(-231px);
+            }
+        }
+        .wide-view {
+            text-align: center;
+
+            h3 {
+                display: block;
+                padding-top: 312px; // magic number
+            }
+            ul {
+                margin-left: 0;
+                // height needs to be dynamically calculated if we turn on this size in the allowedDimensions array for the module
+            }
+        }
+    } */
+
+} /* /.module.resourceCenter */
+
+// The module qtip gets placed inside the body tag
+.resourceCenterTooltip {
+    max-width: 320px;
+
+    @media (max-width: 639px) {
+        max-width: 160px;
+    }
+
+    li {
+        padding: ($baseLineHeight * .30 / 2) 0; // 3px 0
+        line-height: $baseLineHeight * .70; // 14px
+    }
+}
+
+
+/* ----- PAGE STYLES ----- */
+.page.resourceCenter {
+    padding-top: 35px;
+
+    h3{
+        margin-top: 0;
+    }
+
+} /* /.page.resourceCenter */
+

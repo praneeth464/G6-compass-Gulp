@@ -1,0 +1,60 @@
+// App-specific variables
+// =========================
+$celebrationEcard_bgColor: $g5ModuleBgColor !default;
+$celebrationEcard_gradType: $g5ModuleGradType !default;
+$celebrationEcard_gradMeta: $g5ModuleGradMeta !default;
+$celebrationEcard_gradStops: $g5ModuleGradStops !default;
+$celebrationEcard_ImgUrl2x2: "celebration/ecardBg.png" !default;
+$celebrationEcard_ImgUrlPath: $appImagesPath !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.celebrationEcard {
+
+} /* /.celebration */
+
+/* ----- MODULE STYLES ----- */
+.module.celebrationEcard {
+
+    .module-liner {
+        @if $celebrationEcard_ImgUrl2x2 {
+            @include safeImgUrls($celebrationEcard_ImgUrl2x2, $celebrationEcard_ImgUrlPath, $property: 'background-image');
+                    background-repeat: no-repeat;
+                    filter: none;
+            }
+        @else {
+            @include module_moduleLinerBackground(
+                $bgColor: $celebrationEcard_bgColor,
+                $gradType: $celebrationEcard_gradType,
+                $gradMeta: $celebrationEcard_gradMeta,
+                $gradStops: $celebrationEcard_gradStops
+            );
+        }
+    }
+
+    .celebrationCongratsEcard {
+        height: 214px;
+        left: 52px;
+        position: absolute;
+        top: 30px;
+        width: 214px;
+    }
+
+    &.grid-dimension-2x2 {
+        .module-liner {
+            height: 640px;
+            width: 320px;
+        }
+    }
+} /* /.module.celebrationCongrats */
+
+/* ----- PAGE STYLES ----- */
+.page.celebrationEcard {
+
+} /* /.page.celebrationCongrats */

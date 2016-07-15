@@ -1,0 +1,388 @@
+/*  G5 Fonticons EXTENDED
+    additional and/or replacement glyphs for the custom icon font designed just for G5
+    -------------------------------------------------------
+    Completely borrowed from FontAwesome:
+      http://fortawesome.github.com/Font-Awesome/
+    Technique for building a custom icon font found here:
+      http://www.webdesignerdepot.com/2012/01/how-to-make-your-own-icon-g5-webfont/
+
+    Court Cromwell-Carl (cromcarl@biworldwide.com) built the first version of this font with Type Tool
+    Joel Schou (schou@biworldwide.com) iterated additional versions and implemented it into G5
+
+    License
+    -------------------------------------------------------
+    Copyright BI WORLDWIDE. All Rights Reserved.
+*/
+/*  List the properties for all additional glyphs here
+    !!! These need to be duplicated in base/_g5-fonticons.scss so both files have access
+    ------------------------------------------------------- */
+/*  G5 Fonticons uses the Unicode Private Use Area (PUA) to ensure screen
+    readers do not read off random characters that represent icons
+    
+    Module icons
+    ------------
+    These are always rendered square and should only be used on the modules in title-icon-view mode.
+    Start with \f800 to avoid collisions with any existing glyphs. The first unicode value is for "good" browsers, the second for ie7
+    $g5fonticons_modules_extended:  'iconnameA' '\f800' 'f800',
+                                    'iconnameB' '\f801' 'f801';
+
+    Utility icons
+    -------------
+    These are rendered at a proportional width and can be used anywere FontAwesome icons are used. They cannot be replaced with images.
+    Start with \f900 to avoid collisions with any existing glyphs. The first unicode value is for "good" browsers, the second for ie7
+    $g5fonticons_utility_extended:  'iconnameC' '\f900' 'f900',
+                                    'iconnameD' '\f901' 'f901';
+*/
+/*  G5 Fonticons
+    the custom icon font designed just for G5
+    -------------------------------------------------------
+    Completely borrowed from FontAwesome:
+      http://fortawesome.github.com/Font-Awesome/
+    Technique for building a custom icon font found here:
+      http://www.webdesignerdepot.com/2012/01/how-to-make-your-own-icon-g5-webfont/
+
+    Court Cromwell-Carl (cromcarl@biworldwide.com) built the first version of this font with Type Tool
+    Joel Schou (schou@biworldwide.com) iterated additional versions and implemented it into G5
+
+    License
+    -------------------------------------------------------
+    Copyright BI WORLDWIDE. All Rights Reserved.
+*/
+/*  Dynamically generate the glyphs for specific classes
+    ------------------------------------------------------- */
+/*  G5 Fonticons uses the Unicode Private Use Area (PUA) to ensure screen
+    readers do not read off random characters that represent icons */
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-plateau {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf000;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-gamification {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf001;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-recognize {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf002;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-publicrecognition {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf003;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-claims {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf004;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-reportsfav {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf005;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-reportsall {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf006;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-news {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf007;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-purl {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf008;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-forum {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf009;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-goalquest {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf00a;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-learning {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf00b;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-shop {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf00c;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-diytravel {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf00d;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-approvals {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf00e;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-leaderboard {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf010;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-quiz {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf011;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-experience {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf012;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-nomination {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf013;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-passporttravel {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf014;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-events {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf015;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-toolkit {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf016;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-travelgreatdeals {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf017;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-rewardcard {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf018;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-budgettracker {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf019;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-drawtool {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf01a;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-manager-disc {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf01b;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-tips {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf01c;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-awardcalculator {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf01d;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-sendalerts {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf01e;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-rightclass {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf021;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-shopintl {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf022;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-resourcecenter {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf023;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-greatdeals {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf024;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-envoytravel {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf025;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-realdeal {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf026;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-challengepoint {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf027;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-digitaldownloads {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf028;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-survey {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf029;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-instantpoll {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf02a;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-throwdown {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf02b;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-celebration {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf02c;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-engagement {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf02d;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-communications {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf02e;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-stackrank {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf031;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-dothisgetthat {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf032;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-objective {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf033;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-awardnow {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf034;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-stepitup {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf035;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-createcontest {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf036;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-alerts {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf100;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-norecognitions {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf101;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-global {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf102;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-team {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf103;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-following {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf104;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-profile {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf105;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-admin {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf106;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-pencil {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf107;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-eraser {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf108;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-trash {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf109;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-save {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf10a;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-engagement-recSent {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf10b;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-engagement-recRecv {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf10c;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-engagement-paxRecTo {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf10d;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-engagement-paxRecBy {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf10e;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-engagement-score {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf110;&nbsp;');
+}
+
+/* line 818, ../../../core/base/scss/partials/_mixins.scss */
+.icon-g5-engagement-visits {
+  *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf111;&nbsp;');
+}

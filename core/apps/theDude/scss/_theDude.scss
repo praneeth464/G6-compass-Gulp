@@ -1,0 +1,24 @@
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.theDude {
+
+} /* /.theDude */
+
+/* ----- MODULE STYLES ----- */
+.module.theDude {
+
+    .module-liner{
+        color:white;
+        background: image-url('theDude_bg.jpg') 50% 50% no-repeat;
+        .dude-content{
+            padding:20px;
+        }
+    }
+
+} /* /.module.theDude */
+
+/* ----- PAGE STYLES ----- */
+.page.theDude {
+
+} /* /.page.theDude */
+

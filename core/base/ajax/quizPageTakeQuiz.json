@@ -1,0 +1,149 @@
+<?php sleep(1); ?>
+{
+    "messages" : [],
+
+    "quizJson" : {
+        "id": "ThisIsAQuizId",
+        "name": "This is a quiz name",
+        "startDate": "08/16/2013",
+        "endDate": "08/16/2015",
+        "introText": "<p>This is the introduction text for this quiz. <b>Cheers!</b></p>",
+
+        "_comment": "This is a 1-based counter. So totalQuestions is the length",
+        "totalQuestions": 2,
+
+        "passingScore": 1,
+        "allowedAttempts": 5,
+        "isAttemptsLimit": true,
+        "isRandomQuestionOrder": false,
+        "retakeQuizUrl": "layout.html?tplPath=apps/quiz/tpl/&tpl=quizPageTake",
+
+        "_comment": "Need this value independent of the allowedAttempts value",
+        "attemptsUsed": 0,
+
+        "_comment": "If no quizAward is assigned, pass an empty string or boolean false",
+        "quizAward": "100 Points",
+
+        "_comment": "If no badge is assigned, pass an empty object or boolean false",
+        "badge":{
+            "id":                   "25",
+            "type":                 "progress",
+            "name":                 "Progress Badge Name 3 2b",
+            "howToEarnText":        "3 How to earn badge",
+            "img":                  "img/badges/bronze_sm.png"
+        },
+        "_comment": "Certificate data depends on a claimId and cannot be passed before the quiz has been started.",
+        "_comment": "See the bottom of this file for a certificate object sent with a claimID",
+        "_comment": "See quizPageTakeAnswer.json for a certificate object sent as part of the very last answer response",
+
+        "_comment" : "materials will be sorted by pageNumber",
+        "materials": [
+            {
+                "id":1234444,
+                "pageNumber":4,
+                "files":[
+                    {"id":"deleteMe_uploadedImageFromPhp.pdf?2603","name":"First pdf file. First pdf file. First pdf file. First pdf file. First pdf file.First pdf file.","url":"deleteMe_uploadedImageFromPhp.pdf?2603","originalFilename":"G5 goalquest wireframes.pdf"},
+                    {"id":"deleteMe_uploadedImageFromPhp.pdf?7816","name":"Second pdf file.","url":"deleteMe_uploadedImageFromPhp.pdf?7816","originalFilename":"steps.pdf"},
+                    {"id":"deleteMe_uploadedImageFromPhp.pdf?8225","name":"Third pdf file.","url":"deleteMe_uploadedImageFromPhp.pdf?8225","originalFilename":"manager create a quiz.pdf"}
+                ],
+                "type":"pdf",
+                "text":"<p>These are <b>PDF</b>s.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus feugiat, tellus pretium mattis tincidunt, eros lacus porttitor lorem, a accumsan augue nunc eu lacus. Etiam semper nisi felis, sit amet eleifend nibh rutrum quis. Donec vitae tincidunt arcu. Sed condimentum convallis libero, a vestibulum dui aliquet vel. In interdum sem quis eleifend tincidunt. Sed condimentum in magna in vestibulum. Nam vel enim ligula. Suspendisse vulputate vitae metus id scelerisque.</p><p>Quisque quam eros, commodo sit amet lobortis at, fermentum sed arcu. Donec vitae mi sapien. Vestibulum dapibus magna eu ante convallis adipiscing. Maecenas interdum a nunc nec pulvinar. Donec id magna lorem. Donec fringilla eu tellus at congue. Praesent semper adipiscing ante, in pharetra erat pretium quis. Morbi id urna magna. Integer vitae tincidunt elit. Maecenas id justo turpis. Cras neque tellus, venenatis a velit quis, tempus convallis urna. Morbi augue urna, volutpat vitae tellus vitae, tincidunt facilisis magna. Quisque sit amet interdum purus. Aliquam a scelerisque risus. Sed venenatis nec lectus vel aliquam.</p><p>Praesent eu rutrum nisl. Nunc aliquam pulvinar tempor. Sed condimentum diam nisi, vel pretium nisl tempor vitae. Suspendisse semper dictum iaculis. Sed venenatis est quis tortor consectetur consectetur. Sed luctus a ante et iaculis. Aliquam ut turpis turpis. Suspendisse pulvinar magna erat, ut consectetur dui hendrerit non. Sed sit amet dui eget nulla consectetur tempor at sed purus. Integer congue dapibus nisl, quis luctus risus pharetra mattis. Sed imperdiet nec sem dignissim ullamcorper. Donec hendrerit urna sollicitudin molestie aliquam. Maecenas ullamcorper tincidunt urna at ultricies. Morbi eu dui vitae ligula posuere dapibus. Nam lacinia hendrerit lorem at faucibus.</p>"
+            },
+            {
+                "id":12345,
+                "pageNumber":1,
+                "type":"text",
+                "text":"<p><b>Bold</b> not bold</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus feugiat, tellus pretium mattis tincidunt, eros lacus porttitor lorem, a accumsan augue nunc eu lacus. Etiam semper nisi felis, sit amet eleifend nibh rutrum quis. Donec vitae tincidunt arcu. Sed condimentum convallis libero, a vestibulum dui aliquet vel. In interdum sem quis eleifend tincidunt. Sed condimentum in magna in vestibulum. Nam vel enim ligula. Suspendisse vulputate vitae metus id scelerisque.</p><p>Quisque quam eros, commodo sit amet lobortis at, fermentum sed arcu. Donec vitae mi sapien. Vestibulum dapibus magna eu ante convallis adipiscing. Maecenas interdum a nunc nec pulvinar. Donec id magna lorem. Donec fringilla eu tellus at congue. Praesent semper adipiscing ante, in pharetra erat pretium quis. Morbi id urna magna. Integer vitae tincidunt elit. Maecenas id justo turpis. Cras neque tellus, venenatis a velit quis, tempus convallis urna. Morbi augue urna, volutpat vitae tellus vitae, tincidunt facilisis magna. Quisque sit amet interdum purus. Aliquam a scelerisque risus. Sed venenatis nec lectus vel aliquam.</p><p>Praesent eu rutrum nisl. Nunc aliquam pulvinar tempor. Sed condimentum diam nisi, vel pretium nisl tempor vitae. Suspendisse semper dictum iaculis. Sed venenatis est quis tortor consectetur consectetur. Sed luctus a ante et iaculis. Aliquam ut turpis turpis. Suspendisse pulvinar magna erat, ut consectetur dui hendrerit non. Sed sit amet dui eget nulla consectetur tempor at sed purus. Integer congue dapibus nisl, quis luctus risus pharetra mattis. Sed imperdiet nec sem dignissim ullamcorper. Donec hendrerit urna sollicitudin molestie aliquam. Maecenas ullamcorper tincidunt urna at ultricies. Morbi eu dui vitae ligula posuere dapibus. Nam lacinia hendrerit lorem at faucibus.</p>"
+            },
+            {
+                "id":"12354",
+                "pageNumber":3,
+                "files":[
+                    {"id":null,"name":null,"url":"http://www.youtube.com/watch?v=2Vk9Jd3ilh4"}
+                ],
+                "type":"video",
+                "text":"<p>This is a <b>video</b> from DIY (oEmbed).</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus feugiat, tellus pretium mattis tincidunt, eros lacus porttitor lorem, a accumsan augue nunc eu lacus. Etiam semper nisi felis, sit amet eleifend nibh rutrum quis. Donec vitae tincidunt arcu. Sed condimentum convallis libero, a vestibulum dui aliquet vel. In interdum sem quis eleifend tincidunt. Sed condimentum in magna in vestibulum. Nam vel enim ligula. Suspendisse vulputate vitae metus id scelerisque.</p><p>Quisque quam eros, commodo sit amet lobortis at, fermentum sed arcu. Donec vitae mi sapien. Vestibulum dapibus magna eu ante convallis adipiscing. Maecenas interdum a nunc nec pulvinar. Donec id magna lorem. Donec fringilla eu tellus at congue. Praesent semper adipiscing ante, in pharetra erat pretium quis. Morbi id urna magna. Integer vitae tincidunt elit. Maecenas id justo turpis. Cras neque tellus, venenatis a velit quis, tempus convallis urna. Morbi augue urna, volutpat vitae tellus vitae, tincidunt facilisis magna. Quisque sit amet interdum purus. Aliquam a scelerisque risus. Sed venenatis nec lectus vel aliquam.</p><p>Praesent eu rutrum nisl. Nunc aliquam pulvinar tempor. Sed condimentum diam nisi, vel pretium nisl tempor vitae. Suspendisse semper dictum iaculis. Sed venenatis est quis tortor consectetur consectetur. Sed luctus a ante et iaculis. Aliquam ut turpis turpis. Suspendisse pulvinar magna erat, ut consectetur dui hendrerit non. Sed sit amet dui eget nulla consectetur tempor at sed purus. Integer congue dapibus nisl, quis luctus risus pharetra mattis. Sed imperdiet nec sem dignissim ullamcorper. Donec hendrerit urna sollicitudin molestie aliquam. Maecenas ullamcorper tincidunt urna at ultricies. Morbi eu dui vitae ligula posuere dapibus. Nam lacinia hendrerit lorem at faucibus.</p>"
+            },
+            {
+                "id":"12356",
+                "pageNumber":5,
+                "files":[
+                    {"id":null,"name":null,"url":"http://localhost/hp2/vid/LarrySchoenecker.mp4", "type":"video/mp4"},
+                    {"id":null,"name":null,"url":"http://localhost/hp2/vid/LarrySchoenecker.webm","type":"video/webm"},
+                    {"id":null,"name":null,"url":"http://localhost/hp2/vid/LarrySchoenecker.ogv", "type":"video/ogg"},
+                    {"id":null,"name":null,"url":"http://localhost/hp2/vid/LarrySchoenecker.3gp", "type":"video/3gpp"}
+                ],
+                "type":"video",
+                "text":"<p>This is a <b>video</b> from admin (VideoJS/HTML5).</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus feugiat, tellus pretium mattis tincidunt, eros lacus porttitor lorem, a accumsan augue nunc eu lacus. Etiam semper nisi felis, sit amet eleifend nibh rutrum quis. Donec vitae tincidunt arcu. Sed condimentum convallis libero, a vestibulum dui aliquet vel. In interdum sem quis eleifend tincidunt. Sed condimentum in magna in vestibulum. Nam vel enim ligula. Suspendisse vulputate vitae metus id scelerisque.</p><p>Quisque quam eros, commodo sit amet lobortis at, fermentum sed arcu. Donec vitae mi sapien. Vestibulum dapibus magna eu ante convallis adipiscing. Maecenas interdum a nunc nec pulvinar. Donec id magna lorem. Donec fringilla eu tellus at congue. Praesent semper adipiscing ante, in pharetra erat pretium quis. Morbi id urna magna. Integer vitae tincidunt elit. Maecenas id justo turpis. Cras neque tellus, venenatis a velit quis, tempus convallis urna. Morbi augue urna, volutpat vitae tellus vitae, tincidunt facilisis magna. Quisque sit amet interdum purus. Aliquam a scelerisque risus. Sed venenatis nec lectus vel aliquam.</p><p>Praesent eu rutrum nisl. Nunc aliquam pulvinar tempor. Sed condimentum diam nisi, vel pretium nisl tempor vitae. Suspendisse semper dictum iaculis. Sed venenatis est quis tortor consectetur consectetur. Sed luctus a ante et iaculis. Aliquam ut turpis turpis. Suspendisse pulvinar magna erat, ut consectetur dui hendrerit non. Sed sit amet dui eget nulla consectetur tempor at sed purus. Integer congue dapibus nisl, quis luctus risus pharetra mattis. Sed imperdiet nec sem dignissim ullamcorper. Donec hendrerit urna sollicitudin molestie aliquam. Maecenas ullamcorper tincidunt urna at ultricies. Morbi eu dui vitae ligula posuere dapibus. Nam lacinia hendrerit lorem at faucibus.</p>"
+            },
+            {
+                "id":"1239",
+                "pageNumber":2,
+                "files":[
+                    {"id":"deleteMe_uploadedImageFromPhp.jpg?8826","name":"","url":"deleteMe_uploadedImageFromPhp.jpg?8826","originalFilename":"30previewhighresolutionimage.jpg"}
+                ],
+                "type":"image",
+                "text":"<p>This is an image.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus feugiat, tellus pretium mattis tincidunt, eros lacus porttitor lorem, a accumsan augue nunc eu lacus. Etiam semper nisi felis, sit amet eleifend nibh rutrum quis. Donec vitae tincidunt arcu. Sed condimentum convallis libero, a vestibulum dui aliquet vel. In interdum sem quis eleifend tincidunt. Sed condimentum in magna in vestibulum. Nam vel enim ligula. Suspendisse vulputate vitae metus id scelerisque.</p><p>Quisque quam eros, commodo sit amet lobortis at, fermentum sed arcu. Donec vitae mi sapien. Vestibulum dapibus magna eu ante convallis adipiscing. Maecenas interdum a nunc nec pulvinar. Donec id magna lorem. Donec fringilla eu tellus at congue. Praesent semper adipiscing ante, in pharetra erat pretium quis. Morbi id urna magna. Integer vitae tincidunt elit. Maecenas id justo turpis. Cras neque tellus, venenatis a velit quis, tempus convallis urna. Morbi augue urna, volutpat vitae tellus vitae, tincidunt facilisis magna. Quisque sit amet interdum purus. Aliquam a scelerisque risus. Sed venenatis nec lectus vel aliquam.</p><p>Praesent eu rutrum nisl. Nunc aliquam pulvinar tempor. Sed condimentum diam nisi, vel pretium nisl tempor vitae. Suspendisse semper dictum iaculis. Sed venenatis est quis tortor consectetur consectetur. Sed luctus a ante et iaculis. Aliquam ut turpis turpis. Suspendisse pulvinar magna erat, ut consectetur dui hendrerit non. Sed sit amet dui eget nulla consectetur tempor at sed purus. Integer congue dapibus nisl, quis luctus risus pharetra mattis. Sed imperdiet nec sem dignissim ullamcorper. Donec hendrerit urna sollicitudin molestie aliquam. Maecenas ullamcorper tincidunt urna at ultricies. Morbi eu dui vitae ligula posuere dapibus. Nam lacinia hendrerit lorem at faucibus.</p>"
+            }
+        ],
+
+        "_comment": "The following attributes only apply when the user is coming back to a saved quiz and a claimId exists",
+
+        "claimId": 12345678,
+        "certificate": {
+            "id":"192",
+            "name":"abstract Certificate",
+            "img":"img/certificates/abstract-thumb.jpg",
+            "imgLg":"img/certificates/abstract-preview.jpg",
+            "url":"http://full.url/to/generated/certificate.pdf"
+        },
+
+        "_comment": "This is a 1-based counter like totalQuestions. currentQuestion: 1 is the first question. If all questions are answered, send currentQuestion: 0",
+        "currentQuestion": 2,
+
+        "_comment": "Send all previously answered questions in this array.",
+        "questions":[
+            {
+                "_comment": "selectedAnswerId and answeredCorrectly should be filled in by the server",
+                "selectedAnswerId": "ThisIsAAnswerID03",
+                "answeredCorrectly": false,
+
+                "id": "ThisIsAQuestionID01",
+                "number": 1,
+                "text": "What is color?",
+
+                "_comment": "answers exp (Explanation) is for admin quizzes only",
+                "answers": [
+                    {
+                        "number": 1,
+                        "id": "ThisIsAAnswerID01",
+                        "text": "Purple",
+                        "isCorrect": false,
+                        "exp" : "Explanation of the correct answer 01 (admin quiz only)"
+                    },
+                    {
+                        "number": 2,
+                        "id":"ThisIsAAnswerID02",
+                        "text": "The optical sensation ellicited when quanta of light bombard the retina, sending neurotransmitters to frolick about the visual cortex.",
+                        "isCorrect": true,
+                        "exp" : "Explanation of the correct answer 02 (admin quiz only)"
+                    },
+                    {
+                        "number": 3,
+                        "id":"ThisIsAAnswerID03",
+                        "text": "It is a city in Spain.",
+                        "isCorrect": false,
+                        "exp" : "Explanation of the correct answer 03 (admin quiz only)"
+                    },
+                    {
+                        "number": 4,
+                        "id":"ThisIsAAnswerID04",
+                        "text": "\"color\" is just a word.",
+                        "isCorrect": true,
+                        "exp" : "Explanation of the correct answer 04 (admin quiz only)"
+                    }
+                ]
+            }
+        ]
+    }
+}

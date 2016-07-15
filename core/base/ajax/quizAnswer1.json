@@ -1,0 +1,12 @@
+{
+	"messages":[],
+	"quizAnswer":[
+		{
+            "id" : 4000,
+            "isUserCorrect": true,
+			"questionAnswer":				1,
+			"questionAnswerTitle":			"The correct answer is Orange.",
+			"questionAnswerDescription":	"In the JSON, the answer is set to be the position in the array of the correct answer in the question choices list. In this case, the answer was the 2nd choice, or B: Orange. That corresponds to position [1] in the array."
+		}		
+	]
+}	

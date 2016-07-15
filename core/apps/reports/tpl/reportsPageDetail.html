@@ -1,0 +1,187 @@
+<?php sleep(1); ?>
+<div class="row">
+
+    <div class="span12">
+    {{#if tabularData.results}}
+
+        {{#if tabularData.meta.exportFullReportUrl}}
+        <ul id="exportFullReport" class="export-tools fr">
+
+            {{#each tabularData.meta.exportFullReportUrl}}
+            <li class="export"><a href="{{url}}" class="exportCsvButton"><img src="img/reports/reports_exportCsv.png" alt="CSV"><span>{{label}}</span></a></li>
+            {{/each}}
+
+        </ul>
+        {{/if}}
+
+    {{else}}
+        {{#if exportOnly}}
+        {{! duplication of code, but Handlebars doesn't support compound if statements}}
+
+        {{#if tabularData.meta.exportFullReportUrl}}
+        <ul id="exportFullReport" class="export-tools fr">
+
+            {{#each tabularData.meta.exportFullReportUrl}}
+            <li class="export"><a href="{{url}}" class="exportCsvButton"><img src="img/reports/reports_exportCsv.png" alt="CSV"><span>{{label}}</span></a></li>
+            {{/each}}
+
+        </ul>
+        {{/if}}
+
+        {{/if}}
+    {{/if}}
+
+        <h2 id="reportName">{{displayName}}</h2>
+        <p id="reportDesc">{{desc}}</p>
+
+        <!--
+            each report has a special CM key containing the full translated string for the "As of" text
+            the key ouput will have a {0} placeholder where the timestamp value is inserted
+            this allows the translations to have plain text and the timestamp in any order
+            we embed this CM output as a tplVariable in our reportsPageDetail Handlebars template
+            we also have an asOfTimestamp subTpl embedded in our reportsPageDetail Handlebars template
+            we pass the report.reportDetailAsOfTimestamp value from the JSON to the subTpl, then replace the {0} with the rendered output
+            the final string is assigned to report.reportDetailAsOfTimestampFormatted in the JSON to be passed to the main template
+        -->
+        <!--tplVariable.asOfTimestamp= "As of {0}" tplVariable-->
+        <!--subTpl.asOfTimestamp= <span class="stamp">{{reportDetailAsOfTimestamp}}</span> subTpl-->
+        {{#if reportDetailAsOfTimestampFormatted}}<p id="timeStamp">{{{reportDetailAsOfTimestampFormatted}}}</p>{{/if}}
+
+        {{#if exportOnly}}
+
+        <div class="alert alert-info row" id="noResultsText">{{{exportText}}}</div>
+
+        {{/if}}
+
+    </div><!-- /.span12 -->
+
+</div><!-- /.row -->
+
+{{#unless exportOnly}}
+
+<div id="chartRowContainer" class="container-fluid well">
+    <div class="row">
+        <div id="chartRow" class="span12">
+            {{#if chartSet}}
+            <div class="span7">
+                <ul class="chartThumbs">
+                    {{#each chartSet}}
+                    <li id="thumb-chartId-{{id}}"><a href="#" data-chart-id="{{id}}"><img title="{{displayName}}" class="individualChartThumb {{chartType}}" src="img/reports/type_{{chartType}}.jpg" /></a><i class="icon-chevron-right"></i><i class="icon-chevron-down"></i></li>
+                    {{/each}}
+                </ul> <!-- /.chartThumbs -->
+                <div id="chartInFocus">
+                    {{#each chartSet}}
+                    <div id="chartContainer-{{id}}" class="reportsChart-moveable-item" data-chart-id="{{id}}"><img class="individualChartBkgd {{chartType}}" src="img/reports/type_{{chartType}}.jpg" /></div>
+                    {{/each}}
+                </div> <!-- /#chartInFocus -->
+            </div> <!-- /.span7 -->
+            {{/if}}
+            <div class="span5">
+                {{#if chartSet}}<a href="#" id="exportChartPdf" class=""><img src="img/reports/reports_exportPdf.png" alt="PDF"></a>{{/if}}
+                <div id="chartInfo">
+                    {{#if chartSet}}<h3 id="chartName"></h3>{{/if}}
+                    <p><strong>Report Filters</strong> <button type="button" class="btn btn-primary reportsChangeFiltersPopoverTrigger"><i class="icon-pencil"></i> Change Filters</button></p>
+                    <p id="currentParametersSummary">
+                        {{#each parameters}}
+                        <strong>{{name}}:</strong> {{value}}<br>
+                        {{/each}}
+                    </p>
+                    {{#if chartSet}}
+                    <p class="disclaimer"><em>* Chart displays only top <span class="chartDisplaysTop" data-default="20">20</span>.</em></p>
+                    <a id="reportsFavoritesPopoverTrigger"><button type="button" class="btn btn-primary"><i class="icon-plus-sign"></i> Add to My Favorite Reports</button></a>
+                    {{/if}}
+                </div> <!-- chartThumbs -->
+            </div> <!-- span5 -->
+
+        </div> <!-- /#chartRow.span12 -->
+    </div> <!-- /.row -->
+</div> <!-- /.container-fluid -->
+
+{{#unless exportAndFilters}}
+<div id="tabularResultsContainer" class="row">
+
+    <div class="span12">
+
+        <div class="row">
+
+            <div class="span6">
+
+                <h4 id="reportDefinitionList">Summary <a id="columnDefinitionsPopover" class="columnDefinitions-popover" selector="popover7" data-content='' href="#" rel="popover" data-original-title="Column Definitions"><i id="iconInfoSign" class="icon-info-sign"></i></a></h4>
+
+    {{#if tabularData.results}}
+
+                <div id="reportDefinitionListContents" class="hide">
+                    <dl id="columnDefinitions">
+                    {{#each tabularData.meta.columns}}
+                        {{#if description}}
+                        <dt>{{name}}</dt>
+                        <dd>{{description}}</dd>
+                        {{/if}}
+                    {{/each}}
+                    </dl>
+                </div>
+
+            </div>
+
+            <div class="span2 offset4">
+
+                {{#if tabularData.meta.exportCurrentView}}
+                <ul id="exportCurrentView" class="export-tools fr">
+
+                    <!-- <li>Export Current View:</li> -->
+
+                    <li class="export"><a href="{{tabularData.meta.exportCurrentView.url}}" class="exportCsvButton"><img src="img/reports/reports_exportCsv.png" alt="CSV"><span>{{tabularData.meta.exportCurrentView.label}}</span></a></li>
+
+                </ul>
+                {{/if}}
+
+    {{/if}}
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="span12">
+
+                <div id="breadCrumbs"></div>
+                <!--XXXsubTpl.breadcrumbTpl=
+                    NOTE: you can safely take the JSP conversion of core/base/tpl/breadcrumbView.html and include it here. Then, remove the "XXX" above and the script will use this child template instead of the remote one
+                subTpl-->
+
+            </div>
+
+        </div>
+
+    {{#if tabularData.results}}
+
+        <div class="row">
+
+            <div class="span12">
+                <div class="pagination pagination-right paginationControls"></div>
+                <!--XXXsubTpl.paginationTpl=
+                    NOTE: you can safely take the JSP conversion of core/base/tpl/paginationView.html and include it here. Then, remove the "XXX" above and the script will use this child template instead of the remote one
+                subTpl-->
+
+                <div id="resultsTableWrapper"></div>
+                <!--XXXsubTpl.tableTpl=
+                    NOTE: you can safely take the JSP conversion of reportsTable.html and include it here. Then, remove the "XXX" above and the script will use this child template instead of the remote one
+                subTpl-->
+
+                <div class="pagination pagination-right paginationControls"></div>
+            </div>
+
+        </div>
+
+    {{else}}
+        <div class="alert alert-block alert-error">
+            <p>No results found.</p>
+        </div>
+    {{/if}}
+
+    </div><!-- /.span12 -->
+
+</div><!-- /#tabularResultsContainer.row -->
+{{/unless}} {{! /#unless exportAndFilters}}
+{{/unless}} {{! /#unless exportOnly}}

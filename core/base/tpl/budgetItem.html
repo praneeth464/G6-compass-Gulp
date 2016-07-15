@@ -1,0 +1,26 @@
+<div class="budgetItem {{#if isOdd}}on{{else}}off{{/if}}">
+
+    {{#if name}}<div class="budgetName">{{name}}</div>{{/if}}
+
+    {{#promotions}}
+        <div class="promoItem">
+            <a class="promoName" href="{{url}}">{{name}}</a>
+            &nbsp;&nbsp;
+            {{#if ../endDate}}
+                <span class="promoEndDate">Ends: {{../../endDate}}</span>
+            {{else}}
+                <span class="promoEndDate"> No End Date</span>
+            {{/if}}
+        </div>
+    {{/promotions}}
+
+    <div class="progress">
+        <!-- budget starts at 100% and animates down -->
+        <div class="bar" style="width: 100%;"></div>
+    </div>
+    <div class="minMax">
+        <div class="min">0</div>
+        <div class="max">{{formatNumber total}}</div>
+    </div>
+
+</div><!-- /.budgetItemWrapper -->

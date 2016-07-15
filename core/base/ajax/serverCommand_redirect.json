@@ -1,0 +1,10 @@
+{
+	"messages":[
+
+		{
+		"type":"serverCommand",
+		"command":"redirect",
+		"url":"/some/context/path/to/login.do"
+		}
+	]
+}

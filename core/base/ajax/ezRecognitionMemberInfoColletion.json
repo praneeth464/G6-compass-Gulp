@@ -1,0 +1,78 @@
+<?php sleep(2); ?>
+{
+	"messages": [],
+
+	"promotions": [
+		{
+			"id": 12345555,
+			"name": "Promotion1",
+			"attributes":{
+				"isEasy": true,
+				"ecardsActive": true,
+				"commentsActive": true
+			}
+		},
+		{
+			"id": 12345556,
+			"name": "Promotion2",
+			"attributes":{
+				"isEasy": true,
+				"ecardsActive": false,
+				"commentsActive": true
+			}
+		},
+		{
+			"id": 12345557,
+			"name": "Promotion3",
+			"attributes":{
+				"isEasy": true,
+				"ecardsActive": true,
+				"commentsActive": false
+			}
+		},
+		{
+			"id": 12345558,
+			"name": "Promotion4",
+			"attributes":{
+				"isEasy": false,
+				"ecardsActive": false,
+				"commentsActive": false
+			}
+		}
+	],
+
+	"nodes":[
+		{
+			"id": 23456,
+			"name": "OrgUnit1"
+		},
+		{
+			"id": 23457,
+			"name": "OrgUnit2"
+		}
+	],
+
+	"recipientInfo":[
+		{
+			"firstName": "Logan",
+			"lastName": "Price",
+			"id": 12345,
+			"avatarUrl": "img/_samples/x-profile-pic2.jpg",
+			"orgName": "Org Name",
+			"jobName": "Design Director",
+			"city": "Minneapolis",
+			"countryCode": "us",
+			"countryName": "United States",
+			"nodes":[
+				{
+					"id": 23456,
+					"name": "OrgUnit1"
+				},
+				{
+					"id": 23457,
+					"name": "OrgUnit2"
+				}
+			]
+		}
+	]
+}

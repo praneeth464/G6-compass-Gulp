@@ -1,0 +1,140 @@
+<!-- ======== COMMUNICATIONS MANAGE RESOURCE CENTER PAGE ======== -->
+
+<div id="communicationsManageResourceCenterView" class="page-content">
+
+    <div class="page-topper">
+        <div class="row"><!--
+         --><div class="span12 form-inline">
+
+                <fieldset>
+                    <div class="control-group">
+                        <div class="controls">
+                            <select id="resourceFilterSelect" name="resourceFilter" title="Filter Resource Content">
+                                <!-- JAVA NOTE: adjust the list below as necessary (value will be sent to AJAX table request) -->
+                                <option value="active">Active Resource Center Content</option>
+                                <option value="archived">Archived Resource Center Content</option>
+                            </select>
+                        </div>
+                    </div><!-- /.control-group -->
+                </fieldset>
+            </div>
+        </div>
+    </div><!-- /.page-topper -->
+
+    <div class="row">
+        <div class="span12">
+            <div class="control-group text-center">
+                <!-- JAVA NOTE: set the proper add resrource center content URL on the HREF attribute below -->
+                <a href="layout.html?tplPath=apps/communications/tpl/&tpl=communicationsResourceCenterEdit.html" class="addResourceBtn btn btn-primary">
+                Post New Resource Center Content
+                </a>
+            </div><!-- /.control-group -->
+            <div class="pagination pagination-right paginationControls first"></div>
+
+            <div class="resourceCenterTableWrapper" data-msg-empty="No resources found"></div>
+
+            <script id="communicationResourceTableTpl" type="text/x-handlebars-template">
+                <table id="resourceCenterTable" class="table table-bordered table-striped">
+                    {{#if tabularData.meta.columns}}
+                    <thead>
+                        <tr>
+                        {{#each tabularData.meta.columns}}
+                            <th>
+                                {{name}}
+                            </th>
+                        {{/each}}
+                        </tr>
+                    </thead>
+                    {{/if}}
+
+                    {{#if tabularData.results}}
+                    <tbody>
+                        {{#each tabularData.results}}
+                        <tr>
+                            <td class="nameColumn">
+                                {{name}}
+                            </td>
+                            <td class="startDateColumn">
+                                {{startDate}}
+                            </td>
+                            <td class="endDateColumn">
+                                {{endDate}}
+                            </td>
+                            <td class="editColumn">
+                                <a href="{{url}}">
+                                    <i class="icon-pencil"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                    {{/if}}
+                </table>
+            </script>
+
+            <div class="pagination pagination-right paginationControls first"></div>
+            <!--subTpl.paginationTpl=
+
+                {{#if pagination}}
+                    {{#with pagination}}
+                    <ul>
+                        <li class="first{{#if first.state}} {{first.state}}{{/if}}" data-page="{{first.page}}">
+                            <a href="#"><i class="icon-double-angle-left"></i>&nbsp;</a>
+                        </li>
+                        <li class="prev{{#if prev.state}} {{prev.state}}{{/if}}" data-page="{{prev.page}}">
+                            <a href="#"><i class="icon-angle-left"></i> Previous</a>
+                        </li>
+                        {{#each pages}}
+                        <li {{#if state}}class="{{state}}"{{/if}} data-page="{{page}}">
+                            <a href="#">{{#if isgap}}&#8230;{{else}}{{page}}{{/if}}</a>
+                        </li>
+                        {{/each}}
+                        <li class="next{{#if next.state}} {{next.state}}{{/if}}" data-page="{{next.page}}">
+                            <a href="#">Next <i class="icon-angle-right"></i></a>
+                        </li>
+                        <li class="last{{#if last.state}} {{last.state}}{{/if}}" data-page="{{last.page}}">
+                            <a href="#">&nbsp;<i class="icon-double-angle-right"></i></a>
+                        </li>
+                    </ul>
+                    {{/with}}
+                {{/if}}
+
+            subTpl-->
+        </div>
+    </div>
+
+    <!-- JAVA NOTE: render the following HTML if the user has just saved a resource -->
+    <div class="modal hide fade autoModal resourceContentSavedModal manageComModal">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+            <div class="padding text-center">
+                <h4>Your resource center content has been saved.</h4>
+                <a href="layout.html?tplPath=apps/communications/tpl/&tpl=communicationsResourceCenterEdit.html" class="btn btn-primary">Post Another Resource</a>
+                <a href="layout.html?tplPath=apps/communications/tpl/&tpl=communicationsPage.html" class="btn btn-primary">Manage Communications</a> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+$(document).ready(function() {
+
+    //attach the view to an existing DOM element
+    var cmrcv = new CommunicationsManageResourceCenterView({
+        el:$('#communicationsManageResourceCenterView'),
+        pageNav : {
+            back : {
+                text : 'Back',
+                url : 'layout.html'
+            },
+            home : {
+                text : 'Home',
+                url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+            }
+        },
+        pageTitle : 'Manage Resource Center Content'
+    });
+
+});
+</script>

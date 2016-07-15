@@ -1,0 +1,63 @@
+<?php sleep(2); ?>
+<!--  SMACK TALK MODULE  -->
+<!--
+    NOTE:
+    - JSON data structure ex: ajax/smackTalk.json
+    - JSON data nested thus:
+        smackTalkSet-smackTalks-smack-talk-comments-comment
+-->
+<div class="module-liner">
+
+    <!-- Page Header - Nav Tabs  -->
+
+    <a href="this/gets/overwritten/by/json/data" class="visitAppBtn">
+        <i class="icon-arrow-right"></i>
+    </a>
+
+    <div class="app-row main-nav">
+
+        <div class="app-col">
+        <h2 class="moduleTitle">Smack Talk</h2>
+            <ul class="nav nav-tabs smackTalkTabs">
+                <!-- dynamic - (tabs are generated in SmackTalkModelView JS) -->
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="wide-view">
+
+        <!-- Page Body | Employee View -->
+
+        <div class="app-slider smackTalkItemsCont" data-msg-empty="No smack talk items found. View matches to smack talk." data-empty-url="layout.html?tplPath=apps/throwdown/tpl/&tpl=throwdownStandingsPage.html">
+
+            <div class="smackTalkItems">
+                <!-- dynamic - smackTalkItems -->
+            </div>
+
+            <!-- DO NOT REMOVE FROM DOM - this element needs to be at bottom of recogs -->
+            <!-- shown when there are more than n number of smack talk items -->
+            <div class="app-row">
+                <p>
+                    <a href="#" class="viewAllSmackTalks"  style="display:none">
+                        View More
+                    </a>
+                </p>
+            </div>
+
+        </div>
+
+
+    </div> <!-- ./wide-view -->
+
+    <div class="title-icon-view">
+
+        <h3>Smack Talk</h3>
+        <i class="icon-g5-publicsmack-talk"></i>
+
+    </div>
+
+</div> <!-- ./module-liner -->
+<!--  /SMACK TALK MODULE  -->

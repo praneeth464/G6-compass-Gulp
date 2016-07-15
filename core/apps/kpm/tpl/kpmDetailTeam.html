@@ -1,0 +1,15 @@
+<?php sleep(1); ?>
+
+<div class="topper">
+    <!-- this h3 will get special treatment so the 85 can be inserted anywhere in the string -->
+    {{#eq type "teamRec"}}<h3 class="teamRec">Your team has recognized 85 people</h3>{{/eq}}
+    {{#eq type "teamRecBy"}}<h3 class="teamRecBy">Your team has been recognized by 121 people</h3>{{/eq}}
+
+    {{#if detailUrl}}
+    <a href="{{detailUrl}}">
+        <i class="icon-arrow-right"></i>
+    </a>
+    {{/if}}
+</div>
+
+<div class="chartContainer" id="chartContainer_{{type}}"></div>

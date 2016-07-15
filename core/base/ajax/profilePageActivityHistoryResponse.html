@@ -1,0 +1,330 @@
+<?php sleep(2); ?>
+<div id="profilePageActivityHistoryResponseData" data-percent-complete=".85">
+    <div class="tabbable" id="profilePageActivityHistoryActiveTabPageTabSet">
+        <ul class="nav nav-tabs" id="profilePageActivityHistoryTabSelectedTabs">
+            <li class="active"><a href="#recognitionsReceived" data-toggle="tab">Recognitions Received</a></li>
+            <li><a href="#recognitionsSent" data-toggle="tab">Recognitions Sent</a></li>
+        </ul>
+
+        <div class="tab-content">
+
+            <div id="recognitionsReceived" class="tab-pane fade active in">
+                <div class='row'>
+                    <div class='span12'>
+                        <div class="profilePageActivityHistoryResultsGraph">
+                            <h4>Number of Recognitions Received</h4>
+                            <p>My recognitions received</p>
+                            <div class="row">
+                                <div class="span4">
+                                    <div class="quant"> 8 </div>
+                                    <div class="progress progress-info">
+                                        <div style="width: 0%" class="bar" data-complete="8"></div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <p>Average for Org Unit</p>
+                            <div class="row">
+                                <div class="span4">
+                                    <div class="quant"> 10 </div>
+                                    <div class="progress progress-info">
+                                        <div style="width: 0%" class="bar" data-complete="10"></div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <p>Average for Company</p>
+                            <div class="row">
+                                <div class="span4">
+                                    <div class="quant"> 14 </div>
+                                    <div class="progress progress-info">
+                                        <div style="width: 0%" class="bar" data-complete="14"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.profilePageActivityHistoryResultsGraph -->
+                    </div><!-- /.span4 -->
+                </div><!-- /.row -->
+                <div class="row">
+                    <div class="span12">
+                        <!-- populated via JS view, grabbing from below data table -->
+                        <div class="clearfix">
+                            <ul class="export-tools fr" style="display:none">
+                                <li class="export">
+                                    <a href="layout.html?method=printAsPdf&amp;clientState=[bigclientstatestring]&amp;cryptoPass=1" class="exportPdfDetailView">
+                                        <img src="img/reports/reports_exportPdf.png" alt="PDF">
+                                        <span>Detail View</span>
+                                    </a>
+                                </li>
+                                <li class="export">
+                                    <a href="layout.html" class="exportPdfButtonReceived" style="display:none">
+                                        <img src="img/reports/reports_exportPdf.png" alt="PDF">
+                                        <span>Summary View</span>
+                                    </a>
+                                </li>
+                                <li class="export">
+                                    <a href="layout.html" class="exportCsvButtonReceived" style="display:none">
+                                        <img src="img/reports/reports_exportCsv.png" alt="CSV">
+                                    </a>
+                                </li>
+                                <li class="export">
+                                    <a href="layout.html" class="exportXlsButtonReceived" style="display:none">
+                                        <img src="img/reports/reports_exportXls.png" alt="XLS">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="pagination pagination-right paginationControls">
+                            <ul>
+                                <li class="disabled"><a href="ajax/profilePageActivityHistoryResponse.html?startDate=9%2F02%2F2012&endDate=10%2F02%2F2012&promotionId=allRecognitions&button=profilePageActivityHistoryTabButtonShowActivity&pageClicked=3">«</a></li>
+                                <li class="disabled"><a href="ajax/profilePageActivityHistoryResponse.html?startDate=9%2F02%2F2012&endDate=10%2F02%2F2012&promotionId=allRecognitions&button=profilePageActivityHistoryTabButtonShowActivity&pageClicked=3">‹ Prev</a></li>
+                                <li class="active"><a href="ajax/profilePageActivityHistoryResponse.html?startDate=9%2F02%2F2012&endDate=10%2F02%2F2012&promotionId=allRecognitions&button=profilePageActivityHistoryTabButtonShowActivity&pageClicked=3">1</a></li>
+                                <li class="clickable"><a href="ajax/profilePageActivityHistoryResponse.html?startDate=9%2F02%2F2012&endDate=10%2F02%2F2012&promotionId=allRecognitions&button=profilePageActivityHistoryTabButtonShowActivity&pageClicked=3">2</a></li>
+                                <li class="clickable"><a href="ajax/profilePageActivityHistoryResponse.html?startDate=9%2F02%2F2012&endDate=10%2F02%2F2012&promotionId=allRecognitions&button=profilePageActivityHistoryTabButtonShowActivity&pageClicked=3">3</a></li>
+                                <li class="clickable"><a href="ajax/profilePageActivityHistoryResponse.html?startDate=9%2F02%2F2012&endDate=10%2F02%2F2012&promotionId=allRecognitions&button=profilePageActivityHistoryTabButtonShowActivity&pageClicked=3">4</a></li>
+                                <li class="clickable"><a href="ajax/profilePageActivityHistoryResponse.html?startDate=9%2F02%2F2012&endDate=10%2F02%2F2012&promotionId=allRecognitions&button=profilePageActivityHistoryTabButtonShowActivity&pageClicked=3">Next ›</a></li>
+                                <li class="clickable"><a href="ajax/profilePageActivityHistoryResponse.html?startDate=9%2F02%2F2012&endDate=10%2F02%2F2012&promotionId=allRecognitions&button=profilePageActivityHistoryTabButtonShowActivity&pageClicked=3">»</a></li>
+                            </ul>
+                        </div>
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="sortable promotionsColumn sorted ascending"> <a href="#">Promotion(s) <i class="icon-sort-down"></i><i class="icon-sort-up"></i></a></th>
+                                    <th class="sortable dateSentColumn unsorted descending"> <a href="#">Date Sent <i class="icon-sort-down"></i><i class="icon-sort-up"></i></a></th>
+                                    <th class="sortable receiverColumn unsorted descending"> <a href="#">Receiver <i class="icon-sort-down"></i><i class="icon-sort-up"></i></a></th>
+                                    <th class="sortable awardColumn unsorted descending"> <a href="#">Award <i class="icon-sort-down"></i><i class="icon-sort-up"></i></a></th>
+                                    <th class="sortable statusColumn unsorted descending"> <a href="#">Status <i class="icon-sort-down"></i><i class="icon-sort-up"></i></a></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Employee to Employee</td>
+                                    <td><a href="#"> 09/26/2012 </a></td>
+                                    <td> Smith, Ron(BI Inc Employee) </td>
+                                    <td></td>
+                                    <td>Approved</td>
+                                </tr>
+                                <tr>
+                                    <td>Employee to Employee</td>
+                                    <td><a href="#"> 09/07/2012 </a></td>
+                                    <td> Smith, Ron(BI Inc Employee) </td>
+                                    <td></td>
+                                    <td>Approved</td>
+                                </tr>
+                                <tr>
+                                    <td>Employee to Employee</td>
+                                    <td><a href="#"> 09/12/2012 </a></td>
+                                    <td> Smithson, Bradley(Carolinas) </td>
+                                    <td></td>
+                                    <td>Approved</td>
+                                </tr>
+                                <tr>
+                                    <td>Employee to Employee</td>
+                                    <td><a href="#"> 09/13/2012 </a></td>
+                                    <td> Smith, Ron(BI Inc Employee) </td>
+                                    <td></td>
+                                    <td>Approved</td>
+                                </tr>
+                                <tr>
+                                    <td>Manager Discretionary</td>
+                                    <td><a href="#"> 09/25/2012 </a></td>
+                                    <td> Johnson, Billy(South) </td>
+                                    <td> 250 Points&reg; </td>
+                                    <td>Approved</td>
+                                </tr>
+                                <tr>
+                                    <td>Manager Discretionary</td>
+                                    <td><a href="#"> 09/07/2012 </a></td>
+                                    <td> Smith, Ron(BI Inc Employee) </td>
+                                    <td> 50 Points&reg; </td>
+                                    <td>Approved</td>
+                                </tr>
+                                <tr>
+                                    <td>Manager Discretionary</td>
+                                    <td><a href="#"> 09/13/2012 </a></td>
+                                    <td> Johnson, Billy(South) </td>
+                                    <td> 45 Points&reg; </td>
+                                    <td>Approved</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="table-result-count">
+                            <p>1-10 of 10 items</p>
+                        </div>
+
+                        <!-- NASTY: table taglib (BE technology used to output tables, can only output export shizzo down here)
+                               SO, the view will look for this stuff down here and move it up to the styled stuff up top. Great.
+                        -->
+                        <table width="100%"><tbody><tr><td align="left">
+                            <span class="export">
+                            	<input type='hidden' class='selectedMode' value='received'>
+                                <a href="/pentag/profilePageActivityHistory.do?promotionId=allRecognitions&amp;startDate=12%2F05%2F2012&amp;button=profilePageActivityHistoryTabButtonShowActivity&amp;6578706f7274=1&amp;org.apache.struts.taglib.html.TOKEN=d9dc2849eecd427b10a1f71ce3cb5750&amp;endDate=01%2F05%2F2013&amp;d-8131178-e=1">CSV</a>&nbsp;|
+
+                                <a href="/pentag/profilePageActivityHistory.do?promotionId=allRecognitions&amp;startDate=12%2F05%2F2012&amp;button=profilePageActivityHistoryTabButtonShowActivity&amp;6578706f7274=1&amp;org.apache.struts.taglib.html.TOKEN=d9dc2849eecd427b10a1f71ce3cb5750&amp;endDate=01%2F05%2F2013&amp;d-8131178-e=2">XLS</a>&nbsp;|
+
+                                <a href="/pentag/profilePageActivityHistory.do?promotionId=allRecognitions&amp;startDate=12%2F05%2F2012&amp;button=profilePageActivityHistoryTabButtonShowActivity&amp;6578706f7274=1&amp;org.apache.   struts.taglib.html.TOKEN=d9dc2849eecd427b10a1f71ce3cb5750&amp;endDate=01%2F05%2F2013&amp;d-8131178-e=5">PDF</a>
+                            </span>
+                        </td></tr></tbody></table>
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="recognitionsSent" class="tab-pane fade in">
+                <div class='row'>
+                    <div class='span4'>
+                        <div class="profilePageActivityHistoryResultsGraph">
+                            <h4>Number of Recognitions Sent</h4>
+                            <p>My recognitions sent</p>
+                            <div class="row">
+                                <div class="span4">
+                                    <div class="quant"> 10 </div>
+                                    <div class="progress progress-info">
+                                        <div style="width: 0%" class="bar" data-complete="10"></div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <p>Average for Org Unit</p>
+                            <div class="row">
+                                <div class="span4">
+                                    <div class="quant"> 8 </div>
+                                    <div class="progress progress-info">
+                                        <div style="width: 0%" class="bar" data-complete="8"></div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <p>Average for Company</p>
+                            <div class="row">
+                                <div class="span4">
+                                    <div class="quant"> 2 </div>
+                                    <div class="progress progress-info">
+                                        <div style="width: 0%" class="bar" data-complete="2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.profilePageActivityHistoryResultsGraph -->
+                    </div><!-- /.span4 -->
+                </div><!-- /.row -->
+                <div class="row">
+                    <div class="span12">
+                    	<!-- populated via JS view, grabbing from below data table -->
+                        <div class="clearfix">
+                            <ul class="export-tools fr" style="display:none">
+                                <li class="export">
+                                    <a href="layout.html" class="exportCsvButtonSent" style="display:none">
+                                        <img src="img/reports/reports_exportCsv.png" alt="CSV">
+                                    </a>
+                                </li>
+                                <li class="export">
+                                    <a href="layout.html" class="exportXlsButtonSent" style="display:none">
+                                        <img src="img/reports/reports_exportXls.png" alt="XLS">
+                                    </a>
+                                </li>
+                                <li class="export">
+                                    <a href="layout.html" class="exportPdfButtonSent" style="display:none">
+                                        <img src="img/reports/reports_exportPdf.png" alt="PDF">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="pagination pagination-right paginationControls">
+                            <ul>
+                                <li class="disabled"><a href="ajax/profilePageActivityHistoryResponse.html?startDate=9%2F02%2F2012&endDate=10%2F02%2F2012&promotionId=allRecognitions&button=profilePageActivityHistoryTabButtonShowActivity&pageClicked=3">«</a></li>
+                                <li class="disabled"><a href="ajax/profilePageActivityHistoryResponse.html?startDate=9%2F02%2F2012&endDate=10%2F02%2F2012&promotionId=allRecognitions&button=profilePageActivityHistoryTabButtonShowActivity&pageClicked=3">‹ Prev</a></li>
+                                <li class="active"><a href="ajax/profilePageActivityHistoryResponse.html?startDate=9%2F02%2F2012&endDate=10%2F02%2F2012&promotionId=allRecognitions&button=profilePageActivityHistoryTabButtonShowActivity&pageClicked=3">1</a></li>
+                                <li class="clickable"><a href="ajax/profilePageActivityHistoryResponse.html?startDate=9%2F02%2F2012&endDate=10%2F02%2F2012&promotionId=allRecognitions&button=profilePageActivityHistoryTabButtonShowActivity&pageClicked=3">2</a></li>
+                                <li class="clickable"><a href="ajax/profilePageActivityHistoryResponse.html?startDate=9%2F02%2F2012&endDate=10%2F02%2F2012&promotionId=allRecognitions&button=profilePageActivityHistoryTabButtonShowActivity&pageClicked=3">3</a></li>
+                                <li class="clickable"><a href="ajax/profilePageActivityHistoryResponse.html?startDate=9%2F02%2F2012&endDate=10%2F02%2F2012&promotionId=allRecognitions&button=profilePageActivityHistoryTabButtonShowActivity&pageClicked=3">4</a></li>
+                                <li class="clickable"><a href="ajax/profilePageActivityHistoryResponse.html?startDate=9%2F02%2F2012&endDate=10%2F02%2F2012&promotionId=allRecognitions&button=profilePageActivityHistoryTabButtonShowActivity&pageClicked=3">Next ›</a></li>
+                                <li class="clickable"><a href="ajax/profilePageActivityHistoryResponse.html?startDate=9%2F02%2F2012&endDate=10%2F02%2F2012&promotionId=allRecognitions&button=profilePageActivityHistoryTabButtonShowActivity&pageClicked=3">»</a></li>
+                            </ul>
+                        </div>
+                        <table id="profilePageActivityHistoryTable" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="sortable promotionsColumn sorted ascending"> <a href="#">Promotion(s) <i class="icon-sort-down"></i><i class="icon-sort-up"></i></a></th>
+                                    <th class="sortable dateSentColumn unsorted descending"> <a href="#">Date Sent <i class="icon-sort-down"></i><i class="icon-sort-up"></i></a></th>
+                                    <th class="sortable receiverColumn unsorted descending"> <a href="#">Receiver <i class="icon-sort-down"></i><i class="icon-sort-up"></i></a></th>
+                                    <th class="sortable awardColumn unsorted descending"> <a href="#">Award <i class="icon-sort-down"></i><i class="icon-sort-up"></i></a></th>
+                                    <th class="sortable statusColumn unsorted descending"> <a href="#">Status <i class="icon-sort-down"></i><i class="icon-sort-up"></i></a></th>
+                                </tr>
+                            </thead>
+                            <tbody id="profilePageAlertsTabMessagesCollection">
+                                <tr>
+                                    <td>Employee to Employee</td>
+                                    <td><a href="#"> 09/26/2012 </a></td>
+                                    <td> Smith, Ron(BI Inc Employee) </td>
+                                    <td></td>
+                                    <td>Approved</td>
+                                </tr>
+                                <tr>
+                                    <td>Employee to Employee</td>
+                                    <td><a href="#"> 09/07/2012 </a></td>
+                                    <td> Smith, Ron(BI Inc Employee) </td>
+                                    <td></td>
+                                    <td>Approved</td>
+                                </tr>
+                                <tr>
+                                    <td>Employee to Employee</td>
+                                    <td><a href="#"> 09/12/2012 </a></td>
+                                    <td> Smithson, Bradley(Carolinas) </td>
+                                    <td></td>
+                                    <td>Approved</td>
+                                </tr>
+                                <tr>
+                                    <td>Employee to Employee</td>
+                                    <td><a href="#"> 09/13/2012 </a></td>
+                                    <td> Smith, Ron(BI Inc Employee) </td>
+                                    <td></td>
+                                    <td>Approved</td>
+                                </tr>
+                                <tr>
+                                    <td>Manager Discretionary</td>
+                                    <td><a href="#"> 09/25/2012 </a></td>
+                                    <td> Johnson, Billy(South) </td>
+                                    <td> 250 Points&reg; </td>
+                                    <td>Approved</td>
+                                </tr>
+                                <tr>
+                                    <td>Manager Discretionary</td>
+                                    <td><a href="#"> 09/07/2012 </a></td>
+                                    <td> Smith, Ron(BI Inc Employee) </td>
+                                    <td> 50 Points&reg; </td>
+                                    <td>Approved</td>
+                                </tr>
+                                <tr>
+                                    <td>Manager Discretionary</td>
+                                    <td><a href="#"> 09/13/2012 </a></td>
+                                    <td> Johnson, Billy(South) </td>
+                                    <td> 45 Points&reg; </td>
+                                    <td>Approved</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="table-result-count">
+                            <p>1-10 of 10 items</p>
+                        </div>
+                        
+                        <table width="100%"><tbody><tr><td align="left">
+                            <span class="export">
+                            	<input type='hidden' class='selectedMode' value='sent'>
+                                <a href="/pentag/profilePageActivityHistory.do?promotionId=allRecognitions&amp;startDate=12%2F05%2F2012&amp;button=profilePageActivityHistoryTabButtonShowActivity&amp;6578706f7274=1&amp;org.apache.struts.taglib.html.TOKEN=d9dc2849eecd427b10a1f71ce3cb5750&amp;endDate=01%2F05%2F2013&amp;d-8131178-e=1">CSV</a>&nbsp;|
+
+                                <a href="/pentag/profilePageActivityHistory.do?promotionId=allRecognitions&amp;startDate=12%2F05%2F2012&amp;button=profilePageActivityHistoryTabButtonShowActivity&amp;6578706f7274=1&amp;org.apache.struts.taglib.html.TOKEN=d9dc2849eecd427b10a1f71ce3cb5750&amp;endDate=01%2F05%2F2013&amp;d-8131178-e=2">XLS</a>&nbsp;|
+
+                                <a href="/pentag/profilePageActivityHistory.do?promotionId=allRecognitions&amp;startDate=12%2F05%2F2012&amp;button=profilePageActivityHistoryTabButtonShowActivity&amp;6578706f7274=1&amp;org.apache.   struts.taglib.html.TOKEN=d9dc2849eecd427b10a1f71ce3cb5750&amp;endDate=01%2F05%2F2013&amp;d-8131178-e=5">PDF</a>
+                            </span>
+                        </td></tr></tbody></table>
+                        
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<?php
+sleep(2);
+$success = true;
+?>
+
+{
+    "messages":[
+    <?php if ($success) { ?>
+        {
+            "type":"success"
+        }
+    <?php } else { ?>
+        {
+            "type":"error",
+            "code":"validationError",
+            "name":"",
+            "text":"Unable to delete this contest"
+        }
+    <?php } ?>
+    ]
+}

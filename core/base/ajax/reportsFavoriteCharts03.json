@@ -1,0 +1,108 @@
+{
+  "messages": [],
+  "reportDashboardId": "1",
+  "favorites": [
+    {
+      "id": "1",
+      "favoriteParameters": {
+        "dateRangeStart": "01/02/2003",
+        "dateRangeEnd": "03/04/2005",
+        "location": "Tokyo"
+      },
+      "reportUrl": "http://www.whatever.com?report=1",
+      "displayName": "Monthly Login Activity For Organization, Monthly",
+      "category": "Login Activity",
+      "chartType": "Column3D",
+      "dataUrl": "http://www.whatever.com?chart=1",
+      "fusionChartsParameters": {
+        "caption": "Monthly Login Activity",
+        "subcaption": "For Organization, Monthly",
+        "xAxisName": "Month",
+        "yAxisName": "Logins"
+      },
+      "pdfUrl": "http://www.whatever.com?chart=1&pdf=1"
+    },
+    {
+      "id": "2",
+      "favoriteParameters": {
+        "dateRangeStart": "01/02/2003",
+        "dateRangeEnd": "03/04/2005",
+        "location": "New York"
+      },
+      "reportUrl": "http://www.whatever.com?report=2",
+      "displayName": "Unique Login Activity For Organization, Monthly",
+      "category": "Login Activity",
+      "chartType": "Column3D",
+      "dataUrl": "http://www.whatever.com?chart=2",
+      "fusionChartsParameters": {
+        "caption": "Unique Login Activity",
+        "subcaption": "For Organization, Monthly",
+        "xAxisName": "Month",
+        "yAxisName": "Logins"
+      },
+      "pdfUrl": "http://www.whatever.com?chart=2&pdf=1"
+    },
+    {
+      "id": "3",
+      "favoriteParameters": {
+        "dateRangeStart": "01/02/2003",
+        "dateRangeEnd": "03/04/2005",
+        "location": "Minneapolis"
+      },
+      "reportUrl": "http://www.whatever.com?report=3",
+      "displayName": "Logged In vs Not Logged In For Organization",
+      "category": "Login Activity",
+      "chartType": "Pie3D",
+      "dataUrl": "http://www.whatever.com?chart=3",
+      "fusionChartsParameters": {
+        "caption": "Logged In vs Not Logged In",
+        "subcaption": "For Organization",
+        "showlabels": "0",
+        "showlegend": "1"
+      },
+      "pdfUrl": "http://www.whatever.com?chart=3&pdf=1"
+    },
+    {
+      "id": "4",
+      "favoriteParameters": {
+        "dateRangeStart": "01/02/2003",
+        "dateRangeEnd": "03/04/2005",
+        "location": "Paris"
+      },
+      "reportUrl": "http://www.whatever.com?report=4",
+        "displayName": "Login Activity by Organization",
+        "category": "Login Activity",
+        "chartType": "StackedColumn3D",
+      "dataUrl": "http://www.whatever.com?chart=4",
+      "fusionChartsParameters": {
+          "caption": "Login Activity by Organization",
+          "subcaption": "For Organization",
+          "xAxisName": "Organization",
+          "yAxisName": "Logins",
+          "showlegend": "1"
+            },
+      "pdfUrl": "http://www.whatever.com?chart=4&pdf=1"
+    },
+    {
+      "id": "5",
+      "favoriteParameters": {
+        "dateRangeStart": "01/02/2003",
+        "dateRangeEnd": "03/04/2005",
+        "location": "Bangkok"
+      },
+      "reportUrl": "http://www.whatever.com?report=5",
+        "displayName": "Total % Who Have Received vs Not Received Awards",
+        "category": "Awards",
+        "chartType": "MSColumn3D",
+      "dataUrl": "http://www.whatever.com?chart=5",
+      "fusionChartsParameters": {
+          "caption": "Total % Who Have Received vs Not Received Awards",
+          "subcaption": "by Organization",
+          "xAxisName": "Organization",
+          "yAxisName": "Logins",
+          "showlegend": "1"
+            },
+      "pdfUrl": "http://www.whatever.com?chart=5&pdf=1"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+	"messages":[],
+	"quizAnswer":[
+		{
+            "id" : 4002,
+            "isUserCorrect": true,
+			"questionAnswer":				0,
+			"questionAnswerTitle":			"The correct answer is A.",
+			"questionAnswerDescription":	"Nothing to add here."
+		}		
+	]
+}	

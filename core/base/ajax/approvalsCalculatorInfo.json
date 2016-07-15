@@ -1,0 +1,32 @@
+{
+	"messages": [],
+
+	"awardRange": {
+			"max": 100,
+			"min": 1
+		},
+
+	"fixedAward": 75,
+	"totalScore": 14,
+
+	"criteria":[
+		{
+			"criteriaId": 12347,
+			"criteriaWeight": 25,
+			"criteriaScore": 2,
+			"criteriaRating": "25"
+		},
+		{
+			"criteriaId": 12346,
+			"criteriaWeight": 50,
+			"criteriaScore": 4,
+			"criteriaRating": "50"
+		},
+		{
+			"criteriaId": 12345,
+			"criteriaWeight": 100,
+			"criteriaScore": 8,
+			"criteriaRating": "100"
+		}
+	]
+}

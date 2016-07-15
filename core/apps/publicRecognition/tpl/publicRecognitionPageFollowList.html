@@ -1,0 +1,84 @@
+<!-- ======== PUBLIC RECOGNITION PAGE FOLLOW LIST ======== -->
+
+<div id="publicRecognitionPageFollowListView"  class="page-content">
+
+    <div class="row">
+        <!-- Participant search view Element -->
+        <div class="span12" id="participantSearchView" style="display:none"
+            data-search-types='[{"id":"lastName","name":"Last Name"},{"id":"firstName","name":"First Name"},{"id":"location","name":"Location"},{"id":"jobTitle","name":"Job Title"},{"id":"department","name":"Department"}]'
+            data-search-params='{"extraKey":"extraValue","anotherKey":"some value"}'
+            data-autocomp-delay="500"
+            data-autocomp-min-chars="2"
+            data-autocomp-msg-instruction="Type at least 2 characters."
+            data-autocomp-url="ajax/participantSearch_autocomp_firstName.json"
+            data-search-url="ajax/participantSearchResults_follow.json"
+            data-select-url="ajax/publicRecognitionFollowees_add.json"
+            data-deselect-url="ajax/publicRecognitionFollowees_remove.json"
+            data-select-mode="multiple"
+            data-msg-select-txt="follow"
+            data-msg-selected-txt="<i class='icon icon-g5-following'></i>"
+            data-visibility-controls="showAndHide"
+            data-msg-show="Add to Follow List"
+            data-msg-hide="Done Adding">
+            <!-- added by view -->
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="span12">
+            <div class="well container-splitter participantCollectionViewWrapper pullBottomUp">
+                <h3>I'm following:</h3>
+
+                <table>
+                    <thead>
+                        <tr class="participant-item">
+                            <th class="participant">Participant</th>
+                            <th class="remove">Remove</th>
+                        </tr>
+                    </thead>
+                    <!--
+                        data-msg-empty: message to display if no followees
+                        data-hide-on-empty: hide/show the view (using the *ViewWrapper) when empty/not-empty
+                    -->
+                    <tbody id="followeesView"
+                        class="participantCollectionView"
+                        data-msg-empty="You are not following anyone."
+                        data-hide-on-empty="false">
+
+                        <!-- dynamic -->
+
+                    </tbody>
+                </table>
+                <!--
+                    used to keep track of the number of participants, req. a 'participantCount' class
+                    name is flexible
+                 -->
+                <input type="hidden" name="paxCount" value="0" class="participantCount" />
+            </div><!-- /.participantCollectionViewWrapper -->
+        </div><!-- /.span12 -->
+    </div><!-- /.row -->
+
+</div><!-- /#publicRecognitionPageFollowListView -->
+
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function(){
+        //attach the view to an existing DOM element
+        var prpfl = new PublicRecognitionPageFollowListView({
+            el:$('#publicRecognitionPageFollowListView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html?tpl=publicRecognitionPage&tplPath=apps/publicRecognition/tpl/'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'My Follow List'
+        });
+    });
+</script>

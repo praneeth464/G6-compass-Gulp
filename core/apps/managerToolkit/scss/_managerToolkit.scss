@@ -1,0 +1,304 @@
+// App-specific variables
+// =========================
+$managerToolkit_bgColor: $g5ModuleBgColor !default;
+$managerToolkit_gradType: $g5ModuleGradType !default;
+$managerToolkit_gradMeta: $g5ModuleGradMeta !default;
+$managerToolkit_gradStops: $g5ModuleGradStops !default;
+
+$managerToolkit_iconColor: $g5ModuleIconColor !default;
+$managerToolkit_titleColor: $g5ModuleTitleColor !default;
+$managerToolkit_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$managerToolkit_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$managerToolkit_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$managerToolkit_linkColor: $white !default;
+$managerToolkit_linkHoverColor: $white !default;
+$managerToolkit_headlineColor: $g5ModuleTitleColor !default;
+$managerToolkit_headlineFontFullString: 36px/40px $g5ModuleTitleFontFamily !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.managerToolkit {
+
+} /* /.managerToolkit */
+
+/* ----- MODULE STYLES ----- */
+// NOTE: managerToolkit is a special instance of the resourceCenter module.
+// The only module styling here is that which makes use of variables.
+// Otherwise, it inherits all its styling from resourceCenter
+.module.resourceCenter.managerToolkit {
+
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $managerToolkit_bgColor,
+            $gradType: $managerToolkit_gradType,
+            $gradMeta: $managerToolkit_gradMeta,
+            $gradStops: $managerToolkit_gradStops
+        );
+    }
+
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $managerToolkit_iconColor,
+            $titleColor: $managerToolkit_titleColor,
+            $titleFontFamily: $managerToolkit_titleFontFamily
+        );
+
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            @include g5HomeAppIconBoxReflect(-55px);
+        }
+    }
+
+    @include module_titleIconViewFontSizesWeights($managerToolkit_titleFontSizes, $managerToolkit_titleFontWeights);
+
+    a {
+        color: $managerToolkit_linkColor;
+    }
+
+    a:hover {
+        color: $managerToolkit_linkHoverColor;
+    }
+
+    .wide-view {
+        h3 {
+            color: $managerToolkit_headlineColor;
+            font: $managerToolkit_headlineFontFullString;
+        }
+    }
+
+    &.grid-dimension-2x2 {
+
+        .title-icon-view {
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                @include g5HomeAppIconBoxReflect(-181px);
+            }
+            @include module_titleIconViewFonticonsSizes(1, 'toolkit', 'toolkit');
+        }
+    }
+
+    /* &.grid-dimension-4x2 {
+        .title-icon-view {
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                @include g5HomeAppIconBoxReflect(-140px);
+            }
+        }
+    }
+
+    &.grid-dimension-4x4 {
+        .title-icon-view {
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                @include g5HomeAppIconBoxReflect(-271px);
+            }
+        }
+    } */
+
+} /* /.module.managerToolkit */
+
+
+/* ----- PAGE STYLES ----- */
+.page.managerToolkit {
+
+    &.managerToolkitPageHistory-liner {
+        .btn{
+            margin-right: 15px;
+        }
+        h3{
+            margin-top: 0;
+        }
+    }
+
+    .managerToolkitRelHistoryLink{
+        float: right;
+    }
+
+    &.managerToolkitPageBudgetPreview-liner{
+        th{
+            white-space: normal;
+        }
+        @media (max-width: 479px){
+            .managerToolkitCurrentBudgetTable table{
+                width: 100%;
+            }
+        }
+    }
+}
+
+.managerToolkitPageAlert-liner{
+    padding-top: 15px;
+
+    table{
+        width: 100%;
+        td.error{
+            margin-bottom: 20px;
+            text-shadow: rgba(255, 255, 255, 0.498039) 0px 1px 0px;
+            background-color: #F2DEDE;
+            border-radius: 4px;
+            color: #B94A48;
+            font-size: 17.5px;
+            font-weight: bold;
+            padding: 14px;
+
+            li{
+                font-size: 14px;
+                font-weight: normal;
+            }
+        }
+    }
+
+
+    // TODO - surely this behavior can be found via a global approach
+    // NOTE - this is used to size inputs
+    .ifw{
+        width: 688px;
+    }
+
+    @media (min-width: 976px) and (max-width: 1199px) {
+        .ifw{
+            width: 528px;
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 975px) {
+        .ifw{
+            width: 348px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .ifw{
+            width: 205px;
+        }
+    }
+}
+
+.page.managerToolkitPageBudget-liner {
+    .page-topper {
+        .control-group {
+            display: block;
+            margin-top: $baseLineHeight / 2;
+        }
+        .controls {
+            display: inline-block;
+        }
+        select {
+            width: auto;
+        }
+        @media (max-width: 480px) {
+            .controls {
+                display: block;
+            }
+            select {
+                width: 100%;
+            }
+        }
+    }
+    .managerToolkitFormAllocatePoints {
+        .reallocationAmount input {
+            margin-bottom: 0;
+            width: 50%;
+        }
+    }
+
+    .spincover {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        @include safeBkgs(rgba(255,255,255,0.5));
+
+        .spin {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            width: $spinner_widthHeight;
+            height: $spinner_widthHeight;
+            margin-top: -1 * $spinner_widthHeight / 2;
+            margin-left: -1 * $spinner_widthHeight / 2;
+        }
+    }
+}
+
+.managerToolkitPageRoster-liner {
+    .editColumn{
+        text-align: center;
+        a {
+            font-size: 20px;
+        }
+    }
+    .nameColumn{}
+    .roleColumn{}
+    .lastLoginColumn{}
+    .jobColumn{}
+    .emailColumn{}
+    .loginIdColumn{}
+    div.row div.span12 h3 {
+        margin-bottom:0px; //Clear h3 margin for 4279.
+    }
+}
+
+
+.managerToolkitPageRosterEdit-liner {
+
+    //clear colB (span6) early so feilds don't overlap
+    @media (max-width: 979px){
+        .colB {
+            clear: both;
+        }
+    }
+
+    fieldset {
+        margin-bottom: 30px;
+    }
+
+    // make things a little tighter
+    .control-group {margin-bottom:10px;}
+
+    // align uneditable strings the same as labels
+    .controls p {padding-top:5px;}
+
+}
+
+
+
+.managerToolKitPop{
+    span{
+        display: none;
+    }
+
+    li{
+        line-height: 17px;
+    }
+}
+
+.lt-ie9{
+    #managerToolkitFormSendAlert{
+        margin-bottom: 0;
+    }
+    .managerToolkitPageAlert-liner .form-actions{
+        margin-bottom: -35px;
+    }
+}
+
+.lt-ie8{
+    .managerToolkitPageAlert-liner .form-actions{
+        margin-left: -35px;
+        margin-right: -35px;
+    }
+}
+
+#valueBean i.icon-sort-down + i.icon-sort-up {
+    right: 8px;
+    *right: 12px;
+    position: relative;
+}

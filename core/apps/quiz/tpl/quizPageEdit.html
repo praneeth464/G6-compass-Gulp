@@ -1,0 +1,2332 @@
+<!-- ======== QUIZ EDIT PAGE ======== -->
+
+<!--
+    Create and Edit Quizes.
+    - JSON used due to the complex nature of the quiz
+    - JAVA, please discuss any alterations needed for information exchange with FE (Aaron)
+-->
+
+<div id="quizPageEditView" class="quizPage quizPageEdit page-content"><div class="row">
+
+    <!-- DIV.ROW up next to wrapping div.page-content for IE7 -->
+        <div class="span12">
+
+            <!-- JAVA NOTE: in the rare event that the server has an error (FE should catch all errors) -->
+            <div class="alert alert-block alert-error">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <div class="error">
+                    <h4>The following errors occurred:</h4>
+                    <ul>
+                        <li>Owner must be selected</li>
+                        <li>Date for recipient send is not a date. Date must follow the format MM/DD/YYYY.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- **************************************************************
+                WizardTabsView
+             ***************************************************************** -->
+            <ul class="wizardTabsView" data-content=".wizardTabsContent" style="visibility:hidden">
+
+                <li class="wtTab"
+                    data-tab-uid="1"
+                    data-tab-name="stepIntro"
+                    data-tab-content=".wizardTabsContent .stepIntroContent"
+                    data-tab-state="unlocked" >
+                    <div class="wtTabLiner">
+                        <div class="wtNumber"><span><!-- auto --></span></div>
+                        <div class="wtName"><span>Quiz Introduction and Participants</span></div>
+                        <div class="wtIconWrap">
+                            <span class="wtIcon iconLocked"><i class="icon-lock"></i></span>
+                            <span class="wtIcon iconUnlocked"></span>
+                            <span class="wtIcon iconIncomplete"><i class="icon-remove-sign"></i></span>
+                            <span class="wtIcon iconComplete"><i class="icon-ok-sign"></i></span>
+                        </div>
+                    </div>
+                    <div class="wtDeedle">&nbsp;</div><!-- iff you want the nubbin -->
+                </li><!-- /.wtTab -->
+
+                <li class="wtTab"
+                    data-tab-uid="2"
+                    data-tab-name="stepMaterials"
+                    data-tab-content=".wizardTabsContent .stepMaterialsContent"
+                    data-tab-state="locked" >
+                    <div class="wtTabLiner">
+                        <div class="wtNumber"><span><!-- auto --></span></div>
+                        <div class="wtName"><span>Quiz Materials</span></div>
+                        <div class="wtIconWrap">
+                            <span class="wtIcon iconLocked"><i class="icon-lock"></i></span>
+                            <span class="wtIcon iconUnlocked"></span>
+                            <span class="wtIcon iconIncomplete"><i class="icon-remove-sign"></i></span>
+                            <span class="wtIcon iconComplete"><i class="icon-ok-sign"></i></span>
+                        </div>
+                    </div>
+                    <div class="wtDeedle">&nbsp;</div><!-- iff you want the nubbin -->
+                </li><!-- /.wtTab -->
+
+                <li class="wtTab"
+                    data-tab-uid="3"
+                    data-tab-name="stepQuestions"
+                    data-tab-content=".wizardTabsContent .stepQuestionsContent"
+                    data-tab-state="locked" >
+                    <div class="wtTabLiner">
+                        <div class="wtNumber"><span><!-- auto --></span></div>
+                        <div class="wtName"><span>Questions and Answers</span></div>
+                        <div class="wtIconWrap">
+                            <span class="wtIcon iconLocked"><i class="icon-lock"></i></span>
+                            <span class="wtIcon iconUnlocked"></span>
+                            <span class="wtIcon iconIncomplete"><i class="icon-remove-sign"></i></span>
+                            <span class="wtIcon iconComplete"><i class="icon-ok-sign"></i></span>
+                        </div>
+                    </div>
+                    <div class="wtDeedle">&nbsp;</div><!-- iff you want the nubbin -->
+                </li><!-- /.wtTab -->
+
+                <!-- NOTE: this step for PARTNERs available ONLY -->
+                <li class="wtTab"
+                    data-tab-uid="4"
+                    data-tab-name="stepResults"
+                    data-tab-content=".wizardTabsContent .stepResultsContent"
+                    data-tab-state="locked" >
+                    <div class="wtTabLiner">
+                        <div class="wtNumber"><span><!-- auto --></span></div>
+                        <div class="wtName"><span>Results and Awards</span></div>
+                        <div class="wtIconWrap">
+                            <span class="wtIcon iconLocked"><i class="icon-lock"></i></span>
+                            <span class="wtIcon iconUnlocked"></span>
+                            <span class="wtIcon iconIncomplete"><i class="icon-remove-sign"></i></span>
+                            <span class="wtIcon iconComplete"><i class="icon-ok-sign"></i></span>
+                        </div>
+                    </div>
+                    <div class="wtDeedle">&nbsp;</div><!-- iff you want the nubbin -->
+                </li><!-- /.wtTab -->
+
+                <li class="wtTab"
+                    data-tab-uid="5"
+                    data-tab-name="stepPreview"
+                    data-tab-content=".wizardTabsContent .stepPreviewContent"
+                    data-tab-state="locked" >
+                    <div class="wtTabLiner">
+                        <div class="wtNumber"><span><!-- auto --></span></div>
+                        <div class="wtName"><span>Preview Quiz</span></div>
+                        <div class="wtIconWrap">
+                            <span class="wtIcon iconLocked"><i class="icon-lock"></i></span>
+                            <span class="wtIcon iconUnlocked"></span>
+                            <span class="wtIcon iconIncomplete"><i class="icon-remove-sign"></i></span>
+                            <span class="wtIcon iconComplete"><i class="icon-ok-sign"></i></span>
+                        </div>
+                    </div>
+                    <div class="wtDeedle">&nbsp;</div><!-- iff you want the nubbin -->
+                </li><!-- /.wtTab -->
+
+            </ul><!-- /.wizardTabsView -->
+
+
+
+
+
+            <!-- **************************************************************
+                WIZARD TABS CONTENT
+             ***************************************************************** -->
+            <div class="wizardTabsContent">
+
+
+
+                <!-- **************************************************************
+                    INTRO
+                 ***************************************************************** -->
+                <div id="quizEditTabIntroView" class="stepIntroContent stepContent" style="display:none">
+
+                    <a class="fileLink pdfLink fr" href="path/to/example/quiz.pdf">View Sample Quiz</a>
+
+                    <div class="createAsDisplayOnly" style="display:none">
+                        <div class="createAsParticipant">
+                            <p>
+                                <i class="icon-user"></i>
+                                <strong>
+                                    <span class="_firstName _pax">&nbsp;</span>
+                                    <span class="_lastName _pax">&nbsp;</span>
+                                </strong>
+                                owns this quiz
+                            </p>
+                        </div>
+                    </div><!-- /.createAsDisplayOnly -->
+
+                    <div class="createAsWrapper" style="display:none">
+                        <div class="control-group">
+                            Create quiz on behalf of
+                            <i data-help-content="[explanation of what 'create as/on behalf of' is]" class="icon-question-sign pageView_help"></i>
+                        </div>
+
+                        <div class="createAsSearchWrapper">
+                            <div class="createAsParticipant">
+                                <p class="_paxShow" style="display:none">
+                                    <i class="icon-user"></i>
+                                    <strong>
+                                        <span class="_firstName _pax">&nbsp;</span>
+                                        <span class="_lastName _pax">&nbsp;</span>
+                                    </strong>
+                                    will own this quiz
+                                </p>
+                            </div>
+                            <!-- pax search for paxes -->
+                            <!--
+                                Participant search view Element
+                                - data-search-types: defines the dropdowns and autocompletes
+                                - data-search-params: defines extra static parameters to send with autocomp and participant requests
+                                - data-search-url: override search json provider (usually needed)
+                                ...
+                            -->
+                            <div class="paxCreateAsView" style="display:none"
+                                data-search-types='[{"id":"lastName","name":"Last Name"},{"id":"firstName","name":"First Name"},{"id":"location","name":"Location"},{"id":"jobTitle","name":"Job Title"},{"id":"department","name":"Department"}]'
+                                data-autocomp-delay="500"
+                                data-autocomp-min-chars="2"
+                                data-autocomp-url="ajax/participantSearch_autocomp_firstName.json"
+                                data-search-url="ajax/participantSearchResults_sendRecognition.json"
+                                data-msg-show-single="Set Quiz Owner"
+                                data-visibility-controls="showAndHide" >
+                                <!-- added by view -->
+                            </div>
+                        </div><!-- /.createAsSearchWrapper -->
+                    </div><!-- /.createAsWrapper -->
+
+                    <div class="control-group validateme"
+                        data-validate-flags="nonempty"
+                        data-validate-fail-msgs='{"nonempty" : "Please enter a quiz name"}'>
+                        <label class="control-label" for="name">
+                            Quiz Name
+                        </label>
+                        <div class="controls">
+                            <input type="text" id="name" class="quizNameInput" data-model-key="name" maxlength="50">
+                            <span class="quizNameCheckingSpinnner" style="display:none"></span>
+                            <i class="quizNameInvalid quizNameValidDispItem icon-remove-sign" style="display:none"></i>
+                            <span class="quizNameInvalidMsg quizNameValidDispItem" style="display:none">&nbsp;</span>
+                            <i class="quizNameValid quizNameValidDispItem icon-ok-sign" style="display:none"></i>
+                        </div>
+                    </div>
+
+
+                    <div class="form-inline">
+                        <div class="control-group validateme"
+                            data-validate-flags="nonempty"
+                            data-validate-fail-msgs='{"nonempty" : "Please enter a start date"}'>
+                            <label class="control-label" for="startDate">Quiz Start Date</label>
+                            <div class="controls">
+                                <!-- JAVA NOTE: set data-date-* attrs -->
+                                <span class="input-append datepickerTrigger startDateTrigger"
+                                        data-date-format="mm/dd/yyyy"
+                                        data-date-language="en_US"
+                                        data-date-startdate="07/23/2013"
+                                        data-date-todaydate="07/23/2013"
+                                        data-date-autoclose="true">
+                                    <input type="text" id="startDate" data-model-key="startDate" readonly="readonly" class="date startDateInput">
+                                    <button class="btn" type="button"><i class="icon-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="control-group validateme"
+                            data-validate-flags="nonempty"
+                            data-validate-fail-msgs='{"nonempty" : "Please enter an end date"}'>
+                            <label class="control-label" for="endDate">Quiz End Date</label>
+                            <div class="controls">
+                                <!-- JAVA NOTE: set data-date-* attrs -->
+                                <span class="input-append datepickerTrigger endDateTrigger"
+                                        data-date-format="mm/dd/yyyy"
+                                        data-date-language="en_US"
+                                        data-date-startdate="04/30/2013"
+                                        data-date-todaydate="04/29/2013"
+                                        data-date-autoclose="true">
+                                    <input type="text" id="endDate" data-model-key="endDate" readonly="readonly" class="date endDateInput">
+                                    <button class="btn" type="button"><i class="icon-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <fieldset><!-- fieldset required for validateme tooltip -->
+                        <div class="control-group">
+                            <label class="control-label">
+                                Introduction Text
+                            </label>
+                            <div class="controls validateme"
+                                data-validate-flags="maxlength,nonempty"
+                                data-validate-fail-msgs='{"maxlength" : "Maximum number of characters exceeded. Please edit.","nonempty":"Please enter introduction text."}'
+                                data-validate-max-length="1000">
+								<!-- Placeholder text not rendering to RichText editor, needs more work -->
+                                <textarea rows="5" data-max-chars="1000" data-model-key="introText" placeholder="Please insert an overview regarding this quiz. Examples include; total number of questions, score required to pass, number of attempts allowed and any directions for reviewing content prior to taking this quiz." class="richtext introTextInput"></textarea>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="teamMembersLoadingWrapper" style="display:none">
+                        <div class="tmlSpin"></div><b>Loading team members...</b>
+                    </div><!-- /.teamMembersLoadingWrapper -->
+
+                    <div class="teamMembersWrapper">
+                        <h4>Participants</h4>
+                        <p class="teamMembersText" style="display:none">
+                            <span class="_firstName">&nbsp;</span> <span class="_lastName">&nbsp;</span>'s team members have been added and are listed below.
+                            Please remove anyone who should not be included to take the quiz.
+                        </p>
+                        <!-- pax search for paxes -->
+                        <!--
+                            Participant search view Element
+                            - data-search-types: defines the dropdowns and autocompletes
+                            - data-search-params: defines extra static parameters to send with autocomp and participant requests
+                            - data-search-url: override search json provider (usually needed)
+                            ...
+                        -->
+                        <div class="paxSearchView" style="display:none"
+                            data-search-types='[{"id":"lastName","name":"Last Name"},{"id":"firstName","name":"First Name"},{"id":"location","name":"Location"},{"id":"jobTitle","name":"Job Title"},{"id":"department","name":"Department"}]'
+                            data-autocomp-delay="500"
+                            data-autocomp-min-chars="2"
+                            data-autocomp-url="ajax/participantSearch_autocomp_firstName.json"
+                            data-search-url="ajax/participantSearchResults_sendRecognition.json"
+                            data-select-mode="multiple"
+                            data-msg-select-txt="add"
+                            data-msg-selected-txt="<i class='icon icon-ok'></i>"
+                            data-msg-validation="You must add a participant."
+                            data-visibility-controls="showAndHide" >
+                            <!-- added by view -->
+                        </div>
+
+                        <div class="well container-splitter participantCollectionViewWrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="participant">Participant</th>
+                                        <th class="remove">Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="paxView participantCollectionView"
+                                    data-msg-empty="You have not added anyone."
+                                    data-hide-on-empty="false">
+                                </tbody>
+                            </table>
+
+                            <!-- client side template for each participant in the table -->
+                            <script id="paxRowTpl" type="text/x-handlebars-template">
+                                <tr class="participant-item"
+                                        data-participant-cid="{{cid}}"
+                                        data-participant-id="{{id}}">
+                                    <td class="participant">
+                                        <a class="participant-popover" href="#" data-participant-ids="[{{id}}]">
+                                            {{lastName}}, {{firstName}}
+                                        </a>
+                                    </td>
+                                    <td class="remove">
+                                    {{#unless locked}}
+                                        <a class="remParticipantControl" title="remove this participant"><i class="icon-remove"></i></a>
+                                    {{/unless}}
+                                    </td>
+                                </tr>
+                            </script><!-- /#paxRowTpl -->
+                        </div><!-- /.participantCollectionViewWrapper -->
+                    </div><!-- /.teamMembersWrapper -->
+
+
+                    <div class="stepContentControls form-actions pullBottomUp">
+                        <button class="btn btn-primary fr saveDraftBtn" style="display:none;">
+                            Save Draft
+                        </button>
+                        <span></span>
+                        <button class="btn btn-primary nextBtn">
+                            Next &raquo;
+                        </button>
+                    </div><!-- /.stepContentControls -->
+
+                </div><!-- /.stepIntroContent -->
+
+
+
+
+                <!-- **************************************************************
+                    MATERIALS
+                 ***************************************************************** -->
+                <div id="quizEditTabMaterialsView" class="stepMaterialsContent stepContent" style="display:none">
+
+                    <div id="activeMaterialMask" class="quizMask" style="display:none">
+                    </div>
+
+                    <h4>Course Materials <span class="optional">(optional)</span></h4>
+
+                    <div class="well container-splitter materialWrapper">
+
+                        <div class="materials">
+
+                            <div class="materialItem headerDescriptions" style="display:none">
+                                <div class="materialHeader materialPage">
+                                    Page
+                                </div>
+                                <div class="materialHeader materialType">
+                                    Type
+                                </div>
+                                <div class="materialHeader materialSummary">
+                                    Text
+                                </div>
+                                <div class="materialHeader materialEdit">
+                                    Edit
+                                </div>
+                                <div class="materialHeader materialRemove">
+                                    Remove
+                                </div>
+                            </div><!-- /.materialItem.headerDescriptions -->
+
+                            <div class="materialList">
+                                <!-- dynamic JS -->
+                            </div>
+
+                            <div class="materialRemoveDialog" style="display:none">
+                                <p>
+                                    <i class="icon-question-sign"></i>
+                                    <b>Remove Material?</b>
+                                </p>
+                                <p>
+                                    All material data will be lost.
+                                </p>
+                                <p class="tc">
+                                    <a class="btn btn-small confirmBtn">Yes</a>
+                                    <a class="btn btn-small cancelBtn closeTip">No</a>
+                                </p>
+                            </div><!-- /.materialRemoveDialog -->
+
+                            <div class="materialItem noMaterials text-error" style="display:none">
+                                <i class="icon-exclamation-sign"></i>
+                                No course materials added.
+                            </div><!-- /.noMaterials -->
+
+                            <div class="newMaterial">
+                                <!-- dynamic JS -->
+                            </div>
+
+                            <div class="alert alert-info">
+                                <i class="icon-exclamation-sign"></i>
+                                Note: Add course materials in the order you want them to appear.
+                            </div>
+                        </div><!-- /.materials -->
+
+                        <!-- client side template for each partner in the table -->
+                        <script id="materialItemTpl" type="text/x-handlebars-template">
+                        <div class="materialItem" data-cid="{{cid}}" data-material-id="{{id}}">
+
+                            {{#if isNew}}
+                                <h5 class="newMaterialMsg">
+                                    <i class="icon-plus-sign"></i>
+                                    Add Course Material
+                                </h5>
+
+                            {{else}}
+                            <div class="materialHeaders">
+                                <div class="materialHeader materialPage">{{pageNumber}}</div>
+                                <div class="materialHeader materialType {{type}}Type">
+                                    <i class="icon-picture imageIcon"></i>
+                                    <i class="icon-file-alt textIcon"></i>
+                                    <i class="icon-film videoIcon"></i>
+                                    <i class="icon-file pdfIcon"></i>
+                                </div>
+                                <div class="materialHeader materialSummary">{{{text}}}</div>
+                                <div class="materialHeader materialEdit"><i class="icon-pencil"></i></div>
+                                <div class="materialHeader materialRemove {{#unless isActive}}isSaved{{/unless}}"><i class="icon-remove removeControl"></i></div>
+                            </div>
+                            {{/if}}
+                            <div class="materialTypeWrapper">
+                            <p>To add course materials, click on the file type associated with the materials you are adding.  Add one course material at a time. </p>
+                                File Type:
+                                <div class="btn-group materialTypes">
+                                    <button class="btn btn-mini" data-file-type="text">
+                                        <i class="icon-ok on"></i>
+                                        <!--i class="icon-check-empty off"></i-->
+                                        text
+                                    </button>
+                                    <button class="btn btn-mini" data-file-type="image">
+                                        <i class="icon-ok on"></i>
+                                        <!--i class="icon-check-empty off"></i-->
+                                        image
+                                    </button>
+                                    <button class="btn btn-mini" data-file-type="video">
+                                        <i class="icon-ok on"></i>
+                                        <!--i class="icon-check-empty off"></i-->
+                                        video
+                                    </button>
+                                    <button class="btn btn-mini" data-file-type="pdf">
+                                        <i class="icon-ok on"></i>
+                                        <!--i class="icon-check-empty off"></i-->
+                                        pdf
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="materialTypeDependantWrapper" style="display:none">
+
+
+                                <div class="imageTypeWrapper typeContentWrapper" style="display:none">
+                                    <div class="uploadedImageWrapper" style="display:none;">
+                                        <!-- dynamic JS -->
+                                    </div>
+                                    <div class="emptyImageWrapper" style="display:none;">
+                                        <i class="icon-picture"></i>
+                                        No image uploaded.
+                                    </div>
+
+                                    <div class="fileInputWrapper">
+                                        <input type="file" name="materialFile" class="imageFileInput uploaderFileInput">
+                                        <button class="btn btn-primary btn-small uploadImageBtn">
+                                            <i class="icon-upload"></i>
+                                            <span class="noImageMsg imageBtnMsg" style="display:none">Upload Image</span>
+                                            <span class="hasImageMsg imageBtnMsg" style="display:none">Change Image</span>
+                                        </button>
+                                        <span class="label label-important uploadError" style="display:none">
+                                            upload error: <span><!-- js dyn error text --></span>
+                                        </span>
+                                    </div>
+
+                                    <div class="uploadingIndicator" style="display:none">
+                                        <div class="uploadingSpinner"></div>
+                                        Uploading
+                                        <!--
+                                        <div class="progress progress-striped active" style="display:none">
+                                            <div class="bar" style="width:0%"></div>
+                                        </div>
+                                        -->
+                                    </div>
+
+                                </div>
+
+
+                                <div class="videoTypeWrapper typeContentWrapper" style="display:none">
+                                    <label>Video URL</label>
+                                    <input type="text" class="videoUrlInput">
+                                </div>
+
+
+                                <div class="pdfTypeWrapper typeContentWrapper" style="display:none">
+
+                                    <div class="pdfItems"><!-- dynamic JS --></div>
+                                    <!--subTpl.pdfItem=
+                                    <div class="pdfItem" data-pdf-id="{{id}}">
+                                        <img src="img/fileIcons/pdf16px.png" alt="pdf">
+                                        <span class="pdfName">{{originalFilename}}</span>
+                                        <span class="pdfTitle">Display Name:</span>
+                                        <input type="text" maxlength="100" class="pdfTitleInput" placeholder="PDF Title" value="{{name}}">
+                                        <a href="#" class="pdfRemoveBtn">
+                                            <i class="icon-remove-circle pdfRemoveBtn"></i>
+                                        </a>
+                                    </div>
+                                    subTpl-->
+
+                                    <div class="fileInputWrapper">
+                                        <input type="file" name="materialFile" class="pdfFileInput uploaderFileInput">
+                                        <button class="btn btn-primary btn-small uploadPdfBtn">
+                                            <i class="icon-upload"></i>
+                                            <span class="noPdfsMsg pdfBtnMsg" style="display:none">Upload PDF</span>
+                                            <span class="hasPdfsMsg pdfBtnMsg" style="display:none">Upload Another PDF</span>
+                                        </button>
+                                        <span class="label label-important uploadError" style="display:none">
+                                            upload error: <span><!-- js dyn error text --></span>
+                                        </span>
+                                    </div>
+
+                                    <div class="uploadingIndicator" style="display:none">
+                                        <div class="uploadingSpinner"></div>
+                                        Uploading
+                                        <!--
+                                        <div class="progress progress-striped active" style="display:none">
+                                            <div class="bar" style="width:0%"></div>
+                                        </div>
+                                        -->
+                                    </div>
+
+                                </div>
+
+                                <!-- visible for all types of material -->
+                                <div class="materialTextWrapper">
+                                    Text: <br>
+                                    <textarea class="materialText richtext" data-max-chars="1000"></textarea>
+                                </div>
+
+                                <div class="materialItemActions">
+                                    {{#if isNew}}
+                                    <button class="btn btn-primary btn-small saveNewMaterialBtn">
+                                        Save Course Material
+                                    </button>
+                                    <button class="btn btn-small cancelMaterialBtn">
+                                        Cancel
+                                    </button>
+                                    {{else}}
+                                    <button class="btn btn-primary btn-small saveMaterialBtn">
+                                        Save
+                                    </button>
+                                    <button class="btn btn-small cancelMaterialBtn">
+                                        Cancel
+                                    </button>
+                                    {{/if}}
+                                </div>
+
+                            </div><!-- /.materialTypeDependantWrapper -->
+
+                        </div><!-- /.materialItem -->
+                        </script><!-- /#materialItemTpl -->
+
+                    </div>
+
+                    <div class="stepContentControls form-actions pullBottomUp">
+                        <button class="btn btn-primary fr saveDraftBtn">
+                            Save Draft
+                        </button>
+                        <span></span>
+                        <button class="btn backBtn">
+                            &laquo; Back
+                        </button>
+                        <button class="btn btn-primary nextBtn">
+                            Next &raquo;
+                        </button>
+                    </div><!-- /.stepContentControls -->
+
+                </div><!-- /.stepMaterialsContent -->
+
+
+
+
+
+                <!-- **************************************************************
+                    QUESTIONS
+                 ***************************************************************** -->
+                <div id="quizEditTabQuestionsView" class="stepQuestionsContent stepContent" style="display:none">
+
+
+                    <div id="activeQuestionMask" class="quizMask" style="display:none">
+                    </div>
+
+                    <h4>Questions and Answers</h4>
+
+                    <div class="well container-splitter questionWrapper">
+
+                        <div class="questions">
+
+                            <div class="questionItem headerDescriptions" style="display:none">
+                                <div class="questionHeader questionQuestion">
+                                    Question
+                                </div>
+                                <div class="questionHeader questionEdit">
+                                    Edit
+                                </div>
+                                <div class="questionHeader questionRemove">
+                                    Remove
+                                </div>
+                            </div><!-- /.materialItem.headerDescriptions -->
+
+                            <div class="questionList">
+                                <!-- dynamic JS -->
+                            </div>
+
+                            <div class="questionRemoveDialog" style="display:none">
+                                <p>
+                                    <i class="icon-question-sign"></i>
+                                    <b>Remove Question?</b>
+                                </p>
+                                <p>
+                                    All question data will be lost.
+                                </p>
+                                <p class="tc">
+                                    <a class="btn btn-small confirmBtn">Yes</a>
+                                    <a class="btn btn-small cancelBtn closeTip">No</a>
+                                </p>
+                            </div><!-- /.questionRemoveDialog -->
+
+                            <div class="answerRemoveDialog" style="display:none">
+                                <p>
+                                    <i class="icon-question-sign"></i>
+                                    <b>Remove Answer?</b>
+                                </p>
+                                <p>
+                                    All answer data will be lost.
+                                </p>
+                                <p class="tc">
+                                    <a class="btn btn-small confirmBtn">Yes</a>
+                                    <a class="btn btn-small cancelBtn closeTip">No</a>
+                                </p>
+                            </div><!-- /.answerRemoveDialog -->
+
+                            <div class="questionItem noQuestions text-error" style="display:none">
+                                <i class="icon-exclamation-sign"></i>
+                                No questions added.
+                            </div><!-- /.noQuestions -->
+
+                            <div class="newQuestion">
+                                <!-- dynamic JS -->
+                            </div>
+
+                            <div class="alert alert-info">
+                                <i class="icon-exclamation-sign"></i>
+                                Note: Add questions in the order you want them to appear. A minimum of 1 question and 2 corresponding answers are required per quiz.
+                            </div>
+                        </div><!-- /.questions -->
+
+                        <!-- client side template for each question answer -->
+                        <script id="questionAnswerTpl" type="text/x-handlebars-template">
+                        <div class="answerItem{{#if isCorrect}} correctAnswer{{/if}}" data-answer-id="{{id}}">
+                            <span class="answerControls">
+                                <i class="icon-check correctIndicator correctToggleBtn"></i>
+                                <i class="icon-check-empty incorrectIndicator correctToggleBtn"></i>
+                            </span>
+                            <span class="answerNumber">{{number}}</span>
+                            <input type="text" class="answerInput" placeholder="answer text" value="{{text}}" tabindex="1">
+                            <a href="#" class="answerRemoveBtn" tabindex="2">
+                                <i class="icon-remove-circle"></i>
+                            </a>
+                        </div>
+                        </script><!-- /#questionAnswerTpl -->
+
+                        <!-- client side template for each question item -->
+                        <script id="questionItemTpl" type="text/x-handlebars-template">
+                        <div class="questionItem" data-cid="{{cid}}" data-question-id="{{id}}">
+
+                            {{#if isNew}}
+                                <h5 class="newQuestionMsg">
+                                    <i class="icon-plus-sign"></i>
+                                    Add a New Question
+                                </h5>
+                            {{else}}
+
+                            <div class="questionHeaders">
+                                <div class="questionHeader questionQuestion">
+                                    <span class="questionNumber">{{number}}</span>
+                                    {{text}}
+                                </div>
+                                <div class="questionHeader questionEdit"><i class="icon-pencil"></i></div>
+                                <div class="questionHeader questionRemove {{#unless isActive}}isSaved{{/unless}}"><i class="icon-remove removeControl"></i></div>
+                            </div>
+                            {{/if}}
+
+                            {{#if isNew}}
+                            <div class="questionWrapper">
+                                <!-- <input type="text" class="questionInput" placeholder="question text" value="{{text}}"> -->
+                                <textarea class="questionInput" placeholder="question text" value="{{text}}" maxlength="500" cols="2" tabindex="1">{{text}}</textarea>
+                            </div><!-- /.questionWrapper -->
+                            {{/if}}
+
+                            <div class="questionDetails" style="display:none">
+                                {{#unless isNew}}
+                                <div class="questionWrapper">
+                                    <h4>Question {{number}}</h4>
+                                    <!-- <input type="text" class="questionInput" placeholder="question text" value="{{text}}"> -->
+                                    <textarea class="questionInput" placeholder="question text" value="{{text}}" maxlength="500" cols="2" tabindex="1">{{text}}</textarea>
+                                </div><!-- /.questionWrapper -->
+                                {{/unless}}
+
+                                <h4>Answers</h4>
+                                <div class="answerList" data-msg-none="No answers added.">
+                                    <!-- after this item renders, the answer list is rendered here -->
+                                </div><!-- /.answerList -->
+
+                                <div class="alert alert-info">
+                                    <i class="icon-exclamation-sign"></i>
+                                    Note: Select the correct answer checkbox. A minimum of 2 answers are required. Answer fields left blank will be removed.
+                                </div>
+
+                                <div class="addAnswerWrapper">
+                                    <button href="#" class="btn btn-primary btn-mini addAnswerBtn" tabindex="1">
+                                        <i class="icon-plus"></i>
+                                        add another answer
+                                    </button>
+                                </div>
+
+                                <div class="questionItemActions">
+                                    {{#if isNew}}
+                                    <button class="btn btn-primary btn-small saveNewQuestionBtn" tabindex="1">
+                                        Save Question
+                                    </button>
+                                    <button class="btn btn-small cancelQuestionBtn" tabindex="2">
+                                        Cancel
+                                    </button>
+                                    {{else}}
+                                    <button class="btn btn-primary btn-small saveQuestionBtn" tabindex="1">
+                                        Save
+                                    </button>
+                                    <button class="btn btn-small cancelQuestionBtn" tabindex="2">
+                                        Cancel
+                                    </button>
+                                    {{/if}}
+                                </div>
+
+                            </div><!-- /.questionDetails -->
+
+                        </div><!-- /.questionItem -->
+                        </script><!-- /#questionItemTpl -->
+
+                    </div><!-- /.questionWrapper -->
+
+                    <div class="stepContentControls form-actions pullBottomUp">
+                        <button class="btn btn-primary fr saveDraftBtn">
+                            Save Draft
+                        </button>
+                        <span></span>
+                        <button class="btn backBtn">
+                            &laquo; Back
+                        </button>
+                        <button class="btn btn-primary nextBtn">
+                            Next &raquo;
+                        </button>
+                    </div><!-- /.stepContentControls -->
+
+                </div><!-- /.stepQuestionsContent -->
+
+
+
+
+
+
+                <!-- **************************************************************
+                    RESULTS
+                ***************************************************************** -->
+                <div id="quizEditTabResultsView" class="stepResultsContent stepContent" style="display:none">
+
+                    <div class="control-group">
+                        <label class="control-label" for="passingScore">
+                            <strong>Passing Score</strong>
+                            <span class="help-block">Enter the number of correct answers needed to pass the quiz:</span>
+                        </label>
+                        <div class="controls">
+                            <input class="passingScoreInput" type="text" id="passingScore" data-model-key="passingScore">
+                            out of
+                            <span class="numQuestionsTxt"></span>
+                            questions
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <strong>Number of Attempts</strong>
+                        <i class="icon-question-sign pageView_help"
+                            data-help-content="[explanation of what 'number of attempts' is]"></i>
+                        <div class="allowedAttemptsWrapper">
+                            <label class="radio allowedAttemptsInputLabel">
+                                <input type="radio" class="isAttemptsLimitInput isAttemptsLimitTrue" data-model-key="isAttemptsLimit" name="isAttemptsLimit" value="true" checked="checked">
+                                Use specific number:
+                            </label>
+                            <label class="allowedAttemptsInputLabel">
+                                <input class="allowedAttemptsInput" type="text" data-model-key="allowedAttempts">
+                                attempts
+                            </label>
+                        </div>
+                        <label class="radio">
+                            <input type="radio" class="isAttemptsLimitInput" data-model-key="isAttemptsLimit" name="isAttemptsLimit" value="false">
+                            Unlimited
+                        </label>
+                    </div>
+
+                    <div class="control-group">
+                        <strong>Display questions in random order?</strong>
+                        <i class="icon-question-sign pageView_help"
+                            data-help-content="[explanation of what 'display in random order' is]"></i>
+                        <label class="radio">
+                            <input type="radio" class="isRandomQuestionOrderInput" data-model-key="isRandomQuestionOrder" name="isRandomQuestionOrder" value="true">
+                            Yes
+                        </label>
+                        <label class="radio">
+                            <input type="radio" class="isRandomQuestionOrderInput" data-model-key="isRandomQuestionOrder" name="isRandomQuestionOrder" value="false">
+                            No
+                        </label>
+                    </div>
+
+
+                    <div class="control-group badgesSelector"
+                        data-no-badge-json='{"id":null,"name":"No Badge","iconClass":"icon-ban-circle","contClass":"noBadgeContent"}'>
+                        <h5>Select a Badge</h5>
+
+                        <div class="btn-group">
+                            <a class="btn dropdown-toggle badgeBtn" data-toggle="dropdown" href="#">
+                                <!-- dyn -->
+                            </a>
+                            <ul class="dropdown-menu badgeItems">
+                                <!-- dropdown menu links -->
+                            </ul>
+                        </div>
+                        <div class="howToEarnBadge">
+                            <div><i class="icon-hand-left"></i> <b>How to Earn</b></div>
+                            <span></span>
+                        </div>
+                    </div><!-- /.badgesSelector -->
+
+                    <script id="badgeBtnTpl" type="text/x-handlebars-template">
+                        <span class="badgeBtnContent {{contClass}}">
+                            {{#if img}}<img src="{{img}}" alt="{{name}}">{{/if}}
+                            {{#if iconClass}}<i class="{{iconClass}}"></i>{{/if}}
+                            <span>{{name}}</span>
+                        </span>
+                        <i class="icon-caret-down badgeBtnCaret"></i>
+                    </script><!-- /#badgeBtnTpl -->
+
+                    <script id="badgeItemTpl" type="text/x-handlebars-template">
+                        <li class="badgeItem">
+                            <a href="#" data-badge-id="{{id}}">
+                                {{#if img}}<img src="{{img}}" alt="{{name}}">{{/if}}
+                                {{#if iconClass}}<i class="{{iconClass}}"></i>{{/if}}
+                                {{name}}
+                            </a>
+                        </li>
+                    </script><!-- /#badgeItemTpl -->
+
+
+                    <div class="control-group certificatesSelector"
+                        data-no-cert-json='{"id":null,"name":"No Certificate","iconClass":"icon-ban-circle","contClass":"noCertContent"}'>
+                        <h5 class="selectCertTitle">Select a Certificate</h5>
+                        <label class="checkbox">
+                            <input type="checkbox" class="showCertificateSelector" checked>
+                            Add a Certificate
+                        </label>
+                        <div class="certificateGuts">
+                            <div class="certSelected">
+                                <!-- dyn -->
+                            </div>
+                            <ul class="certItems unstyled">
+                                <!-- dyn -->
+                            </ul>
+                        </div>
+                    </div><!-- /.certificatesSelector -->
+
+                    <script id="certSelectedTpl" type="text/x-handlebars-template">
+                        <div class="{{contClass}}">
+                        {{#if imgLg}}<img src="{{imgLg}}" alt="{{name}}">{{/if}}
+                        {{#if iconClass}}<i class="{{iconClass}}"></i>{{/if}}
+                        {{#if name}}<div class="certName">{{name}}</div>{{/if}}
+                        </div>
+                    </script><!-- /#certSelectedTpl -->
+
+                    <script id="certItemTpl" type="text/x-handlebars-template">
+                        <li class="certItem" data-cert-id="{{id}}">
+                            <img src="{{img}}" alt="{{name}}">
+                        </li>
+                    </script><!-- /#certItemTpl -->
+
+
+                    <div class="control-group">
+                        <label class="checkbox">
+                            <input type="checkbox" class="showNotifyText" data-model-key="isNotifyParticipants"  checked>
+                            <strong>Notify Participants (optional)</strong>
+                        </label>
+                        <div class="notifyTextGuts">
+                            Text for Email Notification
+                            <div class="controls validateme"
+                                data-validate-flags="maxlength,nonempty"
+                                data-validate-fail-msgs='{"maxlength" : "Maximum number of characters exceeded. Please edit.","nonempty":"Please enter introduction text."}'
+                                data-validate-max-length="2000">
+                                <textarea rows="5" data-max-chars="2000" class="richtext notifyText" data-model-key="notifyText"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="stepContentControls form-actions pullBottomUp">
+                        <button class="btn btn-primary fr saveDraftBtn">
+                            Save Draft
+                        </button>
+                        <span></span>
+                        <button class="btn backBtn">
+                            &laquo; Back
+                        </button>
+                        <button class="btn btn-primary nextBtn">
+                            Next &raquo;
+                        </button>
+                    </div><!-- /.stepContentControls -->
+
+                </div><!-- /.stepResultsContent -->
+
+
+
+
+                <!-- **************************************************************
+                    PREVIEW
+                 ***************************************************************** -->
+                <div id="quizEditTabPreviewView" class="stepPreviewContent stepContent" style="display:none">
+
+                    <div class="previewStepBoxesWrapper">
+
+                        <script id="previewStepItemsTpl" type="text/x-handlebars-template">
+                        <div class="previewStepBoxWrapper well">
+                            <div class="previewStepBoxHeader">
+                                <button class="btn btn-primary btn-small editStepBtn" data-step-name="stepIntro">
+                                    <i class="icon-pencil"></i>
+                                    Edit
+                                </button>
+                                <span class="previewStepBoxTitle">1. Quiz Introduction and Participants</span>
+                            </div>
+                            <div class="previewStepBoxContent">
+
+                                {{#if createAsParticipant}}
+                                    <div class="row">
+                                        <div class="span3"><div class="previewLabel">Quiz Owner</div></div>
+                                        <div class="span9">{{createAsParticipant.firstName}} {{createAsParticipant.lastName}}</div>
+                                    </div>
+                                {{/if}}
+
+                                <div class="row">
+                                    <div class="span3"><div class="previewLabel">Quiz Name</div></div>
+                                    <div class="span9">{{name}}</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="span3"><div class="previewLabel">Start Date</div></div>
+                                    <div class="span9">{{startDate}}</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="span3"><div class="previewLabel">End Date</div></div>
+                                    <div class="span9">{{endDate}}</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="span3"><div class="previewLabel">Intro Text</div></div>
+                                    <div class="span9">
+                                        {{{introText}}}
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="span3"><div class="previewLabel">Participants</div></div>
+                                    <div class="span9">
+                                        {{#participants}}
+                                        <span class="label">{{firstName}} {{lastName}}</span>
+                                        {{/participants}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.previewStepBoxWrapper.well -->
+
+                        <div class="previewStepBoxWrapper well">
+                            <div class="previewStepBoxHeader">
+                                <button class="btn btn-primary btn-small editStepBtn" data-step-name="stepMaterials">
+                                    <i class="icon-pencil"></i>
+                                    Edit
+                                </button>
+                                <span class="previewStepBoxTitle">2. Course Materials</span>
+                            </div>
+                            <div class="previewStepBoxContent">
+
+                                {{#materials}}
+                                <div class="row">
+                                    <div class="span12 previewMaterialItem">
+                                        <div class="row">
+                                            <div class="span12">
+                                                <div class="previewMaterialHeader">
+                                                    Course Material {{pageNumber}} of {{../materials.length}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="span3">
+                                                <div class="previewMaterialItemContent {{type}}TypeContent">
+                                                {{#eq type "text"}}
+                                                    <i class="icon-file-alt"></i>
+                                                {{/eq}}
+
+                                                {{#eq type "image"}}
+                                                    <img src="{{files.0.url}}" alt="{{files.0.name}}">
+                                                {{/eq}}
+
+                                                {{#eq type "video"}}
+                                                    <a class="btn btn-large btn-primary" href="{{files.0.url}}" target="_blank" >
+                                                        <i class="icon-film"></i>
+                                                        Visit Video URL
+                                                    </a>
+                                                {{/eq}}
+
+                                                {{#eq type "pdf"}}
+                                                    {{#files}}
+                                                    <ul class="previewPdfFiles unstyled">
+                                                        <li>
+                                                            <a class="fileLink pdfLink" href="{{url}}" target="_blank" >
+                                                                {{name}}
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                    {{/files}}
+                                                {{/eq}}
+
+                                                </div>
+                                            </div>
+                                            <div class="span9 previewMaterialItemText">{{{text}}}</div>
+                                        </div><!-- /.row -->
+                                    </div><!-- /.previewMaterialItem -->
+                                </div><!-- /.row -->
+                                {{/materials}}
+
+                            </div>
+                        </div><!-- /.previewStepBoxWrapper.well -->
+
+                        <div class="previewStepBoxWrapper well">
+                            <div class="previewStepBoxHeader">
+                                <button class="btn btn-primary btn-small editStepBtn" data-step-name="stepQuestions">
+                                    <i class="icon-pencil"></i>
+                                    Edit
+                                </button>
+                                <span class="previewStepBoxTitle">3. Questions and Answers</span>
+                            </div>
+                            <div class="previewStepBoxContent">
+
+                                {{#questions}}
+                                <div class="row">
+                                    <div class="span12 previewQuestionItem">
+                                        <div class="row">
+                                            <div class="span12">
+                                                <div class="previewQuestionHeader">
+                                                    Question {{number}} of {{../questions.length}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="span12">
+                                                <div class="previewQuestionText">
+                                                {{text}}
+                                                </div>
+                                                <ul class="previewQuestionAnswers unstyled">
+                                                {{#answers}}
+                                                    <li>
+                                                        <div class="isCorrect {{isCorrect}}Bool">
+                                                        {{#if isCorrect}}
+                                                            <i class="icon-check"></i>
+                                                        {{else}}
+                                                            <i class="icon-check-empty"></i>
+                                                        {{/if}}
+                                                        </div>
+                                                        <div class="answerText">
+                                                            {{_letterOrder}}) {{text}}
+                                                        </div>
+                                                    </li>
+                                                {{/answers}}
+                                                </ul>
+                                            </div><!-- /.span12 -->
+                                        </div><!-- /.row -->
+                                    </div><!-- /.previewQuestionItem -->
+                                </div><!-- /.row -->
+                                {{/questions}}
+
+                            </div>
+                        </div><!-- /.previewStepBoxWrapper.well -->
+
+                        <div class="previewStepBoxWrapper well">
+                            <div class="previewStepBoxHeader">
+                                <button class="btn btn-primary btn-small editStepBtn" data-step-name="stepResults">
+                                    <i class="icon-pencil"></i>
+                                    Edit
+                                </button>
+                                <span class="previewStepBoxTitle">4. Quiz Results and Awards</span>
+                            </div>
+                            <div class="previewStepBoxContent">
+                                <div class="row">
+                                    <div class="span3"><div class="previewLabel">Passing Score</div></div>
+                                    <div class="span9">
+                                        {{passingScore}}
+                                        out of {{questions.length}} correct
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="span3"><div class="previewLabel">Number of Attempts</div></div>
+                                    <div class="span9">
+                                    {{#if isAttemptsLimit}}
+                                        {{allowedAttempts}}
+                                    {{else}}
+                                        Unlimited
+                                    {{/if}}
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="span3"><div class="previewLabel">Display questions in random order?</div></div>
+                                    <div class="span9">
+                                    {{#if isRandomQuestionOrder}}
+                                        Yes
+                                    {{else}}
+                                        No
+                                    {{/if}}
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="span3"><div class="previewLabel">Notify participants?</div></div>
+                                    <div class="span9">
+                                    {{#if isNotifyParticipants}}
+                                        Yes
+                                    {{else}}
+                                        No
+                                    {{/if}}
+                                    </div>
+                                </div>
+
+                                {{#if isNotifyParticipants}}
+                                <div class="row">
+                                    <div class="span3"><div class="previewLabel">Notification Email Text</div></div>
+                                    <div class="span9">
+                                        {{{notifyText}}}
+                                    </div>
+                                </div>
+                                {{/if}}
+
+                                <div class="row">
+                                    <div class="span12">
+                                        <div class="previewBadgeCertLiner">
+                                        {{#if _badge}}
+                                            <h5>Badge</h5>
+                                            <img src="{{_badge.img}}" alt="{{_badge.name}}">
+                                            <span>{{_badge.name}}</span>
+                                        {{/if}}
+
+                                        {{#if _cert}}
+                                            <h5>Certificate</h5>
+                                            <img src="{{_cert.imgLg}}" alt="{{_cert.name}}">
+                                        {{/if}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- /.previewStepBoxWrapper.well -->
+
+                        </script><!-- /#previewStepItemsTpl -->
+
+                    </div><!-- /.reveiewStepBoxesWrapper -->
+
+                    <div class="stepContentControls form-actions pullBottomUp">
+                        <button class="btn backBtn">
+                            &laquo; Back
+                        </button>
+                        <a href="#" class="btn btn-primary submitBtn">
+                            Submit
+                        </a>
+                    </div><!-- /.stepContentControls -->
+
+                </div><!-- /.stepPreviewContent -->
+
+
+
+
+                <!-- VALIDATION MSGS - informational tooltip for validation -->
+                <div class="errorTipWrapper" style="display:none">
+                    <div class="errorTip">
+
+                        <!-- display for validateme generic errors -->
+                        <div class="errorMsg msgGenericError">
+                            <i class="icon-exclamation-sign"></i>
+                            Please correct the error(s).
+                        </div>
+
+                        <!-- save draft - quiz name not set -->
+                        <div class="errorMsg msgSaveDraftNoName">
+                            <i class="icon-exclamation-sign"></i>
+                            There must be a quiz name before you can save.
+                        </div>
+
+                        <!-- Intro errors -->
+                        <div class="errorMsg msgStartDateTooEarly">
+                            <i class="icon-exclamation-sign"></i>
+                            Start date must be today or later.
+                        </div>
+                        <div class="errorMsg msgEndDateTooEarly">
+                            <i class="icon-exclamation-sign"></i>
+                            End date must be later than or same as start date.
+                        </div>
+                        <div class="errorMsg msgMustHavePax">
+                            <i class="icon-exclamation-sign"></i>
+                            Please add one or more participants.
+                        </div>
+                        <div class="errorMsg msgMustHaveOwnerPax">
+                            <i class="icon-exclamation-sign"></i>
+                            Please select a participant to act as owner of this quiz.
+                        </div>
+                        <div class="errorMsg msgQuizNameNotUnique">
+                            <i class="icon-exclamation-sign"></i>
+                            Please enter a different quiz name.
+                        </div>
+
+                        <!-- Materials errors -->
+                        <div class="errorMsg msgMaterialMustHaveOne">
+                            <i class="icon-exclamation-sign"></i>
+                            Please add at least one material item.
+                        </div>
+                        <div class="errorMsg msgMaterialModified">
+                            <i class="icon-exclamation-sign"></i>
+                            Please save or cancel the active course material.
+                        </div>
+                        <div class="errorMsg msgMaterialMustHaveText">
+                            <i class="icon-exclamation-sign"></i>
+                            Please enter some text for this material.
+                        </div>
+                        <div class="errorMsg msgMaterialMustHaveImage">
+                            <i class="icon-exclamation-sign"></i>
+                            Please upload an image.
+                        </div>
+                        <div class="errorMsg msgMaterialMustHavePdf">
+                            <i class="icon-exclamation-sign"></i>
+                            Please upload at least one PDF file.
+                        </div>
+                        <div class="errorMsg msgMaterialTooManyPdfs">
+                            <i class="icon-exclamation-sign"></i>
+                            Too many PDFs, only ten allowed.
+                        </div>
+                        <div class="errorMsg msgMaterialMustHavePdfTitle">
+                            <i class="icon-exclamation-sign"></i>
+                            Please make sure each PDF file has a title.
+                        </div>
+                        <div class="errorMsg msgMaterialVideoUrlFormat">
+                            <i class="icon-exclamation-sign"></i>
+                            Please make sure the video URL is valid.
+                        </div>
+                        <div class="errorMsg msgMaterialsTooMany">
+                            <i class="icon-exclamation-sign"></i>
+                            Too many materials, only ten allowed.
+                        </div>
+                        <div class="errorMsg msgFileType_image">
+                            <i class="icon-exclamation-sign"></i>
+                            file type must be .png, .jpg or .gif
+                        </div>
+                        <div class="errorMsg msgFileType_pdf">
+                            <i class="icon-exclamation-sign"></i>
+                            please select a PDF file
+                        </div>
+                        <div class="errorMsg msgMaterialTooManyChars">
+                            <i class="icon-exclamation-sign"></i>
+                            Too many characters of text, please reduce.
+                        </div>
+
+                        <!-- Questions errors -->
+                        <div class="errorMsg msgQuestionModified">
+                            <i class="icon-exclamation-sign"></i>
+                            Please save or cancel the active question.
+                        </div>
+                        <div class="errorMsg msgQuestionMustHaveText">
+                            <i class="icon-exclamation-sign"></i>
+                            Please make sure there is question text entered.
+                        </div>
+                        <div class="errorMsg msgQuestionMustHaveTwoAnswers">
+                            <i class="icon-exclamation-sign"></i>
+                            Please make sure there are at least two answers.
+                        </div>
+                        <div class="errorMsg msgQuestionMustHaveAnswerText">
+                            <i class="icon-exclamation-sign"></i>
+                            Please make sure your answers have text.
+                        </div>
+                        <div class="errorMsg msgQuestionMustHaveCorrect">
+                            <i class="icon-exclamation-sign"></i>
+                            Please make sure you have marked a correct answer.
+                        </div>
+                        <div class="errorMsg msgQuestionMustHaveOne">
+                            <i class="icon-exclamation-sign"></i>
+                            Please add at least one question.
+                        </div>
+                        <div class="errorMsg msgQuestionTooManyQuestions">
+                            <i class="icon-exclamation-sign"></i>
+                            Too many questions, only twenty allowed.
+                        </div>
+                        <div class="errorMsg msgQuestionTooManyAnswers">
+                            <i class="icon-exclamation-sign"></i>
+                            Too many answers, only ten allowed.
+                        </div>
+                        <div class="errorMsg msgQuestionDuplicateAnswer">
+                            <i class="icon-exclamation-sign"></i>
+                            Please make sure each answer is unique.
+                        </div>
+                        <div class="errorMsg msgQuestionDuplicateQuestion">
+                            <i class="icon-exclamation-sign"></i>
+                            Please make sure this question's text is unique.
+                        </div>
+
+                        <!-- Results errors -->
+                        <div class="errorMsg msgPassingScoreReq">
+                            <i class="icon-exclamation-sign"></i>
+                            Please enter a passing score.
+                        </div>
+                        <div class="errorMsg msgPassingScoreRange">
+                            <i class="icon-exclamation-sign"></i>
+                            Passing score out of range.
+                        </div>
+
+                        <div class="errorMsg msgAttemptLimitSelectReq">
+                            <i class="icon-exclamation-sign"></i>
+                            Please make a selection.
+                        </div>
+                        <div class="errorMsg msgAttemptLimitReq">
+                            <i class="icon-exclamation-sign"></i>
+                            Please enter the number of attempts allowed.
+                        </div>
+
+                        <div class="errorMsg msgIsRandomSelectReq">
+                            <i class="icon-exclamation-sign"></i>
+                            Please make a selection.
+                        </div>
+
+                        <div class="errorMsg msgNotifyTextReq">
+                            <i class="icon-exclamation-sign"></i>
+                            Please enter notify text.
+                        </div>
+
+                    </div><!-- /.errorTip -->
+                </div><!-- /.errorTipWrapper -->
+
+
+                <!-- modal to catch errors from server on submit OR save draft -->
+                <div class="modal hide fade quizErrorsModal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+                        <h3>
+                            <i class="icon-exclamation-sign"></i>
+                            Error(s) encountered
+                        </h3>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="errorsList">
+                            <!-- dynamic -->
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn" data-dismiss="modal">Close</a>
+                    </div>
+                </div><!-- /.quizErrorsModal -->
+
+            </div><!-- /.wizardTabsContent -->
+
+
+
+        </div><!-- /.span12 -->
+    </div><!-- /.row -->
+
+</div><!-- /#quizPageEditView -->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function() {
+        var quizJson = null;
+
+        // JAVA NOTE: bootstrapped JSON
+
+        // JAVA NOTE: example JSON for create + no badges or certificates
+        quizJson = {
+            status: 'undrconstr', // undrconstr, compl
+            quizStatus:'undrconstr', // undrconstr, pending, active
+            id: null,
+            // show the pax search to select 'owner' of quiz (and this is required)
+            // this is TRUE for ADMIN, FALSE for MANAGER
+            createAsAllowed: true,
+
+            name: null,
+            startDate: null,
+            endDate: null,
+            introText: null,
+
+            passingScore: null,
+            allowedAttempts: null,
+            isAttemptsLimit: null,
+            isRandomQuestionOrder: null,
+
+            badgeId: null,
+            certificateId: null,
+
+            isNotifyParticipants: null,
+            notifyText: null,
+
+            participants: null, // on create this is pre-populated for managers but not for admins
+            badges: null, // for no badges available
+            certificates: null, // for no certs available
+            materials: null,
+            questions: null
+        };
+
+        // JAVA NOTE: example JSON for edit + badges and certificates
+        quizJson = {
+            status: 'undrconstr', // undrconstr, compl
+            quizStatus:'undrconstr', // undrconstr, pending, active
+            createAsAllowed: false, // this quiz is created already, so cannot change 'owner'
+            createAsParticipant: { // if you want to display uneditable owner info
+                id: "757575757",
+                firstName: "Quizophocles",
+                lastName: "Ownestorphon"
+            },
+
+            id: "ThisIsAQuizId", // ID of quiz exists for edit or after 'save draft'
+            name: "This is a quiz name",
+            startDate: "08/16/2013",
+            endDate: "08/16/2015",
+            introText: "<p>This is the introduction text for this quiz. <b>Cheers!</b></p>",
+
+            passingScore: 1,
+            allowedAttempts: 5,
+            isAttemptsLimit: true,
+            isRandomQuestionOrder: false,
+
+            badgeId: "25", // selected badge id (or null)
+            certificateId: "192", // selected cert id (or null)
+
+            isNotifyParticipants: true,
+            notifyText: "<p>Hey <i>all y'all</i>, we've got some <b>fun</b> quiz action for you!</p>",
+
+            participants: [ // on edit, this represents participants for the quiz
+                {
+                    "id":445,
+                    "firstName":"Nassim",
+                    "lastName":"Taleb",
+                    "orgName":"Anomaly Division",
+                    "countryCode":"fr",
+                    "countryName":"France",
+                    "avatarUrl":"img/_samples/x-profile-pic1.jpg"
+                },
+                {
+                    "id":45,
+                    "firstName":"Christian",
+                    "lastName":"Smith",
+                    "orgName":"Sales",
+                    "countryCode":"in",
+                    "countryName":"India",
+                    "avatarUrl":"img/_samples/x-profile-pic2.jpg",
+                    "quizParticipantId" : 50020
+                }
+            ],
+            materials: [ //Server sending integer id's
+                {
+                    "id":"1234444",
+                    "isNew":false,
+                    "isSaved":true,
+                    "isEditing":false,
+                    "pageNumber":4,
+                    "files":[
+                        {"id":"deleteMe_uploadedImageFromPhp.pdf?2603","name":"First pdf file.","url":"deleteMe_uploadedImageFromPhp.pdf?2603","originalFilename":"G5 goalquest wireframes.pdf"},
+                        {"id":"deleteMe_uploadedImageFromPhp.pdf?7816","name":"Second pdf file.","url":"deleteMe_uploadedImageFromPhp.pdf?7816","originalFilename":"steps.pdf"},
+                        {"id":"deleteMe_uploadedImageFromPhp.pdf?8225","name":"Third pdf file.","url":"deleteMe_uploadedImageFromPhp.pdf?8225","originalFilename":"manager create a quiz.pdf"}
+                    ],
+                    "type":"pdf",
+                    "text":"<p>&nbsp;These are <b>PDF</b>s.</p>"
+                },
+                {
+                    "id":12345,
+                    "isNew":false,
+                    "isSaved":true,
+                    "pageNumber":1,
+                    "type":"text",
+                    "text":"<p><b>Bold</b> not bold</p>",
+                    "isEditing":false
+                },
+                {
+                    "id":"12354",
+                    "isNew":false,
+                    "isSaved":true,
+                    "isEditing":false,
+                    "pageNumber":3,
+                    "files":[
+                        {"id":null,"name":null,"url":"http://path.to/video"}
+                    ],
+                    "type":"video",
+                    "text":"<p>&nbsp;This is a <b>video</b>.</p>"
+                },
+                {
+                    "id":"1239",
+                    "isNew":false,
+                    "isSaved":true,
+                    "isEditing":false,
+                    "pageNumber":2,
+                    "files":[
+                        {"id":"deleteMe_uploadedImageFromPhp.jpg?8826","name":"","url":"deleteMe_uploadedImageFromPhp.jpg?8826","originalFilename":"30previewhighresolutionimage.jpg"}
+                    ],
+                    "type":"image",
+                    "text":"<p>&nbsp;This is an image.</p>"
+                }
+            ],
+            questions: [
+                {
+                    "id": "ThisIsAQuestionID02",
+                    "number": 2,
+                    "text": "Is G5 delicious?",
+                    "isNew": false,
+                    "isSaved": true, // this is from the server
+                    "answers": [
+                        {
+                            "number": 1,
+                            "id": "ThisIsAAnswerID01",
+                            "text": "Yes, G5 is quite delicious.",
+                            "isCorrect": true
+                        },
+                        {
+                            "number": 2,
+                            "id":"ThisIsAAnswerID02",
+                            "text": "No, I don't think so.",
+                            "isCorrect": false
+                        }
+                    ]
+                },
+                {
+                    "id": "ThisIsAQuestionID01",
+                    "number": 1,
+                    "text": "What is color?",
+                    "isNew": false,
+                    "isSaved": true, // this is from the server
+                    "answers": [
+                        {
+                            "number": 1,
+                            "id": "ThisIsAAnswerID01",
+                            "text": "Purple",
+                            "isCorrect": false
+                        },
+                        {
+                            "number": 2,
+                            "id":"ThisIsAAnswerID02",
+                            "text": "The optical sensation ellicited when quanta of light bombard the retina, sending neurotransmitters to frolick about the visual cortex.",
+                            "isCorrect":false
+                        },
+                        {
+                            "number": 3,
+                            "id":"ThisIsAAnswerID03",
+                            "text": "It is a city in Spain.",
+                            "isCorrect":false
+                        },
+                        {
+                            "number": 4,
+                            "id":"ThisIsAAnswerID04",
+                            "text": "\"color\" is just a word.",
+                            "isCorrect":true
+                        }
+                    ]
+                }
+            ],
+            badges:[
+                {
+                    "id":                   "23",
+                    "type":                 "progress",
+                    "name":                 "Earned Progress Badge Name 1 2a",
+                    "howToEarnText":        "1 How to earn badge",
+                    "img":                  "img/badges/above_beyond_sm.png"
+                },
+                {
+                    "id":                   "24",
+                    "type":                 "progress",
+                    "name":                 "Earned Progress Badge Name 2 2a",
+                    "howToEarnText":        "2 How to earn badge",
+                    "img":                  "img/badges/birthday_sm.png"
+                },
+                {
+                    "id":                   "25",
+                    "type":                 "progress",
+                    "name":                 "Progress Badge Name 3 2b",
+                    "howToEarnText":        "3 How to earn badge",
+                    "img":                  "img/badges/bronze_sm.png"
+                },
+                {
+                    "id":                   "26",
+                    "type":                 "progress",
+                    "name":                 "Progress Badge Name 4 2c",
+                    "howToEarnText":        "4 How to earn badge",
+                    "img":                  "img/badges/cold_call_sm.png"
+                },
+                {
+                    "id":                   "27",
+                    "type":                 "behavior",
+                    "name":                 "Earned Behavior Badge Name 5 2d",
+                    "howToEarnText":        "5 How to earn badge",
+                    "img":                  "img/badges/conquest_sale_sm.png"
+                },
+                {
+                    "id":                   "28",
+                    "type":                 "behavior",
+                    "name":                 "Earned Behavior Badge Name 6 2d",
+                    "howToEarnText":        "6 How to earn badge",
+                    "img":                  "img/badges/contest_winner_sm.png"
+                },
+                {
+                    "id":                   "29",
+                    "type":                 "behavior",
+                    "name":                 "Earned Behavior Badge Name 7 2e",
+                    "howToEarnText":        "7 How to earn badge",
+                    "img":                  "img/badges/creativity_sm.png"
+                },
+                {
+                    "id":                   "30",
+                    "type":                 "behavior",
+                    "name":                 "Earned Behavior Badge Name 8 2e",
+                    "howToEarnText":        "8 How to earn badge",
+                    "img":                  "img/badges/customer_service_sm.png"
+                },
+                {
+                    "id":                   "31",
+                    "type":                 "behavior",
+                    "name":                 "File Load Earned Badge Name 9 2f",
+                    "howToEarnText":        "9 How to earn badge",
+                    "img":                  "img/badges/gold_sm.png"
+                }
+            ],
+            certificates: [
+                {
+                    "id":"19",
+                    "name":"8bit01 Certificate",
+                    "img":"img/certificates/8bit01-thumb.jpg",
+                    "imgLg":"img/certificates/8bit01-preview.jpg"
+                },
+                {
+                    "id":"191",
+                    "name":"8bit02 Certificate",
+                    "img":"img/certificates/8bit02-thumb.jpg",
+                    "imgLg":"img/certificates/8bit02-preview.jpg"
+                },
+                {
+                    "id":"192",
+                    "name":"abstract Certificate",
+                    "img":"img/certificates/abstract-thumb.jpg",
+                    "imgLg":"img/certificates/abstract-preview.jpg"
+                },
+                {
+                    "id":"193",
+                    "name":"bokeh Certificate",
+                    "img":"img/certificates/bokeh-thumb.jpg",
+                    "imgLg":"img/certificates/bokeh-preview.jpg"
+                },
+                {
+                    "id":"194",
+                    "name":"curtains Certificate",
+                    "img":"img/certificates/curtains-thumb.jpg",
+                    "imgLg":"img/certificates/curtains-preview.jpg"
+                },
+                {
+                    "id":"195",
+                    "name":"dentist Certificate",
+                    "img":"img/certificates/dentist-thumb.jpg",
+                    "imgLg":"img/certificates/dentist-preview.jpg"
+                },
+                {
+                    "id":"196",
+                    "name":"floral01 Certificate",
+                    "img":"img/certificates/floral01-thumb.jpg",
+                    "imgLg":"img/certificates/floral01-preview.jpg"
+                },
+                {
+                    "id":"297",
+                    "name":"floral02 Certificate",
+                    "img":"img/certificates/floral02-thumb.jpg",
+                    "imgLg":"img/certificates/floral02-preview.jpg"
+                },
+                {
+                    "id":"397",
+                    "name":"fun Certificate",
+                    "img":"img/certificates/fun-thumb.jpg",
+                    "imgLg":"img/certificates/fun-preview.jpg"
+                },
+                {
+                    "id":"497",
+                    "name":"tartan Certificate",
+                    "img":"img/certificates/tartan-thumb.jpg",
+                    "imgLg":"img/certificates/tartan-preview.jpg"
+                },
+                {
+                    "id":"597",
+                    "name":"water Certificate",
+                    "img":"img/certificates/water-thumb.jpg",
+                    "imgLg":"img/certificates/water-preview.jpg"
+                },
+                {
+                    "id":"697",
+                    "name":"wood Certificate",
+                    "img":"img/certificates/wood-thumb.jpg",
+                    "imgLg":"img/certificates/wood-preview.jpg"
+                }
+            ]
+        };
+
+
+        // NOTE: example from JAVA, should not be named quizJson, just for visual reference.
+        xquizJson = {
+           "status":"undrconstr",
+           "quizStatus": 'undrconstr', // undrconstr, pending, active
+           "id":50010,
+           "name":"hanumanth quiz 2",
+           "startDate":"09/16/2013",
+           "endDate":"09/30/2013",
+           "introText":"<p>&nbsp;new intro text<br></p>",
+           "passingScore":2,
+           "allowedAttempts":0,
+           "isAttemptsLimit":false,
+           "isRandomQuestionOrder":true,
+           "badgeId":2504,
+           "certificateId":2505,
+           "isNotifyParticipants":false,
+           "notifyText":null,
+           "clientState":"soNATYCidY3+fme2ZYyXeqUqHijAz9LWP+nqfccH4dZsP5n7a59EfNdxrjin1QDSJzFFy1azGxU8\nGWsoUAGabVOwyCXOFR50cE7Nk9XuCliyygpu+sj2Yh1XYtRhcHOxtlLdthbQ3zQtpX3j4HXhdgIR\n9vx2v+Hc9Gfvcvgochh4U3uRAS8iMzDt8BR+kbNbPFB5GIgmvnybs3w8Ewat+Ea2JXCrw65wKDvb\nAyA+dEF/LTQLEtCtshOL/73vXnbmh5+yqmsJHJdSbvA2N42c0tBnzVPPSg8J7IGpKw==",
+           "cryptoPassword":"1",
+           "source":"admin",
+           "promotionId":2502,
+           "participants":[
+              {
+                 "quizParticipantId":500150,
+                 "id":5625,
+                 "firstName":"Yora",
+                 "lastName":"Testa",
+                 "orgName":"St.Paul_",
+                 "countryCode":"us",
+                 "countryName":"United States",
+                 "avatarUrl":null
+              },
+              {
+                 "quizParticipantId":500151,
+                 "id":5624,
+                 "firstName":"Ima",
+                 "lastName":"Testa",
+                 "orgName":"St.Paul_",
+                 "countryCode":"us",
+                 "countryName":"United States",
+                 "avatarUrl":null
+              },
+              {
+                 "quizParticipantId":500149,
+                 "id":456,
+                 "firstName":"Tom",
+                 "lastName":"Aalexson",
+                 "orgName":"St.Paul_",
+                 "countryCode":"us",
+                 "countryName":"United States",
+                 "avatarUrl":null
+              }
+           ],
+          "materials":null,
+           "questions":[
+              {
+                 "id":50010,
+                 "number":1,
+                 "text":"q1",
+                 "cmAssetName":"quiz_question_data.question.10000834",
+                 "answers":[
+                    {
+                       "number":1,
+                       "id":50010,
+                       "text":"a1",
+                       "isCorrect":true,
+                       "cmAssetName":"quiz_question_answer.answer.10000835"
+                    },
+                    {
+                       "number":2,
+                       "id":50011,
+                       "text":"a2",
+                       "isCorrect":false,
+                       "cmAssetName":"quiz_question_answer.answer.10000836"
+                    }
+                 ],
+                 "isSaved":true,
+                 "isNew":false
+              },
+              {
+                 "id":50011,
+                 "number":2,
+                 "text":"q2",
+                 "cmAssetName":"quiz_question_data.question.10000837",
+                 "answers":[
+                    {
+                       "number":1,
+                       "id":50012,
+                       "text":"a3",
+                       "isCorrect":false,
+                       "cmAssetName":"quiz_question_answer.answer.10000838"
+                    },
+                    {
+                       "number":2,
+                       "id":50013,
+                       "text":"a4",
+                       "isCorrect":true,
+                       "cmAssetName":"quiz_question_answer.answer.10000839"
+                    }
+                 ],
+                 "isSaved":true,
+                 "isNew":false
+              },
+              {
+                 "id":50012,
+                 "number":3,
+                 "text":"q3",
+                 "cmAssetName":"quiz_question_data.question.10000834",
+                 "answers":[
+                    {
+                       "number":1,
+                       "id":50010,
+                       "text":"a1",
+                       "isCorrect":true,
+                       "cmAssetName":"quiz_question_answer.answer.10000835"
+                    },
+                    {
+                       "number":2,
+                       "id":50011,
+                       "text":"a2",
+                       "isCorrect":false,
+                       "cmAssetName":"quiz_question_answer.answer.10000836"
+              }
+           ],
+                 "isSaved":true,
+                 "isNew":false
+              },
+              {
+                 "id":50013,
+                 "number":4,
+                 "text":"q4",
+                 "cmAssetName":"quiz_question_data.question.10000837",
+                 "answers":[
+                    {
+                       "number":1,
+                       "id":50012,
+                       "text":"a3",
+                       "isCorrect":false,
+                       "cmAssetName":"quiz_question_answer.answer.10000838"
+                    },
+                    {
+                       "number":2,
+                       "id":50013,
+                       "text":"a4",
+                       "isCorrect":true,
+                       "cmAssetName":"quiz_question_answer.answer.10000839"
+                    }
+                 ],
+                 "isSaved":true,
+                 "isNew":false
+              },
+              {
+                 "id":50014,
+                 "number":5,
+                 "text":"q5",
+                 "cmAssetName":"quiz_question_data.question.10000834",
+                 "answers":[
+                    {
+                       "number":1,
+                       "id":50010,
+                       "text":"a1",
+                       "isCorrect":true,
+                       "cmAssetName":"quiz_question_answer.answer.10000835"
+                    },
+                    {
+                       "number":2,
+                       "id":50011,
+                       "text":"a2",
+                       "isCorrect":false,
+                       "cmAssetName":"quiz_question_answer.answer.10000836"
+                    }
+                 ],
+                 "isSaved":true,
+                 "isNew":false
+              },
+              {
+                 "id":50015,
+                 "number":6,
+                 "text":"q6",
+                 "cmAssetName":"quiz_question_data.question.10000837",
+                 "answers":[
+                    {
+                       "number":1,
+                       "id":50012,
+                       "text":"a3",
+                       "isCorrect":false,
+                       "cmAssetName":"quiz_question_answer.answer.10000838"
+                    },
+                    {
+                       "number":2,
+                       "id":50013,
+                       "text":"a4",
+                       "isCorrect":true,
+                       "cmAssetName":"quiz_question_answer.answer.10000839"
+                    }
+                 ],
+                 "isSaved":true,
+                 "isNew":false
+              },
+              {
+                 "id":50016,
+                 "number":7,
+                 "text":"q7",
+                 "cmAssetName":"quiz_question_data.question.10000834",
+                 "answers":[
+                    {
+                       "number":1,
+                       "id":50010,
+                       "text":"a1",
+                       "isCorrect":true,
+                       "cmAssetName":"quiz_question_answer.answer.10000835"
+                    },
+                    {
+                       "number":2,
+                       "id":50011,
+                       "text":"a2",
+                       "isCorrect":false,
+                       "cmAssetName":"quiz_question_answer.answer.10000836"
+                    }
+                 ],
+                 "isSaved":true,
+                 "isNew":false
+              },
+              {
+                 "id":50017,
+                 "number":8,
+                 "text":"q8",
+                 "cmAssetName":"quiz_question_data.question.10000837",
+                 "answers":[
+                    {
+                       "number":1,
+                       "id":50012,
+                       "text":"a3",
+                       "isCorrect":false,
+                       "cmAssetName":"quiz_question_answer.answer.10000838"
+                    },
+                    {
+                       "number":2,
+                       "id":50013,
+                       "text":"a4",
+                       "isCorrect":true,
+                       "cmAssetName":"quiz_question_answer.answer.10000839"
+                    }
+                 ],
+                 "isSaved":true,
+                 "isNew":false
+              },
+              {
+                 "id":50018,
+                 "number":9,
+                 "text":"q9",
+                 "cmAssetName":"quiz_question_data.question.10000834",
+                 "answers":[
+                    {
+                       "number":1,
+                       "id":50010,
+                       "text":"a1",
+                       "isCorrect":true,
+                       "cmAssetName":"quiz_question_answer.answer.10000835"
+                    },
+                    {
+                       "number":2,
+                       "id":50011,
+                       "text":"a2",
+                       "isCorrect":false,
+                       "cmAssetName":"quiz_question_answer.answer.10000836"
+                    }
+                 ],
+                 "isSaved":true,
+                 "isNew":false
+              },
+              {
+                 "id":50019,
+                 "number":10,
+                 "text":"q10",
+                 "cmAssetName":"quiz_question_data.question.10000837",
+                 "answers":[
+                    {
+                       "number":1,
+                       "id":50012,
+                       "text":"a3",
+                       "isCorrect":false,
+                       "cmAssetName":"quiz_question_answer.answer.10000838"
+                    },
+                    {
+                       "number":2,
+                       "id":50013,
+                       "text":"a4",
+                       "isCorrect":true,
+                       "cmAssetName":"quiz_question_answer.answer.10000839"
+                    }
+                 ],
+                 "isSaved":true,
+                 "isNew":false
+              },
+              {
+                 "id":50020,
+                 "number":11,
+                 "text":"q11",
+                 "cmAssetName":"quiz_question_data.question.10000834",
+                 "answers":[
+                    {
+                       "number":1,
+                       "id":50010,
+                       "text":"a1",
+                       "isCorrect":true,
+                       "cmAssetName":"quiz_question_answer.answer.10000835"
+                    },
+                    {
+                       "number":2,
+                       "id":50011,
+                       "text":"a2",
+                       "isCorrect":false,
+                       "cmAssetName":"quiz_question_answer.answer.10000836"
+                    }
+                 ],
+                 "isSaved":true,
+                 "isNew":false
+              },
+              {
+                 "id":50021,
+                 "number":12,
+                 "text":"q12",
+                 "cmAssetName":"quiz_question_data.question.10000837",
+                 "answers":[
+                    {
+                       "number":1,
+                       "id":50012,
+                       "text":"a3",
+                       "isCorrect":false,
+                       "cmAssetName":"quiz_question_answer.answer.10000838"
+                    },
+                    {
+                       "number":2,
+                       "id":50013,
+                       "text":"a4",
+                       "isCorrect":true,
+                       "cmAssetName":"quiz_question_answer.answer.10000839"
+                    }
+                 ],
+                 "isSaved":true,
+                 "isNew":false
+              },
+              {
+                 "id":50022,
+                 "number":13,
+                 "text":"q13",
+                 "cmAssetName":"quiz_question_data.question.10000834",
+                 "answers":[
+                    {
+                       "number":1,
+                       "id":50010,
+                       "text":"a1",
+                       "isCorrect":true,
+                       "cmAssetName":"quiz_question_answer.answer.10000835"
+                    },
+                    {
+                       "number":2,
+                       "id":50011,
+                       "text":"a2",
+                       "isCorrect":false,
+                       "cmAssetName":"quiz_question_answer.answer.10000836"
+                    }
+                 ],
+                 "isSaved":true,
+                 "isNew":false
+              },
+              {
+                 "id":50023,
+                 "number":14,
+                 "text":"q14",
+                 "cmAssetName":"quiz_question_data.question.10000837",
+                 "answers":[
+                    {
+                       "number":1,
+                       "id":50012,
+                       "text":"a3",
+                       "isCorrect":false,
+                       "cmAssetName":"quiz_question_answer.answer.10000838"
+                    },
+                    {
+                       "number":2,
+                       "id":50013,
+                       "text":"a4",
+                       "isCorrect":true,
+                       "cmAssetName":"quiz_question_answer.answer.10000839"
+                    }
+                 ],
+                 "isSaved":true,
+                 "isNew":false
+              },
+              {
+                 "id":50024,
+                 "number":15,
+                 "text":"q15",
+                 "cmAssetName":"quiz_question_data.question.10000834",
+                 "answers":[
+                    {
+                       "number":1,
+                       "id":50010,
+                       "text":"a1",
+                       "isCorrect":true,
+                       "cmAssetName":"quiz_question_answer.answer.10000835"
+                    },
+                    {
+                       "number":2,
+                       "id":50011,
+                       "text":"a2",
+                       "isCorrect":false,
+                       "cmAssetName":"quiz_question_answer.answer.10000836"
+                    }
+                 ],
+                 "isSaved":true,
+                 "isNew":false
+              },
+              {
+                 "id":50025,
+                 "number":16,
+                 "text":"q16",
+                 "cmAssetName":"quiz_question_data.question.10000837",
+                 "answers":[
+                    {
+                       "number":1,
+                       "id":50012,
+                       "text":"a3",
+                       "isCorrect":false,
+                       "cmAssetName":"quiz_question_answer.answer.10000838"
+                    },
+                    {
+                       "number":2,
+                       "id":50013,
+                       "text":"a4",
+                       "isCorrect":true,
+                       "cmAssetName":"quiz_question_answer.answer.10000839"
+                    }
+                 ],
+                 "isSaved":true,
+                 "isNew":false
+              },
+              {
+                 "id":50026,
+                 "number":17,
+                 "text":"q17",
+                 "cmAssetName":"quiz_question_data.question.10000834",
+                 "answers":[
+                    {
+                       "number":1,
+                       "id":50010,
+                       "text":"a1",
+                       "isCorrect":true,
+                       "cmAssetName":"quiz_question_answer.answer.10000835"
+                    },
+                    {
+                       "number":2,
+                       "id":50011,
+                       "text":"a2",
+                       "isCorrect":false,
+                       "cmAssetName":"quiz_question_answer.answer.10000836"
+                    }
+                 ],
+                 "isSaved":true,
+                 "isNew":false
+              },
+              {
+                 "id":50027,
+                 "number":18,
+                 "text":"q18",
+                 "cmAssetName":"quiz_question_data.question.10000837",
+                 "answers":[
+                    {
+                       "number":1,
+                       "id":50012,
+                       "text":"a3",
+                       "isCorrect":false,
+                       "cmAssetName":"quiz_question_answer.answer.10000838"
+                    },
+                    {
+                       "number":2,
+                       "id":50013,
+                       "text":"a4",
+                       "isCorrect":true,
+                       "cmAssetName":"quiz_question_answer.answer.10000839"
+                    }
+                 ],
+                 "isSaved":true,
+                 "isNew":false
+              },
+              {
+                 "id":50028,
+                 "number":19,
+                 "text":"q19",
+                 "cmAssetName":"quiz_question_data.question.10000834",
+                 "answers":[
+                    {
+                       "number":1,
+                       "id":50010,
+                       "text":"a1",
+                       "isCorrect":true,
+                       "cmAssetName":"quiz_question_answer.answer.10000835"
+                    },
+                    {
+                       "number":2,
+                       "id":50011,
+                       "text":"a2",
+                       "isCorrect":false,
+                       "cmAssetName":"quiz_question_answer.answer.10000836"
+                    }
+                 ],
+                 "isSaved":true,
+                 "isNew":false
+              },
+              {
+                 "id":50029,
+                 "number":20,
+                 "text":"q20",
+                 "cmAssetName":"quiz_question_data.question.10000837",
+                 "answers":[
+                    {
+                       "number":1,
+                       "id":50012,
+                       "text":"a3",
+                       "isCorrect":false,
+                       "cmAssetName":"quiz_question_answer.answer.10000838"
+                    },
+                    {
+                       "number":2,
+                       "id":50013,
+                       "text":"a4",
+                       "isCorrect":true,
+                       "cmAssetName":"quiz_question_answer.answer.10000839"
+                    }
+                 ],
+                 "isSaved":true,
+                 "isNew":false
+              }
+           ],
+           "badges":[
+              {
+                 "id":2504,
+                 "type":"1 Year Anniversary",
+                 "name":"1 Year Anniversary",
+                 "howToEarnText":"1 Year Anniversary",
+                 "img":"http://localhost:7001/pentag/assets/img/badges/service1_sm.png"
+              },
+              {
+                 "id":2505,
+                 "type":"10 Year Anniversary",
+                 "name":"10 Year Anniversary",
+                 "howToEarnText":"10 Year Anniversary",
+                 "img":"http://localhost:7001/pentag/assets/img/badges/service10_sm.png"
+              }
+           ],
+           "certificates":[
+              {
+                 "id":2505,
+                 "name":"2nd Quiz Cert",
+                 "img":"http://localhost:7001/pentag/assets/img/certificates/certificate_blank2.gif",
+                 "imgLg":"http://localhost:7001/pentag/assets/img/certificates/certificate_blank2.gif"
+              },
+              {
+                 "id":2504,
+                 "name":"First Quiz Certificate",
+                 "img":"http://localhost:7001/pentag/assets/img/certificates/abstract-thumb.jpg",
+                 "imgLg":"http://localhost:7001/pentag/assets/img/certificates/abstract-full.jpg"
+              }
+           ]
+        };
+
+
+
+
+
+        // JAVA NOTE: set this to whatever is apropo
+        G5.props.URL_JSON_QUIZ_MATERIAL_UPLOAD = G5.props.URL_ROOT+'ajax/quizMaterialUpload.json';
+
+        // JAVA NOTE: set this to the URL to post the quiz data to
+        G5.props.URL_JSON_QUIZ_EDIT_SAVE = G5.props.URL_ROOT+'ajax/quizEditSave.json';
+
+        // JAVA NOTE: set this to a URL providing team member's for a particular owner
+        G5.props.URL_JSON_QUIZ_TEAM_MEMBERS = G5.props.URL_ROOT+'ajax/quizTeamMembers.json';
+
+        // JAVA NOTE: set this to the URL to check if a quiz name is unique/valid
+        G5.props.URL_JSON_QUIZ_CHECK_NAME = G5.props.URL_ROOT+'ajax/quizCheckName.json';
+
+        //attach the view to an existing DOM element
+        window.quizPageEditView = new QuizPageEditView({
+            el:$('#quizPageEditView'),
+            quizJson: quizJson, // quiz json to populate model
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Create/Edit a Quiz' // JAVA NOTE: 'Create a Quiz' OR 'Edit a Quiz'
+        });
+
+    });
+</script>

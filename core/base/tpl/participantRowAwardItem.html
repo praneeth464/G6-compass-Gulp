@@ -1,0 +1,124 @@
+
+<tr class="participant-item"
+        data-participant-cid="{{cid}}"
+        data-participant-id="{{id}}">
+
+    <td class="participant">
+        <input type="hidden" name="{{_paxName}}[{{autoIndex}}].userId" value="{{id}}" />
+        <input type="hidden" name="{{_paxName}}[{{autoIndex}}].firstName" value="{{firstName}}" />
+        <input type="hidden" name="{{_paxName}}[{{autoIndex}}].lastName" value="{{lastName}}" />
+        <input type="hidden" name="{{_paxName}}[{{autoIndex}}].countryCode" value="{{countryCode}}" />
+        <input type="hidden" name="{{_paxName}}[{{autoIndex}}].countryRatio" value="{{countryRatio}}" />
+        <input type="hidden" name="{{_paxName}}[{{autoIndex}}].countryName" value="{{countryName}}" />
+        <input type="hidden" name="{{_paxName}}[{{autoIndex}}].jobName" value="{{jobName}}" />
+        <input type="hidden" name="{{_paxName}}[{{autoIndex}}].departmentName" value="{{departmentName}}" />
+        <input type="hidden" name="{{_paxName}}[{{autoIndex}}].nodeId" value="{{_selNode.id}}" class="recipNodeIdInp" id="recipNodeIdInp{{id}}" />
+        <input type="hidden" name="{{_paxName}}[{{autoIndex}}].nodes" value="{{_nodesJsonString}}" />
+
+        <a class="participant-popover" href="#" data-participant-ids="[{{id}}]">
+            {{lastName}}, {{firstName}}
+            {{#if countryCode}}<img src="img/flags/{{countryCode}}.png" alt="{{countryCode}}" class="countryFlag" title="{{countryName}}" />{{/if}}
+        </a>
+
+        {{#if nodes}}
+        {{#isSingle nodes}}
+            {{! single node }}
+            <span class="singleRecipNode">{{../_selNode.name}}</span>
+
+        {{else}}
+            {{! multiple nodes, first node is default node}}
+            <a class="showRecipNodes" id="recipNodeNameDisp{{id}}" href="#">
+                <span class="limitedWidth">{{_selNode.name}}</span>
+                <span class="font-awesome">&#xf040;</span>
+            </a>
+
+            
+            <div class="changeRecipNodeTip" style="display:none">
+                <ul class="unstyled">
+                {{#nodes}}
+                    <li><a data-node-id="{{id}}" 
+                        data-input-id="recipNodeIdInp{{../id}}" 
+                        data-disp-id="recipNodeNameDisp{{../id}}" 
+                        data-recipient-id="{{../id}}"
+                        href="#">{{name}}</a></li>
+                {{/nodes}}
+                </ul>
+            </div>
+        {{/isSingle}}
+        {{/if}}
+
+        <div class="org">
+            {{orgName}} {{#if departmentName}}{{#if orgName}}&bull;{{/if}} {{departmentName}}{{/if}} {{#if jobName}}{{#if departmentName}}&bull;{{else}}{{#if orgName}}&bull;{{/if}}{{/if}} {{jobName}}{{/if}}
+        <div>
+
+    </td>
+
+    {{#if _isAwardRange}}
+    <td class="award">
+        <input type="text" 
+            class="input-small awardPointsInp" 
+            name="{{_paxName}}[{{autoIndex}}].awardQuantity" 
+            value="{{#if awardQuantity}}{{awardQuantity}}{{else}}0{{/if}}" 
+            data-msg-err-out-of-range="out of range"
+            autocomplete="off" />
+    </td>
+    {{/if}}
+
+    {{#if _isAwardFixed}}
+    <td class="award">
+        {{#if awardQuantity}}{{awardQuantity}}{{else}}{{_awardFixed}}{{/if}}
+    </td>
+    {{/if}}
+
+    {{#if _isAwardLevels}}
+    <td class="award">
+        <select name="{{_paxName}}[{{autoIndex}}].awardLevel" class="awardLevelSel">
+            {{#_awardLevels}}
+                <option value="{{this.id}}">
+                    {{this.name}}
+                    {{#if ../_hasBudget}}
+                        {{#if this.points}} (value {{this.points}}){{/if}}
+                    {{/if}}
+                </option>
+            {{/_awardLevels}}
+        </select>
+        <a class="viewAwardLevels" title="View Awards" href="#">
+            <i class="icon-search"></i>
+        </a>
+    </td>
+    {{/if}}
+
+    {{#if _isAwardCalc}}
+    <td class="award">
+        <input type="hidden" 
+            name="{{_paxName}}[{{autoIndex}}].awardQuantity" 
+            value="{{#if awardQuantity}}{{awardQuantity}}{{else}}0{{/if}}" />
+
+        <a class="calcLink btn btn-primary" title="Calculate Award" href="#">
+            {{#if awardQuantity}}
+                {{awardQuantity}}
+            {{else}}
+                Calculate Award
+            {{/if}}
+        </a>
+        {{#if _isAwardCalcLevels}}
+            <a class="viewAwardLevels" title="View Awards" href="#">
+                <i class="icon-search"></i>
+            </a>
+        {{/if}}
+    </td>
+    {{/if}}
+
+    {{#if _isShowCalcCol}}
+        <td class="calcDeduction">
+            ? <!-- dynamic -->
+        </td>
+    {{/if}}
+
+    {{#if _isShowRemCol}}
+    <td class="remove">
+        <a class="remParticipantControl" title="remove this participant"><i class="icon-remove"></i></a>
+    </td>
+    {{/if}}
+
+</tr><!-- /.participant-item -->

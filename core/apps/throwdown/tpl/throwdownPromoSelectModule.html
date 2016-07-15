@@ -1,0 +1,41 @@
+<!-- ======== THROWDOWN PROMO SELECT MODULE ======== -->
+
+<div class="module-liner">
+
+    <div class="td-promo-info">
+
+        <div class="td-promo-select-container">
+            <div class="td-promo-select-selected">
+                <div class="outer"><div>{{ promotion.0.promoName }}</div></div>
+            </div>
+            <div class="down-arrow-container">
+                <span class="down-arrow"></span>
+            </div>
+        </div>
+        <ul id="promotionSelect" class="td-promo-select-list">
+            {{#each promotion}}
+            <li class="td-promo-select-item" data-promoid="{{ promoId }}">{{ promoName }}</li>
+            {{/each}}
+        </ul>
+
+        <div class="td-promo-countdown">
+            <div class="clearfix">
+                <h4>ROUND TIME REMAINING</h4>
+                <a class="td-promo-info-link">Rules<a>
+            </div>
+            <ul class="clearfix">
+                <li class="d"><span class="cd-digit">00</span><hr/><hr/><span class="cd-label">days</span></li>
+                <li class="h"><span class="cd-digit">00</span><hr/><hr/><span class="cd-label">hours</span></li>
+                <li class="m"><span class="cd-digit">00</span><hr/><hr/><span class="cd-label">minutes</span></li>
+                <li class="s"><span class="cd-digit">00</span><hr/><hr/><span class="cd-label">seconds</span></li>
+            </ul>
+        </div>
+    </div> <!-- /.td-promo-info -->
+
+    <a href="{{ promotion.0.matchesUrl }}" class="td-view-matches">
+        <div class="title-icon-view">
+            <h3>VIEW MATCHES</h3>
+        </div>
+    </a>
+
+</div> <!-- /.module-liner -->

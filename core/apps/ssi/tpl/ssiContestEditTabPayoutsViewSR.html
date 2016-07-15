@@ -1,0 +1,199 @@
+<h4 class="defaultName"></h4>
+
+<!-- JAVA: i18n these -->
+<div id="_msgPoints" style="display:none">points</div>
+<div id="_msgUnits" style="display:none"></div>
+<div id="_msgLockPageBottom" style="display:none">
+    Please select an Activity<br>
+    and Payout type first.
+</div>
+
+
+<div class="control-group activityDescriptionWrapper">
+    <label class="control-label" for="activityDescriptionInput">
+        Activity Description
+        <i class="icon-info-sign pageView_help"
+            data-help-content="Describe the specific activity that the participants will be measured against."></i>
+    </label>
+    <div class="controls">
+        <input type="text" id="activityDescriptionInput autoBind" class="activityDescriptionInput autoBind" data-model-key="activityDescription" maxlength="50">
+    </div>
+</div>
+
+
+<h5>Measure Activity In</h5>
+<div class="control-group">
+    <label class="radio" for="measureActivityCurrency">
+        <input type="radio" class="measureTypeRadio autoBind" id="measureActivityCurrency" name="measureType" value="currency" data-model-key="measureType">
+        Currency
+    </label>
+    <div class="currencyTypeWrapper" style="display:none">
+        <div>Currency Type</div>
+        <select name="currencyTypeSelect" class="autoBind" id="currencyTypeSelect" data-model-key="currencyTypeId">
+            <!--subTpl.currencyTypeOptions=
+            {{#currencyTypes}}
+                <option value="{{id}}">{{name}}</option>
+            {{/currencyTypes}}
+            subTpl-->
+        </select>
+    </div>
+    <label class="radio" for="measureActivityUnits">
+        <input type="radio" class="measureTypeRadio autoBind" id="measureActivityUnits" name="measureType" value="units" data-model-key="measureType">
+        Units/Number
+    </label>
+</div>
+
+<hr class="section">
+
+<h5>Include Minimum Qualifier?</h5>
+<div class="control-group">
+    <label class="radio" for="minQualYes">
+        <input type="radio" class="minQualRadio autoBind" id="minQualYes" name="includeMinimumQualifier" value="yes" data-model-key="includeMinimumQualifier">
+        Yes
+    </label>
+    <div class="minimumQualifierWrap">
+        <span class="currSymb act"></span>
+        <input type="text" class="minimumQualifierInput input-mini autoBind" data-model-key="minimumQualifier">
+        <span class="currDisp act"></span>
+    </div>
+
+    <label class="radio" for="minQualNo">
+        <input type="radio" class="minQualRadio autoBind" id="minQualNo" name="includeMinimumQualifier" value="no" data-model-key="includeMinimumQualifier">
+        No
+    </label>
+</div>
+
+<hr class="section">
+
+<h5>Payout Type</h5>
+<div class="control-group">
+    <label class="radio" for="payoutTypePoints">
+        <input type="radio" class="payoutTypeRadio autoBind" id="payoutTypePoints" name="payoutType" value="points" data-model-key="payoutType">
+        Points
+    </label>
+    <label class="radio" for="payoutTypeOther">
+        <input type="radio" class="payoutTypeRadio autoBind" id="payoutTypeOther" name="payoutType" value="other" data-model-key="payoutType">
+        Other
+        <i class="icon-info-sign pageView_help"
+            data-help-content="[explanation of what 'other' is]"></i>
+    </label>
+    <div class="otherPayoutTypeWrapper" style="display:none">
+        <div>Value of Award In</div>
+        <select name="otherPayoutTypeSelect" class="autoBind" id="otherPayoutTypeSelect" data-model-key="otherPayoutTypeId">
+            <!-- dyn using subTpl.currencyTypeOptions -->
+        </select>
+    </div>
+</div>
+
+<div class="billToRoot"></div>
+
+<hr class="section">
+
+<div class="control-group orderWrapper">
+    <h5>
+        Sort Order
+        <i class="icon-info-sign pageView_help"
+            data-help-content="[explanation of what 'sort order' is]"></i>
+    </h5>
+    <label class="radio" for="stackRankingOrderDesc">
+        <input type="radio" class="stackRankingOrderRadio autoBind" id="stackRankingOrderDesc" name="stackRankingOrder" value="desc" data-model-key="stackRankingOrder">
+        high to low
+    </label>
+    <label class="radio" for="stackRankingOrderAsc">
+        <input type="radio" class="stackRankingOrderRadio autoBind" id="stackRankingOrderAsc" name="stackRankingOrder" value="asc" data-model-key="stackRankingOrder">
+        low to high
+    </label>
+</div>
+
+<hr class="section">
+
+<h5>Ranks and Payouts</h5>
+<p>Stack Ranking contests have the potential for ties which may cause the budget to be exceeded.</p>
+<div class="ranksWrapper well container-splitter">
+    <table class="table ranksTable">
+        <thead>
+            <tr>
+                <th class="rankNum">Rank</th>
+                <th class="showOnOther">
+                    Payout Description
+                    <i class="icon-info-sign pageView_help"
+                        data-help-content="Describe the specific award a recipient will achieve for reaching rank payout."></i>
+                </th>
+                <th>
+                    <span class="hideOnOther" style="display: none">Payout Amount</span>
+                    <span class="showOnOther" style="display: none">
+                        Value
+                        <i class="icon-info-sign pageView_help"
+                            data-help-content="Monetary value of the award. This will not be displayed to the participants."></i>
+                    </span>
+                </th>
+                <th class="badgeTableHeader">Badge</th>
+                <th class="remove">Remove</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr class="msgNoRanks">
+                <td colspan="5"><div class="alert">No ranks added.</div></td>
+            </tr>
+            <!--subTpl.rankRow=
+                <tr class="rankRow rankRow{{id}}" data-model-id="{{id}}">
+                    <td class="rankNum">{{!altered by DOM manip, not tpl}}</td>
+                    <td class="showOnOther">
+                        <input data-model-id="{{id}}"
+                            data-model-key="payoutDescription"
+                            type="text"
+                            class="payoutDescription rankRowAutoBind"
+                            value="{{payoutDescription}}"
+                            maxlength="50" />
+                    </td>
+                    <td>
+                        <input data-model-id="{{id}}"
+                            data-model-key="payoutAmount"
+                            type="text"
+                            class="payoutAmount rankRowAutoBind input-mini"
+                            value="{{payoutAmount}}" />
+                    </td>
+                    {{#hasBadges}}
+                    <td><div class="badgeView" data-msg-no-badge="No badge">{{!dynamic}}</div></td>
+                    {{/hasBadges}}
+                    <td class="remove"><i class="icon-remove removeControl" data-model-id="{{id}}"></i></td>
+                </tr>
+            subTpl-->
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="5">
+                    <button class="btn btn-primary addRankBtn">
+                        <i class="icon-plus-sign"></i> Add rank
+                    </button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+
+<div class="maxesSection">
+    <div class="maxPayoutSection">
+        <div class="maxPayoutWrapper">
+            Maximum Payout:
+            <span class="currSymb pay"></span><span class="calcTotals currLabel" data-model-key="maxPayout">--</span>
+            <span class="currDisp pay"></span>
+        </div>
+    </div>
+</div>
+
+<hr class="section">
+
+<div>
+    <label class="control-label" for="contestGoal">
+        Your Contest Goal
+        <i class="icon-info-sign pageView_help"
+            data-help-content="[explanation of what 'contest goal' is]"></i>
+    </label>
+    <div class="controls">
+        <input type="text" id="contestGoal" class="contestGoalInput autoBind" data-model-key="contestGoal">
+    </div>
+</div>

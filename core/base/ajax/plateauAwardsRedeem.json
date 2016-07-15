@@ -1,0 +1,37 @@
+{
+    "promotions": [
+        {
+            "name": "2015 Fall DIY Promotion",
+            "_comment": "Set endDate for the countdown date here in milliseconds or as a date string e.g. Thu March 01 2014 or March 01, 2014 16:05:00",
+            "endDate": "October 16, 2015 6:00:00",
+            "catalogUrl": "www.google.com"
+
+        },
+        {
+            "name": "2015 Fun in the Sun Promotion",
+            "_comment": "Set endDate for the countdown date here in milliseconds or as a date string e.g. Thu March 01 2014 or March 01, 2014 16:05:00",
+            "endDate": "October 19, 2015 4:00:00",
+            "catalogUrl": "www.google.com"
+
+        },
+        {
+            "name": "4th and Down Promotion",
+            "_comment": "Set endDate for the countdown date here in milliseconds or as a date string e.g. Thu March 01 2014 or March 01, 2014 16:05:00",
+            "endDate": "November 20, 2015",
+            "catalogUrl": "www.google.com"
+        },
+        {
+            "name": "3rd Quarter Sales Promotion",
+            "_comment": "Set endDate for the countdown date here in milliseconds or as a date string e.g. Thu March 01 2014 or March 01, 2014 16:05:00",
+            "endDate": "December 17, 2015",
+            "catalogUrl": "www.google.com"
+        },
+        {
+            "name": "Some Awesome Promotion",
+            "_comment": "Set endDate for the countdown date here in milliseconds or as a date string e.g. Thu March 01 2014 or March 01, 2014 16:05:00",
+            "endDate": "December 22, 2015",
+            "catalogUrl": "www.google.com"
+        }
+
+    ]
+}

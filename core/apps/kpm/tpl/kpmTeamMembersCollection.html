@@ -1,0 +1,80 @@
+<?php sleep(1); ?>
+
+<div class="pagination pagination-right paginationControls"></div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th class="member string sortable {{#eq meta.sortedOn "member"}}sorted {{meta.sortedBy}}{{else}}asc{{/eq}}" data-sort-on="member" data-sort-by="{{#eq meta.sortedOn "member"}}{{#eq meta.sortedBy "asc"}}desc{{else}}asc{{/eq}}{{else}}asc{{/eq}}"><a href="#">{{#eq membersType "user"}}Team Members{{else}}Teams{{/eq}} <i class="icon-sort-up"></i><i class="icon-sort-down"></i></a></th>
+            <th class="score actual">Actual</th>
+            <th class="recSent   actual number sortable {{#eq meta.sortedOn "recSent-actual"  }}sorted {{meta.sortedBy}}{{else}}asc{{/eq}}" data-sort-on="recSent-actual"   data-sort-by="{{#eq meta.sortedOn "recSent-actual"  }}{{#eq meta.sortedBy "asc"}}desc{{else}}asc{{/eq}}{{else}}asc{{/eq}}"><a href="#">Actual     <i class="icon-sort-up"></i><i class="icon-sort-down"></i></a></th>
+            <th class="recSent   target number sortable {{#eq meta.sortedOn "recSent-target"  }}sorted {{meta.sortedBy}}{{else}}asc{{/eq}}" data-sort-on="recSent-target"   data-sort-by="{{#eq meta.sortedOn "recSent-target"  }}{{#eq meta.sortedBy "asc"}}desc{{else}}asc{{/eq}}{{else}}asc{{/eq}}"><a href="#">Target     <i class="icon-sort-up"></i><i class="icon-sort-down"></i></a></th>
+            <th class="recSent   diff   number sortable {{#eq meta.sortedOn "recSent-diff"    }}sorted {{meta.sortedBy}}{{else}}asc{{/eq}}" data-sort-on="recSent-diff"     data-sort-by="{{#eq meta.sortedOn "recSent-diff"    }}{{#eq meta.sortedBy "asc"}}desc{{else}}asc{{/eq}}{{else}}asc{{/eq}}"><a href="#">Difference <i class="icon-sort-up"></i><i class="icon-sort-down"></i></a></th>
+            <th class="recRecv   actual number sortable {{#eq meta.sortedOn "recRecv-actual"  }}sorted {{meta.sortedBy}}{{else}}asc{{/eq}}" data-sort-on="recRecv-actual"   data-sort-by="{{#eq meta.sortedOn "recRecv-actual"  }}{{#eq meta.sortedBy "asc"}}desc{{else}}asc{{/eq}}{{else}}asc{{/eq}}"><a href="#">Actual     <i class="icon-sort-up"></i><i class="icon-sort-down"></i></a></th>
+            <th class="recRecv   target number sortable {{#eq meta.sortedOn "recRecv-target"  }}sorted {{meta.sortedBy}}{{else}}asc{{/eq}}" data-sort-on="recRecv-target"   data-sort-by="{{#eq meta.sortedOn "recRecv-target"  }}{{#eq meta.sortedBy "asc"}}desc{{else}}asc{{/eq}}{{else}}asc{{/eq}}"><a href="#">Target     <i class="icon-sort-up"></i><i class="icon-sort-down"></i></a></th>
+            <th class="recRecv   diff   number sortable {{#eq meta.sortedOn "recRecv-diff"    }}sorted {{meta.sortedBy}}{{else}}asc{{/eq}}" data-sort-on="recRecv-diff"     data-sort-by="{{#eq meta.sortedOn "recRecv-diff"    }}{{#eq meta.sortedBy "asc"}}desc{{else}}asc{{/eq}}{{else}}asc{{/eq}}"><a href="#">Difference <i class="icon-sort-up"></i><i class="icon-sort-down"></i></a></th>
+            <th class="teamRec   actual number sortable {{#eq meta.sortedOn "teamRec-actual"  }}sorted {{meta.sortedBy}}{{else}}asc{{/eq}}" data-sort-on="teamRec-actual"   data-sort-by="{{#eq meta.sortedOn "teamRec-actual"  }}{{#eq meta.sortedBy "asc"}}desc{{else}}asc{{/eq}}{{else}}asc{{/eq}}"><a href="#">Actual     <i class="icon-sort-up"></i><i class="icon-sort-down"></i></a></th>
+            <th class="teamRec   target number sortable {{#eq meta.sortedOn "teamRec-target"  }}sorted {{meta.sortedBy}}{{else}}asc{{/eq}}" data-sort-on="teamRec-target"   data-sort-by="{{#eq meta.sortedOn "teamRec-target"  }}{{#eq meta.sortedBy "asc"}}desc{{else}}asc{{/eq}}{{else}}asc{{/eq}}"><a href="#">Target     <i class="icon-sort-up"></i><i class="icon-sort-down"></i></a></th>
+            <th class="teamRec   diff   number sortable {{#eq meta.sortedOn "teamRec-diff"    }}sorted {{meta.sortedBy}}{{else}}asc{{/eq}}" data-sort-on="teamRec-diff"     data-sort-by="{{#eq meta.sortedOn "teamRec-diff"    }}{{#eq meta.sortedBy "asc"}}desc{{else}}asc{{/eq}}{{else}}asc{{/eq}}"><a href="#">Difference <i class="icon-sort-up"></i><i class="icon-sort-down"></i></a></th>
+            <th class="teamRecBy actual number sortable {{#eq meta.sortedOn "teamRecBy-actual"}}sorted {{meta.sortedBy}}{{else}}asc{{/eq}}" data-sort-on="teamRecBy-actual" data-sort-by="{{#eq meta.sortedOn "teamRecBy-actual"}}{{#eq meta.sortedBy "asc"}}desc{{else}}asc{{/eq}}{{else}}asc{{/eq}}"><a href="#">Actual     <i class="icon-sort-up"></i><i class="icon-sort-down"></i></a></th>
+            <th class="teamRecBy target number sortable {{#eq meta.sortedOn "teamRecBy-target"}}sorted {{meta.sortedBy}}{{else}}asc{{/eq}}" data-sort-on="teamRecBy-target" data-sort-by="{{#eq meta.sortedOn "teamRecBy-target"}}{{#eq meta.sortedBy "asc"}}desc{{else}}asc{{/eq}}{{else}}asc{{/eq}}"><a href="#">Target     <i class="icon-sort-up"></i><i class="icon-sort-down"></i></a></th>
+            <th class="teamRecBy diff   number sortable {{#eq meta.sortedOn "teamRecBy-diff"  }}sorted {{meta.sortedBy}}{{else}}asc{{/eq}}" data-sort-on="teamRecBy-diff"   data-sort-by="{{#eq meta.sortedOn "teamRecBy-diff"  }}{{#eq meta.sortedBy "asc"}}desc{{else}}asc{{/eq}}{{else}}asc{{/eq}}"><a href="#">Difference <i class="icon-sort-up"></i><i class="icon-sort-down"></i></a></th>
+            <th class="visits    actual number sortable {{#eq meta.sortedOn "visits-actual"   }}sorted {{meta.sortedBy}}{{else}}asc{{/eq}}" data-sort-on="visits-actual"    data-sort-by="{{#eq meta.sortedOn "visits-actual"   }}{{#eq meta.sortedBy "asc"}}desc{{else}}asc{{/eq}}{{else}}asc{{/eq}}"><a href="#">Actual     <i class="icon-sort-up"></i><i class="icon-sort-down"></i></a></th>
+            <th class="visits    target number sortable {{#eq meta.sortedOn "visits-target"   }}sorted {{meta.sortedBy}}{{else}}asc{{/eq}}" data-sort-on="visits-target"    data-sort-by="{{#eq meta.sortedOn "visits-target"   }}{{#eq meta.sortedBy "asc"}}desc{{else}}asc{{/eq}}{{else}}asc{{/eq}}"><a href="#">Target     <i class="icon-sort-up"></i><i class="icon-sort-down"></i></a></th>
+            <th class="visits    diff   number sortable {{#eq meta.sortedOn "visits-diff"     }}sorted {{meta.sortedBy}}{{else}}asc{{/eq}}" data-sort-on="visits-diff"      data-sort-by="{{#eq meta.sortedOn "visits-diff"     }}{{#eq meta.sortedBy "asc"}}desc{{else}}asc{{/eq}}{{else}}asc{{/eq}}"><a href="#">Difference <i class="icon-sort-up"></i><i class="icon-sort-down"></i></a></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {{#if model}}
+        <tr class="team-model">
+            <td class="member string">
+                <img src="http://placehold.it/48x48" class="avatar" alt="{{model.nodeName}}">
+                <span class="nodeName">{{model.nodeName}}</span>
+            </td>
+            {{#each model.data}}
+                {{#eq type "score"}}
+                <td class="{{type}} actual {{ontrack}}">{{actual}}</td>
+                {{else}}
+                <td class="{{type}} actual number {{ontrack}}">{{actual}}</td>
+                <td class="{{type}} target number">{{target}}</td>
+                <td class="{{type}} diff   number {{ontrack}}">{{diff}}</td>
+                {{/eq}}
+            {{/each}}
+        </tr>
+        {{/if}}
+
+        {{#each members}}
+        <tr>
+            <td class="member string">
+                {{#eq ../membersType "team"}}
+                    <img src="http://placehold.it/48x48" class="avatar" alt="{{nodeName}}">
+                    <a class="drill nodeName" href="layout.html?tplPath=../apps/kpm/tpl/&amp;tpl=kpmPageTeamDashboard.html&amp;nodeId={{nodeId}}">{{nodeName}}</a>
+                    <span class="owner">{{nodeOwnerName}}</span>
+                {{/eq}}
+
+                {{#eq ../membersType "user"}}
+                    {{#if avatarUrl}}
+                    <img src="{{avatarUrl}}" class="avatar" alt="userName">
+                    {{/if}}
+                    <a class="drill userName" href="#&amp;userId={{userId}}">{{userName}}</a>
+                    {{#if unrecognized}}
+                    <a class="unrecognized" href="#"><i class="icon-info-sign"></i></a>
+                    {{/if}}
+                {{/eq}}
+            </td>
+            {{#each data}}
+                {{#eq type "score"}}
+                <td class="{{type}} actual {{ontrack}}">{{actual}}</td>
+                {{else}}
+                <td class="{{type}} actual number {{ontrack}}">{{actual}}</td>
+                <td class="{{type}} target number">{{target}}</td>
+                <td class="{{type}} diff   number {{ontrack}}">{{diff}}</td>
+                {{/eq}}
+            {{/each}}
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<div class="pagination pagination-right paginationControls"></div>

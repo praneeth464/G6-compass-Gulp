@@ -1,0 +1,29 @@
+// Partial-specific variables
+// =========================
+$autoModals_headerTextFontFamily: $titleFont !default;
+$autoModals_headerTextFontWeight: normal !default;
+$autoModals_headerTextColor: $linkColor !default;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+// Recognition Response autoModal
+.autoModal.recognitionResponseModal,
+.quiz .recognitionResponseModal {
+    h1 {
+        font-family: $autoModals_headerTextFontFamily;
+        font-weight: $autoModals_headerTextFontWeight;
+        color: $autoModals_headerTextColor;
+    }
+    .modal-body {
+        .badge-group {
+            margin-bottom: 0;
+        }
+        .badge-item {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,5 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond $1 !^(router\.php|.+/$|^$)
+RewriteRule ^(.*)$ ./router.php
+</IfModule>

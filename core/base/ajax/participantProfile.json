@@ -1,0 +1,42 @@
+{
+	"messages":[],
+
+	"participant":{
+		"id":9876,
+		"firstName":"Mildred",
+		"lastName":"Mustafa",
+		"points":"",
+		"numMessages":"",
+		"avatarUrl":"../../skins/default/img/avatar-blank-288.png",
+		"alert": "",
+		"delegators": [
+			{
+				"id":9876,
+				"firstName":"Mildred",
+				"lastName":"Mustafa",
+				"delegatorUrl":"/actAsDelegate.do?id=9876"
+			},
+
+			{
+				"id":9875,
+				"firstName":"Byoern",
+				"lastName":"Mukluk",
+				"delegatorUrl":"/actAsDelegate.do?id=9875"
+			},
+
+			{
+				"id":9874,
+				"firstName":"Zora",
+				"lastName":"Annolife",
+				"delegatorUrl":"/actAsDelegate.do?id=9874"
+			}
+		],
+
+		"isDelegate": false,
+		"delegateFirstName": "Dillan",
+		"delegateLastName":"Dilettante",
+
+		"largeAudience" : false
+
+	}
+}

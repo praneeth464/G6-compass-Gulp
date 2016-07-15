@@ -1,0 +1,209 @@
+// App-specific variables
+// =========================
+$tip_bgColor: $g5ModuleBgColor !default;
+$tip_gradType: $g5ModuleGradType !default;
+$tip_gradMeta: $g5ModuleGradMeta !default;
+$tip_gradStops: $g5ModuleGradStops !default;
+
+$tip_iconColor: $g5ModuleIconColor !default;
+$tip_titleColor: $g5ModuleTitleColor !default;
+$tip_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$tip_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$tip_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$tip_cycleDotWidth: false !default;
+$tip_cycleDotBkg: false !default;
+$tip_cycleDotBorder: false !default;
+$tip_cycleDotBkgHover: false !default;
+$tip_cycleDotBorderHover: false !default;
+$tip_cycleDotBkgActive: false !default;
+$tip_cycleDotBorderActive: false !default;
+$tip_cycleDotBorderRadius: false !default;
+
+$tip_textFontFamily: $bodyFont !default;
+$tip_textColor: $white !default;
+$tip_labelFontWeight: bold !default;
+$tip_labelFontColor: $tip_textColor !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.tip {
+
+} /* /.tip */
+
+/* ----- MODULE STYLES ----- */
+.module.tip {
+
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $tip_bgColor,
+            $gradType: $tip_gradType,
+            $gradMeta: $tip_gradMeta,
+            $gradStops: $tip_gradStops
+        );
+    }
+
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $tip_iconColor,
+            $titleColor: $tip_titleColor,
+            $titleFontFamily: $tip_titleFontFamily
+        );
+
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            @include g5HomeAppIconBoxReflect(-56px);
+        }
+    }
+
+    @include module_titleIconViewFontSizesWeights($tip_titleFontSizes, $tip_titleFontWeights);
+
+    @include module_cycleDots(
+        $cycleDotWidth: $tip_cycleDotWidth,
+        $cycleDotBkg: $tip_cycleDotBkg,
+        $cycleDotBorder: $tip_cycleDotBorder,
+        $cycleDotBkgHover: $tip_cycleDotBkgHover,
+        $cycleDotBorderHover: $tip_cycleDotBorderHover,
+        $cycleDotBkgActive: $tip_cycleDotBkgActive,
+        $cycleDotBorderActive: $tip_cycleDotBorderActive,
+        $cycleDotBorderRadius: $tip_cycleDotBorderRadius
+    );
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        .visitAppBtn {
+            display: none;
+        }
+        .wide-view {
+            color: $tip_textColor;
+            position: absolute;
+            z-index: 1;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding-right: 0;
+            padding-left: 0;
+
+            #tipContainer {
+                padding-bottom: $g5ModulePadding / 2;
+            }
+
+            h3 {
+                margin: 0;
+                padding: 0 $g5ModulePadding;
+                font-family: $tip_titleFontFamily;
+                @if $tip_labelFontWeight != bold {
+                    font-weight: $tip_labelFontWeight;
+                }
+                @if $tip_labelFontColor != $tip_textColor {
+                    color: $tip_labelFontColor;
+                }
+            }
+
+            #tipText {
+                position: relative;
+                height: 100%;
+                padding: 0;
+                @if $tip_textFontFamily != $bodyFont {
+                    font-family: $tip_textFontFamily;
+                }
+            }
+
+            .aTip {
+                display: none;
+                position: absolute;
+                top: 0;
+                right: $g5ModulePadding / 2;
+                left: 0;
+                height: 100%;
+                overflow: auto;
+                // ie7/ie8-specific
+                background-color: transparent !important;
+            }
+            p {
+                padding: 0 ($g5ModulePadding / 2) 0 $g5ModulePadding;
+            }
+
+            .activeTip {
+                display: inline;
+            }
+
+        }
+        .title-icon-view {
+            h3 {
+                display: none;
+            }
+        }
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2 {
+        .title-icon-view {
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                top: 33%;
+                @include g5HomeAppIconBoxReflect(-141px);
+            }
+        }
+    }
+
+    &.grid-dimension-2x2 {
+        .wide-view {
+            #tipText {
+                height: ($baseLineHeight/$baseFontSize) * 12px * 6; // show 6 lines of text
+
+                p {
+                    font-size: 12px;
+                    line-height: ($baseLineHeight/$baseFontSize);
+                }
+            }
+        }
+    }
+
+    &.grid-dimension-4x2 {
+        .wide-view {
+            #tipText {
+                height: $baseLineHeight * 6; // show 6 lines of text
+            }
+        }
+    }
+
+    &.grid-dimension-4x4 {
+        .wide-view {
+            #tipText {
+                height: $baseLineHeight * 10; // show 10 lines of text
+            }
+        }
+        .title-icon-view {
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                @include g5HomeAppIconBoxReflect(-274px);
+            }
+        }
+    }
+
+} /* /.module.tip */
+
+/* ----- PAGE STYLES ----- */
+.page.tip {
+
+} /* /.page.tip */
+
+//ie-specific CSS
+// .lt-ie9 .module.tip.grid-dimension-2x2 {
+//     .module-liner .wide-view {
+//         #tipText p {
+//             height: 105px;
+//         }
+//         .cycleLegend {
+//             bottom: 15px;
+//         }
+//     }
+// }

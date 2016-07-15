@@ -1,0 +1,73 @@
+// App-specific variables
+// =========================
+$shopMerchandise_bgColor: $g5ModuleBgColor !default;
+$shopMerchandise_gradType: $g5ModuleGradType !default;
+$shopMerchandise_gradMeta: $g5ModuleGradMeta !default;
+$shopMerchandise_gradStops: $g5ModuleGradStops !default;
+
+$shopMerchandise_iconColor: $g5ModuleIconColor !default;
+$shopMerchandise_titleColor: $g5ModuleTitleColor !default;
+$shopMerchandise_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$shopMerchandise_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$shopMerchandise_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$shopMerchandise_textColor: false !default;
+$shopMerchandise_h3FontFamily: false !default;
+$shopMerchandise_pFontFamily: false !default;
+$shopMerchandise_visitAppBtnColor: false !default;
+$shopMerchandise_visitAppBtnBorderColor: false !default;
+$shopMerchandise_imgUrlPath: false !default;
+$shopMerchandise_imgUrl2x2: "clickThru/shopMerchandise_2x2.jpg" !default;
+$shopMerchandise_imgUrl4x2: "clickThru/shopMerchandise_4x2.jpg" !default;
+$shopMerchandise_imgUrl4x4: "clickThru/shopMerchandise_4x4.jpg" !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- MODULE STYLES ----- */
+.module.clickThru {
+
+    &.shopMerchandise {
+
+        .module-liner {
+            @include module_moduleLinerBackground(
+                $bgColor: $shopMerchandise_bgColor,
+                $gradType: $shopMerchandise_gradType,
+                $gradMeta: $shopMerchandise_gradMeta,
+                $gradStops: $shopMerchandise_gradStops
+            );
+        }
+
+        @include clickThruSkinBkgViews(
+            $textColor: $shopMerchandise_textColor,
+            $h3FontFamily: $shopMerchandise_h3FontFamily,
+            $pFontFamily: $shopMerchandise_pFontFamily,
+            $visitAppBtnColor: $shopMerchandise_visitAppBtnColor,
+            $visitAppBtnBorderColor: $shopMerchandise_visitAppBtnBorderColor,
+            $imgUrlPath: $shopMerchandise_imgUrlPath,
+            $imgUrl2x2: $shopMerchandise_imgUrl2x2,
+            $imgUrl4x2: $shopMerchandise_imgUrl4x2,
+            $imgUrl4x4: $shopMerchandise_imgUrl4x4
+        );
+
+        .title-icon-view {
+            @include module_titleIconView(
+                $iconColor: $shopMerchandise_iconColor,
+                $titleColor: $shopMerchandise_titleColor,
+                $titleFontFamily: $shopMerchandise_titleFontFamily
+            );
+
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                @include g5HomeAppIconBoxReflect($adjust : -46px);
+            }
+        }
+
+        @include module_titleIconViewFontSizesWeights($shopMerchandise_titleFontSizes, $shopMerchandise_titleFontWeights);
+
+    } /* /.shopMerchandise */
+
+} /* /.module.clickThru */

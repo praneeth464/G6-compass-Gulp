@@ -1,0 +1,360 @@
+<!-- ======== COMMUNICATIONS NEWS EDIT/CREATE PAGE ======== -->
+
+<div id="communicationsNewsEditView" class="page-content">
+    <div class="row">
+        <div class="span12">
+            <form class="sendForm pullBottomUp" method="post" action="layout.html?tplPath=apps/communications/tpl/&tpl=communicationsManageNews.html">
+
+                <!--JAVA NOTE: Display error text in the below list when page submit returns an error and set the hidden input value to true. -->
+                <div id="communicationsErrorBlock" class="alert alert-block alert-error" style="display:none">
+                    <h4>The following errors occurred</h4>
+                    <ul>
+                        <li>This is an example of a specific error message</li>
+                    </ul>
+                    <input type="hidden" id="serverReturnedErrored" value="false">
+                </div>
+
+                <input type="hidden" name="method" id="sendFormMethod" />
+
+                <fieldset class="formSection newsInfo">
+                    <h3>News</h3>
+
+                    <div class="control-group validateme"
+                        data-validate-fail-msgs='{"nonempty":"You must select a start date."}'
+                        data-validate-flags='nonempty' >
+                        <label for="newsStartDate" class="control-label">Start Date</label>
+                        <div class="controls">
+                            <!--
+                                NOTE: JSP set data-date-format AND data-date-startdate
+                            -->
+                             <span class="input-append datepickerTrigger"
+                                    data-date-format="mm/dd/yyyy"
+                                    data-date-language="en_US"
+                                    data-date-startdate="08/14/2014"
+                                    data-date-todaydate="08/14/2014"
+                                    data-date-autoclose="true">
+                                <input class="date datepickerInp"
+                                        type="text"
+                                        id="newsStartDate"
+                                        name="newsStartDate"
+                                        placeholder=""
+                                        readonly="readonly">
+                                <button class="btn datepickerBtn" type="button"><i class="icon-calendar"></i></button>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="control-group validateme"
+                        data-validate-fail-msgs='{"nonempty":"You must select an end date."}'
+                        data-validate-flags='nonempty' >
+                        <label for="newsEndDate" class="control-label">End Date</label>
+                        <div class="controls">
+                            <!--
+                                NOTE: JSP set data-date-format AND data-date-endDate
+                            -->
+                            <span class="input-append datepickerTrigger"
+                                    data-date-format="mm/dd/yyyy"
+                                    data-date-language="en_US"
+                                    data-date-startdate="08/14/2014"
+                                    data-date-todaydate="08/14/2014"
+                                    data-date-autoclose="true">
+                                <input class="date datepickerInp"
+                                        type="text"
+                                        id="newsEndDate"
+                                        name="newsEndDate"
+                                        placeholder=""
+                                        readonly="readonly">
+                                <button class="btn datepickerBtn" type="button"><i class="icon-calendar"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="formSection newsSelectAudience">
+                    <h3>Select Audience</h3>
+
+                    <div class="selectAudienceTableWrapper">
+                        <!-- Dynamic from selectAudienceParticipants in base-->
+                    </div>
+                </fieldset>
+
+                <fieldset class="formSection newsAddContentSection">
+                    <h3>Add News</h3>
+
+                    <div class="newsAddedContent">
+                        <table class="table table-bordered table-striped" id="newsTable">
+                            <thead>
+                                <tr>
+                                    <th class="defaultHeader">Default</th>
+                                    <th>Language</th>
+                                    <th>Headline</th>
+                                    <th>Image</th>
+                                    <th>Story</th>
+                                    <th class="editColumn">Edit</th>
+                                    <th class="remove">Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody data-msg-empty="No news stories saved"></tbody>
+                        </table>
+                    </div>
+
+                    <script id="newsTableTpl" type="text/x-handlebars-template">
+                        <tr data-newsId="{{id}}" data-indexId="{{index}}" {{#if isNew}} class="newNews" {{/if}}>
+                            <td class="defaultColumn">
+                                <div class="control-group validateme"
+                                    data-validate-fail-msgs="You must select a default news story."
+                                    data-validate-flags='nonempty'>
+                                    <div class="controls">
+                                        <input type="radio" name="defaultLanguage" value="{{language}}" {{#if isDefaultLang}}checked{{/if}} {{#if systemLocale}}class="systemDefault"{{/if}}/>
+                                    </div>
+                                </div>
+
+                            </td>
+                            <td class="languageColumn" data-language="{{language}}">
+                                <input type="hidden" name="newsContent[{{index}}].id" value="{{id}}"/>
+                                <input type="hidden" name="newsContent[{{index}}].language" value="{{language}}"/>
+                                <input type="hidden" name="newsContent[{{index}}].headline" value="{{headline}}"/>
+                                <input type="hidden" name="newsContent[{{index}}].imageId" value="{{imageId}}"/>
+                                <input type="hidden" name="newsContent[{{index}}].imageSize162x162" value="{{imageSize162x162}}"/>
+                                <input type="hidden" name="newsContent[{{index}}].imageSize2x2" value="{{imageSize2x2}}"/>
+                                <input type="hidden" name="newsContent[{{index}}].imageSize4x2" value="{{imageSize4x2}}"/>
+                                <input type="hidden" name="newsContent[{{index}}].imageSize4x4" value="{{imageSize4x4}}"/>
+                                <input type="hidden" name="newsContent[{{index}}].story" value="{{story}}"/>
+
+                                <span data-language="{{language}}">{{languageDisplay}}</span>
+                            </td>
+                            <td class="headlineColumn">{{headline}}</td>
+                            <td class="imageColumn">
+                                <img data-id="{{imageId}}" src="{{imageSize2x2}}" alt="" />
+                            </td>
+                            <td class="storyColumn">{{{story}}}</td>
+                            <td class="editColumn">
+                                <a href="#">
+                                    <i class="icon-pencil"></i>
+                                </a>
+                            </td>
+                            <td class="remove">
+                                <a class="remParticipantControl {{#if systemLocale}}disabled{{/if}}" title="remove this news story" {{#if systemLocale}}disabled{{/if}}><i class="icon-remove-circle"></i></a>
+                            </td>
+                        </tr>
+                    </script>
+
+                    <!-- remove news story confirmation dialog -->
+                    <div class="newsRemoveConfirmDialog" style="display:none">
+                        <p>
+                            <i class="icon-question-sign"></i>
+                            <b>Are you sure?</b>
+                        </p>
+                        <p class="tc">
+                            <button type="button" id="newsRemoveDialogConfirm" class="btn btn-primary">Yes</button>
+                            <button type="button" id="newsRemoveDialogCancel" class="btn">No</button>
+                        </p>
+                    </div>
+
+                    <div class="newsAddNewContent">
+                        <input type="hidden" name="newsId" id="newsId" />
+
+                        <!--Java Note: change the value of below input to set default language -->
+                        <input type="hidden" id="userDefaultLanguage" name="userDefaultLanguage" value="en_US" />
+
+                        <div class="control-group validateme"
+                            data-validate-fail-msgs='{"nonempty":"You must select a language."}'
+                            data-validate-flags='nonempty'>
+                            <label class="control-label" for="chooseLanguage">
+                                Audience Language
+                            </label>
+                            <div class="controls">
+                                <select id="chooseLanguage" name="chooseLanguage">
+                                    <option value="en_US" name="U.S. English">U.S. English</option>
+                                    <option value="sp" name="Spanish">Spanish</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="control-group validateme"
+                            data-validate-fail-msgs='{"nonempty":"You must enter a headline."}'
+                            data-validate-flags='nonempty'>
+                            <label class="control-label" for="newsHeadline">
+                                Headline
+                            </label>
+                            <div class="controls">
+                                <input type="text" name="newsHeadline" id="newsHeadline" />
+                            </div>
+                        </div>
+
+                        <!-- Image selector -->
+                        <div class="formSection chooseImagesSection" ></div>
+
+                        <script id="chooseImagesTpl" type="text/x-handlebars-template">
+                            <div class="imageLargeWrapper">
+                                <p>Upload your own image or select from gallery</p>
+                            </div>
+
+                            <div class="thumbnailWrapper validateme" data-validate-flags='nonempty' data-validate-fail-msgs='{"nonempty":"You must select an image."}'>
+                                <input type="checkbox" name="selectedImage" class="selectedImageInput"/>
+
+                                <div id="thumbnailPager">
+                                    <a class="btn" data-pager="prev" title="previous"><i class="icon-chevron-up"></i></a>
+                                    <a class="btn" data-pager="next" title="next"><i class="icon-chevron-down"></i></a>
+
+                                    <!--subTpl.eCardThumbnailPagerMeta=
+                                    <span id="thumbnailPagerMeta"><span class="range">{{startNumber}}&#8211;{{endNumber}}</span> <i class="of">of</i> <span class="total">{{total}}</span>
+                                    </span>subTpl-->
+                                </div>
+
+                                <div id="thumbnailContainer">
+                                    <ul id="thumbnailSelect">
+                                        <li class="uploadContainer" data-id="">
+                                            <img class="imageThumbnail hide" alt="uploadedImage" src="{{imageSize2x2}}"/>
+                                            <i class="icon-upload"></i>
+                                            <span class="upload-text">Upload Image</span>
+                                        </li>
+                                        {{#each newsImages.images}}
+                                            <li data-id="{{id}}">
+                                                <img class="imageThumbnail" alt="{{name}}" src="{{imageSize2x2}}"/>
+                                            </li>
+                                        {{/each}}
+                                    </ul>
+                                </div>
+                            </div>
+                        </script>
+
+                        <div class="messageSection validateme" id="newsMessage" data-validate-flags='nonempty,maxlength' data-validate-max-length="2000" data-validate-fail-msgs='{"nonempty":"You must enter comments.","maxlength":"Your comments are limited to 2000 characters"}'>
+                            <label for="comments">Comments</label>
+                            <textarea name="comments" id="comments" data-max-chars="2000" class="richtext"></textarea>
+                        </div><!-- /#newsMessage -->
+
+                        <button type="button" class="btn btn-primary saveContent">Save News</button>
+                        <button type="button" class="btn cancelContent">Cancel</button>
+                    </div><!--/.newsAddNewContent-->
+
+                    <div class="addLanguageContent">
+                        <a href="#" class="disabled">Add content in another language</a>
+                    </div>
+                </fieldset>
+
+                <fieldset class="formSection form-actions pullBottomUp">
+                    <button class="newsSubmit btn btn-primary" type="submit" disabled>
+                        Submit
+                    </button>
+                    <!-- JAVA NOTE: Set the data url to the page the user will return to-->
+                    <button class="newsCancel btn" data-url="layout.html">
+                        Cancel
+                    </button>
+                </fieldset>
+
+                <div class="saveCancelConfirm" style="display:none">
+                    <p>
+                        <i class="icon-question-sign"></i>
+                        <b>Are you sure? All changes will be lost.</b>
+                    </p>
+                    <p class="tc">
+                        <button type="submit" id="saveCancelDialogConfirm" class="btn btn-primary">Yes</button>
+                        <button type="submit" id="saveCancelDialogCancel" class="btn">No</button>
+                    </p>
+                </div>
+
+                <div class="newsCancelConfirm" style="display:none">
+                    <p>
+                        <i class="icon-question-sign"></i>
+                        <b>Are you sure? All changes will be lost.</b>
+                    </p>
+                    <p class="tc">
+                        <button type="submit" id="newsCancelDialogConfirm" class="btn btn-primary">Yes</button>
+                        <button type="submit" id="newsCancelDialogCancel" class="btn">No</button>
+                    </p>
+                </div>
+            </form>
+
+            <!-- Upload Modals -->
+            <div class="modal-stack hide fade" id="uploadImageModal" data-y-offset="adjust">
+                <div class="modal-header">
+                    <h3>Upload Images</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="span12">
+                            <p>News story images can display in four different sizes. Upload your largest image here and the other sizes will be generated automatically. You can then review the generated images and individually replace any you don't like.</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="imageUploadContainer span12">
+                            <section class="imageUploadFormContainer">
+                                <form class="newsUploadImage imageUploadForm" enctype="multipart/form-data">
+                                    <p>
+                                        <input id="image" type="file" name="image" />
+                                        <label for="image"></label>
+                                        <button id="imageUploadSubmit" class="btn btn-primary" type="submit" style="display:none">Upload</button>
+                                    </p>
+
+                                    <p>
+                                        <span class="uploadRequirements">Image must be at least 628x628 pixels.</span>
+                                        <span class="uploadRequirements">Supported file types: .gif, .jpg, .jpeg, .x-png, .png, .pjpeg</span>
+                                    </p>
+                                </form>
+                            </section>
+
+                            <section class="imageUploadPreviewContainer" style="display:none">
+                            </section>
+
+                            <div id="uploadReplacementImage" style="display:none;">
+                                <form class="uploadReplacementImageForm">
+                                    <input class="" type="file" name="replacementImage" id="replacementImage">
+                                    <input type="hidden" name="size" id="replacementImageSize" value="">
+                                    <span class="uploadRequirements">Supported file types: .gif, .jpg, .jpeg, .x-png, .png, .pjpeg</span>
+                                    <p class="alert alert-info hide no-fileinput">Sorry! Your device does not support file uploads. Please use a desktop browser to complete this upload.</p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="uploadCancelConfirm" style="display:none">
+                        <p>
+                            <i class="icon-question-sign"></i>
+                            <b>Are you sure? All changes will be lost.</b>
+                        </p>
+                        <p class="tc">
+                            <button type="submit" id="uploadCancelDialogConfirm" class="btn btn-primary">Yes</button>
+                            <button type="submit" id="uploadCancelDialogCancel" class="btn">No</button>
+                        </p>
+                    </div>
+                </div><!-- /.modal-body -->
+
+                <div class="modal-footer">
+                    <button class="newsImageSave imageUploadSave btn btn-primary" type="submit">Save
+                    </button>
+                    <button class="newsImageCancel imageUploadCancel btn">Cancel
+                    </button>
+                </div>
+            </div><!--/.uploadImageModal-->
+        </div>
+    </div>
+</div>
+
+<script type="text/template" id="uploadPreviewTpl">
+<?php include('communicationsImageUploadPreview.html'); ?>
+</script>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+$(document).ready(function() {
+
+    //attach the view to an existing DOM element
+    var cbev = new CommunicationsNewsEditView({
+        el:$('#communicationsNewsEditView'),
+        pageNav : {
+            back : {
+                text : 'Back',
+                url : 'layout.html'
+            },
+            home : {
+                text : 'Home',
+                url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+            }
+        },
+        pageTitle : 'Communications'
+    });
+
+});
+</script>

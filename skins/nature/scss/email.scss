@@ -1,0 +1,67 @@
+@import "base/variables";
+
+// @font-face fonts
+@import "fonts";
+
+// Partial-specific variables (uncomment to use)
+// =========================
+// $email_bodyBgColor: ;
+
+// $email_baseFontFamily: ;
+// $email_baseFontSize: ;
+// $email_baseLineHeight: ;
+// $email_baseFontColor: ;
+$email_headlineFontFamily: $titleFont;
+// $email_headlineFontSize: ;
+// $email_headlineLineHeight: ;
+$email_headlineFontColor: #768A53;
+// $email_linkColor: ;
+
+$email_frameBgColor: #f1faef;
+// $email_frameBorderWidth: ;
+// $email_frameBorderColor: ;
+
+// $email_contentBgColor: ;
+$email_contentBorderWidth: 0;
+// $email_contentBorderColor: ;
+
+// $email_contentCommentFontSize: ;
+// $email_contentCommentFontColor: ;
+// $email_cardBadgeBgColor: ;
+
+// these should be copied over from partials/progress-bars (more or less)
+// $email_progressBackBorderRadius: ;
+// $email_progressBackBgColor: ;
+// $email_progressBackGradMeta: ;
+// $email_progressBackGradStops: ;
+$email_progressBarBgColor: #d1b554;
+// $email_progressBarGradMeta: ;
+// $email_progressBarGradStops: ;
+
+$email_footerBgColor: $g5ModuleBgColor;
+// $email_footerBorderWidth: ;
+// $email_footerBorderColor: ;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "../../../core/base/scss/email";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// Partial-specific code for this skin
+// ==================================================
+
+
+
+#columnTable {
+    background-image: url('../../../skins/nature/img/email_bkg.jpg');
+    background-position: 0 0;
+    background-repeat: no-repeat;
+}

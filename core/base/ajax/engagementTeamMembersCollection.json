@@ -1,0 +1,96 @@
+<?php sleep(1); ?>
+{
+    "messages" : [],
+
+    "_comment" : "the root object should 'individuals' or 'teams'",
+    "<?php echo( isset($_POST['membersType']) && $_POST['membersType'] == 'team' ? 'teams' : 'individuals' ); ?>" : {
+        "meta" : {
+            "count" :     <?php echo( isset($_POST['count']) ? $_POST['count'] : 1 ); ?>,
+            "perPage" :   <?php echo( isset($_POST['perPage']) ? $_POST['perPage'] : 1 ); ?>,
+            "page" :      <?php echo( isset($_POST['page']) ? $_POST['page'] : 1 ); ?>,
+            "sortedOn" : "<?php echo( isset($_POST['sortedOn']) ? $_POST['sortedOn'] : 'member' ); ?>",
+            "sortedBy" : "<?php echo( isset($_POST['sortedBy']) ? $_POST['sortedBy'] : 'asc' ); ?>"
+        },
+
+        "members" : [
+            {
+                "userId" : 9876,
+                "userName" : "Bob Participant",
+                "avatarUrl" : "url/to/user/avatar.png",
+                "_comment" : "if the user has not been recognized recently, set this flag to true",
+                "unrecognized" : true,
+                "data" : [
+                    {
+                        "type" : "score",
+                        "target" : 75,
+                        "actual" : 85
+                    },
+                    {
+                        "type" : "recSent",
+                        "target" : 10,
+                        "actual" : 8
+                    },
+                    {
+                        "type" : "recRecv",
+                        "target" : 10,
+                        "actual" : 8
+                    },
+                    {
+                        "type" : "paxRecTo",
+                        "target" : 10,
+                        "actual" : 6
+                    },
+                    {
+                        "type" : "paxRecBy",
+                        "target" : 10,
+                        "actual" : 6
+                    },
+                    {
+                        "type" : "visits",
+                        "target" : 20,
+                        "actual" : 11
+                    }
+                ]
+            },
+            {
+                "userId" : 9876,
+                "userName" : "Jane Participant",
+                "avatarUrl" : "url/to/user/avatar.png",
+                "_comment" : "if the user has not been recognized recently, set this flag to true",
+                "unrecognized" : false,
+                "data" : [
+                    {
+                        "type" : "score",
+                        "target" : 75,
+                        "actual" : 50
+                    },
+                    {
+                        "type" : "recSent",
+                        "target" : 10,
+                        "actual" : 12
+                    },
+                    {
+                        "type" : "recRecv",
+                        "target" : 10,
+                        "actual" : 18
+                    },
+                    {
+                        "type" : "paxRecTo",
+                        "target" : 10,
+                        "actual" : 16
+                    },
+                    {
+                        "type" : "paxRecBy",
+                        "target" : 10,
+                        "actual" : 16
+                    },
+                    {
+                        "type" : "visits",
+                        "target" : 20,
+                        "actual" : 21
+                    }
+                ]
+            }
+        ]
+    }
+}

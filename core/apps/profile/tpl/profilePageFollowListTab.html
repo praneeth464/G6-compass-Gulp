@@ -1,0 +1,78 @@
+<!-- ======== PUBLIC RECOGNITION PAGE FOLLOW LIST ======== -->
+<h2>Follow List</h2>
+
+<div id="profilePageFollowListView">
+
+    <!-- <div class="row">
+        <div class="span12">
+            <h2>I'm Following:</h2>
+        </div>
+    </div> -->
+
+    <!--
+        Participant search view Element
+        - data-search-types: defines the dropdowns and autocompletes
+        - data-search-params: defines extra static parameters to send with autocomp and participant requests
+        - data-autocomp-delay: how long to wait after key entry to query server
+        - data-autocomp-min-chars: min num chars before querying server
+        - data-autocomp-url: override autocomplete json provider (maybe needed)
+        - data-autocomp-msg-instruction: inital text of autocomplete dropdown
+        - data-search-url: override search json provider (usually needed)
+        - data-select-url: send selected participant id to server (optional)
+        - data-deselect-url: send deselected participant id to server (optional)
+        - data-select-mode: 'single' OR 'multiple' select behavior
+        - data-msg-select-txt: link to select (optional)
+        - data-msg-selected-txt: text to show something is selected (optional)
+    -->
+    <div class="" id="participantSearchView" style="display:none"
+        data-search-types='[{"id":"lastName","name":"Last Name"},{"id":"firstName","name":"First Name"},{"id":"location","name":"Location"},{"id":"jobTitle","name":"Job Title"},{"id":"department","name":"Department"}]'
+        data-search-params='{"extraKey":"extraValue","anotherKey":"some value"}'
+        data-autocomp-delay="500"
+        data-autocomp-min-chars="2"
+        data-autocomp-msg-instruction="Type at least 2 characters."
+        data-autocomp-url="ajax/participantSearch_autocomp_firstName.json"
+        data-search-url="ajax/participantSearchResults_follow.json"
+        data-select-url="ajax/publicRecognitionFollowees_add.json"
+        data-deselect-url="ajax/publicRecognitionFollowees_remove.json"
+        data-select-mode="multiple"
+        data-msg-select-txt="follow"
+        data-msg-selected-txt="<i class='icon icon-g5-following'></i>"
+        data-visibility-controls="showAndHide"
+        data-msg-show="Add to Follow List"
+        data-msg-hide="Done Adding">
+        <!-- added by view -->
+    </div>
+
+
+
+    <div class="well container-splitter participantCollectionViewWrapper pullBottomUp">
+        <h3>I'm following:</h3>
+
+        <table>
+            <thead>
+                <tr class="participant-item">
+                    <th class="participant">Participant</th>
+                    <th class="remove">Remove</th>
+                </tr>
+            </thead>
+            <!--
+                data-msg-empty: message to display if no followees
+                data-hide-on-empty: hide/show the view (using the *ViewWrapper) when empty/not-empty
+            -->
+            <tbody id="followeesView"
+                class="participantCollectionView"
+                data-msg-empty="You are not following anyone."
+                data-hide-on-empty="false">
+
+                <!-- dynamic -->
+
+            </tbody>
+        </table>
+        <!--
+            used to keep track of the number of participants, req. a 'participantCount' class
+            name is flexible
+         -->
+        <input type="hidden" name="paxCount" value="0" class="participantCount" />
+    </div><!-- /.participantCollectionViewWrapper -->
+
+</div><!-- /#profilePageFollowListView -->

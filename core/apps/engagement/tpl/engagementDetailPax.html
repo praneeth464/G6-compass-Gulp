@@ -1,0 +1,47 @@
+<?php //sleep(1); ?>
+
+<!--
+    each pax recognition to/by item has special CM keys containing the full translated string for the various permutations of the "XXX have/has recognized [by] ## people" text
+    the keys' output will have a {0} placeholder where the number of people is inserted
+    this allows the translations to have plain text and the number in any order
+    we embed this CM output as a tplVariable in our engagementDetailPax Handlebars template
+    we also have a subTpl embedded in our engagementDetailPax Handlebars template
+    we pass the various values from the JSON to the subTpls, then replace the {0} with the rendered output
+    the final string is assigned to recognizedCountFormatted in the JSON to be passed to the main template
+-->
+<!--subTpl.recognizedCount= {{recognizedCount}} subTpl-->
+
+<!--tplVariable.recognizedCount={
+    "paxRecTo" : "You have recognized {0} people",
+    "paxRecBy" : "You have been recognized by {0} people",
+    "paxRecToSingle" : "You have recognized {0} person",
+    "paxRecBySingle" : "You have been recognized by {0} person"
+} tplVariable-->
+
+{{#eq mode "team"}}
+    <div class="topper">
+
+        {{#eq type "paxRecTo"}}
+        <h4 class="paxRecTo subhead">Top Ten Teams Recognized</h4>
+        {{else}}
+        <h4 class="paxRecBy subhead">Top Ten Teams Sending Recognitions</h4>
+        {{/eq}}
+
+        {{#if detailUrl}}
+        {{#if count}}
+        <a class="detailUrl btn btn-primary" {{#eq type "paxRecTo"}}data-title="Team Recognized"{{else}}data-title="Team Recognized By"{{/eq}} href="layout.html?tplPath=apps/engagement/tpl/&amp;tpl=engagementPageRecognized.html&amp;mode={{mode}}&amp;type={{type}}&amp;userId={{userId}}&amp;nodeId={{nodeId}}&amp;modelUrl={{detailUrl}}&amp;recognizedCountFormatted={{count}}&amp;timeframeType={{timeframeType}}&amp;timeframeMonthId={{timeframeMonthId}}&amp;timeframeYear={{timeframeYear}}">
+            View Details
+        </a>
+        {{/if}}
+        {{/if}}
+    </div>
+
+    {{#if chartUrl}}<div class="chartContainer" id="chartContainer_{{type}}"></div>{{/if}}
+
+{{else}}
+
+    <h4 class="{{#eq type "paxRecTo"}}paxRecTo{{else}}paxRecBy{{/eq}} subhead">{{recognizedCountFormatted}}</h4>
+
+    <div class="engagementRecognizedModelView"></div>
+
+{{/eq}}

@@ -1,0 +1,744 @@
+<!-- publicRecognitionItem TPL - top level TPL for pubRec -->
+
+
+{{#if isDetail}}
+
+    <!-- DETAILS FOR DETAIL PAGE -->
+
+    <div class="row">
+
+        <div class="span8">
+            <h2>{{promotionName}}</h2>
+        </div>
+
+        <div class="span4">
+            <ul class="share-print">
+                {{#if isMine}}
+                    {{#if shareLinks}}
+                    <li>Share</li>
+                    {{#shareLinks}}
+                        <li>
+                            <a target="_blank"
+                                class="social-icon {{this.nameId}} icon-size-16"
+                                href="{{this.url}}"></a>
+                        </li>
+                    {{/shareLinks}}
+                    {{/if}}
+                {{/if}}
+                <li class="print-wrap">
+                    <a href="#" class="printBtn">
+                        <i class="icon-print"></i>
+                        Print
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    {{#if isCumulative}}
+    <div class="row">
+        <div class="span12">
+
+            <div class="row">
+                {{#if teamName}}
+                    <div class="span2">
+                        <p><strong>Team Name:</strong></p>
+                    </div>
+                    <div class="span6">
+                        <p>{{teamName}}</p>
+                    </div>
+                {{/if}}
+            </div>
+            <div class="row">
+                <div class="span2">
+                    <p><strong>To:</strong></p>
+                </div>
+
+                <div class="recipientsContainer span6">
+                    {{#recipients}}
+                    <p class="recipientWrap">
+                        <a class="profile-popover" href="#" data-participant-ids="[{{this.id}}]">
+                            <img alt="{{this.firstName}} {{this.lastName}}" class="recognition-detail-avatar avatar" src="{{this.avatarUrl}}">
+                                {{this.lastName}},
+                            {{this.firstName}}</a>{{#if countryCode}} <img class="flag" src="img/flags/{{countryCode}}.png" title="{{countryName}}" />{{/if}}{{#if orgName}}, {{this.orgName}}{{#if department}}, {{this.department}}{{/if}}{{/if}}{{#if title}}, {{this.title}}{{/if}}
+                            {{#if this.viewCertificateUrl}}<a href="{{this.viewCertificateUrl}}" target="_blank">View Certificate</a>{{/if}}
+
+                    </p>
+                    {{/recipients}}
+
+                    {{#if recipientIdsHidden.length}}
+                    <p class="showHiddenWrap">
+                        and
+                        <a class="showHidden" href="#">
+                            <span class="likeCount">{{recipientIdsHidden.length}}</span> others
+                        </a>
+                    </p>
+
+                    <div class="hiddenRecipients"></div>
+                    {{/if}}
+
+                    <hr>
+
+                </div>
+            </div>
+
+            {{#if awardAmount}}
+            <div class="row">
+                <div class="span2">
+                    <p><strong>Award Amount:</strong></p>
+                </div>
+                <div class="span6">
+                    <p>{{awardAmount}}</p>
+                </div>
+            </div>
+            {{/if}}
+
+            {{#ueq promotionType "nomination"}}
+            {{! if additional types don't have copies, nest #ueq here}}
+            <div class="row">
+                <div class="span2">
+                    <p><strong>Copies:</strong></p>
+                </div>
+               {{#if copies}}
+                <div class="span6">
+                    {{#copies}}
+                        <p>{{this}}</p>
+                    {{/copies}}
+                </div>
+                {{else}}
+                <div class="span6">
+                    None selected.
+                </div>
+                {{/if}}
+            </div>
+            {{/ueq}}
+
+            {{#each recognizer}}
+            <div class="row cumulativeRecognizerWrap">
+                {{#if eCard}}
+                    <div class="span4 eCard">
+                        {{#eq eCard.type "image"}}
+                            <img alt="{{eCard.name}}" src="{{eCard.imgUrl}}">
+                        {{/eq}}
+                        {{#eq eCard.type "video"}}
+                        <div class="recognitionVideoWrapper">
+                                <video id="recognitionVideo" class="ecard video-js vjs-default-skin" controls preload="auto" data-setup="{}">
+                                <source src="{{eCard.videoSrc}}" type="{{eCard.videoFileType}}">
+                            </video>
+                        </div>
+                        {{/eq}}
+                    </div>
+                {{/if}}
+                <div class="span8">
+                    <div class="row">
+                        <div class="span2">
+                            <p><strong>From:</strong></p>
+                        </div>
+                        <div class="span6">
+                            <p>
+                                <a class="profile-popover" href="#" data-participant-ids="[{{id}}]">
+                                    <img alt="{{firstName}} {{lastName}}" class="recognition-detail-avatar avatar" src="{{avatarUrl}}">
+                                    {{lastName}},
+                                {{firstName}}</a>{{#if countryCode}} <img class="flag" src="img/flags/{{countryCode}}.png" title="{{countryName}}" />{{/if}}{{#if orgName}}, {{orgName}}{{/if}}{{#if department}}, {{department}}{{/if}}{{#if title}}, {{title}}{{/if}}
+                            </p>
+                        </div>
+                    </div>
+
+                    {{#if date}}
+                    <div class="row">
+                        <div class="span2">
+                            <p><strong>Date:</strong></p>
+                        </div>
+                        <div class="span6">
+                            <p>{{date}}</p>
+                        </div>
+                    </div>
+                    {{/if}}
+
+                    {{#if comment}}
+                    <div class="row">
+                        <div class="span2">
+                            <p><strong>Comments:</strong></p>
+                        </div>
+                        <div class="span6 detail-comment">
+                            <!-- do no wrap comment in P tag, it will have its own -->
+                            {{{comment}}}
+                        </div>
+                    </div>
+                    {{/if}}
+
+                    {{#if behavior}}
+                    <div class="row">
+                        <div class="span2">
+                            <p><strong>Behavior:</strong></p>
+                        </div>
+                        <div class="span6">
+                            <p><img class="behaviorBadge" src="{{badgeUrl}}" alt="{{behavior}}"/>{{behavior}}</p>
+                        </div>
+                    </div>
+                    {{/if}}
+
+                    {{#extraFields}}
+                    <div class="row">
+                        <div class="span2">
+                            <p><strong>{{this.name}}:</strong></p>
+                        </div>
+                        <div class="span6">
+                            <p>{{this.value}}</p>
+                        </div>
+                    </div>
+                    {{/extraFields}}
+
+
+                </div><!--/.span8-->
+            </div>
+            {{/each}}
+
+        </div><!--/.span12-->
+    </div><!--/.row-->
+
+    {{else}}
+
+    <div class="row">
+
+        {{#recognizerShown}}
+            {{#eq this.eCard.type "image"}}
+            <div class="span4 ecard-span">
+                <img alt="{{this.eCard.name}}" src="{{this.eCard.imgUrl}}">
+            </div>
+            {{/eq}}
+            {{#eq this.eCard.type "video"}}
+            <div class="recognitionVideoWrapper">
+                    <video id="recognitionVideo" class="span4 ecard-span video-js vjs-default-skin" controls preload="auto" data-setup="{}">
+                    <source src="{{this.eCard.videoSrc}}" type="{{this.eCard.videoFileType}}">
+                </video>
+            </div>
+            {{/eq}}
+        {{/recognizerShown}}
+
+        <div class="span8">
+
+            <div class="row">
+                {{#if teamName}}
+                    <div class="span2">
+                        <p><strong>Team Name:</strong></p>
+                    </div>
+                    <div class="span6">
+                        <p>{{teamName}}</p>
+                    </div>
+                {{/if}}
+
+                <div class="span2">
+                    <p><strong>To:</strong></p>
+                </div>
+
+                <div class="span6 recipientsContainer">
+                    {{#recipients}}
+                    <p class="recipientWrap">
+                        <a class="profile-popover" href="#" data-participant-ids="[{{this.id}}]">
+                            <img alt="{{this.firstName}} {{this.lastName}}" class="recognition-detail-avatar avatar" src="{{this.avatarUrl}}">
+                            {{this.lastName}},
+                        {{this.firstName}}</a>{{#if countryCode}} <img class="flag" src="img/flags/{{countryCode}}.png" title="{{countryName}}" />{{/if}}{{#if orgName}}, {{this.orgName}}{{#if department}}, {{this.department}}{{/if}}{{/if}}{{#if title}}, {{this.title}}{{/if}}
+                        {{#if this.viewCertificateUrl}}<a href="{{this.viewCertificateUrl}}" target="_blank">View Certificate</a>{{/if}}
+
+                    </p>
+                    {{/recipients}}
+
+                    {{#if recipientIdsHidden.length}}
+                    <p class="showHiddenWrap">
+                        and
+                        <a class="showHidden" href="#">
+                            <span class="likeCount">{{recipientIdsHidden.length}}</span> others
+                        </a>
+                    </p>
+
+                    <div class="hiddenRecipients"></div>
+                    {{/if}}
+
+                    <hr>
+
+                </div>
+            </div>
+
+            {{#recognizerShown}}
+
+            <div class="row">
+                <div class="span2">
+                    <p><strong>From:</strong></p>
+                </div>
+                <div class="span6">
+                    <p>
+                        <a class="profile-popover" href="#" data-participant-ids="[{{this.id}}]">
+                            <img alt="{{this.firstName}} {{this.lastName}}" class="recognition-detail-avatar avatar" src="{{this.avatarUrl}}">
+                            {{this.lastName}},
+                        {{this.firstName}}</a>{{#if this.countryCode}} <img class="flag" src="img/flags/{{this.countryCode}}.png" title="{{this.countryName}}" />{{/if}}{{#if this.orgName}}, {{this.orgName}}{{/if}}{{#if this.department}}, {{this.department}}{{/if}}{{#if this.title}}, {{this.title}}{{/if}}
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="span2">
+                    <p><strong>Date:</strong></p>
+                </div>
+                <div class="span6">
+                    <p>{{this.date}}</p>
+                </div>
+            </div>
+            {{/recognizerShown}}
+
+
+            {{#if awardAmount}}
+            <div class="row">
+                <div class="span2">
+                    <p><strong>Award Amount:</strong></p>
+                </div>
+                <div class="span6">
+                    <p>{{awardAmount}}</p>
+                </div>
+            </div>
+            {{/if}}
+
+
+            {{#recognizerShown}}
+            {{#if behavior}}
+            <div class="row">
+                <div class="span2">
+                    <p><strong>Behavior:</strong></p>
+                </div>
+                <div class="span6">
+
+                    <p><img class="behaviorBadge" src="{{this.badgeUrl}}" alt="{{this.behavior}}"/>{{this.behavior}}</p>
+                </div>
+            </div>
+            {{/if}}
+            {{/recognizerShown}}
+
+
+            {{#ueq promotionType "nomination"}}
+            {{! if additional types don't have copies, nest #ueq here}}
+            <div class="row">
+                <div class="span2">
+                    <p><strong>Copies:</strong></p>
+                </div>
+               {{#if copies}}
+                <div class="span6">
+                    {{#copies}}
+                        <p>{{this}}</p>
+                    {{/copies}}
+                </div>
+                {{else}}
+                <div class="span6">
+                    None selected.
+                </div>
+                {{/if}}
+            </div>
+            {{/ueq}}
+
+            {{#recognizerShown}}
+            {{#extraFields}}
+            <div class="row">
+                <div class="span2">
+                    <p><strong>{{this.name}}:</strong></p>
+                </div>
+                <div class="span6">
+                    <p>{{this.value}}</p>
+                </div>
+            </div>
+            {{/extraFields}}
+            {{/recognizerShown}}
+
+
+            {{#recognizerShown}}
+            <div class="row">
+                <div class="span2">
+                    <p><strong>Comments:</strong></p>
+                </div>
+                <div class="span6 detail-comment">
+                    <!-- do no wrap comment in P tag, it will have its own -->
+                    {{{this.comment}}}
+                </div>
+            </div>
+            {{/recognizerShown}}
+
+            {{#if purlUrl}}
+            <div class="row">
+                <div class="span8">
+                    <a class="btn" href="{{purlUrl}}">View PURL</a>
+                </div>
+            </div>
+            {{/if}}
+
+        </div><!-- /.span8 -->
+    </div><!-- /.row -->
+    {{/if}}
+
+    {{#if isPublicClaim}}
+        <div class="row">
+            <div class="span12 recognition-container">
+                <ul class="recognition-props">
+
+                    {{#if isMine}}
+                        <li>
+                            {{#if isHidden}}
+                            <span class="text-error">This recognition is hidden from public view.</span>
+                            {{else}}
+                            <a href="#" class="hidePublicRecognitionLnk">Hide</a>
+                            <span class="publicRecognitionHiddenLinkText text-error" style="display:none;">
+                                This recognition is hidden from public view.
+                            </span>
+                            {{/if}}
+                            &bull;
+                        </li>
+                        {{#if allowTranslate}}
+                            <li><a href="#" class="translatePubRec">Translate</a> &bull; </li>
+                        {{/if}}
+                    {{else}}
+
+                        {{#if isHidden}}
+                            <span class="text-error">This recognition is hidden from public view.</span>
+                            &bull;
+                        {{else}}
+                            {{#if isLiked}}
+                                <li><a href="#" class="likePubRecBtn liked" data-like="Like" data-unlike="Unlike">Unlike</a> &bull; </li>
+                            {{else}}
+                                <li><a href="#" class="likePubRecBtn" data-like="Like" data-unlike="Unlike">Like</a> &bull; </li>
+                            {{/if}}
+
+                            <li><a href="#" class="showCommentFormBtn">Comment</a> &bull; </li>
+
+                            {{#if budget}}
+                                <li><a href="#" class="showAddPointsFormBtn">Add Points</a> &bull; </li>
+                            {{/if}}
+                        {{/if}}
+
+                        {{#if allowTranslate}}
+                                <li><a href="#" class="translatePubRec">Translate</a> &bull; </li>
+                        {{/if}}
+
+                    {{/if}}
+
+                    <li>{{time}}</li>
+
+                </ul><!-- /.recognition-props -->
+
+                    <div class="hidePublicRecognitionQTip" style="display:none">
+                        <p>
+                            <b>Hide Recognition?</b>
+                        </p>
+                        <p>
+                            This will permanently remove this recognition from public view. Are you sure you want to hide this recognition?
+                        </p>
+                        <p class="tc">
+                            <button type="submit" class="btn btn-primary publicRecognitionHideRecognitionConfirm">Hide</button>
+                            <button type="submit" class="btn publicRecognitionHideRecognitionCancel">Cancel</button>
+                        </p>
+                    </div>
+
+            </div><!-- /.span12 -->
+        </div><!-- /.row -->
+    {{/if}}
+
+{{else}} <!-- isDetail ELSE -->
+
+
+<!-- DETAILS FOR MODULE and RECOGNITIONS PAGE (not DETAIL) -->
+<div class="app-row detail-row">
+
+    <div class="app-col">
+        {{#isSingle recipients}}
+            <a class="profile-popover" data-participant-ids="[{{single.id}}]">
+                {{#if single.avatarUrl}}<img alt="{{firstName}} {{lastName}}" class="avatar" src="{{single.avatarUrl}}" height="60" width="60" />{{/if}}
+            </a>
+        {{else}}
+            <a class="profile-popover" data-participant-ids="{{pluck recipients prop="id"}}" href="#">
+                <!-- what is done for multiple recips??? -->
+                {{#if avatarUrl}}<img alt="" src="{{avatarUrl}}" class="avatar" height="60" width="60" />{{/if}}
+            </a>
+        {{/isSingle}}
+    </div>
+
+    <div class="app-col recognition-block">
+        <div>
+
+            <!--
+                each public recognition item has special CM keys containing the full translated string for the various permutations of the "X received an award" text
+                the keys' output will have {0} and {1} placeholders where the recipient name(s) and sender/promotion are inserted
+                this allows the translations to have plain text and the recipient/sender/promotion in any order
+                we embed this CM output as a tplVariables in our publicRecognitionItem Handlebars template
+                we also have an subTpls embedded in our publicRecognitionItem Handlebars template
+                we pass the various values from the JSON to the subTpls, then replace the {0} and {1} with the rendered output
+                the final string is assigned to recognizedFormatted in the JSON to be passed to the main template
+
+                NOTE: the multipleRecip subTpl is slightly different than the others. A CM key for "people" needs to be inserted inside the subTpl
+            -->
+            <!--subTpl.singleRecip=   <a class="profile-popover" href="#" data-participant-ids="[{{recipients.0.id}}]">{{recipients.0.firstName}} {{recipients.0.lastName}}</a> subTpl-->
+            <!--subTpl.multipleRecip= <a class="profile-popover" data-participant-ids="{{pluck recipients prop="id"}}" href="#">{{recipients.length}} people</a>                subTpl-->
+            <!--subTpl.recognizer=    <a class="profile-popover" href="#" data-participant-ids="[{{recognizer.id}}]">{{recognizer.firstName}} {{recognizer.lastName}}</a>       subTpl-->
+
+            <!--tplVariable.singleRecipRecog=   "{0} was recognized by {1}."             tplVariable-->
+            <!--tplVariable.multipleRecipRecog= "{0} were recognized by {1}."            tplVariable-->
+            <!--tplVariable.singleRecipNom=     "{0} received the {1} nomination award." tplVariable-->
+            <!--tplVariable.multipleRecipNom=   "{0} received the {1} nomination award." tplVariable-->
+            <!--tplVariable.purlRecip=          "{0} received a {1} Recognition PURL."   tplVariable-->
+
+            {{{recognizedFormatted}}}
+
+            <br />
+
+            {{#if comment}}
+            <div class="recognition-comment readMore"
+                data-read-more-num-lines="2" data-msg-read-more="more">
+                {{{comment}}}
+            </div>
+            {{/if}}
+
+            {{#if purlUrl}}
+                <a href="{{purlUrl}}">View PURL</a>
+            {{/if}}
+
+        </div>
+
+        <ul class="recognition-props">
+
+            {{#if isMine}}
+                <li>
+                    {{#if isHidden}}
+                        Hidden
+                    {{else}}
+                        <a href="#" class="hidePublicRecognitionLnk">Hide</a>
+                        <span class="publicRecognitionHiddenLinkText" style="display:none;">
+                            Hidden
+                        </span>
+                    {{/if}}
+                    &bull;
+                </li>
+                {{#if shareLinks}}
+                    <li><a href="#" class="sharePubRecBtn">Share</a> &bull; </li>
+                {{/if}}
+                {{#if allowTranslate}}
+                    <li><a href="#" class="translatePubRec">Translate</a> &bull; </li>
+                {{/if}}
+            {{else}}
+
+                {{#if isLiked}}
+                    <li><a href="#" class="likePubRecBtn liked" data-like="Like" data-unlike="Unlike">Unlike</a> &bull; </li>
+                {{else}}
+                    <li><a href="#" class="likePubRecBtn" data-like="Like" data-unlike="Unlike">Like</a> &bull; </li>
+                {{/if}}
+
+                <li><a href="#" class="showCommentFormBtn">Comment</a> &bull; </li>
+
+                {{#if allowAddPoints}}
+                    <li><a href="#" class="showAddPointsFormBtn">Add Points</a> &bull; </li>
+                {{/if}}
+
+                {{#if allowTranslate}}
+                    <li><a href="#" class="translatePubRec">Translate</a> &bull; </li>
+                {{/if}}
+
+            {{/if}}
+
+            <li>{{time}}</li>
+        </ul>
+    </div><!-- /.recognition-block -->
+
+    <div class="app-col chevron">
+        <a href="{{publicRecognitionPageDetailUrl}}"><i class="icon-chevron-right"></i></a>
+    </div>
+
+
+
+        <div class="hidePublicRecognitionQTip" style="display:none">
+            <p>
+                This will permanently remove this comment. Are you sure you want to hide this comment?
+            </p>
+            <p class="tc">
+                <button type="submit" class="btn btn-primary publicRecognitionHideRecognitionConfirm">Yes</button>
+                <button type="submit" class="btn publicRecognitionHideRecognitionCancel">No</button>
+            </p>
+        </div>
+
+
+</div><!-- /.detail-row -->
+
+
+{{/if}}<!-- END isDetail ELSE...IF -->
+
+
+<!-- START isPublicClaim -->
+{{#if isPublicClaim}}
+
+    <!-- COMMENTS -->
+    <div class="app-row comment-block">
+        <div class="app-col likeInfoWrapper">
+
+            <!-- possible sentences - details filled in by JS -->
+            <span class="likeSentence youOnly" style="display:none">
+                You like this.
+            </span>
+            <span class="likeSentence youAndOne" style="display:none">
+                You and {link}1 other{/link} like this.
+            </span>
+            <span class="likeSentence youAndMult" style="display:none">
+                You and {link}{0} others{/link} like this.
+            </span>
+            <span class="likeSentence oneOtherOnly" style="display:none">
+                {link}1 person likes this.{/link}
+            </span>
+            <span class="likeSentence multOtherOnly" style="display:none">
+                {link}{0} people like this.{/link}
+            </span>
+
+            <!--
+                Please see PublicRecognitionModelView.initLikeInfo() for current
+                details and markup injected into the sentences.
+            -->
+
+        </div>
+    </div><!-- /.comment-block -->
+
+    <!-- view all comments control -->
+    {{#if comments.length}}
+        {{#if isHideComments}}
+            {{#isSingle comments}}
+            {{else}}
+                <div class="app-row comment-block viewAllCommentsWrapper">
+                    <div class="app-col">
+                        View all <a href="#" class="viewAllCommentsBtn">
+                        <span class="commentCount">{{comments.length}}</span>
+                         comments</a>
+                    </div>
+                </div>
+            {{/isSingle}}
+        {{/if}}
+    {{/if}}
+
+    <!-- list of comments -->
+    <div class="pubRecComments">
+        <!-- dynamic - populated by view -->
+    </div><!-- /.pubRecComments -->
+
+
+
+    <!-- add comment form -->
+    <div class="app-row comment-block">
+        <div class="app-col  commentInputWrapper" style="display:none">
+            <!-- DEVELOPER NOTE: the form action attr below will be used as the URL to get JSON
+                - make sure the class 'publicRecognitionCommentForm' stays on the form element
+            -->
+            <form class="form-inline publicRecognitionCommentForm" action="ajax/publicRecognitionSaveComment.json">
+
+                <!-- hidden inputs -->
+                <input type="hidden" name="recognitionId" value="{{id}}" />
+
+                <!-- data-recognition-id will be passed to JSON url along with any other data-* attrs -->
+                <textarea name="comment" class="comment-input commentInputTxt" placeholder="Leave A Comment" maxlength="300"></textarea>
+
+            </form>
+        </div><!-- /.commentInputWrapper -->
+    </div><!-- /.comment-block -->
+    <!-- EOF COMMENTS -->
+
+
+    {{#if allowAddPoints}}
+    <!-- add points form -->
+    <div class="app-row comment-block">
+        <div class="app-col  addPointsWrapper clearfix" style="display:none">
+
+            <div class="alert alert-success msgAddPointsSuccess" style="display:none">
+                    <!--a class="close" data-dismiss="alert" href="#"><i class="icon-remove"></i></a-->
+                    <h4 class="alert-heading">Success</h4>
+                    Points have been added.
+            </div>
+
+            <!-- DEVELOPER NOTE: the form action attr below will be used as the URL to get JSON
+                - make sure the class 'publicRecognitionAddPointsForm' stays on the form element
+                - MUST HAVE CLASS publicRecognitionAddPointsForm
+                - 'name' attributes may be set to match java params
+            -->
+            <form class="form-inline publicRecognitionAddPointsForm" action="ajax/publicRecognitionAddPoints.json">
+
+                <!-- hidden inputs -->
+                <input type="hidden" name="recognitionId" value="{{id}}" />
+
+                <div>
+                    <div class="control-group budgetSelectWrapper">
+                        <select name="budgetId" class="budgetSelect">
+                            <option value="-1">Select a budget</option>
+                            <!-- dynamic -->
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <!-- MUST HAVE CLASS pointsInputTxt -->
+                    <input type="text" name="points" class="input-mini pointsInputTxt" placeholder="Points"
+
+                        {{#if awardAmountFixed}}
+                            value="{{awardAmountFixed}}"
+                            readonly="readonly"
+                            data-tooltip="Award amount is fixed."
+                        {{/if}}
+
+                        {{#if awardAmountMax}}
+                            data-tooltip="Range: {{awardAmountMin}} - {{awardAmountMax}}"
+                        {{/if}}
+                    />
+
+                    <span class="help-inline">Points</span>
+
+                    <button class="btn btn-primary addPointsBtn"
+                        data-msg-err-out-of-range = "Points entered are out of range."
+                        data-msg-err-over-budget = "Over budget, please adjust."
+                        data-msg-err-no-comment = "Please enter a comment."
+                        data-msg-err-no-points = "Please enter some points."
+                        data-msg-err-no-budg-sel = "Please select a budget."
+                    >Submit</button>
+
+
+                    <span class="help-inline budgetInfo">
+                        <a href="#" class="budgetPopoverTrigger">
+                            <span class="budgetRemaining">{{budget}}</span>
+                            Budget Remaining
+                            <i class="icon-info-sign"></i>
+                        </a>
+                    </span>
+
+                    <div style="display:none"><!-- this hides stuff, that is all -->
+                        <!-- popover table starts life here -->
+                        <table class='table budgetPopover'>
+                            <tr>
+                                <td>Available Budget</td>
+                                <td class="budgetAvailable">{{budget}}</td>
+                            </tr>
+                            <tr>
+                                <td>Calculated Budget Deduction</td>
+                                <td class="budgetDeduction">0</td>
+                            </tr>
+                            <tr>
+                                <td>Remaining Budget</td>
+                                <td class="budgetRemaining">{{budget}}</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div><!-- /.control-group -->
+
+                <div>
+                    <textarea name="comment"
+                        class="comment-input addPointsCommentInputTxt" maxlength="300"
+                        placeholder="REQUIRED - Leave A Comment"></textarea>
+                </div>
+
+            </form>
+        </div><!-- /.addPointsWrapper -->
+    </div><!-- /.comment-block -->
+    <!-- EOF ADD POINTS -->
+    {{/if}}
+
+<!-- EOF IS PUBLIC CLAIM -->
+{{/if}}
+
+
+<!-- /publicRecognitionItem TPL -->

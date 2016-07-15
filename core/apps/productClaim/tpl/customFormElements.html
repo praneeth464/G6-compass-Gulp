@@ -1,0 +1,238 @@
+<!-- FEC note: this is a sloppy copy of customFormElements.jsp. It's not used for anything but demonstration -->
+<fieldset class="formSection ${sectionId} customSection" id="${sectionId}" style="display:none;" data-custom-section-id="${sectionId}">
+
+    <div class="control-group validateme"
+           data-validate-fail-msgs='{"nonempty":"This field is required."}'
+           data-validate-flags='nonempty'>
+        <div class="controls">
+            <label class="checkbox" for="${inputIdValue}" style="display: inline-block;">
+                <input type="checkbox" id="${inputIdValue}" name="claimElement[${claimElementIndex}].value" value="true" checked="checked"/>
+                Boolean Checkbox
+                <span class="optional">(optional)</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="control-group validateme"
+           data-validate-fail-msgs='{"nonempty":"This field is required."}'
+           data-validate-flags='nonempty'>
+        <span class="control-label" for="${inputIdValue}">
+          Boolean Radio Buttons
+          <span class="optional">(optional)</span>
+        </span>
+        <div class="controls">
+          <label class="radio" for="${inputIdValue}A" style="display: inline-block;">
+            <input type="radio" id="${inputIdValue}A" name="claimElement[${claimElementIndex}].value" value="true" checked="checked"/>
+            True
+          </label>
+
+          <label class="radio" for="${inputIdValue}B" style="display: inline-block;">
+            <input type="radio" id="${inputIdValue}B" name="claimElement[${claimElementIndex}].value" value="false" checked="checked" />
+            False
+          </label>
+        </div>
+    </div>
+
+    <div class="control-group validateme"
+       data-validate-fail-msgs='{"nonempty":"This field is required."}'
+       data-validate-flags='nonempty'>
+    <label class="control-label" for="${inputIdValue}">
+      Select List
+    </label>
+    <div class="controls">
+        <select id="${inputIdValue}" name="claimElement[${claimElementIndex}].value">
+          <option value="">Choose one</option>
+            <option value="${item.code}" selected="selected">${item.name}</option>
+        </select>
+        <span class="optional">(optional)</span>
+    </div>
+    </div>
+
+    <div class="control-group validateme"
+       data-validate-fail-msgs='{"nonempty":"This field is required."}'
+       data-validate-flags='nonempty'>
+    <label class="control-label" for="${inputIdValue}">
+      Multiple Select List
+      <span class="optional">(optional)</span>
+    </label>
+    <div class="controls">
+        <select id="${inputIdValue}" name="claimElement[${claimElementIndex}].values" multiple="true" size="5">
+            <option value="${item.code}" selected="selected">${item.name}</option>
+        </select>
+    </div>
+    </div>
+
+    <div class="control-group validateme"
+       data-validate-fail-msgs='{"nonempty":"This field is required."}'
+       data-validate-flags='nonempty'>
+    <label class="control-label" for="${inputIdValue}">
+      Text field (password or plain)
+    </label>
+    <div class="controls">
+        <input type="password" id="${inputIdValue}" name="claimElement[${claimElementIndex}].value" value="${productClaimSubmissionForm.claimElementValue[claimElement].value}" />
+        <input id="${inputIdValue}" type="text" name="claimElement[${claimElementIndex}].value" value="${productClaimSubmissionForm.claimElementValue[claimElement].value}" />
+      <span class="optional">(optional)</span>
+    </div>
+    </div>
+
+    <div class="control-group validateme"
+       data-validate-fail-msgs='{"nonempty":"This field is required."}'
+       data-validate-flags='nonempty'>
+    <label class="control-label" for="customNumberInputHtml">
+      Number field (password or plain)
+    </label>
+    <div class="controls">
+        <input type="password" id="${inputIdValue}" name="claimElement[${claimElementIndex}].value" maxlength="${claimElement.claimFormStepElement.numberOfDecimals}" value="${productClaimSubmissionForm.claimElementValue[claimElement].value}" />
+        <input type="text" id="${inputIdValue}" name="claimElement[${claimElementIndex}].value" maxlength="${claimElement.claimFormStepElement.numberOfDecimals}" value="${productClaimSubmissionForm.claimElementValue[claimElement].value}" />
+      <span class="optional">(optional)</span>
+    </div>
+    </div>
+
+    <div class="control-group validateme"
+       data-validate-fail-msgs='{"nonempty":"This field is required."}'
+       data-validate-flags='nonempty'>
+    <label class="control-label" for="${inputIdValue}">
+      Datepicker
+    </label>
+    <div class="controls">
+      <!--
+          NOTE: JSP set data-date-format
+      -->
+      <span class="input-append datepickerTrigger"
+        data-date-format="<%=UserManager.getUserDatePattern().toLowerCase()%>"
+        data-date-language="<%=UserManager.getUserLanguage()%>"
+        data-date-autoclose="true">
+          <input type="text" class="date datepickerInp"
+              name="claimElement[${claimElementIndex}].value"
+              id="${inputIdValue}"
+              readonly="readonly"
+              value="${productClaimSubmissionForm.claimElementValue[claimElement].value}"><button class="btn datepickerBtn"><i class="icon-calendar"></i></button>
+
+      </span>
+      <span class="optional">(optional)</span>
+    </div>
+    </div>
+
+    <div class="control-group validateme"
+       data-validate-fail-msgs='{"nonempty":"This field is required."}'
+       data-validate-flags='nonempty'>
+    <label class="control-label" for="${inputIdValue}">
+      Textarea
+      <span class="optional">(optional)</span>
+    </label>
+    <div class="controls">
+      <textarea id="${inputIdValue}" name="claimElement[${claimElementIndex}].value" cols="75" rows="10">${productClaimSubmissionForm.claimElementValue[claimElement].value}</textarea>
+    </div>
+    </div>
+
+    <div class="control-group">
+        Copy block
+    </div>
+
+    <div class="control-group">
+    <h4>Section Heading</h4>
+    </div>
+
+    <div class="control-group">
+        <a href="<c:out value='${claimElement.claimFormStepElement.linkURL}'/>" id="${inputIdValue}">
+          Link
+        </a>
+    </div>
+
+    <div class="control-group validateme"
+        data-validate-fail-msgs='{"nonempty":"This field is required."}'
+              data-validate-flags='nonempty'>
+        <div class="controls">
+            <h5>
+                Address Block
+                <span class="optional">(optional)</span>
+            </h5>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="claimElement[${claimElementIndex}].mainAddressFormBean.countryCode">
+                Country
+            </label>
+            <div class="controls">
+                <c:set var="countryList" value="${claimElement.countryList}"/>
+
+                <select name="claimElement[${claimElementIndex}].mainAddressFormBean.countryCode" id="claimElement[${claimElementIndex}].mainAddressFormBean.countryCode" onchange="onCountryChange(this.value + '_',document.getElementsByName('claimElement[${claimElementIndex}].mainAddressFormBean.stateTypeCode')[0], ${claimElementIndex})">
+                  <option value="">Select One</option>
+
+                  <c:forEach var="item" items="${countryList}">
+                    <option value="${item.countryCode}" selected="selected">${item.i18nCountryName}</option>
+                  </c:forEach>
+                </select>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="claimElement[${claimElementIndex}].value">
+                Address 1
+            </label>
+            <div class="controls">
+                <input type="text" name="claimElement[${claimElementIndex}].value" size="40" maxlength="100" value="${productClaimSubmissionForm.claimElementValue[claimElement].value}" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="claimElement[${claimElementIndex}].mainAddressFormBean.addr2">
+                Address 2
+            </label>
+            <div class="controls">
+                <input type="text" name="claimElement[${claimElementIndex}].mainAddressFormBean.addr2" size="40" maxlength="100" value="${productClaimSubmissionForm.claimElementValue[claimElement].mainAddressFormBean.addr2}" />
+                <span class="optional">(optional)</span>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="claimElement[${claimElementIndex}].mainAddressFormBean.addr3">
+                Address 3
+            </label>
+            <div class="controls">
+                <input type="text" name="claimElement[${claimElementIndex}].mainAddressFormBean.addr3" size="40" maxlength="100" value="${productClaimSubmissionForm.claimElementValue[claimElement].mainAddressFormBean.addr3}" />
+                <span class="optional">(optional)</span>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="claimElement[${claimElementIndex}].mainAddressFormBean.city">
+                City
+            </label>
+            <div class="controls">
+                <input type="text" name="claimElement[${claimElementIndex}].mainAddressFormBean.city" size="40" maxlength="100" value="${productClaimSubmissionForm.claimElementValue[claimElement].mainAddressFormBean.city}" />
+            </div>
+        </div>
+
+        <div class="control-group" id="displayStateList">
+            <label class="control-label" for="claimElement[${claimElementIndex}].mainAddressFormBean.stateTypeCode">
+                State
+            </label>
+            <div class="controls">
+                <c:set var="stateList" value="${claimElement.stateList}"/>
+                <select name="claimElement[${claimElementIndex}].mainAddressFormBean.stateTypeCode" id="claimElement[${claimElementIndex}].mainAddressFormBean.stateTypeCode">
+                  <option value="">Select One</option>
+
+                  <c:forEach var="item" items="${stateList}">
+                    <option value="${item.code}" selected="selected">${item.name}</option>
+                  </c:forEach>
+                </select>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="claimElement[${claimElementIndex}].mainAddressFormBean.postalCode">
+                Postal Code
+            </label>
+            <div class="controls">
+                <input type="text" name="claimElement[${claimElementIndex}].mainAddressFormBean.postalCode" size="11" maxlength="11" class="content-field" value="${productClaimSubmissionForm.claimElementValue[claimElement].mainAddressFormBean.postalCode}" />
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            <%-- trigger the onchange so that the state list is filtered--%>
+            document.getElementsByName('claimElement[<c:out value="${claimElementIndex}"/>].mainAddressFormBean.countryCode')[0].onchange();
+        </script>
+    </div>
+
+</fieldset>

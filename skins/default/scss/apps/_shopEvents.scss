@@ -1,0 +1,38 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $shopEvents_bgColor: ;
+// $shopEvents_gradType: ;
+// $shopEvents_gradMeta: ;
+// $shopEvents_gradStops: ;
+
+// $shopEvents_iconColor: ;
+// $shopEvents_titleColor: ;
+// $shopEvents_titleFontFamily: ;
+// $shopEvents_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $shopEvents_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+// $shopEvents_textColor: ;
+// $shopEvents_h3FontFamily: ;
+// $shopEvents_pFontFamily: ;
+// $shopEvents_visitAppBtnColor: ;
+// $shopEvents_visitAppBtnBorderColor: ;
+$shopEvents_imgUrlPath: $appImagesPath; // setting this to $appImagesPath points at core/base/img. Leave blank to use images in this skin
+// $shopEvents_imgUrl2x2: ;
+// $shopEvents_imgUrl4x2: ;
+// $shopEvents_imgUrl4x4: ;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "clickThru/scss/shopEvents";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

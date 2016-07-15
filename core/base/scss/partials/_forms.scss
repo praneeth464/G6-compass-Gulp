@@ -1,0 +1,302 @@
+// Partial-specific variables
+// =========================
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+// pulled over from the core Bootstrap files. Dominic C had made a custom edit on 30 Jan 2013 but we want the core files to remain unchanged if at all possible
+// Make all forms have space below them, except IE
+form {
+    *margin-bottom: 0px; //ie7 + pullBottomUp
+}
+// end pull
+
+
+// global errors inserted as part of G5.util.formValidateHandleJsonErrors
+.globalerrors {
+    ul {
+        margin-bottom: 0;
+    }
+}
+
+
+/* Mobile Safari (and other mobile browsers???) zooms in on input fields when the font-size is less than 16px */
+@media (max-width: 568px) {
+    select,
+    textarea,
+    input[type="text"],
+    input[type="password"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="date"],
+    input[type="month"],
+    input[type="time"],
+    input[type="week"],
+    input[type="number"],
+    input[type="email"],
+    input[type="url"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="color"],
+    .uneditable-input {
+        font-size: 16px;
+    }
+}
+
+
+
+.form-inline {
+    .control-group {
+        display: inline-block;
+        @include ie7-inline-block;
+        margin-right: 24px;
+    }
+
+    // two next to eachother
+    .control-group+.control-group {
+    //    margin-left: 24px; // two control groups next to eachother
+    }
+    .control-group-pull-right {
+        float:right;
+        line-height: 30px;
+        margin-right: 0;
+    }
+    .control-group-pull-right+.control-group {
+    //    margin-left: 0; // don't add margin if preceding is pulled right
+    }
+    @media (max-width: 767px) {
+        .control-group {
+            margin-right: 0;
+        }
+        .control-group+.control-group {
+            margin-top: 4px; // create some space between them
+        }
+        .control-group-pull-right {
+            float: none;
+            line-height: auto;
+        }
+    }
+
+    .controls {
+        margin-bottom: 9px;
+    }
+}
+
+.form-labels-inline {
+    .controls {
+        display: inline-block;
+        @include ie7-inline-block;
+    }
+}
+
+.form-horizontal .control-group.control-group-wrapper {
+    margin-bottom: 0;
+}
+
+.naked-input {
+    @extend .uneditable-input;
+    padding: 5px;
+    border: 0;
+    cursor: default;
+
+    &:focus {
+        outline: 0;
+        box-shadow: none;
+    }
+}
+
+.input-auto-width {
+    width: auto;
+
+    @media (max-width: 480px) {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+        white-space: normal;
+    }
+}
+
+// NOTE: we should not use the .datepicker class on bootstrap-datepickers
+//       (the popover uses this class and it can/will conflict)
+input.datepicker,
+.datepickerTrigger input {
+    cursor: pointer;
+    margin-top: 0;
+}
+input.datepicker[disabled] {
+  cursor: not-allowed;
+}
+
+// a button that becomes an input (built upon bootstrap)
+.input-append.input-append-inside {
+    input, input[type="text"] {
+        padding-right: 36px;
+        @include border-radius($inputBorderRadius);
+    }
+    .btn {
+        position: relative;
+        z-index: 3;
+        background: none;
+        border-color: transparent;
+        @include box-shadow(none);
+        width: 30px;
+        margin-left: -30px;
+        padding-right: 0;
+        padding-left: 0;
+        padding-top: 5px;
+        *padding-top:7px;
+        text-align: center;
+    }
+}
+
+.btn[disabled] {
+  cursor: not-allowed;
+}
+
+/* input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input.date,
+input.number {
+    text-align: right;
+} */
+
+// Placehoders in IE
+// ------------
+input,
+textarea {
+    &.placeholder {
+        color: $placeholderText;
+    }
+}
+
+// OPTIONAL FIELDS
+// ---------------
+.optional {
+    font-size: $baseFontSize * .8571; // 14px -> 12px
+    color: $grayLight;
+    font-weight: normal;
+    line-height: 1; // should prevent vertical misalignment
+
+    .form-horizontal .control-label & {
+        display: block;
+    }
+}
+
+
+// READONLY STATE
+// --------------
+
+// Explicitly reset the colors here
+input[type="radio"][readonly],
+input[type="checkbox"][readonly] {
+    @include opacity(0.5);
+}
+
+
+// FORM ACTIONS
+// ------------
+
+.form-actions{
+    // overriding this in _global.css
+    // .btn{
+    //     margin-right: 15px;
+    // }
+}
+
+.form-actions,
+.form-horizontal .form-actions {
+    @include gridCoreInnerFullSplit($g5PageContentPaddingHoriz, null, $g5PageContentLeftRightBorderWidth);
+
+    .spin {
+        display: inline-block;
+        width: $baseLineHeight + (4px * 2) + (1px * 2); // similar to how the inputs have their sizes calculated in bootstrap/_forms.scss ($baseLineHeight + top/bottom padding + top/bottom border)
+        height: $baseLineHeight + (4px * 2) + (1px * 2); // similar to how the inputs have their sizes calculated in bootstrap/_forms.scss ($baseLineHeight + top/bottom padding + top/bottom border)
+        vertical-align: middle;
+    }
+}
+
+.page {
+    .row:last-child div:last-child form:last-child,
+    & > form:last-child {
+        margin-bottom: 0;
+
+        .form-actions:last-child {
+            margin-bottom: -1 * ($g5PageContentPaddingHoriz - $g5PageContentLeftRightBorderWidth);
+
+            @media (min-width: 1200px) {
+                margin-bottom: -1 * ($g5PageContentPaddingHoriz1200 - $g5PageContentLeftRightBorderWidth1200);
+            }
+            @media (min-width: 538px) and (max-width: 979px) {
+                margin-bottom: -1 * ($g5PageContentPaddingHoriz768 - $g5PageContentLeftRightBorderWidth768);
+            }
+            @media (max-width: 767px) {
+                margin-bottom: -1 * ($g5PageContentPaddingHorizMobile * 3 / 4);
+            }
+        }
+    }
+    .form-inline label + select,
+    select + .dropdown {
+        margin-left: 6px;
+    }
+
+    .radio, .checkbox {
+        min-height: 20px;
+        // padding-left: 28px;
+    }
+    .radio input[type="radio"],
+    .checkbox input[type="checkbox"] {
+        float: left;
+        // margin-left: -28px;
+    }
+}
+
+
+
+// Media Queries
+@media (min-width: 1200px) {
+    .form-actions,
+    .form-horizontal .form-actions {
+        @include gridCoreInnerFullSplit($g5PageContentPaddingHoriz1200, null, $g5PageContentLeftRightBorderWidth1200);
+    }
+}
+@media (min-width: 538px) and (max-width: 979px) {
+    .form-actions,
+    .form-horizontal .form-actions {
+        @include gridCoreInnerFullSplit($g5PageContentPaddingHoriz768, null, $g5PageContentLeftRightBorderWidth768);
+    }
+}
+// Tablet sizes and below
+@media (max-width: 767px) {
+    .form-search,
+    .form-inline,
+    .form-horizontal {
+        .help-inline,
+        .uneditable-input,
+        .naked-input,
+        .input-prepend,
+        .input-append,
+        .control-group {
+            display: block;
+        }
+
+        .input-append {
+            .btn {
+                display: inline-block;
+                width: auto;
+                padding: 4px 14px;
+            }
+        }
+    }
+    .form-actions,
+    .form-horizontal .form-actions {
+        @include gridCoreInnerFullSplit($g5PageContentPaddingHorizMobile);
+    }
+}

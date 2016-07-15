@@ -1,0 +1,45 @@
+<!-- this template/view should always be inserted into '<div class="kpmModelView">' by the parent view initializing it -->
+
+<div class="timeframe">
+    <ul class="controls inline">
+        <li class="prev"><a href="#" data-timeframe="{{timeframeType}}" data-timeframe-nav="prev"><i class="icon-chevron-left"></i></a></li>
+        <li class="now">{{timeframeName}}</li>
+        <li class="next"><a href="#" data-timeframe="{{timeframeType}}" data-timeframe-nav="next"><i class="icon-chevron-right"></i></a></li>
+    </ul>
+
+    <div class="btn-group timeframeToggle">
+        <a href="#" class="btn {{#eq timeframeType "month"}}active{{/eq}}" data-timeframe="month">Month</a>
+        <a href="#" class="btn {{#eq timeframeType "quarter"}}active{{/eq}}" data-timeframe="quarter">3 Months</a>
+        <a href="#" class="btn {{#eq timeframeType "year"}}active{{/eq}}" data-timeframe="year">12 Months</a>
+    </div>
+</div><!-- /.timeframe -->
+
+<div class="title">
+    <ul class="export-tools fr">
+        <li class="print"><i class="icon-print"></i></li>
+    </ul>
+
+    {{#if title}}<h2>{{title}}</h2>{{/if}}
+</div><!-- /.title -->
+
+<!-- the KPMSummaryCollectionView should always be inserted into an element with class 'kpmSummaryCollectionView' -->
+<div class="kpmSummaryCollectionView"></div><!-- /.kpmSummaryCollectionView -->
+
+<!-- the KPMDetail*Views should always be inserted into an element with class 'kpmDetailView' -->
+<div class="kpmDetailView"></div><!-- /.kpmDetailView -->
+
+
+<!-- START if team display -->
+{{#eq mode "team"}}
+<!-- the KPMTeamMembersView should always be inserted into an element with class 'kpmTeamMembersView' -->
+<div class="kpmTeamMembersView"></div><!-- /.kpmTeamMembersView -->
+{{/eq}}
+<!-- END if team display -->
+
+<!-- START if individual display -->
+{{#eq mode "user"}}
+<!-- recognitions view (borrow from pubRec or the current profile recognitions?) -->
+user
+{{/eq}}
+<!-- END if individual display -->
+

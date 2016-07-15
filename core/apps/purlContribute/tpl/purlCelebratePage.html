@@ -1,0 +1,82 @@
+<!-- ======== PURL CELEBRATE PAGE ======== -->
+<div id="purlCelebratePageView" class="page-content">
+    <div class="page-topper">
+        <!-- PURL Celebrate Tabs  -->
+        <div class="row">
+            <div class="span12">
+                <div class="purlCelebrateView">
+                    <form class="purlCelebrateSelectView">
+                        <select name="purlPastPresentSelect" id="purlPastPresentSelect">
+                            <option value="upcoming">View Upcoming Recognition PURLs</option>
+                            <option value="past">View Past Recognition PURLs</option>
+                        </select>
+                    </form>
+                </div>
+                <ul class="nav nav-tabs page-top-tabs purlCelebrateTabs">
+                    <!-- dynamic - purl celebrate set tabs here -->
+                </ul>
+            </div>
+        </div>
+    </div><!-- /.page-topper -->
+
+    <!-- Celebrations -->
+    <div class="page-liner purlCelebrateItemsCont" data-msg-empty="No celebrations found">
+        <div class="row">
+            <div class="span12">
+                <h3>Upcoming Recognition PURLs</h3>
+                <p class="purlCelebrateDesc">Descriptive text for contributing to upcoming PURLs.</p>
+                <div class="pagination pagination-right paginationControls first"></div>
+                <div class="purlCelebrateItems">
+                    <!-- dynamic - purlCelebrateSet.html -->
+                </div>
+                <div class="pagination pagination-right paginationControls first"></div>
+                <!--subTpl.paginationTpl=
+                    {{#if pagination}}
+                    {{#with pagination}}
+                         <ul>
+                            <li class="first{{#if first.state}} {{first.state}}{{/if}}" data-page="{{first.page}}">
+                                <a href="#"><i class="icon-double-angle-left"></i>&nbsp;</a>
+                            </li>
+                            <li class="prev{{#if prev.state}} {{prev.state}}{{/if}}" data-page="{{prev.page}}">
+                                <a href="#"><i class="icon-angle-left"></i> Previous</a>
+                            </li>
+                            {{#each pages}}
+                            <li {{#if state}}class="{{state}}"{{/if}} data-page="{{page}}">
+                                <a href="#">{{#if isgap}}&#8230;{{else}}{{page}}{{/if}}</a>
+                            </li>
+                            {{/each}}
+                            <li class="next{{#if next.state}} {{next.state}}{{/if}}" data-page="{{next.page}}">
+                                <a href="#">Next <i class="icon-angle-right"></i></a>
+                            </li>
+                            <li class="last{{#if last.state}} {{last.state}}{{/if}}" data-page="{{last.page}}">
+                                <a href="#">&nbsp;<i class="icon-double-angle-right"></i></a>
+                            </li>
+                        </ul>
+                    {{/with}}
+                    {{/if}}
+                subTpl-->
+            </div><!-- /.span12 -->
+        </div><!-- /.row -->
+    </div>
+</div><!-- /#purlCelebratePageView -->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function(){
+        //attach the view to an existing DOM element
+        var pcpv = new PurlCelebratePageView({
+            el:$('#purlCelebratePageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Recognition PURLs'
+        });
+    });
+</script>

@@ -1,0 +1,1157 @@
+// App-specific variables
+// =========================
+$quiz_bgColor: $g5ModuleBgColor !default;
+$quiz_gradType: $g5ModuleGradType !default;
+$quiz_gradMeta: $g5ModuleGradMeta !default;
+$quiz_gradStops: $g5ModuleGradStops !default;
+
+$quiz_iconColor: $g5ModuleIconColor !default;
+$quiz_titleColor: $g5ModuleTitleColor !default;
+$quiz_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$quiz_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$quiz_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$quiz_pageTake_iconCorrectAnswer: $green !default;
+$quiz_pageTake_iconIncorrectAnswer: $red !default;
+$quiz_pageTake_pdfBorderColor: $grayLighter !default;
+
+$quiz_pageEdit_materialHeaderFontColor: false !default;
+$quiz_pageEdit_materialHeaderBgColor: false !default;
+
+$quiz_pageEdit_materialItem_textColor: $pages_splitterTextColor !default;
+$quiz_pageEdit_materialItem_bgColor: transparent !default;
+$quiz_pageEdit_materialItem_borderBottom: 1px solid $grayLight !default;
+$quiz_pageEdit_materialItem_backgroundFlash: #FFFFA3 !default; // same as backgroundFlash in _participantItem.scss
+$quiz_pageEdit_materialItem_editRemoveIconColor: $gray !default; // same as editRemoveIconColor in _participantItem.scss
+
+$quiz_pageEdit_materialItemHover_textColor: false !default;
+$quiz_pageEdit_materialItemHover_bgColor: $grayLight !default; // same as rowHoverBgColor in _participantItem.scss
+
+$quiz_pageEdit_materialItemSortHelper_textColor: false !default;
+$quiz_pageEdit_materialItemSortHelper_bgColor: transparentize($grayLight, 0.33) !default;
+$quiz_pageEdit_materialItemSortHolder_textColor: false !default;
+$quiz_pageEdit_materialItemSortHolder_bgColor: $grayLight !default;
+
+$quiz_pageEdit_materialItemActive_textColor: false !default;
+$quiz_pageEdit_materialItemActive_iconColor: $quiz_pageEdit_materialItemActive_textColor !default;
+$quiz_pageEdit_materialItemActive_bgColor: $white !default;
+
+$quiz_pageEdit_materialItemNew_textColor: false !default;
+$quiz_pageEdit_materialItemNew_iconColor: $quiz_pageEdit_materialItemNew_textColor !default;
+$quiz_pageEdit_materialItemNew_bgColor: $white !default;
+$quiz_pageEdit_materialItemNew_msgTextColor: #999999 !default;
+
+$quiz_pageEdit_noMaterialsFontColor: false !default;
+
+$quiz_pageEdit_answerItem_borderBottom: 1px solid $grayLight !default;
+$quiz_pageEdit_answerItem_removeBtnColor: $gray !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.quiz {
+
+} /* /.quiz */
+
+/* ----- MODULE STYLES ----- */
+.module.quiz {
+
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $quiz_bgColor,
+            $gradType: $quiz_gradType,
+            $gradMeta: $quiz_gradMeta,
+            $gradStops: $quiz_gradStops
+        );
+    }
+
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $quiz_iconColor,
+            $titleColor: $quiz_titleColor,
+            $titleFontFamily: $quiz_titleFontFamily
+        );
+
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            @include g5HomeAppIconBoxReflect(-43px);
+        }
+    }
+
+    @include module_titleIconViewFontSizesWeights($quiz_titleFontSizes, $quiz_titleFontWeights);
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        @include module_visitAppBtnFullModule();
+
+        .title-icon-view {
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                @include g5HomeAppIconBoxReflect(-119px);
+            }
+        }
+    }
+
+    &.grid-dimension-4x4 {
+        .title-icon-view {
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                @include g5HomeAppIconBoxReflect(-226px);
+            }
+        }
+    }
+
+} /* /.module.quiz */
+
+
+/* ----- PAGE STYLES ----- */
+.quizPageTake {
+    .spincover {
+        position: absolute;
+        @include gridCoreInnerFullSplit($leftRightPad: $g5PageContentPaddingHoriz, $leftRightBorder: $g5PageContentLeftRightBorderWidth);
+
+        @media (min-width: 1200px) {
+            @include gridCoreInnerFullSplit($leftRightPad: $g5PageContentPaddingHoriz1200, $leftRightBorder: $g5PageContentLeftRightBorderWidth1200);
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+            @include gridCoreInnerFullSplit($leftRightPad: $g5PageContentPaddingHoriz768, $leftRightBorder: $g5PageContentLeftRightBorderWidth768);
+        }
+        @media (max-width: 767px) {
+            @include gridCoreInnerFullSplit($leftRightPad: $g5PageContentPaddingHorizMobile);
+        }
+
+        .spin {
+            top: $spinner_widthHeight;
+            margin-left: -1 * $spinner_widthHeight / 2;
+        }
+    }
+    .spin {
+        display: block;
+        margin: 0 auto;
+        width: $spinner_widthHeight;
+        height: $spinner_widthHeight;
+    }
+
+    .correctAnswer {
+        color: $quiz_pageTake_iconCorrectAnswer;
+    }
+    .incorrectAnswer {
+        color: $quiz_pageTake_iconIncorrectAnswer;
+    }
+
+
+    .stepMaterialsContent {
+        .files {
+            @include clearfix();
+        }
+        .attachments {
+            display: inline;
+            float: left;
+            margin-right: $baseLineHeight;
+            margin-bottom: $baseLineHeight / 2;
+            // width: 432px;
+            max-width: 432px;
+
+            @media (max-width: 767px) {
+                display: block;
+                float: none;
+                margin-right: 0;
+                margin-bottom: $baseLineHeight;
+                padding-right: 0 !important;
+                border: 0 !important;
+                width: 100% !important;
+                max-width: 100%;
+            }
+
+            // responsive embedded video
+            // see: http://webdesignerwall.com/tutorials/css-elastic-videos
+            .videoWrapper,
+            video {
+                position: relative;
+                width: 432px;
+                max-width: 100%;
+                // overflow: hidden;
+
+                @media (max-width: 767px) {
+                    width: 100%;
+                }
+
+                .responsiveVideoContainer {
+                    position: relative;
+                    padding-bottom: 56.25%;
+                    padding-top: 30px;
+                    height: 0;
+                    overflow: hidden;
+
+                    iframe, object, embed {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+
+        .pdf {
+            .attachments {
+                width: 216px;
+                padding-right: $baseLineHeight - 1px;
+                border-right: 1px solid $quiz_pageTake_pdfBorderColor;
+            }
+            .file {
+                overflow: hidden;
+                margin-bottom: $baseLineHeight / 2;
+                padding-left: $exportIconWidth + 8px;
+                line-height: $exportIconHeight;
+
+                img {
+                    display: inline;
+                    float: left;
+                    margin-left: -1 * ($exportIconWidth + 8px);
+                }
+
+                span {
+                    display: inline-block;
+                    line-height: $baseLineHeight;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+
+    .stepQuestionsContent {
+        .isCorrect .optlabel {
+            font-weight: bold;
+        }
+
+        .results {
+            display: none;
+        }
+
+        .correctAnswerExplanation,
+        .incorrectAnswerExplanation {
+            font-style: italic;
+
+            span {
+                display: block;
+            }
+        }
+    }
+
+    .stepResultsContent {
+        .certificateWrapper,
+        .badgeWrapper {
+            display: inline;
+            float: left;
+            width: 50%;
+            height: 72px;
+            line-height: 72px;
+
+            @media (max-width: 767px) {
+                display: block;
+                float: none;
+                width: auto;
+                margin-top: $baseLineHeight / 2;
+            }
+
+            img {
+                display: inline;
+                float: left;
+                margin-right: $baseLineHeight;
+                width: 72px;
+            }
+
+            p {
+                display: inline-block;
+                margin: 0;
+                line-height: $baseLineHeight;
+                vertical-align: middle;
+
+                @media (max-width: 359px) {
+                    display: block;
+                }
+            }
+        }
+        .certificateWrapper {
+            strong, span {
+                display: block;
+            }
+            .muted a,
+            .muted a:hover {
+                color: inherit;
+            }
+        }
+
+        .results {
+            .question {
+                margin-top: $baseLineHeight;
+                margin-bottom: 0;
+            }
+            .answers {
+                list-style-type: lower-alpha;
+
+                .isCorrect {
+                    font-weight: bold;
+                }
+            }
+            .correctAnswerExplanation {
+                margin-top: $baseLineHeight / 2;
+                font-style: italic;
+
+                span {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+
+/* quizPageEdit */
+.quizPageEdit {
+    .alert {
+        margin-top: 10px;
+    }
+    .stepContent {
+        margin-top: 20px;
+    }
+
+    .createAsSearchWrapper {
+        padding-bottom: 20px;
+    }
+
+    .tmlSpin {
+        display: inline-block;
+        @include ie7-inline-block();
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+    }
+
+    .quizNameCheckingSpinnner {
+        display: inline-block;
+        @include ie7-inline-block();
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        vertical-align: top;
+    }
+    .quizNameValid, .quizNameInvalid {
+        font-size: 24px;
+    }
+    .quizNameValid { color: $green; }
+    .quizNameInvalid, .quizNameInvalidMsg {
+        color: $red;
+    }
+
+    .materialItem,
+    .questionItem {
+        overflow: hidden;
+        @include clearfix();
+        padding: 10px;
+        //margin-bottom: 10px;
+        @if $quiz_pageEdit_materialItem_textColor {
+            color: $quiz_pageEdit_materialItem_textColor;
+        }
+        background: $quiz_pageEdit_materialItem_bgColor;
+        border-bottom: $quiz_pageEdit_materialItem_borderBottom;
+
+        &:hover {
+            @if $quiz_pageEdit_materialItemHover_textColor {
+                color: $quiz_pageEdit_materialItemHover_textColor;
+            }
+            background: $quiz_pageEdit_materialItemHover_bgColor;
+        }
+    }
+    .materialPlaceholder,
+    .questionPlaceholder { // for .sortable()
+        height: 50px;
+        @if $quiz_pageEdit_materialItemSortHolder_textColor {
+            color: $quiz_pageEdit_materialItemSortHolder_textColor;
+        }
+        background: $quiz_pageEdit_materialItemSortHolder_bgColor;
+        border-bottom: $quiz_pageEdit_materialItem_borderBottom;
+    }
+    .ui-sortable .materialItem,
+    .ui-sortable .questionItem {
+        cursor: move;
+    }
+    .ui-sortable.ui-sortable-disabled .materialItem,
+    .ui-sortable.ui-sortable-disabled .questionItem {
+        cursor: default;
+    }
+    .ui-sortable .ui-sortable-helper {
+        @if $quiz_pageEdit_materialItemSortHelper_textColor {
+            color: $quiz_pageEdit_materialItemSortHelper_textColor;
+        }
+        background: $quiz_pageEdit_materialItemSortHelper_bgColor;
+        // border: 1px solid $grayLight;
+        visibility: visible !important;
+    }
+
+    .materialItem.background-flash,
+    .questionItem.background-flash {
+        background-color: $quiz_pageEdit_materialItem_backgroundFlash;
+    }
+    .headerDescriptions {
+        padding: 10px 10px 5px;
+        &:hover {
+            background: inherit;
+        }
+    }
+    .materialHeader,
+    .questionHeader {
+        @if $quiz_pageEdit_materialHeaderFontColor {
+            color: $quiz_pageEdit_materialHeaderFontColor;
+        }
+        float: left;
+        font-size: .9em;
+        font-weight: bold;
+        // height: 30px;
+        // line-height: 30px;
+        @if $quiz_pageEdit_materialHeaderBgColor {
+            background: $quiz_pageEdit_materialHeaderBgColor;
+        }
+
+        i { // icons
+            font-size: 28px;
+            color: $quiz_pageEdit_materialItem_editRemoveIconColor;
+
+            &.icon-pencil,
+            &.icon-remove {
+                @include transition-property(opacity);
+                @include transition-duration(0.25s);
+                @include opacity(0.5);
+            }
+
+            &:hover {
+                @include opacity(1);
+            }
+
+            &.icon-remove {
+                @include circledAwesomeIcon(
+                    $color: $quiz_pageEdit_materialItem_editRemoveIconColor,
+                    $borderColor: $quiz_pageEdit_materialItem_editRemoveIconColor
+                );
+            }
+        }
+    }
+    .materialList .materialHeaders,
+    .questionList .questionHeaders {
+        @include clearfix();
+    }
+    .materialList .materialHeader,
+    .questionList .questionHeader {
+        font-weight: normal;
+    }
+    .materialHeader.materialSummary{
+        overflow: hidden;
+    }
+    .materialList .materialActive,
+    .questionList .questionActive {
+        @if $quiz_pageEdit_materialItemActive_textColor {
+            color: $quiz_pageEdit_materialItemActive_textColor;
+        }
+        background: $quiz_pageEdit_materialItemActive_bgColor;
+
+        @if $quiz_pageEdit_materialItemActive_iconColor {
+            i {
+                color: $quiz_pageEdit_materialItemActive_iconColor;
+
+                &.icon-remove {
+                    @include circledAwesomeIconRecolored (
+                        $borderColor: $quiz_pageEdit_materialItemActive_iconColor
+                    );
+                }
+            }
+        }
+
+        .materialTypeDependantWrapper,
+        .questionDetails {
+            position: relative;
+            padding: 10px;
+        }
+        .questionHeaders {
+            margin-left: 10px;
+            color: $grayLight;
+        }
+    }
+    .materialTypes {
+        .on {display: none;}
+        .off {display: inline;}
+        .active{
+            .on { display: inline;}
+            .off { display: none;}
+        }
+    }
+    .questionQuestion {
+        width: 80%;
+        @include text-overflow();
+    }
+    .materialPage {
+        width: 6%;
+    }
+    .materialList .materialPage {
+        // width: 5%;
+        // margin-left: 1%;
+        font-size: 18px; // same as questionNumber
+        font-weight: bold; // same as questionNumber
+    }
+    .materialType {
+        text-align: center;
+        width: 16%;
+        i { display: none;}
+        &.textType .textIcon { display: inline; }
+        &.imageType .imageIcon { display: inline; }
+        &.videoType .videoIcon { display: inline; }
+        &.pdfType .pdfIcon { display: inline; }
+    }
+    .materialSummary {
+        width: 58%;
+        // hide overflowing text for material being edited
+        p { @include text-overflow(); }
+    }
+    .materialEdit,
+    .questionEdit {
+        text-align: center;
+        width: 10%;
+    }
+    .materialRemove,
+    .questionRemove {
+        text-align: right;
+        width: 10%;
+        *width: 9%;
+    }
+    .materialList .materialRemove,
+    .questionList .questionRemove {
+        width: 9%;
+        *width: 8%;
+        margin-right: 1%;
+    }
+    @media (max-width: 479px) {
+        .headerDescriptions {
+            font-size: 87.5%;
+        }
+        .headerDescriptions .materialPage,
+        .headerDescriptions .materialEdit,
+        .headerDescriptions .questionEdit,
+        .headerDescriptions .materialRemove,
+        .headerDescriptions .questionRemove {
+            text-indent: 1000%;
+            overflow: hidden;
+        }
+    }
+    .materialEdit,
+    .materialRemove,
+    .questionEdit,
+    .questionRemove {
+        i:hover {
+            // color: $gray;
+            cursor: pointer;
+        }
+    }
+    .materialActive,
+    .questionActive { // disabled on active material
+        .materialEdit,
+        .materialRemove,
+        .questionEdit,
+        .questionRemove {
+            // i { color: $gray; }
+            i:hover {
+                // color: $gray;
+                cursor: default;
+                @include opacity(0.5);
+            }
+        }
+    }
+    .materialTypeWrapper { clear: both; }
+    .noMaterials,
+    .noQuestions {
+        @if $quiz_pageEdit_noMaterialsFontColor {
+            color: $quiz_pageEdit_noMaterialsFontColor;
+        }
+        font-size: 1.2em;
+        // border-bottom: none;
+
+        &:hover {
+            background: inherit;
+        }
+    }
+    .newMaterial,
+    .newQuestion {
+        // color: black;
+        overflow: hidden;
+    }
+    .newMaterial .materialItem,
+    .newQuestion .questionItem {
+        padding: 20px;
+        margin-bottom: 0;
+        @if $quiz_pageEdit_materialItemNew_textColor {
+            color: $quiz_pageEdit_materialItemNew_textColor;
+        }
+        background: $quiz_pageEdit_materialItemNew_bgColor;
+
+        @if $quiz_pageEdit_materialItemNew_iconColor {
+            i {
+                color: $quiz_pageEdit_materialItemNew_iconColor;
+
+                &.icon-remove {
+                    @include circledAwesomeIconRecolored (
+                        $borderColor: $quiz_pageEdit_materialItemActive_iconColor
+                    );
+                }
+            }
+        }
+    }
+    .newMaterialMsg,
+    .newQuestionMsg {
+        color: $quiz_pageEdit_materialItemNew_msgTextColor;
+        font-size: 16px;
+        margin-top: -9px;
+    }
+    .materialItemActions,
+    .questionItemActions {
+        @include clearfix();
+        margin-top: 8px;
+    }
+    .materialItem .typeContentWrapper,
+    .materialItem .materialTextWrapper {
+        padding: 8px 0 0 0;
+    }
+    .materialTextWrapper {
+        @include clearfix();
+    }
+    .questionInput {
+        width: 98%;
+    }
+    .answerItem {
+        margin: 0;
+        padding: 6px 0;
+        border-bottom: $quiz_pageEdit_answerItem_borderBottom;
+
+        &:first-child {
+            border-top: $quiz_pageEdit_answerItem_borderBottom;
+        }
+        .answerRemoveBtn {
+            i {
+                color: $quiz_pageEdit_answerItem_removeBtnColor;
+                font-size: 24px;
+                @include opacity(0.5);
+            }
+
+            &:hover i {
+                color: $quiz_pageEdit_answerItem_removeBtnColor;
+                @include opacity(1);
+            }
+        }
+        input { margin: 0; }
+        & * { vertical-align: middle; }
+
+    }
+    .correctIndicator {
+        font-size: 18px;
+        color: $green !important;
+        display: none;
+    }
+    // .questionList .questionActive .correctIndicator { color: mix($green, $white); }
+    // &.activeMode .questionList .correctIndicator { color: $grayLight; }
+    // .questionList .incorrectIndicator { color: $grayLight; }
+    .incorrectIndicator {
+        font-size: 18px;
+        // color: $gray;
+    }
+    .correctAnswer,
+    .answerControls:hover {
+        cursor: pointer;
+        .correctIndicator { display: inline; }
+        .incorrectIndicator { display: none; }
+    }
+    &.activeMode .correctAnswer,
+    &.activeMode .answerControls:hover {
+        cursor: default;
+    }
+    .questionNumber,.answerNumber {
+        font-size: 18px; // same as materialPage
+        font-weight: bold; // same as materialPage
+        display: inline-block;
+        @include ie7-inline-block();
+        padding: 1px 6px 0 0;
+        width: 24px;
+    }
+    .answerControls {
+        display: inline-block;
+        @include ie7-inline-block();
+        width: 20px;
+    }
+    .answerInput {
+        width: 80%;
+        display: inline-block;
+        @include ie7-inline-block();
+    }
+    // .newQuestion .answerItem .answerRemoveBtn {
+    //     &:hover{
+    //         color: $gray;
+    //     }
+    // }
+    .addAnswerWrapper {
+        padding: 6px 0;
+    }
+
+    // complMode (complete) styles (hides mainly)
+    &.complMode {
+        .questionRemove,
+        .answerRemoveBtn,
+        .addAnswerBtn,
+        .correctToggleBtn,
+        .questions .newQuestion {
+            display: none;
+        }
+
+        .correctAnswer .correctIndicator {
+            display: inline;
+            &:hover { cursor: default; }
+        }
+
+    }
+
+    .pdfItem {
+        margin: 0;
+        padding: 4px 0;
+        border-bottom: $quiz_pageEdit_answerItem_borderBottom;
+
+        &:first-child {
+            border-top: $quiz_pageEdit_answerItem_borderBottom;
+        }
+        i {
+            color: $quiz_pageEdit_answerItem_removeBtnColor;
+            font-size: 24px;
+            @include opacity(0.5);
+
+        }
+        a:hover {
+            i {
+                color: $quiz_pageEdit_answerItem_removeBtnColor;
+                @include opacity(1);
+            }
+        }
+        input {
+            margin: 0;
+        }
+        & * {
+            vertical-align: middle;
+        }
+    }
+    .pdfName {
+        display: inline-block;
+        @include ie7-inline-block();
+        width: 250px;
+        @include text-overflow();
+    }
+    .pdfTitle {
+        white-space: nowrap;
+    }
+    .pdfTitleInput {
+
+    }
+    .pdfRemoveBtn {
+        padding-left: 2px;
+    }
+    // .newMaterial .pdfItem .pdfRemoveBtn {
+    //     &:hover{
+    //         color: $gray;
+    //     }
+    // }
+
+    .uploadedImageWrapper {
+        img {
+            max-height: 280px;
+        }
+    }
+    .emptyImageWrapper {
+        color: $quiz_pageEdit_materialItemNew_msgTextColor;
+
+        i {
+            font-size: 32px;
+        }
+    }
+
+    .videoUrlInput {
+        width: 526px; // same as richtext
+    }
+
+    // styled file input
+    .fileInputWrapper {
+        position: relative;
+        margin-top: 8px;
+        input {
+            position: relative;
+            z-index: 2;
+            text-align: right;
+
+            &:hover {cursor: pointer !important;}
+
+            // note, every browser is a bit different (set opacity to 100 to see)
+            // but IE requires a click on the button portion of the input or else it will
+            // not pop open the file open dialog, setting the width does a pretty good job
+            // of overlaying the button portion of the control onto the .btn
+            @include opacity(0);
+            width: 100px;
+
+        }
+        .btn {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            &:hover {cursor: pointer !important;}
+        }
+    }
+
+    .uploadingIndicator {
+        & * {vertical-align: middle;}
+        .progress {
+            width: 240px;
+            height: 18px;
+            display: inline-block;
+            @include ie7-inline-block();
+            margin: 0;
+        }
+    }
+    .uploadingSpinner {
+        display: inline-block;
+        @include ie7-inline-block();
+        width: 28px;
+        height: 28px;
+    }
+    .uploadError {
+        margin-left: 20px;
+    }
+    .uploadError span {
+        font-weight: normal;
+    }
+
+    .badgeBtn {
+        .badgeBtnCaret {
+            font-size: 1.4em;
+            vertical-align: middle;
+        }
+    }
+    .badgeBtnContent {
+        display: inline-block;
+        @include ie7-inline-block();
+        height: 72px;
+        vertical-align: middle;
+
+        img {
+            height: 72px; // 36px looks better, but let's at least restrict in case the giant images get loaded
+        }
+
+        &.noBadgeContent {
+            span {
+                vertical-align: middle;
+                font-size: 1.2em;
+            }
+            i {
+                vertical-align: middle;
+                font-size: 72px;
+                color: #bbb;
+            }
+        }
+    }
+    .howToEarnBadge {
+        display: inline-block;
+        @include ie7-inline-block();
+        vertical-align: middle;
+        span {
+            margin-left: 18px;
+        }
+    }
+    // inside bootstrap dropdown
+    .badgeItem {
+        line-height: 36px;
+        a {
+            padding-right: 56px; // bootstrap 20px default + 36px from above
+            line-height: 36px;
+            vertical-align: middle;
+        }
+        img, i {
+            line-height: 36px;
+            //float: left;
+            height: 36px;
+            vertical-align: middle;
+        }
+    }
+
+    .selectCertTitle { margin-bottom: 2px;}
+    .certificateSelector {
+        @include clearfix();
+    }
+    .certificateGuts {
+        @include clearfix();
+    }
+    .certSelected {
+        float: left;
+        width: 432px;
+        height: 432px;
+        border: 1px solid $drawTool_borderColor;
+        overflow: hidden;
+
+        .noCertContent {
+            text-align: center;
+            background: $grayLighter;
+            padding-top: (432px * 1 / 4);
+            height: 432px * 3 / 4;
+            color: $gray;
+
+            i {
+                font-size: 144px;
+            }
+            .certName {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 599px) {
+            float: none;
+            max-width: 100%;
+            height: auto;
+        }
+    }
+    .certItems {
+        display: block;
+        margin-left: 440px;
+        max-height: 450px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        @include clearfix();
+
+        @media (max-width: 599px) {
+            margin-top: $baseLineHeight / 2;
+            margin-left: 0;
+            width: 432px;
+            max-width: 100%;
+            height: 110px;
+        }
+    }
+    .certItem {
+        float: left;
+        width: 108px;
+        height: 108px;
+        margin: 0 2px 2px 0;
+        border: 1px solid $drawTool_borderColor;
+        cursor: pointer;
+
+        &.active {
+            width: 106px;
+            height: 106px;
+            border: 2px solid $drawTool_borderColorSelected;
+        }
+    }
+    .thumbShrinker .certItem {
+        width: 72px;
+        height: 72px;
+    }
+
+
+    .numQuestionsTxt {
+        font-weight: bold;
+    }
+    .passingScoreInput,
+    .allowedAttemptsInput {
+        width: 33px; // enough for 3 wide numbers
+        text-align: right; // it's numbers, after all
+        margin-bottom: 0;
+        vertical-align: middle;
+    }
+    // BS tweek
+    .allowedAttemptsInputLabel {
+        margin-bottom: 0;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .isAttemptsLimitTrue {
+        // patch default bootstrap margin (the label is taller then normal b/c it has an input)
+        // margin-top: 11px;
+    }
+    // give some more room, not using .form-horizontal on this awkward form els
+    .stepResultsContent .control-group {
+        margin-bottom: 20px;
+        .badgeItem i.icon-ban-circle{
+            font-size: 26px;
+        }
+    }
+
+    .notifyTextGuts {
+        @include clearfix();
+    }
+
+
+    .previewStepBoxWrapper.well {
+        margin-left: -20px; // magic numbers computed from the padding + border of .well
+        margin-right: -20px; // magic numbers computed from the padding + border of .well
+    }
+    .previewStepBoxHeader {
+        @include clearfix();
+        // padding: 4px;
+
+        .previewStepBoxTitle {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .editStepBtn {
+            float: right;
+
+            @media (max-width: 479px) {
+                // override responsive buttons
+                width: auto;
+                padding: $paddingSmall;
+            }
+        }
+    }
+    .previewStepBoxContent {
+        .previewLabel {
+            text-align: right;
+            // font-size: .9em;
+            font-weight: bold;
+
+            @media (max-width: 767px) {
+                text-align: left;
+            }
+        }
+    }
+
+    .previewMaterialItem,
+    .previewQuestionItem {
+        padding-top: 8px;
+        border-top: 1px solid #cccccc;
+        margin-bottom: 8px;
+    }
+    .previewStepBoxContent .row:first-child {
+        .previewMaterialItem,
+        .previewQuestionItem {
+            border-top: 0;
+        }
+    }
+    .previewMaterialHeader,
+    .previewQuestionHeader {
+        font-size: 16px;
+        font-weight: bold;
+        padding-left: 8px;
+        padding-bottom: 8px;
+    }
+    .previewMaterialItemContent {
+        padding-left: 12px;
+        overflow: hidden;
+
+        &.textTypeContent {
+            text-align: center;
+            font-size: 42px;
+            color: $grayLight;
+        }
+        &.imageTypeContent {
+            text-align: center;
+            img {
+                max-height: 200px;
+            }
+        }
+        &.videoTypeContent {
+            text-align: center;
+        }
+    }
+    .previewMaterialItemText {
+        font-size: .9em;
+    }
+    .previewQuestionText {
+        margin-bottom: 4px;
+    }
+    .previewQuestionText,
+    .previewQuestionAnswers {
+        margin-left: 12px;
+    }
+    .previewQuestionAnswers {
+        @include clearfix();
+        .isCorrect {
+            &.Bool {
+                color: $grayLight;
+            }
+            float: left;
+            font-size: 18px;
+        }
+        .answerText {
+            display: block;
+            margin-left: 26px;
+        }
+    }
+    .previewBadgeCertLiner {
+        margin-left: 12px;
+    }
+
+
+    .quizMask {
+        position: absolute;
+        *position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: black;
+        @include opacity(.4);
+        z-index: 9998;
+    }
+    .quizMaskOn {
+        position: relative;
+        z-index: 9999;
+    }
+
+    .jHtmlArea .ToolBar {
+        @include clearfix();
+    }
+}// /.quizPageEdit
+
+// this qtip contains .errorTip
+.quizErrorQTip {
+    max-width: 180px;
+    .errorTip {
+        .errorMsg {
+            display: none;
+            i {
+                font-size: 18px;
+                float: left;
+                padding: 0 4px 0 0;
+            }
+        }
+    }
+}// /.quizErrorQTip
+
+
+
+/* QuizPageManageView */
+#quizPageManageView {
+    #quizFilterSelect {
+        width: auto;
+        max-width: 100%;
+    }
+    .editColumn,
+    .copyColumn {
+        text-align: center;
+        a {
+            font-size: 20px;
+        }
+    }
+}
+
+/* quizSavedModal */
+.quizSavedModal {
+    .padding {
+        padding:30px 0 30px 0;
+    }
+}

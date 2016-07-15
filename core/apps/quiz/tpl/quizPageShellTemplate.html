@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="span12">
+        <h3>{{promotionName}}</h3>
+        {{#if canPrint}}
+            <p class="pull-right"><a href="#" id="printPage">Print Results <i class="icon-print"></i></a></p>
+        {{/if}}
+    </div>
+</div>
+<div class="row">
+    <div class="span12">
+        <div class="row quiz-progress">
+            <div class="contributorSteps clearfix tc"  id="quizNavigationTabs">
+                <div class="ib clearfix">
+                {{#each quickSteps}}
+                    <div class="step {{#if canNavigate}}visited{{/if}} {{#if isActive}}active{{/if}} {{#if lastStep}}lastStep{{/if}}">
+                        <div class="num">{{index}}</div>
+                        {{#if canNavigate}}<a href="#" data-toggle="tab" id="{{tabType}}">
+                        {{#if isComplete}}<span><i class="icon-ok-sign"></i></span>{{/if}}
+                        {{/if}}
+                            <p>{{stepName}}</p>{{#unless canNavigate}}<span><i class="icon-lock"></span></i>{{/unless}}
+                        {{#if canNavigate}}</a>{{/if}}
+                        <div class="doodle"></div>
+                    </div>
+                {{/each}}
+                </div>
+            </div>
+        </div>
+        <div id="quizShellContent">
+            <!--dynamic content -->
+        </div>
+    </div>
+</div>
+
+<div class="modal hide fade recognitionResponseModal in" id="quizPageShell">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+        <h1>Success!</h1>
+        <p><b>Your quiz has been saved.</b></p>
+    </div>
+</div>

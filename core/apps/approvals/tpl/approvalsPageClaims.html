@@ -1,0 +1,146 @@
+<!-- ======== APPROVALS: APPROVALS CLAIMS PAGE ======== -->
+
+<div id="approvalsPageClaims" class="page-content">
+    <div class="page-topper">
+        <div class="row">
+            <div class="span12">
+                <!--
+                    ABOUT THIS FORM
+                    - If there is a desire to bootstrap the JSON for the promotion details, this form doesn't need to have any values prefilled (but it wouldn't hurt). The JSON object should be assigned to claimsJson in the <script> block at the end of the page
+                    - If a remote call for the promotion JSON is preferred, the form needs to have a start date/end date/promotion/status prefilled. The JS will then retrieve the JSON from the server using those criteria
+                -->
+                <form id="approvalsClaimsForm" class="form-inline collapse">
+                    <h3>Find Claims</h3>
+
+                    <fieldset id="approvalsClaimsDateRange">
+                        <div class="control-group validateme"
+                             data-validate-flags="nonempty"
+                             data-validate-fail-msgs='{"nonempty" : "Please enter a starting date"}'>
+                            <label class="control-label" for="approvalsClaimsDateStart">Submitted Between:</label>
+                            <div class="controls">
+                                <span class="input-append datepickerTrigger"
+                                    data-date-format="mm/dd/yyyy"
+                                    data-date-language="en_US"
+                                    data-date-autoclose="true">
+                                    <!-- if JSON is bootstrapped below, the value of this field will be automatically changed to reflect the value in the JSON -->
+                                    <!-- by default, three months prior to today's date -->
+                                    <input type="text" class="date datepickerInp"
+                                        id="approvalsClaimsDateStart"
+                                        name="startDate"
+                                        value="09/04/2013"
+                                        readonly="readonly">
+                                    <button class="btn datepickerBtn"><i class="icon-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="control-group validateme"
+                             data-validate-flags="nonempty"
+                             data-validate-fail-msgs='{"nonempty" : "Please enter an ending date"}'>
+                            <label class="control-label" for="approvalsClaimsDateEnd">and</label>
+                            <div class="controls">
+                                <span class="input-append datepickerTrigger"
+                                    data-date-format="mm/dd/yyyy"
+                                    data-date-language="en_US"
+                                    data-date-autoclose="true">
+                                    <!-- if JSON is bootstrapped below, the value of this field will be automatically changed to reflect the value in the JSON -->
+                                    <!-- by default, today's date -->
+                                    <input type="text" class="date datepickerInp"
+                                        id="approvalsClaimsDateEnd"
+                                        name="endDate"
+                                        value="12/04/2013"
+                                        readonly="readonly">
+                                    <button class="btn datepickerBtn"><i class="icon-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset id="approvalsClaimsPromo">
+                        <div class="control-group validateme"
+                             data-validate-flags="nonempty"
+                             data-validate-fail-msgs='{"nonempty" : "Please select a promotion"}'>
+                            <label class="control-label" for="approvalsClaimsPromotion">Promotion:</label>
+                            <div class="controls">
+                                <!-- if JSON is bootstrapped below, the value of this field will be automatically changed to reflect the value in the JSON -->
+                                <!-- by default, nothing selected -->
+                                <select id="approvalsClaimsPromotion" name="promotionId">
+                                    <option value="">Choose Promotion</option>
+                                    <option value="1234" selected="selected">PromotionName1</option>
+                                    <option value="1235">PromotionName2</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group validateme"
+                             data-validate-flags="nonempty"
+                             data-validate-fail-msgs='{"nonempty" : "Please select a status"}'>
+                            <label class="control-label" for="approvalsClaimsStatus">Status:</label>
+                            <div class="controls">
+                                <!-- if JSON is bootstrapped below, the value of this field will be automatically changed to reflect the value in the JSON -->
+                                <!-- by default, nothing selected -->
+                                <select id="approvalsClaimsStatus" name="claimStatus">
+                                    <option value="">Choose Status</option>
+                                    <option value="open" selected="selected">Open</option>
+                                    <option value="closed">Closed</option>
+                                </select>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="buttons">
+                        <button type="submit" class="btn btn-primary" id="approvalsClaimsSubmit">Show Activity</button>
+                        <button type="button" class="btn" id="approvalsClaimsCancel" data-toggle="collapse" data-target="#approvalsClaimsForm,#approvalsClaimsFormToggle">Cancel</button>
+                    </div><!-- /.form-actions -->
+                </form>
+
+                <div id="approvalsClaimsFormToggle" class="collapse in">
+                    <a class="btn btn-primary" data-toggle="collapse" data-target="#approvalsClaimsForm,#approvalsClaimsFormToggle">
+                        Change Filters
+                    </a>
+                </div>
+            </div><!-- /.span12 -->
+        </div><!-- /.row -->
+    </div><!-- /.page-topper -->
+
+    <div id="approvalsPageClaimsPromotion">
+
+            <!-- content generated by approvalsPageClaimsTpl -->
+
+    </div><!-- /.approvalsPageClaimsPromotion -->
+</div>
+
+<!-- overrides for the JSON variables (these are set in settings.js but provided here for convenience in creating a JSP) -->
+<script>
+// G5.props.URL_JSON_APPROVALS_LOAD_CLAIMS = G5.props.URL_ROOT+'ajax/approvalsClaimsList.json';
+</script>
+
+<script>
+    $(document).ready(function() {
+
+        // if desired, the claimsJson object from core/base/ajax/approvalsClaimsPromotion.json can be embedded here
+        var claimsJson;
+
+        //attach the view to an existing DOM element
+        G5.views.ApprovalsPageClaims = new ApprovalsPageClaimsView({
+            el:$('#approvalsPageClaims'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html?tpl=approvalsPageIndex&tplPath=apps/approvals/tpl/'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Approvals',
+            claimsJson : claimsJson
+        });
+
+    });
+</script>
+
+<!-- NOTE: the following includes were added to make this shell behave like the JSP -->
+<script type="text/template" id="approvalsPageClaimsTplTpl">
+    <jsp:include page="approvalsPageClaimsTpl.html"></jsp:include>
+    <?php include("approvalsPageClaimsTpl.html"); ?>
+</script>

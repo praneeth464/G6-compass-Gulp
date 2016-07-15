@@ -1,0 +1,67 @@
+{{! JAVA NOTE: isManagerOrCreator is set in the JavaScript }}
+
+<div class="row-fluid">
+	<div class="span12">
+		{{#if isManagerOrCreator}}
+			<span class="activityProgress">Activity - <strong>{{progress}}</strong></span>
+		{{else}}
+			<span class="activityProgress">{{activityDescription}} - <strong>{{progress}}</strong></span>
+		{{/if}}
+	</div>
+</div>
+
+{{! 2x2 module }}
+<div class="narrowModule">
+    {{#if isProgressLoaded}}
+	<div class="stackRankBoard jsStackRankBoard" data-dimension="2x2">
+		<!-- sub template is rendered here -->
+	</div>
+    {{else}}
+    <div class="row-fluid progressNotLoaded">
+        <div class="span12">
+            <p>Waiting for data. Stack rank will display as soon as data is loaded.</p>
+        </div>
+    </div>
+    {{/if}}
+</div>
+
+{{! 4x2 module }}
+<div class="shortAndWideModule">
+    {{#if isProgressLoaded}}
+	<div class="stackRankBoard jsStackRankBoard" data-dimension="4x2">
+		<!-- sub template is rendered here -->
+	</div>
+    {{else}}
+    <div class="row-fluid progressNotLoaded">
+        <div class="span12">
+            <p>Waiting for data. Stack rank will display as soon as data is loaded.</p>
+        </div>
+    </div>
+    {{/if}}
+</div>
+
+{{! 4x4 module }}
+<div class="wideModule">
+    {{#if isProgressLoaded}}
+	<div class="stackRankBoard jsStackRankBoard" data-dimension="4x4">
+		<!-- sub template is rendered here -->
+	</div>
+    {{else}}
+    <div class="row-fluid progressNotLoaded">
+        <div class="span12">
+            <p>Waiting for data. Stack rank will display as soon as data is loaded.</p>
+        </div>
+    </div>
+    {{/if}}
+</div>
+
+<!--subTpl.leaderTpl=
+    {{#leaders}}
+    <li value="{{rank}}" {{#if classes.length}}class="{{#classes}}{{this}} {{/classes}}"{{/if}}>
+        <span>{{score}}</span>
+        <b>{{rank}}.</b>
+        {{#if avatarUrl}}<img alt="{{lastName}}, {{firstName}}" class="avatar" src="{{avatarUrl}}" height="20" width="20" >{{/if}}
+        <span class="leaderName">{{lastName}}, {{firstName}}</span>
+    </li>
+    {{/leaders}}
+subTpl-->

@@ -1,0 +1,196 @@
+<!-- ======== LEADERBOARD PAGE EDIT PROMOTION INFORMATION ======== -->
+
+<div class="page-content leaderBoardEditPromo-liner" id="leaderboardPageView">
+
+    <div class="row">
+        <div class="span12">
+
+            <form id="leaderboardFormCreate" class="form-horizontal" action="formHandler.php" method="POST">
+
+                <!-- NOTE: this fieldset is used on the create and edit promo info form pages -->
+                <fieldset id="leaderboardFieldsetPromoInfo">
+
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter a promotion name"'>
+                        <label class="control-label" for="name">Promotion Name</label>
+                        <div class="controls">
+                            <input type="text" id="name" name="name" placeholder="" value="Promotion Name">
+                        </div>
+                    </div>
+
+
+                    <div class="form-inline">
+                        <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter a start date"}'>
+                            <label class="control-label" for="startDate">Promotion Start Date</label>
+                            <div class="controls">
+                                <span class="input-append datepickerTrigger"
+                                        data-date-format="mm/dd/yyyy"
+                                        data-date-language="en_US"
+                                        data-date-startdate="09/24/2012"
+                                        data-date-todaydate="11/14/2012"
+                                        data-date-autoclose="true">
+                                    <input type="text" id="startDate" name="startDate" placeholder="" value="2012-09-01" readonly="readonly" class="date"><button class="btn" type="button"><i class="icon-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="endDate">Promotion End Date</label>
+                            <div class="controls">
+                                <span class="input-append datepickerTrigger"
+                                        data-date-format="mm/dd/yyyy"
+                                        data-date-language="en_US"
+                                        data-date-startdate="09/24/2012"
+                                        data-date-autoclose="true">
+                                    <input type="text" id="endDate" name="endDate" placeholder="" value="2012-09-30" readonly="readonly" class="date"><button class="btn" type="button"><i class="icon-calendar"></i></button>
+                                </span>
+                                <span class="optional">(optional)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="displayEndDate">Leaderboard Display End Date</label>
+                        <div class="controls">
+                            <span class="input-append datepickerTrigger"
+                                    data-date-format="mm/dd/yyyy"
+                                    data-date-language="en_US"
+                                    data-date-startdate="09/24/2012"
+                                    data-date-autoclose="true">
+                                <input type="text" id="displayEndDate" name="displayEndDate" placeholder="" value="2012-10-31" readonly="readonly"readonly="readonly" class="date"><button class="btn" type="button"><i class="icon-calendar"></i></button>
+                            </span>
+                            <span class="optional">(optional)</span>
+                        </div>
+                    </div>
+
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter an activity title"}'>
+                        <label class="control-label" for="activityTitle">Activity Title</label>
+                        <div class="controls">
+                            <input type="text" id="activityTitle" name="activityTitle" placeholder="" value="Activity Foo">
+                        </div>
+                    </div>
+
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please select the sort order"}'>
+                        <label class="control-label" for="activitySortOrder">Sort Order</label>
+                        <div class="controls">
+                            <select id="activitySortOrder" name="activitySortOrder">
+                                <option value="DSC">Highest First</option>
+                                <option value="ASC" selected="selected">Lowest First</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter promotion rules"}'>
+                        <label class="control-label" for="rules">Promotion Rules</label>
+                        <div class="controls">
+                            <textarea rows="5" data-max-chars="2000" id="rules" name="rules" class="richtext">A whole bunch of rules.</textarea>
+                        </div>
+                    </div>
+
+                </fieldset><!-- /#leaderboardFieldsetPromoInfo -->
+
+                <input type="hidden" name="paxCount" value="5" class="participantCount">
+
+                <!-- NOTE: this fieldset is used on all leaderboard form pages -->
+                <fieldset id="leaderboardFieldsetNotify">
+
+                    <div class="control-group">
+                        <label class="control-label checkbox">
+                            <input type="checkbox" id="notifyParticipants" name="notifyParticipants"> Notify Participants
+                        </label>
+                        <div class="controls hide validateme" data-validate-flags="maxlength" data-validate-fail-msgs='{"maxlength" : "Maximum number of characters exceeded. Please edit."}' data-validate-max-length="2000">
+                            <textarea rows="5" data-max-chars="2000" id="notifyMessage" name="notifyMessage" class="richtext"></textarea>
+                        </div>
+                    </div>
+
+                </fieldset><!-- /#leaderboardFieldsetNotify -->
+
+
+                <!-- NOTE:  -->
+                <fieldset id="leaderboardFieldsetActions" class="form-actions">
+
+                    <button type="submit" id="leaderboardButtonPreviewLeaderboard" name="button" value="leaderboardButtonPreviewLeaderboard" formaction="ajax/leaderboardCreateResponse_preview.json" class="btn btn-primary">Preview Leaderboard</button>
+                    <button type="submit" id="leaderboardButtonSaveDraft" name="button" value="leaderboardButtonSaveDraft" formaction="ajax/leaderboardCreateResponse_savedraft.json" class="btn btn-primary">Save Draft</button>
+                    <button type="submit" id="leaderboardButtonCancel" name="button" value="leaderboardButtonCancel" formaction="ajax/leaderboardCreateResponse_cancel.json" class="btn">Cancel</button>
+
+                </fieldset><!-- /#leaderboardFieldsetActions -->
+
+            </form><!-- /#leaderboardFormCreate -->
+
+        </div><!-- /.span12 -->
+    </div><!-- /.row -->
+
+</div><!-- /.page-content -->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function() {
+
+        // declare our variables for later use
+        var prefilledLeaders, lbpcec;
+
+        // if there are leaders that need to be prefilled into the leaderboard (either the creator's team members for a new board or the existing leaders on an edited board), build the object here.
+        prefilledLeaders = [
+            {
+                "id":"456",
+                "lastName":"Corwin",
+                "firstName":"Aaron",
+                "avatarUrl":"img/_samples/x-profile-pic3.jpg",
+                "orgName":"Organization D",
+                "departmentName":"Accounting",
+                "jobName":"Number Cruncher",
+                "countryName":"United States",
+                "countryCode":"us",
+                "score":0,
+                "newScore":0
+            },
+            {
+                "id":"457",
+                "lastName":"Gates",
+                "firstName":"Aaron",
+                "avatarUrl":"img/_samples/x-profile-pic3.jpg",
+                "orgName":"Organization E",
+                "departmentName":"Accounting",
+                "jobName":"Number Cruncher",
+                "countryName":"United States",
+                "countryCode":"us",
+                "score":0,
+                "newScore":0
+            },
+            {
+                "id":"458",
+                "lastName":"Williams",
+                "firstName":"Aaron",
+                "avatarUrl":"img/_samples/x-profile-pic3.jpg",
+                "orgName":"Organization F",
+                "departmentName":"Accounting",
+                "jobName":"Number Cruncher",
+                "countryName":"United States",
+                "countryCode":"us",
+                "score":0,
+                "newScore":0
+            }
+        ];
+
+        //attach the view to an existing DOM element
+        lbpcec = new LeaderboardPageCreateEditCopyView({
+            el : $('#leaderboardPageView'),
+            mode : 'editPromoInfo',
+            leaders : prefilledLeaders,
+            // NOTE: when the user is editing an active leaderboard, it would be smart to prompt a message to the participants by checking the "Notify Participants" checkbox and pre-filling a message in the textarea
+            notifyParticipantsOpen : false,
+            notifyParticipantsMessage : 'The [Promotion Name] leaderboard details have been updated.',
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html?tpl=leaderboardPage&tplPath=apps/leaderboard/tpl/#set/active/1236'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Edit Leaderboard Information'
+        });
+
+    });
+</script>

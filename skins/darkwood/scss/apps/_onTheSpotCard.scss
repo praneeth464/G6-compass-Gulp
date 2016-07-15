@@ -1,0 +1,49 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $onTheSpotCard_bgColor: ;
+// $onTheSpotCard_gradType: ;
+// $onTheSpotCard_gradMeta: ; // list the gradient non-color properties such as position, shape, etc.
+// $onTheSpotCard_gradStops: ; // list the stops as one would a series of raw gradient stops
+
+// $onTheSpotCard_iconColor: ;
+// $onTheSpotCard_titleColor: ;
+// $onTheSpotCard_titleFontFamily: ;
+// $onTheSpotCard_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $onTheSpotCard_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+$onTheSpotCard_bgColorBig: $g5ModuleBgColor;
+// $onTheSpotCard_gradTypeBig: ;
+$onTheSpotCard_gradMetaBig: $g5ModuleGradMeta;
+$onTheSpotCard_gradStopsBig: $g5ModuleGradStops;
+
+// $onTheSpotCard_textColor: ;
+// $onTheSpotCard_textFontFamily: ;
+$onTheSpotCard_textFontSize: 20px;
+// $onTheSpotCard_textLineHeight: ;
+
+// these are largely copied from the Recognition Module and ideally should match for design consistency
+// $onTheSpotCard_inputColor: ; // default value is $gray as used in bootstrap/_forms.scss
+// $onTheSpotCard_inputBgColor: ; // default value is $inputBackground as used in bootstrap/_forms.scss
+// $onTheSpotCard_inputBorderWidth: ;
+// $onTheSpotCard_inputBorderColor: ;
+// $onTheSpotCard_inputBorderRadius: ;
+// $onTheSpotCard_inputBoxShadow: ;
+// $onTheSpotCard_arrowBgColor: ;
+// $onTheSpotCard_arrowColor: ;
+// $onTheSpotCard_arrowColorBig: ;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "onTheSpotCard/scss/onTheSpotCard";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

@@ -1,0 +1,30 @@
+{
+	"messages":[],
+
+	"claimIndex":[
+		{
+			"category": "CategoryName",
+			"subcategory": "SubcategoryName",
+			"productName": "ProductName",
+			"characteristics": "",
+			"quantity": 1,
+            "approvalstatusTypes": "test"
+		},
+		{
+			"category": "CategoryName",
+			"subcategory": "SubcategoryName",
+			"productName": "ProductName",
+			"characteristics": "",
+			"quantity": 2,
+            "pendingTypes": "test"
+        },
+		{
+			"category": "CategoryName",
+			"subcategory": "SubcategoryName",
+			"productName": "ProductName",
+			"characteristics": "",
+			"quantity": 2,
+            "deniedReasonTypes": "test"
+        }
+	]
+}

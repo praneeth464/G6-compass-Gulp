@@ -1,0 +1,54 @@
+<?php
+    sleep(2);
+    // always show full list?
+    $showAlways = true;
+?>
+
+{
+    "contestApprovers": [
+    <?php if($showAlways || rand(0,1)>0){ ?>
+        {
+            "id": 123,
+            "name": "First Level",
+            "approvers": [
+                {
+                    "id":445,
+                    "firstName":"Nassim",
+                    "lastName":"Taleb",
+                    "selected":true
+                },
+                {
+                    "id":45,
+                    "firstName":"Christian",
+                    "lastName":"Smith",
+                    "selected":false
+                }
+            ]
+        },
+        {
+            "id": 234,
+            "name": "Second Level",
+            "approvers": [
+                {
+                    "id":4455,
+                    "firstName":"Morbis",
+                    "lastName":"Wakeen",
+                    "selected":true
+                },
+                {
+                    "id":455,
+                    "firstName":"Slather",
+                    "lastName":"Phullbriyght",
+                    "selected":false
+                },
+                {
+                    "id":4321,
+                    "firstName":"Sniptor",
+                    "lastName":"Fullcheezadek",
+                    "selected":true
+                }
+            ]
+        }
+    <?php } ?>
+    ]
+}

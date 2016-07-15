@@ -1,0 +1,58 @@
+<?php sleep(1); ?>
+{
+    "messages" : [],
+
+<?php if($_GET['number'] == 2) { ?>
+
+    "question" : {
+        "id": "ThisIsAQuestionID02",
+        "claimId": 12345678,
+        "number": 2,
+        "text": "Is G5 delicious?",
+        "answers": [
+            {
+                "number": 1,
+                "id": "ThisIsAAnswerID01",
+                "text": "Yes, G5 is quite delicious."
+            },
+            {
+                "number": 2,
+                "id": "ThisIsAAnswerID02",
+                "text": "No, I don't think so."
+            }
+        ]
+    }
+
+<?php } else { ?>
+
+    "question" : {
+        "id": "ThisIsAQuestionID01",
+        "number": 1,
+        "text": "What is color?",
+        "answers": [
+            {
+                "number": 1,
+                "id": "ThisIsAAnswerID01",
+                "text": "Purple"
+            },
+            {
+                "number": 2,
+                "id":"ThisIsAAnswerID02",
+                "text": "The optical sensation ellicited when quanta of light bombard the retina, sending neurotransmitters to frolick about the visual cortex."
+            },
+            {
+                "number": 3,
+                "id":"ThisIsAAnswerID03",
+                "text": "It is a city in Spain."
+            },
+            {
+                "number": 4,
+                "id":"ThisIsAAnswerID04",
+                "text": "\"color\" is just a word."
+            }
+        ]
+    }
+
+<?php } ?>
+
+}

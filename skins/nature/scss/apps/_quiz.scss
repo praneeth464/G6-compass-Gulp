@@ -1,0 +1,65 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $quiz_bgColor: ;
+// $quiz_gradType: ;
+// $quiz_gradMeta: ; // list the gradient non-color properties such as position, shape, etc.
+// $quiz_gradStops: ; // list the stops as one would a series of raw gradient stops
+
+// $quiz_iconColor: ;
+// $quiz_titleColor: ;
+// $quiz_titleFontFamily: ;
+// $quiz_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $quiz_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+// $quiz_pageTake_IconCorrectAnswer: ;
+// $quiz_pageTake_IconIncorrectAnswer: ;
+// $quiz_pageTake_PdfBorderColor: ;
+
+// $quiz_pageEdit_materialHeaderFontColor: ;
+// $quiz_pageEdit_materialHeaderBgColor: ;
+
+// $quiz_pageEdit_materialItem_textColor: ;
+// $quiz_pageEdit_materialItem_bgColor: ;
+$quiz_pageEdit_materialItem_borderBottom: 1px solid $white;
+$quiz_pageEdit_materialItem_backgroundFlash: scale-color($pages_splitterBgColor, $lightness: -25%); // should be same as backgroundFlash in _participantItem.scss
+$quiz_pageEdit_materialItem_editRemoveIconColor: $white; // should be same as editRemoveIconColor in _participantItem.scss
+
+// $quiz_pageEdit_materialItemHover_textColor: ;
+$quiz_pageEdit_materialItemHover_bgColor: scale-color($pages_splitterBgColor, $lightness: 25%); // should be same as rowHoverBgColor in _participantItem.scss
+
+// $quiz_pageEdit_materialItemSortHelper_textColor: ;
+$quiz_pageEdit_materialItemSortHelper_bgColor: scale-color($pages_splitterBgColor, $lightness: 25%);
+// $quiz_pageEdit_materialItemSortHolder_textColor: ;
+$quiz_pageEdit_materialItemSortHolder_bgColor: scale-color($pages_splitterBgColor, $lightness: -25%);
+
+$quiz_pageEdit_materialItemActive_textColor: $textColor;
+// $quiz_pageEdit_materialItemActive_iconColor: ;
+// $quiz_pageEdit_materialItemActive_bgColor: ;
+
+$quiz_pageEdit_materialItemNew_textColor: $textColor;
+// $quiz_pageEdit_materialItemNew_iconColor: ;
+// $quiz_pageEdit_materialItemNew_bgColor: ;
+// $quiz_pageEdit_materialItemNew_msgTextColor: ;
+
+// $quiz_pageEdit_noMaterialsFontColor: ;
+
+// $quiz_pageEdit_answerItem_borderBottom: ;
+// $quiz_pageEdit_answerItem_removeBtnColor: ;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "quiz/scss/quiz";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================
+
+

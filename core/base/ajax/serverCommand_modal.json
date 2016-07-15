@@ -1,0 +1,10 @@
+{
+	"messages":[
+		{
+		"type":"serverCommand",
+		"command":"modal",
+		"name":"Sever Command Modal",
+		"text":"Modal triggered by JSON<br><b>message.type = serverCommand</b> <br> <b>message.command = modal</b>" 
+		}
+	]
+}

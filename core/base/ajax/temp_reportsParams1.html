@@ -1,0 +1,143 @@
+<button class="close" type="button"><i class="icon-remove"></i></button>
+
+<form name="reportParametersForm" id="reportParametersForm" method="post" action="/bonfire/reports/displayIndividualActivityReport.do" class="form-horizontal"><div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="1084fbb6a59be0e0e2696248d297776c"></div>
+
+    <input type="hidden" name="method" value="displaySummaryReport">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="span12">
+                <h3>Change Report Filters</h3>        
+
+                <div class="alert alert-error errorHidden" style="display: none;"
+                    data-msg-error="No data available for filters selected "></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span6">
+
+                <fieldset>
+
+                    <input type="hidden" name="reportParameterInfoList[0].id" value="5165">
+     
+                    <h4 class="subset">Timeframe</h4>
+                    <div class="form-inline">
+                        <div class="control-group">
+                            <label class="control-label" for="fromDate">Start</label>
+                            <div class="controls">
+                                <span class="input-append datepickerTrigger"
+                                        data-date-format="mm/dd/yyyy" 
+                                        data-date-language="en_US"
+                                        data-date-startdate=""
+                                        data-date-todaydate="12/13/2012"
+                                        
+                                        data-date-autoclose="true">
+                                    <input type="text" id="fromDate" name="reportParameterInfoList[0].value" value="01/01/2012" placeholder="" readonly="readonly" class="date">
+                                    <button class="btn" type="button"><i class="icon-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                            
+                        <input type="hidden" name="reportParameterInfoList[1].id" value="5166">
+
+                        <div class="control-group">
+                            <label class="control-label" for="toDate">End</label>
+                            <div class="controls">
+                                <span class="input-append datepickerTrigger"
+                                        data-date-format="mm/dd/yyyy" 
+                                        data-date-language="en_US"
+                                        data-date-startdate=""
+                                        data-date-todaydate="12/13/2012"
+                                        
+                                        data-date-autoclose="true">
+                                    <input type="text" id="toDate" name="reportParameterInfoList[1].value" value="11/02/2012" placeholder="" readonly="readonly" class="date">
+                                    <button class="btn" type="button"><i class="icon-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div><!-- /.form-inline -->
+                        
+                </fieldset>
+
+                <fieldset>
+                        
+                </fieldset>
+
+            </div><!-- /.span6 -->
+            
+            <div class="span6">
+                    
+            </div><!-- /.span6 -->
+            
+        </div><!-- /.row -->
+
+        <div class="row">
+            <div class="span12">
+
+                <fieldset>
+                    <h4 class="subset">Participant Search</h4>
+
+                    <div id="participantsSearch">
+                        <!-- Participant search view Element -->
+                        <div class="" id="participantSearchView"
+                            data-search-types='[{"id":"lastName","name":"Last Name"},{"id":"firstName","name":"First Name"},{"id":"location","name":"Location"},{"id":"jobTitle","name":"Job Title"},{"id":"department","name":"Department"}]'
+                            data-search-params='{}' data-autocomp-delay="500"
+                            data-autocomp-min-chars="2"
+                            data-autocomp-url="ajax/participantSearch_autocomp_firstName.json"
+                            data-search-url="ajax/temp_participantsSearchReport.json"
+                            data-select-mode="single"
+                            data-visibility-controls="hideOnly"
+                            data-msg-hide="Done Choosing">
+                            <!-- added by view -->
+                        </div>
+                    </div>
+
+                    <div
+                        class="well container-splitter participantCollectionViewWrapper">
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="participant">Participant</th>
+                                    <th class="remove">Remove</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="participantsView" class="participantCollectionView"
+                                data-msg-empty="You have not chosen anyone."
+                                data-hide-on-empty="false">
+                            </tbody>
+                        </table>
+                        <!-- 
+                        used to keep track of the number of participants, req. a 'participantCount' class
+                        name is flexible
+                        -->
+                        <input type="hidden" name="paxCount" value="0" class="participantCount" />
+                    </div>
+                    <!-- /.well.container-splitter.participantCollectionViewWrapper -->
+
+                    <!--
+                    If a participant needs to be prefilled in the widget, put a stringified JSON object of the pax data inside this textarea.
+                    If no participant needs to be prefilled, do not display the textarea at all
+                    -->
+                    <textarea name="prefilledParticipant" id="prefilledParticipant" style="display:none">
+                        [{"id":5594,"firstName":"Susan","lastName":"Smith","isSelected":true,"isLocked":false}]
+                    </textarea>
+
+                </fieldset>
+
+            </div><!-- /.span12 -->
+        </div><!-- /.row -->
+        
+    </div><!-- /.container-fluid -->
+
+    <div class="row">
+        <div class="form-actions">
+            <button id="submitButton" type="button" class="btn btn-primary">Update
+                Report</button>
+            <button id="cancelButton" type="button" class="btn">Cancel</button>
+        </div>
+    </div><!-- /.row -->
+
+</form>

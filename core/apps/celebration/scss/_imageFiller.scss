@@ -1,0 +1,49 @@
+// App-specific variables
+// =========================
+$celebrationImageFiller_numberBgImgUrl: 'celebration/year.jpg' !default;
+$celebrationImageFiller_numberBgImgUrlPath: $appImagesPath !default;
+$celebrationImageFiller_numberFontFullString: $titleFontWeightBold 288px 'din-condensed', $sansFontFamily !default; // font-style font-variant font-weight font-size[req]/line-height font-family[req]
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.celebrationImageFiller {
+
+
+} /* /.celebrationImageFiller  */
+
+/* ----- MODULE STYLES ----- */
+.module.celebrationImageFiller {
+
+    .wide-view {
+        padding: 0;
+    }
+
+    .imageFillerWrapper {
+        span {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            color: $white;
+            font: $celebrationImageFiller_numberFontFullString;
+            line-height: $g5ModuleUnit * 2;
+            text-align: center;
+            @include safeImgUrls($celebrationImageFiller_numberBgImgUrl, $celebrationImageFiller_numberBgImgUrlPath, $property: 'background-image');
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+        }
+    }
+
+} /* /.module.celebrationImageFiller  */
+
+/* ----- PAGE STYLES ----- */
+.page.celebrationImageFiller {
+
+} /* /.page.celebrationImageFiller  */

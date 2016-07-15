@@ -1,0 +1,89 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg>
+<metadata>
+Created by FontForge 20110222 at Tue Feb  4 11:39:21 2014
+ By Orthosie Webhosting
+SIL Open Font License 1.1
+</metadata>
+<defs>
+<font id="FontAwesomeRegular" horiz-adv-x="1792" >
+  <font-face 
+    font-family="FontAwesomeRegular"
+    font-weight="400"
+    font-stretch="normal"
+    units-per-em="1792"
+    panose-1="0 0 0 0 0 0 0 0 0 0"
+    ascent="1536"
+    descent="-256"
+    bbox="-1 -161.571 1711 1536"
+    underline-thickness="90"
+    underline-position="-89"
+    unicode-range="U+0020-F000"
+  />
+<missing-glyph horiz-adv-x="896" 
+d="M224 112h448v1312h-448v-1312zM112 0v1536h672v-1536h-672z" />
+    <glyph glyph-name=".notdef" horiz-adv-x="896" 
+d="M224 112h448v1312h-448v-1312zM112 0v1536h672v-1536h-672z" />
+    <glyph glyph-name=".null" horiz-adv-x="0" 
+ />
+    <glyph glyph-name="nonmarkingreturn" horiz-adv-x="597" 
+ />
+    <glyph glyph-name="space" unicode=" " horiz-adv-x="448" 
+ />
+    <glyph glyph-name="uni00A0" unicode="&#xa0;" horiz-adv-x="448" 
+ />
+    <glyph glyph-name="dieresis" unicode="&#xa8;" 
+ />
+    <glyph glyph-name="copyright" unicode="&#xa9;" 
+ />
+    <glyph glyph-name="registered" unicode="&#xae;" 
+ />
+    <glyph glyph-name="acute" unicode="&#xb4;" 
+ />
+    <glyph glyph-name="AE" unicode="&#xc6;" 
+ />
+    <glyph glyph-name="uni2000" unicode="&#x2000;" horiz-adv-x="768" 
+ />
+    <glyph glyph-name="uni2001" unicode="&#x2001;" horiz-adv-x="1536" 
+ />
+    <glyph glyph-name="uni2002" unicode="&#x2002;" horiz-adv-x="768" 
+ />
+    <glyph glyph-name="uni2003" unicode="&#x2003;" horiz-adv-x="1536" 
+ />
+    <glyph glyph-name="uni2004" unicode="&#x2004;" horiz-adv-x="512" 
+ />
+    <glyph glyph-name="uni2005" unicode="&#x2005;" horiz-adv-x="384" 
+ />
+    <glyph glyph-name="uni2006" unicode="&#x2006;" horiz-adv-x="256" 
+ />
+    <glyph glyph-name="uni2007" unicode="&#x2007;" horiz-adv-x="256" 
+ />
+    <glyph glyph-name="uni2008" unicode="&#x2008;" horiz-adv-x="192" 
+ />
+    <glyph glyph-name="uni2009" unicode="&#x2009;" horiz-adv-x="307" 
+ />
+    <glyph glyph-name="uni200A" unicode="&#x200a;" horiz-adv-x="85" 
+ />
+    <glyph glyph-name="uni202F" unicode="&#x202f;" horiz-adv-x="307" 
+ />
+    <glyph glyph-name="uni205F" unicode="&#x205f;" horiz-adv-x="384" 
+ />
+    <glyph glyph-name="trademark" unicode="&#x2122;" 
+ />
+    <glyph glyph-name="infinity" unicode="&#x221e;" 
+ />
+    <glyph glyph-name="notequal" unicode="&#x2260;" 
+ />
+    <glyph glyph-name="uniE000" unicode="&#xe000;" horiz-adv-x="500" 
+ />
+    <glyph glyph-name="time" unicode="&#xf000;" horiz-adv-x="1712" 
+d="M1616 678q0 -156 -60 -294t-168 -238l67 -285q7 -14 1 -20t-20 2l-257 160q-72 -35 -151.5 -55.5t-173.5 -20.5q-86 0 -163.5 20.5t-149.5 55.5l-255 -160q-15 -8 -22 -2t2 20l66 285q-53 50 -95.5 110t-72 128t-45.5 142t-16 152q0 105 27 201.5t76.5 180t118.5 152.5
+t152.5 117.5t179 75.5t197.5 27q105 0 202.5 -27t182 -75.5t154 -117.5t119 -152.5t77 -180t27.5 -201.5zM275 678q0 -121 46.5 -226.5t125.5 -184t184.5 -123.5t222.5 -45q122 0 229.5 45t188 123.5t127.5 184t47 226.5q0 57 -12.5 113.5t-35 109.5t-54 101t-70.5 88
+q-87 85 -192.5 127t-227.5 42q-117 0 -222.5 -45t-184.5 -123.5t-125.5 -184.5t-46.5 -228zM454 1439q-53 -32 -104 -70.5t-96.5 -84t-84 -97t-66.5 -107.5q-43 35 -73.5 88t-30.5 112q0 53 20 99.5t54.5 81t81 54.5t99.5 20q66 0 119.5 -25.5t80.5 -70.5zM1464 1535
+q50 0 95 -20t78.5 -54.5t53.5 -81t20 -99.5q0 -59 -25.5 -112t-69.5 -88q-28 57 -68.5 107.5t-83.5 101.5q-44 42 -97.5 78.5t-110.5 71.5q35 45 89 70.5t119 25.5zM1188 678q27 0 27 -27v-77q0 -29 -27 -29h-428q-15 0 -27 7.5t-12 21.5v68v9v362q0 13 12 20t27 7h67
+q27 0 27 -27v-335h334z" />
+    <glyph glyph-name="NULL" horiz-adv-x="0" 
+ />
+  </font>
+</defs></svg>

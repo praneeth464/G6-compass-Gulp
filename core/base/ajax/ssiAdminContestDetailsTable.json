@@ -1,0 +1,378 @@
+<?php
+
+$c = $_POST['contestType'];
+
+?>
+
+{
+    "participants": {
+        "_comment": "contestType can be objective, doThisGetThat or stepItUp",
+        "contestType": "<?php echo $c ?>",
+
+        "payoutType": "points",
+        "includeBonus": true,
+        "includeBaseline": true,
+        "role": "creator",
+        "tabularData":
+        <?php
+        if( $c == 'doThisGetThat' ) { ?>
+            {
+            "columns": [
+                {
+                        "id": "1",
+                        "name": "participants",
+                        "type": "string",
+                        "tableDisplayName": "Participants",
+                        "sortable": true,
+                        "footerDisplayText": "Totals"
+                },
+                {
+                        "id": "2",
+                        "name": "orgUnit",
+                        "type": "string",
+                        "tableDisplayName": "Org Unit",
+                        "sortable": true,
+                        "footerDisplayText": null
+                },
+                {
+                        "id": "3",
+                        "name": "activityDescription1",
+                        "type": "header",
+                        "tableDisplayName": "Activity Description 1",
+                        "sortable": false,
+                        "footerDisplayText": null,
+                        "parentColumn": true
+                },
+                {
+                        "id": "4",
+                        "name": "activityDescription2",
+                        "type": "header",
+                        "tableDisplayName": "Activity Description 2",
+                        "sortable": false,
+                        "footerDisplayText": null,
+                        "parentColumn": true
+                },
+                {
+                        "id": "5",
+                        "name": "totalPotentialPayout",
+                        "type": "number",
+                        "tableDisplayName": "Total Potential Payout",
+                        "sortable": true,
+                        "footerDisplayText": "18,000",
+                        "parentColumn": false
+                }
+            ],
+            "subColumns": [
+                {
+                    "id": "31",
+                    "_comment": "name for subColumns should be the name from the parent column + the tableDisplayName",
+                    "name": "activityDescription1_activity",
+                    "type": "number",
+                    "tableDisplayName": "Activity",
+                    "sortable": true,
+                    "footerDisplayText": "120"
+                },
+                {
+                    "id": "32",
+                    "_comment": "name for subColumns should be the name from the parent column + the tableDisplayName",
+                    "name": "activityDescription1_payoutQuantity",
+                    "type": "number",
+                    "tableDisplayName": "Payout Quantity",
+                    "sortable": true,
+                    "footerDisplayText": "1,200"
+                },
+                {
+                    "id": "41",
+                    "_comment": "name for subColumns should be the name from the parent column + the tableDisplayName",
+                    "name": "activityDescription2_activity",
+                    "type": "number",
+                    "tableDisplayName": "Activity",
+                    "sortable": true,
+                    "footerDisplayText": "120"
+                },
+                {
+                    "id": "42",
+                    "_comment": "name for subColumns should be the name from the parent column + the tableDisplayName",
+                    "name": "activityDescription2_payoutQuantity",
+                    "type": "number",
+                    "tableDisplayName": "Payout Quantity",
+                    "sortable": true,
+                    "footerDisplayText": "1,200"
+                }
+            ],
+            "footerActive": true,
+            "paxResults": [
+                {
+                    "userId": 1231,
+                    "clientState": "path/for/clientState",
+                    "participantName": "LastName, FirstName",
+                    "contestUrl": "layout.html?tplPath=apps/ssi/tpl/&tpl=ssiParticipantPage.html#contest/1",
+                    "orgUnit": "district",
+                    "levelCompleted": "2",
+                    "currentActivity": "3",
+                    "activityDescription": [
+                        {
+                            "activity": "2.0000",
+                            "payoutQuantity": "2",
+                            "payout": "120"
+                        },
+                        {
+                            "activity": "3.1230",
+                            "payoutQuantity": "5",
+                            "payout": "220"
+                        }
+                    ],
+                    "payoutAmount": "13,400"
+                },
+                {
+                    "userId": 1232,
+                    "clientState": "path/for/clientState",
+                    "participantName": "LastName, FirstName",
+                    "contestUrl": "layout.html?tplPath=apps/ssi/tpl/&tpl=ssiParticipantPage.html#contest/1",
+                    "orgUnit": "district",
+                    "levelCompleted": "2",
+                    "currentActivity": "3",
+                    "activityDescription": [
+                        {
+                            "activity": "2.0500",
+                            "payoutQuantity": "2",
+                            "payout": "120"
+                        },
+                        {
+                            "activity": "3.0100",
+                            "payoutQuantity": "5",
+                            "payout": "220"
+                        }
+                    ],
+                    "payoutAmount": "13,400"
+                }
+            ]
+        },<?php }
+
+        if($c == 'objectives') { ?>
+            {
+            "columns": [
+                {
+                        "id": "1",
+                        "name": "participants",
+                        "type": "string",
+                        "tableDisplayName": "Participants",
+                        "sortable": true,
+                        "footerDisplayText": "Totals"
+                },
+                {
+                        "id": "2",
+                        "name": "orgUnit",
+                        "type": "string",
+                        "tableDisplayName": "Org Unit",
+                        "sortable": true,
+                        "footerDisplayText": null
+                },
+                {
+                        "id": "3",
+                        "name": "objective",
+                        "type": "number",
+                        "tableDisplayName": "Objective",
+                        "sortable": false,
+                        "footerDisplayText": "200,000.1230",
+                        "parentColumn": true
+                },
+                {
+                        "id": "4",
+                        "name": "currentActivity",
+                        "type": "number",
+                        "tableDisplayName": "Current Activity",
+                        "sortable": false,
+                        "footerDisplayText": "1,245,000.1000",
+                        "parentColumn": true
+                },
+                {
+                        "id": "5",
+                        "name": "percentToObjective",
+                        "type": "number",
+                        "tableDisplayName": "% to Objective",
+                        "sortable": true,
+                        "footerDisplayText": "78%",
+                        "parentColumn": false
+                },
+                {
+                        "id": "6",
+                        "name": "objectivePayout",
+                        "type": "number",
+                        "tableDisplayName": "Objective Payout",
+                        "sortable": true,
+                        "footerDisplayText": "8,000",
+                        "parentColumn": false
+                },
+                {
+                        "id": "7",
+                        "name": "bonus",
+                        "type": "number",
+                        "tableDisplayName": "Bonus Payout",
+                        "sortable": true,
+                        "footerDisplayText": null,
+                        "parentColumn": false
+                },
+                {
+                        "id": "8",
+                        "name": "totalPayout",
+                        "type": "number",
+                        "tableDisplayName": "Total Payout",
+                        "sortable": true,
+                        "footerDisplayText": null,
+                        "parentColumn": false
+                }
+            ],
+            "footerActive": true,
+            "paxResults": [
+                {
+                    "userId": 1231,
+                    "clientState": "path/for/clientState",
+                    "participantName": "LastName, FirstName",
+                    "contestUrl": "layout.html?tplPath=apps/ssi/tpl/&tpl=ssiParticipantPage.html#contest/1",
+                    "orgUnit": "district",
+                    "objective": "15,000.0010",
+                    "bonusAmount": "12",
+                    "currentActivity": "3,000.0100",
+                    "percentToObjective": "55%",
+                    "objectivePayout": "10,000",
+                    "payoutAmount": "12,000",
+                    "payoutValue": "123",
+                    "payoutDescription": "$10 gift card"
+                }
+            ]
+        },<?php }
+
+        if($c == 'stepItUp') { ?>
+            {
+            "columns": [
+                {
+                        "id": "1",
+                        "name": "participants",
+                        "type": "string",
+                        "tableDisplayName": "Participants",
+                        "sortable": true,
+                        "footerDisplayText": "Totals"
+                },
+                {
+                        "id": "2",
+                        "name": "orgUnit",
+                        "type": "string",
+                        "tableDisplayName": "Org Unit",
+                        "sortable": true,
+                        "footerDisplayText": null
+                },
+                {
+                        "id": "3",
+                        "name": "baseline",
+                        "type": "number",
+                        "tableDisplayName": "Baseline",
+                        "sortable": true,
+                        "footerDisplayText": "1,000"
+                },
+                {
+                        "id": "4",
+                        "name": "activity",
+                        "type": "number",
+                        "tableDisplayName": "Activity",
+                        "sortable": true,
+                        "footerDisplayText": "1,245,000",
+                        "parentColumn": true
+                },
+                {
+                        "id": "5",
+                        "name": "levelCompleted",
+                        "type": "number",
+                        "tableDisplayName": "Level Completed",
+                        "sortable": true,
+                        "footerDisplayText": null,
+                        "parentColumn": true
+                },
+                {
+                        "id": "6",
+                        "name": "levelPayout",
+                        "type": "number",
+                        "tableDisplayName": "Level Payout",
+                        "sortable": true,
+                        "footerDisplayText": "14,000",
+                        "parentColumn": false
+                },
+                {
+                        "id": "7",
+                        "name": "bonusPayout",
+                        "type": "number",
+                        "tableDisplayName": "Bonus Payout",
+                        "sortable": true,
+                        "footerDisplayText": "340",
+                        "parentColumn": false
+                },
+                {
+                        "id": "8",
+                        "name": "totalPayout",
+                        "type": "number",
+                        "tableDisplayName": "Total Payout",
+                        "sortable": true,
+                        "footerDisplayText": "12,000",
+                        "parentColumn": false
+                }
+            ],
+            "footerActive": true,
+            "paxResults": [
+                {
+                    "userId": 1231,
+                    "clientState": "path/for/clientState",
+                    "participantName": "LastName, FirstName",
+                    "contestUrl": "layout.html?tplPath=apps/ssi/tpl/&tpl=ssiParticipantPage.html#contest/1",
+                    "orgUnit": "district",
+                    "baseline": "200",
+                    "levelCompleted": "1",
+                    "currentActivity": "3,000.0100",
+                    "levelPayout": "10,000",
+                    "bonusAmount": "200",
+                    "payoutAmount": "13,200",
+                    "payoutValue": "123",
+                    "payoutDescription": "$10 gift card"
+                },
+                {
+                    "userId": 1232,
+                    "clientState": "path/for/clientState",
+                    "participantName": "LastName, FirstName",
+                    "contestUrl": "layout.html?tplPath=apps/ssi/tpl/&tpl=ssiParticipantPage.html#contest/1",
+                    "orgUnit": "district",
+                    "baseline": "200",
+                    "levelCompleted": "1",
+                    "currentActivity": "3,000.1200",
+                    "levelPayout": "10,000",
+                    "bonusAmount": "200",
+                    "payoutAmount": "13,200",
+                    "payoutValue": "123",
+                    "payoutDescription": "$10 gift card"
+                },
+                {
+                    "userId": 1233,
+                    "clientState": "path/for/clientState",
+                    "participantName": "LastName, FirstName",
+                    "contestUrl": "layout.html?tplPath=apps/ssi/tpl/&tpl=ssiParticipantPage.html#contest/1",
+                    "orgUnit": "district",
+                    "baseline": "200",
+                    "levelCompleted": "1",
+                    "currentActivity": "3,000.1230",
+                    "levelPayout": "10,000",
+                    "bonusAmount": "200",
+                    "payoutAmount": "13,200",
+                    "payoutValue": "123",
+                    "payoutDescription": "$10 gift card"
+                }
+            ]
+        },<?php }
+        ?>
+        "total": 15,
+        "perPage": 10,
+        "current": 2,
+        "sortedBy": "desc",
+
+        "_comment": "Use the name attribute from the tabularData.columns array for the sortedOn value",
+        "sortedOn": "participants"
+    }
+
+}

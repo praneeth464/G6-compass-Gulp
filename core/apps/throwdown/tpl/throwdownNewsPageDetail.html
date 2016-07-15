@@ -1,0 +1,29 @@
+<!-- ======== THROWDOWN NEWS PAGE DETAIL ======== -->
+
+<div id="newsPageDetailView" class="newsPageDetail-liner page-content">
+<!--dynamic content-->
+</div>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+$(document).ready(function() {
+
+    //attach the view to an existing DOM element
+    var cpdv = new ThrowdownNewsPageDetailView({
+        el:$('#newsPageDetailView'),
+        messageUniqueId : $.query.get('messageUniqueId'),
+        pageNav : {
+            back : {
+                text : 'Back',
+                url : 'layout.html?tpl=throwdownNewsPage&tplPath=apps/throwdown/tpl/'
+            },
+            home : {
+                text : 'Home',
+                url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+            }
+        },
+        pageTitle : 'Commissioner News'
+    });
+
+});
+</script>

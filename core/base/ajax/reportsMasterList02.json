@@ -1,0 +1,26 @@
+{
+  "messages":[],
+  "reports":[
+    {
+      "displayName": "Participant Login Activity",
+      "url": "ajax/reportsIndividualChart05.json",
+      "id": 1,
+      "category": "Login Activity",
+      "desc": "Short description of Participant Login Activity Report here."
+    },
+    {
+      "displayName": "Budget Issuance",
+      "url": "ajax/reportsIndividualChart06.json",
+      "id": 2,
+      "category": "Budget",
+      "desc": "Short description of Budget Issuance here."
+    },
+    {
+      "displayName": "Budget Status",
+      "url": "ajax/reportsIndividualChart07.json",
+      "id": 3,
+      "category": "Budget",
+      "desc": "Short description of Budget Status here."
+    }
+  ]
+}

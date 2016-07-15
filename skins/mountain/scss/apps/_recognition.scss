@@ -1,0 +1,70 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $recognition_bgColor: ;
+// $recognition_gradType: ;
+// $recognition_gradMeta: ; // list the gradient non-color properties such as position, shape, etc.
+// $recognition_gradStops: ; // list the stops as one would a series of raw gradient stops
+
+// $recognition_iconColor: ;
+// $recognition_titleColor: ;
+// $recognition_titleFontFamily: ;
+// $recognition_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $recognition_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+// $recognition_bgColorBig: ;
+// $recognition_gradTypeBig: ;
+// $recognition_gradMetaBig: ;
+// $recognition_gradStopsBig: ;
+
+// $purlRecognition_bgColor: ;
+// $purlRecognition_gradType: ;
+// $purlRecognition_gradMeta: ; // list the gradient non-color properties such as position, shape, etc.
+// $purlRecognition_gradStops: ; // list the stops as one would a series of raw gradient stops
+
+// $purlRecognition_iconColor: ;
+// $purlRecognition_titleColor: ;
+// $purlRecognition_titleFontFamily: ;
+// $purlRecognition_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $purlRecognition_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+// $recognition_textColor: ;
+// $recognition_textMutedColor: ;
+// $recognition_linkColor: ;
+// $recognition_linkHoverColor: ;
+
+// $recognition_placeholderColor: ;
+// $recognition_placeholderFontStyle: ;
+
+// $recognition_inputLabelFontFamily: ;
+// $recognition_inputLabelFontStyle: ;
+// $recognition_inputLabelFontWeight: ;
+// $recognition_inputLabelFontSize2x2: ;
+// $recognition_inputLabelFontSize4x2: ;
+// $recognition_inputLabelFontSize4x4: ;
+
+// these are largely reproduced in the On the Spot Card module and ideally should match for design consistency
+// $recognition_inputColor: ; // default value is $gray as used in bootstrap/_forms.scss
+// $recognition_inputBgColor: ; // default value is $inputBackground as used in bootstrap/_forms.scss
+// $recognition_inputBorderWidth: ;
+// $recognition_inputBorderColor: ;
+// $recognition_inputBorderRadius: ;
+// $recognition_inputBoxShadow: ;
+// $recognition_magnifyBgColor: ;
+// $recognition_magnifyColor: ;
+// $recognition_magnifyTextShadow: ;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "recognition/scss/recognition";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

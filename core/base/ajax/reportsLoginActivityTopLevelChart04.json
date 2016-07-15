@@ -1,0 +1,202 @@
+{
+  "messages": [],
+  "chart": {},
+  "categories": [
+    {
+      "category": [
+        {
+          "label": "BONFIRE HOME DESIGNS"
+        },
+        {
+          "label": "Bloomington"
+        },
+        {
+          "label": "Bonfire Uber Corp"
+        },
+        {
+          "label": "Dallas"
+        },
+        {
+          "label": "Eau Claire"
+        },
+        {
+          "label": "Florida"
+        },
+        {
+          "label": "Foreign"
+        },
+        {
+          "label": "Georgia"
+        },
+        {
+          "label": "Green Bay"
+        },
+        {
+          "label": "Heartland"
+        },
+        {
+          "label": "Iowa"
+        },
+        {
+          "label": "Kansas"
+        },
+        {
+          "label": "Midwest"
+        },
+        {
+          "label": "Minnesota"
+        },
+        {
+          "label": "Missouri"
+        },
+        {
+          "label": "North"
+        },
+        {
+          "label": "South"
+        },
+        {
+          "label": "St.Paul"
+        },
+        {
+          "label": "Texas"
+        },
+        {
+          "label": "Wisconsin"
+        }
+      ]
+    }
+  ],
+  "dataset": [
+    {
+      "seriesname": "???report.login.PERCENT_LOGGED_IN???",
+      "data": [
+        {
+          "value": "0"
+        },
+        {
+          "value": "0"
+        },
+        {
+          "value": "20"
+        },
+        {
+          "value": "0"
+        },
+        {
+          "value": "0"
+        },
+        {
+          "value": "0"
+        },
+        {
+          "value": "0"
+        },
+        {
+          "value": "0"
+        },
+        {
+          "value": "0"
+        },
+        {
+          "value": "0"
+        },
+        {
+          "value": "0"
+        },
+        {
+          "value": "0"
+        },
+        {
+          "value": "0"
+        },
+        {
+          "value": "0"
+        },
+        {
+          "value": "0"
+        },
+        {
+          "value": "0"
+        },
+        {
+          "value": "0"
+        },
+        {
+          "value": "0"
+        },
+        {
+          "value": "0"
+        },
+        {
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "seriesname": "???report.login.PERCENT_NOT_LOGGED_IN???",
+      "data": [
+        {
+          "value": "100"
+        },
+        {
+          "value": "100"
+        },
+        {
+          "value": "80"
+        },
+        {
+          "value": "100"
+        },
+        {
+          "value": "100"
+        },
+        {
+          "value": "100"
+        },
+        {
+          "value": "100"
+        },
+        {
+          "value": "100"
+        },
+        {
+          "value": "100"
+        },
+        {
+          "value": "100"
+        },
+        {
+          "value": "100"
+        },
+        {
+          "value": "100"
+        },
+        {
+          "value": "100"
+        },
+        {
+          "value": "100"
+        },
+        {
+          "value": "100"
+        },
+        {
+          "value": "100"
+        },
+        {
+          "value": "100"
+        },
+        {
+          "value": "100"
+        },
+        {
+          "value": "100"
+        },
+        {
+          "value": "100"
+        }
+      ]
+    }
+  ]
+}

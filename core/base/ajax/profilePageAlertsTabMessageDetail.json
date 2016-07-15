@@ -1,0 +1,12 @@
+{
+	"messages":[],
+
+	"ProfilePageAlertsTabMessageDetail":[
+			{
+				"messageDate": "01/01/2012",				
+				"messageTitle": "Here is a message title.",
+				"promotionName": "Here is a promotion name.",
+				"messageText": "<p>Here is the text that would be inside a tooltip for that message. It can be HTML and include <a href='#'>links</a> to other pages. <strong>There should only be one message in this JSON since only one is displayed on this page.</strong></p><p>Lorem ipsum and the like.</p>"
+			}
+	]
+}

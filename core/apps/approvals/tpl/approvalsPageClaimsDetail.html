@@ -1,0 +1,276 @@
+<!-- ======== APPROVALS: APPROVALS CLAIMS DETAIL PAGE ======== -->
+
+<div id="approvalsPageClaimsDetail" class="page-content">
+    <div id="pendingNominationsWrapper" class="approvalSearchWrapper">
+        <div class="row">
+            <div class="span6">
+                <h3>Claim Information</h3>
+            </div>
+            <div class="span6">
+                <ul class="export-tools fr">
+                    <li><a href="#">Print</a></li>
+                    <li><a href="#"><i class="icon-print"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span12">
+                <!-- NOTE: Leaving this div empty for BE to fill later -->
+                <div id="claimDetails">
+                    <dl class="dl-horizontal">
+                        <dt>Claim Number</dt>
+                            <dd>
+                                <p>123456789</p>
+                            </dd>
+                        <dt>Claim Date</dt>
+                            <dd>
+                                <p>04/10/2012</p>
+                            </dd>
+                        <dt>Company Name</dt>
+                            <dd>
+                                <p>CompanyName</p>
+                            </dd>
+                        <dt>Invoice Number</dt>
+                            <dd>
+                                <p>345678</p>
+                            </dd>
+                        <dt>Invoice Date</dt>
+                            <dd>
+                                <p>05/26/2012</p>
+                            </dd>
+                        <dt>Submitter</dt>
+                            <dd>
+                                <p>Firstname Lastname</p>
+                            </dd>
+                    </dl>
+                </div>
+
+                <form action="" id="claimSubmissionForm" class="form-horizontal">
+                    <h3>Product Information</h3>
+                    <div class="claimTableWrapper">
+                        <table id="claimProductInfoTable" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Subcategory</th>
+                                    <th>Product</th>
+                                    <th>Characteristics</th>
+                                    <th>Quantity</th>
+                                    <th>Approver</th>
+                                    <th class="approvalsActionColumn">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Floor Coverings</td>
+                                    <td></td>
+                                    <td>area rug</td>
+                                    <td class="characteristics">
+                                        <span class="char">short string 1</span>
+                                        <span class="char">short string 2</span>
+                                    </td>
+                                    <td>20</td>
+                                    <td></td>
+
+                                    <!-- if approved or denied -->
+                                    <td>
+                                        Denied: Incorrect Information
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Floor Coverings</td>
+                                    <td></td>
+                                    <td>area rug</td>
+                                    <td class="characteristics">
+                                        <span class="char">short string 1</span>
+                                        <span class="char">short string 2</span>
+                                    </td>
+                                    <td>20</td>
+                                    <td></td>
+
+                                    <!-- if pending or held -->
+                                    <td class="hasSelects">
+                                        <span class="status validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please select a status"}'>
+                                            <select name="claimProductApprovalFormByClaimProductIdString(5014).approvalStatusType" id="status[5014]" class="approvalStatusType">
+                                                <option value="">Select Status</option>
+                                                <option value="pend">Pending</option>
+                                                <option value="approv">Approved</option>
+                                                <option value="deny">Denied</option>
+                                                <option value="hold" selected="selected">On Hold</option>
+                                            </select>
+                                        </span>
+                                        <span class="statusReason denyReason validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please select a reason"}'>
+                                            <select name="claimProductApprovalFormByClaimProductIdString(5016).denyPromotionApprovalOptionReasonType">
+                                                <option value="">Select Reason</option>
+                                                <option value="PaxINE">Participant is Ineligible</option>
+                                                <option value="IncorInfo">Incorrect Information</option>
+                                                <option value="Inv">Invalid</option>
+                                            </select>
+                                        </span>
+                                        <span class="statusReason holdReason validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please select a reason"}'>
+                                            <select name="claimProductApprovalFormByClaimProductIdString(5016).denyPromotionApprovalOptionReasonType">
+                                                <option value="">Select Reason</option>
+                                                <option value="0">Need more information</option>
+                                                <option value="1" selected="selected">Can't decide</option>
+                                                <option value="2">Sending it up the ladder</option>
+                                            </select>
+                                        </span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Floor Coverings</td>
+                                    <td></td>
+                                    <td>ceramic tile (sq ft)</td>
+                                    <td class="characteristics"></td>
+                                    <td>22</td>
+                                    <td></td>
+                                    <td class="hasSelects">
+                                        <span class="status validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please select a status"}'>
+                                            <select name="claimProductApprovalFormByClaimProductIdString(5015).approvalStatusType" id="status[5015]" class="approvalStatusType">
+                                                <option value="">Select Status</option>
+                                                <option value="pend">Pending</option>
+                                                <option value="approv">Approved</option>
+                                                <option value="deny">Denied</option>
+                                                <option value="hold">On Hold</option>
+                                            </select>
+                                        </span>
+                                        <span class="statusReason denyReason validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please select a reason"}'>
+                                            <select name="claimProductApprovalFormByClaimProductIdString(5016).denyPromotionApprovalOptionReasonType">
+                                                <option value="">Select Reason</option>
+                                                <option value="PaxINE">Participant is Ineligible</option>
+                                                <option value="IncorInfo">Incorrect Information</option>
+                                                <option value="Inv">Invalid</option>
+                                            </select>
+                                        </span>
+                                        <span class="statusReason holdReason validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please select a reason"}'>
+                                            <select name="claimProductApprovalFormByClaimProductIdString(5016).denyPromotionApprovalOptionReasonType">
+                                                <option value="">Select Reason</option>
+                                                <option value="0">Need more information</option>
+                                                <option value="1">Can't decide</option>
+                                                <option value="2">Sending it up the ladder</option>
+                                            </select>
+                                        </span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Floor Coverings</td>
+                                    <td></td>
+                                    <td>carpet (sq ft)</td>
+                                    <td class="characteristics"></td>
+                                    <td>21</td>
+                                    <td></td>
+                                    <td class="hasSelects">
+                                        <span class="status validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please select a status"}'>
+                                            <select name="claimProductApprovalFormByClaimProductIdString(5016).approvalStatusType" id="status[5016]" class="approvalStatusType">
+                                                <option value="">Select Status</option>
+                                                <option value="pend">Pending</option>
+                                                <option value="approv">Approved</option>
+                                                <option value="deny">Denied</option>
+                                                <option value="hold">On Hold</option>
+                                            </select>
+                                        </span>
+                                        <span class="statusReason denyReason validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please select a reason"}'>
+                                            <select name="claimProductApprovalFormByClaimProductIdString(5016).denyPromotionApprovalOptionReasonType">
+                                                <option value="">Select Reason</option>
+                                                <option value="PaxINE">Participant is Ineligible</option>
+                                                <option value="IncorInfo">Incorrect Information</option>
+                                                <option value="Inv">Invalid</option>
+                                            </select>
+                                        </span>
+                                        <span class="statusReason holdReason validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please select a reason"}'>
+                                            <select name="claimProductApprovalFormByClaimProductIdString(5016).denyPromotionApprovalOptionReasonType">
+                                                <option value="">Select Reason</option>
+                                                <option value="0">Need more information</option>
+                                                <option value="1">Can't decide</option>
+                                                <option value="2">Sending it up the ladder</option>
+                                            </select>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <fieldset>
+                        <div>
+                            <!-- <legend>Approver Comments</legend> -->
+                            <div class="control-group">
+                                <label for="approverComments" class="control-label">
+                                    Comments to Submitter
+                                    <span class="optional">(optional)</span>
+                                </label>
+                                <div class="controls">
+                                    <textarea name="approverComments" rows="4" class="approverComments"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label for="adminComments" class="control-label">
+                                    Admin Comments
+                                    <span class="optional">(optional)</span>
+                                </label>
+                                <div class="controls">
+                                    <textarea name="adminComments" rows="4" class="adminComments"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" name="submitButton" id="submitButton" class="btn btn-primary">Save</button>
+                                <a href="#" id="cancelButton" class="btn cancelBtn">Cancel</a>
+
+                                <div class="approvalsClaimsCancelDialog" style="display:none">
+                                    <p>
+                                        <b>Cancel these claims?</b>
+                                    </p>
+                                    <p>
+                                        All changes will be discarded.
+                                    </p>
+                                    <p class="tc">
+                                        <a href="layout.html" id="approvalsClaimsCancelDialogConfirm" class="btn btn-primary">Yes</a>
+                                        <a href="#" id="approvalsClaimsCancelDialogCancel" class="btn">No</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="sameForAllTipTpl" class="sameForAllTip" style="display:none">
+        <a class="approvalsToolTip">same for all</a>
+    </div><!-- /#sameForAllTipTpl -->
+</div>
+<form id="dataForm">
+    <input type="hidden" name="approverDecision" value="deny">
+    <input type="hidden" name="claimReason" value="Reason 2">
+
+    <input type="hidden" name="claimProductApprovalFormByClaimProductIdString(50400).approvalStatusType" value="deny">
+</form>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+
+    $(document).ready(function() {
+        //attach the view to an existing DOM element
+         window.acdmv = new ApprovalsClaimDetailModelView({
+            el:$('#approvalsPageClaimsDetail'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html?tpl=approvalsPagePendingNominations&tplPath=apps/approvals/tpl/'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Product Claim Detail'
+        });
+    });
+
+</script>

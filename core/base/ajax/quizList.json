@@ -1,0 +1,33 @@
+{
+	"messages":[],
+	"quizList":[
+		{
+			"id" : 1000,
+			"promotionName":"Promotion Name",
+			"timeLeft": "3 days",
+			"totalPoints": 300,
+			"status": "Incomplete.",
+			"action": "Click here to finish.",
+			"quizLink": "a URL link to the quiz"
+		},
+		{
+			"id" : 1001,
+			"promotionName":"Different Promotion Name",
+			"timeLeft": "1 day",
+			"totalPoints": 100,
+			"status": "Not Started.",
+			"action": "Click here to start.",
+			"quizLink": "a URL link to the quiz"
+		},
+		{
+			"id" : 1002,
+			"promotionName":"A Third Promotion Name",
+			"timeLeft": "14 hours",
+			"totalPoints": 150,
+			"status": "Failed.",
+			"action": "Click here to retry.",
+			"quizLink": "a URL link to the quiz"
+		},
+
+	]
+}	

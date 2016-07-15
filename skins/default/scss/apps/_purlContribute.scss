@@ -1,0 +1,67 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $purlContribute_bgColor: ;
+// $purlContribute_gradType: ;
+// $purlContribute_gradMeta: ; // list the gradient non-color properties such as position, shape, etc.
+// $purlContribute_gradStops: ; // list the stops as one would a series of raw gradient stops
+
+// $purlContribute_iconColor: ;
+// $purlContribute_titleColor: ;
+// $purlContribute_titleFontFamily: ;
+// $purlContribute_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $purlContribute_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+// $purlContribute_detailsH2Color: ;
+// $purlContribute_detailsTextColor: ;
+// $purlContribute_detailsLinkColor: ;
+// $purlContribute_detailsLinkHoverColor: ;
+// $purlContribute_detailsLinkIconColor: ;
+// $purlContribute_detailsLinkIconHoverColor: ;
+// $purlContribute_detailsMutedTextColor: ;
+// $purlContribute_detailsBgColor: ;
+// $purlContribute_detailsBgGradType: ;
+// $purlContribute_detailsBgGradMeta: ;
+// $purlContribute_detailsBgGradStops: ;
+// $purlContribute_detailsBorderTopBottomWidth: ;
+// $purlContribute_detailsBorderTopBottomColor: ;
+// $purlContribute_detailsBoxShadow: ;
+
+// $purlContribute_contributeBgColor: ; // if $pages_splitterBgColor is set in _pages.scss, the contribute box will take that background color by default
+// $purlContribute_contributeCommentBgColor: ;
+// $purlContribute_contributeAttachBgColor: ;
+// $purlContribute_contributeAttachTabTextColor: ;
+// $purlContribute_contributeAttachMutedTextColor: ;
+// $purlContribute_contributeCloseFontSize: ;
+// $purlContribute_contributeCloseIconColor: ;
+// $purlContribute_contributeCloseBorderColor: ;
+// $purlContribute_contributeCloseCircleWidth: ;
+// $purlContribute_contributeCloseBorderWidth: ;
+// $purlContribute_contributeRemoveMediaFontSize: ;
+// $purlContribute_contributeRemoveMediaIconColor: ;
+// $purlContribute_contributeRemoveMediaBorderColor: ;
+// $purlContribute_contributeRemoveMediaCircleWidth: ;
+// $purlContribute_contributeRemoveMediaBorderWidth: ;
+// $purlContribute_contributeRemoveMediaBgColor: ;
+
+// $purlContribute_commentBgColorOdd: ;
+// $purlContribute_commentBgColorEven: ;
+
+// $purlContribute_commentBorderColorOdd: ; // by default, calculated using the corresponding bgColor in the above section
+// $purlContribute_commentBorderColorEven: ; // by default, calculated using the corresponding bgColor in the above section
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "purlContribute/scss/purlContribute";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================
+

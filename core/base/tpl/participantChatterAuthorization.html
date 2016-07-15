@@ -1,0 +1,61 @@
+<!-- ======== PARTICIPANT CHATTER AUTHORIZATION PAGE ======== -->
+
+<div id="participantChatterPageView" class="profilePage-liner page-content">
+
+    <div class="row">
+        <div class="span12">
+            <!-- JAVA NOTE: in the rare event that the server has an error (FE should catch all errors) -->
+            <div class="alert alert-block alert-error">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <div class="error">
+                        <h4>The following errors occurred:</h4>
+                        <ul>
+                            <li>Server Side Error Text</li>
+                        </ul>
+                    </div>
+            </div>
+
+            <div class="participantChatterInstructions">
+                <p>Instructions: Add an additional optional comment to be added to your post.</p>
+            </div>
+
+            <form action="layout.html?tplPath=base/tpl/&tpl=participantChatterAuthorization.html" method="POST" class="participantChatterForm">
+                <div class="participantChatterRecognition">
+                    <!-- This text gets replaced through js with the "state" key text that comes in through URL -->
+                    <p class="currentRecognitionText">
+                        <span>"Test Data. This should get swapped out on load"</span>
+                        <a href="#linkUrl" target="_blank" class="chatterRecognitionLink">Link Text</a>
+                    </p>
+
+                </div>
+
+                <textarea name="commentText" placeholder="Add a comment..."></textarea>
+
+                <div class="formButtons">
+                    <button type="submit" id="chatterFormSubmit" name="button" value="" formaction="" class="btn btn-primary">Send</button>
+                    <a href="" class="btn chatterFormCancel">Cancel</a>
+                </div>
+            </form>
+        </div><!-- /.span12 -->
+    </div><!-- /.row -->
+</div>
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function() {
+        G5.views.pcav = new ParticipantChatterAuthorizationView({
+            el:$('#participantChatterPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : ''
+        });
+    });
+
+</script>

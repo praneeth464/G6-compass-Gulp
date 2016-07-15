@@ -1,0 +1,449 @@
+// App-specific variables
+// =========================
+$purlCelebrate_bgColor: $g5ModuleBgColor !default;
+$purlCelebrate_gradType: $g5ModuleGradType !default;
+$purlCelebrate_gradMeta: $g5ModuleGradMeta !default;
+$purlCelebrate_gradStops: $g5ModuleGradStops !default;
+
+$purlCelebrate_titleColor: $g5ModuleTitleColor !default;
+$purlCelebrate_titleSpanColor: $g5ModuleTitleColor !default;
+$purlCelebrate_titleNumberColor: $g5ModuleTitleColor !default;
+
+$purlCelebrate_fontFamily: 'akzidenz-condensed', sans-serif !default;
+$purlCelebrate_moduleListInfoColor: $white !default;
+$purlCelebrate_modulePopoverColor: $white !default;
+
+$purlCelebrate_tabsNavBgColor: #737373 !default;
+$purlCelebrate_tabsNavGradType: linear !default;
+$purlCelebrate_tabsNavGradMeta: top !default;
+$purlCelebrate_tabsNavGradStops: $purlCelebrate_tabsNavBgColor, scale-color($purlCelebrate_tabsNavBgColor, $lightness: -25%) !default;
+
+$purlCelebrate_tabsIconColor: $grayDark !default;
+$purlCelebrate_tabsIconShadow: 0 -1px 0 rgba(0,0,0,.875) !default;
+$purlCelebrate_tabsTabBgColor: false !default;
+
+$purlCelebrate_tabsIconColorHover: false !default;
+$purlCelebrate_tabsIconShadowHover: $purlCelebrate_tabsIconShadow !default;
+$purlCelebrate_tabsTabBgHover: $linkColor !default;
+$purlCelebrate_tabsTabBoxShadowClick: rgba(0,0,0, 0.4) 0 2px 5px inset !default;
+
+$purlCelebrate_tabsIconColorActive: $grayLight !default;
+$purlCelebrate_tabsIconShadowActive: none !default;
+$purlCelebrate_tabsTabBgActive: $white !default;
+
+$purlCelebrate_magnifyColor: $gray !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- MODULE STYLES ----- */
+.module.purlCelebrate {
+
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $purlCelebrate_bgColor,
+            $gradType: $purlCelebrate_gradType,
+            $gradMeta: $purlCelebrate_gradMeta,
+            $gradStops: $purlCelebrate_gradStops
+        );
+    }
+
+    .wide-view {
+        padding: 25px 0 25px 15px;
+    }
+
+    .title-icon-view {
+        display: none;
+    }
+
+    .purlCelebrateModuleTitle {
+        color: $purlCelebrate_titleColor;
+        display: inline-block;
+        font: $fontWeightLight $baseFontSize * 3.21 $purlCelebrate_fontFamily;
+        line-height: $baseLineHeight * 2;
+        margin: 0 0 5px 15px;
+        vertical-align: top;
+        width: 550px;
+    }
+
+    .purlCelebrateSubTitle {
+        color: $purlCelebrate_titleSpanColor;
+        display: block;
+        font: $fontWeightLight $baseFontSize * 2.86 $purlCelebrate_fontFamily;
+        line-height: $baseLineHeight * 2;
+        margin: 0 0 10px 15px;
+    }
+
+    .purlCelebrateTotal {
+        color: $purlCelebrate_titleNumberColor;
+        display: inline-block;
+        margin-right: 2px;
+    }
+
+    .purlCelebrateList ul {
+        margin: 5px 0 0 10px;
+
+        li {
+            float: left;
+            list-style: none;
+            padding: 10px;
+
+            img.avatar {
+                float: left;
+                height: 40px;
+                width: 40px;
+            }
+            .celebrationInfo {
+                color: $purlCelebrate_moduleListInfoColor;
+                display: block;
+                float: left;
+                line-height: $baseLineHeight;
+                margin: 0 20px;
+                width: 384px;
+
+                a {
+                    color: $purlCelebrate_modulePopoverColor;
+                    font-weight: bold;
+                }
+            }
+            a.btn {
+                display: block;
+                float: left;
+            }
+
+            &.odd {
+                background-color: rgba(255,255,255, .1);
+            }
+        }
+    }
+
+    .purlModuleBottom {
+        float: left;
+        padding: 15px 10px;
+    }
+
+    .purlCelebrateEmpty {
+        color: $white;
+
+
+        p {
+            font-size: 22px;
+            text-align: center;
+        }
+
+        a {
+            margin-top: 30px;
+        }
+    }
+
+    &.grid-dimension-4x4 {
+        .purlCelebrateModuleContent {
+            height: 500px;
+            overflow: auto;
+        }
+        .purlCelebrateEmpty {
+            margin: 60px 20px 0 0;
+
+            a {
+                margin-left: 210px;
+            }
+        }
+    }
+
+    &.grid-dimension-4x2 {
+        .purlCelebrateModuleContent {
+            height: 190px;
+            overflow: auto;
+        }
+        .purlCelebrateSubTitle {
+            font-size: $baseFontSize * 2.714;
+        }
+        .purlCelebrateEmpty {
+            margin: 60px 20px 0 0;
+
+            a {
+                margin-left: 210px;
+            }
+        }
+    }
+
+    &.grid-dimension-2x2 {
+        .purlCelebrateModuleContent {
+            height: 200px;
+            overflow: hidden;
+        }
+        .purlCelebrateModuleTop {
+            height: 60px;
+            max-height: 70px;
+        }
+        .purlCelebrateModuleTitle {
+            font-size: 31px;
+            line-height: 29px;
+            margin-left: 5px;
+            width: 230px;
+        }
+        .purlCelebrateTotal {
+            margin-left: 0;
+        }
+        .purlCelebrateSubTitle {
+            display: none;
+        }
+        .purlCelebrateList ul {
+            margin: 0;
+
+            li {
+                padding: 10px 5px;
+
+                img.avatar {
+                    height: 30px;
+                    width: 30px;
+                }
+
+                .celebrationInfo {
+                    line-height: 14px;
+                    margin: 0 10px;
+                    width: 127px;
+
+                    a.profile-popover {
+                        font-size: 13px;
+                        display: inline-block;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        width: 134px;
+                    }
+                }
+            }
+        }
+        .purlCelebrateEmpty {
+            margin: 30px 20px 0 0;
+
+            a {
+                margin-left: 55px;
+            }
+            p {
+                font-size: 16px;
+            }
+        }
+        .celebrationAward {
+            display: none;
+        }
+    }
+
+    &.grid-dimension-2x1 {
+        .wide-view {
+            display: none;
+        }
+        .title-icon-view {
+            display: block;
+        }
+    }
+
+}/* /.module */
+
+/* ----- PAGE STYLES ----- */
+.page.purlCelebrate {
+
+    .page-topper {
+        padding-bottom: 0;
+        @include module_moduleLinerBackground(
+            $bgColor: $purlCelebrate_tabsNavBgColor,
+            $gradType: $publicRecognition_tabsNavGradType,
+            $gradMeta: $publicRecognition_tabsNavGradMeta,
+            $gradStops: $publicRecognition_tabsNavGradStops
+        );
+    }
+
+    .spin {
+        display: block;
+        height: $spinner_widthHeight;
+        margin: 0;
+        position: absolute;
+        right: 50%;
+        top: 50%;
+        width: $spinner_widthHeight;
+    }
+
+    .nav-tabs.purlCelebrateTabs {
+        clear: left;
+        float: left;
+
+        li {
+            a {
+                color: $purlCelebrate_tabsIconColor;
+                text-shadow: $purlCelebrate_tabsIconShadow;
+
+                &:hover {
+                    @if $purlCelebrate_tabsIconColorHover {
+                        color: $purlCelebrate_tabsIconColorHover;
+                    }
+                    @if $purlCelebrate_tabsIconShadowHover and $purlCelebrate_tabsIconShadowHover != $purlCelebrate_tabsIconShadow {
+                        text-shadow: $purlCelebrate_tabsIconShadowHover;
+                    }
+                    @if publicRecognition_tabsTabBgHover {
+                        background-color: $purlCelebrate_tabsTabBgHover;
+                    }
+                }
+                &:active {
+                    @if $purlCelebrate_tabsTabBoxShadowClick {
+                        @include box-shadow($purlCelebrate_tabsTabBoxShadowClick);
+                    }
+                }
+
+                span {
+                    display: inline-block;
+                    text-indent: -9999px;
+                    white-space: nowrap;
+                }
+                i {
+                    font-size: 20px;
+                    line-height: 24px;
+                    margin: 0 -10px;
+                    height: 24px;
+                    width: 36px;
+                    vertical-align: middle;
+                }
+                .icon-g5-pubrec-global {
+                    font-size: 26px;
+                    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf102;');
+
+                    &:before {
+                        content: "\f102";
+                    }
+                }
+                .icon-g5-pubrec-team {
+                    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf103;');
+
+                    &:before {
+                        content: "\f103";
+                    }
+                }
+                .icon-g5-pubrec-followed {
+                    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf104;');
+
+                    &:before {
+                        content: "\f104";
+                    }
+                }
+                .icon-g5-pubrec-search {
+                    font-family: 'FontAwesome';
+                    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf002;');
+
+                    &:before {
+                        content: "\f002";
+                    }
+                }
+            }
+            &.active {
+                a {
+                    color: $purlCelebrate_tabsIconColorActive;
+                    @if $purlCelebrate_tabsIconShadowActive {
+                        text-shadow: $purlCelebrate_tabsIconShadowActive;
+                    }
+                    background-color: $purlCelebrate_tabsTabBgActive;
+
+                    &:hover {
+                        background-color: $purlCelebrate_tabsTabBgActive;
+                    }
+                    &:active {
+                        @include box-shadow(none);
+                    }
+                }
+            }
+        }
+        @media (max-width: 767px) {
+
+            li {
+                float: left;
+                margin-right: 4px;
+            }
+        }
+    }
+    .purlCelebrateView {
+        float: right;
+
+        @media (max-width: 480px){
+            float: left;
+        }
+    }
+
+    #purlPastPresentSelect {
+        width: 270px;
+    }
+
+    .dropdown-menu-info {
+        font-size: 80%;
+        padding: 5px 8px;
+    }
+
+    .purlCelebrateItemsCont {
+        .table {
+
+            td {
+                vertical-align: middle;
+            }
+
+            img.avatar {
+                height: 40px;
+                margin-right: 8px;
+                width: 40px;
+            }
+        }
+    }
+
+    .purlCelebrateItems.emptySet {
+        h2 {
+            font-size: $baseFontSize * 1.429;
+        }
+        i {
+            margin-right: 10px;
+        }
+    }
+
+    .purlCelebrateSearch {
+        .input-append {
+                position: relative;
+
+                input {
+                    border-radius: 4px;
+                }
+                .btn {
+                    background: $white;
+                    border: none;
+                    border-radius: 4px;
+                    box-shadow: none;
+                    height: 28px;
+                    padding: 0 9px;
+                    position: absolute;
+                    right: 1px;
+                    top: 1px;
+                    z-index: 3;
+                }
+            }
+            .icon-search {
+                color: $purlCelebrate_magnifyColor;
+                font-size: 18px;
+                line-height: $baseLineHeight;
+                text-shadow: none;
+
+            }
+            .spinnerWrap {
+                background-color: $white;
+                border-radius: 4px;
+                display: none;
+                height: 28px;
+                margin: 0;
+                padding: 0;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                vertical-align: top;
+                width: 28px;
+                z-index: 4;
+            }
+    }
+
+}/* /.purlCelebrate */

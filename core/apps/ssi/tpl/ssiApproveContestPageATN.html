@@ -1,0 +1,137 @@
+<div id="ssiApproveContestPageView" class="page-content">
+
+    <div id="ssiApproveContestSummary">
+        <script id="ssiApproveContestAtnTopTpl" type="text/x-handlebars-template">
+        <div class="page-topper">
+            <div class="row">
+                <div class="span8">
+                    <h2>{{name}}</h2>
+                </div>
+            </div>
+        </div>
+        </script>
+    </div><!-- /#ssiApproveContestSummary -->
+
+    <div id="ssiApproveContestDetails">
+        <script id="ssiApproveContestAtnDetailsTpl" type="text/x-handlebars-template">
+        <div class="row ssiSummaryDetails">
+            <div class="span12">
+                <dl class="dl-horizontal">
+                    <dt>Created By</dt>
+                    <dd>{{contestCreator}}</dd>
+                    <dt>Contest Dates</dt>
+                    <dd>{{startDate}} - {{endDate}}</dd>
+                    <dt>Contest Description</dt>
+                    <dd>{{description}}
+                        {{#if attachmentTitle}}<a href="{{attachmentUrl}}" class="ssiApproveDetailsAttachment">{{attachmentTitle}}</a>{{/if}}
+                    </dd>
+                    {{#if badge.img}}
+                        <dt>Badge</dt>
+                        <dd><img src="{{badge.img}}" alt="{{badge.name}}" /> {{badge.name}}</dd>
+                    {{/if}}
+                    <dt>Measure Activity in</dt>
+                    <dd>{{measureType}}</dd>
+                    <dt>Payout Type</dt>
+                    <dd>{{payoutType}}</dd>
+                </dl>
+            </div>
+        </div>
+        </script>
+    </div><!-- /#ssiApproveContestDetails -->
+
+
+    <div class="awardHistoryWrapper row">
+        <div class="span12">
+            <hr class="section">
+            <h3>Award History</h3>
+            <div id="ssiATNHistory" class="spinnerOverlayWrap">
+                <!-- dynamic content -->
+            </div>
+        </div><!-- /.span12 -->
+    </div><!-- /.awardHistoryWrapper.row -->
+
+    <div class="ssiDenyContestPopover" style="display: none">
+        <form id="ssiADenyContest" method="post" action="layout.html?tplPath=../apps/approvals/tpl/&tpl=approvalsPageIndex.html" enctype="multipart/form-data">
+            <div class="control-group validateme"
+                data-validate-fail-msgs='{"nonempty":"You must enter a reason for denial."}'
+                data-validate-flags='nonempty'>
+                <button type="button" class="close">&times;</button>
+                <label class="control-label">Reason For Denial</label>
+                <div class="commentTools">
+                    <span class="spellchecker dropdown">
+                        <button class="checkSpellingDdBtn btn dropdown-toggle"
+                                title="check spelling"
+                                type="button"
+                                data-toggle="dropdown">
+                            <i class="icon-check"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="check"><b>Check spelling</b></a></li>
+                        </ul>
+                    </span>
+                    Remaining Characters: <span class="remChars">&nbsp;</span>
+                </div>
+                <div class="controls">
+                    <div class="contribCommentWrapper">
+                        <textarea class="contribCommentInp" rows="4" maxlength="1000" placeholder="add a comment" name="comment"></textarea>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary ssiDenyContestSubmit" name="status" value="denied">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div><!--/.ssiDenyContestPopover-->
+
+</div><!--/#ssiApproveContestPageView-->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function() {
+        var contestJson = null;
+
+        // JAVA NOTE: url for ATN history pagination
+        G5.props.URL_JSON_CONTEST_SUMMARY_HISTORY = G5.props.URL_ROOT+'ajax/ssiContestSummary.json';
+
+        // JAVA NOTE: url for ATN history pagination
+        G5.props.URL_JSON_CONTEST_ATN_APPROVE = G5.props.URL_ROOT+'ajax/ssiContestAtnApprove.json';
+
+        // JAVA NOTE: bootstrapped JSON
+        contestJson = {
+            id: "3",
+            startDate: "01/01/2014",
+            endDate: "02/01/2014",
+            name: "Super Big Summer ATN Contest",
+            description: "Lorem ipsum Esse eiusmod nostrud dolore laboris amet laborum cillum cillum dolor esse dolor mollit quis qui irure quis veniam consequat et qui sed anim est occaecat in commodo voluptate.",
+            badge: {
+                "id":2504,
+                "name":"1 Year Anniversary",
+                "img":"img/badges/service1_sm.png"
+            },
+            totalActivity : "20,000",
+            totalPayoutAmount : "12,000",
+            sortedOn: "dateCreated",
+            sortedBy: "asc",
+            totalParticipantsCount : "300",
+            measureType: "currency",
+            payoutType: "other",
+            contestCreator: "Bob Smith"
+        };
+
+        var ssiApproveContestPageViewATN = new SSIApproveContestPageViewATN({
+            el:$('#ssiApproveContestPageView'),
+            contestJson: contestJson, // contest json to populate model
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=./tpl/&tpl=modulesPage.html#filter/home'
+                }
+            },
+            pageTitle : 'Approve Contest'
+        });
+    });
+</script>

@@ -1,0 +1,24 @@
+{
+	"__COMMENT__":"This is for forms with country and state/location, to populate the location after country has been selected",
+
+	"messages":[],
+
+	"locations": [
+		{
+			"code":"al",
+			"name":"Alabama"
+		},
+		{
+			"code":"ak",
+			"name":"Alaska"
+		},
+		{
+			"code":"ca",
+			"name":"California"
+		},
+		{
+			"code":"mn",
+			"name":"Minnesota"
+		}
+	]
+}

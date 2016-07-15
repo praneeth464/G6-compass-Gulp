@@ -1,0 +1,55 @@
+<div class="row resultsWrapper">
+    <div class="span12">
+        <h4>{{quizMessage}}</h4>
+        <div id="quizStatsWrapper">
+            <p>Questions Correct: <span>{{questionsCorrect}}</span></p>
+            <p>Needed to Pass: <span>{{questionsCorrectNeeded}}</span></p>
+            {{#if passedQuiz}}
+            <h5>You earned: <span>{{quizAward}}<span></h5>
+            {{/if}}
+        </div>
+        
+        {{#if passedQuiz}}
+        <div id="quizPrize">
+            <div class="quizPrize-innerWrapper">
+                {{#if quizCertificate}}
+                <legend>You also earned</legend>
+                <div class="quizCertificateLink {{#unless quizBadge}} single {{/unless}}">
+                    {{{quizCertificate}}}
+                </div>
+                {{/if}}
+                {{#if quizBadge}}
+                {{#unless quizCertificate}}<legend>You also earned: </legend>{{/unless}}
+                <div class="quizBadgeWrapper {{#unless quizCertificate}} single {{/unless}}">
+                    {{{quizBadge}}}
+                </div>
+                {{/if}}
+            </div>
+        </div>
+        {{/if}}
+
+        {{#unless passedQuiz}}
+        <p>Attempts Remaining: {{attemptsRemaining}}</p>
+        {{/unless}}
+    </div>
+</div>
+{{#each quizResults}}
+<div class="row quizResultAnswer {{#if isUserCorrect}}quizAnswerCorrect{{/if}}">
+    <div class="span12">
+        <legend>{{quizQuestion}}</legend>
+        <h4>Your Answer: <span>{{quizChoice}}</span></h4>
+        <h4>Correct Answer: <span>{{answer}}</span></h4>
+        {{{answerSummary}}}
+        {{{contentText}}}
+    </div>
+</div>
+{{/each}}
+<div class="row">
+    <div class="span12">
+        {{#each buttons}}
+            {{#if buttonDisplay}}
+            <a href="{{buttonUrl}}" class="btn {{#if buttonClass}}{{buttonClass}}{{/if}}" id="{{buttonType}}">{{buttonText}}</a>
+            {{/if}}
+        {{/each}}
+    </div>
+</div>

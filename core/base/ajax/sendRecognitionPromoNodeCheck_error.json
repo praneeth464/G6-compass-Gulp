@@ -1,0 +1,10 @@
+{
+	"messages":[
+		{
+		"type":"error",
+		"code":"promoNodeCheckError",
+		"name":"Invalid Node",
+		"text":"The selected node is invalid for the desired promotion, please select a different node or promotion."
+		}
+	]
+}

@@ -1,0 +1,26 @@
+{{#if canUpload}}
+<li class="drawToolUploadContainer{{#if drawToolCardUrl}} selected{{/if}}">
+    <i class="icon-upload"></i>
+    <span class="upload-text">Upload Image</span>
+    <!-- <img id="drawToolUploadThumbnail" alt = "upload an image" class="" src="http://placehold.it/144&text=Upload+Image"/> -->
+    <div id="drawToolUploadForm" style="display:none;">
+        <form id="drawToolFormUploadImage" enctype="multipart/form-data">
+            <input class="" type="file" name="uploadAnImage" id="drawToolButtonUploadImage">
+            <p class="muted">File size limit 10mb. Supports Jpeg, PNG and GIF</p>
+            <p class="alert alert-info hide no-fileinput">Sorry! Your device does not support file uploads. Please use a desktop browser to complete this upload.</p>
+        </form>
+    </div>
+</li>
+{{/if}}
+
+{{#each eCards}}
+<li {{#if isSelected}}class='selected'{{/if}}>
+    {{#if ../isRenderDrawIcons}}
+        {{#if ../canEdit}}
+    <i class="icon-g5-pencil canEdit"></i>
+        {{/if}}
+    {{/if}}
+    <img id="card-{{id}}" class="eCardThumbnail" alt="{{name}}" src="{{smallImage}}"/>
+    <p>{{name}}</p>
+</li>
+{{/each}}

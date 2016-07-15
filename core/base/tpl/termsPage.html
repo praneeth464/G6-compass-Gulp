@@ -1,0 +1,77 @@
+<div id="termsPageView" class="page page-content termsPage">
+    <div class="row">
+        <div class="span12">
+            <form name="termsAndConditionsForm" id="contentForm" method="post" action="/pentag/termsAndConditionsEdit.do">
+                <div>
+                    <input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="1f21f0e82f5561709d495973e9f329e2">
+                </div>
+                <input type="hidden" name="method" value="">
+                <table border="0" cellpadding="10" cellspacing="0" width="100%">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class="headline">Terms and Conditions of Participation</span>
+                                <br>
+                                <br>
+                                <span class="content-instruction">
+                                instructional copy here<br>
+                                </span>
+                                <br>
+                                <br>
+                                <p>
+                                    <strong>[Example only - replace with the client copy ]</strong>
+                                </p>
+                                <p>
+                                    The following terms and conditions (the Terms and Conditions) govern your use of the website (this "Site") of The Institute of Electrical and Electronics Engineers, Incorporated, a New York not-for-profit corporation (the "IEEE"), and any services contained within the Site.These Terms and Conditions include our private policy and supplemental terms and conditions (Supplemental Terms) that will govern your use of specific IEEE services (Additional Services).
+                                </p>
+                                <p>
+                                    By using or downloading any materials from this Site, you agree to these Terms and Conditions. In addition, you agree to the applicable Supplemental Terms by using or downloading materials from that Additional Service.
+                                </p>
+                                <p>
+                                    <strong>1.</strong><strong><u>Copyrighted Information and Copyright Agent</u></strong>. Please note that the pages on the Site may contain other proprietary notices and copyright information, the terms of which must be observed and followed.
+                                </p>
+                                <p>
+                                    Unless otherwise noted, all information, text, articles, data, images, Documents (as defined below), software or other materials (collectively hereinafter referred to as the "Materials") contained on any page within this Site are copyrighted by the IEEE or a third party (hereinafter collectively referred to as the "Copyright Holder"). Title to copyright in the Materials will at all times remain with the Copyright Holder. You may only use, download or copy the Materials contained in the Site in accordance with the Terms and Conditions. Any permitted copies of the Materials must retain the copyright notice, and any other proprietary notices contained in such Materials. Unless otherwise provided in the Terms and Conditions, you may not edit, modify or make use of the Materials without the express, prior written consent of the IEEE. You may not use any content contained in the Materials in any manner that may give a false or misleading impression or statement as to the IEEE, the Copyright Holder, or any third party referenced in the Materials. Nothing on this Site shall be construed as conferring any license under any Copyright Holder's intellectual property rights, whether by estoppel, implication or otherwise. You agree to use the Site and the Materials and services and products on the Site or accessible via the Site only for lawful purposes. THE IEEE MAY REVOKE ANY OF THE FOREGOING RIGHTS, AS WELL AS ANY ACCESS AND USE AUTHORIZATIONS GRANTED TO USERS OF THE SITE AT ANY TIME.
+                                </p>
+                                <p>
+                                    <strong>2.<u>Notice With Regard to Documents on this Site</u>.</strong>Permission to display, copy and/or download any papers, articles or other works of authorship on this Site (the "Documents") is hereby granted, provided that (a) the copyright notice set forth on the Document and a statement that the Document is being reproduced under permission of the Copyright Holder both appear on such displayed, copied or downloaded Document, (b) use or reproduction of such Documents from this Site is for informational or personal use only, and (c) no modifications of any Documents are made. Any other use of the Documents is expressly prohibited.
+                                </p>
+                                <table width="100%">
+                                <tbody>
+                                <tr class="form-row-spacer">
+                                </tr>
+                                <tr class="content-instruction">
+                                </tr>
+                                </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+
+    $(document).ready(function() {
+        //attach the view to an existing DOM element
+        var fqp = new PageView({
+            el:$('#termsPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Terms and Conditions'
+        });
+    });
+
+</script>

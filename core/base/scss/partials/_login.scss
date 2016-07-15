@@ -1,0 +1,571 @@
+// Partial-specific variables
+// =========================
+$login_bgColor: false !default;
+$login_bgImgUrlPath: false !default;
+$login_bgImg: false !default;
+$login_bgImgMobile: false !default;
+$login_bgImgPosition: 0% 0% !default;
+$login_bgImgRepeat: repeat !default;
+$login_bgImgSize: auto !default;
+$login_bgImgAttachment: fixed !default;
+
+$login_useFancyLoginLayout: true !default; // setting this to false this will prevent anything below here from taking effect
+
+// TODO 5.5: add font controls for the big "Welcome" text at the top
+
+$login_textColor: false !default;
+$login_introFontFamily: false !default;
+$login_introFontWeight: false !default;
+$login_introFontSize: false !default;
+$login_introTextColor: false !default;
+
+// TODO 5.5: add more font styling controls as variables
+$login_formBorderWidth: 1px !default;
+$login_formBorderColor: $gray !default;
+$login_fieldLabelFontFamily: $titleFont !default;
+$login_fieldLabelFontSize: 24px !default;
+$login_fieldLabelColor: $linkColor !default;
+
+// TODO 5.5: add coloring variables for the help links
+
+$login_useFancyLoginPizazz: false !default; // only applies when self-enrollment is off
+$login_pizazzHeight: false !default;
+$login_pizazzBgImgUrlPath: false !default;
+$login_pizazzBgImg: false !default;
+
+$login_languagesBgColor: false !default;
+
+$login_footerBorderWidth: $global_footerView_borderTopWidth !default;
+$login_footerBorderColor: $global_footerView_borderTopColor !default;
+
+$login_footerLinksBgColor: $login_languagesBgColor !default;
+$login_footerLinksColor: $global_footer_linksColor !default;
+$login_footerLinksDisabledColor: $global_footer_linksDisabledColor !default;
+$login_footerCopyrightTextColor: $global_footer_copyrightTextColor !default;
+
+// TODO 5.5: add a check of the login text color against the body background color to run the font smoothing mixin
+// TODO 5.5: add text-shadow controls to the help links
+// TODO 5.x: figure out how to apply the $restrictWidth variable to the fancy login: https://basecamp.com/1829100/projects/544134/todos/69527395
+// TODO 5.x: work with Creative to make the fancy login more robust and useful to them
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+/* ----- GLOBAL STYLES ----- */
+// Note that the loginPages are treated unusually, in that the body tag gets the namespaced class
+body.loginPage {
+    // styles that live outside the pageView go here
+    // ----------------------------------------
+    @if $login_bgColor {
+        background-color: $login_bgColor;
+    }
+    @if $login_bgImg {
+        @include safeImgUrls($login_bgImg, $login_bgImgUrlPath, $property: 'background-image');
+        background-position: $login_bgImgPosition;
+        background-repeat: $login_bgImgRepeat;
+        background-size: $login_bgImgSize;
+        background-attachment: $login_bgImgAttachment;
+
+        .lt-ie9 & {
+            filter: none;
+        }
+    }
+    @if $login_bgImgMobile {
+        @media (max-width: 480px) {
+            @include safeImgUrls($login_bgImgMobile, $login_bgImgUrlPath, $property: 'background-image');
+        }
+    }
+
+    // styles that live inside the pageView go here
+    // ----------------------------------------
+    #loginPage {
+        .span6 {
+            .form-actions {
+                margin: 0;
+            }
+        }
+    }/* /.page */
+
+    // fancy layout
+    // ----------------------------------------
+    @if $login_useFancyLoginLayout {
+        // overriding the $global_outerWrapper_restrictWidth styles
+        @if $global_outerWrapper_restrictWidth {
+            // wrapper_outer
+            #wrapper_outer {
+                width: auto;
+                margin: 0;
+            }
+            #wrapper_outer,
+            #wrapper_inner {
+                background: none;
+                border: 0;
+                @include box-shadow(none);
+
+                .lt-ie9 & {
+                    filter: none;
+                }
+            }
+        }
+
+        // header
+        #header {
+            // need to do some style resets but only if certain values are set in _global.scss
+            @if $global_header_bgColor {
+                background: none;
+            }
+            @if $global_header_borderTopWidth or $global_header_borderBottomWidth {
+                border: 0;
+            }
+            @if $global_header_bgColor and $global_header_gradMeta {
+                .lt-ie9 & {
+                    filter: none;
+                    margin-bottom: -1 * ($global_header_logoHeight + $baseLineHeight);
+                }
+            }
+
+            .container {
+                padding-top: $g5PageContentSpacingVertical * 1.5;
+                padding-bottom: 0;
+
+                // killing clearfix();
+                *zoom: 0;
+                &:before,
+                &:after {
+                    display: none;
+                    clear: none;
+                }
+            }
+        }
+        #globalHeaderView {
+            display: block;
+            float: none;
+            height: auto;
+            width: auto;
+            min-height: 0;
+
+            .logo {
+                float: right;
+                margin-right: 0;
+                margin-bottom: $baseLineHeight;
+                max-width: 100%;
+
+                @if $pageNav_bgColor and $pageNav_gradMeta and ($global_header_bgColor == false or $global_header_gradMeta == false) {
+                    .lt-ie9 & {
+                        margin-bottom: -1 * ($global_header_logoHeight + $baseLineHeight);
+                    }
+                }
+                @else {
+                    .lt-ie8 & {
+                        margin-bottom: -1 * ($global_header_logoHeight + $baseLineHeight);
+                    }
+                }
+
+                img {
+                    max-width: 100%;
+                }
+            }
+        }
+
+        // pageNav
+        #pageNav {
+            padding-bottom: 0;
+
+            // need to do some style resets but only if certain values are set in _pageNav.scss
+            @if $pageNav_bgColor {
+                padding: 0;
+                margin-bottom: 0;
+                background: none;
+            }
+            @if $pageNav_borderTopWidth or $pageNav_borderBottomWidth {
+                border: 0;
+            }
+            @if $pageNav_bgColor and $pageNav_gradMeta {
+                .lt-ie9 & {
+                    filter: none;
+                    width: 100%;
+                }
+            }
+
+            #pageTitle {
+                display: block;
+                float: none;
+                width: 50%;
+                font-size: $global_header_logoHeight;
+                line-height: $global_header_logoHeight;
+            }
+        }
+
+        // content
+        #loginPage {
+            padding: 0;
+            background: none;
+            border: 0;
+            @if $login_textColor {
+                color: $login_textColor;
+            }
+
+            .row {
+                margin: 0;
+            }
+            .span12 {
+                margin: 0;
+                width: 100%;
+            }
+
+            .intro {
+                margin-bottom: $baseLineHeight * 3;
+                padding: 0;
+                width: 50%;
+                border: 0;
+
+                p {
+                    margin-bottom: $baseLineHeight / 2;
+                    @if $login_introFontFamily {
+                        font-family: $login_introFontFamily;
+                    }
+                    @if $login_introFontWeight {
+                        font-weight: $login_introFontWeight;
+                    }
+                    @if $login_introFontSize {
+                        font-size: $login_introFontSize;
+                        line-height: 1.42857142857143; // will convert $baseFontSize of 14px to the $baseLineHeight of 20px
+                    }
+                    @if $login_introTextColor {
+                        color: $login_introTextColor;
+                    }
+                }
+            }
+
+            // form area
+            .span6 {
+                margin: 0 (-1 * $login_formBorderWidth) 0 0;
+                padding: 0 2.5% 0 0;
+                width: 47.5%;
+                @if $login_formBorderWidth and $login_formBorderWidth > 0 {
+                    border-right: $login_formBorderWidth solid $login_formBorderColor;
+                }
+
+                & ~ .span6 {
+                    *margin-left: -2px;
+                    padding: 0 0 0 2.5%;
+                    border: 0;
+                    @if $login_formBorderWidth and $login_formBorderWidth > 0 {
+                        border-left: $login_formBorderWidth solid $login_formBorderColor;
+                    }
+                    *border: 0;
+                }
+
+                p {
+                    margin: 0 0 $baseLineHeight 0;
+                }
+
+                form {
+                    margin: 0;
+                }
+
+                .control-label {
+                    width: 37.5%;
+                    text-align: left;
+                    @if $login_fieldLabelFontFamily {
+                        font-family: $login_fieldLabelFontFamily;
+                    }
+                    @if $login_fieldLabelFontSize {
+                        font-size: $login_fieldLabelFontSize;
+                    }
+                    @if $login_fieldLabelColor {
+                        color: $login_fieldLabelColor;
+                    }
+                }
+                .controls {
+                    margin-left: 40%;
+                    *padding-left: 2.5%;
+                    *margin-left: 0;
+                }
+                .form-actions {
+                    padding: 0 0 ($baseLineHeight / 2) 40%;
+                    background: none;
+                    border: 0;
+                }
+            }
+            &.selfEnrollmentOn {}
+            &.selfEnrollmentOff {
+                #loginPageFormRegistration { display: none; } // this div won't even exist in the Java version when self enrollment is off
+
+                .span6 {
+                    float: none;
+                    clear: both;
+                    margin: 0 auto;
+                    padding: 0;
+                    width: 50%;
+                    border: 0;
+                }
+
+                @if $login_useFancyLoginPizazz {
+                    .span6 {
+                        padding: 0 15% 0 35%;
+                        @if $login_pizazzHeight {
+                            height: $login_pizazzHeight;
+                            line-height: $login_pizazzHeight;
+                        }
+                        @if $login_pizazzBgImg {
+                            @include safeImgUrls($login_pizazzBgImg, $login_pizazzBgImgUrlPath, $property: 'background-image');
+                            background-repeat: no-repeat;
+                            background-position: 0 50%;
+                        }
+
+                        form {
+                            display: inline-block;
+                            width: 100%;
+                            line-height: normal;
+                            vertical-align: middle;
+
+                            .control-label {
+                                *line-height: normal;
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            // languages
+            #loginPageLanguages {
+                margin-top: $baseLineHeight * 3;
+                text-align: center;
+
+                .languages {
+                    min-height: 0%; // http://stackoverflow.com/a/10002755
+                    @if $login_languagesBgColor {
+                        padding: ($baseLineHeight / 2) $g5PageContentPaddingHoriz;
+                        @include safeBkgs($login_languagesBgColor);
+                    }
+                }
+            }
+
+        } // /.page
+
+        // footer
+        #footer {
+            // need to do some style resets but only if certain values are set in _global.scss
+            @if $global_footer_bgColor {
+                background: none;
+            }
+            @if $global_footer_borderTopWidth or $global_footer_borderBottomWidth {
+                border: 0;
+            }
+            @if $global_footer_bgColor and $global_footer_gradMeta {
+                .lt-ie9 & {
+                    filter: none;
+                }
+            }
+        }
+        #globalFooterView {
+            @if $login_footerBorderWidth == 0 {
+                border-top: 0;
+            }
+            @else if ($login_footerBorderWidth != $global_footerView_borderTopWidth or $login_footerBorderColor != $global_footerView_borderTopColor) {
+                border-top: $login_footerBorderWidth solid $login_footerBorderColor;
+            }
+
+            @if $login_footerLinksBgColor {
+                .nav-pills {
+                    margin-top: -1 * $baseLineHeight / 2;
+                    margin-bottom: $baseLineHeight / 2;
+                    padding: ($baseLineHeight / 2) $g5PageContentPaddingHoriz;
+                    @include safeBkgs($login_footerLinksBgColor);
+                }
+            }
+
+            @if $login_footerLinksColor and $login_footerLinksColor != $global_footer_linksColor {
+                .nav-pills > li > a {
+                    color: $login_footerLinksColor;
+                }
+            }
+
+            @if $login_footerLinksDisabledColor and $login_footerLinksDisabledColor != $global_footer_linksDisabledColor {
+                .nav-pills > li > a.disabledFootLink{
+                    color: $login_footerLinksDisabledColor;
+                }
+            }
+
+            @if $login_footerCopyrightTextColor and $login_footerCopyrightTextColor != $global_footer_copyrightTextColor {
+                .copyright {
+                    color: $login_footerCopyrightTextColor;
+                }
+            }
+        }
+
+        @media (min-width: 1200px) {
+            // pageNav
+            #pageNav {
+                #pageTitle {
+                    font-size: $global_header_logoHeight1200;
+                    line-height: $global_header_logoHeight1200;
+                }
+            }
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+            // pageNav
+            #pageNav {
+                #pageTitle {
+                    font-size: $global_header_logoHeight768;
+                    line-height: $global_header_logoHeight768;
+                }
+            }
+        }
+        @media (max-width: 767px) {
+            // header
+            #header {
+                background: none;
+
+                .container {
+                    padding-top: $g5PageContentSpacingVertical * 0.5;
+                    padding-bottom: $g5PageContentSpacingVertical * 0.5;
+                }
+            }
+            #globalHeaderView {
+                .logo {
+                    display: block;
+                    float: none;
+                    margin-bottom: 0;
+                }
+            }
+
+            // pageNav
+            #pageNav {
+                margin: 0;
+                padding-bottom: $pageNav_spaceBelowMobile;
+
+                .container {
+                    @include gridCoreInnerPadding($leftRightPad: $g5PageContentPaddingHorizMobile);
+                }
+            }
+
+            // content
+            #loginPage {
+                margin: 0;
+
+                .row {
+                    @include gridCoreInnerPadding($leftRightPad: $g5PageContentPaddingHorizMobile);
+                }
+
+                .intro {
+                    margin-bottom: $baseLineHeight;
+                    width: auto;
+                }
+                .span6 {
+                    margin: 0;
+                    padding: 0 0 ($g5PageContentSpacingVertical * 0.5) 0;
+                    width: auto;
+                    border: 0;
+
+                    & ~ .span6 {
+                        padding: ($g5PageContentSpacingVertical * 0.5) 0 0 0;
+                        border: 0;
+                        @if $login_formBorderWidth and $login_formBorderWidth > 0 {
+                            border-top: $login_formBorderWidth solid $login_formBorderColor;
+                        }
+                    }
+                }
+
+                &.selfEnrollmentOn {}
+                &.selfEnrollmentOff {
+                    .span6 {
+                        padding: 0;
+                        width: auto;
+                        height: auto;
+                        line-height: normal;
+                        background: none;
+                    }
+                }
+            }
+
+            // footer
+            #globalFooterView {}
+
+        } // @media (max-width: 767px)
+
+        @media (max-width: 480px) {
+            #loginPage {
+                .span6 {
+                    .control-label {
+                        width: auto;
+                    }
+                    .controls {
+                        margin-left: 0;
+                    }
+                    .form-actions {
+                        padding-left: 0;
+                    }
+                }
+            }
+        }
+
+    } // @if $login_useFancyLoginLayout
+
+} /* /.loginPage */
+
+// the login help pages get a different body class
+body.loginHelpPage {
+    // styles that live outside the pageView go here
+    // ----------------------------------------
+
+    // styles that live inside the pageView go here
+    // ----------------------------------------
+    #loginHelpPage {
+        padding-bottom: 0;
+
+        .form-actions {
+            min-width: 100%;
+        }
+
+        .page-topper {
+            label {
+                padding-right: 5px;
+                margin-left: -25px;
+            }
+
+            @media (max-width: 979px){
+                label{
+                    margin-left: -5px;
+                }
+
+                select{
+                    width: 200px;
+                }
+            }
+        }
+
+        .tab-content {
+            overflow: visible;
+        }
+
+        .row:last-child div:last-child form:last-child .form-actions:last-child,
+        form:last-child fieldset.form-actions:last-child {
+            margin-bottom: 0;
+        }
+
+        #forgotPasswordFieldset {
+            label {
+                min-width: 55px;
+                max-width: 105px;
+                margin-right: 10px;
+            }
+
+            .controls {
+                margin-left: 0;
+            }
+        }
+
+    @media (max-width: 479px) {
+        form .validate-tooltip {
+            top: -3px !important;
+        }
+    }
+
+    }/* /.page */
+}

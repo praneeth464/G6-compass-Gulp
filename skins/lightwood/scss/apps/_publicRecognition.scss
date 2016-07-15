@@ -1,0 +1,55 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $publicRecognition_bgColor: ;
+// $publicRecognition_gradType: ;
+// $publicRecognition_gradMeta: ; // list the gradient non-color properties such as position, shape, etc.
+// $publicRecognition_gradStops: ; // list the stops as one would a series of raw gradient stops
+
+// $publicRecognition_iconColor: ;
+// $publicRecognition_titleColor: ;
+// $publicRecognition_titleFontFamily: ;
+// $publicRecognition_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $publicRecognition_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+// $publicRecognition_tabsNavBgColor: ;
+// $publicRecognition_tabsNavGradType: ;
+// $publicRecognition_tabsNavGradMeta: ;
+// $publicRecognition_tabsNavGradStops: ;
+// $publicRecognition_tabsNavBorderWidth: ;
+// $publicRecognition_tabsNavBorderColor: ;
+
+// $publicRecognition_tabsIconColor: ;
+// $publicRecognition_tabsIconShadow: ;
+// $publicRecognition_tabsTabBgColor: ;
+
+// $publicRecognition_tabsIconColorHover: ;
+// $publicRecognition_tabsIconShadowHover: ;
+// $publicRecognition_tabsTabBgHover: ;
+// $publicRecognition_tabsTabBoxShadowClick: ;
+
+// $publicRecognition_tabsIconColorActive: ;
+// $publicRecognition_tabsIconShadowActive: ;
+// $publicRecognition_tabsTabBgActive: ;
+
+// $publicRecognition_containerLinkColor: ;
+// $publicRecognition_containerChevronColor: ;
+// $publicRecognition_containerBgColor: ;
+// $publicRecognition_containerBorderWidth: ;
+// $publicRecognition_containerBorderColor: ;
+// $publicRecognition_commentBgColor: ;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "publicRecognition/scss/publicRecognition";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

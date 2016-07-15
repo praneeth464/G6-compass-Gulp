@@ -1,0 +1,591 @@
+// Partial-specific variables
+// =========================
+$global_bodyBgColor: $grayLighter !default;
+$global_bodyGradType: false !default; // body background gradients will not be visible in IE7/8
+$global_bodyGradMeta: false !default;
+$global_bodyGradStops: false !default;
+$global_bodyBgImgUrlPath: false !default;
+$global_bodyBgImg: false !default;
+$global_bodyBgImgPosition: 0% 0% !default;
+$global_bodyBgImgRepeat: repeat !default;
+$global_bodyBgImgSize: auto !default;
+$global_bodyBgImgAttachment: fixed !default;
+
+$global_outerWrapper_restrictWidth: false !default;
+// if the above variable is false, none of these will apply
+$global_outerWrapper_bgColor: false !default;
+$global_outerWrapper_borderWidth: 0 !default;
+$global_outerWrapper_borderColor: $global_outerWrapper_bgColor !default;
+$global_outerWrapper_boxShadow: none !default;
+
+$global_header_bgColor: false !default;
+$global_header_gradMeta: false !default; // top would be an ideal value // only applies when a background color has been set
+$global_header_gradStops: false !default;
+$global_header_borderTopWidth: 0 !default;
+$global_header_borderTopColor: false !default;
+$global_header_borderBottomWidth: 0 !default;
+$global_header_borderBottomColor: false !default;
+
+$global_header_bgColorMobile: $black !default;
+$global_header_gradMetaMobile: false !default; // top would be an ideal value // only applies when a background color has been set
+$global_header_gradStopsMobile: false !default;
+$global_header_borderTopWidthMobile: 0 !default;
+$global_header_borderTopColorMobile: transparent !default;
+$global_header_borderBottomWidthMobile: 0 !default;
+$global_header_borderBottomColorMobile: transparent !default;
+
+$global_header_textColorMobile: $gray !default;
+
+$global_footer_pinnedFooter: true !default;
+
+$global_footer_bgColor: false !default;
+$global_footer_gradMeta: false !default; // top would be an ideal value // only applies when a background color has been set
+$global_footer_gradStops: false !default;
+$global_footer_borderTopWidth: 0 !default;
+$global_footer_borderTopColor: false !default;
+$global_footer_borderBottomWidth: 0 !default;
+$global_footer_borderBottomColor: false !default;
+
+$global_footerView_borderTopWidth: 1px !default;
+$global_footerView_borderTopColor: $grayLight !default;
+
+// calculated using the various height/padding/margin values for the footer parts
+// value should match that of the height value on #footer below
+// (padding-top of #globalFooterView + border-top of #globalFooterView) + assumed height of .nav.nav-pills + margin-bottom of .nav.nav-pills + assumed height of .copyright + margin-bottom of .copyright + padding-bottom of #globalFooterView
+$global_footer_height:     ($g5PageContentPaddingHoriz * .67     + $global_footerView_borderTopWidth) + $baseLineHeight + $baseLineHeight + $baseLineHeight + ($baseLineHeight / 2) + $g5PageContentPaddingHoriz !default;
+$global_footer_height1200: ($g5PageContentPaddingHoriz1200 * .67 + $global_footerView_borderTopWidth) + $baseLineHeight + $baseLineHeight + $baseLineHeight + ($baseLineHeight / 2) + $g5PageContentPaddingHoriz1200 !default;
+$global_footer_height768:  ($g5PageContentPaddingHoriz768 * .67  + $global_footerView_borderTopWidth) + $baseLineHeight + $baseLineHeight + $baseLineHeight + ($baseLineHeight / 2) + $g5PageContentPaddingHoriz768 !default;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+$global_footer_adjustVerticalAlignment: false;
+// if there is (a background color OR a top border on the footer) AND no top border on the globalFooterView, we rearrange some vertical spacing
+@if $global_footerView_borderTopWidth <= 0 {
+    $global_footer_adjustVerticalAlignment: true;
+}
+
+@if $global_footer_adjustVerticalAlignment {
+    $global_footer_height:     $global_footer_height     - ($g5PageContentPaddingHoriz * .67);
+    $global_footer_height1200: $global_footer_height1200 - ($g5PageContentPaddingHoriz1200 * .67);
+    $global_footer_height768:  $global_footer_height768  - ($g5PageContentPaddingHoriz768 * .67);
+}
+
+$global_footer_outerHeight:     $global_footer_height + $global_footer_borderTopWidth + $global_footer_borderBottomWidth;
+$global_footer_outerHeight1200: $global_footer_height1200 + $global_footer_borderTopWidth + $global_footer_borderBottomWidth;
+$global_footer_outerHeight768:  $global_footer_height768 + $global_footer_borderTopWidth + $global_footer_borderBottomWidth;
+
+@if $global_footer_bgColor or $global_footer_borderTopWidth > 0 {
+    $global_footer_outerHeight:     $global_footer_outerHeight + ($g5PageContentPaddingHoriz * .67);
+    $global_footer_outerHeight1200: $global_footer_outerHeight1200 + ($g5PageContentPaddingHoriz1200 * .67);
+    $global_footer_outerHeight768:  $global_footer_outerHeight768 + ($g5PageContentPaddingHoriz768 * .67);
+}
+
+
+// Platform framework
+// -------------------------
+html {
+    height: 100%;
+    min-height: 100%;
+}
+html.lt-ie9 {
+    height: 100%;
+    // overflow-x: auto;
+
+    body {
+        // overflow-x: auto;
+        // *overflow-x: visible;
+
+        // when the background gradient (by way of filter) is applied to IE7/8, horizontal scrolling of the window breaks badly
+        // the various overflow rules above were my first attempt at a fix, but the x-axis scrollbar would only be visible when the user scrolled all the way to the bottom of the window
+        filter: none;
+    }
+}
+body {
+    height: 100%;
+    min-height: 100%;
+    background: $white;
+    @if $global_bodyBgColor {
+        background: $global_bodyBgColor;
+    }
+    @if $global_bodyGradType and $global_bodyGradMeta and $global_bodyGradStops {
+        @include module_moduleLinerBackground(
+            $bgColor: $global_bodyBgColor,
+            $gradType: $global_bodyGradType,
+            $gradMeta: $global_bodyGradMeta,
+            $gradStops: $global_bodyGradStops,
+            $force: true
+        );
+        background-attachment: fixed;
+    }
+    @if $global_bodyBgImg {
+        @include safeImgUrls($global_bodyBgImg, $global_bodyBgImgUrlPath, $property: 'background-image');
+        background-position: $global_bodyBgImgPosition;
+        background-repeat: $global_bodyBgImgRepeat;
+        background-size: $global_bodyBgImgSize;
+        background-attachment: $global_bodyBgImgAttachment;
+    }
+}
+// Mobile Webkit browsers are having trouble redrawing the background gradient
+// behind or around elements that move. This leaves some elements with white
+// blocks around them when switching filters or resizing the screen. Hopefully
+// this bug will be fixed soon and this rule can be removed.
+// 5 Nov: There are also issues with fixed position backgrounds on touch devices
+// The best solution seems to be to set the background-attachment to scroll and
+// disabled the sticky footer. Unfortunate, but necessary after much testing.
+.touch {
+    height: auto;
+
+    body {
+        height: auto;
+        background-attachment: scroll;
+        // background-size: 100% 100%;
+    }
+}
+
+
+#wrapper_outer {
+    position: relative;
+    min-height: 100%;
+
+    @if $global_outerWrapper_restrictWidth {
+        // note: there are special rules in _homeApp that apply to this as well. If you change these formulas, you'll need to change those too
+        margin: 0 auto;
+        width: ($gridColumnWidth * $gridColumns) + ($gridGutterWidth * ($gridColumns - 1)) + 2 * (($g5PageContentPaddingHoriz * 2 / 3) - $global_outerWrapper_borderWidth);
+
+        @media (min-width: 1200px) {
+            width: ($gridColumnWidth1200 * $gridColumns) + ($gridGutterWidth1200 * ($gridColumns - 1)) + 2 * (($g5PageContentPaddingHoriz1200 * 2 / 3) - $global_outerWrapper_borderWidth);
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+            width: ($gridColumnWidth768 * $gridColumns) + ($gridGutterWidth768 * ($gridColumns - 1)) + 2 * (($g5PageContentPaddingHoriz768 * 2 / 3) - $global_outerWrapper_borderWidth);
+        }
+        @media (max-width: 767px) {
+            margin: 0;
+            width: auto;
+            border: 0;
+        }
+
+        @if $global_footer_pinnedFooter {
+            // NOTE: if you change what's inside this IF, you have to change it down inside #wrapper_inner as well
+
+            @if $global_outerWrapper_bgColor {
+                @include safeBkgs($global_outerWrapper_bgColor);
+            }
+            @if $global_outerWrapper_borderWidth {
+                border: $global_outerWrapper_borderWidth solid $global_outerWrapper_borderColor;
+                border-top: 0;
+                @if $global_footer_pinnedFooter {
+                    border-bottom: 0;
+                }
+                @media (max-width: 767px) {
+                    border-left-width: 0;
+                    border-right-width: 0;
+                }
+            }
+            @if $global_outerWrapper_boxShadow {
+                @include box-shadow($global_outerWrapper_boxShadow);
+            }
+        }
+        @else {
+            min-height: 0;
+            padding-bottom: $g5PageContentPaddingHoriz;
+
+            @media (min-width: 1200px) {
+                padding-bottom: $g5PageContentPaddingHoriz1200;
+            }
+            @media (min-width: 768px) and (max-width: 979px) {
+                padding-bottom: $g5PageContentPaddingHoriz768;
+            }
+            @media (max-width: 767px) {}
+        }
+    }
+}
+#wrapper_inner {
+    min-height: 100%;
+
+    @if $global_footer_pinnedFooter {
+        padding-bottom: $global_footer_outerHeight + ($g5PageContentPaddingHoriz * .67);
+
+        @media (min-width: 1200px) {
+            padding-bottom: $global_footer_outerHeight1200 + ($g5PageContentPaddingHoriz1200 * .67);
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+            padding-bottom: $global_footer_outerHeight768 + ($g5PageContentPaddingHoriz768 * .67);
+        }
+        @media (max-width: 767px) {
+            padding-bottom: 0;
+        }
+    }
+    @else {
+        padding-bottom: 0;
+    }
+
+    @if $global_outerWrapper_restrictWidth {
+        @if $global_footer_pinnedFooter == false {
+            // NOTE: if you change what's inside this IF, you have to change it up inside #wrapper_outer as well
+
+            @if $global_outerWrapper_bgColor {
+                @include safeBkgs($global_outerWrapper_bgColor);
+            }
+            @if $global_outerWrapper_borderWidth {
+                border: $global_outerWrapper_borderWidth solid $global_outerWrapper_borderColor;
+                border-top: 0;
+                @if $global_footer_pinnedFooter {
+                    border-bottom: 0;
+                }
+                @media (max-width: 767px) {
+                    border-left-width: 0;
+                    border-right-width: 0;
+                }
+            }
+            @if $global_outerWrapper_boxShadow {
+                @include box-shadow($global_outerWrapper_boxShadow);
+            }
+        }
+    }
+}
+
+// shared
+.container {
+    a:hover [class^="icon-"],
+    a:hover [class*=" icon-"] {
+        text-decoration: none;
+    }
+}
+
+// header region
+// additional styles located in _globalHeader.scss and _participantProfile.scss
+#header {
+    // if a background color has been set, we have to tweak layout a little bit
+    @if $global_header_bgColor or ($global_header_borderBottomWidth and $global_header_borderBottomWidth > 0) {
+        margin-bottom: ($g5PageContentPaddingHoriz / 2);
+
+        @media (min-width: 1200px) {
+            margin-bottom: ($g5PageContentPaddingHoriz1200 / 2);
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+            margin-bottom: ($g5PageContentPaddingHoriz768 / 2);
+        }
+        @media (max-width: 767px) {
+            margin-bottom: ($g5PageContentPaddingHorizMobile / 2);
+        }
+
+        // this mixin has a built-in check for whether or not a gradient or solid color has been requested. It also assumes a linear gradient at all times.
+        @include progressBarHelper(
+            $global_header_bgColor,
+            $global_header_gradMeta,
+            $global_header_gradStops
+        );
+    }
+
+    @if $global_header_borderTopWidth and $global_header_borderTopWidth > 0 {
+        border-top: $global_header_borderTopWidth solid $global_header_borderTopColor;
+    }
+    @if $global_header_borderBottomWidth and $global_header_borderBottomWidth > 0 {
+        border-bottom: $global_header_borderBottomWidth solid $global_header_borderBottomColor;
+    }
+
+    .container {
+        padding: ($g5PageContentPaddingHoriz / 2) 0;
+        position: relative; // let us have absolutely pos. elements within
+    }
+}
+@media (min-width: 1200px) {
+    #header {
+        .container {
+            padding: ($g5PageContentPaddingHoriz1200 / 2) 0;
+        }
+    }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+    #header {
+        .container {
+            padding: ($g5PageContentPaddingHoriz768 / 2) 0;
+        }
+    }
+}
+@media (max-width: 767px) {
+    body {
+        @include gridCoreInnerPadding($leftRightPad: 0);
+        // @include gridCoreInnerPadding($leftRightPad: $g5PageContentPaddingHorizMobile);
+    }
+
+    .container {
+        @include gridCoreInnerPadding($leftRightPad: $g5PageContentPaddingHorizMobile);
+    }
+
+    #header {
+        // @include gridCoreInnerFullSplit($leftRightPad: $g5PageContentPaddingHorizMobile);
+        color: $global_header_textColorMobile;
+
+        // this mixin has a built-in check for whether or not a gradient or solid color has been requested. It also assumes a linear gradient at all times.
+        @include progressBarHelper(
+            $global_header_bgColorMobile,
+            $global_header_gradMetaMobile,
+            $global_header_gradStopsMobile
+        );
+
+        // slightly different check: make sure there is a top and bottom border to cancel before testing to see if we have mobile borders to do the canceling
+        @if $global_header_borderTopWidth and $global_header_borderTopWidthMobile {
+            border-top: $global_header_borderTopWidthMobile solid $global_header_borderTopColorMobile;
+        }
+        @if $global_header_borderBottomWidth and $global_header_borderBottomWidthMobile {
+            border-bottom: $global_header_borderBottomWidthMobile solid $global_header_borderBottomColorMobile;
+        }
+
+        .container {
+            padding: 0;
+            @include gridCoreInnerPadding($leftRightPad: $g5PageContentPaddingHorizMobile);
+        }
+    }
+}
+@media (max-width: 479px) {
+    #header,
+    #footer {
+        .container {
+            // @include gridCoreInnerPadding($leftRightPad: $g5ModuleGutter);
+        }
+    }
+}
+
+// contents region
+#contents {
+    @if $global_footer_pinnedFooter == false and ($global_footer_bgColor or $global_footer_borderTopWidth > 0) {
+        padding-bottom: $g5PageContentPaddingHoriz * .67;
+
+        @media (min-width: 1200px) {
+            padding-bottom: $g5PageContentPaddingHoriz1200 * .67;
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+            padding-bottom: $g5PageContentPaddingHoriz768 * .67;
+        }
+        @media (max-width: 767px) {
+        }
+    }
+
+    .container {
+        padding: 0;
+    }
+
+    #pageLoadingSpinner {
+        img {
+            position: fixed !important;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -25px 0 0 -25px;
+            width: 50px;
+            height: 50px;
+        }
+    }
+
+    // when a pageView is initialized it adds the class of .page to .page-content, hiding this spinner
+    .page ~ #pageLoadingSpinner {
+        display: none;
+    }
+}
+
+// footer region
+// additional styles located in _globalFooter.scss
+#footer {
+    padding-top: $g5PageContentPaddingHoriz * .67;
+
+    @media (min-width: 1200px) {
+        padding-top: $g5PageContentPaddingHoriz1200 * .67;
+    }
+    @media (min-width: 768px) and (max-width: 979px) {
+        padding-top: $g5PageContentPaddingHoriz768 * .67;
+    }
+
+    @if $global_footer_pinnedFooter {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        height: $global_footer_height;
+
+        @if $global_footer_bgColor or $global_footer_borderTopWidth > 0 {
+            margin-top: $global_footer_outerHeight * -1;
+        }
+        @else {
+            margin-top: ($global_footer_outerHeight + $g5PageContentPaddingHoriz * .67) * -1;
+        }
+
+        @media (min-width: 1200px) {
+            height: $global_footer_height1200;
+
+            @if $global_footer_bgColor or $global_footer_borderTopWidth > 0 {
+                margin-top: $global_footer_outerHeight1200 * -1;
+            }
+            @else {
+                margin-top: ($global_footer_outerHeight1200 + $g5PageContentPaddingHoriz1200 * .67) * -1;
+            }
+
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+            height: $global_footer_height768;
+
+            @if $global_footer_bgColor or $global_footer_borderTopWidth > 0 {
+                margin-top: $global_footer_outerHeight768 * -1;
+            }
+            @else {
+                margin-top: ($global_footer_outerHeight768 + $g5PageContentPaddingHoriz768 * .67) * -1;
+            }
+
+        }
+        @media (max-width: 767px) {
+            position: static;
+            height: auto;
+            margin-top: 0;
+        }
+    }
+
+    @if $global_footer_bgColor {
+        // this mixin has a built-in check for whether or not a gradient or solid color has been requested. It also assumes a linear gradient at all times.
+        @include progressBarHelper(
+            $global_footer_bgColor,
+            $global_footer_gradMeta,
+            $global_footer_gradStops
+        );
+    }
+
+    @if $global_footer_borderTopWidth and $global_footer_borderTopWidth > 0 {
+        border-top: $global_footer_borderTopWidth solid $global_footer_borderTopColor;
+    }
+    @if $global_footer_borderBottomWidth and $global_footer_borderBottomWidth > 0 {
+        border-bottom: $global_footer_borderBottomWidth solid $global_footer_borderBottomColor;
+    }
+
+    .container {
+
+    }
+    .language-list {
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+                a img {
+                    vertical-align: text-bottom;
+                }
+            }
+        }
+    }
+}
+
+// ie7 can't have the pinned footer because the position: relative; on wrapper_outer breaks Bootstrap's modals (z-index reset issue)
+.lt-ie8 {
+    #wrapper_outer {
+        position: static;
+    }
+    #wrapper_inner {
+        padding-bottom: 0;
+    }
+    #footer {
+        position: static;
+        margin-top: $g5PageContentPaddingHoriz * .67;
+    }
+}
+// ie8 can't have it because it sucks at being a browser
+.lt-ie9 body {
+    height: auto;
+}
+
+// user avatars
+img.avatar {
+    // enables SVG gradient support in Opera and IE9
+    $experimental-support-for-svg: true;
+
+    background: $g5AvatarBg;
+    @include background($g5AvatarBg linear-gradient(top, $g5AvatarBg, lighten($g5AvatarBg, 20%)));
+
+    // IE8 and down
+    .lt-ie9 & {
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str( $g5AvatarBg )}', endColorstr='#{ie-hex-str( lighten($g5AvatarBg, 20%) )}', GradientType=0);
+    }
+}
+
+// for layout help
+.showLayoutBoxes {
+    #header {
+        box-shadow: inset 0px 0px 12px rgba(255, 0, 0, .5);
+        .container {
+            box-shadow: inset 0px 0px 6px rgba(255, 0, 0, .5);
+        }
+    }
+    #contents {
+        box-shadow: inset 0px 0px 12px rgba(0, 255, 0, .5);
+        .container {
+            box-shadow: inset 0px 0px 6px rgba(0, 255, 0, .5);
+        }
+    }
+    #footer {
+        box-shadow: inset 0px 0px 12px rgba(0, 0, 255, .5);
+        .container {
+            box-shadow: inset 0px 0px 6px rgba(0, 0, 255, .5);
+        }
+    }
+}
+
+// global .spincover for page loads
+.spincover {
+    // do not add rules here on the bare .spincover class unless you are prepared to have them applied *everwhere* .spincover is used
+
+    &.redirectServerCommand,
+    &.pageLoading,
+    &.pageView {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 2000000001; // 2e9 is the default z-index in the .spin plugin, so we have to go one higher
+        height: 100%;
+        width: 100%;
+        // TODO 5.5: check the page background color. If it's darker than a certain number, set this background to be black (or really dark gray) instead of white
+        // background: $white;
+        @include safeBkgs(rgba(255, 255, 255, .5));
+        zoom: 1;
+
+        .spin {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: (-1 * $spinner_widthHeight / 2) 0 0 (-1 * $spinner_widthHeight / 2);
+            width: $spinner_widthHeight;
+            height: $spinner_widthHeight;
+        }
+    }
+
+    .spin {
+        // do not add rules here on the bare .spin class unless you are prepared to have them applied *everwhere* .spin is used
+
+    }
+}
+
+.btn + .btn {
+    margin-left: $gridGutterWidth / 2;
+
+    @media (min-width: 1200px) {
+        margin-left: $gridGutterWidth1200 / 2;
+    }
+    @media (min-width: 768px) and (max-width: 979px) {
+        margin-left: $gridGutterWidth768 / 3;
+    }
+}
+.btn.fr + .btn.fr {
+    margin-right: $gridGutterWidth / 2;
+    margin-left: 0;
+
+    @media (min-width: 1200px) {
+        margin-right: $gridGutterWidth1200 / 2;
+    }
+    @media (min-width: 768px) and (max-width: 979px) {
+        margin-right: $gridGutterWidth768 / 3;
+    }
+    @media (max-width: 479px) {
+        margin-right: 0;
+    }
+}

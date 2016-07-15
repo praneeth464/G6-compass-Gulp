@@ -1,0 +1,141 @@
+<div class="paginationControls pagination pagination-right"></div>
+<div class="emptyMsg alert" style="display:none">You have not added anyone.</div>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th class="sortHeader date">
+                    Date Created
+                    <i data-sort="dateCreated" class="icon-sort"></i>
+                </th>
+                <th class="sortHeader number">
+                    # of Participants
+                    <i data-sort="participantsCount" class="icon-sort"></i>
+                </th>
+                <th class="sortHeader number">
+                    Activity Amount
+                    <i data-sort="amount" class="icon-sort"></i>
+                </th>
+                {{#eq payoutType "points"}}
+                <th class="sortHeader number">
+                    Payout
+                    <i data-sort="payoutAmount" class="icon-sort"></i>
+                </th>
+                {{/eq}}
+                {{#eq payoutType "other"}}
+                <th class="sortHeader">
+                    Payout Description
+                    <i data-sort="payoutDescription" class="icon-sort"></i>
+                </th>
+                <th class="sortHeader number">
+                    Value
+                    <i data-sort="payoutAmount" class="icon-sort"></i>
+                </th>
+                {{/eq}}
+                <th class="sortHeader">
+                    Status
+                    <i data-sort="status" class="icon-sort"></i>
+                </th>
+                {{#isApproveMode}}
+                    <th><!-- approve mode column for buttons --></th>
+                {{/isApproveMode}}
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td class="totalDisp number">
+                    Total
+                </td>
+                <td class="totalDisp number">
+                    {{totalParticipantsCount}}
+                </td>
+                <td class="totalDisp number">
+                    {{totalActivity}}
+                </td>
+                {{#eq payoutType "other"}}
+                <td></td>
+                {{/eq}}
+                <td class="totalDisp number">
+                    {{totalPayoutAmount}}
+                </td>
+                <td></td>
+                {{#isApproveMode}}<td></td>{{/isApproveMode}}
+            </tr>
+        </tfoot>
+        <tbody>
+        </tbody>
+    </table>
+
+<!-- <div class="paginationConts pagination pagination-right"></div> -->
+<div class="paginationControls pagination pagination-right"></div>
+
+<!--subTpl.recordRow=
+
+    <tr class="summary-item" data-participant-id="{{id}}">
+
+        {{#if extraJSON.isApproveMode}}
+            <td class="date">
+                {{! JAVA NOTE: not sure how this url should be formatted }}
+                <a href="layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiApproveSpecificContestPageATN.html">{{dateCreated}}</a>
+            </td>
+        {{else}}
+            <td class="date">
+                {{! JAVA NOTE: not sure how this url should be formatted }}
+                <a href="layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiContestPayoutDetailsATN.html#URL_TO_PARTICIPANTS_DETAIL">{{dateCreated}}</a>
+            </td>
+        {{/if}}
+
+        <td class="number">
+            {{participantsCount}}
+        </td>
+
+        <td class="number">
+            {{amount}}
+        </td>
+
+        {{#eq extraJSON.payoutType "points"}}
+            <td class="number">
+                {{payoutAmount}}
+            </td>
+        {{/eq}}
+        {{#eq extraJSON.payoutType "other"}}
+            <td>
+                {{payoutDescription}}
+            </td>
+            <td class="number">
+                {{payoutAmount}}
+            </td>
+        {{/eq}}
+
+
+        <td class="status">
+            {{statusDescription}}
+            {{#if deniedReason}}
+            - {{deniedReason}}
+            {{/if}}
+        </td>
+
+
+        {{#extraJSON.isApproveMode}}
+            <td>
+            {{#canApprove}}
+                {{#eq status "waiting_for_approval"}}
+                <span class="approveModeButtons" data-contest-id="{{id}}">
+                    <span class="showOnApproved hide">Approved</span>
+                    <span class="showOnDenied hide">Denied</span>
+                    <button data-contest-id="{{id}}" class="btn btn-primary btn-small ssiApproveContestBtn hideOnSuccess">
+                        Approve
+                    </button>
+                    <button data-contest-id="{{id}}" class="btn btn-small ssiDenyContestBtn hideOnSuccess">
+                        Deny
+                    </button>
+                </span>
+                {{/eq}}
+            {{/canApprove}}
+            </td>
+        {{/extraJSON.isApproveMode}}
+
+
+    </tr>
+
+subTpl-->

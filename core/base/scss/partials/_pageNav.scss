@@ -1,0 +1,247 @@
+// Partial-specific variables
+// =========================
+$pageNav_bgColor: false !default;
+$pageNav_gradMeta: false !default; // top would be an ideal value // only applies when a background color has been set
+$pageNav_gradStops: false !default;
+$pageNav_borderTopWidth: 0 !default;
+$pageNav_borderTopColor: false !default;
+$pageNav_borderBottomWidth: 0 !default;
+$pageNav_borderBottomColor: false !default;
+
+$pageNav_spaceBelow: ($g5PageContentPaddingHoriz / 2) !default;
+$pageNav_spaceBelow1200: ($g5PageContentPaddingHoriz1200 / 2) !default;
+$pageNav_spaceBelow768: ($g5PageContentPaddingHoriz768 / 2) !default;
+$pageNav_spaceBelowMobile: ($g5PageContentPaddingHorizMobile / 2) !default;
+
+$pageNav_pageTitleFontFamily: $titleFont !default;
+$pageNav_pageTitleFontSize: 24px !default;
+$pageNav_pageTitleLineHeight: 1.5 !default;
+$pageNav_pageTitleFontWeight: $titleFontWeightNormal !default;
+$pageNav_pageTitleFontStyle: normal !default;
+$pageNav_pageTitleTextColor: $gray !default;
+$pageNav_pageTitleTextTransform: false !default;
+
+$pageNav_pageHomeBackFontFamily: $pageNav_pageTitleFontFamily !default;
+$pageNav_pageHomeBackFontSize: 20px !default;
+$pageNav_pageHomeBackLineHeight: $pageNav_pageTitleLineHeight * ($pageNav_pageTitleFontSize/$pageNav_pageHomeBackFontSize) !default;
+$pageNav_pageHomeBackFontWeight: $titleFontWeightNormal !default;
+$pageNav_pageHomeBackFontStyle: normal !default;
+$pageNav_pageHomeBackTextColor: $circledAwesomeIconColor !default;
+$pageNav_pageHomeBackTextTransform: false !default;
+
+$pageNav_pageBackIconColor: $circledAwesomeIconColor !default;
+$pageNav_pageBackCircleColor: $circledAwesomeIconBorderColor !default;
+$pageNav_pageHomeIconColor: $pageNav_pageBackIconColor !default;
+$pageNav_pageHomeCircleColor: $pageNav_pageBackCircleColor !default;
+
+$pageNav_pageTitleFontSizeMobile: $pageNav_pageHomeBackFontSize !default;
+$pageNav_pageTitleLineHeightMobile: $pageNav_pageHomeBackLineHeight !default;
+$pageNav_pageHomeBackFontSizeMobile: 18px !default;
+$pageNav_pageHomeBackLineHeightMobile: $pageNav_pageTitleLineHeightMobile * ($pageNav_pageTitleFontSizeMobile/$pageNav_pageHomeBackFontSizeMobile) !default;
+
+$pageNav_pageHomeDividerWidth: 1px !default;
+$pageNav_pageHomeDividerColor: $grayLight !default;
+
+// TODO 5.5: add a check of the homeApp text color against the body background color to run the font smoothing mixin
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+#pageNav {
+    position: relative;
+    zoom: 1;
+
+    // if a background color has been set, we have to tweak layout a little bit
+    @if $pageNav_bgColor or ($pageNav_borderTopWidth and $pageNav_borderTopWidth > 0) or ($pageNav_borderBottomWidth and $pageNav_borderBottomWidth > 0) {
+        margin-bottom: $pageNav_spaceBelow;
+        padding: ($pageNav_spaceBelow / 2) 0;
+
+        // this mixin has a built-in check for whether or not a gradient or solid color has been requested. It also assumes a linear gradient at all times.
+        @include progressBarHelper(
+            $pageNav_bgColor,
+            $pageNav_gradMeta,
+            $pageNav_gradStops
+        );
+
+        @if $pageNav_borderTopWidth and $pageNav_borderTopWidth > 0 {
+            border-top: $pageNav_borderTopWidth solid $pageNav_borderTopColor;
+        }
+        @if $pageNav_borderBottomWidth and $pageNav_borderBottomWidth > 0 {
+            border-bottom: $pageNav_borderBottomWidth solid $pageNav_borderBottomColor;
+        }
+
+        // if a background color has been set on the header, we have to tweak layout a little bit
+        @if $global_header_bgColor or ($global_header_borderBottomWidth and $global_header_borderBottomWidth > 0) {
+            margin-top: -($g5PageContentPaddingHoriz / 2);
+
+            @media (min-width: 1200px) {
+                margin-top: -($g5PageContentPaddingHoriz1200 / 2);
+            }
+            @media (min-width: 768px) and (max-width: 979px) {
+                margin-top: -($g5PageContentPaddingHoriz768 / 2);
+            }
+            @media (max-width: 767px) {
+                margin-top: -($g5PageContentPaddingHorizMobile / 2);
+            }
+        }
+    }
+    @else {
+        padding: 0 0 $pageNav_spaceBelow 0;
+    }
+
+    #pageTitle {
+        display: inline;
+        float: right;
+        margin: 0;
+        font-family: $pageNav_pageTitleFontFamily;
+        font-size: $pageNav_pageTitleFontSize;
+        line-height: $pageNav_pageTitleLineHeight;
+        font-weight: $pageNav_pageTitleFontWeight;
+        font-style: $pageNav_pageTitleFontStyle;
+        color: $pageNav_pageTitleTextColor;
+        @if $pageNav_pageTitleTextTransform {
+            text-transform: $pageNav_pageTitleTextTransform;
+        }
+    }
+
+    #pageNavLinks {
+        display: inline;
+        float: left;
+    }
+    #pageHomeLink {
+        a {
+            @if $pageNav_pageHomeDividerWidth {
+                border-right: $pageNav_pageHomeDividerWidth solid $pageNav_pageHomeDividerColor;
+            }
+
+            i {
+                @include circledAwesomeIcon(
+                    $fontSize: 19px,
+                    $lineHeight: 21px,
+                    $color: $pageNav_pageHomeIconColor,
+                    $borderColor: $pageNav_pageHomeCircleColor
+                );
+            }
+            span {
+                display: none;
+
+                .lt-ie8 & {
+                    display: inline-block;
+                    width: 0px;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+    #pageBackLink {
+        a {
+            margin-right: 18px;
+
+            i {
+                @include circledAwesomeIcon(
+                    $fontSize: 19px,
+                    $lineHeight: 21px,
+                    $color: $pageNav_pageBackIconColor,
+                    $borderColor: $pageNav_pageBackCircleColor
+                );
+            }
+        }
+    }
+
+    #pageHomeLink,
+    #pageBackLink {
+        display: inline;
+        float: left;
+        margin: 0;
+        font-family: $pageNav_pageHomeBackFontFamily;
+        font-size: $pageNav_pageHomeBackFontSize;
+        line-height: $pageNav_pageHomeBackLineHeight;
+        font-weight: $pageNav_pageHomeBackFontWeight;
+        font-style: $pageNav_pageHomeBackFontStyle;
+        @if $pageNav_pageHomeBackTextTransform {
+            text-transform: $pageNav_pageHomeBackTextTransform;
+        }
+
+        a {
+            color: $pageNav_pageHomeBackTextColor;
+            display: block;
+            text-decoration: none;
+
+            i {
+                margin: 0 8px;
+            }
+            span {
+                line-height: 1;
+            }
+        }
+
+        .lt-ie8 & {
+            padding-top: ($pageNav_pageTitleFontSize * $pageNav_pageTitleLineHeight - $pageNav_pageTitleFontSize) / 2;
+        }
+    }
+
+    // Media Queries
+    // big desktop sizes
+    @media (min-width: 1200px) {
+        // if a background color has been set, we have to tweak layout a little bit
+        @if $pageNav_bgColor {
+            margin-bottom: $pageNav_spaceBelow1200;
+            padding: ($pageNav_spaceBelow1200 / 2) 0;
+        }
+        @else {
+            padding: 0 0 $pageNav_spaceBelow1200 0;
+        }
+    }
+    // typical desktop sizes
+    @media (min-width: 768px) and (max-width: 979px) {
+        // if a background color has been set, we have to tweak layout a little bit
+        @if $pageNav_bgColor {
+            margin-bottom: $pageNav_spaceBelow768;
+            padding: ($pageNav_spaceBelow768 / 2) 0;
+        }
+        @else {
+            padding: 0 0 $pageNav_spaceBelow768 0;
+        }
+    }
+    // styles for tablet sizes and below
+    @media (max-width: 767px) {
+        // if a background color has been set, we have to tweak layout a little bit
+        @if $pageNav_bgColor {
+            margin-bottom: $pageNav_spaceBelowMobile;
+            padding: ($pageNav_spaceBelowMobile / 2) 0;
+        }
+        @else {
+            padding: $pageNav_spaceBelowMobile 0;
+        }
+
+        .container {
+            padding-right: $g5PageContentPaddingHorizMobile;
+            padding-left: $g5PageContentPaddingHorizMobile - 8px; // 8px is the same as the right/left margin on the i tag above
+        }
+
+        #pageTitle {
+            font-size: $pageNav_pageTitleFontSizeMobile;
+            line-height: $pageNav_pageTitleLineHeightMobile;
+        }
+
+        #pageHomeLink,
+        #pageBackLink {
+            font-size: $pageNav_pageHomeBackFontSizeMobile;
+            line-height: $pageNav_pageHomeBackLineHeightMobile;
+
+            span {
+                vertical-align: middle;
+            }
+        }
+    }
+    @media (max-width: 479px) {
+        .container {
+            // padding-right: $g5ModuleGutter;
+            // padding-left: 0;
+        }
+    }
+}
+

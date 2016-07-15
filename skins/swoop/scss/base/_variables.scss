@@ -1,0 +1,176 @@
+// Skin variables that must be set before Bootstrap or G5 variables (grouped roughly by logical sense)
+// ==================================================
+// These three variables are extremely important.
+// $devSourcePath points to the core/base files when working on the skin in the src/fe directory
+// $buildSourcePath points to the core/base files after the build has been run and the files have been rearranged into their new directory structure
+$devSourcePath:   "../../../core/base/";
+$buildSourcePath: "../../../";
+// fe.build.xml does a regex replace on the following variable assignment and swaps in $buildSourcePath
+$appSourcePath: $devSourcePath;
+
+// application config.rb directory helpers (paths relative to this file, obviously)
+$appCssPath:         $appSourcePath+"css/";
+$appSassPath:        $appSourcePath+"scss/";
+$appImagesPath:      $appSourcePath+"img/";
+$appFontsPath:       $appSourcePath+"rsrc/";
+$appJavascriptsPath: $appSourcePath+"js/";
+
+// Grays
+// -------------------------
+$gray16pct: #282828;
+$gray25pct: #404040;
+$gray33pct: #545454;
+$gray40pct: #666;
+$gray50pct: #808080;
+$gray67pct: #ababab;
+$gray80pct: #ccc;
+$gray90pct: #e5e5e5;
+
+// G5 variables that must be set before Bootstrap variables (grouped roughly by logical sense)
+// ==================================================
+
+
+// Bootstrap variables that must be set before import (grouped by sections copied from that file)
+// ==================================================
+
+// GLOBAL VALUES
+// --------------------------------------------------
+
+// Links
+// -------------------------
+$linkColor:             #469acb;
+
+// Tables
+// -------------------------
+$tableBackgroundAccent:             darken(#fff, 5%); // for striping
+
+// Buttons
+// -------------------------
+$btnPrimaryBackground: #6eb1d9;
+$btnPrimaryBackgroundHighlight: #4398ca;
+
+
+// Partial SCSS from G5 Core
+// =========================
+@import "partials/variables";
+
+
+
+// Bootstrap variables that can be set after import (grouped by sections copied from that file)
+// ==================================================
+
+
+// G5 variables that can be set after Bootstrap variables (grouped roughly by logical sense)
+// ==================================================
+
+// Typography
+// -------------------------
+// $fontWeightLight: ; // set the font weight value for "light" because it doesn't really exist ("lighter" isn't terribly useful)
+
+$titleFont: 'din', $titleFont;
+$titleFontWeightLight: 300;
+$titleFontWeightNormal: normal;
+$titleFontWeightBold: bold;
+$titleFontWeight: normal;
+// $bodyFont: ;
+
+
+// Component sizing
+// -------------------------
+$progressBar_baseBorderRadius: 0;
+// $spinner_widthHeight: ;
+
+
+// Horizontal padding of page content, 960px
+// -------------------------
+// $g5PageContentPaddingHoriz: ;
+// $g5PageContentLeftRightBorderWidth: ;
+
+// Horizontal padding of page content, 768px
+// -------------------------
+// $g5PageContentPaddingHoriz768: ;
+// $g5PageContentLeftRightBorderWidth768: ;
+
+// Horizontal padding of page content, 1200px
+// -------------------------
+// $g5PageContentPaddingHoriz1200: ;
+// $g5PageContentLeftRightBorderWidth1200: ;
+
+// Horizontal padding of page content, Mobile
+// -------------------------
+// $g5PageContentPaddingHorizMobile: ;
+
+// Vertical spacing of content sections
+// -------------------------
+// $g5PageContentSpacingVertical: ;
+
+
+// HOME APP
+// --------------------------------------------------
+// $g5ModuleGutter: ;
+// $g5ModuleUnit: ;
+// $g5ModulePadding: ;
+
+$g5ModuleBgColor: #094d75;
+// $g5ModuleGradType: ;
+// $g5ModuleGradMeta: ;
+// NOTE: the module_moduleLinerBackground() mixin takes a false value and turns it into a string that looks like this: (lighten($bgColor, 17%), $bgColor)
+// It proved to be too difficult (impossible?) to set this variable as a calculated list that would dynamically take the background color
+$g5ModuleGradStops: $g5ModuleBgColor, scale-color($g5ModuleBgColor, $lightness: -25%);
+
+// $g5ModuleIconColor: ;
+// $g5ModuleTitleColor: ;
+$g5ModuleTitleFontFamily: $titleFont;
+// $g5ModuleTitleFontStyle: ;
+// $g5ModuleTitleTextTransform: ;
+// NOTE: these must be a list of five values, corresponding respectively to 1x1, 2x1, 2x2, 4x2, 4x4 modules sizes.
+// By default, 4x2 uses the same font size and weight as 2x2, which is why it is passed as false.
+$g5ModuleTitleFontSizes: 16px, 20px, 36px, false, 54px;
+// $g5ModuleTitleFontWeights: ;
+
+// $g5ModuleVisitAppButtonOffset: ;
+
+// HOME APP AND PAGES
+// --------------------------------------------------
+// $g5ModPgBorderWidth: ;
+$g5ModPgBorderColor: #adadad;
+// $g5ModPgTopperBgColor: ;
+
+// AVATARS
+// --------------------------------------------------
+// $g5AvatarBg: ;
+
+
+// ICONOGRAPHY
+// --------------------------------------------------
+
+// Export icons
+// -------------------------
+// $exportIconWidth: ;
+// $exportIconHeight: ;
+
+// Circled Font Awesome Icons (circledAwesomeIcon mixin)
+// -------------------------
+// $circledAwesomeIconFontSize: ;
+// NOTE: the cirlcedAwesomeIcon() mixin takes a false value and turns it into a string that looks like this: $fontSize * 1.42
+// It proved to be too difficult (impossible?) to set this variable as a calculated value that would dynamically take the font size
+// $circledAwesomeIconLineHeight: ;
+// $circledAwesomeIconColor: ;
+// $circledAwesomeIconBorderColor: ;
+// $circledAwesomeIconCircleWidth: ;
+// $circledAwesomeIconBorderWidth: ;
+// $circledAwesomeIconBgColor: ;
+
+
+// G5 Fonticons toggles and list
+// --------------------------------------------------
+// $g5fonticonsModulesMode: 'image';
+
+
+// Skin variables that can be set after Bootstrap or G5 variables (grouped roughly by logical sense)
+// ==================================================
+
+// Accent colors
+// -------------------------
+// $red:                   #E00000;
+$blueLight:             #eaf7ff;

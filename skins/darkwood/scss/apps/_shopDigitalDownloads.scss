@@ -1,0 +1,38 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $shopDigitalDownloads_bgColor: ;
+// $shopDigitalDownloads_gradType: ;
+// $shopDigitalDownloads_gradMeta: ;
+// $shopDigitalDownloads_gradStops: ;
+
+// $shopDigitalDownloads_iconColor: ;
+// $shopDigitalDownloads_titleColor: ;
+// $shopDigitalDownloads_titleFontFamily: ;
+// $shopDigitalDownloads_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $shopDigitalDownloads_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+// $shopDigitalDownloads_textColor: ;
+// $shopDigitalDownloads_h3FontFamily: ;
+// $shopDigitalDownloads_pFontFamily: ;
+// $shopDigitalDownloads_visitAppBtnColor: ;
+// $shopDigitalDownloads_visitAppBtnBorderColor: ;
+$shopDigitalDownloads_imgUrlPath: $appImagesPath; // setting this to $appImagesPath points at core/base/img. Leave blank to use images in this skin
+// $shopDigitalDownloads_imgUrl2x2: ;
+// $shopDigitalDownloads_imgUrl4x2: ;
+// $shopDigitalDownloads_imgUrl4x4: ;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "clickThru/scss/shopDigitalDownloads";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

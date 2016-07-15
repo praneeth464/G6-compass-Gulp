@@ -1,0 +1,19 @@
+<table class="table table-striped table-bordered" >
+    {{#if tableColumns}}
+    <thead>
+        <tr>{{! NOTE: the Handlebars tags in this block are broken onto different lines in a strange way because of an IE whitespace bug}}
+        {{#each tableColumns}}<th class="{{#if sortable}} sortable{{/if}}{{#if sortedOn}} sorted{{else}} unsorted{{/if}}{{#if sortedBy}} {{sortedBy}}{{/if}}" data-sort-by-id="{{id}}" data-sorted-on="{{sortedOn}}" data-sorted-by="{{sortedBy}}" {{#if colSpan}} colspan="{{colSpan}}" {{/if}}> {{#if sortable}}<a href="{{sortUrl}}">{{displayName}} {{#unless sortedByDesc}}<i class="icon-sort-up"></i>{{else}}<i class="icon-sort-down"></i>{{/unless}}</a>{{else}}{{displayName}}{{/if}}</th>{{/each}}
+        </tr>
+    </thead>
+    {{/if}}
+    <tbody>
+        {{#each celebrations}}
+        <tr>
+            <td><img src="{{avatarUrl}}" alt="" class="avatar" /><a href="#" class="profile-popover" data-participant-ids="[{{id}}]">{{firstName}} {{lastName}}</a></td>
+            <td>{{promotion}}</td>
+            <td>{{expirationDate}}</td>
+            <td>{{#if contributeUrl}}<a href="{{contributeUrl}}" class="btn btn-primary"> Contribute</a>{{else}}<a href="{{viewUrl}}" class="btn btn-primary">View</a>{{/if}}</td>
+        </tr>
+        {{/each}}            
+    </tbody>
+</table>

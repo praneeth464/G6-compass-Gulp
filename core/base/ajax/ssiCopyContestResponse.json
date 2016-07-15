@@ -1,0 +1,25 @@
+<?php
+sleep(2);
+$success = true;
+?>
+
+{
+    "messages":[
+    <?php if ($success) { ?>
+        {
+            "type":"success",
+            "url": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiContestPageEdit.html"
+            <?php /*,
+            "id": "10"
+            */ ?>
+        }
+    <?php } else { ?>
+        {
+            "type":"error",
+            "code":"validationError",
+            "name":"",
+            "text":"the quiz name you entered has been used"
+        }
+    <?php } ?>
+    ]
+}

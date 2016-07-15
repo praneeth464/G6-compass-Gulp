@@ -1,0 +1,73 @@
+// App-specific variables
+// =========================
+$shopEvents_bgColor: $g5ModuleBgColor !default;
+$shopEvents_gradType: $g5ModuleGradType !default;
+$shopEvents_gradMeta: $g5ModuleGradMeta !default;
+$shopEvents_gradStops: $g5ModuleGradStops !default;
+
+$shopEvents_iconColor: $g5ModuleIconColor !default;
+$shopEvents_titleColor: $g5ModuleTitleColor !default;
+$shopEvents_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$shopEvents_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$shopEvents_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$shopEvents_textColor: false !default;
+$shopEvents_h3FontFamily: false !default;
+$shopEvents_pFontFamily: false !default;
+$shopEvents_visitAppBtnColor: false !default;
+$shopEvents_visitAppBtnBorderColor: false !default;
+$shopEvents_imgUrlPath: false !default;
+$shopEvents_imgUrl2x2: "clickThru/shopEvents_2x2.jpg" !default;
+$shopEvents_imgUrl4x2: "clickThru/shopEvents_4x2.jpg" !default;
+$shopEvents_imgUrl4x4: "clickThru/shopEvents_4x4.jpg" !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- MODULE STYLES ----- */
+.module.clickThru {
+
+    &.shopEvents {
+
+        .module-liner {
+            @include module_moduleLinerBackground(
+                $bgColor: $shopEvents_bgColor,
+                $gradType: $shopEvents_gradType,
+                $gradMeta: $shopEvents_gradMeta,
+                $gradStops: $shopEvents_gradStops
+            );
+        }
+
+        @include clickThruSkinBkgViews(
+            $textColor: $shopEvents_textColor,
+            $h3FontFamily: $shopEvents_h3FontFamily,
+            $pFontFamily: $shopEvents_pFontFamily,
+            $visitAppBtnColor: $shopEvents_visitAppBtnColor,
+            $visitAppBtnBorderColor: $shopEvents_visitAppBtnBorderColor,
+            $imgUrlPath: $shopEvents_imgUrlPath,
+            $imgUrl2x2: $shopEvents_imgUrl2x2,
+            $imgUrl4x2: $shopEvents_imgUrl4x2,
+            $imgUrl4x4: $shopEvents_imgUrl4x4
+        );
+
+        .title-icon-view {
+            @include module_titleIconView(
+                $iconColor: $shopEvents_iconColor,
+                $titleColor: $shopEvents_titleColor,
+                $titleFontFamily: $shopEvents_titleFontFamily
+            );
+
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                @include g5HomeAppIconBoxReflect($adjust : -45px);
+            }
+        }
+
+        @include module_titleIconViewFontSizesWeights($shopEvents_titleFontSizes, $shopEvents_titleFontWeights);
+
+    } /* /.shopEvents */
+
+} /* /.module.clickThru */

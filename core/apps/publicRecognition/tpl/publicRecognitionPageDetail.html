@@ -1,0 +1,45 @@
+<!-- ======== PUBLIC RECOGNITION PAGE DETAIL ======== -->
+
+<!-- DEVELOPER NOTE:
+    - G5.props.URL_JSON_PUBLIC_RECOGNITION_DETAIL javascript variable is used to request recognition detail
+    - #publicRecognitionPageView[data-recognition-id] is used to request the recognition detail json
+-->
+
+<!-- page -->
+<!-- put any additional request parameters in the data-request-data attribute formatted as valid JSON -->
+<div id="publicRecognitionPageView" class="page-content public-recognition-page-detail" data-recognition-id="1234" data-request-data='{"foo":"bar","baz":"stf"}'>
+
+    <div class="page-liner pubRecItemsCont">
+
+        <div class="publicRecognitionItems">
+            <!-- dynamic - single public recognition detail -->
+        </div><!-- publiceRecognitionItems -->
+
+    </div><!-- pubRecItemsCont -->
+
+
+</div><!-- /#publicRecognitionPageView -->
+
+
+
+<!-- Instantiate the PageView - expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function(){
+        //attach the view to an existing DOM element
+        var prp = new PublicRecognitionPageDetailView({
+            el:$('#publicRecognitionPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'javascript:history.go(-1);'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Recognition Detail'
+        });
+    });
+
+</script>

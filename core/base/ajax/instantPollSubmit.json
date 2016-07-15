@@ -1,0 +1,51 @@
+<?php sleep(1); ?>
+{
+    "messages" : [],
+
+    "_comment" : "Instant Polls are an extension of surveys, so the JSON structure of each poll object should be similar to that of a surveyJson object",
+    "surveyJson" : {
+        "id": 1234,
+        "_comment": "This isComplete indicates that the user has already taken the survey/poll",
+        "isComplete": true,
+        "_comment": "This showResults can be turned on for surveys, too, but will likely only be used for instant polls",
+        "showResults": true,
+
+        "_comment": "We only need to send back a few bits of information",
+        "questions":[
+            {
+                "id": 2345,
+                "_comment": "selectedAnswerId should be filled in by the server",
+                "selectedAnswerId": 3457,
+                "isAnswered": true,
+                "answers": [
+                    {
+                        "id": 3456,
+                        "_comment": "The count and percent fields only apply when the question is already answered and we're displaying live results",
+                        "count": 10,
+                        "percent": 3.2
+                    },
+                    {
+                        "id": 3457,
+                        "_comment": "The count and percent fields only apply when the question is already answered and we're displaying live results",
+                        "count": 200,
+                        "percent": 64.5,
+                        "_comment": "If this question is already answered and this is the answer chosen, flag the following attribute as true",
+                        "isChosen": true
+                    },
+                    {
+                        "id": 3458,
+                        "_comment": "The count and percent fields only apply when the question is already answered and we're displaying live results",
+                        "count": 0,
+                        "percent": 0
+                    },
+                    {
+                        "id": 3459,
+                        "_comment": "The count and percent fields only apply when the question is already answered and we're displaying live results",
+                        "count": 100,
+                        "percent": 32.3
+                    }
+                ]
+            }
+        ]
+    }
+}

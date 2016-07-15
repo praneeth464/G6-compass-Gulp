@@ -1,0 +1,56 @@
+<?php sleep(1); ?>
+{
+    "messages":[],
+    "tabs":[
+        {
+            "id" : 1,
+            "name" : "stepOne",
+            "isActive" : false,
+            "state" : "unlocked",
+            "contentSel" : ".wizardTabsContentDyn .stepOne",
+            "wtNumber" : "",
+            "wtName" : "First Step/Tab of This Wizard Has a Long Description",
+            "hideDeedle" : false
+        },
+        {
+            "id" : 2,
+            "name" : "stepTwo",
+            "isActive" : false,
+            "state" : "locked",
+            "contentSel" : ".wizardTabsContentDyn .stepTwo",
+            "wtNumber" : "",
+            "wtName" : "This Step/Tab of This Wizard Has an ULTRA Long Description Without a Doubt at All, Believe It",
+            "hideDeedle" : false
+        },
+        {
+            "id" : 3,
+            "name" : "stepThree",
+            "isActive" : false,
+            "state" : "locked",
+            "contentSel" : ".wizardTabsContentDyn .stepThree",
+            "wtNumber" : "",
+            "wtName" : "This is a Medium Sized Description",
+            "hideDeedle" : false
+        },
+        {
+            "id" : 4,
+            "name" : "stepFour",
+            "isActive" : false,
+            "state" : "incomplete",
+            "contentSel" : ".wizardTabsContentDyn .stepFour",
+            "wtNumber" : "",
+            "wtName" : "This Step/Tab of This Wizard Has a Long Description",
+            "hideDeedle" : false
+        },
+        {
+            "id" : 5,
+            "name" : "stepFive",
+            "isActive" : false,
+            "state" : "incomplete",
+            "contentSel" : ".wizardTabsContentDyn .stepFive",
+            "wtNumber" : "",
+            "wtName" : "Short Description",
+            "hideDeedle" : false
+        }
+    ]
+}

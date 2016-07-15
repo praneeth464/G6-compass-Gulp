@@ -1,0 +1,105 @@
+@font-face {
+  font-family: "FontAwesome";
+  src: url("../../../core/base/rsrc/fontawesome-webfont.eot");
+  src: url("../../../core/base/rsrc/fontawesome-webfont.eot?#iefix") format('eot'), url("../../../core/base/rsrc/fontawesome-webfont.woff") format("woff"), url("../../../core/base/rsrc/fontawesome-webfont.ttf") format("truetype"), url("../../../core/base/rsrc/fontawesome-webfont.svg#FontAwesome") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "G5Fonticons";
+  src: url("../../../core/base/rsrc/g5-fonticons-webfont.eot");
+  src: url("../../../core/base/rsrc/g5-fonticons-webfont.eot?#iefix") format('eot'), url("../../../core/base/rsrc/g5-fonticons-webfont.woff") format("woff"), url("../../../core/base/rsrc/g5-fonticons-webfont.ttf") format("truetype"), url("../../../core/base/rsrc/g5-fonticons-webfont.svg#G5Fonticons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "din-condensed";
+  src: url("../../../core/base/rsrc/din-condensed-regular-webfont.eot");
+  src: url("../../../core/base/rsrc/din-condensed-regular-webfont.eot?#iefix") format('eot'), url("../../../core/base/rsrc/din-condensed-regular-webfont.woff") format("woff"), url("../../../core/base/rsrc/din-condensed-regular-webfont.ttf") format("truetype"), url("../../../core/base/rsrc/din-condensed-regular-webfont.svg#din-condensed-regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "din-condensed";
+  src: url("../../../core/base/rsrc/din-condensed-light-webfont.eot");
+  src: url("../../../core/base/rsrc/din-condensed-light-webfont.eot?#iefix") format('eot'), url("../../../core/base/rsrc/din-condensed-light-webfont.woff") format("woff"), url("../../../core/base/rsrc/din-condensed-light-webfont.ttf") format("truetype"), url("../../../core/base/rsrc/din-condensed-light-webfont.svg#din-condensed-light") format("svg");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "din-condensed";
+  src: url("../../../core/base/rsrc/din-condensed-medium-webfont.eot");
+  src: url("../../../core/base/rsrc/din-condensed-medium-webfont.eot?#iefix") format('eot'), url("../../../core/base/rsrc/din-condensed-medium-webfont.woff") format("woff"), url("../../../core/base/rsrc/din-condensed-medium-webfont.ttf") format("truetype"), url("../../../core/base/rsrc/din-condensed-medium-webfont.svg#din-condensed-medium") format("svg");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "akzidenz-condensed";
+  src: url("../../../core/base/rsrc/akzidgrobecn-webfont.eot");
+  src: url("../../../core/base/rsrc/akzidgrobecn-webfont.eot?#iefix") format('eot'), url("../../../core/base/rsrc/akzidgrobecn-webfont.woff") format("woff"), url("../../../core/base/rsrc/akzidgrobecn-webfont.ttf") format("truetype"), url("../../../core/base/rsrc/akzidgrobecn-webfont.svg#akzidenz-condensed-regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "akzidenz-condensed";
+  src: url("../../../core/base/rsrc/akzidgrobeligcn-webfont.eot");
+  src: url("../../../core/base/rsrc/akzidgrobeligcn-webfont.eot?#iefix") format('eot'), url("../../../core/base/rsrc/akzidgrobeligcn-webfont.woff") format("woff"), url("../../../core/base/rsrc/akzidgrobeligcn-webfont.ttf") format("truetype"), url("../../../core/base/rsrc/akzidgrobeligcn-webfont.svg#akzidenz-condensed-light") format("svg");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "akzidenz-condensed";
+  src: url("../../../core/base/rsrc/akzidgrobebolcn-webfont.eot");
+  src: url("../../../core/base/rsrc/akzidgrobebolcn-webfont.eot?#iefix") format('eot'), url("../../../core/base/rsrc/akzidgrobebolcn-webfont.woff") format("woff"), url("../../../core/base/rsrc/akzidgrobebolcn-webfont.ttf") format("truetype"), url("../../../core/base/rsrc/akzidgrobebolcn-webfont.svg#akzidenz-condensed-bold") format("svg");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "akzidenz-condensed";
+  src: url("../../../core/base/rsrc/akzidgrobexbdcn-webfont.eot");
+  src: url("../../../core/base/rsrc/akzidgrobexbdcn-webfont.eot?#iefix") format('eot'), url("../../../core/base/rsrc/akzidgrobexbdcn-webfont.woff") format("woff"), url("../../../core/base/rsrc/akzidgrobexbdcn-webfont.ttf") format("truetype"), url("../../../core/base/rsrc/akzidgrobexbdcn-webfont.svg#akzidenz-condensed-exbold") format("svg");
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "akzidenz-super";
+  src: url("../../../core/base/rsrc/akzidgrobesup-webfont.eot");
+  src: url("../../../core/base/rsrc/akzidgrobesup-webfont.eot?#iefix") format('eot'), url("../../../core/base/rsrc/akzidgrobesup-webfont.woff") format("woff"), url("../../../core/base/rsrc/akzidgrobesup-webfont.ttf") format("truetype"), url("../../../core/base/rsrc/akzidgrobesup-webfont.svg#akzidenz-super") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "neuton";
+  src: url("../../../core/base/rsrc/neuton-italic-webfont.eot");
+  src: url("../../../core/base/rsrc/neuton-italic-webfont.eot?#iefix") format('eot'), url("../../../core/base/rsrc/neuton-italic-webfont.woff") format("woff"), url("../../../core/base/rsrc/neuton-italic-webfont.ttf") format("truetype"), url("../../../core/base/rsrc/neuton-italic-webfont.svg#neuton-italic") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "MEfonticons";
+  src: url("../../../core/base/rsrc/me-webfont.eot");
+  src: url("../../../core/base/rsrc/me-webfont.eot?#iefix") format('eot'), url("../../../core/base/rsrc/me-webfont.woff") format("woff"), url("../../../core/base/rsrc/me-webfont.ttf") format("truetype"), url("../../../core/base/rsrc/me-webfont.svg#MEfonticons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "din";
+  src: url('../rsrc/din_regular-webfont.eot?1446829468');
+  src: url('../rsrc/din_regular-webfont.eot?&1446829468#iefix') format('eot'), url('../rsrc/din_regular-webfont.woff?1446829721') format("woff"), url('../rsrc/din_regular-webfont.ttf?1446829473') format("truetype"), url('../rsrc/din_regular-webfont.svg?1446829495#din') format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "din";
+  src: url('../rsrc/din_light-webfont.eot?1446829773');
+  src: url('../rsrc/din_light-webfont.eot?&1446829773#iefix') format('eot'), url('../rsrc/din_light-webfont.woff?1446829436') format("woff"), url('../rsrc/din_light-webfont.ttf?1446829453') format("truetype"), url('../rsrc/din_light-webfont.svg?1446829665#din') format("svg");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "din";
+  src: url('../rsrc/din_bold-webfont.eot?1446829750');
+  src: url('../rsrc/din_bold-webfont.eot?&1446829750#iefix') format('eot'), url('../rsrc/din_bold-webfont.woff?1446829527') format("woff"), url('../rsrc/din_bold-webfont.ttf?1446829792') format("truetype"), url('../rsrc/din_bold-webfont.svg?1446829521#din') format("svg");
+  font-weight: bold;
+  font-style: normal;
+}

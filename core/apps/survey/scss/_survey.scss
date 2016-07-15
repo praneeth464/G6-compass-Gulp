@@ -1,0 +1,114 @@
+// App-specific variables
+// =========================
+$survey_sliderTrackBgColor: transparent !default;
+$survey_sliderSelectionBgColor: transparent !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.survey {
+} /* /.survey */
+
+/* ----- MODULE STYLES ----- */
+.module.survey {
+} /* /.module.survey */
+
+/* ----- PAGE STYLES ----- */
+.page.survey {
+    .spincover {
+        position: absolute;
+        @include gridCoreInnerFullSplit($leftRightPad: $g5PageContentPaddingHoriz, $leftRightBorder: $g5PageContentLeftRightBorderWidth);
+
+        @media (min-width: 1200px) {
+            @include gridCoreInnerFullSplit($leftRightPad: $g5PageContentPaddingHoriz1200, $leftRightBorder: $g5PageContentLeftRightBorderWidth1200);
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+            @include gridCoreInnerFullSplit($leftRightPad: $g5PageContentPaddingHoriz768, $leftRightBorder: $g5PageContentLeftRightBorderWidth768);
+        }
+        @media (max-width: 767px) {
+            @include gridCoreInnerFullSplit($leftRightPad: $g5PageContentPaddingHorizMobile);
+        }
+
+        .spin {
+            top: $spinner_widthHeight;
+        }
+    }
+    .spin {
+        display: block;
+        margin: 0 auto;
+        width: $spinner_widthHeight;
+        height: $spinner_widthHeight;
+    }
+
+    .questionHead {
+        font-size: $baseFontSize * 1.57;
+        margin-top: $baseLineHeight;
+        margin-bottom: 0;
+    }
+
+    .control-group.error {
+        .questionText {
+            margin-bottom: $baseLineHeight * 1.2;
+        }
+    }
+
+    textarea {
+        min-width: 50%;
+    }
+
+    // this element is used by instant polls
+    .ends {
+        display: none;
+    }
+
+    .type-essay,
+    .type-range {
+        label {
+            cursor: text;
+        }
+    }
+
+    // sliders
+    .slider-track {
+        @if $survey_sliderTrackBgColor {
+            background: $survey_sliderTrackBgColor;
+        }
+    }
+    .slider-selection {
+        @if $survey_sliderSelectionBgColor {
+            background: $survey_sliderSelectionBgColor;
+        }
+    }
+    .type-range {
+        .labels-on {
+            padding-bottom: $baseLineHeight + 4px; // add room for the labels
+        }
+        .labels {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            padding: 4px 0 0 0;
+            width: 100%;
+            height: $baseLineHeight;
+            // border-left: 1px solid gray;
+            // border-right: 1px solid gray;
+        }
+        .min {
+            display: inline;
+            float: left;
+            // padding-top: 4px;
+            // padding-left: 4px;
+        }
+        .max {
+            display: inline;
+            float: right;
+            // padding-top: 4px;
+            // padding-right: 4px;
+        }
+    }
+}

@@ -1,0 +1,310 @@
+<?php sleep(2); ?>
+<?php
+	$thing = isset($_POST['recognitionSetNameId']) ? $_POST['recognitionSetNameId'] : '';
+	switch( $thing ) {
+		case 'team':
+		case 'followed':
+		case 'mine':
+			include('publicRecognition_'.$_POST['recognitionSetNameId'].'.json');
+			break;
+		default:
+
+	$page = isset($_POST['pageNumber']) ? $_POST['pageNumber'] : 1;
+?>
+{
+	"messages":[],
+
+	"recognitionSets":[
+		{
+			"nameId":"global",
+			"name":"Global",
+			"desc":"Company wide recognitions",
+			"totalCount":45,
+			"isDefault":true,
+			"recognitions":[
+				{
+					"id":<?php print $page; ?>2340,
+					"publicRecognitionPageDetailUrl":"layout.html?tpl=publicRecognitionPageDetail&tplPath=apps/publicRecognition/tpl/&promotionId=12340",
+					"recipients":[
+						{
+							"id":45,
+							"firstName":"Ron",
+							"lastName":"Smith",
+							"avatarUrl":"../../skins/default/img/avatar-blank-72.png"
+						}
+					],
+					"recognizer":{
+						"id":102,
+						"firstName":"Jane",
+						"lastName":"Anderson",
+						"avatarUrl":"../../skins/default/img/avatar-blank-72.png"
+					},
+
+					"comment":"<p>Thanks for the extra work. Culpa brooklyn cardigan, delectus quis eu nulla. Viral bespoke semiotics single-origin coffee nesciunt echo park. This is precisely 179 characters long. Portland Sed banh mi chillwave iphone. Incididunt viral commodo aute chambray. Scenester laboris farm-to-table, messenger bag cardigan voluptate forage blog culpa mumblecore pinterest. Est Austin vice excepteur aesthetic brooklyn. Freegan VHS do ea, 8-bit consectetur mcsweeney's delectus letterpress portland. Ullamco VHS culpa, godard 8-bit american apparel art party authentic gentrify beard shoreditch. Pariatur sriracha wes anderson, proident nostrud organic tempor brooklyn aliqua odd future aute. Forage anim aute umami, hella nostrud authentic jean shorts esse single-origin coffee assumenda in viral food truck cardigan. Shoreditch quinoa labore, placeat nihil incididunt pour-over. Whatever adipisicing biodiesel, odio hella master cleanse before they sold out. This comment is precisely 1,000 characters long.Thanks for the extra work. Culpa brooklyn cardigan, delectus quis eu nulla. Viral bespoke semiotics single-origin coffee nesciunt echo park. This is precisely 179 characters long. Portland Sed banh mi chillwave iphone. Incididunt viral commodo aute chambray. Scenester laboris farm-to-table, messenger bag cardigan voluptate forage blog culpa mumblecore pinterest. Est Austin vice excepteur aesthetic brooklyn. Freegan VHS do ea, 8-bit consectetur mcsweeney's delectus letterpress portland. Ullamco VHS culpa, godard 8-bit american apparel art party authentic gentrify beard shoreditch. Pariatur sriracha wes anderson, proident nostrud organic tempor brooklyn aliqua odd future aute. Forage anim aute umami, hella nostrud authentic jean shorts esse single-origin coffee assumenda in viral food truck cardigan. Shoreditch quinoa labore, placeat nihil incididunt pour-over. Whatever adipisicing biodiesel, odio hella master cleanse before they sold out. This comment is precisely 2,000 characters long.</p></p>",
+					"purlUrl":"layout.html?tplPath=apps/purlContribute/tpl/&tpl=purlMainPage.html",
+					"promotionName":"[Promotion Name]",
+					"promotionType":"purl",
+					"numLikers":6,
+					"isLiked":true,
+					"isNew":true,
+					"isPublicClaim":true,
+					"shareLinks":[
+						{
+							"url":"http://www.salesforce.com/chatter/chatter.foo?u=http://some.server.com/some/page.html",
+							"name":"Chatter",
+							"nameId":"chatter"
+						},
+						{
+							"url":"http://www.facebook.com/share.php?u=http://some.server.com/some/page.html",
+							"name":"Facebook",
+							"nameId":"facebook"
+						},
+						{
+							"url":"http://www.linkedin.com/shareArticle?mini=true&url=articleUrl&title=articleTitle&summary=articleSummary&source=articleSource",
+							"name":"Linkedin",
+							"nameId":"linkedin"
+						},
+						{
+							"url":"http://twitter.com/home/?status=Checkin'%20out%20http://some.server.com/some/page.html%20by%20@someuser",
+							"name":"Twitter",
+							"nameId":"twitter"
+						}
+					],
+					"time": "2 days ago",
+					"allowAddPoints":true,
+					"awardAmountMin":1,
+					"awardAmountMax":50,
+                    "allowTranslate": true,
+					"countryRatio":1.0,
+					"budgets":[
+						{
+							"id":123,
+							"name":"Budget A (softcap)",
+							"remaining":30,
+							"isSoftCap":true
+						},
+						{
+							"id":456,
+							"name":"Budget B (hardcap)",
+							"remaining":40,
+							"isSoftCap":false
+						}
+					],
+					"comments":[
+						{
+							"id":23,
+							"commenter":{
+								"id":12,
+								"firstName":"Willford",
+								"lastName":"Brimley",
+								"avatarUrl":"../../skins/default/img/avatar-blank-72.png"
+							},
+							"comment":"123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 "
+						},
+						{
+							"id":24,
+							"commenter":{
+								"id":12,
+								"firstName":"Willford",
+								"lastName":"Brimley",
+								"avatarUrl":"../../skins/default/img/avatar-blank-72.png"
+							},
+							"comment":"123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 "
+						},
+						{
+							"id":25,
+							"commenter":{
+								"id":12,
+								"firstName":"Willford",
+								"lastName":"Brimley",
+								"avatarUrl":"../../skins/default/img/avatar-blank-72.png"
+							},
+							"comment":"123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 "
+						},
+						{
+							"id":26,
+							"commenter":{
+								"id":12,
+								"firstName":"Willford",
+								"lastName":"Brimley",
+								"avatarUrl":"../../skins/default/img/avatar-blank-72.png"
+							},
+							"comment":"123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 "
+						},
+						{
+							"id":27,
+							"commenter":{
+								"id":12,
+								"firstName":"Willford",
+								"lastName":"Brimley",
+								"avatarUrl":"../../skins/default/img/avatar-blank-72.png"
+							},
+							"comment":"123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 "
+						},
+						{
+							"id":28,
+							"commenter":{
+								"id":12,
+								"firstName":"Willford",
+								"lastName":"Brimley",
+								"avatarUrl":"../../skins/default/img/avatar-blank-72.png"
+							},
+							"comment":"123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 "
+						},
+						{
+							"id":29,
+                            "isMine": true,
+                            "allowTranslate": false,
+							"commenter":{
+								"id":12,
+								"firstName":"Willford",
+								"lastName":"Brimley",
+								"avatarUrl":"../../skins/default/img/avatar-blank-72.png"
+							},
+							"comment":"123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 "
+						},
+						{
+							"id":833,
+                            "allowTranslate": true,
+							"commenter":{
+								"id":12,
+
+								"firstName":"Willford",
+								"lastName":"Brimley",
+								"avatarUrl":"../../skins/default/img/avatar-blank-72.png"
+							},
+							"comment":"Impressive work Ron. Keep it up! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  IHaveAReallyLongWordHereAndINeedToSeeHowItWillForceWordBreaks IHaveAReallyLongWordHereAndINeedToSeeHowItWillForceWordBreaks IHaveAReallyLongWordHereAndINeedToSeeHowItWillForceWordBreaks IHaveAReallyLongWordHereAndINeedToSeeHowItWillForceWordBreaks IHaveAReallyLongWordHereAndINeedToSeeHowItWillForceWordBreaks IHaveAReallyLongWordHereAndINeedToSeeHowItWillForceWordBreaks IHaveAReallyLongWordHereAndINeedToSeeHowItWillForceWordBreaks IHaveAReallyLongWordHereAndINeedToSeeHowItWillForceWordBreaks IHaveAReallyLongWordHereAndINeedToSeeHowItWillForceWordBreaks IHaveAReallyLongWordHereAndINeedToSeeHowItWillForceWordBreaks"
+						}
+					]
+				},
+
+				{
+					"id":<?php print $page; ?>2304,
+					"publicRecognitionPageDetailUrl":"layout.html?tpl=publicRecognitionPageDetail&tplPath=apps/publicRecognition/tpl/&promotionId=22304",
+					"recipients":[
+						{
+							"id":45,
+							"firstName":"Lei",
+							"lastName":"Martin",
+							"avatarUrl":"../../skins/default/img/avatar-blank-72.png"
+						}
+					],
+					"avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+					"recognizer":{
+						"id":102,
+						"firstName":"Henry",
+						"lastName":"DuBois",
+						"avatarUrl":"../../skins/default/img/avatar-blank-72.png"
+					},
+					"comment":"Thanks for the extra work. Ut fanny pack tumblr keytar, single-origin coffee VHS mustache. Mumblecore delectus single-origin coffee organic. This is precisely 179 characters long. Vinyl craft beer terry richardson 8-bit labore. Terry richardson minim et, locavore assumenda aliqua tattooed american apparel shoreditch bicycle rights delectus fap ennui consectetur vero. Cosby sweater accusamus aute cillum pickled. Wayfarers brooklyn stumptown bicycle rights non fugiat. Banksy tattooed ennui tempor, carles 8-bit odd future in ethical nihil labore sartorial butcher beard. Sustainable DIY chillwave vero irony. Nisi hella chambray, dreamcatcher typewriter odd future next level umami commodo cardigan blog. Messenger bag brooklyn voluptate, et incididunt small batch marfa in ea photo booth VHS elit. Tempor typewriter culpa master cleanse, dreamcatcher freegan 3 wolf moon odd future hella. Quinoa letterpress freegan retro portland chillwave magna. This comment is precisely 1,000 characters long.",
+					"promotionName":"[Nomination Promo Name]",
+					"promotionType":"nomination",
+					"numLikers":12,
+					"isNew":true,
+					"isMine":true,
+					"isPublicClaim":true,
+					"time":"15 minutes ago",
+					"allowAddPoints":true,
+					"awardAmountFixed":50,
+                    "allowTranslate": false,
+					"countryRatio":0.5,
+					"budgets":[],
+					"comments":[
+						{
+							"id":421,
+                            "isMine": true,
+							"commenter":{
+								"id":102,
+								"firstName":"",
+								"lastName":"Kissinger",
+								"avatarUrl":"../../skins/default/img/avatar-blank-72.png"
+							},
+							"comment":"I worked several late nights and weekends with Lei. He truly goes above and beyond. Sed mi chillwave iphone. Incididunt viral commodo 8-bit art party. Scenester laboris farm-to-table vero, messenger bag cardigan voluptate forage blog culpa mumblecore pinterest. This is precisely 300 characters long."
+						}
+					]
+				},
+
+				{
+					"id":<?php print $page; ?>23044,
+					"publicRecognitionPageDetailUrl":"layout.html?tpl=publicRecognitionPageDetail&tplPath=apps/publicRecognition/tpl/&promotionId=22304",
+					"recipients":[
+						{
+							"id":45,
+							"firstName":"Lex",
+							"lastName":"Luther",
+							"avatarUrl":"../../skins/default/img/avatar-blank-72.png"
+						},
+
+						{
+							"id":4555555,
+							"firstName":"Lexington",
+							"lastName":"Luscher",
+							"avatarUrl":"../../skins/default/img/avatar-blank-72.png"
+						}
+					],
+					"avatarUrl":"../../skins/default/img/avatar-multi-blank-72.png",
+					"recognizer":{
+						"id":102,
+						"firstName":"Henry",
+						"lastName":"DuBois",
+						"avatarUrl":"../../skins/default/img/avatar-blank-72.png"
+					},
+					"comment":"Thanks for the extra work. Ut fanny pack tumblr keytar, single-origin coffee VHS mustache. Mumblecore delectus single-origin coffee organic. This is precisely 179 characters long. Vinyl craft beer terry richardson 8-bit labore. Terry richardson minim et, locavore assumenda aliqua tattooed american apparel shoreditch bicycle rights delectus fap ennui consectetur vero. Cosby sweater accusamus aute cillum pickled. Wayfarers brooklyn stumptown bicycle rights non fugiat. Banksy tattooed ennui tempor, carles 8-bit odd future in ethical nihil labore sartorial butcher beard. Sustainable DIY chillwave vero irony. Nisi hella chambray, dreamcatcher typewriter odd future next level umami commodo cardigan blog. Messenger bag brooklyn voluptate, et incididunt small batch marfa in ea photo booth VHS elit. Tempor typewriter culpa master cleanse, dreamcatcher freegan 3 wolf moon odd future hella. Quinoa letterpress freegan retro portland chillwave magna. This comment is precisely 1,000 characters long.",
+					"promotionType":"recognition",
+					"numLikers":12,
+					"isNew":true,
+					"isPublicClaim":true,
+					"time":"15 minutes ago",
+					"allowAddPoints":true,
+                    "allowTranslate": true,
+					"awardAmountFixed":50,
+					"countryRatio":0.5,
+					"budgets":[],
+					"comments":[
+						{
+							"id":2344,
+							"commenter":{
+								"id":102,
+								"firstName":"",
+								"lastName":"Kissinger",
+								"avatarUrl":"../../skins/default/img/avatar-blank-72.png"
+							},
+							"comment":"I worked several late nights and weekends with Lei. He truly goes above and beyond. Sed mi chillwave iphone. Incididunt viral commodo 8-bit art party. Scenester laboris farm-to-table vero, messenger bag cardigan voluptate forage blog culpa mumblecore pinterest. This is precisely 300 characters long."
+						}
+					]
+				}
+
+
+			]
+		},
+		{
+			"nameId":"team",
+			"name":"Team",
+			"desc":"Recognitions within my team/org unit",
+			"totalCount":0,
+			"recognitions":[]
+		},
+		{
+			"nameId":"followed",
+			"name":"Followed",
+			"desc":"Recognitions of those I follow",
+			"totalCount":0,
+			"hasFollowees":false,
+			"isDefault": false,
+			"recognitions":[]
+		},
+		{
+			"nameId":"mine",
+			"name":"Mine",
+			"desc":"Recognitions of those I follow",
+			"totalCount":0,
+			"hasFollowees":false,
+			"isDefault": false,
+			"recognitions":[]
+		}
+	]
+
+}
+<?php
+	} // switch
+?>

@@ -1,0 +1,203 @@
+<?php sleep(2); ?>
+
+<div id="serverReturnedErrored" class="hide  errors span12">
+    <div data-error-field="selectedTitle" class="alert alert-block alert-error">
+        That is not your title name!
+    </div>
+    <div data-error-field="selectedTitle" class="alert alert-block alert-error">
+        Server side error example.
+    </div>
+</div>
+
+<!-- ======== FORUM PAGE DISCUSSIONS ======== -->
+<div id="forumPageDiscussionView" class="forumPage-liner page-content"><!--
+    --><div class="row">
+        <div class="span12 discussion forumDiscussionItem">
+        </div><!-- /.span12 -->
+    </div>
+
+    <div class="row">
+        <div class="span12">
+            <div class="forumCommentNavigation commentStats"></div>
+            <div class="pagination pagination-right paginationControls"></div>
+
+            <div class="discussionCommentsWrapper forumCommentItem">
+                <ul class="unstyled discussionComments mediaCommentWrap">
+                    <!-- Start Child -->
+                </ul>
+            </div> <!-- /end .comment_list -->
+
+            <div class="forumCommentNavigation commentStats"></div>
+            <div class="pagination pagination-right paginationControls"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span12">
+            <form class="comment-form" id="commentForm" action="submitReply.do">
+                <label for="notifyMessage"><h3>Reply</h3></label>
+                <div class="discussionCommentForm commonDiscussionWrapper">
+                    <div class="innerCommentWrapper">
+                        <!-- currently logged in user information -->
+                        <img alt="FirstName LastName" class="avatar" src="../../skins/default/img/avatar-blank-288.png">
+
+                        <div class="indent">
+                            <div class="userInfo">
+                                <span class="author">
+                                    FirstName LastName
+                                </span>
+                            </div>
+
+                            <div class="text">
+                                <div class="control-group validateme" data-validate-flags="maxlength" data-validate-fail-msgs="{&quot;nonempty&quot; : &quot;Please enter a valid reply.&quot;, &quot;maxlength&quot; : &quot;Please enter a reply of a valid length.&quot;}">
+                                    <textarea rows="5" id="notifyMessage" data-max-chars="2000" name="notifyMessage" class="pull-left richtext input-xxlarge" required></textarea>
+                                </div>
+                                <button class="checkReply btn btn-primary alignright">Submit</button>
+                            </div>
+                        </div><!-- /.indent -->
+                    </div><!-- /.innerCommentWrapper -->
+                </div>
+            </form>
+
+            <div class="deleteCommentSubmit" style="display:none">
+                <p>
+                    <i class="icon-question-sign"></i>
+                    <b>Are you sure?</b>
+                </p>
+                <p>
+                    This comment will be deleted.
+                </p>
+                <p class="tc">
+                    <a class="btn btn-small confirmBtn">Yes</a>
+                    <a class="btn btn-small cancelBtn closeTip">No</a>
+                </p>
+            </div><!-- /.deleteCommentSubmit -->
+
+            <div class="deleteDiscussionSubmit" style="display:none">
+                <p>
+                    <i class="icon-question-sign"></i>
+                    <b>Are you sure?</b>
+                </p>
+                <p>
+                    This Discussion, and all its comments will be deleted.
+                </p>
+                <p class="tc">
+                    <a class="btn btn-small confirmBtn">Yes</a>
+                    <a class="btn btn-small cancelBtn closeTip">No</a>
+                </p>
+            </div><!-- /.deleteDiscussionSubmit -->
+
+        </div><!-- /.span12 -->
+    </div><!-- /.row -->
+
+    <!--subTpl.paginationTpl=
+            {{#if pagination}}
+            {{#with pagination}}
+                 <ul>
+                    <li class="first{{#if first.state}} {{first.state}}{{/if}}" data-page="{{first.page}}">
+                        <a href="#"><i class="icon-double-angle-left"></i>&nbsp;</a>
+                    </li>
+                    <li class="prev{{#if prev.state}} {{prev.state}}{{/if}}" data-page="{{prev.page}}">
+                        <a href="#"><i class="icon-angle-left"></i> Previous</a>
+                    </li>
+                    {{#each pages}}
+                    <li {{#if state}}class="{{state}}"{{/if}} data-page="{{page}}">
+                        <a href="#">{{#if isgap}}&#8230;{{else}}{{page}}{{/if}}</a>
+                    </li>
+                    {{/each}}
+                    <li class="next{{#if next.state}} {{next.state}}{{/if}}" data-page="{{next.page}}">
+                        <a href="#">Next <i class="icon-angle-right"></i></a>
+                    </li>
+                    <li class="last{{#if last.state}} {{last.state}}{{/if}}" data-page="{{last.page}}">
+                        <a href="#">&nbsp;<i class="icon-double-angle-right"></i></a>
+                    </li>
+                </ul>
+            {{/with}}
+            {{/if}}
+        subTpl-->
+
+    <script id="forumDiscussionItemTpl" type="text/x-handlebars-template">
+        <ul class="breadcrumbs">
+            <li class="forum">
+                <a href="layout.html?tplPath=apps/forum/tpl/&amp;tpl=forumPageTopics.html">Forum</a>
+            </li>
+            <li class="topic">
+                <a href="layout.html?tplPath=apps/forum/tpl/&amp;tpl=forumPageDiscussions.html&amp;topicId={{id}}&amp;topicName={{topicName}}">{{topicName}}</a>
+            </li>
+            <li class="discussion active">
+                {{name}}
+            </li>
+        </ul>
+
+        <h2>{{name}}</h2>
+        <div class="discussionDetails commonDiscussionWrapper mediaComment" data-id="[{{id}}]">
+            <div class="innerCommentWrapper">
+                {{#if author.avatarUrl}}<img alt="{{author.firstName}} {{author.lastName}}" class="avatar" src="{{author.avatarUrl}}">{{/if}}
+
+                <div class="indent">
+                    <div class="userInfo" data-id="{{author.id}}">
+                        <span class="author">
+                            <a class="profile-popover" href="#" data-participant-ids="[{{author.id}}]">{{author.firstName}} {{author.lastName}}</a>
+                        </span>
+                        <span class="timeStamp">
+                            {{date}} {{time}}
+                        </span>
+                    </div>
+                    <div class="text">
+                        {{{text}}}
+                    </div>
+                    <div class="likes">
+                        <p>{{#unless commenter.isCurrentUser}}{{#eq status "noLikes" }} <a href="#" data-id="{{id}}" class="{{buttonClass}}">Like</a> {{/eq}}
+                            {{#eq status "onlyYouLike" }}You like this{{/eq}}
+                            {{#eq status "youAndOtherLike" }}You and <a href="#" data-participant-ids="[{{likedIds}}]" class="liked profile-popover"> {{numberOfOtherLikes}} other</a> like this{{/eq}}
+
+                            {{#eq status "youAndOthersLike" }}You and <a href="#" data-participant-ids="[{{likedIds}}]" class="liked profile-popover"> {{numberOfOtherLikes}} others</a> like this{{/eq}}
+                            {{/unless}}
+
+                            {{#eq status "oneLike" }}{{#unless commenter.isCurrentUser}}<a href="#" data-id="{{id}}" class="{{buttonClass}}" data-participant-ids="[{{likedIds}}]">Like</a> &#8226;{{/unless}} <a href="#" class="liked profile-popover" data-participant-ids="[{{likedIds}}]">  {{numberOfLikes}} person</a> likes this{{/eq}}
+
+                            {{#eq status "moreLike" }}{{#unless commenter.isCurrentUser}}<a href="#" data-id="{{id}}" class="{{buttonClass}}">Like</a> &#8226;{{/unless}} <a href="#" class="liked profile-popover" data-participant-ids="[{{likedIds}}]"> {{numberOfLikes}} people</a> like this{{/eq}}
+                                <!-- Conditional JSP for admin replace path with actual path -->
+                            - <a href="#" class="removeCommentButton liked" data-path="ajax/forumDelete.Json">Delete</a>
+                                <!-- /Conditional JSP -->
+                        </p>
+                    </div>
+                </div><!-- /.indent -->
+            </div><!-- /.innerCommentWrapper -->
+        </div>
+    </script>
+
+    <script id="forumCommentNavigationTpl" type="text/x-handlebars-template">
+        <p>
+            {{firstComment}}-{{lastComment}} of {{totalNumberOfReplies}} comments
+        </p>
+    </script>
+</div><!-- /end #forumPageDiscussionsView -->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function() {
+        G5.props.URL_JSON_DISCUSSIONS = G5.props.URL_ROOT+'ajax/forumDiscussion.json';
+        G5.props.URL_JSON_DISCUSSIONS_MORE = G5.props.URL_ROOT+'ajax/forumDiscussionMore.json';
+        G5.props.URL_JSON_FORUM_DISCUSSION_SAVE_LIKE = G5.props.URL_ROOT+'ajax/forumDiscussionSaveLike.json';
+        G5.props.URL_JSON_FORUM_COMMENT_SAVE_LIKE = G5.props.URL_ROOT+'ajax/forumCommentSaveLike.json';
+        //console.log('check var',G5.props.URL_JSON_DISCUSSIONS_MORE);
+        window.forumPageView = new ForumPageView({
+            el: $('#forumPageDiscussionView'),
+            pageNav  : {
+                back : {
+                    text : 'Back',
+                    url : 'javascript:history.go(-1);'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : G5.props.URL_JSON_DISCUSSIONS.topicName,
+            discussionJson : '',
+            discussionJsonUrl : G5.props.URL_JSON_DISCUSSIONS
+        });
+});
+
+</script>

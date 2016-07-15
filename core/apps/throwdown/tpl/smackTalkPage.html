@@ -1,0 +1,63 @@
+<!-- ======== PUBLIC RECOGNITION PAGE ======== -->
+
+<div id="smackTalkPageView" class="page-content">
+
+    <div class="page-topper">
+        <!-- Public Recognition Tabs  -->
+        <div class="row">
+            <div class="span6">
+                <ul class="nav nav-tabs page-top-tabs smackTalkTabs">
+
+                    <!-- dynamic - pub rec set tabs here -->
+
+                </ul>
+            </div>
+            <div class="span6">
+                <a href="#" class="btn btn-primary tdBlueBtn">Smack Talk Matches</a>
+            </div>
+        </div>
+    </div><!-- /.page-topper -->
+
+
+    <!-- Recognitions -->
+    <div class="page-liner smackTalkItemsCont" data-msg-empty="No smack talk items found">
+
+        <div class="smackTalkItems">
+            <!-- dynamic - smackTalkItems -->
+        </div>
+
+        <!-- shown when there are more smack talk itesm -->
+        <div class="app-row">
+            <p>
+                <a href="#" class="viewAllSmackTalks"  style="display: none">
+                    View More
+                </a>
+            </p>
+        </div>
+
+    </div>
+
+</div><!-- /#smackTalkPageView -->
+
+
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function(){
+        //attach the view to an existing DOM element
+        var prp = new SmackTalkPageView({
+            el:$('#smackTalkPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Smack Talk'
+        });
+    });
+</script>

@@ -1,0 +1,96 @@
+{
+	"messages":[],
+
+    "leaderboardSets":[
+        {
+            "nameId":"active",
+            "name":"Active Leaderboards",
+            "emptyMessage":"Currently there are no active leaderboards available.",
+            "leaderboards":[]
+        },
+
+        {
+            "nameId":"pending",
+            "name":"Pending Leaderboards",
+            "emptyMessage":"Currently there are no pending leaderboards available.",
+            "leaderboards":[
+
+                {
+                    "id":1236,
+                    "name":"Promotion Name 3",
+                    "startDate":"2012-06-30",
+                    "endDate":"2012-09-30",
+                    "displayEndDate":"2012-10-30",
+                    "rules":"should this be stored as text or as a link to externally stored rules?",
+                    "activityTitle":"Calls Handled",
+                    "activitySortOrder":"DSC",
+                    "activityDate":"2012-07-11",
+                    "editableByUser":true,
+                    "urls":{
+                        "editPromoInfo":"layout.html?tpl=LeaderboardPageEditPromoInfo&amp;tplPath=apps/leaderboard/tpl/&amp;boardId=1236",
+                        "editActivity":"layout.html?tpl=leaderboardPageEditActivity&amp;tplPath=apps/leaderboard/tpl/&amp;boardId=1236",
+                        "copyToNew":"layout.html?tpl=LeaderboardPageCopy&amp;tplPath=apps/leaderboard/tpl/&amp;boardId=1236"
+                    },
+                    "leaders":[
+                        {
+                            "id":1000,
+                            "firstName":"Firstname 1",
+                            "lastName":"Lastname",
+                            "avatarUrl":"http://placehold.it/20x20",
+                            "score":2000
+                        },
+
+                        {
+                            "id":1001,
+                            "firstName":"Firstname 2",
+                            "lastName":"Lastname",
+                            "avatarUrl":"http://placehold.it/20x20",
+                            "score":1900
+                        },
+
+                        {
+                            "id":1002,
+                            "firstName":"Firstname 3",
+                            "lastName":"Lastname",
+                            "avatarUrl":"http://placehold.it/20x20",
+                            "score":1800
+                        },
+
+                        {
+                            "id":1003,
+                            "firstName":"Firstname 4",
+                            "lastName":"Lastname",
+                            "avatarUrl":"http://placehold.it/20x20",
+                            "score":1800
+                        },
+
+                        {
+                            "id":1004,
+                            "firstName":"Firstname 5",
+                            "lastName":"Lastname",
+                            "avatarUrl":"http://placehold.it/20x20",
+                            "score":1700
+                        },
+
+                        {
+                            "id":1006,
+                            "firstName":"Firstname 6",
+                            "lastName":"Lastname",
+                            "avatarUrl":"http://placehold.it/20x20",
+                            "score":1000
+                        }
+                    ]
+                }
+
+            ]
+        },
+
+        {
+            "nameId":"archived",
+            "name":"Archived Leaderboards",
+            "emptyMessage":"Currently there are no archived leaderboards available.",
+            "leaderboards":[]
+        }
+    ]
+
+}

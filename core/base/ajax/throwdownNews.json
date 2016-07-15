@@ -1,0 +1,81 @@
+{
+	"messages":[],
+	"communications":[
+		{
+			"id" : "story1234",
+			"sortDate": "2005-02-15",
+			"storyName": "A title, phrased as a question?",
+			"storySlug": "a-title-phrased-as-a-question",
+			"storyDate": "02/15/2005",
+			"storyContent": "<p>This content will either have to be truncated as additional JSON fields for short summary excerpts on the tiles and story list page, or else the truncation will have to happen client-side with javascript.</p>",
+			"storyContentShort": "<p>This content will either have to be truncated as additional JSON fields for short summary excerpts on the tiles and story list page, or else the truncation will have to happen client-side with javascript.</p>",
+			"storyImageUrl": "",
+			"storyImageUrl2x2": "img/_samples/communications1_2x2.jpg",
+			"storyImageUrl4x2": "img/_samples/communications1_4x2.jpg",
+			"storyImageUrl4x4": "img/_samples/communications1_4x4.jpg",
+			"storyImageUrlListPage": "img/_samples/communications1_list.jpg",
+			"storyFormat": "left dark-color-scheme"
+		},
+		{
+			"id" : "story1230",
+			"sortDate": "2012-07-04",
+			"storyName": "Summer Tips for keeping Cool and really really awesome! That's what cool means, right? Super duper awesome?",
+			"storySlug": "summer-tips-for-keeping-cool",
+			"storyDate": "07/04/2012 (this is a localized time/date format.)",
+			"storyContent": "<p>Escaped HTML full content for this article to be displayed on the full detail page. In this example, it would be tips for staying cool during the warm summer season.</p>",
+			"storyContentShort": "<p>Escaped HTML short content for this article to be displayed in the module and on the list of stories page. <a href='layout.html?tpl=communicationsPageDetail&tplPath=apps/communications/tpl/'>Put a link to the individual story here, for testing purposes.</a></p>",
+			"storyImageUrl": "",
+			"storyImageUrl2x2": "img/_samples/communications2_2x2.jpg",
+			"storyImageUrl4x2": "img/_samples/communications2_4x2.jpg",
+			"storyImageUrl4x4": "img/_samples/communications2_4x4.jpg",
+			"storyImageUrlListPage": "img/_samples/communications2_list.jpg",
+			"storyFormat": "top lightbox light-color-scheme"
+
+		},
+		{
+			"id" : "story1231",
+			"sortDate": "2012-07-06",
+			"storyName": "Winter Tips for keeping warm.",
+			"storySlug": "winter-tips-for-keeping-warm",
+			"storyDate": "07/06/2012",
+			"storyContent": "<p>Escaped HTML full content for this article to be displayed on the full detail page. In this example, it would be tips for staying cool during the warm summer season.</p>",
+			"storyContentShort": "<p>Escaped HTML short content for this article to be displayed in the module and on the list of stories page.</p>",
+			"storyImageUrl": "",
+			"storyImageUrl2x2": "img/_samples/communications3_2x2.jpg",
+			"storyImageUrl4x2": "img/_samples/communications3_4x2.jpg",
+			"storyImageUrl4x4": "img/_samples/communications3_4x4.jpg",
+			"storyImageUrlListPage": "img/_samples/communications3_list.jpg",
+			"storyFormat": "top lightbox light-color-scheme"
+		},
+		{
+			"id" : "story1232",
+			"sortDate": "2012-07-08",
+			"storyName": "Spring Tips for keeping dry!",
+			"storySlug": "spring-tips-for-keeping-dry",
+			"storyDate": "07/08/2012",
+			"storyContent": "<p>Escaped HTML full content for this article to be displayed on the full detail page. In this example, it would be tips for staying dry during the wet spring season.</p><p>Escaped HTML full content for this article to be displayed on the full detail page. In this example, it would be tips for staying dry during the wet spring season.</p><p>Escaped HTML full content for this article to be displayed on the full detail page. In this example, it would be tips for staying dry during the wet spring season.</p><p>Escaped HTML full content for this article to be displayed on the full detail page. In this example, it would be tips for staying dry during the wet spring season.</p><p>Escaped HTML full content for this article to be displayed on the full detail page. In this example, it would be tips for staying dry during the wet spring season.</p><p>Escaped HTML full content for this article to be displayed on the full detail page. In this example, it would be tips for staying dry during the wet spring season.</p><p>Escaped HTML full content for this article to be displayed on the full detail page. In this example, it would be tips for staying dry during the wet spring season.</p><p>Escaped HTML full content for this article to be displayed on the full detail page. In this example, it would be tips for staying dry during the wet spring season.</p><p>Escaped HTML full content for this article to be displayed on the full detail page. In this example, it would be tips for staying dry during the wet spring season.</p><p>Escaped HTML full content for this article to be displayed on the full detail page. In this example, it would be tips for staying dry during the wet spring season.</p><p>Escaped HTML full content for this article to be displayed on the full detail page. In this example, it would be tips for staying dry during the wet spring season.</p><p>Escaped HTML full content for this article to be displayed on the full detail page. In this example, it would be tips for staying dry during the wet spring season.</p><p>Escaped HTML full content for this article to be displayed on the full detail page. In this example, it would be tips for staying dry during the wet spring season.</p>",
+			"storyContentShort": "<p>Escaped HTML short content for this article to be displayed in the module and on the list of stories page.</p>",
+			"storyImageUrl": "",
+			"storyImageUrl2x2": "img/_samples/communications4_2x2.jpg",
+			"storyImageUrl4x2": "img/_samples/communications4_4x2.jpg",
+			"storyImageUrl4x4": "img/_samples/communications4_4x4.jpg",
+			"storyImageUrlListPage": "img/_samples/communications4_list.jpg",
+			"storyFormat": "top lightbox light-color-scheme"
+		},
+		{
+			"id" : "story1237",
+			"sortDate": "2012-07-09",
+			"storyName": "More Summer Tips for keeping Cool!",
+			"storySlug": "more-summer-tips-for-keeping-cool",
+			"storyDate": "07/09/2012",
+			"storyContent": "<p>Escaped HTML full content for this article to be displayed on the full detail page. In this example, it would be tips for staying cool during the warm summer season.</p>",
+			"storyContentShort": "<p>Escaped HTML short content for this article to be displayed in the module and on the list of stories page.</p>",
+			"storyImageUrl": "",
+			"storyImageUrl2x2": "img/_samples/communications5_2x2.jpg",
+			"storyImageUrl4x2": "img/_samples/communications5_4x2.jpg",
+			"storyImageUrl4x4": "img/_samples/communications5_4x4.jpg",
+			"storyImageUrlListPage": "img/_samples/communications5_list.jpg",
+			"storyFormat": "top lightbox light-color-scheme"
+		}
+	]
+}

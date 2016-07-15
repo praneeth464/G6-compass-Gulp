@@ -1,0 +1,328 @@
+#ssiApproveContestPageView {
+    .spincover {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 20%;
+        z-index: 10000;
+    }
+
+    .spin {
+        display: block;
+        height: $spinner_widthHeight;
+        margin: 0 auto;
+        width: $spinner_widthHeight;
+    }
+
+    .dl-horizontal {
+        img {
+            height: 40px;
+        }
+
+        dd {
+            word-wrap: break-word;
+        }
+
+        @media (min-width: 976px){
+            dt {
+                width: 23%;
+            }
+
+            dd {
+                margin-left: 24%;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 976px){
+            dt {
+                width: 29%;
+            }
+
+            dd {
+                margin-left: 30%;
+            }
+        }
+    }
+
+    #ssiApproveContestDetails table .asc .icon-sort-down,
+    #ssiApproveContestDetails table .desc .icon-sort-up {
+        display: none;
+    }
+
+    .ssiViewDetails {
+        color: $ssiApproveContestDetails_linkColor;
+        font-size: $ssiApproveContestDetails_linkFontSize;
+        font-weight: normal;
+    }
+
+    .ssiDetailsParticipants,
+    .ssiDetailsManagers {
+        float: left;
+        margin: 10px 0;
+    }
+
+    .ssiInviteesCollectionView {
+        background-color: $ssiApproveContestDetails_paxManagerTableBg;
+        float: left;
+        width: 100%;
+
+        .pagination {
+            padding: 0 10px;
+            margin: 10px 0;
+
+            .disabled a {
+                background-color: white;
+            }
+        }
+
+        .ssiApproveInviteesList {
+            background-color: lighten($ssiApproveContestDetails_paxManagerTableBg, 4%);
+            border-top: 1px solid darken($ssiApproveContestDetails_paxManagerTableBg, 15%);
+            border-bottom: 1px solid darken($ssiApproveContestDetails_paxManagerTableBg, 15%);
+            padding: 15px 15px 5px;
+
+            li {
+                list-style: none;
+                padding: 5px 0;
+            }
+        }
+    }// .ssiInviteesCollectionView
+
+    .approveModeButtons {
+        white-space: nowrap;
+    }
+}// #ssiApproveContestPageView
+
+.ssiApproverPopover {
+    margin-left: 10px;
+}
+
+.ssiApproverList {
+    max-height: 550px;
+    overflow-y: auto;
+    padding-right: 17px; // scroll bar width on windows
+
+    ul {
+        list-style: none;
+        margin: 5px 10px;
+
+        li + li {
+            padding-top: 2px;
+        }
+    }
+}
+
+.ssiDenyContestPopover {
+    width: 260px;
+
+    form {
+        margin-bottom: 10px;
+    }
+
+    label {
+        display: inline-block;
+        margin-top: 5px;
+    }
+
+    .commentTools {
+        font-size: .9em;
+        margin: 15px 0 10px;
+        text-align: right;
+
+        .checkSpellingDdBtn {
+            display: inline-block;
+            line-height: 16px;
+            margin-bottom: 2px;
+            padding: 0 2px;
+            width: auto;
+        }
+
+        .spellchecker {
+            float: left;
+            position: relative;
+        }
+
+        .dropdown-menu {
+            color: black;
+            height: 100px;
+            left: 0;
+            overflow: auto;
+            text-align: left;
+        }
+    }//.commentTools
+
+    .contribCommentInp {
+        @include box-sizing(border-box);
+        display: block;
+        min-height: 30px;
+        width: 100%;
+    }
+
+    .badwordsContainer {
+        margin-top: -5px;
+        padding-bottom: 5px;
+
+        .badwordsWrapper {
+            top: 0;
+        }
+
+        .close {
+            line-height: 10px !important;
+            font-size: 14px;
+        }
+    }
+}// .ssiDenyContestPopover
+
+#ssiApprovePayout {
+    h3 {
+        float: left;
+    }
+
+    .updateResultsBtn {
+        margin: 10px 0;
+        float: right;
+    }
+
+    .issuePayoutsTieText i {
+        font-size: 20px;
+    }
+
+    &.ssiApprovePayoutTablePage {
+        table {
+            position: relative;
+
+            td,
+            tr,
+            th {
+                position: relative;
+                overflow: hidden;
+            }
+
+            .columnEmphasis * {
+                position: relative;
+                z-index: 1;
+            }
+
+            .columnEmphasis:after {
+                background: rgba(0, 0, 0, 0.2);
+                position: absolute;
+                content: "";
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                display: block;
+                z-index: 0;
+                height: 100%;
+                padding-bottom: 100px; // IE9 doesn't fill the space otherwise :(
+            }
+
+            .number {
+                input {
+                    text-align: inherit;
+                }
+            }
+        }
+
+        .spincover {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .spin {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -($spinner_widthHeight/2);
+            margin-left: -($spinner_widthHeight/2);
+            width: $spinner_widthHeight;
+            height: $spinner_widthHeight;
+        }
+    }
+
+    .ssiViewContestDetails {
+        display: block;
+        margin: 15px 0;
+    }
+
+    .payoutsRow {
+        background-color: lighten($ssi_stackRank_bgColor, 10%);
+        margin-top: 15px;
+
+        h4 {
+            margin: 20px;
+            font-size: $baseFontSize * 1.57;//22px
+        }
+    }
+
+    .payout {
+        height: 105px;
+        margin-bottom: 35px;
+        padding: 35px 0 0 25px;
+
+        .payoutRank {
+            font: {
+                family: $titleFont;
+                size: $baseFontSize * 3.929;//55px
+                weight: bold;
+            }
+            float: left;
+            line-height: $baseLineHeight * 2.75;//55px
+        }
+
+        .payoutInfo {
+            margin-left: 16%;
+            text-align: center;
+        }
+
+        .payoutBadge {
+            height: 60px;
+            margin-right: 10px;
+            width: 60px;
+        }
+
+        .payoutAmount,
+        .badgeName {
+            font-weight: 200;
+            position: relative;
+            top: 5px;
+
+            &.no-badge {
+                top: 20px;
+            }
+        }
+
+        .badgeName {
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        .payoutAmount {
+            font-size: $baseFontSize * 1.643;
+
+            span {
+                padding-left: 5px;
+                text-transform: uppercase;
+            }
+        }
+
+        & + .payout {
+            border-left: 1px solid $black;
+            margin-left: 8%;
+
+            &:nth-child(3n+1){
+                border-left: none;
+                margin-left: 30px;
+            }
+        }
+    }
+
+    #ssiExtractResults {
+        margin-top: 20px;
+    }
+} // #ssiApprovePayout

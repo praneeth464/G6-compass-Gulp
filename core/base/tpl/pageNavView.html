@@ -1,0 +1,24 @@
+<!-- go back + title -->
+<div id="pageNav" class="">
+
+    <div class="container">
+        <div id="pageNavLinks">
+            {{#if home}}
+            <p id="pageHomeLink">
+                <a href="{{home.url}}"><i class="icon-home"></i><span>{{home.text}}</span></a>
+            </p>
+            {{/if}}
+
+            {{#if back}}
+            <p id="pageBackLink">
+                <a href="{{back.url}}"><i class="icon-arrow-left"></i><span>{{back.text}}</span></a>
+            </p>
+            {{/if}}
+        </div>
+
+        {{#if pageTitle}}
+        <h2 id="pageTitle">{{pageTitle}}</h2>
+        {{/if}}
+    </div>
+
+</div>

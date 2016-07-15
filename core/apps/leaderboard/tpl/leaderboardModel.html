@@ -1,0 +1,120 @@
+    <div class="leaderboardModel{{#classes}} {{this}}{{/classes}}" id="leaderboard{{id}}" data-id="{{id}}">
+
+        <div class="clearfix leaderboardMetaData">
+            <!-- <div class="row">
+                <ul class="actions pull-right">
+                </ul>
+            </div> -->
+
+            <ul class="actions upper">
+                <li class="viewrules">
+                    <a href="#rules" data-sheet-title="Rules"><i class="icon-book"></i>View Rules</a>
+                </li>
+                {{#if editableByUser}}
+                    {{#unless archivedFlag}}
+                <li class="editinfo">
+                    <a href="{{urls.editPromoInfo}}"><i class="icon-pencil"></i>Edit Promotion Information</a>
+                </li>
+                    {{else}}
+                <li class="copytonew">
+                    <a href="{{urls.copyToNew}}"><i class="icon-copy"></i>Copy to New Leaderboard</a>
+                </li>
+                    {{/unless}}
+                    {{#unless archivedFlag}}
+                    <li class="editactivity">
+                        <a href="{{urls.editActivity}}"><i class="icon-pencil"></i>Edit Participants and Activity</a>
+                    </li>
+                    {{/unless}}
+                {{/if}}
+            </ul>
+
+            <h2>{{name}}</h2>
+
+            <p class="startdate"><span>Start Date</span> <strong>{{startDate}}</strong></p>
+            <p class="enddate"><span>End Date</span> <strong>{{endDate}}</strong></p>
+
+            <div class="rulestoview">{{rules}}</div>
+
+        </div>
+
+        <!-- Account info and ranking -->
+
+        {{#leaders}}
+        {{#if highlightedUser}}
+        <div class="clearfix highlightedUser{{#if classes.length}}{{#classes}} {{this}}{{/classes}}{{/if}}">
+
+            {{#if avatarUrl}}
+            <div class="fl">
+
+                <img alt="{{lastName}}, {{firstName}}" class="avatar" src="{{avatarUrl}}" />
+
+            </div>
+            {{/if}}
+
+            <div class="fl">
+                <span class="rank">
+                    {{#unless currentUser}}
+                        <span class="name pre-rank">
+                            <!-- the lastname span is so we can hide it on the 2x2 where we usually won't have enough room for both and text wrapping messes things up -->
+                            <span class="lastname">{{lastName}},</span> {{firstName}} <span class="large-rank-text">{{rank}}</span>
+                        </span>
+                    {{else}}
+                        <span class="your pre-rank">
+                            <!--
+                                each leaderboard has a special CM key containing the full translated string for the "Your rank" text
+                                the key ouput will have a {0} placeholder where the rank value is inserted
+                                this allows the translations to have plain text and the rank in any order
+                                we embed this CM output as a tplVariable in our leaderboardModel Handlebars template
+                                we also have an largeRankText subTpl embedded in our leaderboardModel Handlebars template
+                                we pass the leader.rank value from the JSON to the subTpl, then replace the {0} with the rendered output
+                                the final string is assigned to leader.rankFormatted in the JSON to be passed to the main template
+                            -->
+                            <!--tplVariable.largeRankText= "Your rank {0}" tplVariable-->
+                            <!--subTpl.largeRankText= <span class="large-rank-text">{{rank}}</span> subTpl-->
+                            {{{rankFormatted}}}
+                        </span>
+                    {{/unless}}
+                </span>
+                <span class="progress-text">{{../../activityTitle}} - {{score}}</span>
+                <!--
+                    each leaderboard has a special CM key containing the full translated string for the "As of" text
+                    the key ouput will have a {0} placeholder where the activityDate value is inserted
+                    this allows the translations to have plain text and the activityDate in any order
+                    we embed this CM output as a tplVariable in our leaderboardModel Handlebars template
+                    we also have an activityDate subTpl embedded in our leaderboardModel Handlebars template
+                    we pass the leaderboard.activityDate value from the JSON to the subTpl, then replace the {0} with the rendered output
+                    the final string is assigned to leaderboard.activityDateFormatted in the JSON to be passed to the main template
+                -->
+                <!--tplVariable.activityDate= "As of {0}" tplVariable-->
+                <!--subTpl.activityDate= <strong>{{activityDate}}</strong> subTpl-->
+                <span class="activitydate">{{{../../activityDateFormatted}}}</span>
+            </div>
+
+        </div>
+        {{/if}}
+        {{/leaders}}
+
+        <div class="clearfix">
+            <ol class="leaders-col leaders-col-a leadersColA">
+                <!-- dynamic -->
+            </ol>
+
+            <!-- second col, responsive (float left) -->
+            <ol class="leaders-col leaders-col-b leadersColB">
+                <!-- dynamic -->
+            </ol>
+
+            <!--subTpl.leaderTpl=
+                {{#leaders}}
+                <li value="{{rank}}" {{#if classes.length}}class="{{#classes}}{{this}} {{/classes}}"{{/if}}>
+                    <span>{{score}}</span>
+                    <b>{{rank}}.</b>
+                    {{#if avatarUrl}}<img alt="{{lastName}}, {{firstName}}" class="avatar" src="{{avatarUrl}}" height="20" width="20" >{{/if}}
+                    <a class="leaderName" href="#" data-participant-ids="[{{participantId}}]">{{lastName}}, {{firstName}}</a>
+                </li>
+                {{/leaders}}
+            subTpl-->
+
+        </div>
+
+    </div>

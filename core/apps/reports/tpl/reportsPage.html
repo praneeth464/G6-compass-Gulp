@@ -1,0 +1,72 @@
+<div id="reportsPageView" class="reportsPageDetail-liner page-content page reports">
+
+    <div class="page-topper">
+
+        <div class="row">
+
+            <div class="span12">
+
+                <form class="form-inline form-labels-inline">
+                    <div class="control-group">
+
+                        <label class="control-label" for="reportsSelect">Pick a Report:</label>
+
+                        <div class="controls">
+                            <select id="reportsSelect" data-all-reports-text="All Reports">
+                                <!-- dynamic -->
+                                <option value="1" selected="selected">loading reports...</option>
+                            </select>
+                        </div>
+                    </div> <!-- control-group -->
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div><!-- /.page-topper -->
+
+    <div id="reportsPageAllView" class="childview"></div>
+    <div id="reportsPageDetailView" class="childview"></div>
+
+</div><!-- /#reportsPageView -->
+
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+
+    $(document).ready(function(){
+        var reportId = $.query.get('reportId'),
+            dashboardItemId = $.query.get('dashboardItemId'),
+            // if at any time you need to pass additional parameters to a selected reportId, use this object to do so. Any number of parameters is supported
+            // note that this will only work when reportId is populated above
+            params = {
+                <?php if( isset($_GET['type']) ) {
+                    echo('type : "'.$_GET['type'].'",');
+                } ?>
+                foo: 'bar'
+            };
+
+        //attach the view to an existing DOM element
+        window.rpv = new ReportsPageView({
+            reportId: reportId,
+            dashboardItemId: dashboardItemId,
+            params: params,
+
+            el:$('#reportsPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                     url : 'javascript:history.back();'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Reports'
+        });
+    });
+
+</script>

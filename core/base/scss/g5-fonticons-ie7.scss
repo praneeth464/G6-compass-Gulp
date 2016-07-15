@@ -1,0 +1,83 @@
+// CORE APPLICATION VARIABLES AND MEASUREMENTS
+@import "partials/variables";
+@import "partials/mixins";
+
+// Partial-specific variables
+// =========================
+// NOTE: there is no !default on the end of these three variables. The lists aren't overridable (for now)
+$g5fonticons_modules_list : $g5fonticons_modules;
+$g5fonticons_utility_list : $g5fonticons_utility;
+
+$g5fonticons_modules_extended: false !default;
+$g5fonticons_utility_extended: false !default;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+/*  G5 Fonticons
+    the custom icon font designed just for G5
+    -------------------------------------------------------
+    Completely borrowed from FontAwesome:
+      http://fortawesome.github.com/Font-Awesome/
+    Technique for building a custom icon font found here:
+      http://www.webdesignerdepot.com/2012/01/how-to-make-your-own-icon-g5-webfont/
+
+    Court Cromwell-Carl (cromcarl@biworldwide.com) built the first version of this font with Type Tool
+    Joel Schou (schou@biworldwide.com) iterated additional versions and implemented it into G5
+
+    License
+    -------------------------------------------------------
+    Copyright BI WORLDWIDE. All Rights Reserved.
+*/
+
+// ==================================================
+// Do not edit anything in this file!
+// ==================================================
+
+
+@if $g5fonticons_modules_extended or $g5fonticons_utility_extended {
+    // join the extended lists with the default lists
+    @if $g5fonticons_modules_extended {
+        // check to see if our $list is longer than 1 item and the second item in the list has no length (meaning it's a string)
+        // if this is true, our $list has only a single font item in it and we need to append instead of join
+        @if length($g5fonticons_modules_extended) > 1 and length(nth($g5fonticons_modules_extended,2)) < 2 {
+            $g5fonticons_modules_list: append($g5fonticons_modules_list, $g5fonticons_modules_extended);
+        }
+        @else {
+            $g5fonticons_modules_list: join($g5fonticons_modules_list, $g5fonticons_modules_extended);
+        }
+    }
+    @if $g5fonticons_utility_extended {
+        // check to see if our $list is longer than 1 item and the second item in the list has no length (meaning it's a string)
+        // if this is true, our $list has only a single font item in it and we need to append instead of join
+        @if length($g5fonticons_utility_extended) > 1 and length(nth($g5fonticons_utility_extended,2)) < 2 {
+            $g5fonticons_utility_list: append($g5fonticons_utility_list, $g5fonticons_utility_extended);
+        }
+        @else {
+            $g5fonticons_utility_list: join($g5fonticons_utility_list, $g5fonticons_utility_extended);
+        }
+    }
+}
+
+/*  Dynamically generate the glyphs for specific classes
+    ------------------------------------------------------- */
+/*  G5 Fonticons uses the Unicode Private Use Area (PUA) to ensure screen
+    readers do not read off random characters that represent icons */
+
+// in font mode, we just spit out the rules for the modules list and we're good
+@if $g5fonticonsModulesMode == 'font' {
+    @include g5fonticons(
+        $list: $g5fonticons_modules_list,
+        $ie7: true
+    );
+}
+// in image mode we don't need any IE7-specific rules
+
+// the utilities list cannot be in image mode
+@include g5fonticons(
+    $list: $g5fonticons_utility_list,
+    $ie7: true
+);

@@ -1,0 +1,251 @@
+<h2>Preferences</h2>
+
+<div class="row">
+    <div class="span12">
+        <form id="profilePagePreferencesTabForm" class="form-horizontal" method="POST">
+            <fieldset id="profilePagePreferencesTabFieldsetLanguage">
+                <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please select a language"}'>
+                    <label class="control-label" for="language">Language Preference</label>
+                    <div class="controls">
+                        <select id="language" class="input-xlarge" name="language">
+                            <option value="en">english</option>
+                            <option value="en2">2</option>
+                            <option value="en3">3</option>
+                            <option value="en4">4</option>
+                            <option value="en5">5</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <hr />
+
+            <h3>Allow my information to be public:</h3>
+
+            <fieldset id="profilePagePreferencesTabFieldsetPublic">
+                <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please make a choice"}'>
+                    <label class="radio" for="allowPublicInformationYes">
+                        <input type="radio" id="allowPublicInformationYes" name="allowPublicInformation" value="true">
+                        Yes. Make my information public.
+                    </label>
+                    <label class="radio" for="allowPublicInformationNo">
+                        <input type="radio" id="allowPublicInformationNo" name="allowPublicInformation" value="false" checked>
+                        No. Don't show my information to anyone. (Your avatar, name, org unit, and country will still be public.)
+                        <a class="profile-popover" href="#" data-participant-ids="[{{id}}]">
+                            Preview how others see me.
+                        </a>
+                    </label>
+                </div>
+
+                <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please make a choice"}'>
+                    <label class="radio" for="allowPublicRecognitionYes">
+                        <input type="radio" id="allowPublicRecognitionYes" name="allowPublicRecognition" value="true">
+                        Yes. Make my activities public.
+                    </label>
+                    <label class="radio" for="allowPublicRecognitionNo">
+                        <input type="radio" id="allowPublicRecognitionNo" name="allowPublicRecognition" value="false">
+                        No. Don't show my activities to anyone.
+                    </label>
+                </div>
+
+                <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please make a choice"}'>
+                    <label class="radio" for="allowPublicBirthDateYes">
+                        <input type="radio" id="allowPublicBirthDateYes" name="allowPublicBirthDate" value="true">
+                        Yes. Display my birth date (day and month) on my Public Profile.
+                    </label>
+                    <label class="radio" for="allowPublicBirthDateNo">
+                        <input type="radio" id="allowPublicBirthDateNo" name="allowPublicBirthDate" value="false">
+                        No. Don't show my birth date.
+                    </label>
+                </div>
+
+                <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please make a choice"}'>
+                    <label class="radio" for="allowPublicHireDateYes">
+                        <input type="radio" id="allowPublicHireDateYes" name="allowPublicHireDate" value="true">
+                        Yes. Display my hire date (day, month, year) on my Public Profile.
+                    </label>
+                    <label class="radio" for="allowPublicHireDateNo">
+                        <input type="radio" id="allowPublicHireDateNo" name="allowPublicHireDate" value="false">
+                        No. Don't show my hire date.
+                    </label>
+                </div>
+            </fieldset>
+
+            <hr />
+
+            <fieldset id="profilePagePreferencesTabFieldsetTwitter">
+                <h3>Twitter Integration</h3>
+
+                <div id="twitterAuthorization">
+                    <!-- twitter/startAuthorization.jsp -->
+                    <div id="startTwitterAuthorization">
+                        <p>Click the button below to enable PURL to post status updates to your Twitter account. By doing so you can share comments and other items on your Twitter account without ever leaving PURL!</p>
+                        <button class="btn" onclick="setDispatchAndSubmit('startTwitterAuthorization')">
+                            Start Twitter Authorization
+                        </button>
+                    </div>
+
+                    <!-- twitter/disableAuthorization.jsp -->
+                    <div id="disableTwitterAuthorization">
+                        <button class="btn" onclick="setDispatchAndSubmit('resetTwitter')">
+                            Rescind Twitter Authorization
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
+
+            <hr />
+
+            <fieldset id="profilePagePreferencesTabFieldsetFacebook">
+                <h3>Facebook Integration</h3>
+
+                <div id="facebookSettings">
+                    <!-- first put the facebook api key in a hidden field so the javascript can pick it up -->
+                    <input type="hidden" id="facebookAppId" name="facebookAppId" value="1234" />
+
+                    <!-- now include the necessary facebook javascript -->
+                    <div id="fb-root"></div>
+                    <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
+                    <script type="text/javascript" src="<%=request.getContextPath()%>/assets/g4skin/scripts/facebook.js"></script>
+
+                    <!-- facebookDisabled.jsp -->
+                    <p>Click the button below to enable PURL to post updates to your Facebook account.  By doing so you can share comments and other items on your Facebook account without ever leaving PURL!</p>
+                    <a href="#" onclick="authorize();return false;">
+                        <img src="http://static.ak.fbcdn.net/images/fbconnect/login-buttons/connect_light_medium_long.gif" border="0" alt="facebook connect"/>
+                    </a>
+
+                    <!-- facebookEnabled.jsp -->
+                    <p>Click the button below to rescind PURL access to your Facebook account.</p>
+                    <a href="#" onclick="disableFacebook(); return false;" class="btn">
+                        Disable Facebook Access
+                    </a>
+                </div>
+            </fieldset>
+
+            <hr />
+
+            <h3>I would like to recieve these types of communications:</h3>
+
+            <fieldset id="profilePagePreferencesTabFieldsetEStatements">
+                <h4>eStatements</h4>
+                <div class="control-group estatementCont" data-validate-flags="nonempty" 
+                    data-validate-fail-msgs='{"nonempty" : "You must select to recieve emails."}'>
+                    <label class="checkbox">
+                        <input type="checkbox" name="contactMethodTypes" class="estatements" value="estatements">
+                        Statements will be sent to <em class="participantEmail"></em>
+                        
+                    </label>
+                </div>
+                <div class="control-group">
+                    <span class="participantEmailUpdateCont" style="display:none">
+                            <select name="emailType" class="emailAddressType">
+                                <option value="business">Business</option>
+                                <option value="personal">Personal</option>
+                            </select>
+                            <span class="participantEmailUpdate" 
+                                    data-validate-flags="nonempty,email" 
+                                    data-validate-fail-msgs='{"nonempty" : "Please enter an email address.", "email": "Please enter a valid email address."}' >  
+                                <input type="text" name="emailAddress" class="estatementEmail" value="" />
+                            </span>
+                        </span>
+                </div>
+            </fieldset>
+
+            <fieldset id="profilePagePreferencesTabFieldsetTextMessages">
+                <ul class="select-all">
+                    <li><h4>Text Messages</h4></li>
+                    <li><a id="all" href="#">Select all</a>&nbsp;|&nbsp;</li>
+                    <li><a id="none" href="#">Uncheck all</a></li>
+                </ul>
+
+                <div class="control-group" >
+                    <label class="checkbox">
+                        <input type="checkbox" name="wouldLikeToReceive" value="alerts">
+                        Alerts
+                    </label>
+
+                    <label class="checkbox">
+                        <input type="checkbox" name="wouldLikeToReceive" value="budgetEndAlerts">
+                        Budget end alerts
+                    </label>
+
+                    <label class="checkbox">
+                        <input type="checkbox" name="wouldLikeToReceive" value="depositNotifications" checked>
+                        Deposit notifications
+                    </label>
+
+                    <label class="checkbox">
+                        <input type="checkbox" name="wouldLikeToReceive" value="goalReminders">
+                        Goal reminders
+                    </label>
+
+                    <label class="checkbox">
+                        <input type="checkbox" name="wouldLikeToReceive" value="newPromotionStart">
+                        New promotion start
+                    </label>
+
+                    <label class="checkbox">
+                        <input type="checkbox" name="wouldLikeToReceive" value="promotionAboutToExpire">
+                        Promotion about to expire
+                    </label>
+
+                    <label class="checkbox">
+                        <input type="checkbox" name="wouldLikeToReceive" value="promotionalMessages">
+                        Promotional messages
+                    </label>
+
+                    <label class="checkbox">
+                        <input type="checkbox" name="wouldLikeToReceive" value="recognitionReceived">
+                        Recognition received
+                    </label>
+                </div>
+            </fieldset>
+
+            <fieldset id="profilePagePreferencesTabFieldsetTextMsgDestination">
+                <h5>Send text messages to:</h5>
+                <div class="control-group">
+                    <label for="input05" class="control-label">Telephone Country &amp; Country Code:</label>
+                    <div class="controls">
+                        <select id="profilePagePreferencesTabFieldsetCountryPhoneCode" name="countryPhoneCode">
+                            <option value="ca">Canada +1</option>
+                            <option value="ca2">2</option>
+                            <option value="ca3">3</option>
+                            <option value="ca4">4</option>
+                            <option value="ca5">5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-group" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter a phone number to receive text messages"}'>
+                    <label for="profilePagePreferencesTabFieldsetPhoneNumber" class="control-label">Phone Number:</label>
+                    <div class="controls">
+                        <input type="text" id="profilePagePreferencesTabFieldsetPhoneNumber" class="input-xlarge" name="textPhoneNumber" value="">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset id="profilePagePreferencesTabFieldsetTerms">
+                <label><strong>Terms and Conditions</strong></label>
+                <p>
+                    Mobile Phone number is required as you signed up for text message notices. Note that the frequency of notices is unlimited. Standard messaging charges apply. You must be the account owner or have authorization of the account holder to subscribe. To opt out, text STOP when replying to any text message. Text HELP or use Contact Us for additional information. Participating carriers include: Alltel®, AT&T Mobility®, Boost®, Cellular One®, Cincinnati Bell®, Nextel®, Sprint®, T-Mobile®, US Cellular®, Verizon Wireless®, Virgin Mobile®.
+                </p>
+
+                <div class="control-group" id ="preferencesTabLegalCheckBox" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please cancel or accept the Terms and Conditions by checking the box to confirm"}'>
+                    <label class="checkbox" for="profilePagePreferencesTabFieldsetTermsAccepted">
+                        <input type="checkbox" id="profilePagePreferencesTabFieldsetTermsAccepted" name="acceptTermsAndConditions" value="confirmed">
+                        I accept the Terms and Conditions
+                    </label>
+                </div>
+
+            </fieldset>
+
+            <fieldset id="profilePagePreferencesTabFieldsetActions" class="form-actions">
+                <button id="profilePagePreferencesTabButtonSave" class="btn btn-primary"
+                        name="triggeredBy" value="profilePagePreferencesTabButtonSave">Save</button>
+
+                <button id="profilePagePreferencesTabButtonCancel" class="btn"
+                        name="triggeredBy" value="profilePagePreferencesTabButtonCancel">Reset</button>
+            </fieldset>
+        </form>
+    </div>
+</div>

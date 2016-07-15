@@ -1,0 +1,22 @@
+<?php sleep(2); ?>
+{
+    
+    "messages":[
+        {   
+            "__COMMENT__":" remove leading _ on below keys to uncomment ",
+            "_type":"_error",
+            "_code":"validationError",
+            "_name":"Name of error",
+            "_text":"Details of error"
+        }
+    ],
+
+    "__COMMENT__":" if successful submit, provide a forwarding URL",
+    "_forwardUrl":"layout.html",
+
+    "__COMMENT__":" on 'saveDraft' return at least the id of the saved quiz ",
+    "quiz": {
+        "id":"9999"
+    }
+
+}

@@ -1,0 +1,288 @@
+// App-specific variables
+// =========================
+$budgetTracker_bgColor: $g5ModuleBgColor !default;
+$budgetTracker_gradType: $g5ModuleGradType !default;
+$budgetTracker_gradMeta: $g5ModuleGradMeta !default;
+$budgetTracker_gradStops: $g5ModuleGradStops !default;
+
+$budgetTracker_iconColor: $g5ModuleIconColor !default;
+$budgetTracker_titleColor: $g5ModuleTitleColor !default;
+$budgetTracker_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$budgetTracker_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$budgetTracker_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$budgetTracker_textColor: $white !default;
+
+$budgetTracker_transferBtnBg: false !default;           // false will fall back to $btnPrimaryBackground
+$budgetTracker_transferBtnBgHighlight: false !default;  // false will fall back to $btnPrimaryBackgroundHighlight
+$budgetTracker_transferBtnTextColor: false !default;    // false will fall back to #fff
+
+$budgetTracker_reloadLinkColor: false !default;         // false will fall back to $linkColor
+$budgetTracker_reloadIconColor: false !default;         // false will fall back to $linkColor
+
+$budgetTracker_itemBgColorOdd: scale-color($budgetTracker_bgColor, $lightness: -25%) !default;
+$budgetTracker_itemBgColorEven: scale-color($budgetTracker_bgColor, $lightness: -10%) !default;
+$budgetTracker_promoNameColor: false !default;          // false will fall back to $linkColor
+$budgetTracker_minColor: $budgetTracker_textColor !default;
+$budgetTracker_maxColor: $budgetTracker_textColor !default;
+
+$budgetTracker_progressBackColor: false !default; // progress bar background color
+$budgetTracker_progressBackMeta: top !default;    // progress bar background gradient meta. pass false for a solid background. to work, requires a value for the Color above or Stops below
+$budgetTracker_progressBackStops: false !default; // progress bar background gradient stops. pass false to use default gradient shading
+$budgetTracker_progressBarColor: false !default;  // progress bar foreground color
+$budgetTracker_progressBarMeta: top !default;     // progress bar foreground gradient meta. pass false for a solid background. to work, requires a value for the Color above or Stops below
+$budgetTracker_progressBarStops: false !default;  // progress bar foreground gradient stops. pass false to use default gradient shading
+$budgetTracker_progressBarToolTipBgColor: false !default;
+$budgetTracker_progressBarToolTipBorderColor: false !default;
+$budgetTracker_progressBarToolTipBoxShadow: false !default;
+
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.budgetTracker {
+
+} /* /.budgetTracker */
+
+/* ----- MODULE STYLES ----- */
+.module.budgetTracker {
+
+    // never show the dataLoading spinner on the icon versions of this module
+    &.grid-dimension-1x1.dataLoading,
+    &.grid-dimension-2x1.dataLoading {
+        .spin {
+            display: none;
+        }
+    }
+
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $budgetTracker_bgColor,
+            $gradType: $budgetTracker_gradType,
+            $gradMeta: $budgetTracker_gradMeta,
+            $gradStops: $budgetTracker_gradStops
+        );
+    }
+
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $budgetTracker_iconColor,
+            $titleColor: $budgetTracker_titleColor,
+            $titleFontFamily: $budgetTracker_titleFontFamily
+        );
+    }
+
+    @include module_titleIconViewFontSizesWeights($budgetTracker_titleFontSizes, $budgetTracker_titleFontWeights);
+
+    /* Geometry -- general styles that will not change much */
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        // hide the big version of this module when we're loading data and show a faded version of the title-icon-view
+        @include module_fadeOnDataLoading();
+
+        .title-icon-view {
+            display: none;
+        }
+    }
+
+    // spinner that shows when Refresh is clicked
+    .spincover {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 11;
+        @include safeBkgs(transparentize($white, 0.5));
+
+        .spin {
+            color: $white;
+        }
+    }
+
+    .wide-view {
+        padding-top: $g5ModulePadding / 2;
+        color: $budgetTracker_textColor;
+
+        .transferBtn {
+            *margin-left: 4px;
+            font-family: $baseFontFamily;
+
+            @if ($budgetTracker_transferBtnBg and $budgetTracker_transferBtnBg != $btnPrimaryBackground) or ($budgetTracker_transferBtnBgHighlight and $budgetTracker_transferBtnBgHighlight != $btnPrimaryBackgroundHighlight) {
+                @include buttonBackground($budgetTracker_transferBtnBg, $budgetTracker_transferBtnBgHighlight, $textColor: $budgetTracker_transferBtnTextColor or #fff); // #fff is the default value for $textColor
+            }
+
+            @media (max-width: 479px) {
+                // resetting to normal button dimensions
+                display: inline-block;
+                width: auto;
+                padding: $paddingSmall;
+            }
+        }
+
+        .budgetAsOfTimestamp {
+            margin-right: 8px;
+        }
+        .reloadBtn {
+            white-space: nowrap;
+            cursor: pointer;
+            @if $budgetTracker_reloadLinkColor and $budgetTracker_reloadLinkColor != $linkColor {
+                color: $budgetTracker_reloadLinkColor;
+            }
+
+            @if $budgetTracker_reloadIconColor and $budgetTracker_reloadIconColor != $linkColor {
+                i {
+                    color: $budgetTracker_reloadIconColor;
+                }
+            }
+        }
+
+        h3 {
+            font-family: $budgetTracker_titleFontFamily;
+            font-weight: normal;
+            color: $budgetTracker_titleColor;
+            margin: 0;
+        }
+        .budget-date {
+            font-size: 11px;
+            line-height: 13px;
+        }
+        .progress {
+            height: 10px;
+            margin-top: $baseLineHeight * 1.25;
+            margin-bottom: 0;
+            border-radius: 0;
+            @if $budgetTracker_progressBackColor or $budgetTracker_progressBackStops {
+                @include progressBarHelper($budgetTracker_progressBackColor or nth($budgetTracker_progressBackStops, 1), $budgetTracker_progressBackMeta, $budgetTracker_progressBackStops);
+            }
+
+            .bar {
+                @if $budgetTracker_progressBarColor or $budgetTracker_progressBarStops {
+                    @include progressBarHelper($budgetTracker_progressBarColor or nth($budgetTracker_progressBarStops, 1), $budgetTracker_progressBarMeta, $budgetTracker_progressBarStops);
+                }
+                // reset the transition -- we manually animate this so we can
+                // add budget qtips after (also will animate in ie8/7)
+                @include transition(none);
+            }
+        }
+        .budgetItem {
+            padding: 4px ($g5ModulePadding/2);
+
+            &.on {
+                background: $budgetTracker_itemBgColorOdd;
+            }
+            &.off {
+                background: $budgetTracker_itemBgColorEven;
+            }
+            .budgetName {
+                font-weight: bold;
+                // single line ellipsis cutoff
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+            .promoItem {
+                line-height: 16px;
+                font-size: 85%;
+                // single line ellipsis cutoff
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+            @if $budgetTracker_promoNameColor and $budgetTracker_promoNameColor != $linkColor {
+                .promoName {
+                    color: $budgetTracker_promoNameColor;
+                }
+            }
+            .minMax {
+                overflow: auto;
+                // margin-top: 4px;
+                .min {
+                    float: left;
+                    color: $budgetTracker_minColor;
+                }
+                .max {
+                    float: right;
+                    color: $budgetTracker_maxColor;
+                }
+            }
+        }
+        .remBudgTip {
+            min-width: 40px;
+            // keep under modals etc.
+            z-index: 10 !important;
+            @if $budgetTracker_progressBarToolTipBgColor {
+                background: $budgetTracker_progressBarToolTipBgColor;
+            }
+            @if $budgetTracker_progressBarToolTipBorderColor {
+                border-color: $budgetTracker_progressBarToolTipBorderColor;
+            }
+            @if $budgetTracker_progressBarToolTipBoxShadow {
+                @include box-shadow($budgetTracker_progressBarToolTipBoxShadow);
+            }
+        }
+        .remBudgTip .ui-tooltip-content {
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            padding: 2px 0;
+        }
+        .budgetScrollContainer {
+            position: absolute;
+            // pull out to edge of module
+            left: $g5ModulePadding / 2;
+            right: $g5ModulePadding / 2;
+            bottom: $g5ModulePadding / 2;
+            height: 220px; // magic number
+            overflow-y: auto;
+        }
+    }
+
+    // make promoEndDate always visible, which means promoName will have to get clipped if it's too long.
+    // IMPORTANT: Widths will need to be adjusted in the skin if font/margin/padding changes
+    &.grid-dimension-2x2 {
+        .promoItem {
+            font-size: 11px !important;
+
+            .promoName {
+                display: block;
+                float: left;
+                width: 150px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .promoEndDate {
+                display: inline-block;
+                zoom: 1;
+                *display: inline;
+                width: 90px;
+                text-align: right;
+            }
+        }
+    }
+
+    &.grid-dimension-4x4 {
+        .wide-view {
+            .budgetScrollContainer {
+                height: 540px; // magic number (240px from above + 320px (two more module rows))
+            }
+        }
+    }
+
+    // in the skin, these will change depending on padding
+    // &.grid-dimension-2x2 .wide-view .budgetScrollContainer { height:150px; }
+    // &.grid-dimension-4x2 .wide-view .budgetScrollContainer { height:200px; }
+
+
+} /* /.module.budgetTracker */
+
+/* ----- PAGE STYLES ----- */
+.page.budgetTracker {
+
+} /* /.page.budgetTracker */

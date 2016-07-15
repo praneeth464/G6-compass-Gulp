@@ -1,0 +1,140 @@
+{
+    "tabularData": {
+        "meta": {
+            "columns": [
+                {
+                    "id": "1",
+                    "name": "Player",
+                    "description": "Players Names",
+                    "type": "string",
+                    "alignment": "",
+                    "colSpan": 2,
+                    "nameId": "",
+                    "sortable":true,
+                    "sortUrl":"ajax/displayLoginActivityByPaxReport.do?method=displaySummaryReport&sortedOn=1&sortedBy=asc"
+                },
+                {
+                    "id": "2",
+                    "name": "Win",
+                    "description": "Players Records",
+                    "type": "string",
+                    "alignment": "",
+                    "nameId": "",
+                    "sortable":true,
+                    "sortUrl":"ajax/displayLoginActivityByPaxReport.do?method=displaySummaryReport&sortedOn=1&sortedBy=asc"
+                },
+                {
+                    "id": "3",
+                    "name": "Loss",
+                    "description": "Players Scores",
+                    "type": "string",
+                    "alignment": "",
+                    "nameId": "",
+                    "sortable":true,
+                    "sortUrl":"ajax/displayLoginActivityByPaxReport.do?method=displaySummaryReport&sortedOn=1&sortedBy=asc"
+                },
+                {
+                    "id": "4",
+                    "name": "Ties",
+                    "description": "Match detials button",
+                    "type": "string",
+                    "alignment": "",
+                    "nameId": "",
+                    "sortable":true,
+                    "sortUrl":"ajax/displayLoginActivityByPaxReport.do?method=displaySummaryReport&sortedOn=1&sortedBy=asc"
+
+                }
+            ]
+        },
+        "results": [
+            {
+                "id" : "100",
+                "avatarUrl": "http://www.placebear.com/30/30",
+                "name": "FirstName LastName  1",
+                "win": 1,
+                "loss": 2,
+                "tie": "0"
+            },
+            {
+                "id" : "101",
+                "avatarUrl": "http://www.placebear.com/30/30",
+                "name": "FirstName LastName 2",
+                "win": 2,
+                "loss": 3,
+                "tie": "0"
+            },
+            {
+                "id" : "102",
+                "avatarUrl": "http://www.placebear.com/30/30",
+                "name": "FirstName LastName 3",
+                "win": 3,
+                "loss": 4,
+                "tie": "0"
+            },
+            {
+                "id" : "103",
+                "avatarUrl": "http://www.placebear.com/30/30",
+                "name": "FirstName LastName 4",
+                "win": 4,
+                "loss": 5,
+                "tie": "0"
+            },
+            {
+                "id" : "104",
+               "avatarUrl": "http://www.placebear.com/30/30",
+                "name": "FirstName LastName 5",
+                "win": 5,
+                "loss": 6,
+                "tie": "0"
+            },
+            {
+                "id" : "105",
+                "avatarUrl": "http://www.placebear.com/30/30",
+                "name": "FirstName LastName 6",
+                "win": 6,
+                "loss": 7,
+                "tie": "0"
+            },
+            {
+                "id" : "106",
+                "avatarUrl": "http://www.placebear.com/30/30",
+                "name": "FirstName LastName 7",
+                "win": 7,
+                "loss": 8,
+                "tie": "0"
+            },
+            {
+                "id" : "107",
+                "avatarUrl": "http://www.placebear.com/30/30",
+                "name": "FirstName LastName 8",
+                "win": 8,
+                "loss": 9,
+                "tie": "0"
+            },
+            {
+                "id" : "108",
+                "avatarUrl": "http://www.placebear.com/30/30",
+                "name": "FirstName LastName 9",
+                "win": 9,
+                "loss": 10,
+                "tie": "0"
+            },
+            {
+                "id" : "109",
+                "avatarUrl": "http://www.placebear.com/30/30",
+                "name": "FirstName LastName 10",
+                "win": 10,
+                "loss": 11,
+                "tie": "0"
+            }
+        ]
+    },
+    "roundStartDate" : "4/10/2013",
+    "progressEndDate": "4/24/2013",
+    "roundEndDate" : "4/26/2013",
+    "totalStandings": 100,
+    "standingsPerPage": 15,
+    "currentPage": 1,
+    "sortedOn": "3",
+    "sortedBy": "asc"
+}

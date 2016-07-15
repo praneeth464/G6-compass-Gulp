@@ -1,0 +1,45 @@
+<tr class="participant-item"
+        data-participant-cid="{{cid}}"
+        data-participant-id="{{id}}">
+
+    <td class="participant">
+        <input type="hidden" name="pax[{{autoIndex}}].userId" value="{{id}}" />
+
+        <a class="participant-popover" href="#" data-participant-ids="[{{id}}]">
+            {{#if avatarUrl}}<img alt="{{firstName}} {{lastName}}" class="profile-proxy-list-avatar avatar" src="{{avatarUrl}}">{{/if}}
+            {{firstName}}
+            {{lastName}}
+            {{#if countryCode}}<img src="img/flags/{{countryCode}}.png" alt="{{countryCode}}" class="countryFlag" title="{{countryName}}" />{{/if}}
+        </a>
+
+        <span class="org">{{orgName}} {{#if departmentName}}{{#if orgName}}&bull;{{/if}} {{departmentName}}{{/if}} {{#if jobName}}{{#if departmentName}}&bull;{{else}}{{#if orgName}}&bull;{{/if}}{{/if}} {{jobName}}{{/if}}</span>
+    </td>
+
+    <td class="coreaccess">
+        <ul>
+        {{#each coreAccess}}
+            <li>{{this}}</li>
+        {{/each}}
+        </ul>
+    </td>
+
+    <td class="modpromo">
+        {{#each module}}
+        <strong>{{this.title}}</strong>
+        <ul>
+            {{#each this.promotions}}
+            <li>{{this}}</li>
+            {{/each}}
+        </ul>
+        {{/each}}
+    </td>
+
+    <td class="edit">
+        <a class="editProxyControl" href="{{urlEdit}}" title="edit this proxy"><i class="icon-edit"></i></a>
+    </td>
+
+    <td class="remove">
+        <a class="remParticipantControl" title="remove this proxy"><i class="icon-remove"></i></a>
+    </td>
+
+</tr><!-- /.participant-item -->

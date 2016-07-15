@@ -1,0 +1,165 @@
+<!-- ======== PURLCONTRIBUTE: CONTRIBUTER: PURL LIST ======== -->
+
+<div id="PURLContributeListView" class="PURLContributeListView page-content">
+	<div id="PURLContributeListViewWrapper" class="row">
+        <div class="span12">
+            <h5>Select a participant's PURL to contribute to:</h5>
+
+            <div id="PURLContributeListTable">
+            	<table class="table table-bordered table-striped PURLContributeListTable">
+                    <thead>
+                        <tr>
+                            <th>View/Add Contributors</th>
+                            <th>Recipient</th>
+                            <th>Country</th>
+                            <th>Contributors</th>
+                            <th>Contribution End Date</th>
+                            <th>Award Date</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <div class="tableSwipeHelp">
+                    </div>
+            		<tbody>
+            			<tr>
+                            <td></td>
+            				<td>
+            					Firstname Lastname
+            				</td>
+            				<td>
+            					<i class="icon-flag"></i>
+            				</td>
+            				<td>
+            					<div class="purlContributers">
+    	        					<p>10 invited</p>
+    	        					<p>6 visited</p>
+            					</div>
+            				</td>
+            				<td>
+            					09/01/2012
+            				</td>
+            				<td>
+            					09/01/2012
+            				</td>
+            				<td>
+            					<button class="btn btn-primary" name="PurlContribute">View</button>
+            				</td>
+            			</tr>
+
+            			<tr>
+                            <td class="addViewContributors">
+                                <a href="">
+                                    <i class="icon-plus"></i>
+                                </a>
+                            </td>
+            				<td>
+            					Firstname Lastname
+            				</td>
+            				<td>
+            					<i class="icon-flag"></i>
+            				</td>
+            				<td>
+            					<div class="purlContributers">
+    	        					<p>10 invited</p>
+    	        					<p>6 visited</p>
+            					</div>
+            				</td>
+            				<td>
+            					11/01/2012
+            				</td>
+            				<td>
+            					11/01/2012
+            				</td>
+            				<td>
+            					<button class="btn btn-primary" name="PurlContribute">View/Contribute</button>
+            				</td>
+            			</tr>
+
+            			<tr>
+                            <td class="addViewContributors">
+                                <a href="">
+                                    <i class="icon-plus"></i>
+                                </a>
+                            </td>
+            				<td>
+            					Firstname Lastname
+            				</td>
+            				<td>
+            					<i class="icon-flag"></i>
+            				</td>
+            				<td>
+            					<div class="purlContributers">
+    	        					<p>10 invited</p>
+    	        					<p>6 visited</p>
+            					</div>
+            				</td>
+            				<td>
+            					12/01/2012
+            				</td>
+            				<td>
+            					12/01/2012
+            				</td>
+            				<td>
+            					<button class="btn btn-primary" name="PurlContribute">View/Contribute</button>
+            				</td>
+            			</tr>
+
+            			<tr>
+                            <td class="addViewContributors">
+                                <a href="">
+                                    <i class="icon-plus"></i>
+                                </a>
+                            </td>
+            				<td>
+            					Firstname Lastname
+            				</td>
+            				<td>
+            					<i class="icon-flag"></i>
+            				</td>
+            				<td>
+            					<div class="purlContributers">
+    	        					<p>10 invited</p>
+    	        					<p>6 visited</p>
+            					</div>
+            				</td>
+            				<td>
+            					01/11/2013
+            				</td>
+            				<td>
+            					01/11/2013
+            				</td>
+            				<td>
+            					<button class="btn btn-primary" name="PurlContribute">View/Contribute</button>
+            				</td>
+            			</tr>
+
+            		</tbody>
+            	</table>
+            </div>
+        </div>
+	</div>
+</div>
+
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+
+    $(document).ready(function(){
+        //attach the view to an existing DOM element
+        var pccpl = new PageView({
+            el:$('#PURLContributeListView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Recognition PURL Activity'
+        });
+    });
+
+</script>

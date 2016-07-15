@@ -1,0 +1,68 @@
+// CORE APPLICATION VARIABLES AND MEASUREMENTS
+@import "base/variables";
+@import "base/mixins";
+
+// this variable makes it possible to import these files without outputting all the css
+// in this file, we obviously want the output
+$base_variablesOnly: false;
+
+// @font-face fonts
+// @import "fonts";
+
+// 3rd party goodies
+@import "compass/css3";
+@import "partials/bootstrap/mixins";
+// @import "partials/bootstrap/bootstrap";
+// @import "partials/bootstrap/responsive";
+
+// library-type things
+@import "base/font-awesome";
+@import "base/font-awesome-extended";
+@import "base/g5-fonticons";
+// @import "base/jHtmlArea.patchedG5";
+@import "base/spellchecker";
+@import "base/responsiveTables";
+@import "base/video-js.min";
+
+// overall platform parts
+@import "base/global";
+@import "base/globalHeader";
+@import "base/participantProfile";
+@import "base/pageNav";
+@import "base/globalFooter";
+
+// pages
+@import "base/pages";
+
+// login page styles
+@import "base/login";
+@import "base/loginFirstTime";
+
+// home app styles
+@import "base/homeApp";
+@import "base/allModules";
+
+// widgets etc...
+@import "base/autoModals";
+@import "base/datepicker";
+@import "base/generic";
+// @import "base/forms";
+@import "base/icons";
+@import "base/modals";
+@import "base/navs";
+@import "base/pagesWithoutViews";
+@import "base/pagination";
+@import "base/participantPopover";
+@import "base/participantSearch";
+@import "base/participantCollectionView";
+@import "base/participantItem";
+@import "base/popovers";
+@import "base/progress-bars";
+@import "base/qtip";
+@import "base/qtip-extended";
+@import "base/rules";
+@import "base/sharePopover";
+@import "base/slider.patchedG5";
+@import "base/stackModal";
+@import "base/tables";
+@import "base/wizardTabsView";

@@ -1,0 +1,218 @@
+// App-specific variables
+// =========================
+$news_bgColor: $g5ModuleBgColor !default;
+$news_gradType: $g5ModuleGradType !default;
+$news_gradMeta: $g5ModuleGradMeta !default;
+$news_gradStops: $g5ModuleGradStops !default;
+
+$news_iconColor: $g5ModuleIconColor !default;
+$news_titleColor: $g5ModuleTitleColor !default;
+$news_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$news_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$news_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$news_cycleDotWidth: false !default;
+$news_cycleDotBkg: false !default;
+$news_cycleDotBorder: false !default;
+$news_cycleDotBkgHover: false !default;
+$news_cycleDotBorderHover: false !default;
+$news_cycleDotBkgActive: false !default;
+$news_cycleDotBorderActive: false !default;
+$news_cycleDotBorderRadius: false !default;
+
+$news_storyBoxBkg: transparentize($grayDarker,0.2) !default;
+$news_storyBoxTextSize: false !default;
+$news_storyBoxTitleSize: false !default;
+$news_storyBoxTextColor: $grayLight !default;
+$news_storyBoxTitleColor: $white !default;
+$news_storyBoxLinkColor: false !default;
+$news_storyBoxLinkHoverColor: false !default;
+
+$news_pageTimeStampColor: $grayLight !default; 
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.news {
+
+} /* /.news */
+
+/* ----- MODULE STYLES ----- */
+.module.news {
+
+    // never show the dataLoading spinner on the icon versions of this module
+    &.grid-dimension-1x1.dataLoading,
+    &.grid-dimension-2x1.dataLoading {
+        .spin {
+            display: none;
+        }
+    }
+
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $news_bgColor,
+            $gradType: $news_gradType,
+            $gradMeta: $news_gradMeta,
+            $gradStops: $news_gradStops
+        );
+    }
+
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $news_iconColor,
+            $titleColor: $news_titleColor,
+            $titleFontFamily: $news_titleFontFamily
+        );
+
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            @include g5HomeAppIconBoxReflect(-56px);
+        }
+    }
+
+    @include module_titleIconViewFontSizesWeights($news_titleFontSizes, $news_titleFontWeights);
+
+    @include module_cycleDots(
+        $cycleDotWidth: $news_cycleDotWidth,
+        $cycleDotBkg: $news_cycleDotBkg,
+        $cycleDotBorder: $news_cycleDotBorder,
+        $cycleDotBkgHover: $news_cycleDotBkgHover,
+        $cycleDotBorderHover: $news_cycleDotBorderHover,
+        $cycleDotBkgActive: $news_cycleDotBkgActive,
+        $cycleDotBorderActive: $news_cycleDotBorderActive,
+        $cycleDotBorderRadius: $news_cycleDotBorderRadius
+    );
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        // hide the big version of this module when we're loading data and show a faded version of the title-icon-view
+        @include module_fadeOnDataLoading();
+
+        .title-icon-view {
+            display: none;
+        }
+        .wide-view {
+            padding: 0;
+            height: 100%;
+        }
+        .carousel {
+            height: 100%;
+
+            .carousel-inner {
+                height: 100%;
+
+                .item {
+                    position: relative;
+                    height: 100%;
+                    width: 100%;
+                    background-position: left bottom;
+
+                    .comm-story {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        padding: 0;
+                        @include module_moduleLiner(0, 1);
+                        width: 100%;
+                        @if $news_storyBoxTextSize {
+                            font-size: $news_storyBoxTextSize;
+                        }
+                        color: $news_storyBoxTextColor;
+                        @include safeBkgs($news_storyBoxBkg, $property: 'background-color');
+
+                        h3 {
+                            margin: 0;
+                            padding: $g5ModulePadding $g5ModulePadding 0 $g5ModulePadding;
+                            @if $news_storyBoxTitleSize {
+                                font-size: $news_storyBoxTitleSize;
+                            }
+                            color: $news_storyBoxTitleColor;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                        .story-content-short {
+                            padding: 0 $g5ModulePadding;
+                            white-space: nowrap;
+
+                            p {
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            }
+                        }
+
+                        .read-more {
+                            padding: 0 $g5ModulePadding $g5ModulePadding $g5ModulePadding;
+
+                            @if $news_storyBoxLinkColor {
+                                a {
+                                    color: $news_storyBoxLinkColor;
+                                }
+                            }
+                            @if $news_storyBoxLinkHoverColor {
+                                &:hover {
+                                    color: $news_storyBoxLinkHoverColor;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2 {
+        .carousel {
+            .carousel-inner {
+                .item {
+                    .comm-story {
+                        @include module_moduleLiner(0, 0.5);
+                        width: 100%;
+
+                        h3 {
+                            padding-top: $g5ModulePadding / 2;
+                            font-size: $baseFontSize;
+                            line-height: $baseLineHeight;
+                        }
+                        .story-content-short {
+                            display: none;
+                        }
+                        .story-content-short {
+                            padding-bottom: $g5ModulePadding / 2;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+} /* /.module.news */
+
+/* ----- PAGE STYLES ----- */
+.page.news {
+    h3 {
+        margin: 0;
+    }
+    .timeStamp {
+        color: $news_pageTimeStampColor;
+    }
+    #collectionOfStories {
+        .row {
+            margin-bottom: 20px;
+        }
+    }
+    .spin {
+        display: block;
+        margin: 0 auto;
+        width: $spinner_widthHeight;
+        height: $spinner_widthHeight;
+    }
+} /* /.page.news */
+

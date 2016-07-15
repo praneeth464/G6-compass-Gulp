@@ -1,0 +1,2400 @@
+.page.ssiContestSummary {
+    overflow-x: hidden;
+
+    .spinnerOverlayWrap {
+        .spincover {
+            background: rgba(255, 255, 255, .5);
+            top: 0;
+            bottom: 0;
+            right: -40px;
+            left: -40px;
+            padding: 0 40px;
+            position: absolute;
+
+            .spin {
+                position: relative;
+                width: 100px;
+                height: 100px;
+                left: 50%;
+                margin-left: -90px;
+                display: block;
+            }
+        }
+    }
+
+    h3 {
+        font-size: 18px; // lifted from _quiz -> .previewStepBoxTitle
+        line-height: $baseLineHeight;
+        margin-top: 0;
+    }
+
+    .editStepBtn {
+        float: right;
+    }
+}
+
+.page.ssi {
+    table .header {
+        text-align: center;
+    }
+
+    .tabWrap {
+        .nav-tabs {
+            margin-bottom: 0;
+
+            .active a {
+                background-color: $ssiDetail_SIU_achievedDetails_activeTabColor;
+            }
+
+            a {
+                background-color: $ssiDetail_SIU_achievedDetails_inactiveTabColor;
+                cursor: pointer;
+            }
+        }
+
+        .tab-content {
+            background-color: $ssiDetail_SIU_achievedDetails_activeTabColor;
+            padding: 20px 0;
+        }
+    }//.tabWrap
+
+    .hiddenContestType {
+        display: none;
+    }
+
+    .splitColWrap {
+        .splitCol {
+            width: 50%;
+            margin: 0;
+            float: left;
+            list-style: none;
+
+            li:nth-child(2n) {
+                background-color: #f2f2f2;
+            }
+        }
+
+        .splitColA {
+            &.splitColBEmpty {
+                width: 100%;
+            }
+        }
+
+        .even {
+            background-color: #FFF;
+        }
+
+        .odd {
+            background-color: #f2f2f2;
+        }
+
+        .you {
+            background-color: #CBCBCB;
+        }
+    }//.splitColWrap
+
+    .contestStatus {
+        .pending,
+        .valid,
+        .invalid {
+            display: none;
+            height: 20px;
+            width: 20px;
+        }
+
+        &.pending > .pending,
+        &.valid > .valid,
+        &.invalid > .invalid {
+            display: block;
+        }
+    }//.contestStatus
+
+    .submitWrap {
+        button,
+        .contestCopyStatus {
+            float: left;
+        }
+    } //.submitWrap
+} //.page.ssi
+
+#ssiPageView {
+    position: relative;
+
+    .spinner {
+        height: 30px;
+        width: 30px;
+        position: absolute;
+        margin-left: 10px;
+
+        @media (max-width: 415px){
+            right: 30px;
+            top: 55px;
+        }
+    }
+
+    .spincover {
+        position: absolute;
+        top: 20%;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 10000;
+    }
+
+    .spin {
+        display: block;
+        margin: 0 auto;
+        width: $spinner_widthHeight;
+        height: $spinner_widthHeight;
+    }
+
+    .contestCreateSpinner {
+        height: 30px;
+        width: 30px;
+        display: inline-block;
+        margin-bottom: -13px;
+    }
+
+    .breadCrumbs {
+        margin-left: 0;
+
+        li {
+            display: inline-block;
+            list-style: none;
+
+            &:last-child:after {
+                content: "";
+            }
+
+            &:after {
+                content: ">";
+                padding-left: 5px;
+            }
+        }
+    }//.breadCrumb
+
+    .prompt {
+        display: none;
+    }//.prompt
+
+    .promptQtip {
+        form.copyContest {
+            margin-bottom: 5px;
+        }
+
+        legend {
+            margin-bottom: 8px;
+        }
+
+        .contestName {
+            margin-bottom: 5px;
+        }
+
+        .contestNameStatus {
+            min-height: 35px;
+
+            &.invalid > .invalid,
+            &.valid > .valid {
+                display: block;
+            }
+
+            i {
+                float: left;
+                height: auto;
+                width: auto;
+                font-size: 1.5em;
+            }
+
+            .valid {
+                color: green;
+            }
+
+            .invalid {
+                color: red;
+            }
+
+            .msg {
+                display: block;
+                margin-left: 18px;
+            }
+        }
+    } //.promptQtip
+
+    .payoutsShowLess {
+        .payoutsToggle.showLess {
+            display: none;
+        }
+    } //.payoutsShowLess
+
+    .payoutsShowMore {
+        .payoutsToggle.showMore {
+            display: none;
+        }
+    } //.payoutsShowLess
+
+    .stackRankShowMore {
+        .showLess {
+            display: inline-block;
+        }
+
+        .showMore {
+            display: none;
+        }
+    } //.stackRankShowMore
+
+    .stackRankShowLess {
+        .stackRankWrap,
+        .showLess {
+            display: none;
+        }
+
+        .showMore {
+            display: inline-block;
+        }
+    } //.stackRankShowLess
+
+    .stackRankShowAll {
+        .showLess {
+            display: inline-block;
+        }
+
+        .showMore {
+            display: none;
+        }
+    } //.stackRankShowAll
+
+    #ssiContestDetailsTable {
+        .emptyCell {
+            line-height: 0;
+            padding: 0;
+            border: 0;
+        }
+    }
+
+    .createNewContest.btn-link {
+        color: $white;
+        font-weight: bold;
+        text-shadow: none;
+        text-transform: capitalize;
+
+        i {
+            margin-right: 5px;
+        }
+
+        &:hover {
+            color: $grayLight;
+            text-decoration: none;
+        }
+    }
+
+    .managerStackRankWrap {
+        .allToggle {
+            display: block;
+        }
+
+        div.showMore {
+            display: none;
+        }
+
+        .stackRankShowAll div.showMore {
+            display: block;
+        }
+
+        &.allFilter {
+            .allToggle {
+                display: none;
+            }
+
+            div.showMore {
+                display: block;
+            }
+        }
+    }//.managerStackRankWrap
+
+    .modal .padding h3 {
+        margin-bottom: 10px;
+    }
+
+    #ssiContestNav {
+        margin-bottom: 10px;
+        position: relative;
+
+        .contestSelect {
+            width: 360px;
+        }
+    }
+
+    .creatorDetailsBtns .btn + .btn {
+        margin-left: 0;
+    }
+
+    .editWrap a {
+        color: $white;
+        line-height: 34px;
+
+        i {
+            margin-right: 10px;
+        }
+    }
+
+    @media (max-width: 767px){
+        .editWrap {
+            text-align: left;
+        }
+    }
+
+    #ssiContestView {
+        .table .iconCol {
+            text-align: center;
+
+            i {
+                display: inline-block;
+                font-size: 17px;
+                margin-top: 5px;
+            }
+        }
+
+        //position the pax name on drill down in the page topper. Not ideal but easiest to implement with time constraints.
+        .paxDrillWrap {
+            color: $white;
+            position: absolute;
+            top: 0;
+
+            h3 {
+                line-height: 25px;
+            }
+        }
+
+        .sectionTitle {
+            color: $ssiDetails_sectionTitleColor;
+            font: {
+                size: $baseFontSize * 1.786;
+                weight: 200;
+            }
+            text-transform: capitalize;
+        }
+
+        .asOfDate {
+            font-size: $baseFontSize * .929;//13px
+        }
+
+        .contestInfo {
+            margin-bottom: 30px;
+            min-height: 110px;
+
+            h2 {
+                font: {
+                    family: $ssi_primaryFontFamily;
+                    size: $baseFontSize * 2.857;//40px
+                    weight: 200;
+                }
+                line-height: $baseLineHeight * 2;//40px
+                margin-top: 30px;
+                word-wrap: break-word;
+
+                @media (max-width: 767px){
+                    font-size: $baseFontSize * 3.571;//50px
+                    line-height: $baseLineHeight * 2.5;//50px
+                }
+            }
+
+            p {
+                font-size: $baseFontSize * 0.857;//12px
+                line-height: $baseLineHeight * 1.15;//23px
+            }
+        }
+
+        .contestDates {
+            font-size: $baseFontSize * 1.143;//16px
+        }
+
+        .activityDescriptionToggle {
+            &.hide {
+                display: none;
+            }
+        }
+
+        .toggleDescriptionWrap {
+            display: none;
+
+            &.shown {
+                display: block;
+            }
+        }
+
+        .daysToGo {
+            font: {
+                family: $ssi_primaryFontFamily;
+                size: $baseFontSize * 2.143;//30px
+                weight: bold;
+            }
+
+            i {
+                margin-right: 5px;
+            }
+        }
+
+        .icon-gift {
+            font-size: $baseFontSize * 3.9286;//55px
+        }
+
+        .contestAttachment {
+            margin: 20px 0;
+
+            a {
+                color: $black;
+                display: block;
+                font-size: 12px;
+                text-decoration: underline;
+                word-wrap: break-word;
+            }
+
+            img {
+                height: 34px;
+                width: 34px;
+            }
+        }
+
+        .stackRankToggle {
+            color: $black;
+            margin-bottom: 10px;
+            text: {
+                decoration: underline;
+                transform: uppercase;
+            }
+        }
+
+        .ssiContestEndActions {
+            background: #999999;
+            padding: 20px 0 10px;
+            margin-bottom: 30px;
+
+            h4 {
+                margin: 0 20px 20px;
+            }
+
+            .ssiContestEndSection {
+                margin: 0 20px;
+                min-height: 50px;
+
+                & + .ssiContestEndSection {
+                    border-top: 1px solid #444444;
+                    padding: 20px 0 0;
+                }
+
+                div {
+                    margin-left: 0;
+                }
+
+                .btn {
+                    width: 80%;
+                }
+            }
+        }
+
+        .statusBanner {
+            background-color: $ssiDetails_statusBannerBgColor;
+            color: $ssiDetails_statusBannerTextColor;
+            font-size: $baseFontSize * 2.143;//30px
+            margin-bottom: 20px;
+
+            h3 {
+                padding: 20px;
+                font-weight: normal;
+            }
+        }
+
+        .paxStatusBanner {
+            line-height: 2;
+
+            .statusBanner {
+                display: table;
+            }
+
+            .paxBadge {
+                display: table-cell;
+                width: 25%;
+                vertical-align: middle;
+
+                img {
+                    height: 100px;
+                    padding: 20px;
+                    width: 100px;
+                }
+
+                @media (max-width: 1199px) {
+                    h3 {
+                        font-size: 18px;
+                    }
+                }
+            }
+
+            .payoutAmount {
+                display: table-cell;
+                width: 50%;
+                padding: 20px;
+                text-align: center;
+                vertical-align: middle;
+                line-height: 1;
+
+                span {
+                    font: {
+                        family: $ssi_primaryFontFamily;
+                        size: $baseFontSize * 3.9286;//55px
+                        weight: 200;
+                    }
+                }
+            }
+
+            .shopNow {
+                display: table-cell;
+                width: 25%;
+                vertical-align: middle;
+            }
+
+            @media (max-width: 979px){
+                .btn {
+                    font-size: $baseFontSize * 1.071;//15px
+                    padding: 8px 15px;
+                    margin-top: 42%;
+                }
+            }
+
+            @media (max-width: 767px){
+                line-height: 1;
+
+                .payoutAmount {
+                    span {
+                        margin-left: 20px;
+                    }
+                }
+
+                .btn {
+                    margin: 15px 0 15px 20px;
+                }
+
+                .paxBadge {
+                    text-align: center;
+                }
+            }
+
+            @media (max-width: 479px){
+                .btn {
+                    margin-left: 0;
+                }
+            }
+        }
+
+        .table {
+            .icon-sort-up {
+                display: none;
+            }
+
+            .asc.sorted {
+                .icon-sort-up {
+                    display: inline-block;
+                }
+
+                .icon-sort-down {
+                    display: none;
+                }
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1200px){
+            .contestInfo h2 {
+                font-size: $baseFontSize * 4.286;//60px
+                line-height: $baseLineHeight * 3;//60px
+            }
+
+            .daysToGo {
+                font-size: $baseFontSize * 1.423;//20px
+            }
+        }
+
+        @media (max-width: 767px){
+            .contestInfo {
+                min-height: 1px;
+            }
+
+            .contestMeta.text-right {
+                text-align: left;
+            }
+
+            .contestAttachment {
+                top: 0;
+                margin-bottom: 20px;
+            }
+        }
+
+        .contestWrapper {
+            color: $white;
+            margin-bottom: 20px;
+
+            .dataSection {
+                font-family: $ssi_primaryFontFamily;
+                text-align: center;
+
+                .payoutGift {
+                    .giftCount {
+                        span {
+                            font-size: $baseFontSize * 1.071;//15px
+                        }
+                    }
+                }
+
+                h5 {
+                    line-height: 30px;
+                    font-size: $baseFontSize * 3.21;//45px
+                    font-weight: 100;
+
+                    &.activityGoalAchieved {
+                        margin: 0 0 25px;
+                    }
+                }
+
+                span {
+                    font-size: $baseFontSize * 1.357;//20px
+                    font-family: $ssi_secondaryFontFamily;
+                }
+
+            }//.dataSection
+
+            .payoutData {
+                height: 180px;
+
+                &.tall {
+                    height: 210px;
+
+                    .payoutTitle {
+                        margin-bottom: 30px;
+                    }
+                }
+
+                .payoutTitle {
+                    font: {
+                        size: $baseFontSize * 1.786;//25px
+                        weight: 200;
+                    }
+
+                    p {
+                        margin: 20px 0 30px 25px;
+                    }
+                }
+
+                .activityRemaining {
+                    position: relative;
+                    top: -27px;
+
+                    h5 {
+                        line-height: normal;
+                        margin-top: 0;
+                    }
+                }
+
+                @media (max-width: 767px){
+                    height: 280px;
+                    overflow: auto;
+
+                    .span7.offset1 {
+                        margin-left: 15%;
+                        width: 70%;
+                    }
+
+                    .activityRemaining {
+                        margin: 60px 0 40px;
+                        top: 0;
+                    }
+                }
+
+                @media (max-width: 575px) {
+
+                }
+            }//.payoutData
+
+            &.objectives {
+                .contestData {
+                    background: $ssi_objectives_bgColor;
+                    position: relative;
+
+                    .dataSection {
+                        margin-top: 10%;
+                    }
+                }
+
+                .dataSection {
+                    &.activityRemaining h5 {
+                        color: lighten($ssi_objectives_bgColor, 30%);
+                    }
+                }
+
+                .payoutData {
+                    background: lighten($ssi_objectives_bgColor, 10%);
+                }
+
+                .chartHolder {
+                    font-size: $baseFontSize * 1.43;//20px
+                    height: 320px;
+                    width: 320px;
+                }
+
+                .chartPercentProgress {
+                    font-family: $ssi_primaryFontFamily;
+                    height: 320px;
+                    width: 320px;
+
+                    strong {
+                        font-size: $baseFontSize * 6.86;//96px
+                        //container height - half the font size / 2
+                        margin-top: (320px - 32px) /2;
+                    }
+                }
+
+                .achievedCountWrap {
+                    font-size: $baseFontSize * 1.43;//20px
+                    margin: 0 0 30px 0;
+                }
+
+                .multipleObjectives .achievedCountWrap {
+                    margin: 20% 5%;
+                }
+
+                @media (min-width: 768px) and (max-width: 1200px){
+                    .chartHolder {
+                        font-size: 10px;
+                        height: 200px;
+                        width: 200px;
+                    }
+
+                    .chartPercentProgress {
+                        height: 200px;
+                        width: 200px;
+
+                        strong {
+                            font-size: 56px;
+                            //container height - half the font size / 2
+                            margin-top: (200px - 28px) / 2;
+                        }
+                    }
+                }
+
+                @media (max-width: 767px){
+                    .chartHolder {
+                        margin: 0 auto;
+                        position: relative;
+                    }
+
+                    .achievedCountWrap {
+                        margin: 0;
+                        padding: 10px;
+                    }
+                }
+            }//&.objectives
+
+            &.doThisGetThat {
+                .activityDescription {
+                    display: block;
+                    font-size: 20px;
+                    margin-bottom: 20px;
+                }
+
+                .contestActivityInfo {
+                    background-color: darken($ssi_DTGT_bgColor, 5%);
+                    @include box-sizing(border-box);
+                    padding: 20px;
+
+                    p {
+                        font: {
+                            size: $baseFontSize * 1.286;//18px
+                            weight: 200;
+                        }
+                        margin-bottom: 5px;
+                    }
+
+                    .maximumPayout {
+                        position: relative;
+
+                        // pull text to the right to offset the way G5 pulls .row to the left
+                        @media (min-width: 1200px) {
+                            right: -52px;
+                        }
+                        @media (min-width: 980px) and (max-width: 1199px) {
+                            right: -34px;
+                        }
+                        @media (min-width: 768px) and (max-width: 979px) {
+                            right: -18px;
+                        }
+                        @media (max-width: 767px) {
+                            right: auto;
+                        }
+
+                        p {
+                            font-size: 16px;
+
+                            &:first-child {
+                                margin-top: 10%;
+                            }
+
+                            @media (max-width: 767px) {
+                                &:first-child {
+                                    margin-top: 1%;
+                                }
+                                text-align: left;
+                            }
+                        }
+                    }
+                }
+
+                .contestData {
+                    background-color: $ssi_DTGT_bgColor;
+                    margin-bottom: 20px;
+
+                    &.ssiManagerView {
+                        &.payoutTypePoints {
+                            .dataSection {
+                                width: 23%;
+
+                                h5 {
+                                    width: 247px;
+                                }
+
+                                @media (max-width: 1200px){
+                                    h5 {
+                                        width: 199px;
+                                    }
+                                }
+
+                                @media (max-width: 979px){
+                                    h5 {
+                                        width: 154px;
+                                    }
+                                }
+
+                                @media (max-width: 767px) {
+                                    width: 100%;
+                                    h5 {
+                                        width: 100%;
+                                    }
+                                }
+                            }
+                        }
+
+                        &.complete {
+                            .dataSection {
+                                width: 23%;
+
+                                h5 {
+                                     width: 246px;
+                                }
+
+                                @media (max-width: 1200px){
+                                    h5 {
+                                        width: 199px;
+                                    }
+                                }
+
+                                @media (max-width: 979px){
+                                    h5 {
+                                        width: 154px;
+                                    }
+                                }
+
+                                @media (max-width: 767px) {
+                                    width: 100%;
+                                    h5 {
+                                        width: 100%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .payoutGift {
+                    height: 40px;
+                    margin: 10px auto;
+
+                    .icon-gift {
+                        margin-left: 1ex;
+                    }
+
+                    @media (max-width:979px){
+                        height: 50px;
+                        margin: 15px auto;
+                    }
+                }
+
+                .dataSection {
+                    margin: 35px 5px;
+                    width: 18%;
+
+                    h5 {
+                        font-size: $baseFontSize * 3.857;//54px
+                        line-height: $baseLineHeight * 2;//40px
+                        width: 194px;
+                    }
+
+                    &.activityPayout {
+                        h5 {
+                            sup {
+                                font-size: 29%;
+                                top: -1.5em;
+                            }
+                        }
+                    }
+
+                    @media (max-width:1200px){
+                        h5 {
+                            width: 156px;
+                        }
+                    }
+
+                    @media (max-width: 979px){
+                        h5 {
+                            font-size: $baseFontSize * 3.57;//50px
+                            line-height: initial;
+                            height: 58px;
+                            width: 122px;
+                        }
+                    }
+
+                    @media (max-width:767px){
+                        margin-top: 0;
+                        margin-bottom: 0;
+                        padding: 10px 0;
+                        width: 100%;
+
+                        h5 {
+                            height: auto;
+                            margin-top: 0;
+                            width: 100%;
+                        }
+                    }
+
+                }//.dataSection
+            }//&.doThisGetThat
+
+            &.stackRank {
+                color: $black;
+
+                .contestData {
+                    background-color: $ssi_stackRank_bgColor;
+                    color: $white;
+
+                    &.complete {
+                        margin-bottom: 20px;
+                    }
+                }
+
+                .ssiManager .activityProgress h5 {
+                    line-height: normal;
+
+                    span {
+                        display: inline-block;
+                        font-weight: 500;
+                        padding-top: 15px;
+                        vertical-align: top;
+                    }
+                }
+
+                .activityInfo {
+                    margin-top: 20px;
+                }
+
+                .payoutsRow {
+                    background-color: lighten($ssi_stackRank_bgColor, 10%);
+                    color: $white;
+                    margin-bottom: 15px;
+
+                    h4 {
+                        margin: 20px;
+                        font-size: $baseFontSize * 1.57;//22px
+                    }
+
+                    .bottomPayoutInfo {
+                        margin-bottom: 10px;
+                    }
+                }
+
+                .dataSection {
+                    margin-top: 55px;
+                    margin-bottom: 45px;
+                }
+
+                .payout {
+                    height: 105px;
+                    margin-bottom: 35px;
+                    padding: 35px 0 0 25px;
+                    width: 29%;
+
+                    .payoutRank {
+                        font: {
+                            family: $ssi_primaryFontFamily;
+                            size: $baseFontSize * 3.929;//55px
+                            weight: bold;
+                        }
+                        float: left;
+                        line-height: $baseLineHeight * 2.75;//55px
+                    }
+
+                    .payoutInfo {
+                        display: table;
+                        margin-left: 16%;
+                    }
+
+                    .payoutBadge {
+                        height: 60px;
+                        float: left;
+                        width: 60px;
+                    }
+
+                    .payoutAmount,
+                    .badgeName {
+                        display: table-cell;
+                        font-weight: 200;
+                        left: 10px;
+                        margin-left: 70px;
+                        padding-right: 10px;
+                        position: relative;
+                        vertical-align: middle;
+                        width: 74%;
+
+                        &.no-badge {
+                            top: 20px;
+                        }
+                    }
+
+                    .badgeName {
+                        font-size: 18px;
+                    }
+
+                    .payoutAmount {
+                        font-size: $baseFontSize * 1.643;
+
+                        span {
+                            padding-left: 5px;
+                            text-transform: uppercase;
+                        }
+                    }
+
+                    & + .payout {
+                        border-left: 1px solid $black;
+                        margin-left: 1%;
+                    }
+                }
+
+                .minimumQualifier {
+                    display: block;
+                    font: {
+                        size: $baseFontSize * 1.429;//20px
+                        weight: 200;
+                    }
+                    margin: 0 0 20px 20px;
+                }
+
+                .activityAsOfDate {
+                    margin-bottom: 0;
+                }
+
+                .payoutsToggle {
+                    color: $white;
+                    font: {
+                        size: $baseFontSize * 1.429;//20px
+                        weight: 200;
+                    }
+                    margin-right: 20px;
+                    text-decoration: underline;
+                }
+
+                .stackRankAllWrap .creatorDetailsBtns {
+                    text-align: left;
+                }
+
+                .stackRankBoard {
+                    ol {
+
+                        b,
+                        .payoutAmount {
+                            float: left;
+                        }
+
+                        .payoutAmount {
+                            margin-left: 4%;
+
+                            &.payoutWithBadge {
+                                margin-left: 0;
+                            }
+                        }
+
+                        img {
+                            float: left;
+                            height: 40px;
+                            width: 40px;
+
+                            &.avatar {
+                                margin: 10px 6% 0 3%;
+                            }
+
+                            &.payoutBadge {
+                                margin: 10px 10px 0 4%;
+                            }
+                        }
+
+                        .leaderName {
+                            display: inline-block;
+                            float: left;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            width: 25%;
+                        }
+
+                        &.splitCol {
+                            .leaderName {
+                                width: 39%;
+                            }
+                        }
+                    }
+                }
+
+                .exportLink {
+                    color: $black;
+                    text-transform: uppercase;
+
+                    i {
+                        margin-right: 5px;
+                    }
+                }
+
+                @media (max-width: 1200px){
+                    .payout {
+                        width: 27%;
+
+                        .payoutAmount,
+                        .badgeName {
+                            width: 67%;
+                        }
+                    }
+
+                    .payoutInfo {
+                        margin-left: 5%;
+                    }
+
+                    .stackRankBoard {
+                        ol {
+                            b {
+                                width: 23px;
+                            }
+                            img.avatar {
+                                margin-right: 6%;
+                            }
+                        }
+                    }
+                }
+
+                @media (max-width: 980px){
+                    .payout .payoutAmount,
+                    .payout .badgeName {
+                        font-size: 18px;
+                    }
+
+                    .stackRankBoard {
+                        ol {
+                            font-size: $baseFontSize * 1.286;//18px
+
+                            img {
+                                height: 30px;
+                                width: 30px;
+
+                                &.avatar {
+                                    margin-right: 3%;
+                                }
+
+                                &.payoutBadge {
+                                    margin-left: 6%;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                @media (max-width: 767px){
+                    .payout + .payout {
+                        border-left: none;
+                        margin-left: 30px;
+
+                        &:nth-child(3n+1) {
+                            margin-left: 0;
+                        }
+                    }
+
+                    .payout {
+                        border-bottom: 1px solid $black;
+                        height: 125px;
+                        margin-bottom: 5px;
+                        padding-top: 0;
+                        width: 90%;
+
+                        .payoutAmount,
+                        .badgeName {
+                            font-size: 16px;
+                            width: 87%;
+                        }
+
+                        .payoutRank {
+                            position: relative;
+                            top: 30px;
+                        }
+
+                        .payoutInfo {
+                            margin-left: 5%;
+                            position: relative;
+                            width: 81%;
+                            top: 30px;
+                        }
+
+                        .payoutBadge {
+                            height: 50px;
+                            width: 50px;
+                        }
+                    }
+
+                    .bottomPayoutInfo {
+                        padding: 10px 0 15px;
+                    }
+
+                    .payoutsToggle {
+                        margin-left: 20px;
+                    }
+
+                    .text-right {
+                        text-align: left;
+                    }
+
+                    .minimumQualifier {
+                        margin-left: 0;
+                    }
+                }
+
+                @media (max-width: 700px){
+                    .stackRankBoard {
+                        ol {
+                            font-size: $baseFontSize * .929;//13px
+
+                            li {
+                                padding: 5px 10px;
+                            }
+
+                            img.avatar {
+                                margin-left: 0;
+                            }
+                        }
+                    }
+                }
+
+                @media (max-width: 480px){
+                    .payout .payoutAmount,
+                    .payout .payoutBadge {
+                        width: 80%;
+                    }
+
+                    .stackRankBoard ol {
+                        font-size: $baseFontSize * .857;//12px
+
+                        .score {
+                            display: none;
+                        }
+
+                        .leaderName {
+                            width: 35%;
+                        }
+
+                        img {
+                            height: 20px;
+                            width: 20px;
+
+                            &.payoutBadge {
+                                margin-left: 2%;
+                            }
+                        }
+                    }
+                }
+            }//&.stackRank
+
+            &.stepItUp {
+                .contestData {
+                    background-color: $ssi_SIU_bgColor;
+                    margin-top: 10px;
+
+                    .dataSection {
+                        margin-top: 35px;
+                        margin-bottom: 35px;
+
+                        @media (max-width:769px){
+                            float: left;
+                            width: 252px;
+                        }
+                    }
+                }
+
+                .payoutData {
+                    background-color: lighten($ssi_SIU_bgColor, 10%);
+                    margin-bottom: 10px;
+                }
+
+                .dataSection {
+                    &.activityRemaining h5 {
+                        color: lighten($ssi_SIU_bgColor, 30%);
+                    }
+                }
+
+                .nav-tabs {
+                    border: none;
+                    margin-left: 0;
+                    padding-left: 0;
+
+                    .active a {
+                        background-color: $ssi_SIU_bgColor;
+                        border-color: $ssi_SIU_bgColor;
+                        box-shadow: none;
+                        color: $white;
+                    }
+
+                    a {
+                        color: $black;
+                        background-color: darken($ssi_SIU_bgColor, 7%);
+                        box-shadow: inset 0px -3px 5px -2px rgba(0,0,0,.3);
+
+                        &:hover {
+                            border-color: $ssi_SIU_bgColor;
+                        }
+                    }
+                }
+
+                .tab-content {
+                    background-color: $ssi_SIU_bgColor;
+                }
+
+                .participantAchieved p {
+                    font-size: $baseFontSize * 1.786;//25px
+                    margin-left: 40px;
+                }
+
+                .barChartContainer {
+                    height: 440px;
+                    margin: 0 auto;
+                    width: 748px;
+
+                    svg tspan {
+                        font: {
+                            family: $ssi_secondaryFontFamily;
+                            size: $baseFontSize * 1.643;//23px
+                            weight: 200;
+                        }
+                    }
+
+                    .barChart {
+                        height: 380px;
+                        width: 778px;
+                    }
+
+                    .barChartWrapper {
+                        height: 380px;
+                        margin-left: 0;
+                        width: 778px;
+                    }
+
+                    @media (max-width: 979px) and (min-width: 670px){
+                        width: 618px;
+
+                        .barChartWrapper,
+                        .barChart {
+                            width: 618px;
+                        }
+                    }
+
+                    @media (max-width: 669px) {
+                        height: 350px;
+                        width: 360px;
+
+                        svg tspan {
+                            font-size: $baseFontSize * 1.286;//18px
+                        }
+
+                        .barChartWrapper,
+                        .barChart {
+                            height: 310px;
+                            width: 100%;
+                        }
+                    }
+                }//.barChartContainer
+
+                .goalLevels {
+                    margin-bottom: 10px;
+                    text-align: center;
+
+                    span,
+                    strong {
+                        display: inline-block;
+                        margin-bottom: 17px;
+                    }
+
+                    strong {
+                        color: $black;
+                        font-size: $baseFontSize * 1.286;//18px
+                    }
+
+                    @media (max-width: 767px){
+                        &.span2 {
+                            float: left;
+                            width: 128px;
+                        }
+                    }
+                }//.goalLevels
+
+                .goalLabels {
+                    color: $black;
+                    font: {
+                        family: $ssi_primaryFontFamily;
+                        size: $baseFontSize * 1.71;//24px
+                        weight: bold;
+                    }
+
+                    span {
+                        display: inline-block;
+                        margin-bottom: 15px;
+                    }
+
+                    @media (max-width: 767px){
+                        &.span2 {
+                            float: left;
+                            width: 128px;
+                        }
+                    }
+                }//.goalLabels
+
+                .goalBonus {
+                    padding-left: 20px;
+                }
+
+                #levels {
+                    overflow: hidden;
+                }
+
+                @media (max-width: 767px){
+                    #levels{
+                        overflow: auto;
+                        width: 770px;
+                    }
+                }
+            }//&.stepitUp
+
+            &.complete {
+                color: $black;
+
+                &.stepItUp,
+                &.objectives {
+                    .dataSection.activityRemaining h5 {
+                        color: $black;
+                    }
+                }
+            }
+        }//.contestWrapper
+
+        .stackRankWrap,
+        .stackRankBoard {
+            border-bottom: 1px solid $black;
+            margin-top: 20px;
+            padding-bottom: 25px;
+
+            .sectionTitle {
+                margin-bottom: 30px;
+            }
+
+            .viewAll {
+                color: $black;
+                text: {
+                    decoration: underline;
+                    transform: uppercase;
+                }
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            ol {
+                color: #333d3d;
+                font-size: $baseFontSize * 1.21;//17px
+                list-style-type: none;
+                margin: 0;
+
+                li {
+                    background-color: darken($white, 5%);
+                    line-height: 60px;
+                    padding: 5px 2% 5px 6%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+                li:nth-child(2n) {
+                    background-color: $white;
+                }
+
+                li.teamMember {
+                    background-color: lighten($ssi_stackRank_bgColor, 20%);
+                }
+
+                li.teamMember:nth-child(2n) {
+                    background-color: lighten($ssi_stackRank_bgColor, 25%);
+                }
+
+                li.you {
+                    background-color: $ssi_stackRank_bgColor;
+                }
+
+                b {
+                    display: inline-block;
+                    font-weight: 400;
+                    padding-right: 8px;
+                    width: 39px;
+                }
+
+                img.avatar {
+                    height: 40px;
+                    margin: 0 4% 0 3%;
+                    width: 40px;
+                }
+
+                .leaderName {
+                    color: #333d3d;
+                }
+
+                .score {
+                    float: right;
+                    margin: 0 3% 0 2%;
+                }
+
+               &.splitCol {
+                    li {
+                        line-height: 40px;
+                    }
+
+                    .score {
+                        margin: 5px 3% 0 1%;
+
+                        & + .payoutAmount {
+                            margin: 5px 10px 0 12%;
+                        }
+                    }
+
+                    b,
+                    img.avatar {
+                        margin-top: 5px;
+                    }
+
+                    a.leaderName,
+                    .leaderName {
+                        margin-top: 5px;
+                    }
+                }
+
+
+                a.leaderName {
+                    text-decoration: underline;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+
+                .rank {
+                    width: 75px;
+                }
+
+                &.splitCol {
+                    font-size: $baseFontSize * 1.21;//17px
+                    width: 49%;
+                }
+
+                &.splitColB {
+                    margin-left: 2%;
+                }
+            } // ol
+
+            @media (max-width: 980px) and (min-width: 768px){
+                ol.splitCol {
+                    font-size: $baseFontSize * .929;//13px
+
+                    b {
+                        padding-right: 4px;
+                    }
+                }
+            }
+
+            @media (max-width: 767px){
+                ol.splitCol {
+                    width: 100%;
+                }
+
+                ol.splitColB {
+                    margin: 0;
+                }
+            }
+
+            @media (max-width: 700px){
+                ol {
+                    font-size: $baseFontSize * 1.143;//16px
+
+                    li {
+                        padding: 5px 20px;
+                    }
+
+                    img.avatar {
+                        height: 40px;
+                        margin-right: 7%;
+                        width: 40px;
+                    }
+
+                    .rank {
+                        width: 50px;
+                    }
+                } // ol
+            }
+        }//.stackRankWrap
+
+        .creatorDetailsBtns {
+            height: 34px;
+            margin-bottom: 10px;
+            position: relative;
+            text-align: right;
+
+            @media (max-width: 767px){
+                text-align: left;
+
+                .pullRightBtns {
+                    position: relative;
+                    margin-bottom: 20px;
+                }
+            }
+
+            &.backToContestWrap {
+                text-align: left;
+                margin-bottom: 20px;
+                margin-top: 10px;
+            }
+        }
+
+        .exportBtns {
+            height: 34px;
+            position: absolute;
+
+            .pullRightBtns {
+                position: relative;
+                right: 0;
+                top: -5px;
+            }
+
+            @media (max-width: 767px){
+                right: 15px;
+            }
+        }
+
+        .contestDetailsExport {
+            @include safeImgUrls('reports/reports_exportXls.png', $ssi_exportImgUrlPath);
+            background-repeat: no-repeat;
+            display: inline-block;
+            height: 36px;
+            width: 36px;
+        }
+
+        //Participant Details Extra Styles
+        .participantContest {
+            .paxRankInfo {
+                border-top: 1px solid $black;
+                border-bottom: 1px solid $black;
+                color: $black;
+                font-family: $ssi_primaryFontFamily;
+                padding: 20px 0;
+                margin-bottom: 20px;
+                margin-top: -15px;
+
+                .rank,
+                .rankActivity {
+                    display: block;
+                    padding-bottom: 10px;
+                }
+
+                .rank {
+                    font-size: $baseFontSize * 1.7857;//25px
+                }
+
+                .rankActivity {
+                    font-size: $baseFontSize * 1.571;//22px
+                }
+
+                .behindLeader {
+                    display: block;
+                    font-size: $baseFontSize * 1.7857;//25px
+                    line-height: 50px;
+                    text-transform: uppercase;
+
+                    &.isLeader {
+                        line-height: 75px;
+                    }
+
+                    strong {
+                        font-size: $baseFontSize * 3.57;//50px
+                        padding-left: 10px;
+                        position: relative;
+                        top: 8px;
+                    }
+
+                    @media (max-width: 767px){
+                        margin-top: 30px;
+                    }
+                }
+
+                .avatar {
+                    float: left;
+                    height: 75px;
+                    margin-right: 2%;
+                    width: 75px;
+                }
+
+                .viewActivityHistory {
+                    font-family: $ssi_secondaryFontFamily;
+                }
+            }//.paxRankInfo
+
+            .paxActivityData {
+                // Overriding some of the Bootstrap and G5 defaults here so that
+                // the spans always fill 100% of the parent containers height.
+                //
+                // At screen sizes below 768px, we will go revert to using
+                // the Bootstrap and G5 defaults.
+                @media (min-width: 768px) {
+                    display: table;
+                    margin-left: 0;
+                    width: 100%;
+                }
+
+                .span7 {
+                    @media (min-width: 768px) {
+                        display: table-cell;
+                        float: none;
+                        vertical-align: top;
+                    }
+
+                    .row {
+                        @media (min-width: 768px) {
+                            margin-left: 0;
+                        }
+
+                        @media (min-width: 1200px){
+                            width: 642px;
+                        }
+
+                        @media (min-width: 980px) and (max-width: 1199px) {
+                            width: 516px;
+                        }
+
+                        @media (min-width: 768px) and (max-width: 979px) {
+                            width: 404px;
+                        }
+                    }
+                }
+
+                .span5 {
+                    @media (min-width: 768px) {
+                        display: table-cell;
+                        float: none;
+                        vertical-align: top;
+                    }
+                }
+                // END overriding style rules ----------------------------------
+
+                .activityDescription {
+                    display: block;
+                    margin-bottom: 0;
+                    padding: 20px;
+                }
+            }//.paxActivityData
+
+            .paxActivityInfo {
+                background: darken($ssi_DTGT_bgColor, 8%);
+                @include box-sizing(border-box);
+                display: block;
+                font-size: $baseFontSize * 1.286;//18px
+                height: 100%;
+                padding: 50px 30px;
+
+                .forEvery {
+                    display: block;
+                    margin-bottom: 30px;
+                }
+
+                .minQualifier {
+                    font-size: $baseFontSize;
+
+                    i:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .earnAwardDescription {
+                color: $black;
+                font-size: $baseFontSize * 1.071;
+            }
+
+            .paxObjectiveInfo {
+                font: {
+                    family: $ssi_primaryFontFamily;
+                    size: $baseFontSize * 2.286;//32px
+                }
+                line-height: 34px;
+                margin-top: 5%;
+                padding-left: 20px;
+
+                span {
+                    display: block;
+                }
+
+                .objectiveAchievedWrap {
+                    margin-bottom: 15px;
+                }
+
+                .badgeImg {
+                    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+                    opacity: 0.5;
+
+                    &.goalAchieved {
+                        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+                        opacity: 1;
+                    }
+                }
+
+                &.objDataSection {
+                    span,
+                    strong {
+                       line-height: 42px;
+                    }
+                }
+            }//.paxObjectiveInfo
+
+            .dataSection h5 {
+                &.activityGoalAchieved {
+                    margin: 0 0 15px;
+                }
+            }
+
+            .paxObjectiveMeta {
+                margin-top: 100px;
+            }
+
+            .paxBottomData {
+                border-top: 1px solid $black;
+
+                .rankData,
+                .bonusData {
+                    @include box-sizing(border-box);
+                    padding: 20px;
+                }
+
+                .rankData {
+                    border-right: 1px solid black;
+
+                    img.avatar {
+                        display: inline-block;
+                        float: left;
+                        height: 70px;
+                        width: 70px;
+                        margin: 0 8px 8px 0;
+                        vertical-align: top;
+                    }
+
+                    .rankDataMeta {
+                        display: inline-block;
+                        margin-left: 10px;
+                        width: 50%;
+                    }
+                }
+
+                .bonusData {
+                    .forEvery {
+                        display: block;
+                        font: {
+                            family: $ssi_primaryFontFamily;
+                            size: $baseFontSize * 2.143;//30px
+                        }
+                        margin-top: 20px;
+                        text-transform: uppercase;
+
+                        span {
+                            padding: 0 10px;
+                        }
+                    }
+                }
+
+                .sectionTitle {
+                    display: block;
+                    margin-bottom: 15px;
+                }
+
+                .yourRank {
+                    display: inline-block;
+                    font: {
+                        family: $ssi_secondaryFontFamily;
+                        size: 18px;
+                    }
+                    margin: 0 0 10px;
+
+                    sup {
+                        top: -0.3em;
+                    }
+                }
+
+                .viewAllStackRank {
+                    font-size: $baseFontSize * 1.214;//17px
+                    margin-top: 0;
+                    padding: 10px;
+
+                    @media (max-width: 479px) {
+                        margin-top: 25px;
+                    }
+                }
+            }
+
+            .contestPayout h4 {
+                font: {
+                    size: $baseFontSize * 1.7857;//25px
+                    weight: 200;
+                }
+                margin: 20px 0;
+                text-transform: uppercase;
+            }
+
+            .contestWrapper.stackRank .payoutsRow {
+                background: $ssi_stackRank_bgColor;
+                margin-bottom: 15px;
+                padding-top: 15px;
+            }
+
+            .objectives {
+                .paxBottomData {
+                    background: lighten($ssi_objectives_bgColor, 20%);
+                }
+            }
+
+            .complete {
+                .paxRankInfo {
+                    border-top: none;
+                    margin-bottom: 20px;
+                }
+            }//.complete
+
+            .doThisGetThat {
+                .rankData {
+                    border-right: none;
+                }
+
+                .dataSection {
+                    margin-bottom: 15px;
+                    margin-top: 15px;
+                    width: 47%;
+
+                    h5 {
+                        width: 288px;
+                    }
+
+                    @media (max-width: 1200px){
+                        h5 {
+                            width: 234px;
+                        }
+                    }
+
+                    @media (max-width: 979px){
+                        h5 {
+                            width: 181px;
+                        }
+                    }
+
+                    @media (max-width: 767px){
+                        width: 100%;
+
+                        h5 {
+                            width: 100%;
+                        }
+                    }
+                }
+            }//.doThisGetThat
+
+            .objectives {
+                .chartPercentHolder {
+                    margin-bottom: 20px;
+                    position: relative;
+                    top: 20px;
+                }
+
+                .paxProgressChart,
+                .paxObjectiveEarnInfo {
+                    margin-left: 0;
+                }
+            }
+
+            .levelChartWrapper {
+                background: $ssi_SIU_bgColor;
+
+                .levelHeader {
+                    height: 400px;
+                }
+
+                .levelCol {
+                    margin-left: 0;
+                    position: relative;
+                    width: 16.667%;
+                }
+
+                .circleData {
+                    height: 100px;
+                    margin-left: 35px;
+                    width: 100px;
+
+                    i {
+                        display: block;
+                        font-size: $baseFontSize * 3.214;//45px
+                    }
+                }
+
+                .chartHolder {
+                    border-top-color: transparent;
+                    color: $ssi_SIU_circleChart_bgArcColor;
+                    height: 200px;
+                    left: -8px;
+                    outline-color: $ssi_SIU_circleChart_fgArcColor;
+                    position: relative;
+                    top: -50px;
+                    width: 200px;
+                    z-index: 20;
+                }
+
+                .chartData {
+                    height: 157px;
+                    left: 20px;
+                    top: 22px;
+                    width: 157px;
+                }
+
+                .levelProgress,
+                .levelGoal {
+                    margin: 0 auto;
+                    width: 70%;
+
+                    span {
+                        display: block;
+                        font:{
+                            family: $ssi_primaryFontFamily;
+                            size: $baseFontSize * 3.214;//45px
+                        }
+                    }
+                }
+
+                .levelProgress span {
+                    padding: 43% 0 9%;
+                }
+
+                .levelGoal span {
+                    padding-top: 12%;
+                }
+
+                .levelDetails {
+                    background-color: lighten($ssi_SIU_bgColor, 18%);
+                    font-size: $baseFontSize * 1.286;//18px
+
+                    span,
+                    strong {
+                        display: block;
+                        height: 20px;
+                        padding: 10px 0;
+                    }
+
+                    &.levelPayoutDetails span {
+                        height: auto;
+                        max-height: 40px;
+                        padding: 10px;
+                        width: 164px;
+                    }
+                }
+
+                .levelDetailsLabel {
+                    padding-left: 15px;
+                }
+
+                .levelName {
+                    font-size: $baseFontSize * 1.286;//18px
+                    line-height: 52px;
+                    margin: 0 0 60px 0;
+
+                    strong {
+                        display: block;
+                        font: {
+                            family: $ssi_primaryFontFamily;
+                            size: $baseFontSize * 3.71;//52px
+                        }
+                    }
+                }
+
+                .levelPayoutDetails {
+                    border-top: 1px solid $black;
+                }
+
+                .levelStatusRemaining {
+                    font: {
+                        family: $ssi_primaryFontFamily;
+                        size: $baseFontSize * 2.143;//30px
+                    }
+                    text: {
+                        align: center;
+                        transform: uppercase;
+                    }
+
+                    span {
+                        color: $white;
+                    }
+
+                    strong {
+                        line-height: normal;
+                    }
+
+                    .offset {
+                        @media (min-width: 1200px) {
+                            position: relative;
+                            bottom: 34px;
+                        }
+                    }
+                }//.levelStatusRemaining
+
+                .backgroundLinkBar {
+                    left: 22%;
+                    top: 214px;
+                    width: 98%;
+                }
+
+                .currentLevelCol {
+                    background-color: lighten($ssi_SIU_bgColor, 24%);
+
+                    .levelDetails {
+                        background-color: lighten($ssi_SIU_bgColor, 24%);
+                    }
+                }
+
+                .lastCol .backgroundLinkBar {
+                    display: none;
+                }
+            } // .levelChartWrapper
+
+            @media (max-width: 1200px){
+                .paxObjectiveInfo {
+                    font-size: $baseFontSize * 1.857;//26px
+                    margin-top: 3%;
+
+                    & > * {
+                        margin-bottom: 10px;
+                    }
+                }
+
+                .chartPercentHolder {
+                    left: 30px;
+                }
+
+                .levelChartWrapper {
+                   .backgroundLinkBar {
+                        top: 210px;
+                    }
+
+                    .chartHolder {
+                        height: 160px;
+                        top: -30px;
+                        width: 160px;
+                    }
+
+                    .chartData {
+                        height: 117px;
+                        width: 117px;
+                    }
+
+                    .circleData {
+                        margin-left: 25px;
+                    }
+
+                    .levelProgress span,
+                    .levelGoal span {
+                        font-size: $baseFontSize * 2.5;//35px
+                    }
+
+                    .levelProgress span {
+                        padding-top: 36%;
+                    }
+                }
+
+                .paxBottomData {
+                    .rankData img.avatar {
+                        height: 45px;
+                        width: 45px;
+                    }
+
+                    .yourRank {
+                        font-size: $baseFontSize * 1.429;//20px
+                        margin: 5px 0;
+                    }
+
+                    .viewAllStackRank {
+                        font-size: $baseFontSize * .786;//11px
+                    }
+
+                    .bonusData .forEvery {
+                        font-size: $baseFontSize * 1.929;//27px
+                        margin-top: 10px;
+                    }
+                }
+            }
+
+            @media (max-width: 979px){
+                .doThisGetThat .dataSection {
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                }
+
+                .paxObjectiveInfo {
+                    font-size: $baseFontSize * 1.57;//22px
+                }
+
+                .paxActivityInfo {
+                    font-size: $baseFontSize * 1.143;//16px
+                }
+            }
+
+            @media (max-width: 979px) and (min-width: 768px){
+                .levelChartWrapper {
+                    .circleData {
+                        height: 80px;
+                        width: 80px;
+
+                        i {
+                            font-size: $baseFontSize * 2.71;//38px
+                        }
+                    }
+
+                    .backgroundLinkBar {
+                        top: 200px;
+                    }
+
+                    .chartHolder {
+                        height: 130px;
+                        top: -20px;
+                        width: 130px;
+                    }
+
+                    .chartData {
+                        height: 87px;
+                        width: 87px;
+                    }
+
+                    .levelDetails {
+                        font-size: $baseFontSize * .9286;//13px
+                    }
+
+                    .levelProgress,
+                    .levelGoal {
+                        width: 60%;
+
+                        span {
+                            font-size: $baseFontSize * 2;//28px
+                        }
+                    }
+                }
+            }
+
+            @media (max-width: 767px){
+                .paxObjectiveInfo {
+                    padding-left: 0;
+                    text-align: center;
+
+                    span {
+                        margin-left: 15px;
+                    }
+                }
+
+                .chartPercentHolder {
+                    left: 0;
+                }
+
+                .levelChartWrapper {
+                    .backgroundLinkBar {
+                        display: none;
+                    }
+
+                    .levelCol {
+                        display: none;
+
+                        &.currentLevelCol {
+                            background: none;
+                            display: block;
+                            width: 100%;
+
+                            .levelName {
+                                margin-bottom: 0;
+
+                                strong {
+                                    display: inline-block;
+                                    font-size: $baseFontSize * 2.143;//30px
+                                    position: relative;
+                                    top: 3px;
+                                }
+                            }
+
+                            .levelStatus {
+                                margin: 0 auto;
+                                width: 160px;
+                            }
+
+                            .levelStatusRemaining {
+                                float: left;
+                                margin: 20px;
+                            }
+                        }
+                    }
+
+                    .levelDetails {
+                        display: none;
+                    }
+
+                    .levelHeader {
+                        height: auto;
+                    }
+
+                    .chartHolder {
+                        top: 0;
+                    }
+                }
+
+                .paxBottomData {
+                    .bonusData .forEvery {
+                        font-size: $baseFontSize * 1.57;//22px
+                        margin-top: 10px;
+                    }
+
+                    .rankData {
+                        border-bottom: 1px solid $black;
+                        border-right: none;
+                    }
+                }
+            }
+        }//.participantContest
+
+        .ssiEmptyTableMsg h3 {
+            margin-top: 30px;
+        }
+    }//.ssiSContestView
+}//.ssiPageView

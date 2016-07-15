@@ -1,0 +1,348 @@
+{
+    "messages": [
+        {
+            "type": "error",
+            "name": "No data found",
+            "text": "Report Engine did not find any records matching criteria."
+        }
+    ],
+    "report": {
+        "id": "5004",
+        "reportDisplayName": "Claims Activity - Participation by Organization",
+        "parameters": [
+            {
+                "name": "Dates",
+                "value": "01/01/2012 - 12/10/2012"
+            },
+            {
+                "name": "Participant Status",
+                "value": "Active"
+            },
+            {
+                "name": "Submitted",
+                "value": "Have"
+            },
+            {
+                "name": "Promotion Status",
+                "value": "Active"
+            },
+            {
+                "name": "Claim Status",
+                "value": "Open"
+            }
+        ],
+        "tabularData": [
+            {
+                "meta": {
+                    "columns": [
+                        {
+                            "id": "1",
+                            "name": "Org Name",
+                            "description": "Shows the organizational entity",
+                            "type": "string",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displaySummaryReport&sortedOn=1&sortedBy=",
+                            "summary": ""
+                        },
+                        {
+                            "id": "2",
+                            "name": "Claim by Org Drilldown URL",
+                            "description": "",
+                            "type": "URL",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": false,
+                            "sortUrl": "",
+                            "summary": ""
+                        },
+                        {
+                            "id": "3",
+                            "name": "Eligible Submitters",
+                            "description": "Shows the number of users who can submit claims",
+                            "type": "number",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displaySummaryReport&sortedOn=3&sortedBy=",
+                            "summary": ""
+                        },
+                        {
+                            "id": "4",
+                            "name": "Actual Submitters",
+                            "description": "Shows the number of users who has submitted claims",
+                            "type": "number",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displaySummaryReport&sortedOn=4&sortedBy=",
+                            "summary": ""
+                        },
+                        {
+                            "id": "5",
+                            "name": "Participation Rate",
+                            "description": "Shows the participationts rate from an organization",
+                            "type": "number",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displaySummaryReport&sortedOn=5&sortedBy=",
+                            "summary": ""
+                        },
+                        {
+                            "id": "6",
+                            "name": "Total Claims",
+                            "description": "Shows the number of claims submitted",
+                            "type": "number",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displaySummaryReport&sortedOn=6&sortedBy=",
+                            "summary": ""
+                        },
+                        {
+                            "id": "7",
+                            "name": "Claims Open",
+                            "description": "Shows the number of open claims",
+                            "type": "number",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displaySummaryReport&sortedOn=7&sortedBy=",
+                            "summary": ""
+                        },
+                        {
+                            "id": "8",
+                            "name": "Claims Closed",
+                            "description": "Shows the number of closed claims",
+                            "type": "number",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displaySummaryReport&sortedOn=8&sortedBy=",
+                            "summary": ""
+                        },
+                        {
+                            "id": "9",
+                            "name": "Items Approved",
+                            "description": "Shows the number of approved items",
+                            "type": "number",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displaySummaryReport&sortedOn=9&sortedBy=",
+                            "summary": ""
+                        },
+                        {
+                            "id": "10",
+                            "name": "Items Denied",
+                            "description": "Shows the number of denied items",
+                            "type": "number",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displaySummaryReport&sortedOn=10&sortedBy=",
+                            "summary": ""
+                        },
+                        {
+                            "id": "11",
+                            "name": "Items On Hold",
+                            "description": "Shows the number of on hold items",
+                            "type": "number",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displaySummaryReport&sortedOn=11&sortedBy=",
+                            "summary": ""
+                        },
+                        {
+                            "id": "12",
+                            "name": "Points",
+                            "description": "Shows the number of points associated to the specific claim",
+                            "type": "number",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displaySummaryReport&sortedOn=12&sortedBy=",
+                            "summary": ""
+                        },
+                        {
+                            "id": "13",
+                            "name": "Game Attempts",
+                            "description": "Shows the count of other awards associated to the specific claim",
+                            "type": "number",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displaySummaryReport&sortedOn=13&sortedBy=",
+                            "summary": ""
+                        },
+                        {
+                            "id": "14",
+                            "name": "Sweepstakes Won",
+                            "description": "Shows the count of other awards associated to the specific claim",
+                            "type": "number",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displaySummaryReport&sortedOn=14&sortedBy=",
+                            "summary": ""
+                        }
+                    ],
+                    "sortedOn": "1",
+                    "sortedBy": "asc",
+                    "maxRows": "0",
+                    "exportFullReportUrl": [
+                        {
+                            "label": "Export Full Report",
+                            "url": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=extractReport&exportViewType=fullView"
+                        },
+                        {
+                            "label": "Export Issuance",
+                            "url": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=extractReportItemClaim&exportViewType=fullView"
+                        }
+                    ],
+                    "exportCurrentView": {
+                        "label": "Export Current View",
+                        "url": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=extractReport&exportViewType=currentView"
+                    },
+                    "inlineTextDescription": ""
+                },
+                "results": []
+            }
+        ],
+        "chartSet": [
+            {
+                "displayName": "Claim Participation Rate",
+                "category": "Claims",
+                "chartType": "Pie2D",
+                "dataUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displayParticipationRateChart",
+                "fusionChartsParameters": {
+                    "exportFileName": "Claim Participation Rate",
+                    "exportAtClient": "0",
+                    "exportFormat": "PDF",
+                    "exportAction": "download",
+                    "html5ExportHandler": "exportToPDF.do",
+                    "exportTargetWindow": "_blank",
+                    "showLabels": "0",
+                    "showLegend": "1",
+                    "enableSmartLabels": "0",
+                    "showPercentValues": "1",
+                    "stack100Percent": "1",
+                    "xAxisName": "BONFIRE HOME DESIGNS",
+                    "yAxisName": ""
+                },
+                "pdfUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displayParticipationRateChart&amp;pdf=1",
+                "id": "5019"
+            },
+            {
+                "displayName": "Claim Participation Level",
+                "category": "Claims",
+                "chartType": "Column3D",
+                "dataUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displayParticipationLevelChart",
+                "fusionChartsParameters": {
+                    "exportFileName": "Claim Participation Level",
+                    "exportAtClient": "0",
+                    "exportFormat": "PDF",
+                    "exportAction": "download",
+                    "html5ExportHandler": "exportToPDF.do",
+                    "exportTargetWindow": "_blank",
+                    "showLabels": "1",
+                    "showLegend": "1",
+                    "enableSmartLabels": "0",
+                    "xAxisName": "BONFIRE HOME DESIGNS",
+                    "yAxisName": ""
+                },
+                "pdfUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displayParticipationLevelChart&amp;pdf=1",
+                "id": "5020"
+            },
+            {
+                "displayName": "# of Claims",
+                "category": "Claims",
+                "chartType": "Column3D",
+                "dataUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displayMonthlyChart",
+                "fusionChartsParameters": {
+                    "exportFileName": "# of Claims",
+                    "exportAtClient": "0",
+                    "exportFormat": "PDF",
+                    "exportAction": "download",
+                    "html5ExportHandler": "exportToPDF.do",
+                    "exportTargetWindow": "_blank",
+                    "showLabels": "1",
+                    "showLegend": "1",
+                    "enableSmartLabels": "0",
+                    "xAxisName": "BONFIRE HOME DESIGNS",
+                    "yAxisName": ""
+                },
+                "pdfUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displayMonthlyChart&amp;pdf=1",
+                "id": "5021"
+            },
+            {
+                "displayName": "Claim Submission Status",
+                "category": "Claims",
+                "chartType": "StackedColumn2D",
+                "dataUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displaySubmissionStatusChart",
+                "fusionChartsParameters": {
+                    "exportFileName": "Claim Submission Status",
+                    "exportAtClient": "0",
+                    "exportFormat": "PDF",
+                    "exportAction": "download",
+                    "html5ExportHandler": "exportToPDF.do",
+                    "exportTargetWindow": "_blank",
+                    "showLabels": "1",
+                    "showLegend": "1",
+                    "enableSmartLabels": "0",
+                    "xAxisName": "BONFIRE HOME DESIGNS",
+                    "yAxisName": ""
+                },
+                "pdfUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displaySubmissionStatusChart&amp;pdf=1",
+                "id": "5022"
+            },
+            {
+                "displayName": "Claim Item Approval Status",
+                "category": "Claims",
+                "chartType": "StackedColumn2D",
+                "dataUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displayItemStatusChart",
+                "fusionChartsParameters": {
+                    "exportFileName": "Claim Item Approval Status",
+                    "exportAtClient": "0",
+                    "exportFormat": "PDF",
+                    "exportAction": "download",
+                    "html5ExportHandler": "exportToPDF.do",
+                    "exportTargetWindow": "_blank",
+                    "showLabels": "1",
+                    "showLegend": "1",
+                    "enableSmartLabels": "0",
+                    "xAxisName": "BONFIRE HOME DESIGNS",
+                    "yAxisName": ""
+                },
+                "pdfUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displayItemStatusChart&amp;pdf=1",
+                "id": "5023"
+            },
+            {
+                "displayName": "Items Submitted vs. Claims Submitted",
+                "category": "Claims",
+                "chartType": "MSLine",
+                "dataUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displayTotalsChart",
+                "fusionChartsParameters": {
+                    "exportFileName": "Items Submitted vs. Claims Submitted",
+                    "exportAtClient": "0",
+                    "exportFormat": "PDF",
+                    "exportAction": "download",
+                    "html5ExportHandler": "exportToPDF.do",
+                    "exportTargetWindow": "_blank",
+                    "showLabels": "1",
+                    "showLegend": "1",
+                    "enableSmartLabels": "0",
+                    "xAxisName": "BONFIRE HOME DESIGNS",
+                    "yAxisName": ""
+                },
+                "pdfUrl": "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayClaimByOrgReport.do?method=displayTotalsChart&amp;pdf=1",
+                "id": "5024"
+            }
+        ],
+        "selectedChartId": "",
+        "reportDetailAsOfTimestamp": ""
+    }
+}

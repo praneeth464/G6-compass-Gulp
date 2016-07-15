@@ -1,0 +1,114 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $engagement_bgColor: ;
+// $engagement_gradType: ;
+// $engagement_gradMeta: ;
+// $engagement_gradStops: ;
+
+// $engagement_iconColor: ;
+// $engagement_titleColor: ;
+// $engagement_titleFontFamily: ;
+// $engagement_titleFontSizes: ;
+// $engagement_titleFontWeights: ;
+
+// $engagement_moduleTopper_bgColor: ;
+// $engagement_moduleTopper_gradType: ;
+// $engagement_moduleTopper_gradMeta: ;
+// $engagement_moduleTopper_gradStops: ;
+
+// $engagement_moduleTopper_textColor: ;
+// $engagement_moduleTopper_visitAppBtnColor: ;
+// $engagement_moduleTopper_fontFullString: ; // font-style font-variant font-weight font-size[req]/line-height font-family[req]
+
+// $engagement_summary_bgColor: ;
+// $engagement_summary_bgColor_score: ;
+// $engagement_summary_bgColor_recSent: ;
+// $engagement_summary_bgColor_recRecv: ;
+// $engagement_summary_bgColor_paxRecTo: ;
+// $engagement_summary_bgColor_paxRecBy: ;
+// $engagement_summary_bgColor_visits: ;
+
+// $engagement_summary_tabsInactive_bgColorModule: ;
+// $engagement_summary_tabsInactive_bgColorPage: ;
+// $engagement_summary_tabsInactive_borderColorModule: ;
+// $engagement_summary_tabsInactive_borderColorPage: ;
+// $engagement_summary_tabsInactive_iconColorModule: ;
+// $engagement_summary_tabsInactive_iconColorPage: ;
+// $engagement_summary_tabsInactive_iconColorHoverModule: ;
+// $engagement_summary_tabsInactive_iconColorHoverPage: ;
+
+// $engagement_summary_textColor: ;
+// $engagement_summary_textColor_score: ;
+// $engagement_summary_textColor_recSent: ;
+// $engagement_summary_textColor_recRecv: ;
+// $engagement_summary_textColor_paxRecTo: ;
+// $engagement_summary_textColor_paxRecBy: ;
+// $engagement_summary_textColor_visits: ;
+
+// $engagement_summary_textColorFaded: ;
+// $engagement_summary_textColorFaded_score: ;
+// $engagement_summary_textColorFaded_recSent: ;
+// $engagement_summary_textColorFaded_recRecv: ;
+// $engagement_summary_textColorFaded_paxRecTo: ;
+// $engagement_summary_textColorFaded_paxRecBy: ;
+// $engagement_summary_textColorFaded_visits: ;
+
+// $engagement_summary_titleFontFullString: ; // font-style font-variant font-weight font-size[req]/line-height font-family[req]
+// $engagement_summary_titleFontLineHeight: ; // used for sizing calculations
+
+// $engagement_summary_actualFont: ;
+// $engagement_summary_actualFontWeight: ;
+// $engagement_summary_actualFontStyle: ;
+
+// $engagement_detail_tableFontFullString: ; // font-style font-variant font-weight font-size[req]/line-height font-family[req]
+// $engagement_detail_aheadTextColor: ;
+// $engagement_detail_ontrackTextColor: ;
+// $engagement_detail_behindTextColor: ;
+// $engagement_detail_subheadFontFullString: ; // font-style font-variant font-weight font-size[req]/line-height font-family[req]
+// $engagement_detail_countTextColor: ;
+// $engagement_detail_countFontFullString: ; // font-style font-variant font-weight font-size[req]/line-height font-family[req]
+// $engagement_detail_detailUrlArrowColor: ;
+// $engagement_detail_detailUrlCircleColor: ;
+
+// $engagement_detail_scoreTable_iconColor: ;
+
+// $engagement_detail_treeBg_paxRecTo: ;
+// $engagement_detail_treeBg_paxRecBy: ;
+// $engagement_detail_treeRootFontColor_paxRecTo: ;
+// $engagement_detail_treeRootFontColor_paxRecBy: ;
+// $engagement_detail_treeBranchLineColor_paxRecTo: ;
+// $engagement_detail_treeBranchLineColor_paxRecBy: ;
+// $engagement_detail_treeBranchBg_paxRecTo: ;
+// $engagement_detail_treeBranchBg_paxRecBy: ;
+// $engagement_detail_treeBranchFontColor_paxRecTo: ;
+// $engagement_detail_treeBranchFontColor_paxRecBy: ;
+// $engagement_detail_treeCountBg_paxRecTo: ;
+// $engagement_detail_treeCountBg_paxRecBy: ;
+// $engagement_detail_treeCountFontColor_paxRecTo: ;
+// $engagement_detail_treeCountFontColor_paxRecBy: ;
+// $engagement_detail_treeShowMoreFontColor_paxRecTo: ;
+// $engagement_detail_treeShowMoreFontColor_paxRecBy: ;
+
+// $engagement_detail_treeBranchLineWidth: ;
+// $engagement_detail_treeBranchFontFullString: ; // font-style font-variant font-weight font-size[req]/line-height font-family[req]
+
+// $engagement_teamMembers_topBorder: ;
+// $engagement_teamMembers_dividerBorder: ;
+// $engagement_pubRec_topBorder: ;
+
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "engagement/scss/engagement";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

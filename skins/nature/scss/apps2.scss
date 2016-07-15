@@ -1,0 +1,58 @@
+// Core application variables and measurements
+// -------------------------
+@import "base/variables";
+@import "base/mixins";
+@import "compass/css3";
+
+// make use of SCSS files in base* without actually outputting those files here
+$base_variablesOnly: true;
+@import 'base/pages';
+
+// List of all Apps supported by G5
+// (disabled apps for a client may be commented out to save file size)
+// -------------------------
+/*
+@import "apps/approvals";
+@import "apps/bannerModule";
+@import "apps/budgetTracker";
+@import "apps/clickThru";
+    @import "apps/nominations";
+    @import "apps/shopDigitalDownloads";
+    @import "apps/shopEvents";
+    @import "apps/shopGreatDeals";
+    @import "apps/shopIntlMerchandise";
+    @import "apps/shopMerchandise";
+    @import "apps/shopRealDeal";
+    @import "apps/shopTravel";
+@import "apps/communications";
+@import "apps/contactForm";
+// @import "apps/destinations"; // to be ADDED to the product in 5.X
+*/
+@import "apps/drawTool";
+/*
+@import "apps/engagement";
+@import "apps/forum";
+@import "apps/gamification";
+@import "apps/goalquest";
+@import "apps/instantPoll";
+@import "apps/leaderboard";
+@import "apps/managerToolkit";
+@import "apps/news";
+@import "apps/onTheSpotCard";
+@import "apps/plateauAwards";
+*/
+@import "apps/productClaim";
+@import "apps/profile";
+@import "apps/publicProfile";
+@import "apps/publicRecognition";
+@import "apps/purlContribute";
+    @import "apps/purlCelebrate";
+@import "apps/quiz";
+@import "apps/recognition";
+@import "apps/reports";
+@import "apps/resourceCenter";
+//@import "apps/ssi"; // moved into its own css
+@import "apps/survey";
+// @import "apps/throwdown"; // moved into its own css
+@import "apps/tip";
+@import "apps/workHappier";

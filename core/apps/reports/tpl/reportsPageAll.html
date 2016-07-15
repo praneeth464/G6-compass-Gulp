@@ -1,0 +1,30 @@
+<?php sleep(1); ?>
+<div class="row">
+
+    <div class="span12">
+
+        <h2>All Reports</h2>
+
+    </div> <!-- span12 -->
+
+</div> <!-- row -->
+
+{{#each categories}}
+<div class="row reportCategory">
+    <div class="span1">
+        <img class="{{categoryNameId}}" alt="" src="img/reports/cat_{{categoryNameId}}.jpg">
+    </div><!-- /.span1 -->
+
+    <div class="span11">
+        <h3>{{category}}</h3>
+        <ul>
+            {{#each reports}}
+            <li class="reportReport" id="reportId-{{id}}" data-report-id="{{id}}">
+                <a href="{{url}}">{{displayName}}</a><br>
+                <small>{{desc}}</small>
+            </li>
+            {{/each}}
+        </ul>
+    </div><!-- /.span11 -->
+</div> <!-- /.row.reportCategory -->
+{{/each}}

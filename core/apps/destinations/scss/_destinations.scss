@@ -1,0 +1,155 @@
+// App-specific variables
+// =========================
+$destinations_bgColor: $g5ModuleBgColor !default;
+$destinations_gradType: $g5ModuleGradType !default;
+$destinations_gradMeta: $g5ModuleGradMeta !default;
+$destinations_gradStops: $g5ModuleGradStops !default;
+
+$destinations_iconColor: $g5ModuleIconColor !default;
+$destinations_titleColor: $g5ModuleTitleColor !default;
+$destinations_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$destinations_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$destinations_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$destinations_cycleDotWidth: false !default;
+$destinations_cycleDotBkg: false !default;
+$destinations_cycleDotBorder: false !default;
+$destinations_cycleDotBkgHover: false !default;
+$destinations_cycleDotBorderHover: false !default;
+$destinations_cycleDotBkgActive: false !default;
+$destinations_cycleDotBorderActive: false !default;
+$destinations_cycleDotBorderRadius: false !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.destinations {
+
+} /* /.destinations */
+
+/* ----- MODULE STYLES ----- */
+.module.destinations {
+
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $destinations_bgColor,
+            $gradType: $destinations_gradType,
+            $gradMeta: $destinations_gradMeta,
+            $gradStops: $destinations_gradStops
+        );
+    }
+
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $destinations_iconColor,
+            $titleColor: $destinations_titleColor,
+            $titleFontFamily: $destinations_titleFontFamily
+        );
+    }
+
+    @include module_titleIconViewFontSizesWeights($destinations_titleFontSizes, $destinations_titleFontWeights);
+
+    @include module_cycleDots(
+        $cycleDotWidth: $destinations_cycleDotWidth,
+        $cycleDotBkg: $destinations_cycleDotBkg,
+        $cycleDotBorder: $destinations_cycleDotBorder,
+        $cycleDotBkgHover: $destinations_cycleDotBkgHover,
+        $cycleDotBorderHover: $destinations_cycleDotBorderHover,
+        $cycleDotBkgActive: $destinations_cycleDotBkgActive,
+        $cycleDotBorderActive: $destinations_cycleDotBorderActive,
+        $cycleDotBorderRadius: $destinations_cycleDotBorderRadius
+    );
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        .title-icon-view {
+            display: none;
+        }
+        .wide-view,
+        .cycle,
+        .item {
+            width: 100%;
+            height: 100%;
+        }
+        .wide-view {
+            padding: 0;
+
+            .imageClickThrough {
+                display: block;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                // margin: -1 * $g5ModulePadding;
+                text-indent: -9999em;
+            }
+            .dest-details {
+                position: relative;
+                padding: $g5ModulePadding;
+                color: $white;
+                background: rgba(0,0,0,.5);
+
+                .title {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+
+    &.grid-dimension-2x2 {
+        .wide-view {
+            .dest-desc,
+            .dest-desc-short {
+                display: none;
+            }
+        }
+    }
+
+    &.grid-dimension-4x2 {
+        .wide-view {
+            .imageClickThrough {
+                // @include module_moduleLiner(4, 2);
+            }
+            .dest-desc {
+                display: none;
+            }
+        }
+    }
+
+    &.grid-dimension-4x4 {
+        .wide-view {
+            .imageClickThrough {
+                // @include module_moduleLiner(4, 4);
+            }
+            .dest-desc-short {
+                display: none;
+            }
+        }
+    }
+} /* /.module.destinations */
+
+/* ----- PAGE STYLES ----- */
+.page.destinations {
+    /* ----- PAGE SPECIFIC CSS ----- */
+    .desinationsPage-liner {
+        .thumbnail {
+            width: 160px;
+            margin: 0 auto 30px auto;
+            border: 0 none;
+            box-shadow: none;
+            padding: 0;
+
+            .caption {
+                padding: 9px 0 0;
+            }
+        }
+    }
+} /* /.page.destinations */
+

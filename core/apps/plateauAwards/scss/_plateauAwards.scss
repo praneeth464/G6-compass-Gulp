@@ -1,0 +1,742 @@
+// App-specific variables
+// =========================
+$plateauAwards_bgColor: $g5ModuleBgColor !default;
+$plateauAwards_gradType: $g5ModuleGradType !default;
+$plateauAwards_gradMeta: $g5ModuleGradMeta !default;
+$plateauAwards_gradStops: $g5ModuleGradStops !default;
+
+$plateauAwards_iconColor: $g5ModuleIconColor !default;
+$plateauAwards_titleColor: $g5ModuleTitleColor !default;
+$plateauAwards_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$plateauAwards_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$plateauAwards_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$plateauAwards_cycleDotWidth: false !default;
+$plateauAwards_cycleDotBkg: false !default;
+$plateauAwards_cycleDotBorder: false !default;
+$plateauAwards_cycleDotBkgHover: false !default;
+$plateauAwards_cycleDotBorderHover: false !default;
+$plateauAwards_cycleDotBkgActive: false !default;
+$plateauAwards_cycleDotBorderActive: false !default;
+$plateauAwards_cycleDotBorderRadius: false !default;
+
+$plateauAwards_textColor: $g5ModuleTitleColor !default;
+$plateauAwards_textFontFamily: $g5ModuleTitleFontFamily !default;
+$plateauAwards_carouselFontFullString: nth($plateauAwards_titleFontWeights, 3) 32px $plateauAwards_textFontFamily !default;
+$plateauAwards_carouselItemCaptionFontFullString: 18px $plateauAwards_textFontFamily !default;
+
+// note: the drawer uses the container-splitter class from _pages.scss, so unless explicitly set to something other than false the nubbin color will match $pages_splitterBorderTopBottomColor if there is a border and $pages_splitterBgColor if there isn't
+$plateauAwards_pageDrawerNubbinSize: 12px !default;
+$plateauAwards_pageDrawerNubbinColor: false !default;
+
+
+//Redeem
+$plateauAwardsRedeemSingleModule_bgColor: $g5ModuleBgColor !default;
+$plateauAwardsRedeemSingleModule_gradType: $g5ModuleGradType !default;
+$plateauAwardsRedeemSingleModule_gradMeta: $g5ModuleGradMeta !default;
+$plateauAwardsRedeemSingleModule_gradStops: $g5ModuleGradStops !default;
+$plateauAwardsRedeemSingleModule_ImgUrlPath: $appImagesPath !default;
+$plateauAwardsRedeemSingleModule_ImgUrl2x2: "celebration/bg-choose-award-module.jpg" !default;
+
+$plateauAwardsRedeemMultiModule_bgColor: $g5ModuleBgColor !default;
+$plateauAwardsRedeemMultiModule_gradType: $g5ModuleGradType !default;
+$plateauAwardsRedeemMultiModule_gradMeta: $g5ModuleGradMeta !default;
+$plateauAwardsRedeemMultiModule_gradStops: $g5ModuleGradStops !default;
+$plateauAwardsRedeemMultiModule_ImgUrlPath: $appImagesPath !default;
+$plateauAwardsRedeemMultiModule_ImgUrl2x2: "plateau/plateauRedeemBg.jpg" !default;
+
+$plateauAwardsRedeemSingleHeader_fontColor: $grayDark !default;
+$plateauAwardsRedeemSingle_fontFamily: "akzidenz-condensed", $bodyFont !default;
+$plateauAwardsRedeemSingle_countdownColor: $white !default;
+
+$plateauAwardsRedeemMultiHeader_fontColor: $grayDark !default;
+$plateauAwardsRedeemMultiList_bgColorTop: $gray !default;
+$plateauAwardsRedeemMultiList_bgColorBottom: $grayLight !default;
+$plateauAwardsRedeemMultiList_activeBgColor: #303030 !default;
+$plateauAwardsRedeemMultiList_borderColor: $white !default;
+
+$plateauAwardsRedeemMulti_countdownWeeksColor: $green !default;
+$plateauAwardsRedeemMulti_countdownDaysColor: $red !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+@if $plateauAwards_pageDrawerNubbinColor == false {
+    @if $pages_splitterBorderTopBottomWidth and $pages_splitterBorderTopBottomWidth != 0 {
+        $plateauAwards_pageDrawerNubbinColor: $pages_splitterBorderTopBottomColor;
+    }
+
+    @else {
+        @if $pages_splitterBgGradStops and $pages_splitterBgGradType {
+            @if $pages_splitterBgGradMeta == 'bottom' or $pages_splitterBgGradMeta == 'center' {
+                $plateauAwards_pageDrawerNubbinColor: nth($pages_splitterBgGradStops, length($pages_splitterBgGradStops));
+            }
+
+            @else {
+                $plateauAwards_pageDrawerNubbinColor: nth($pages_splitterBgGradStops, 1);
+            }
+        }
+
+        @else {
+            $plateauAwards_pageDrawerNubbinColor: $pages_splitterBgColor;
+        }
+    }
+}
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.plateauAwards {
+
+} /* /.plateauAwards */
+
+/* ----- MODULE STYLES ----- */
+.module.plateauAwards {
+
+    // never show the dataLoading spinner on the icon versions of this module
+    &.grid-dimension-1x1.dataLoading,
+    &.grid-dimension-2x1.dataLoading {
+        .spin {
+            display: none;
+        }
+    }
+
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $plateauAwards_bgColor,
+            $gradType: $plateauAwards_gradType,
+            $gradMeta: $plateauAwards_gradMeta,
+            $gradStops: $plateauAwards_gradStops
+        );
+    }
+
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $plateauAwards_iconColor,
+            $titleColor: $plateauAwards_titleColor,
+            $titleFontFamily: $plateauAwards_titleFontFamily
+        );
+
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            @include g5HomeAppIconBoxReflect(-55px);
+        }
+    }
+
+    @include module_titleIconViewFontSizesWeights($plateauAwards_titleFontSizes, $plateauAwards_titleFontWeights);
+
+    @include module_cycleDots(
+        $cycleDotWidth: $plateauAwards_cycleDotWidth,
+        $cycleDotBkg: $plateauAwards_cycleDotBkg,
+        $cycleDotBorder: $plateauAwards_cycleDotBorder,
+        $cycleDotBkgHover: $plateauAwards_cycleDotBkgHover,
+        $cycleDotBorderHover: $plateauAwards_cycleDotBorderHover,
+        $cycleDotBkgActive: $plateauAwards_cycleDotBkgActive,
+        $cycleDotBorderActive: $plateauAwards_cycleDotBorderActive,
+        $cycleDotBorderRadius: $plateauAwards_cycleDotBorderRadius
+    );
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        // hide the big version of this module when we're loading data and show a faded version of the title-icon-view
+        @include module_fadeOnDataLoading();
+    }
+
+    .wide-view {
+        color: $plateauAwards_textColor;
+        @if $plateauAwards_carouselFontFullString == false and $plateauAwards_carouselItemCaptionFontFullString == false {
+            font-family: $plateauAwards_textFontFamily;
+        }
+    }
+
+    /* ----- HIDE THE TITLE ICON VIEW FOR THE 2X2 GRID AND TWEEK ALIGNMENT FOR CAROUSEL ----- */
+    &.grid-dimension-2x2 {
+        @include module_visitAppBtnFullModule();
+
+        .wide-view {
+            padding: 0;
+
+            .cycle {
+                width: ($g5ModuleUnit * 2) - ($g5ModuleGutter * 2);
+                height: (($g5ModuleUnit * 2) - ($g5ModuleGutter * 2)) * .75;
+
+                .item {
+                    width: 100%;
+                    height: 100%;
+                    // ie7/ie8-specific
+                    background: transparent !important;
+
+                    img {
+                        margin-top: ($g5ModuleUnit/3) - $g5ModuleGutter - 4;
+                        margin-left: ($g5ModuleUnit/2) - $g5ModuleGutter;
+                        width: 160px;
+                        height: 160px;
+                    }
+                    .item-title {
+                        margin: 6px 12px;
+                        @if $plateauAwards_carouselItemCaptionFontFullString {
+                            font: $plateauAwards_carouselItemCaptionFontFullString;
+                        }
+
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                    }
+                }
+            }
+
+            h3 {
+                @if $plateauAwards_carouselFontFullString {
+                    font: $plateauAwards_carouselFontFullString;
+                }
+
+                padding-right: $g5ModulePadding;
+                padding-left: $g5ModulePadding;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+        }
+
+        .title-icon-view {
+            display: none;
+        }
+    }
+
+} /* /.module.plateauAwards */
+
+/* ----- PAGE STYLES ----- */
+.page.plateauAwards {
+
+    .page-topper {
+        padding-bottom: 0; //ensures tabs look right
+
+        .promotionSelectWrapper {
+            padding-bottom: 16px; // padding instead of margin (IE7)
+        }
+
+        .nav {
+            ul{
+                margin-bottom: -8px;
+            }
+
+            a{
+                padding: 4px 10px 4px 10px;
+            }
+        }
+    }
+
+    .currentProducts {
+        min-height: 300px;//room for spinner
+        //for spinner bug with x-scroll
+        // * disabled to allow drawer to 'pull out' to edge
+        //overflow: hidden;
+    }
+
+    //product browser
+    #productBrowser {
+        position: relative;
+    }
+
+    //award items
+    .awardItem {
+        display: none;//start life hidden
+        // all images are same size
+        // image height from below + 2 * caption padding from bootstrap core + 3 * caption line height from below
+        height: (250px * 2 / 3) + (2 * 9px) + (3 * 16px);
+
+        .thumbnail {
+            border: 0 none;
+            @include border-radius(0);
+            @include box-shadow(none);
+            cursor:pointer;
+
+            .img-backdrop {
+                text-align: center;
+
+                img {
+                    height: 250px * 2 / 3; // we are getting 250px x 250px from Scene7.
+                    width: 250px * 2 / 3; // we are getting 250px x 250px from Scene7.
+                }
+            }
+
+            .caption {
+                h5 {
+                    font-size: 13px;
+                    line-height: 16px;
+                    margin: 0;
+                    max-height: 48px; // up to three lines
+                    text-align: center;
+                    text-overflow: ellipsis; // no worky :(
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+
+    //drawer of details
+    .drawer {
+        position: relative;
+        // pulling it up so it's closer to the bottom of the thumbnails to which it is pointing
+        margin-top: -$baseLineHeight;
+        // overriding the :last-child stuff that pulls the bottom up when this is the last element in its container. Have to do this because .tab-content has an overflow of auto producing scrollbars
+        margin-bottom: $baseLineHeight !important;
+        // pull flush with edge of page
+        margin-left: -($g5PageContentPaddingHoriz) + $gridGutterWidth + $g5PageContentLeftRightBorderWidth;
+        height: 280px;
+
+        .nubbin {
+            position: absolute;
+            top: -$plateauAwards_pageDrawerNubbinSize;
+            left: 12.5%;
+            margin-left: -($plateauAwards_pageDrawerNubbinSize / 2);
+            border: $plateauAwards_pageDrawerNubbinSize solid transparent;
+            border-top-width: 0;
+            border-bottom-color: $plateauAwards_pageDrawerNubbinColor;
+        }
+
+        .drawer-liner {
+            display: none; //start life out hidden
+            height: 100%;
+            @include clearfix();
+
+            img {
+                height: 280px;
+                float: left;
+                margin-right: 20px;
+            }
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .drawer {
+            margin-left: -($g5PageContentPaddingHoriz1200) + $gridGutterWidth1200 + $g5PageContentLeftRightBorderWidth1200;
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 979px) {
+        .awardItem {
+            // image height from below + 2 * caption padding from bootstrap core + 3 * caption line height from below
+            height: (250px / 2) + (2 * 9px) + (3 * 16px);
+
+            .thumbnail {
+                .img-backdrop {
+                    img {
+                        width: (250px / 2);
+                        height: (250px / 2);
+                    }
+                }
+            }
+        }
+
+        .drawer {
+            margin-left: -($g5PageContentPaddingHoriz768) + $gridGutterWidth768 + $g5PageContentLeftRightBorderWidth768;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .drawer {
+            margin-left: -$g5PageContentPaddingHorizMobile;
+            height: auto;
+
+            .nubbin {
+                left: 50% !important;
+            }
+        }
+    }
+
+    @media (max-width: 599px) {
+        .drawer {
+            .drawer-liner {
+                img {
+                    display: block;
+                    float: none;
+                    margin: 0 auto 20px auto;
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+} /* /.page.plateauAwards */
+
+#plateauAwardsPageReminderView {
+    .form-horizontal {
+        margin-bottom: 0;
+    }
+
+    fieldset {
+        min-width: 0;
+    }
+
+    th {
+        vertical-align: middle;
+        padding: 0;
+
+        .headerPadding {
+            padding: 8px;
+            display: block;
+        }
+
+        a {
+            padding: 8px;
+            display: block;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        &.unsorted {
+            i {
+                opacity: 0.15;
+            }
+
+            &.ascending {
+                i.icon-sort-down {
+                    display: none;
+                }
+            }
+
+            &.descending {
+                i.icon-sort-up {
+                    display: none;
+                }
+            }
+        }
+
+        &.sorted {
+            i {
+                opacity: 1.0;
+            }
+
+            &.ascending {
+                i.icon-sort-down {
+                    display: none;
+                }
+
+                &:hover {
+                    i.icon-sort-down {
+                        display: inline;
+                    }
+
+                    i.icon-sort-up {
+                        display: none;
+                    }
+                }
+            }
+
+            &.descending {
+                i.icon-sort-up {
+                    display: none;
+                }
+
+                &:hover {
+                    i.icon-sort-up {
+                        display: inline;
+                    }
+
+                    i.icon-sort-down {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        &:hover i {
+            opacity: 0.63;
+        }
+
+        &:active i {
+            opacity: 1.0;
+        }
+    }
+
+    #emailReminder .well {
+        line-height: 30px;
+
+        p {
+            line-height: 30px;
+        }
+
+        p + p {
+            line-height: 20px;
+        }
+    }
+
+    #outstandingAwardToRedeem #selectAllCheckbox {
+        margin: 0 8px;
+        position: relative;
+    }
+} /*#plateauAwardsPageReminderView*/
+
+/**
+*   8888888b.               888
+*   888   Y88b              888
+*   888    888              888
+*   888   d88P .d88b.   .d88888  .d88b.   .d88b.  88888b.d88b.
+*   8888888P" d8P  Y8b d88" 888 d8P  Y8b d8P  Y8b 888 "888 "88b
+*   888 T88b  88888888 888  888 88888888 88888888 888  888  888
+*   888  T88b Y8b.     Y88b 888 Y8b.     Y8b.     888  888  888
+*   888   T88b "Y8888   "Y88888  "Y8888   "Y8888  888  888  888
+**/
+
+.module.plateauAwardsRedeem {
+    &.grid-dimension-2x2 .wide-view {
+        cursor: default;
+    }
+
+    [class^='icon-me-'],
+    [class*=' icon-me-'] {
+        font-family: 'MEfonticons';
+        font-style: normal;
+        font-weight: normal;
+    }
+
+    .icon-me-time {
+        *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf000;&nbsp;'); // IE7 support
+
+        &::before {
+            content: '\f000';
+        }
+
+    }
+
+    .redeem-single-promotion {
+        @if $plateauAwardsRedeemSingleModule_ImgUrl2x2 {
+            @include safeImgUrls($plateauAwardsRedeemSingleModule_ImgUrl2x2, $plateauAwardsRedeemSingleModule_ImgUrlPath, $property: 'background-image');
+            background-repeat: no-repeat;
+            filter: none;
+            height: 308px;
+            padding: 18px;
+        }
+
+        @else {
+            @include module_moduleLinerBackground(
+                $bgColor: $plateauAwardsRedeemSingleModule_bgColor,
+                $gradType: $plateauAwardsRedeemSingleModule_gradType,
+                $gradMeta: $plateauAwardsRedeemSingleModule_gradMeta,
+                $gradStops: $plateauAwardsRedeemSingleModule_gradStops
+            );
+        }
+
+        h2 {
+            color: $plateauAwardsRedeemSingleHeader_fontColor;
+            font-family: $plateauAwardsRedeemSingle_fontFamily;
+            font-weight: $fontWeightLight;
+            font-size: $baseFontSize * 2.28;
+            line-height: 1.1;
+            margin: 0 0 14px 0;
+
+            span {
+                display: block;
+                font-size: $baseFontSize * 1.92;
+            }
+        }
+
+        @media (max-width: 479px) {
+            .btn {
+                width: 50%;
+            }
+        }
+    }
+
+    .redeem-multi-promotion {
+        @if $plateauAwardsRedeemMultiModule_ImgUrl2x2 {
+            @include safeImgUrls($plateauAwardsRedeemMultiModule_ImgUrl2x2, $plateauAwardsRedeemMultiModule_ImgUrlPath, $property: 'background-image');
+            background-repeat: no-repeat;
+            filter: none;
+        }
+
+        @else {
+            @include module_moduleLinerBackground(
+                $bgColor: $plateauAwardsRedeemMultiModule_bgColor,
+                $gradType: $plateauAwardsRedeemMultiModule_gradType,
+                $gradMeta: $plateauAwardsRedeemMultiModule_gradMeta,
+                $gradStops: $plateauAwardsRedeemMultiModule_gradStops
+            );
+        }
+
+        h2 {
+            color: $plateauAwardsRedeemMultiHeader_fontColor;
+            font-size: $baseFontSize * 1.571;
+            font-weight: $fontWeightLight;
+            line-height: $baseLineHeight * 1.35;
+            margin: 0;
+            padding: 15px 10px 10px;
+
+            span {
+                display: block;
+                font-size: $baseFontSize * 1.43;
+            }
+        }
+
+        ul {
+            @include background-image(linear-gradient($plateauAwardsRedeemMultiList_bgColorTop, $plateauAwardsRedeemMultiList_bgColorBottom));
+            @include box-shadow(rgba(0,0,0, 0.6) 0 6px 11px -6px inset);
+            height: 231px;
+            list-style: none;
+            margin: 0;
+            overflow: auto;
+            position: relative;
+        }
+
+        li {
+            box-sizing: border-box;
+            height: 113px;
+            position: relative;
+
+            a {
+                bottom: 0;
+                color: #ffffff;
+                left: 0;
+                padding: 30px 10px 25px;
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+            .promo-name {
+                float: left;
+                font-size: $baseFontSize * 1.714;
+                height: 42px;
+                width: 140px;
+            }
+
+            .redeemCountdown {
+                display: block;
+                float: right;
+
+                .time-display {
+                    color: $white;
+                    float: right;
+                    font-size: $baseFontSize * 2.714;
+                    line-height: $baseLineHeight * 1.5;
+                }
+
+                .time-label {
+                    clear: both;
+                    float: left;
+                    font-size: $baseFontSize * 1.286;
+                }
+
+                .icon-me-time {
+                    float: right;
+                    font-size: $baseFontSize * 2.286;
+                    margin-right: 10px;
+                    width: auto;
+                }
+            }
+
+            &:first-child {
+                background: $plateauAwardsRedeemMultiList_activeBgColor;
+
+                .redeemCountdown.weeks {
+                    color: $plateauAwardsRedeemMulti_countdownWeeksColor;
+                }
+
+                .redeemCountdown {
+                    color: $plateauAwardsRedeemMulti_countdownDaysColor;
+                }
+            }
+
+            &:hover .promo-name {
+                text-decoration: underline;
+            }
+
+            &:hover a[disabled] {
+                cursor: default;
+
+                .promo-name {
+                    text-decoration: none;
+                }
+            }
+
+            & + li {
+                border-top: 1px solid $plateauAwardsRedeemMultiList_borderColor;
+            }
+        }
+
+        li.long-list {
+            height: 80px;
+
+            a {
+                padding: 20px 10px;
+            }
+
+            .time-display {
+                font-size: 30px;
+            }
+
+            .icon-me-time {
+                font-size: 26px;
+            }
+
+            .time-label {
+                font-size: 16px;
+            }
+
+            &:first-child {
+                height: 100px;
+
+                a {
+                    padding: 30px 10px 25px;
+                }
+
+                .time-display {
+                    font-size: $baseFontSize * 2.714;
+                }
+
+                .icon-me-time {
+                    font-size: $baseFontSize * 2.286;
+                }
+
+                .time-label {
+                    font-size: $baseFontSize * 1.286;
+                }
+            }
+        }
+
+        /*.redeem-btn {
+            background: rgba(0,0,0,.7);
+            bottom: 0;
+            display: none;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+
+            a {
+                margin: 37px 0 0 95px;
+            }
+        }*/
+    }
+
+    .redeem-countdown-container {
+        bottom: 20px;
+        color: $plateauAwardsRedeemSingle_countdownColor;
+        position: absolute;
+        text-align: right;
+        width: 280px;
+
+        p {
+            font: $fontWeightLight $baseFontSize * 1.42 $plateauAwards_textFontFamily;
+            margin-bottom: 4px;
+        }
+
+        .icon-me-time {
+            float: left;
+            font-size: $baseFontSize * 2.5;
+        }
+
+        .redeemCountdown {
+            font: normal $baseFontSize * 2.5 $bodyFont;
+        }
+    }
+
+    .time-label {
+        display: none;
+    }
+
+} /* /.module.plateauAwardsRedeem  */

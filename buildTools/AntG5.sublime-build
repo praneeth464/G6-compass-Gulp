@@ -1,0 +1,9 @@
+{
+	"cmd": ["ant"],
+	"working_dir": "${folder}",
+
+	"windows":
+	{
+		"cmd": ["ant.bat"]
+	}
+}

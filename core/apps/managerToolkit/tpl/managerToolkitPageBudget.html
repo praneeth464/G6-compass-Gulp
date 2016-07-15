@@ -1,0 +1,169 @@
+<!-- ======== MANAGER TOOLKIT PAGE BUDGET ALLOCATION ======== -->
+
+<div id="managerToolkitPageBudgetView" class="managerToolkitPageBudget-liner page-content">
+
+    <div class="page-topper">
+        <div class="row">
+            <div class="span12">
+
+            <div id="managerBudgetErrorBlock" class="alert alert-block alert-error" style="display:none;">
+                <h4>The following errors occurred:</h4>
+                <ul>
+                    <li>This is an error</li>
+                    <li>This is another error</li>
+                </ul>
+            </div>
+
+                <form id="promotionSelect" class="form-inline" method="get" action="layout.html?tplPath=apps/managerToolkit/tpl/&amp;tpl=managerToolkitPageBudget.html">
+                    <!-- do not include these two hidden inputs in the JSP -->
+                    <input type="hidden" name="tplPath" value="core/apps/managerToolkit/tpl/">
+                    <input type="hidden" name="tpl" value="managerToolkitPageBudget.html">
+
+                    <div class="control-group">
+                        <label class="control-label" for="budgetMasterId">Select a Budget:</label>
+
+                        <div class="controls">
+                            <select id="budgetMasterId" name="budgetMasterId">
+                                <option value="">Choose</option>
+                                <option value="123456" <?php if(isset($_GET['budgetMasterId']) && $_GET['budgetMasterId'] == '123456') { ?>selected="selected"<?php } ?>>Promotion 1</option>
+                                <option value="1234567" <?php if(isset($_GET['budgetMasterId']) && $_GET['budgetMasterId'] == '1234567') { ?>selected="selected"<?php } ?>>Promotion 2</option>
+                                <option value="12345678" <?php if(isset($_GET['budgetMasterId']) && $_GET['budgetMasterId'] == '12345678') { ?>selected="selected"<?php } ?>>Promotion 3</option>
+                                <option value="123456789" <?php if(isset($_GET['budgetMasterId']) && $_GET['budgetMasterId'] == '123456789') { ?>selected="selected"<?php } ?>>Promotion 4</option>
+                            </select>
+                        </div>
+                    </div><!-- /.control-group -->
+
+                    <!-- this select only needs to be visible and populated when a budget is selected -->
+                    <div class="control-group">
+                        <label class="control-label" for="budgetSegmentId">Select a Budget Segment:</label>
+
+                        <div class="controls">
+                            <select id="budgetSegmentId" name="budgetSegmentId">
+                                <option value="">Choose</option>
+                                <option value="123456" <?php if(isset($_GET['budgetSegmentId']) && $_GET['budgetSegmentId'] == '123456') { ?>selected="selected"<?php } ?>>Segment 1</option>
+                                <option value="1234567" <?php if(isset($_GET['budgetSegmentId']) && $_GET['budgetSegmentId'] == '1234567') { ?>selected="selected"<?php } ?>>Segment 2</option>
+                                <option value="12345678" <?php if(isset($_GET['budgetSegmentId']) && $_GET['budgetSegmentId'] == '12345678') { ?>selected="selected"<?php } ?>>Segment 3</option>
+                                <option value="123456789" <?php if(isset($_GET['budgetSegmentId']) && $_GET['budgetSegmentId'] == '123456789') { ?>selected="selected"<?php } ?>>Segment 4</option>
+                            </select>
+                        </div>
+                    </div><!-- /.control-group -->
+
+                    <!-- this select only needs to be visible and populated when a node selection is required -->
+                    <div class="control-group">
+                        <label class="control-label" for="ownerBudgetNodeId">Select an Org Unit:</label>
+
+                        <div class="controls">
+                            <!-- May or May not show dependent on selected promotion -->
+                            <select id="ownerBudgetNodeId" name="ownerBudgetNodeId">
+                                <option value="">Choose</option>
+                                <option value="123456" <?php if(isset($_GET['ownerBudgetNodeId']) && $_GET['ownerBudgetNodeId'] == '123456') { ?>selected="selected"<?php } ?>>Org Unit 1</option>
+                                <option value="1234567" <?php if(isset($_GET['ownerBudgetNodeId']) && $_GET['ownerBudgetNodeId'] == '1234567') { ?>selected="selected"<?php } ?>>Org Unit 2</option>
+                                <option value="12345678" <?php if(isset($_GET['ownerBudgetNodeId']) && $_GET['ownerBudgetNodeId'] == '12345678') { ?>selected="selected"<?php } ?>>Org Unit 3</option>
+                                <option value="123456789" <?php if(isset($_GET['ownerBudgetNodeId']) && $_GET['ownerBudgetNodeId'] == '123456789') { ?>selected="selected"<?php } ?>>Org Unit 4</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+                </form>
+            </div><!-- /.span12 -->
+        </div><!-- /.row -->
+    </div><!-- /.page-topper -->
+
+    <div class="row">
+        <div class="span12">
+            <h2>Points Available to Reallocate: 5272</h2>
+            <p class="managerToolkitRelHistoryLink"><a href="layout.html?tpl=managerToolkitPageHistory&tplPath=apps/managerToolkit/tpl/">View Budget Transfer History</a></p>
+            <h3>Manager to Employee</h3>
+            <form id="managerToolkitFormAllocatePoints" class="managerToolkitFormAllocatePoints" action="layout.html?tpl=managerToolkitPageBudgetPreview&amp;tplPath=apps/managerToolkit/tpl/" method="POST">
+                <fieldset>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Budget Spent</th>
+                                <th>Current Budget</th>
+                                <th>Transfer Amount</th>
+                            </tr>
+                        </teahd>
+                        <tbody>
+                            <tr class="warning">
+                                <td colspan="4">No results message</td>
+                            </tr>
+                            <tr>
+                                <td>Foreign</td>
+                                <td>0</td>
+                                <td>5000</td>
+                                <td class="reallocationAmount">
+                                    <input type="hidden" name="childNodeOwnersWithBudgetList[0].nodeName" value="Foreign">
+                                    <input type="hidden" name="childNodeOwnersWithBudgetList[0].budgetSpent" value="0">
+                                    <input type="hidden" name="childNodeOwnersWithBudgetList[0].currentBudget" value="5000">
+                                    <input type="hidden" name="childNodeOwnersWithBudgetList[0].childNodeOwnerNodeId" value="5060">
+
+                                    <input type="text" name="childNodeOwnersWithBudgetList[0].adjustmentAmount" maxlength="10" size="10" value="" id="amt_0" class="content-field number" data-number-type="decimal">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>North</td>
+                                <td>0</td>
+                                <td>5000</td>
+                                <td class="reallocationAmount">
+                                    <input type="hidden" name="childNodeOwnersWithBudgetList[1].nodeName" value="North">
+                                    <input type="hidden" name="childNodeOwnersWithBudgetList[1].budgetSpent" value="0">
+                                    <input type="hidden" name="childNodeOwnersWithBudgetList[1].currentBudget" value="5000">
+                                    <input type="hidden" name="childNodeOwnersWithBudgetList[1].childNodeOwnerNodeId" value="5003">
+
+                                    <input type="text" name="childNodeOwnersWithBudgetList[1].adjustmentAmount" maxlength="10" size="10" value="" id="amt_1" class="content-field number" data-number-type="decimal">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>South</td>
+                                <td>0</td>
+                                <td>5000</td>
+                                <td class="reallocationAmount">
+                                    <input type="hidden" name="childNodeOwnersWithBudgetList[2].nodeName" value="South">
+                                    <input type="hidden" name="childNodeOwnersWithBudgetList[2].budgetSpent" value="0">
+                                    <input type="hidden" name="childNodeOwnersWithBudgetList[2].currentBudget" value="5000">
+                                    <input type="hidden" name="childNodeOwnersWithBudgetList[2].childNodeOwnerNodeId" value="5007">
+
+                                    <input type="text" name="childNodeOwnersWithBudgetList[2].adjustmentAmount" maxlength="10" size="10" value="" id="amt_2" class="content-field number" data-number-type="decimal">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                    <div class="form-actions pullBottomUp">
+                        <button class="btn btn-primary" type="submit">Preview</button>
+                        <button class="btn">Cancel</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="serverReturnedErrored" value="true">
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+
+    $(document).ready(function() {
+        //attach the view to an existing DOM element
+        window.mtpbv = new ManagerToolkitPageBudgetView({
+            el: $('#managerToolkitPageBudgetView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Budget Transfer'
+        });
+    });
+
+</script>

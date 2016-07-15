@@ -1,0 +1,372 @@
+{
+  "messages": [],
+  "report": {
+    "id": "3",
+    "reportDisplayName": "Budget Status",
+    "parameterGroups": [
+      {
+        "name": "Time Frame",
+        "fields": [
+          {
+            "type": "datePicker",
+            "label": "Start",
+            "id": "dateRangeStart",
+            "name": "dateRangeStart",
+            "value": "01/02/2003"
+          },
+          {
+            "type": "datePicker",
+            "label": "End",
+            "id": "dateRangeEnd",
+            "name": "dateRangeEnd",
+            "value": "07/13/2012"
+          }
+        ]
+      },
+      {
+        "name": "Participants",
+        "fields": [
+          {
+            "type": "select",
+            "label": "Departments",
+            "id": "departments",
+            "name": "departments",
+            "selected": "show all",
+            "options": [
+              {
+                "value": "",
+                "display": "show all"
+              },
+              {
+                "value": "accounting",
+                "display": "Accounting"
+              },
+              {
+                "value": "hr",
+                "display": "Human Resources"
+              },
+              {
+                "value": "office",
+                "display": "Office"
+              },
+              {
+                "value": "sales",
+                "display": "Sales"
+              },
+              {
+                "value": "service",
+                "display": "Service"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "label": "Job Title",
+            "id": "job",
+            "name": "job",
+            "selected": "show all",
+            "options": [
+              {
+                "value": "",
+                "display": "show all"
+              },
+              {
+                "value": "dir",
+                "display": "Director"
+              },
+              {
+                "value": "employee",
+                "display": "Employee"
+              },
+              {
+                "value": "mgr",
+                "display": "Manager"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "label": "Status",
+            "id": "status",
+            "name": "status",
+            "selected": "active",
+            "options": [
+              {
+                "value": "show all",
+                "display": "show all"
+              },
+              {
+                "value": "active",
+                "display": "Active"
+              },
+              {
+                "value": "inactive",
+                "display": "Inactive"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "tabularData": [
+      {
+        "meta": {
+          "columns": [
+            {
+              "id": "1",
+              "name": "Organization",
+              "description": "Here is a completely different description of a completely different column.",
+              "type": "string",
+              "alignment": "",
+              "nameId": "",
+              "sortable": true,
+              "sortUrl": "http://www.whatever.com?report=1&sortOnColumn=1",
+              "summary": "Total Unique Logins"
+            },
+            {
+              "id": "2",
+              "name": "organization drill-down URL which I am including simply so that I can test multiple columns of type URL (the name doesn't matter because columns of type URL are never displayed for the user)",
+              "description": "",
+              "type": "URL",
+              "alignment": "",
+              "nameId": "",
+              "sortable": false,
+              "sortUrl": "",
+              "summary": ""
+            },
+            {
+              "id": "4",
+              "name": "Department",
+              "description": "Here is a completely different description of a completely different column.",
+              "type": "string",
+              "alignment": "",
+              "nameId": "",
+              "sortable": true,
+              "sortUrl": "http://www.whatever.com?report=1&sortOnColumn=3",
+              "summary": ""
+            },
+            {
+              "id": "3",
+              "name": "Country",
+              "description": "Here is a completely different description of a completely different column.",
+              "type": "string",
+              "alignment": "",
+              "nameId": "",
+              "sortable": false,
+              "sortUrl": "",
+              "summary": ""
+            },
+            {
+              "id": "5",
+              "name": "Title",
+              "description": "Here is a completely different description of a completely different column.",
+              "type": "string",
+              "alignment": "",
+              "nameId": "",
+              "sortable": true,
+              "sortUrl": "http://www.whatever.com?report=1&sortOnColumn=4",
+              "summary": ""
+            },
+            {
+              "id": "6",
+              "name": "Participant",
+              "description": "Here is a completely different description of a completely different column.",
+              "type": "string",
+              "alignment": "",
+              "nameId": "participant",
+              "sortable": true,
+              "sortUrl": "http://www.whatever.com?report=1&sortOnColumn=5",
+              "summary": ""
+            },
+            {
+              "id": "7",
+              "name": "participant drill-down URL (the name doesn't matter because columns of type URL are never displayed for the user)",
+              "description": "",
+              "type": "URL",
+              "alignment": "",
+              "nameId": "",
+              "sortable": false,
+              "sortUrl": "",
+              "summary": ""
+            },
+            {
+              "id": "9",
+              "name": "Total Visits",
+              "description": "Here is a completely different description of a completely different column.",
+              "type": "number",
+              "alignment": "",
+              "nameId": "",
+              "sortable": true,
+              "sortUrl": "http://www.whatever.com?report=1&sortOnColumn=8",
+              "summary": 44
+            },
+            {
+              "id": "8",
+              "name": "Last Logged In",
+              "description": "Here is a completely different description of a completely different column.",
+              "type": "date",
+              "alignment": "",
+              "nameId": "",
+              "sortable": true,
+              "sortUrl": "http://www.whatever.com?report=1&sortOnColumn=7",
+              "summary": ""
+            }
+          ],
+          "sortedOn": "Organization",
+          "sortedBy": "asc",
+          "maxRows": 6
+        },
+        "results": [
+          {
+            "organization": "Client Services",
+            "url1": "http://www.whatever.com?report=369&amp;oid=121",
+            "country": "US",
+            "department": "Channel Group",
+            "title": "Designer",
+            "participant": "Troy Burmeister",
+            "url2": "http://www.whatever.com?report=123&pid=234",
+            "lastLoggedIn": "02/11/2011",
+            "totalVisits": 9
+          },
+          {
+            "organization": "Sales",
+            "url1": "http://www.whatever.com?report=518&amp;oid=212",
+            "country": "US",
+            "department": "Dallas",
+            "title": "BDD",
+            "participant": "Steve Collins",
+            "url2": "http://www.whatever.com?report=234&pid=345",
+            "lastLoggedIn": "04/22/2011",
+            "totalVisits": 20
+          },
+          {
+            "organization": "Sales",
+            "url1": "http://www.whatever.com?report=518&amp;oid=212",
+            "country": "US",
+            "department": "New Jersey",
+            "title": "BDD",
+            "participant": "Bob Allison",
+            "url2": "http://www.whatever.com?report=345&pid=456",
+            "lastLoggedIn": "12/01/2010",
+            "totalVisits": 5
+          },
+          {
+            "organization": "TSG",
+            "url1": "http://www.whatever.com?report=427&amp;oid=303",
+            "country": "US",
+            "department": "Development",
+            "title": "Director",
+            "participant": "Amy Adams",
+            "url2": "http://www.whatever.com?report=456&pid=567",
+            "lastLoggedIn": "01/04/2011",
+            "totalVisits": 7
+          },
+          {
+            "organization": "Sales",
+            "url1": "http://www.whatever.com?report=518&amp;oid=212",
+            "country": "Canada",
+            "department": "Toronto",
+            "title": "BDD",
+            "participant": "Sue Bannister",
+            "url2": "http://www.whatever.com?report=567&pid=678",
+            "lastLoggedIn": "06/12/2011",
+            "totalVisits": 3
+          },
+          {
+            "organization": "Accounting",
+            "url1": "http://www.whatever.com?report=336&amp;oid=394",
+            "country": "China",
+            "department": "Credit",
+            "title": "Coordinator",
+            "participant": "Rod Anglang",
+            "url2": "http://www.whatever.com?report=678&pid=789",
+            "lastLoggedIn": "",
+            "totalVisits": 0
+          }
+        ]
+      }
+    ],
+    "chartSet": [
+      {
+        "displayName": "Total % Who Have Received vs Not Received Awards",
+        "category": "Awards",
+        "chartType": "MSColumn3D",
+        "dataUrl": "ajax/chartTotalPercentWhoHaveReceivedVsNotReceivedAwardsByOrganization03.json",
+        "fusionChartsParameters": {
+          "caption": "Total % Who Have Received vs Not Received Awards",
+          "subcaption": "by Organization",
+          "xAxisName": "Organization",
+          "yAxisName": "Logins",
+          "showlegend": "1"
+        },
+        "pdfUrl": "http://www.whatever.com?chart=6&pdf=1"
+      },
+      {
+        "displayName": "Login Activity by Organization",
+        "category": "Login Activity",
+        "chartType": "Column3D",
+        "dataUrl": "ajax/chartLoginActivityByOrganization03.json",
+        "fusionChartsParameters": {
+          "caption": "Login Activity by Organization",
+          "subcaption": "For Organization",
+          "xAxisName": "Organization",
+          "yAxisName": "Logins"
+        },
+        "pdfUrl": "http://www.whatever.com?chart=4&pdf=1"
+      },
+      {
+        "displayName": "Unique Login Activity For Organization, Monthly",
+        "category": "Login Activity",
+        "chartType": "Column3D",
+        "dataUrl": "ajax/chartUniqueLoginActivity03.json",
+        "fusionChartsParameters": {
+          "caption": "Unique Login Activity",
+          "subcaption": "For Organization, Monthly",
+          "xAxisName": "Month",
+          "yAxisName": "Logins"
+        },
+        "pdfUrl": "http://www.whatever.com?chart=2&pdf=1"
+      },
+      {
+        "displayName": "Monthly Login Activity For Organization, Monthly",
+        "category": "Login Activity",
+        "chartType": "Column3D",
+        "dataUrl": "ajax/chartTotalLoginsByMonth03.json",
+        "fusionChartsParameters": {
+          "caption": "Monthly Login Activity",
+          "subcaption": "For Organization, Monthly",
+          "xAxisName": "Month",
+          "yAxisName": "Logins"
+        },
+        "pdfUrl": "http://www.whatever.com?chart=1&pdf=1"
+      },
+      {
+        "displayName": "Logged In vs Not Logged In For Organization",
+        "category": "Login Activity",
+        "chartType": "Pie3D",
+        "dataUrl": "ajax/chartLoggedInVsNotLoggedIn03.json",
+        "fusionChartsParameters": {
+          "caption": "Logged In vs Not Logged In",
+          "subcaption": "For Organization",
+          "showlabels": "0",
+          "showlegend": "1"
+        },
+        "pdfUrl": "http://www.whatever.com?chart=3&pdf=1"
+      },
+      {
+        "displayName": "Login Activity by Organization",
+        "category": "Login Activity",
+        "chartType": "StackedColumn3D",
+        "dataUrl": "ajax/chartLoggedInVsNotLoggedInByOrganization03.json",
+        "fusionChartsParameters": {
+          "caption": "Login Activity by Organization",
+          "subcaption": "For Organization",
+          "xAxisName": "Organization",
+          "yAxisName": "Logins",
+          "showlegend": "1"
+        },
+        "pdfUrl": "http://www.whatever.com?chart=5&pdf=1"
+      }
+    ]
+  }
+}

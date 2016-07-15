@@ -1,0 +1,138 @@
+    <div class="module-liner ezRecLiner">
+        <button type="button" id="ezRecModalCloseBtn" style="display:none" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+        <div class="wide-view">
+
+            <div class="app-row">
+
+                <a class="profile-popover" selector="popover6" href="#" rel="popover"><img alt="" src="{{profilePicURL}}" class="ezRecProfilePic"></a>
+
+                <div id="ezRecognitionRecipInfo" class="ezRecognitionRecipInfo" recipientID="{{recipientId}}">
+                    <div>
+                        <p class="ezRecRecipName">
+                            {{firstName}} {{lastName}}                        
+                        </p>
+                        <a class="info-popover" rel="popover" data-trigger="click" data-placement="right" data-title="{{countryName}}" href="#">
+                            <img src="{{countryCode}}.png">
+                        </a>
+                    </div>
+                    <span class="ezRecOrgName">
+                        {{orgName}}
+                    </span>
+                    <p class="ezRecSubTitle ">{{title}}</p>
+                    <span class="ezRecSubTitle-dot">•</span>
+                    <p class="ezRecSubTitle">{{department}}</p>
+                    <!-- <ul>
+                        <li><a href="#" id="ezRecChangeRecipLink"><i class="icon-minus-sign"></i>Change Recipient</a></li>
+                    </ul> -->
+                </div>
+            </div>
+
+            <div class="app-row">
+
+                <form name="ezRecogntionForm" id="ezRecogntionForm" class="form-horizontal">
+                    {{#if hasPromotions}}
+                    <div class="control-group">
+                        <label class="control-label" for="ezRecognitionPromotionSelect">Select Promotion</label>
+                        <div class="controls">
+
+                            <select id='ezRecognitionPromotionSelect' name='promotionId'>
+                                <option value='undefined'>Select Promotion</option>
+                                {{#promotions}}
+                                    <option value="{{id}}" 
+                                        data-isEasy="{{attributes.isEasy}}"
+                                        data-hasECard="{{attributes.ecardsActive}}"
+                                        data-hasComments="{{attributes.commentsActive}}">
+                                        {{name}}
+                                    </option>
+                                {{/promotions}}
+                            </select>
+
+                        </div>
+                    </div>
+                    {{/if}}
+
+                    {{#if hasOrgUnits}}
+                    <div class="control-group">
+                        <label  class="control-label" for="ezRecognitionOrgUnitSelect">Select Org Unit</label>
+                        <div class="controls">
+                            
+                            <select id='ezRecognitionOrgUnitSelect' name='nodeId'>
+                                <option value='undefined'>Select Org Unit</option>
+                                {{#orgUnits}}
+                                    <option value="{{id}}">{{name}}</option>
+                                {{/orgUnits}}
+                            </select>
+
+                        </div>
+                    </div>
+                    {{/if}}
+
+                    {{#unless hasOrgunits}}
+                        <input id='singleOrgUnitId' name="nodeId" type='hidden' value="{{orgUnits.0.id}}">
+                    {{/unless}}
+
+                    {{#unless hasPromotions}}
+                        <div class="EZRecNoPromotionsWrapper">
+                            <p>There are no promotions in common with this participant</p>
+                        </div>
+                    {{/unless}}
+
+                    {{#if hasPromotions}}
+                    <div id="ezRecognitionCommentBox" class="control-group">
+                        <label class="comment-label">Comments</label>
+                        <div id="EZModuleCommentCheckSpell" class="btn-group EZModuleCommentCheckSpell">
+                            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Check Spelling">
+                                <i class="icon-check"></i>
+                                <!-- <span class="caret"></span> -->
+                            </a>
+                            <ul class="dropdown-menu langs">
+                                <!-- dropdown menu links -->
+                            </ul>
+                        </div>
+                        <div id="ezRecharCountWrapper" class="ezRecharCountError">
+                            Remaining Characters:
+                            <span id="ezRecharCount">1000</span>
+                        </div>
+                        <textarea rows="2" name="comments" class="recognition-comment" data-max-chars="1000"></textarea>
+                    </div>
+                    
+                    <div class="ezRecFormBtnsWrapper">
+
+                        <button href="#" id="ezRecognitionSendBtn" class="btn btn-primary ezRecButton">Send</button>
+
+                        <button href="#" type="submit" id="ezRecognitionCardBtn" class="btn btn-success ezRecButton">Advanced </button>
+
+                        <button href="#" type="submit" id="ezRecognitionContinueBtn" class="btn btn-primary ezRecButton">Continue</button>
+
+                        <button href="#" id="ezRecognitionCancelBtn" class="btn btn-danger ezRecButton">Cancel</button>
+
+                    </div>
+                    {{/if}}
+
+                    {{#unless hasPromotions}}
+                        <div class="ezRecFormBtnsWrapper empty">
+                            <button href="#" id="ezRecognitionCancelBtn_noPromos" class="btn btn-danger ezRecButton">Cancel</button>
+                        </div>
+                    {{/unless}}
+
+
+                    <input type="hidden" name="claimRecipientFormBeans[0].userId" id="ezRecognitionRecipientID" />
+                    <input type="hidden" name="claimRecipientFormBeans[0].nodeId" id="recipientNodeId" value="{{recipientNodeId}}" />
+                    <input type="hidden" name="hasECard" id="ezRecognitionHasEcard" />
+
+                </form>
+
+            </div>
+
+        </div> <!-- ./wide-view -->
+        
+    </div> <!-- ./module-liner -->
+
+<script id="ezRecNoOrgErrorTemplate" type="text/x-handlebars-template">
+    <span>Select an Org Unit</span>
+</script>
+
+<script id="ezRecNoPromoErrorTemplate" type="text/x-handlebars-template">
+    <span>Select a Promotion</span>
+</script>

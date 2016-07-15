@@ -1,0 +1,104 @@
+<!-- ======== PURLCONTRIBUTE: PURL TERMS AND CONDITIONS ======== -->
+
+<div id="purlTermsPageView" class="page-content purlTermsPageView">
+    <!-- this entire page-topper could be set to show only when no language preference is known about the current user, or it could show all the time just because... -->
+    <div class="page-topper">
+        <div class="row">
+            <div class="span12">
+                <form class="changeLanguage form-inline form-labels-inline" method="POST">
+                    <div class="control-group">
+                        <label class="control-label">Choose Language:</label>
+                        <div class="controls">
+                            <select id="changeLanguage" name="cmsLocaleCode">
+                                <option value="de_DE" <?php if( isset($_POST['cmsLocaleCode']) && $_POST['cmsLocaleCode'] == 'de_DE' ) { print 'selected'; } ?>>German</option>
+                                <option value="en_US" <?php if( isset($_POST['cmsLocaleCode']) && $_POST['cmsLocaleCode'] == 'en_US' || !isset($_POST['cmsLocaleCode']) ) { print 'selected'; } ?>>US English</option>
+                            </select>
+                        </div>
+                    </div>
+                </form><!-- /.changeLanguage.form-inline.form-labels-inline -->
+            </div><!-- /.span12 -->
+        </div><!-- /.row -->
+    </div><!-- /.page-topper -->
+
+    <div class="row">
+        <div class="span12">
+
+            <div id="purlTermsErrorBlock" class="alert alert-block alert-error" style="display:none;">
+                <h4>The following errors occurred:</h4>
+                <ul>
+                    <li>This is an error</li>
+                    <li>This is another error</li>
+                </ul>
+            </div>
+
+            <h2>Terms and Conditions</h2>
+
+            <div class="well termsBlock">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut urna ante, sed dictum eros. Maecenas facilisis nisi ut turpis posuere sit amet ultrices nisi suscipit. Vestibulum vestibulum volutpat elit et egestas. Proin vitae nibh quam. Pellentesque semper metus ut odio porta dapibus. Fusce vel diam nisi. Nulla facilisi. Sed in orci est, vitae aliquet dolor. Curabitur metus nulla, iaculis vel vulputate non, semper ut neque. Sed diam libero, dignissim id pretium eu, aliquet ut orci. Praesent odio purus, vehicula ut ultrices id, ultricies eget nunc. Sed at cursus turpis. Vestibulum eu nisl mauris. Praesent imperdiet mollis consequat.</p>
+
+                <p>Nullam quam est, aliquam eu condimentum a, ultricies ac purus. Nunc sed elit odio, vel volutpat risus. Suspendisse euismod aliquam adipiscing. Morbi rutrum, libero vitae aliquam accumsan, ligula velit malesuada enim, sit amet vestibulum leo nulla at felis. Etiam lacinia fringilla semper. Integer ac lectus lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec convallis diam non magna posuere tempor. In hac habitasse platea dictumst. In mollis, leo quis rutrum scelerisque, mauris nibh eleifend est, et euismod quam dui at dolor. Proin augue leo, tincidunt sit amet tempor et, hendrerit sit amet ante. Duis pulvinar est sed tortor commodo dictum</p>
+
+                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras lorem nunc, vehicula nec tincidunt non, venenatis sed tellus. Aenean consectetur malesuada risus, et placerat sapien aliquam dignissim. Ut dui orci, ultrices at tristique vel, mollis sed lorem. Cras risus neque, placerat eu aliquam sed, euismod sed nisl. Integer sit amet odio mauris. Nulla facilisi. Praesent et libero mauris, non elementum velit. Cras vitae arcu quis magna ultrices vestibulum. Aliquam eu felis eget augue porta iaculis. Nunc vitae arcu ac lectus viverra adipiscing a et lectus. In lobortis pharetra rhoncus. Etiam cursus, purus nec iaculis dapibus, risus libero rhoncus lacus, eget pulvinar orci velit ac magna. Nunc interdum, odio ut sagittis dapibus, nulla mi accumsan purus, sed pharetra ipsum ipsum id mauris.</p>
+            </div>
+
+            <form>
+                <fieldset class="purlContributeTermsRadios">
+                    <div class="validateme" data-validate-flags="nonempty" data-validate-fail-msgs="{&quot;nonempty&quot; : &quot;You must accept the Terms and Conditions to continue&quot;}">
+                        <label class="radio bold">
+                            <input type="radio" name="TermsAccept" id="TermsAndConditionsRadio1" value="accept">
+                            Accept Terms and Conditions
+                        </label>
+                    </div>
+
+                    <label class="radio">
+                        <input type="radio" name="TermsAccept" id="TermsAndConditionsRadio2" value="decline">
+                        Decline Terms and Conditions
+                    </label>
+                </fieldset>
+
+                <p>Type the characters you see below into the text box. NOTE: characters are case sensitive.</p>
+                <div id="purlTermsCaptcha" class="purlTermsCaptcha">
+                    <!-- Placeholder div for the capthca image -->
+                    <div></div>
+
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs="{&quot;nonempty&quot; : &quot;Please type in the characters seen above&quot;}">
+                        <div class="controls">
+                            <input type="text" name="captchaResponse">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" name="submitTerms" value="Continue" class="btn btn-primary">Continue</button>
+                </div>
+            </form>
+
+        </div><!-- /.span12 -->
+    </div><!-- /.row -->
+
+</div>
+
+<input type="hidden" id="serverReturnedErrored" value="false">
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+
+    $(document).ready(function(){
+        //attach the view to an existing DOM element
+        var pcptac = new PurlContributeTermsPageView({
+            el:$('#purlTermsPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html?tpl=publicRecognitionPage&tplPath=apps/publicRecognition/tpl/'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Recognition PURL'
+        }); //using the default page view for the T&C
+    });
+
+</script>

@@ -1,0 +1,54 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $forum_bgColor: ;
+// $forum_gradType: ;
+// $forum_gradMeta: ; // list the gradient non-color properties such as position, shape, etc.
+// $forum_gradStops: ; // list the stops as one would a series of raw gradient stops
+
+// $forum_iconColor: ;
+// $forum_titleColor: ;
+// $forum_titleFontFamily: ;
+// $forum_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $forum_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+// $forum_cycleDotWidth: ;
+// $forum_cycleDotBkg: ;
+// $forum_cycleDotBorder: ;
+// $forum_cycleDotBkgHover: ;
+// $forum_cycleDotBorderHover: ;
+// $forum_cycleDotBkgActive: ;
+// $forum_cycleDotBorderActive: ;
+// $forum_cycleDotBorderRadius: ;
+
+// $forum_textColor: ;
+// $forum_headlineColor: ;
+// $forum_headlineFontFamily: ;
+// $forum_linkColor: ;
+// $forum_linkHoverColor: ;
+// $forum_viewForumBtnFontFamily: ;
+
+// $forum_page_discussionDetailsBgColor: ;
+// $forum_page_commentBgColorOdd: ;
+// $forum_page_commentBgColorEven: ;
+// $forum_page_commentFormBgColor: ;
+
+// $forum_page_discussionDetailsBorderColor: ; // by default, calculated using the corresponding bgColor in the above section
+// $forum_page_commentBorderColorOdd: ; // by default, calculated using the corresponding bgColor in the above section
+// $forum_page_commentBorderColorEven: ; // by default, calculated using the corresponding bgColor in the above section
+// $forum_page_commentFormBorderColor: ; // by default, calculated using the corresponding bgColor in the above section
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "forum/scss/forum";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

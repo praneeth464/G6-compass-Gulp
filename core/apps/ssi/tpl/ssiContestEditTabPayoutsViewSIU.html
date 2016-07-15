@@ -1,0 +1,248 @@
+<h4 class="defaultName"></h4>
+
+<!-- JAVA: i18n these -->
+<div id="_msgPoints" style="display:none">points</div>
+<div id="_msgUnits" style="display:none">Units/Number</div>
+<div id="_msgCurrency" style="display:none">Currency/Revenue</div>
+<div id="_msgLockPageBottom" style="display:none">
+    Please select an Activity<br>
+    and Payout type first.
+</div>
+
+
+<div class="control-group activityDescriptionWrapper">
+    <label class="control-label" for="activityDescriptionInput">
+        Activity Description
+        <i class="icon-info-sign pageView_help"
+            data-help-content="Describe the specific activity that the participants will be measured against."></i>
+    </label>
+    <div class="controls">
+        <input type="text" id="activityDescriptionInput autoBind" class="activityDescriptionInput autoBind" data-model-key="activityDescription" maxlength="50">
+    </div>
+</div>
+
+
+<h5>Activity Type</h5>
+<div class="control-group validateme"
+    data-validate-flags="nonempty"
+    data-validate-fail-msgs="{&quot;nonempty&quot; : &quot;Please make a choice&quot;}">
+    <label class="radio" for="measureActivityCurrency">
+        <input type="radio" class="measureTypeRadio autoBind" id="measureActivityCurrency" name="measureType" value="currency" data-model-key="measureType">
+        Currency
+    </label>
+    <div class="currencyTypeWrapper" style="display:none">
+        <div>Currency Type</div>
+        <select name="currencyTypeSelect" class="autoBind" id="currencyTypeSelect" data-model-key="currencyTypeId">
+            <!--subTpl.currencyTypeOptions=
+            {{#currencyTypes}}
+                <option value="{{id}}">{{name}}</option>
+            {{/currencyTypes}}
+            subTpl-->
+        </select>
+    </div>
+    <label class="radio" for="measureActivityUnits">
+        <input type="radio" class="measureTypeRadio autoBind" id="measureActivityUnits" name="measureType" value="units" data-model-key="measureType">
+        Units/Number
+    </label>
+</div>
+<div class="control-group baselineControls" style="visibility: hidden">
+    <label class="control-label" for="measureOverBaseline">
+        <h5>Do you want to measure activity over individual baseline?</h5>
+    </label>
+    <div class="controls">
+        <select name="measureOverBaseline" class="autoBind" id="measureOverBaseline" data-model-key="measureOverBaseline">
+            <option value="no">No</option>
+            <option value="percent">% over Baseline</option>
+            <option class="dynLang" value="currency" data-msg="" data-msg-currency="Currency over baseline">
+                {
+                    "units" : "Amount over baseline",
+                    "currency" : "Currency over baseline"
+                }
+            </option>
+        </select>
+    </div>
+</div>
+
+<hr class="section">
+
+
+<h5>Payout Type</h5>
+<div class="control-group validateme"
+    data-validate-flags="nonempty"
+    data-validate-fail-msgs="{&quot;nonempty&quot; : &quot;Please make a choice&quot;}">
+    <label class="radio" for="payoutTypePoints">
+        <input type="radio" class="payoutTypeRadio autoBind" id="payoutTypePoints" name="payoutType" value="points" data-model-key="payoutType">
+        Points
+    </label>
+    <label class="radio" for="payoutTypeOther">
+        <input type="radio" class="payoutTypeRadio autoBind" id="payoutTypeOther" name="payoutType" value="other" data-model-key="payoutType">
+        Other
+        <i class="icon-info-sign pageView_help"
+            data-help-content="[explanation of what 'other' is]"></i>
+    </label>
+    <div class="otherPayoutTypeWrapper" style="display:none">
+        <div>Value of Award In</div>
+        <select name="otherPayoutTypeSelect" class="autoBind" id="otherPayoutTypeSelect" data-model-key="otherPayoutTypeId">
+            <!-- dyn using subTpl.currencyTypeOptions -->
+        </select>
+    </div>
+</div>
+
+<div class="billToRoot"></div>
+
+<hr class="section">
+
+<h5>Add Contest Levels <small>Contest can have between 2 and 5 levels.</small></h5>
+
+<div id="ssiSIULevelCollectionViewWrapper">
+    <!-- SSISIUActivityCollectionView -->
+</div><!-- /#ssiSIULevelCollectionViewWrapper -->
+
+<div class="includeStackRankingWrapper">
+    <div class="control-group">
+        <label class="checkbox" for="includeStackRanking">
+            <input type="checkbox" class="includeStackRankingInput autoBind" id="includeStackRanking" name="includeStackRanking" data-model-key="includeStackRanking" />
+            <strong>Include Stack Rank</strong>
+            <i class="icon-info-sign pageView_help"
+                data-help-content="[explanation of what 'include stack ranking' is]"></i>
+        </label>
+    </div>
+</div>
+
+<hr class="section">
+
+<div class="control-group includeBonusWrapper" style="display: block;">
+    <label class="checkbox" for="includeBonus">
+        <input type="checkbox" class="includeBonusInput autoBind" id="includeBonus" name="includeBonus" data-model-key="includeBonus">
+        <strong>Include Bonus</strong>
+        <i class="icon-info-sign pageView_help"
+            data-help-content="[explanation of what 'include bonus' is]"></i>
+    </label>
+    <div class="includeBonusDetailsWrapper" style="display:none">
+        <p>For every
+            <input type="text" class="bonusForEveryInput input-mini autoBind" data-model-key="bonusForEvery" />
+            <span class="currSymb act"></span>
+            <span class="currDisp act"></span>
+            over the Level <span class="highestLevelNum">[levNum]</span> objective, the participant will earn
+            <input type="text" class="bonusPayoutInput input-mini autoBind" data-model-key="bonusPayout" />
+            <span class="currSymb pay"></span>
+            <span class="currDisp pay"></span>
+        </p>
+        <p>
+            Individual Bonus Cap
+            <input type="text" class="bonusPayoutCapInput input-small autoBind" data-model-key="bonusPayoutCap" />
+            <span class="currSymb pay"></span>
+            <span class="currDisp pay"></span>
+        </p>
+    </div>
+
+    <hr class="section">
+</div>
+
+<h5 class="hideIfNoBaseline">Levels and Payouts <small>As you enter individual baselines below, participants' level goals are automatically calculated.</small></h5>
+
+<div id="ssiParticipantsSiU">
+    <div style="background:gray;height:100px">ParticipantPaginatedView: loading... </div>
+    <!-- ParticipantPaginatedView -->
+</div><!-- /#ssiParticipantsSiU -->
+
+
+<!-- REMOVED 5/15 div class="maxesSection">
+    <h6 class="hideIfNoBaseline">
+        Click Calculate Totals to view maximum amounts.
+    </h6>
+
+    <div class="maxPayoutSection">
+        <div class="maxPayoutWrapper">
+            Maximum Payout:
+            <span class="currSymb pay"></span><span class="calcTotals currLabel" data-model-key="maxPayout">--</span>
+            <span class="currDisp pay"></span>
+        </div>
+        <div class="maxPayoutWithBonusWrapper">
+            with Bonus:
+            <span class="currSymb pay"></span><span class="calcTotals currLabel" data-model-key="maxPayoutWithBonus">--</span>
+            <span class="currDisp pay"></span>
+        </div>
+    </div>
+    <div>
+        <div>
+            Maximum Contest Potential:
+            <span class="currSymb act"></span><span class="calcTotals currLabel" data-model-key="maxPotential">--</span>
+            <span class="currDisp act"></span>
+        </div>
+    </div>
+</div -->
+
+<div>
+
+    <div class="contestEstimatorWrapper">
+        <div class="contestEstimator">
+            <h5>Contest Goal</h5>
+            <p>Enter your contest's goal. Type an amount or use the sliders to help estimate your goal amount for your contest's final results.</p>
+            <div class="maxPayoutSection">
+                <div class="contestGoalWrapper ib">
+                    <label class="control-label ib" for="contestGoal">
+                        Your Contest Goal <div class="goalPercent"></div>
+                        <i class="icon-info-sign pageView_help"
+                            data-help-content="[explanation of what 'contest goal' is]"></i>
+                    </label>
+                    &nbsp;
+                    <div class="ib">
+                        <div class="controls">
+                            <span class="currSymb act"></span>
+                            <input type="text" id="contestGoal" class="contestGoalInput" data-model-key="contestGoal" maxlength="10">
+                            <span class="currDisp act"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="maxPayoutWrapper ib">
+                    Payout:
+                    <span class="currSymb pay"></span><span class="calcTotals currLabel" data-model-key="estMaxPayout">--</span>
+                    <span class="currDisp pay"></span>
+                </div>
+                <div class="estPayoutWithBonusWrapper ib">
+                    with Bonus:
+                    <span class="currSymb pay"></span><span class="calcTotals currLabel" data-model-key="estBonusPayout">--</span>
+                    <span class="currDisp pay"></span>
+                </div>
+            </div>
+
+            <!-- REMOVED 5/15 div>
+                <div>
+                    Estimated Contest Potential:
+                    <span class="currSymb act"></span><span class="calcTotals currLabel" data-model-key="estMaxPotential">--</span>
+                    <span class="currDisp act"></span>
+                </div>
+            </div -->
+
+            <div class="estimatorsList" data-msg-no-level="No level achieved">
+
+                <!--subTpl.estimator=
+                {{#levels}}
+                <div class="estimatorWrapper{{#isDisabled}} disabled{{/isDisabled}}">
+                    {{#if label}}
+                        <div><b>{{label}} {{amount}}</b></div>
+                    {{else}}
+                        <div><b>Level {{sequenceNumber}}</b></div>
+                    {{/if}}
+                    <div>
+                        Estimated Participant Achievement:
+                        <b class="goalPercent">(100%)</b>
+                    </div>
+                    <div class="sliderContainer">
+                        <span class="sliderMin">0%</span>
+                        <input class="estimateSlider slider{{id}}" data-level-id="{{id}}" type="text" />
+                        <span class="sliderMax">100%</span>
+                    </div>
+                </div>
+                {{/levels}}
+                subTpl-->
+
+            </div>
+
+        </div><!-- /.contestEstimator -->
+    </div><!-- /.contestEstimatorWrapper -->
+
+</div>
+
+

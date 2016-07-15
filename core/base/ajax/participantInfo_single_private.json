@@ -1,0 +1,17 @@
+{
+	"messages":[],
+	"totalCount":1,
+	"participants":[
+		{
+			"id":45,
+			"firstName":"Christian",
+			"lastName":"Smith",
+			"orgName":"Sales",
+			"countryCode":"us",
+			"countryName":"United States",
+			"avatarUrl":"img/_samples/x-profile-pic2.jpg",
+			"isPublic":false
+		}
+	]
+
+}	

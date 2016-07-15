@@ -1,0 +1,58 @@
+{
+  "messages": [],
+  "chart": {},
+  "categories": [
+    {
+      "category": [
+        {
+          "label": "Client Services"
+        },
+        {
+          "label": "Sales"
+        },
+        {
+          "label": "TSG"
+        },
+        {
+          "label": "Accounting"
+        }
+      ]
+    }
+  ],
+  "dataset": [
+    {
+      "seriesname": "% Logged In",
+      "data": [
+        {
+          "value": "40"
+        },
+        {
+          "value": "20"
+        },
+        {
+          "value": "5"
+        },
+        {
+          "value": "60"
+        }
+      ]
+    },
+    {
+      "seriesname": "% Not Logged In",
+      "data": [
+        {
+          "value": "60"
+        },
+        {
+          "value": "80"
+        },
+        {
+          "value": "95"
+        },
+        {
+          "value": "40"
+        }
+      ]
+    }
+  ]
+}

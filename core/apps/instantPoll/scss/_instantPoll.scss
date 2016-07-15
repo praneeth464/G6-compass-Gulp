@@ -1,0 +1,216 @@
+// App-specific variables
+// =========================
+$instantPoll_bgColor: $g5ModuleBgColor !default;
+$instantPoll_gradType: $g5ModuleGradType !default;
+$instantPoll_gradMeta: $g5ModuleGradMeta !default;
+$instantPoll_gradStops: $g5ModuleGradStops !default;
+
+$instantPoll_iconColor: $g5ModuleIconColor !default;
+$instantPoll_titleColor: $g5ModuleTitleColor !default;
+$instantPoll_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$instantPoll_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$instantPoll_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$instantPoll_cycleDotWidth: false !default;
+$instantPoll_cycleDotBkg: false !default;
+$instantPoll_cycleDotBorder: false !default;
+$instantPoll_cycleDotBkgHover: false !default;
+$instantPoll_cycleDotBorderHover: false !default;
+$instantPoll_cycleDotBkgActive: false !default;
+$instantPoll_cycleDotBorderActive: false !default;
+$instantPoll_cycleDotBorderRadius: false !default;
+
+$instantPoll_textColor: $white !default;
+$instantPoll_endsTextColor: mix($instantPoll_textColor, $instantPoll_bgColor) !default;
+
+$instantPoll_progressBarTextColor: white !default;      // same as .progress .bar in bootstrap/_progress-bars.scss. Code below will check to see if the passed variable value has been changed from this or not
+$instantPoll_progressBarBgColor: $linkColor !default;   // same as the $progressBars_barBgColor variable in _progress-bars.scss. Code below will check to see if the passed variable value has been changed from this or not
+$instantPoll_progressBarGradMeta: top !default;         // same as the $progressBars_barGradMeta variable in _progress-bars.scss. Code below will check to see if the passed variable value has been changed from this or not
+$instantPoll_progressBarGradStops: false !default;      // same as the $progressBars_barGradStops variable in _progress-bars.scss. Code below will check to see if the passed variable value has been changed from this or not
+
+$instantPoll_progressBarTextColorMyVote: $instantPoll_progressBarTextColor !default;                // same as .progress .bar in bootstrap/_progress-bars.scss. Code below will check to see if the passed variable value has been changed from this or not
+$instantPoll_progressBarBgColorMyVote: #5bc0de !default;                                            // same as the $progressBars_barInfoBgColor variable in _progress-bars.scss. Code below will check to see if the passed variable value has been changed from this or not
+$instantPoll_progressBarGradMetaMyVote: $instantPoll_progressBarGradMeta !default;                  // same as the $progressBars_barInfoGradMeta variable in _progress-bars.scss. Code below will check to see if the passed variable value has been changed from this or not
+$instantPoll_progressBarGradStopsMyVote: $instantPoll_progressBarBgColorMyVote, #339bb9 !default;   // same as the $progressBars_barInfoGradStops variable in _progress-bars.scss. Code below will check to see if the passed variable value has been changed from this or not
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.instantPoll {
+} /* /.instantPoll */
+
+/* ----- MODULE STYLES ----- */
+.module.instantPoll {
+
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $instantPoll_bgColor,
+            $gradType: $instantPoll_gradType,
+            $gradMeta: $instantPoll_gradMeta,
+            $gradStops: $instantPoll_gradStops
+        );
+    }
+
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $instantPoll_iconColor,
+            $titleColor: $instantPoll_titleColor,
+            $titleFontFamily: $instantPoll_titleFontFamily
+        );
+    }
+
+    @include module_titleIconViewFontSizesWeights($instantPoll_titleFontSizes, $instantPoll_titleFontWeights);
+
+    @include module_cycleDots(
+        $cycleDotWidth: $instantPoll_cycleDotWidth,
+        $cycleDotBkg: $instantPoll_cycleDotBkg,
+        $cycleDotBorder: $instantPoll_cycleDotBorder,
+        $cycleDotBkgHover: $instantPoll_cycleDotBkgHover,
+        $cycleDotBorderHover: $instantPoll_cycleDotBorderHover,
+        $cycleDotBkgActive: $instantPoll_cycleDotBkgActive,
+        $cycleDotBorderActive: $instantPoll_cycleDotBorderActive,
+        $cycleDotBorderRadius: $instantPoll_cycleDotBorderRadius
+    );
+
+    .wide-view {
+        color: $instantPoll_textColor;
+
+        #pollsContainer {
+            position: absolute;
+            margin: 0;
+            top: 0;
+            right: 0;
+            bottom: $g5ModulePadding / 2;
+            left: 0;
+            zoom: 1;
+
+            &.multiPoll {
+                bottom: $g5ModulePadding * 1.5;
+            }
+
+            .item {
+                height: 100%;
+                width: 100%;
+                // margin-right: $g5ModulePadding / 2;
+                padding: 0;
+                // ie7/ie8-specific
+                background-color: transparent !important;
+            }
+
+            // hide survey things we aren't using for polls
+            h2,
+            .intro,
+            hr,
+            .questionHead,
+            .saveForLaterBtn,
+            .results .btn {
+                display: none;
+            }
+
+            form {
+                position: absolute;
+                top: $g5ModulePadding / 2;
+                right: $g5ModulePadding / 2;
+                bottom: 0;
+                left: $g5ModulePadding / 2;
+                margin: 0;
+                padding: ($g5ModulePadding / 2) ($g5ModulePadding / 2) 0 ($g5ModulePadding / 2);
+                overflow-x: hidden;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+
+                .spincover {
+                    position: absolute;
+                    background: transparent;
+
+                    .spin {
+                        color: $white;
+                        margin: (-1 * $spinner_widthHeight / 2 - 10) 0 0 (-1 * $spinner_widthHeight / 2 - 10);
+                    }
+                }
+            }
+            .questionText {
+                margin: 0 0 ($baseLineHeight / 4) 0;
+                font-size: $baseFontSize * 1.5;
+                line-height: $baseLineHeight * 1.5;
+                font-weight: bold;
+            }
+            .progress {
+                margin-bottom: $baseLineHeight / 4;
+                background: none;
+                filter: none;
+                @include box-shadow(none);
+
+                .bar {
+                    @if $instantPoll_progressBarTextColor != white {
+                        color: $instantPoll_progressBarTextColor;
+                    }
+                    @if $instantPoll_progressBarBgColor != $linkColor or $instantPoll_progressBarGradMeta != top or $instantPoll_progressBarGradStops != false {
+                        @include progressBarHelper($instantPoll_progressBarBgColor, $instantPoll_progressBarGradMeta, $instantPoll_progressBarGradStops);
+                    }
+                }
+            }
+            .progress-info {
+                .bar {
+                    @if $instantPoll_progressBarTextColorMyVote != $instantPoll_progressBarTextColor {
+                        color: $instantPoll_progressBarTextColorMyVote;
+                    }
+                    @if $instantPoll_progressBarBgColor != $linkColor or $instantPoll_progressBarGradMeta != top or $instantPoll_progressBarGradStops != false or $instantPoll_progressBarBgColorMyVote != #5bc0de or $instantPoll_progressBarGradMetaMyVote != $instantPoll_progressBarGradMeta or nth($instantPoll_progressBarGradStopsMyVote,2) != #339bb9 {
+                        @include progressBarHelper($instantPoll_progressBarBgColorMyVote, $instantPoll_progressBarGradMetaMyVote, $instantPoll_progressBarGradStopsMyVote);
+                    }
+                }
+            }
+            .form-actions {
+                margin: 0;
+                padding: 0;
+                background: none;
+                border: 0;
+            }
+            .ends {
+                font-size: $baseFontSize * 0.857;
+                @if $instantPoll_endsTextColor {
+                    color: $instantPoll_endsTextColor;
+                }
+            }
+            .complete .control-group {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        .visitAppBtn {
+            display: none;
+        }
+        .wide-view {
+        }
+        .title-icon-view {
+            display: none;
+        }
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2 {
+    }
+
+    &.grid-dimension-2x2 {
+    }
+
+    &.grid-dimension-4x2 {
+    }
+
+    &.grid-dimension-4x4 {
+    }
+
+} /* /.module.instantPoll */
+
+/* ----- PAGE STYLES ----- */
+.page.instantPoll {
+}

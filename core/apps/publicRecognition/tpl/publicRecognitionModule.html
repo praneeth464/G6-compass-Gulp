@@ -1,0 +1,102 @@
+<?php sleep(2); ?>
+<!--  PUBLIC RECOGNITION MODULE  -->
+<!--
+    NOTE:
+    - JSON data structure ex: ajax/publicRecognition.json
+    - JSON data nested thus:
+        recognitionSet-recognitions-recognition-comments-comment
+-->
+<div class="module-liner">
+
+    <!-- Page Header - Nav Tabs  -->
+
+    <a href="layout.html?tpl=publicRecognitionPage&amp;tplPath=apps/publicRecognition/tpl/" class="visitAppBtn">
+        <i class="icon-arrow-right"></i>
+    </a>
+
+    <div class="app-row main-nav">
+
+        <div class="app-col">
+
+            <ul class="nav nav-tabs pubRecTabs">
+
+                <!-- dynamic - (tabs are generated in PublicRecognitionModelView JS) -->
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="wide-view">
+
+        <!-- View and Edit links only appear on follow tab if user does not have anyone in their follow list. -->
+
+        <ul class="recognition-controls follow-list-links" style="display: none;">
+
+            <li><a href="layout.html?tpl=publicRecognitionPageFollowList&tplPath=apps/publicRecognition/tpl/"><i class="icon-edit"></i></i>View/Edit Follow List</a></li>
+
+            <!--li><a href="#">Edit Follow List</a></li-->
+
+        </ul>
+
+
+
+        <!-- Page Body | Employee View -->
+
+        <div class="app-slider pubRecItemsCont" data-msg-empty="No recognitions found">
+
+            <div class="publicRecognitionItems">
+                <!-- dynamic - pubRecItems -->
+            </div>
+
+            <!-- DO NOT REMOVE FROM DOM - this element needs to be at bottom of recogs -->
+            <!-- shown when there are more than n number of recognitions -->
+            <div class="app-row">
+                <p>
+                    <a href="#" class="viewAllRecognitions"  style="display:none">
+                        View All
+                    </a>
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- If the user doesn't have anyone in their follow list, display a message to add followers and button that links to the follow list page. -->
+        <div class="app-slider createFollowListWrapper"  style="display:none">
+            <div class="app-row">
+
+                <h2>
+                    <i class="icon-g5-following"></i>
+                    Your follow list
+                </h2>
+                <p>Want to follow members of your group, or friends at work? This is where to do it.</p>
+
+                <a href="layout.html?tpl=publicRecognitionPageFollowList&tplPath=apps/publicRecognition/tpl/" class="btn btn-primary" data-toggle="button createFollowListBtn">Create My Follow List</a>
+
+            </div>
+        </div>
+
+        <!-- If the user has followees in their follow list but there are no recognitions that are public from those followees to display, then display a message to explain why they don't see anything. -->
+        <div class="app-slider noRecognitionsFollowListWrapper"  style="display:none">
+            <div class="app-row">
+
+                <p>None of your contributors have any recognitions.</p>
+
+            </div>
+        </div>
+
+
+
+    </div> <!-- ./wide-view -->
+
+    <div class="title-icon-view">
+
+        <h3>Public Recognition</h3>
+        <i class="icon-g5-publicrecognition"></i>
+
+    </div>
+
+</div> <!-- ./module-liner -->
+<!--  /PUBLIC RECOGNITION MODULE  -->

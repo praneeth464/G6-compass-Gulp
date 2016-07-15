@@ -1,0 +1,74 @@
+// App-specific variables and mixins
+// =========================
+$tdBanner_bgColor: #fff !default;
+
+$throwdownNews_imgUrlPath: $appImagesPath !default;
+$throwdownNews_imgUrl2x1: "throwdown/bannerNews_2x1.jpg" !default;
+
+$throwdownTrainingCamp_imgUrlPath: $appImagesPath !default;
+$throwdownTrainingCamp_imgUrl2x1: "throwdown/bannerTrainingCamp_2x1.jpg" !default;
+
+$throwdownStandings_imgUrlPath: $appImagesPath !default;
+$throwdownStandings_imgUrl2x1: "throwdown/bannerStandings_2x1.jpg" !default;
+
+$throwdownRankings_imgUrlPath: $appImagesPath !default;
+$throwdownRankings_imgUrl2x1: "throwdown/bannerRankings_2x1.jpg" !default;
+
+$throwdownSmackTalk_imgUrlPath: $appImagesPath !default;
+$throwdownSmackTalk_imgUrl2x1: "throwdown/bannerSmackTalk_2x1.jpg" !default;
+
+@mixin tdBannerBkgs(
+    $imgUrlPath: false,
+    $imgUrl: false
+) {
+    &.grid-dimension-2x1,
+    &.grid-dimension-1x1 {
+        .module-liner {
+            @include safeImgUrls($imgUrl, $imgUrlPath, $property: 'background-image');
+            background-repeat: no-repeat;
+        }
+    }
+    &.grid-dimension-1x1 {
+        overflow: hidden;
+    }
+}
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- MODULE STYLES ----- */
+.module {
+    &.throwdownNews {
+        @include tdBannerBkgs($imgUrl: $throwdownNews_imgUrl2x1, $imgUrlPath: $throwdownNews_imgUrlPath);
+    }
+
+    &.throwdownTrainingCampModule {
+        @include tdBannerBkgs($imgUrl: $throwdownTrainingCamp_imgUrl2x1, $imgUrlPath: $throwdownTrainingCamp_imgUrlPath);
+    }
+
+    &.throwdownStandingsModule {
+        @include tdBannerBkgs($imgUrl: $throwdownStandings_imgUrl2x1, $imgUrlPath: $throwdownStandings_imgUrlPath);
+    }
+
+    &.throwdownRankings {
+        @include tdBannerBkgs($imgUrl: $throwdownRankings_imgUrl2x1, $imgUrlPath: $throwdownRankings_imgUrlPath);
+    }
+
+    &.smackTalk {
+        @include tdBannerBkgs($imgUrl: $throwdownSmackTalk_imgUrl2x1, $imgUrlPath: $throwdownSmackTalk_imgUrlPath);
+    }
+} /* /.module */
+
+.lt-ie9 {
+    .module.throwdownNews,
+    .module.throwdownTrainingCampModule,
+    .module.throwdownStandingsModule,
+    .module.throwdownRankings {
+        .module-liner {
+            filter: none;
+        }
+    }
+}

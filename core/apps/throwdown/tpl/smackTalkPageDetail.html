@@ -1,0 +1,44 @@
+<!-- ======== SMAKC TALK PAGE DETAIL ======== -->
+
+<!-- DEVELOPER NOTE:
+    - G5.props.URL_JSON_SMACK_TALK_DETAIL javascript variable is used to request smack-talk detail
+    - #smackTalkPageView[data-smack-talk-id] is used to request the smack-talk detail json
+-->
+
+<!-- page -->
+<div id="smackTalkPageView" class="page-content smack-talk-page-detail" data-smack-talk-id="1234">
+
+    <div class="page-liner smackTalkItemsCont">
+
+        <div class="smackTalkItems">
+            <!-- dynamic - single public smack-talk detail -->
+        </div><!-- smackTalkItems -->
+
+    </div><!-- smackTalkItemsCont -->
+
+
+</div><!-- /#smackTalkPageView -->
+
+
+
+<!-- Instantiate the PageView - expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function(){
+        //attach the view to an existing DOM element
+        var prp = new SmackTalkPageDetailView({
+            el:$('#smackTalkPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'javascript:history.go(-1);'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Smack Talk Detail'
+        });
+    });
+
+</script>

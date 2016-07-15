@@ -1,0 +1,36 @@
+[
+    {
+        "promoId": 1234,
+        "promoName": "The Super Summer Thrilling Exciting Promotional Blitz of Doom Part Four",
+        "endDate": 1388556000000,
+        "matchesUrl": "url/to/view/matches"
+    },
+
+    {
+        "promoId": 2341,
+        "promoName": "Some Promotion ",
+        "endDate": 1387951200000,
+        "matchesUrl": "url/to/view/matches"
+    },
+
+    {
+        "promoId": 3412,
+        "promoName": "Another Slightly Better Promotion",
+        "endDate": 1385877600000,
+        "matchesUrl": "url/to/view/matches"
+    },
+
+    {
+        "promoId": 4123,
+        "promoName": "A Fairly Average Promotion",
+        "endDate": 1387087200000,
+        "matchesUrl": "url/to/view/matches"
+    },
+
+    {
+        "promoId": 5678,
+        "promoName": "Nobody Likes This Promotion, but We're All Stuck With It for a Long Time",
+        "endDate": 1406869200000,
+        "matchesUrl": "url/to/view/matches"
+    }
+]

@@ -1,0 +1,22 @@
+<?php sleep(1); ?>
+{
+    "messages": [],
+    "chart": {
+        "xAxisName" : "FOO!",
+        "chartType" : "Pie2D"
+    },
+    "data": [
+        {
+            "label": "PromoName1",
+            "value": "12"
+        },
+        {
+            "label": "PromoName2",
+            "value": "19"
+        },
+        {
+            "label": "PromoName3",
+            "value": "4"
+        }
+    ]
+}

@@ -1,0 +1,69 @@
+// App-specific variables
+// =========================
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- PAGE STYLES ----- */
+.page.publicProfile {
+    .page-topper {
+        // profile image
+        img {
+            display: inline;
+            float: left;
+            margin-right: 8px;
+            width: 48px;
+            height: 48px;
+        }
+
+        h3 {
+            margin-bottom: $baseLineHeight / 2;
+            line-height: 48px;
+        }
+
+        .btn {
+            color: $white;
+        }
+    }
+} /* /.page.publicProfile */
+
+#publicProfileWrapper {
+    .tab-content {
+        overflow: hidden;
+
+        #profilePagePersonalInfoTab dd {
+            margin-left: 180px;
+            line-height: $baseLineHeight;
+            margin-top: 7px;
+            min-height: $baseLineHeight;
+
+            p {
+                margin-bottom: 0;
+            }
+        }
+
+        #profileQuestionsWrapper {
+            margin-top: 20px;
+        }
+
+        .spin {
+            display: block;
+            margin: 0 auto;
+            width: $spinner_widthHeight;
+            height: $spinner_widthHeight;
+        }
+    }
+
+    .page-topper {
+        padding-bottom: 0;
+    }
+}
+
+.lt-ie8 {
+    #publicProfileTabs {
+        margin-top: 15px;
+    }
+}

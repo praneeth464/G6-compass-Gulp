@@ -1,0 +1,75 @@
+<!-- ======== KPM PAGE TEAM DASHBOARD ======== -->
+
+<div id="kpmPageTeamDashboard" class="kpm kpmPage kpmPageTeamDashboard page-content"><div class="row">
+
+    <!-- DIV.ROW up next to wrapping div.page-content for IE7 -->
+        <div class="span12">
+
+            <!-- the KPMModelView should always be inserted into an element with class 'kpmModelView' -->
+            <div class="kpmModelView"></div><!-- /.kpmModelView -->
+
+        </div><!-- /.span12 -->
+    </div><!-- /.row -->
+</div>
+
+<!-- overrides for the JSON variables (these are set in settings.js but provided here for convenience in creating a JSP) -->
+<script>
+// G5.props.URL_JSON_QUIZ_PAGE_TAKE_QUIZ = G5.props.URL_ROOT+'ajax/quizPageTakeQuiz.json';
+</script>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function() {
+
+        //attach the view to an existing DOM element
+        G5.views.QuizPageTake = new KPMPageTeamDashboardView({
+            el:$('#kpmPageTeamDashboard'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html?tplPath=./tpl/&tpl=modulesPage.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html'
+                }
+            },
+            pageTitle : 'Team Dashboard',
+
+            // mode can be team/user
+            mode : 'team'
+        });
+
+    });
+</script>
+
+<!-- NOTE: the following includes were added to make this shell behave like the JSP -->
+<script type="text/template" id="kpmModelTpl">
+    <jsp:include page="kpmModel.html"></jsp:include>
+    <?php include("kpmModel.html"); ?>
+</script>
+
+<script type="text/template" id="kpmSummaryCollectionTpl">
+    <jsp:include page="kpmSummaryCollection.html"></jsp:include>
+    <?php include("kpmSummaryCollection.html"); ?>
+</script>
+
+<script type="text/template" id="kpmSummaryModelTpl">
+    <jsp:include page="kpmSummaryModel.html"></jsp:include>
+    <?php include("kpmSummaryModel.html"); ?>
+</script>
+
+<script type="text/template" id="kpmDetailScoreTpl">
+    <jsp:include page="kpmDetailScore.html"></jsp:include>
+    <?php include("kpmDetailScore.html"); ?>
+</script>
+
+<script type="text/template" id="kpmTeamMembersTpl">
+    <jsp:include page="kpmTeamMembers.html"></jsp:include>
+    <?php include("kpmTeamMembers.html"); ?>
+</script>
+
+<script type="text/template" id="kpmTeamMembersCollectionTpl">
+    <jsp:include page="kpmTeamMembersCollection.html"></jsp:include>
+    <?php include("kpmTeamMembersCollection.html"); ?>
+</script>

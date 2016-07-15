@@ -1,0 +1,73 @@
+<!-- this template/view should always be inserted into '<div class="engagementModelView">' by the parent view initializing it -->
+
+<div class="timeframe">
+    <ul class="controls inline">
+        <li class="prev"><a href="#" data-timeframe="{{timeframeType}}" data-timeframe-nav="prev"><i class="icon-chevron-left"></i></a></li>
+        <li class="now">{{timeframeName}}</li>
+        <li class="next"><a href="#" data-timeframe="{{timeframeType}}" data-timeframe-nav="next"><i class="icon-chevron-right"></i></a></li>
+    </ul>
+
+    <div class="btn-group timeframeToggle">
+        <a href="#" class="btn {{#eq timeframeType "month"}}active{{/eq}}" data-timeframe="month">Month</a>
+        <a href="#" class="btn {{#eq timeframeType "quarter"}}active{{/eq}}" data-timeframe="quarter">3 Months</a>
+        <a href="#" class="btn {{#eq timeframeType "year"}}active{{/eq}}" data-timeframe="year">12 Months</a>
+    </div>
+</div><!-- /.timeframe -->
+
+{{#unless errors}}
+<div class="title">
+    <ul class="export-tools fr">
+        <li class="print"><a href="javascript:window.print();"><i class="icon-print"></i></a></li>
+    </ul>
+
+    {{#if multiNode}}
+    <select id="nodeSelect" name="nodeSelect">
+        <option value="{{allNodeIds}}">{{allNodeNames}}</option>
+        <option disabled>&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;</option>
+        {{#each nodes}}
+        <option value="{{id}}" {{#unless ../_allNodesSelected}}{{#if selected}}selected="selected"{{/if}}{{/unless}}>{{name}}</option>
+        {{/each}}
+    </select>
+    {{else}}
+        {{#if displayBreadcrumbs}}
+            <div id="breadCrumbs"></div>
+            <!--XXXsubTpl.breadcrumbTpl=
+                NOTE: you can safely take the JSP conversion of core/base/tpl/breadcrumbView.html and include it here. Then, remove the "XXX" above and the script will use this child template instead of the remote one
+            subTpl-->
+        {{else}}
+            {{#if title}}<h2 class="title">{{title}}</h2>{{/if}}
+        {{/if}}
+    {{/if}}
+</div><!-- /.title -->
+{{/unless}}
+
+{{#if summary}}
+<!-- the EngagementSummaryCollectionView should always be inserted into an element with class 'engagementSummaryCollectionView' -->
+<div class="engagementSummaryCollectionView"></div><!-- /.engagementSummaryCollectionView -->
+{{/if}}
+
+{{#if detail}}
+<!-- the EngagementDetail*Views should always be inserted into an element with class 'engagementDetailView' -->
+<div class="engagementDetailView"></div><!-- /.engagementDetailView -->
+{{/if}}
+
+
+<!-- START if team display -->
+{{#eq mode "team"}}
+{{#if team}}
+<!-- the EngagementTeamMembersView should always be inserted into an element with class 'engagementTeamMembersView' -->
+<div class="engagementTeamMembersView"></div><!-- /.engagementTeamMembersView -->
+{{/if}}
+{{/eq}}
+<!-- END if team display -->
+
+<!--subTpl.errors=
+<div id="errors" class="alert alert-error">
+    <button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+    <ul>
+    {{#each .}}
+        <li>{{text}}</li>
+    {{/each}}
+    </ul>
+</div>
+subTpl-->

@@ -1,0 +1,90 @@
+// App-specific variables
+// =========================
+$celebrationCorporateVideo_bgImg: "celebration/placeholder-vid-thumb.jpg" !default;
+$celebrationCorporateVideo_bgImgPath: $appImagesPath !default;
+$celebrationCorporateVideo_bgImgRepeat: no-repeat !default;
+
+$celebrationCorporateVideo_playBtnColor: $white !default;
+$celebrationCorporateVideo_playBtnBg: $black !default;
+$celebrationCorporateVideo_closeBtnColor: $white !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.celebrationCorporateVideo {
+
+} /* /.celebrationCorporateVideo  */
+
+/* ----- MODULE STYLES ----- */
+.module.celebrationCorporateVideo {
+
+    .wide-view {
+        padding: 0;
+    }
+
+    .btn-vid-play {
+        @include border-radius(8px);
+        @include opacity(.75);
+        background-color: $celebrationCorporateVideo_playBtnBg;
+        color: $celebrationCorporateVideo_playBtnColor;
+        display: block;
+        font-size: 36px;
+        height: 80px;
+        left: 96px;
+        line-height: 80px;
+        position: absolute;
+        text-align: center;
+        top: 120px;
+        width: 128px;
+    }
+
+} /* /.module.celebrationCorporateVideo  */
+
+/* ----- PAGE STYLES ----- */
+.page.celebrationCorporateVideo {
+
+} /* /.page.celebrationCorporateVideo  */
+
+//This gets detached and appended to the body therefore needs to be outiside of module and page views.
+.celebrationPage {
+
+    #corporateVideoModal {
+
+        .modal-body {
+            padding: 0;
+
+            a {
+                bottom: 0;
+                left: 0;
+                position: absolute;
+                right: 0;
+                text-decoration: none;
+                top: 0;
+
+                &:hover {
+                    .btn-vid-play {
+                        @include opacity(1);
+                    }
+                }
+            }
+        }
+
+        #celebrationVideo {
+            width: 100%;
+        }
+
+        .close {
+            @include opacity(1);
+            color: $celebrationCorporateVideo_closeBtnColor;
+            left: -15px;
+            position: absolute;
+            text-shadow: 0 1px 0 $black;
+            top: -15px;
+        }
+    }
+}

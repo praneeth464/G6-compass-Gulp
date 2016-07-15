@@ -1,0 +1,136 @@
+{{! NOTE: this src needs to point to the javascript lib}}
+<div class="raphael" data-src="../libs/raphael-min.js"></div>
+
+<div class="row">
+	<div class="span12 contestData">
+		<div class="row">
+			<!-- status -->
+			<div class="span4 paxObjectiveInfo objDataSection">
+				<div class="row">
+					<div class="span2">
+						<span>Your Objective</span>
+					</div>
+					<div class="span1">
+						<strong>{{goal}}</strong>
+					</div>
+				</div>
+				<div class="row">
+					<div class="span2">
+						{{#eq daysToEnd "0"}}
+							<span>Final Activity</span>
+						{{else}}
+							<span>Activity</span>
+						{{/eq}}
+					</div>
+					<div class="span1">
+						<strong>{{progress}}</strong>
+					</div>
+				</div>
+				{{#ueq daysToEnd "0"}}
+					<div class="row">
+						<div class="span2">
+							<span>To Go</span>
+						</div>
+						<div class="span1">
+							<strong>{{remaining}}</strong>
+						</div>
+					</div>
+				{{/ueq}}
+				{{#if includeBonus}}
+					{{#if objectiveAchieved}}
+						<div class="row">
+							<div class="span2">
+								<span>In Bonus</span>
+							</div>
+							<div class="span1">
+								<strong>{{bonusActivity}}</strong>
+							</div>
+						</div>
+					{{/if}}
+				{{/if}}
+			</div>
+			<!-- /status -->
+			<!-- chart -->
+			<div class="span4 paxProgressChart">
+				<div class="chartPercentHolder chartHolder" data-model-id="{{id}}">
+					<div class="chartPercentProgress">
+                        <strong>{{percentProgress}}<sup>%</sup></strong>
+                    </div>
+				</div>
+			</div>
+			<!-- /chart -->
+			<!-- reward details -->
+			<div class="span4 paxObjectiveInfo paxObjectiveEarnInfo">
+				<div class="row">
+					<div class="span3">
+						{{#if objectiveAchieved}}
+						<div class="objectiveAchievedWrap">
+							<span>Objective Achieved</span>
+							<strong>{{#eq payoutType "points"}}{{payout}} {{#eq payout "1"}}point{{else}}points{{/eq}}{{else}} {{payoutDescription}}{{/eq}}</strong>
+						</div>
+							{{#if includeBonus}}
+								<span>Bonus</span>
+								<strong>{{bonusEarned}} points</strong>
+							{{/if}}
+						{{else}}
+							{{#eq status "finalize_results"}}
+								<span>
+									Objective not achieved
+								</span>
+							{{else}}
+								<span>
+									Reach objectives and<br>
+									Earn <strong>{{#eq payoutType "points"}}{{payout}} {{#eq payout "1"}}point{{else}}points{{/eq}}{{else}} {{payoutDescription}}{{/eq}}</strong><br>
+									{{#if badge.img}}
+									And this badge
+									{{/if}}
+								</span>
+							{{/eq}}
+						{{/if}}
+					</div>
+					{{#ueq status "finalize_results"}}
+						{{#if badge.img}}
+							<div class="span1">
+								<img src="{{badge.img}}" alt="{{badge.name}}" class="badgeImg{{#if objectiveAchieved}} goalAchieved{{/if}}">
+							</div>
+						{{/if}}
+					{{/ueq}}
+				</div>
+			</div>
+			<!-- /reward details -->
+		</div>
+
+		<div class="row">
+			<div class="span12 paxBottomData">
+				<div class="row">
+				{{#if includeStackRanking}}
+					<div class="span4 rankData">
+						<span class="sectionTitle">Stack Rank</span>
+						<img src="{{stackRank.thumbnailUrl}}" alt="" class="avatar" />
+						<div class="rankDataMeta">
+							<strong class="yourRank">#{{stackRank.rank}} of {{stackRank.participantsCount}}</strong>
+						</div>
+						<a href="#" data-stackrank-activityid="{{../activityId}}" class="viewAll viewAllStackRank btn btn-inverse">View Stack Ranking</a>
+					</div>
+				{{/if}}
+				{{#if includeBonus}}
+					<div class="span8 bonusData">
+						<div class="row">
+							<div class="span8">
+								<span class="sectionTitle">Bonus</span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="span8">
+								<p>After reaching your objective, you are elligible for the following:</p>
+								<strong class="forEvery">For every {{bonusForEvery}} <span>&bull;</span> Earn {{bonusPayout}} {{#eq bonusPayout "1"}}point{{else}}points{{/eq}}
+								</strong>
+							</div>
+						</div>
+					</div>
+				{{/if}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

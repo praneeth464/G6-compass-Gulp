@@ -1,0 +1,149 @@
+// Partial-specific variables
+// =========================
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+/*!
+ * Slider for Bootstrap
+ *
+ * Copyright 2012 Stefan Petre
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ */
+
+input.slider {
+    width: 50%;
+}
+
+.slider {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+
+    &.slider-horizontal {
+        padding: 0 7px; // left/right padding stolen from bootstrap/_forms for the input + border width
+        width: 50% !important;
+        height: $baseLineHeight;
+
+        @media (max-width: 479px) {
+            padding: 0;
+            width: 100% !important;
+
+            .btn.hide {
+                display: none;
+            }
+        }
+
+        .slider-track {
+            height: $baseLineHeight/4;
+            width: 100%;
+            margin-top: -$baseLineHeight/8 - (1px/2); // 1px/2 is the top/bottom border
+            top: 50%;
+            left: 0;
+        }
+        .slider-selection {
+            height: 100%;
+            top: 0;
+            bottom: 0;
+        }
+        .slider-handle {
+            margin-left: -$baseLineHeight/2;
+            margin-top: -$baseLineHeight/4 - 1px; // 1px is the top border
+
+            &.btn {
+                margin-left: -($baseLineHeight/2 + 1);
+                margin-top: -($baseLineHeight/8*3 + 1) - (1px/2); // 1px/2 is the top/bottom border
+            }
+
+            // &.triangle {
+            //     border-width: 0 $baseLineHeight/2 $baseLineHeight/2 $baseLineHeight/2;
+            //     width: 0;
+            //     height: 0;
+            //     border-bottom-color: #0480be;
+            //     margin-top: 0;
+            // }
+        }
+    }
+    &.slider-vertical {
+        height: 210px;
+        width: $baseLineHeight;
+
+        .slider-track {
+            width: $baseLineHeight/4;
+            height: 100%;
+            margin-left: -$baseLineHeight/8 - (1px/2); // 1px/2 is the right/left border
+            left: 50%;
+            top: 0;
+        }
+        .slider-selection {
+            width: 100%;
+            left: 0;
+            top: 0;
+            bottom: 0;
+        }
+        .slider-handle {
+            margin-left: -$baseLineHeight/4 - 1px; // 1px is the left border
+            margin-top: -$baseLineHeight/2;
+
+            &.btn {
+                margin-top: -($baseLineHeight/2 + 1);
+                margin-left: -($baseLineHeight/8*3 + 1) - (1px/2); // 1px/2 is the right/left border
+            }
+
+            // &.triangle {
+            //     border-width: $baseLineHeight/2 0 $baseLineHeight/2 $baseLineHeight/2;
+            //     width: 1px;
+            //     height: 1px;
+            //     border-left-color: #0480be;
+            //     margin-left: 0;
+            // }
+        }
+    }
+    input {
+        width: 100%;
+        display: none;
+    }
+    .tooltip-inner {
+        white-space: nowrap;
+    }
+}
+.slider-track {
+    position: absolute;
+    cursor: pointer;
+    border: 1px solid $btnBorder;
+    // @include gradient-vertical(#f5f5f5, #f9f9f9);
+    // @include box-shadow(inset 0 1px 2px rgba(0,0,0,.1));
+    @include border-radius($baseBorderRadius);
+}
+.slider-selection {
+    position: absolute;
+    background: $linkColor;
+    // @include gradient-vertical(#f9f9f9, #f5f5f5);
+    // @include box-shadow(inset 0 -1px 0 rgba(0,0,0,.15));
+    // @include box-sizing(border-box);
+    @include border-radius($baseBorderRadius);
+}
+.slider-handle {
+    position: absolute;
+    width: $baseLineHeight;
+    height: $baseLineHeight;
+
+    &.btn {
+        padding: 0;
+    }
+    // @include gradient-vertical(#149bdf, #0480be);
+    // @include box-shadow(inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05));
+    // opacity: 0.8;
+    // border: 0px solid transparent;
+    // &.round {
+    //     @include border-radius($baseLineHeight);
+    // }
+    // &.triangle {
+    //     background: transparent none;
+    // }
+}

@@ -1,0 +1,1160 @@
+// App-specific variables
+// =========================
+$publicRecognition_bgColor: $g5ModuleBgColor !default;
+$publicRecognition_gradType: $g5ModuleGradType !default;
+$publicRecognition_gradMeta: $g5ModuleGradMeta !default;
+$publicRecognition_gradStops: $g5ModuleGradStops !default;
+
+$publicRecognition_iconColor: $g5ModuleIconColor !default;
+$publicRecognition_titleColor: $g5ModuleTitleColor !default;
+$publicRecognition_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$publicRecognition_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$publicRecognition_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$publicRecognition_tabsNavBgColor: #737373 !default;
+$publicRecognition_tabsNavGradType: linear !default;
+$publicRecognition_tabsNavGradMeta: top !default;
+$publicRecognition_tabsNavGradStops: $publicRecognition_tabsNavBgColor, scale-color($publicRecognition_tabsNavBgColor, $lightness: -25%) !default;
+$publicRecognition_tabsNavBorderWidth: $g5ModPgBorderWidth !default;
+$publicRecognition_tabsNavBorderColor: $g5ModPgBorderColor !default;
+
+$publicRecognition_tabsIconColor: $grayDark !default;
+$publicRecognition_tabsIconShadow: 0 -1px 0 rgba(0,0,0,.875) !default;
+$publicRecognition_tabsTabBgColor: false !default;
+
+$publicRecognition_tabsIconColorHover: false !default;
+$publicRecognition_tabsIconShadowHover: $publicRecognition_tabsIconShadow !default;
+$publicRecognition_tabsTabBgHover: $linkColor !default;
+$publicRecognition_tabsTabBoxShadowClick: rgba(0,0,0, 0.4) 0 2px 5px inset !default;
+
+$publicRecognition_tabsIconColorActive: $grayLight !default;
+$publicRecognition_tabsIconShadowActive: none !default;
+$publicRecognition_tabsTabBgActive: $white !default;
+
+$publicRecognition_containerLinkColor: false !default;
+$publicRecognition_containerChevronColor: $grayLight !default;
+$publicRecognition_containerBgColor: $white !default;
+$publicRecognition_containerBorderWidth: $g5ModPgBorderWidth !default;
+$publicRecognition_containerBorderColor: $g5ModPgBorderColor !default;
+$publicRecognition_commentBgColor: scale-color($linkColor, $lightness: 93.75%) !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+$imgWidth : 48px;
+$imgWidthComment : 36px;
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.publicRecognition {
+
+    a {
+        // font-weight: bold;
+    }
+
+    .page-topper{
+        padding-bottom: 0;
+        @include module_moduleLinerBackground(
+            $bgColor: $publicRecognition_tabsNavBgColor,
+            $gradType: $publicRecognition_tabsNavGradType,
+            $gradMeta: $publicRecognition_tabsNavGradMeta,
+            $gradStops: $publicRecognition_tabsNavGradStops
+        );
+    }
+
+    .nav-tabs.pubRecTabs {
+        li {
+            a {
+                color: $publicRecognition_tabsIconColor;
+                text-shadow: $publicRecognition_tabsIconShadow;
+
+                &:hover {
+                    @if $publicRecognition_tabsIconColorHover {
+                        color: $publicRecognition_tabsIconColorHover;
+                    }
+                    @if $publicRecognition_tabsIconShadowHover and $publicRecognition_tabsIconShadowHover != $publicRecognition_tabsIconShadow {
+                        text-shadow: $publicRecognition_tabsIconShadowHover;
+                    }
+                    @if publicRecognition_tabsTabBgHover {
+                        background-color: $publicRecognition_tabsTabBgHover;
+                    }
+                }
+                &:active {
+                    @if $publicRecognition_tabsTabBoxShadowClick {
+                        @include box-shadow($publicRecognition_tabsTabBoxShadowClick);
+                    }
+                }
+
+                span {
+                    display: inline-block;
+                    text-indent: -9999px;
+                    white-space: nowrap;
+                }
+                i {
+                    font-size: 20px;
+                    line-height: 24px;
+                    margin: 0 -10px;
+                    height: 24px;
+                    width: 36px;
+                    vertical-align: middle;
+                }
+                .icon-g5-pubrec-global {
+                    font-size: 26px;
+                    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf102;');
+
+                    &:before {
+                        content: "\f102";
+                    }
+                }
+                .icon-g5-pubrec-team {
+                    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf103;');
+
+                    &:before {
+                        content: "\f103";
+                    }
+                }
+                .icon-g5-pubrec-followed {
+                    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf104;');
+
+                    &:before {
+                        content: "\f104";
+                    }
+                }
+                .icon-g5-pubrec-mine {
+                    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf105;');
+
+                    &:before {
+                        content: "\f105";
+                    }
+                }
+            }
+            &.active {
+                a {
+                    color: $publicRecognition_tabsIconColorActive;
+                    @if $publicRecognition_tabsIconShadowActive {
+                        text-shadow: $publicRecognition_tabsIconShadowActive;
+                    }
+                    background-color: $publicRecognition_tabsTabBgActive;
+
+                    &:hover {
+                        background-color: $publicRecognition_tabsTabBgActive;
+                    }
+                    &:active {
+                        @include box-shadow(none);
+                    }
+                }
+            }
+        }
+        @media (max-width: 767px) {
+
+            li {
+                float: left;
+                margin-right: 4px;
+            }
+        }
+    }
+
+    .pubRecItemsCont,
+    .publicRecognitionItems,
+    .createFollowListWrapper {
+        position: relative;
+
+        &.emptySet,
+        .app-row {
+            h2 {
+                font-size: $baseFontSize * 1.25;
+                line-height: $baseLineHeight * 1.25;
+                text-align: center;
+                color: $grayLight;
+                overflow: hidden;
+
+                i {
+                    display: block;
+                    width: 100%;
+                    height: auto;
+                    font-size: 96px;
+                    line-height: 96px;
+                }
+            }
+        }
+    }
+    .createFollowListWrapper {
+        position: relative;
+        padding-right: 0 !important;
+        text-align: center;
+        color: $grayLight;
+    }
+
+    /* ----- PROFILE POPOVER IMAGES ----- */
+    .profile-popover-left {
+        float: left;
+        width: 70px;
+        margin: 0 0 0 10px;
+    }
+
+    .profile-popover-right,
+    .profile-popover-right .nav-list {
+        float: left;
+        max-width: 200px;
+    }
+
+    .profile-popover-right .nav-list li {
+        float: left;
+        margin: 0 20px 0 0;
+    }
+
+    .profile-popover-left-sm {
+        float: left;
+        width: 35px;
+        margin: 0 0 0 30px;
+    }
+
+    .profile-popover-right-sm {
+        float: left;
+        width: 180px;
+    }
+
+    .profile-slider-sm {
+        height: 150px;
+        overflow-y: auto;
+    }
+
+    /* public recognition item (shared)*/
+    .public-recognition-item {
+        position: relative;
+
+        .app-row {
+            margin: 0;
+            width: auto;
+
+            .app-col {
+                float:left;
+
+                &.chevron {
+                    position: absolute;
+                    top: 20px;
+                    right: 0;
+                    float: none;
+                    text-align: center;
+
+                    a {
+                        color: $publicRecognition_containerChevronColor;
+                    }
+                    a:hover {
+                        color: $linkColor;
+                        text-decoration: none;
+                    }
+                }
+            }
+
+
+            &.detail-row {
+                .profile-popover img {
+                    width: $imgWidth;
+                    min-width: $imgWidth;
+                    height: $imgWidth;
+                }
+                .recognition-block {
+                    float: none;
+                }
+
+                .likePubRecBtn {
+                    .spin {
+                        display: inline-block;
+                        @include ie7-inline-block();
+                        position: static;
+                        width: $baseLineHeight;
+                        height: $baseLineHeight;
+                        vertical-align: top;
+                    }
+                }
+            }
+
+            &.comment-block {
+                display: block;
+                background: $publicRecognition_commentBgColor;
+                overflow: hidden;
+
+                &.darken {
+                    background: darken($publicRecognition_commentBgColor,30%);
+                }
+
+                &::before {
+                    content: "";
+                    width: 100%;
+                    height: 0;
+                    border-top: 1px solid scale-color($linkColor, $lightness: 75%);
+                    border-color: $grayLight;
+                }
+
+                .comment {
+                    float: none;
+                    margin-left: $imgWidthComment + $gridGutterWidth;
+                    word-wrap: break-word;
+
+                    p {
+                        margin-bottom: 0;
+
+                        & ~ p {
+                            margin-bottom: $baseLineHeight / 2; // borrowed from bootstrap/_type.scss
+                        }
+                    }
+                }
+
+                img {
+                    width: $imgWidthComment;
+                }
+            }
+
+            .commentInputWrapper,
+            .addPointsWrapper {
+                display: block;
+                float: none !important;
+
+                .alert {
+                    position: relative;
+                }
+            }
+
+        } /* /.app-row */
+
+        .pubRecComments {
+
+        }
+
+        .comment-input {width:98%; max-width: 98%; height:18px;}
+
+        .readMore {
+            position: relative;
+            overflow: hidden;
+            max-width: 900px;
+
+            .readMoreTrigger {
+                position: absolute;
+                cursor: pointer;
+                right: 0;
+                bottom: 0;
+                padding-left: 6px;
+                background-color: $publicRecognition_containerBgColor; // hide bg text
+            }
+        }
+
+        .comment-block {
+            overflow: hidden;
+
+            .readMore .readMoreTrigger {
+                background-color: $publicRecognition_commentBgColor; // hide bg text
+            }
+        }
+
+    } /* /.public-recognition-item */
+
+    .recognition-comment {
+        margin:3px 0;
+        overflow: hidden;
+    }
+    .translateLinkDisabled {
+        color: #999999;
+    }
+
+} /* /.publicRecognition */
+
+
+/* ----- MODULE STYLES ----- */
+.module.publicRecognition {
+    font-size: 12px;
+    line-height: 18px;
+
+    &.grid-dimension-1x1,
+    &.grid-dimension-2x1 {
+        .main-nav,
+        // never show the dataLoading spinner on the icon versions of this module
+        &.dataLoading .spin {
+            display: none;
+        }
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        .title-icon-view {
+            display: none;
+        }
+
+        // hide the big version of this module when we're loading data and show a faded version of the title-icon-view
+        @include module_fadeOnDataLoading(
+            $classesToHide: '.main-nav, .wide-view'
+        );
+    }
+
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $publicRecognition_bgColor,
+            $gradType: $publicRecognition_gradType,
+            $gradMeta: $publicRecognition_gradMeta,
+            $gradStops: $publicRecognition_gradStops
+        );
+    }
+
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $publicRecognition_iconColor,
+            $titleColor: $publicRecognition_titleColor,
+            $titleFontFamily: $publicRecognition_titleFontFamily
+        );
+
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            @include g5HomeAppIconBoxReflect(-50px);
+        }
+    }
+
+    @include module_titleIconViewFontSizesWeights($publicRecognition_titleFontSizes, $publicRecognition_titleFontWeights);
+
+    .main-nav {
+        margin: 0;
+        overflow: hidden;
+
+        ul {
+            margin: 0;
+            @if $publicRecognition_tabsNavBorderWidth and $publicRecognition_tabsNavBorderWidth > 0 {
+                border: $publicRecognition_tabsNavBorderWidth solid $publicRecognition_tabsNavBorderColor;
+                border-bottom: 0;
+            }
+            @include module_moduleLinerBackground(
+                $bgColor: $publicRecognition_tabsNavBgColor,
+                $gradType: $publicRecognition_tabsNavGradType,
+                $gradMeta: $publicRecognition_tabsNavGradMeta,
+                $gradStops: $publicRecognition_tabsNavGradStops
+            );
+            -webkit-font-smoothing: antialiased; // makes light-on-dark text look a bit better
+        }
+        .app-col {
+            width: 100%;
+        }
+    }
+    .wide-view {
+        $appRowPadding : $g5ModuleGutter * 3;
+        $appRowGutter : $g5ModuleGutter * 2;
+
+        position: relative;
+        padding: 0;
+        @if $publicRecognition_containerBgColor {
+            background: $publicRecognition_containerBgColor;
+        }
+        @if $publicRecognition_containerBorderWidth and $publicRecognition_containerBorderWidth > 0 {
+            border: $publicRecognition_containerBorderWidth solid $publicRecognition_containerBorderColor;
+            border-top: 0;
+        }
+
+        a {
+            font-weight: bold;
+            @if $publicRecognition_containerLinkColor {
+                color: $publicRecognition_containerLinkColor;
+            }
+        }
+
+        .app-slider {
+            padding: $g5ModulePadding ($appRowPadding - $publicRecognition_containerBorderWidth) 0 0;
+            overflow-y: auto;
+            // heights set below
+
+            .lt-ie8 & {
+                // ie7 renders the icons in the tabs too tall, pushing the content box down. I cannot get it to render the icons the right height. Argh. This pulls the content box up enough
+                margin-top: -5px;
+
+                &.pubRecItemsCont.followedCollection {
+                    margin-top: -4px;
+                }
+            }
+        }
+
+        .publicRecognitionItems,
+        .follow-list-links {
+            padding-left: $appRowPadding - $publicRecognition_containerBorderWidth;
+
+            .public-recognition-item {
+                margin-left: -1 * ($appRowPadding - $publicRecognition_containerBorderWidth);
+                margin-bottom: $appRowPadding;
+            }
+
+            &.emptySet {
+                position: static;
+
+                h2 {
+                    position: absolute;
+                    top: 18px;
+                    left: 0;
+                    width: 100%;
+                }
+            }
+        }
+        .createFollowListWrapper .app-row {
+            margin: 0 5%;
+            width: 90%;
+        }
+
+        .follow-list-links {
+            position: relative;
+            z-index: 1;
+            display: block;
+            padding-top: $g5ModulePadding;
+
+            a:hover i,
+            i:hover {
+                text-decoration: none;
+            }
+
+            i {
+                font-size: 18px;
+            }
+        }
+
+        .app-row {
+            width: auto;
+            margin-bottom: 0;
+
+            @include gridCoreInnerNegMargin($leftRightPad: ($appRowPadding * -1), $leftRightBorder: ($publicRecognition_containerBorderWidth * -1));
+
+            .app-col {
+                &.chevron {
+                    right: -1 * ($appRowPadding - $publicRecognition_containerBorderWidth);
+                    width: $appRowPadding * 2;
+                    height: $appRowPadding * 2;
+                    font-size: $appRowPadding * 4 / 3;
+                    line-height: $appRowPadding * 2;
+                }
+            }
+
+            &.detail-row {
+                .profile-popover img {
+                    margin-right: $appRowGutter;
+                }
+                .recognition-block {
+                    margin: 0 0 $appRowGutter ($imgWidth + $appRowGutter);
+                }
+
+                // make all paragraph elements display inline
+                .moreToRead p {
+                    display: inline;
+                    margin-right: 4px;
+                }
+
+                .likePubRecBtn .spin {
+                    margin: 0;
+                    padding: 0;
+                    background: none;
+                    filter: none;
+                }
+            }
+
+            &.comment-block {
+                padding: 0 $appRowGutter;
+                margin-left: $imgWidth + $appRowGutter + $appRowPadding - $publicRecognition_containerBorderWidth;
+
+                // .likeInfoWrapper,
+                // .commentInputWrapper,
+                // .addPointsWrapper,
+                // &.pubRecCommentsComment,
+                // &.viewAllCommentsWrapper .app-col {
+                //     padding-top: $appRowGutter / 2;
+                //     padding-bottom: $appRowGutter / 2;
+                // }
+                .likeInfoWrapper span {
+                    display: block;
+                    margin-top: $gridGutterWidth / 2;
+                    span {display: inline;}
+                }
+                .publicRecognitionCommentForm,
+                .publicRecognitionAddPointsForm {
+                    margin-bottom: $appRowGutter / 2;
+                }
+                &::before {
+                    margin-top: (-1 * $appRowGutter / 2);
+                    margin-bottom: $appRowGutter;
+                }
+            }
+
+            .commentInputWrapper, .addPointsWrapper {
+                padding: 0 0 0 0;//($imgWidthComment + $appRowGutter);
+            }
+        } /* /.app-row */
+    }
+
+    &.grid-dimension-2x2 {
+        .comment-block{
+            display: none;
+            overflow: hidden;
+        }
+        ul.recognition-props {
+            display: none;
+        }
+        .recognition-block {
+            margin: 0;
+            overflow: hidden;
+        }
+    }
+
+    /* ----- Add SCROLL BARS FOR THE 2X2 AND 4X2 GRIDS ----- */
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2 {
+        $height: ($g5ModuleUnit * 2) - ($g5ModuleGutter * 2) - $publicRecognition_tabsNavBorderWidth - $publicRecognition_containerBorderWidth - 45px - $g5ModulePadding;
+        .app-slider {
+            // x2 module height - 2 * module gutter - tabs top border - content bottom border - 45px magic number for height of tabs - top padding of this element
+            height: $height;
+        }
+        // the name for a specific tab comes from the JSON property 'nameId'
+        .app-slider.pubRecItemsCont.followedCollection {
+            // same calculated height from above - padding-top/(magical) height/margin-bottom of the add/edit follow list text
+            height: $height - ($g5ModulePadding + 21px + 9px);
+        }
+    }
+
+    /* ----- Add SCROLL BARS FOR THE 4X4 GRID ----- */
+    &.grid-dimension-4x4 {
+        // x4 module height - 2 * module gutter - tabs top border - content bottom border - 45px magic number for height of tabs - top padding of this element
+        $height: ($g5ModuleUnit * 4) - ($g5ModuleGutter * 2) - $publicRecognition_tabsNavBorderWidth - $publicRecognition_containerBorderWidth - 45px - $g5ModulePadding;
+        .app-slider {
+            height: $height;
+        }
+        // the name for a specific tab comes from the JSON property 'nameId'
+        .app-slider.pubRecItemsCont.followedCollection {
+            // same calculated height from above - padding-top/(magical) height/margin-bottom of the add/edit follow list text
+            height: $height - ($g5ModulePadding + 21px + 9px);
+        }
+    }
+
+    &.grid-dimension-4x4 {
+        .wide-view {
+            .publicRecognitionItems,
+            .follow-list-links {
+                &.emptySet {
+                    h2 {
+                        top: 25%;
+                        font-size: $baseFontSize * 2.25;
+                        line-height: $baseLineHeight * 2.25;
+
+                        i {
+                            font-size: 192px;
+                            line-height: 192px;
+                        }
+                    }
+                }
+            }
+            .createFollowListWrapper .app-row {
+                position: absolute;
+                top: 25%;
+                left: 0;
+
+                h2 {
+                    font-size: $baseFontSize * 2.25;
+                    line-height: $baseLineHeight * 2.25;
+
+                    i {
+                        font-size: 192px;
+                        line-height: 192px;
+                    }
+                }
+            }
+        }
+    }
+
+} /* /.module.publicRecognition */
+
+/* ----- PAGE STYLES ----- */
+.page.publicRecognition {
+    position: relative;
+    @if $publicRecognition_containerBgColor {
+        background: $publicRecognition_containerBgColor;
+    }
+    @if $publicRecognition_containerBorderColor {
+        border-color: $publicRecognition_containerBorderColor;
+    }
+
+    .spin {
+        display: block;
+        position: relative;
+        margin: 0 auto;
+        width: $spinner_widthHeight;
+        height: $spinner_widthHeight;
+
+        &.tabChange {
+            position: absolute;
+            top: 120px;
+            left: 50%;
+            margin: (-1 * $spinner_widthHeight / 2) 0 0 (-1 * $spinner_widthHeight / 2);
+        }
+        &.more {
+        }
+    }
+    .spincover {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: $white;
+        background: rgba(255,255,255,0.5);
+    }
+
+    .follow-list-links{
+        // float: right;
+        display: block;
+        text-align: right;
+        margin-right: $g5PageContentPaddingHoriz - $g5PageContentLeftRightBorderWidth;
+        // margin-top: -15px;
+
+        li {
+            display: inline;
+            @include ie7-inline-block();
+        }
+
+        a:hover i,
+        i:hover{
+            text-decoration: none;
+        }
+
+        i{
+            font-size: 18px;
+        }
+        @media (min-width: 1200px) {
+            margin-right: $g5PageContentPaddingHoriz1200 - $g5PageContentLeftRightBorderWidth1200;
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+            margin-right: $g5PageContentPaddingHoriz768 - $g5PageContentLeftRightBorderWidth768;
+        }
+        @media (max-width: 767px) {
+            margin-right: $g5PageContentPaddingHorizMobile;
+        }
+    }
+
+    .publicRecognitionItem.public-recognition-item{
+        .span7{
+            width: 498px;
+            margin-left: 20px;
+        }
+
+        @media (max-width: 979px) and (min-width: 768px){
+            .span1{
+                float: none;
+                margin-left: 0;
+                width: 100%;
+                p{
+                    margin-bottom: 2px;
+                }
+            }
+
+            .span7{
+                margin-top: 5px;
+            }
+        }
+    }
+
+    .publicRecognitionItems,
+    .follow-list-links {
+        padding-left: $g5PageContentPaddingHoriz - $g5PageContentLeftRightBorderWidth;
+
+        @if $publicRecognition_containerLinkColor {
+            a {
+                color: $publicRecognition_containerLinkColor;
+            }
+        }
+
+        .public-recognition-item {
+            margin-left: -1 * ($g5PageContentPaddingHoriz - $g5PageContentLeftRightBorderWidth);
+            margin-bottom: $g5PageContentPaddingHoriz * 2 / 3;
+        }
+
+        &.emptySet {
+            padding-left: 0;
+            clear: both;
+            // overflow: hidden;
+
+            h2 {
+                // display: inline;
+                // float: left;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            padding-left: $g5PageContentPaddingHoriz1200 - $g5PageContentLeftRightBorderWidth1200;
+            .public-recognition-item {
+                margin-left: -1 * ($g5PageContentPaddingHoriz1200 - $g5PageContentLeftRightBorderWidth1200);
+                margin-bottom: $g5PageContentPaddingHoriz1200 * 2 / 3;
+            }
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+            padding-left: $g5PageContentPaddingHoriz768 - $g5PageContentLeftRightBorderWidth768;
+            .public-recognition-item{
+                margin-left: -1 * ($g5PageContentPaddingHoriz768 - $g5PageContentLeftRightBorderWidth768);
+                margin-bottom: $g5PageContentPaddingHoriz768 * 2 / 3;
+            }
+        }
+        @media (max-width: 767px) {
+            padding-left: $g5PageContentPaddingHorizMobile;
+            .public-recognition-item{
+                margin-left: -1 * $g5PageContentPaddingHorizMobile;
+                margin-bottom: $g5PageContentPaddingHorizMobile * 3 / 4;
+            }
+        }
+    }
+
+    .app-row{
+        @include gridCoreInnerNegMargin($leftRightPad: ($g5PageContentPaddingHoriz * -1), $leftRightBorder: ($g5PageContentLeftRightBorderWidth * -1));
+
+        .app-col {
+            &.chevron {
+                width: $g5PageContentPaddingHoriz;
+                height: $g5PageContentPaddingHoriz;
+                font-size: $g5PageContentPaddingHoriz * 2 / 3;
+                line-height: $g5PageContentPaddingHoriz;
+            }
+        }
+
+        &.detail-row {
+            .profile-popover img {
+                margin-right: $gridGutterWidth;
+            }
+            .recognition-block {
+                margin: 0 0 $gridGutterWidth ($imgWidth + $gridGutterWidth);
+            }
+
+            // make all paragraph elements display inline
+            .moreToRead p {
+                display: inline;
+                margin-right: 4px;
+            }
+        }
+
+        &.comment-block {
+            padding: 0 $gridGutterWidth;
+            margin-left: $imgWidth + $gridGutterWidth + $g5PageContentPaddingHoriz - $g5PageContentLeftRightBorderWidth;
+
+            // .likeInfoWrapper,
+            // .commentInputWrapper,
+            // .addPointsWrapper,
+            // &.pubRecCommentsComment,
+            // &.viewAllCommentsWrapper .app-col {
+            //     padding-top: $gridGutterWidth / 2;
+            //     padding-bottom: $gridGutterWidth / 2;
+            // }
+            .likeInfoWrapper span a {
+                margin-top: $gridGutterWidth / 2;
+            }
+            .publicRecognitionCommentForm,
+            .publicRecognitionAddPointsForm {
+                margin-bottom: $gridGutterWidth / 2;
+
+                .help-inline { // the label next to the add points text field
+                    padding-left: 0;
+                    padding-right: $baseLineHeight / 2;
+                }
+                .pointsInputTxt { // add points text field
+                    text-align: right;
+                }
+            }
+            &::before {
+                margin-top: (-1 * $gridGutterWidth / 2);
+                margin-bottom: $gridGutterWidth;
+            }
+        }
+
+        .commentInputWrapper, .addPointsWrapper {
+            padding: 0 0 0 0; //($imgWidthComment + $gridGutterWidth);
+        }
+
+        @media (min-width: 1200px) {
+            @include gridCoreInnerNegMargin($leftRightPad: ($g5PageContentPaddingHoriz1200 * -1), $leftRightBorder: ($g5PageContentLeftRightBorderWidth1200 * -1));
+
+            .app-col {
+                &.chevron {
+                    width: $g5PageContentPaddingHoriz1200;
+                    height: $g5PageContentPaddingHoriz1200;
+                    font-size: $g5PageContentPaddingHoriz1200 * 2 / 3;
+                    line-height: $g5PageContentPaddingHoriz1200;
+                }
+            }
+
+            &.detail-row {
+                .profile-popover img {
+                    margin-right: $gridGutterWidth1200;
+                }
+                .recognition-block {
+                    margin: 0 0 $gridGutterWidth1200 ($imgWidth + $gridGutterWidth1200);
+                }
+            }
+
+            &.comment-block {
+                padding: 0 $gridGutterWidth1200;
+                margin-left: $imgWidth + $gridGutterWidth1200 + $g5PageContentPaddingHoriz1200 - $g5PageContentLeftRightBorderWidth1200;
+
+                .likeInfoWrapper,
+                .commentInputWrapper,
+                .addPointsWrapper,
+                &.pubRecCommentsComment,
+                &.viewAllCommentsWrapper .app-col {
+                    padding-top: $gridGutterWidth1200 / 2;
+                    padding-bottom: $gridGutterWidth1200 / 2;
+                }
+                .publicRecognitionCommentForm,
+                .publicRecognitionAddPointsForm {
+                    margin-bottom: $gridGutterWidth1200 / 2;
+                }
+                &::before {
+                    margin-top: (-1 * $gridGutterWidth1200 / 2);
+                    margin-bottom: $gridGutterWidth1200;
+                }
+            }
+
+            .commentInputWrapper, .addPointsWrapper {
+                padding: 0 0 0 0; //($imgWidthComment + $gridGutterWidth1200);
+            }
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+            @include gridCoreInnerNegMargin($leftRightPad: ($g5PageContentPaddingHoriz768 * -1), $leftRightBorder: ($g5PageContentLeftRightBorderWidth768 * -1));
+
+            .app-col {
+                &.chevron {
+                    width: $g5PageContentPaddingHoriz768;
+                    height: $g5PageContentPaddingHoriz768;
+                    font-size: $g5PageContentPaddingHoriz768 * 2 / 3;
+                    line-height: $g5PageContentPaddingHoriz768;
+                }
+            }
+
+            &.detail-row {
+                .profile-popover img {
+                    margin-right: $gridGutterWidth768;
+                }
+                .recognition-block {
+                    margin: 0 0 $gridGutterWidth768 ($imgWidth + $gridGutterWidth768);
+                }
+            }
+
+            &.comment-block {
+                padding: 0 $gridGutterWidth768;
+                margin-left: $imgWidth + $gridGutterWidth768 + $g5PageContentPaddingHoriz768 - $g5PageContentLeftRightBorderWidth768;
+
+                .likeInfoWrapper,
+                .commentInputWrapper,
+                .addPointsWrapper,
+                &.pubRecCommentsComment,
+                &.viewAllCommentsWrapper .app-col {
+                    padding-top: $gridGutterWidth768 / 2;
+                    padding-bottom: $gridGutterWidth768 / 2;
+                }
+                .publicRecognitionCommentForm,
+                .publicRecognitionAddPointsForm {
+                    margin-bottom: $gridGutterWidth768 / 2;
+                }
+                &::before {
+                    margin-top: (-1 * $gridGutterWidth768 / 2);
+                    margin-bottom: $gridGutterWidth768;
+                }
+            }
+
+            .commentInputWrapper, .addPointsWrapper {
+                padding: 0 0 0 0; //($imgWidthComment + $gridGutterWidth768);
+            }
+        }
+        @media (max-width: 767px) {
+            @include gridCoreInnerNegMargin($leftRightPad: ($g5PageContentPaddingHorizMobile * -1));
+
+            .app-col {
+                &.chevron {
+                    right: -1 * $g5PageContentPaddingHorizMobile;
+                    width: $g5PageContentPaddingHorizMobile * 2;
+                    height: $g5PageContentPaddingHorizMobile * 2;
+                    font-size: $g5PageContentPaddingHorizMobile * 4 / 3;
+                    line-height: $g5PageContentPaddingHorizMobile * 2;
+                }
+            }
+
+            &.comment-block {
+                margin-left: $imgWidth + $gridGutterWidth + $g5PageContentPaddingHorizMobile;
+            }
+        }
+    } /* /.app-row */
+
+    &.uninitialized {
+        > * {
+            display: none;
+        }
+        .spin {
+            display: block;
+            position: static;
+            margin: 0 auto;
+        }
+    }
+
+    /* DETAIL PAGE */
+    &.public-recognition-page-detail{
+        // padding-top: 25px;
+
+        .public-recognition-item{
+            // pad this span a bit
+            .ecard {
+                margin-bottom: 14px;
+                *padding-bottom: 14px; // ie7
+            }
+
+            .behaviorBadge {
+                width: 50px;
+            }
+
+            .recognitionVideoWrapper {
+                width: 360px;
+            }
+            // style of titles/labels in detail (a bit gross)
+            .row .span8 .row .span2 p {
+                // goes to stacking mode under 767, then we want less spacing after label
+                @media (max-width: 767px){
+                    margin-bottom: 0;
+                }
+            }
+
+            .recipientsContainer hr {
+                margin: ($baseLineHeight / 2) 0;
+            }
+
+            .likePubRecBtn {
+                .spin {
+                    display: inline-block;
+                    @include ie7-inline-block();
+                    position: static;
+                    width: $baseLineHeight;
+                    height: $baseLineHeight;
+                    vertical-align: top;
+                }
+            }
+        }
+
+        .publicRecognitionItem.public-recognition-item .span7{
+            @media (max-width: 470px){
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+
+        .span7 p .profile-popover{
+            text-decoration: none;
+
+            img{
+                margin-right: 8px;
+            }
+        }
+        .recognition-detail-avatar {
+            width: 36px;
+        }
+        .recognition-container {
+            padding-top: $gridGutterWidth / 2;
+            padding-bottom: $gridGutterWidth / 2;
+        }
+        .comment-block {
+            margin-left: $g5PageContentPaddingHoriz - $g5PageContentLeftRightBorderWidth;
+        }
+
+        .cumulativeRecognizerWrap {
+            padding-top: 10px;
+
+            & + .cumulativeRecognizerWrap {
+                border-top: 1px solid #ccc;
+                margin-top: 20px;
+                padding: 20px 0;
+            }
+
+            .eCard img {
+                width: 70%;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .recognition-container {
+                padding-top: $gridGutterWidth1200 / 2;
+                padding-bottom: $gridGutterWidth1200 / 2;
+            }
+            .comment-block {
+                margin-left: $g5PageContentPaddingHoriz1200 - $g5PageContentLeftRightBorderWidth1200;
+            }
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+            .recognition-container {
+                padding-top: $gridGutterWidth768 / 2;
+                padding-bottom: $gridGutterWidth768 / 2;
+            }
+            .comment-block {
+                margin-left: $g5PageContentPaddingHoriz768 - $g5PageContentLeftRightBorderWidth768;
+            }
+        }
+        @media (max-width: 767px) {
+            .cumulativeRecognizerWrap {
+                .eCard img {
+                    margin-bottom: 20px;
+                    width: 50%;
+                }
+            }
+        }
+    }
+
+
+    &#publicRecognitionPageFollowListView {
+        // padding-top: 30px;
+        h3{
+            // margin-bottom: 0;
+        }
+        .container-splitter {
+            // margin-left: 0;
+            // margin-right: 0;
+            // margin-top: 0;
+        }
+    }
+
+} /* /.page.publicRecognition */
+
+
+
+
+
+/* ----- HEADER LINK LISTS ----- */
+
+ul.recognition-controls,
+ul.recognition-props {
+    display: inline-block;
+    @include ie7-inline-block();
+    list-style-type: disc;
+    list-style-position: inside;
+    margin: 0 0 9px 0;
+}
+
+ul.recognition-controls li,
+ul.recognition-props li {
+    display: inline;
+}
+
+ul.share-print {
+    display:block;
+    list-style-position: inside;
+    margin-top:10px;
+    margin-left: 0;
+    text-align: right;
+}
+
+ul.share-print li {
+    display: inline;
+    margin: 0 0 0 0;
+    font-weight:bold;
+    &.print-wrap {
+        margin: 0 0 0 8px;
+    }
+}
+
+
+/* ---- misc ---- */
+.budgetPopoverTrigger{
+    @include inline-block;
+}
+
+

@@ -1,0 +1,196 @@
+// App-specific variables
+// =========================
+$onTheSpotCard_bgColor: $g5ModuleBgColor !default;
+$onTheSpotCard_gradType: $g5ModuleGradType !default;
+$onTheSpotCard_gradMeta: $g5ModuleGradMeta !default;
+$onTheSpotCard_gradStops: $g5ModuleGradStops !default;
+
+$onTheSpotCard_iconColor: $g5ModuleIconColor !default;
+$onTheSpotCard_titleColor: $g5ModuleTitleColor !default;
+$onTheSpotCard_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$onTheSpotCard_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$onTheSpotCard_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$onTheSpotCard_bgColorBig: $grayDark !default;
+$onTheSpotCard_gradTypeBig: $g5ModuleGradType !default;
+$onTheSpotCard_gradMetaBig: left !default;
+$onTheSpotCard_gradStopsBig: $onTheSpotCard_bgColorBig, lighten($onTheSpotCard_bgColorBig, 17%), $onTheSpotCard_bgColorBig !default;
+
+$onTheSpotCard_textColor: $white !default;
+$onTheSpotCard_textFontFamily: $titleFont !default;
+$onTheSpotCard_textFontSize: 26px !default;
+$onTheSpotCard_textLineHeight: 30px !default;
+
+// these are largely copied from the Recognition Module and ideally should match for design consistency
+$onTheSpotCard_inputColor: $gray !default; // default value is $gray as used in bootstrap/_forms.scss
+$onTheSpotCard_inputBgColor: $inputBackground !default; // default value is $inputBackground as used in bootstrap/_forms.scss
+$onTheSpotCard_inputBorderWidth: 0 !default;
+$onTheSpotCard_inputBorderColor: transparent !default;
+$onTheSpotCard_inputBorderRadius: 0 !default;
+$onTheSpotCard_inputBoxShadow: none !default;
+$onTheSpotCard_arrowBgColor: $inputBackground !default;
+$onTheSpotCard_arrowColor: $onTheSpotCard_bgColor !default;
+$onTheSpotCard_arrowColorBig: $onTheSpotCard_bgColorBig !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.onTheSpotCard {
+
+} /* /.onTheSpotCard */
+
+/* ----- MODULE STYLES ----- */
+.module.onTheSpotCard {
+
+    color: $onTheSpotCard_textColor;
+    font-family: $onTheSpotCard_textFontFamily;
+
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $onTheSpotCard_bgColor,
+            $gradType: $onTheSpotCard_gradType,
+            $gradMeta: $onTheSpotCard_gradMeta,
+            $gradStops: $onTheSpotCard_gradStops
+        );
+    }
+
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $onTheSpotCard_iconColor,
+            $titleColor: $onTheSpotCard_titleColor,
+            $titleFontFamily: $onTheSpotCard_titleFontFamily
+        );
+    }
+
+    @include module_titleIconViewFontSizesWeights($onTheSpotCard_titleFontSizes, $onTheSpotCard_titleFontWeights);
+
+    // hiding the icon for all sizes by default
+    .title-icon-view {
+        display: none;
+    }
+
+    .wide-view {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    form { margin: 0; }
+    .input-append {margin: 0;}
+
+    .instruction {
+        margin-bottom: 8px;
+
+        .bottom-text {
+            font-size: $onTheSpotCard_textFontSize;
+            line-height: $onTheSpotCard_textLineHeight;
+            max-height: $g5ModuleUnit - (1 * $g5ModulePadding) - 8px - 40px - (2 * $onTheSpotCard_inputBorderWidth); // 1 module unit high - 1 * module padding - bottom margin of .instruction - height of the input - 2 * input border
+        }
+    }
+    .visitAppBtn {
+        display: none;
+    }
+
+    // input cert num width
+    .onTheSpotCertForm {
+        input.inputCertNum {
+            padding-top: 0;
+            padding-bottom: 0;
+            // module width - mod gutter - mod padding - input padding (left border, left padding, right padding, right border)
+            width: $g5ModuleUnit*2 - $g5ModuleGutter*2 - $g5ModulePadding*2 - ($onTheSpotCard_inputBorderWidth+6+36+$onTheSpotCard_inputBorderWidth);
+            height: 40px;
+            font-size: 16px;
+            line-height: 40px;
+
+            color: $onTheSpotCard_inputColor;
+            background: $onTheSpotCard_inputBgColor;
+            @if $onTheSpotCard_inputBorderWidth {
+                border: $onTheSpotCard_inputBorderWidth solid $onTheSpotCard_inputBorderColor;
+            }
+            @include borderRadiusSlim($onTheSpotCard_inputBorderRadius, $override: true);
+            @if $onTheSpotCard_inputBoxShadow {
+                @include box-shadow($onTheSpotCard_inputBoxShadow);
+            }
+        }
+        .btn {
+            padding-top: 0;
+            padding-bottom: 0;
+            height: 40px;
+            font-size: 24px;
+            line-height: 32px;
+            @if $onTheSpotCard_arrowBgColor {
+                background: none;
+                background-color: $onTheSpotCard_arrowBgColor;
+            }
+        }
+        #btnSendCert {
+            @if $onTheSpotCard_arrowColor {
+                color: $onTheSpotCard_arrowColor;
+            }
+        }
+    }
+
+    /* ----- SET THE MODULE GRADIENT ----- */
+    &.grid-dimension-2x1 {
+        .wide-view {
+            display: block;
+
+            .bottom-text {
+                max-height: $g5ModuleUnit - (2 * $g5ModulePadding) - 8px - 40px - (2 * $onTheSpotCard_inputBorderWidth); // 1 module unit high - 2 * module padding - bottom margin of .instruction - height of the input - 2 * input border
+            }
+        }
+
+        #btnSendCert{
+            @media (max-width: 479px){
+                display: inline-block;
+                width: 40px;
+            }
+        }
+    }
+
+    /* ----- ALIGN THE ICON FOR 2X2 GRID ----- */
+    &.grid-dimension-2x2 {
+        .module-liner {
+            @include module_moduleLinerBackground(
+                $bgColor: $onTheSpotCard_bgColorBig,
+                $gradType: $onTheSpotCard_gradTypeBig,
+                $gradMeta: $onTheSpotCard_gradMetaBig,
+                $gradStops: $onTheSpotCard_gradStopsBig
+            );
+        }
+
+        .title-icon-view {
+            display: block;
+            position: absolute;
+            width: 100%;
+
+            h3 { display: none; }
+
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                top: 33%;
+            }
+        }
+
+        #btnSendCert {
+            @if $onTheSpotCard_arrowColorBig {
+                color: $onTheSpotCard_arrowColorBig;
+            }
+        }
+    }
+
+} /* /.module.onTheSpotCard */
+
+/* ----- PAGE STYLES ----- */
+.page.onTheSpotCard {
+
+} /* /.page.onTheSpotCard */
+
+
+

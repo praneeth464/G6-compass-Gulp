@@ -1,0 +1,85 @@
+<!-- ======== ENGAGEMENT PAGE USER DASHBOARD ======== -->
+
+<!-- "profile" and "publicProfile" classes added to mimic the public profile page -->
+<div id="engagementPageUserDashboard" class="engagement engagementPage engagementPageUserDashboard page-content profile publicProfile">
+
+    <div class="page-topper">
+        <!-- User info and user menu  -->
+        <div class="row">
+            <div class="span6">
+                <img id="partProfAvatar" alt="" src="http://placehold.it/60x60">
+                <h3><span id="partProfFirstName">firstName</span> <span id="partProfLastName">Lastname</span></h3>
+            </div>
+            <div class="span6">
+                <a href='#' class="btn btn-primary btn-large fr regonizeFromPubProfile" data-participant-id="9876543210" data-node-id="1234"><i class="icon-g5-team"></i> Recognize</a>
+            </div>
+        </div>
+    </div><!-- /.page-topper -->
+
+    <div class="row">
+        <div class="span12">
+
+            <h2>User Dashboard</h2>
+
+            <!-- the EngagementModelView should always be inserted into an element with class 'engagementModelView' -->
+            <div class="engagementModelView"></div><!-- /.engagementModelView -->
+
+        </div><!-- /.span12 -->
+    </div><!-- /.row -->
+
+    <div class="modal hide fade module recognition" id="ezRecognizeMiniProfileModal" data-backdrop="static" data-keyboard="false">
+    </div>
+</div>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function() {
+        // overrides for the JSON variables (these are set in settings.js but provided here for convenience in creating a JSP)
+        // G5.props.URL_JSON_ENGAGEMENT_MODEL = G5.props.URL_ROOT+'ajax/engagementModel.json';
+        // G5.props.URL_JSON_PUBLIC_RECOGNITION = G5.props.URL_ROOT+'ajax/publicRecognition_global.json'; // pub rec items
+
+        //attach the view to an existing DOM element
+        G5.views.EngagementPageUserDashboard = new EngagementPageUserDashboardView({
+            el:$('#engagementPageUserDashboard'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'User Dashboard',
+
+            // mode can be team/user
+            mode : 'user',
+            // if this page needs to display the dashboard for a user that isn't the currently-logged in user, send a userId. Otherwise, null is fine.
+            userId: 9876543210
+        });
+
+    });
+</script>
+
+<!-- NOTE: the following includes were added to make this shell behave like the JSP -->
+<script type="text/template" id="engagementModelTpl">
+    <jsp:include page="engagementModel.html"></jsp:include>
+    <?php include("engagementModel.html"); ?>
+</script>
+
+<script type="text/template" id="engagementSummaryCollectionTpl">
+    <jsp:include page="engagementSummaryCollection.html"></jsp:include>
+    <?php include("engagementSummaryCollection.html"); ?>
+</script>
+
+<script type="text/template" id="engagementSummaryModelTpl">
+    <jsp:include page="engagementSummaryModel.html"></jsp:include>
+    <?php include("engagementSummaryModel.html"); ?>
+</script>
+
+<script type="text/template" id="engagementDetailScoreTpl">
+    <jsp:include page="engagementDetailScore.html"></jsp:include>
+    <?php include("engagementDetailScore.html"); ?>
+</script>
+

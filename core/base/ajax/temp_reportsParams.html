@@ -1,0 +1,1470 @@
+
+<button class="close" type="button"><i class="icon-remove"></i></button>
+
+<form name="reportParametersForm" id="reportParametersForm" method="post" action="/bonfire/reports/displayLoginActivityByPaxReport.do" class="form-horizontal"><div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="6f6ad6181e666bd28aaa206532510a85"></div>
+
+    <input type="hidden" name="method" value="displaySummaryReport">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="span12">
+                <h3>Change Report Filters</h3>
+
+                <div class="alert alert-error errorHidden" style="display: none;"
+                    data-msg-error="No data available for filters selected "></div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            
+            
+            
+            
+            
+
+            
+
+                <div class="span6">
+
+                    <fieldset>
+                        
+
+                            
+
+                                <input type="hidden" name="reportParameterInfoList[0].id" value="5001">
+
+                                
+                            
+                        
+
+                            
+
+                                <input type="hidden" name="reportParameterInfoList[1].id" value="5000">
+
+                                
+                                    <h4 class="subset">Timeframe</h4>
+                                    <div class="form-inline">
+                                        <div class="control-group">
+                                            <label class="control-label"
+                                                for="fromDate">
+                                                Start
+                                            </label>
+                                            <div class="controls">
+                                                <span data-date-format="mm/dd/yyyy"
+                                                    data-date-autoclose="true"
+                                                    class="input-append date datepicker-inline datepickerTrigger">
+                                                        <input type="text" name="reportParameterInfoList[1].value" id="fromDate">
+                                                        <button class="btn"><i class="icon-calendar"></i></button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                
+                            
+                        
+
+                            
+                        
+
+                            
+                        
+
+                            
+                        
+
+                            
+                        
+
+                            
+                        
+
+                            
+                        
+
+                        
+
+                            
+                                
+                                    <div class="control-group">
+                                        <label class="control-label"
+                                            for="toDate">
+                                            End
+                                        </label>
+                                        <div class="controls">
+                                            <span data-date-format="mm/dd/yyyy"
+                                                data-date-autoclose="true"
+                                                class="input-append date datepicker-inline datepickerTrigger">
+                                                    <input type="text" name="reportParameterInfoList[0].value" value="12/31/2012" readonly="readonly" id="toDate">
+                                                    <button class="btn"><i class="icon-calendar"></i></button> 
+                                            </span>
+                                        </div>
+                                    </div>
+                                    </div>
+                                
+                            
+                        
+
+                            
+                                
+                            
+                        
+
+                            
+                        
+
+                            
+                        
+
+                            
+                        
+
+                            
+                        
+
+                            
+                        
+
+                            
+                        
+                    </fieldset>
+
+                    <fieldset>
+                        
+
+                            
+                        
+
+                            
+                        <input type="hidden" name="reportParameterInfoList[4].id" value="5007">
+
+                            <div class="control-group">
+                                <label class="control-label"
+                                    for="countryId">
+                                    Country
+                                </label>
+                                <div class="controls">
+                                
+                                    
+                                    
+                                    
+                                    
+                                    
+                                        <select name="reportParameterInfoList[4].values" multiple="multiple" id="countryId"><option value="show_all" selected="selected">show all</option>
+                                            <option value="1828">Australia</option>
+<option value="1832">Canada</option>
+<option value="1844">France</option>
+<option value="1845">United Kingdom</option>
+<option value="1848">India</option>
+<option value="1849">Italy</option>
+<option value="1861">United States</option></select>
+                                </div>
+                                    
+                                
+                            </div>
+                            
+                        
+                    
+
+                        
+                            
+                            <input type="hidden" name="reportParameterInfoList[6].id" value="5005">
+
+                            <div class="control-group">
+                                <label class="control-label"
+                                    for="participantStatus">
+                                    Participant Status
+                                </label>
+                                <div class="controls">
+                                
+                                    
+                                    
+                                        <select name="reportParameterInfoList[6].value" id="participantStatus"><option value="show_all" selected="selected">show all</option>
+                                            <option value="active">Active</option>
+<option value="inactive">Inactive</option></select>
+                                </div>
+                                    
+                                    
+                                    
+                                    
+                                
+                            </div>
+
+                            
+                        
+
+                            
+                        
+
+                            
+                        
+
+                            
+                        
+
+                            
+                        
+
+                            
+                        
+                    </fieldset>
+                </div>
+                <div class="span12">
+                    
+
+                        
+                    
+
+                        
+                    
+
+                        
+                            
+                                <fieldset>
+                                    <h4>Participants</h4>
+                            
+                            <input type="hidden" name="reportParameterInfoList[2].id" value="5004">
+
+                            <div class="control-group">
+                                <label class="control-label"
+                                    for="role">
+                                    Role
+                                </label>
+                                <div class="controls">
+                                
+                                    
+                                    
+                                        <select name="reportParameterInfoList[2].value" id="role"><option value="show_all" selected="selected">show all</option>
+                                            <option value="mgr">Manager</option>
+<option value="mbr">Member</option>
+<option value="own">Owner</option></select>
+                                    
+                                </div>
+                                    
+                                    
+                                
+                            </div>
+                            
+                        
+                    
+
+                        
+                            
+                            <input type="hidden" name="reportParameterInfoList[3].id" value="5002">
+
+                            <div class="control-group">
+                                <label class="control-label"
+                                    for="parentNodeId">
+                                    Organization(s)
+                                </label>
+                                <div class="controls">
+                                
+                                    
+                                    
+                                    
+                                    
+                                        <select name="reportParameterInfoList[3].value" id="parentNodeId"><option value="show_all" selected="selected">show all</option>
+                                            <option value="3343">Abilene</option>
+<option value="4076">Addison</option>
+<option value="3228">Akron</option>
+<option value="3079">Alabama</option>
+<option value="3574">Alameda</option>
+<option value="4118">Alamogordo</option>
+<option value="3080">Alaska</option>
+<option value="3536">Albany, GA</option>
+<option value="3428">Albany, NY</option>
+<option value="3861">Albany, OR</option>
+<option value="3163">Albuquerque</option>
+<option value="3856">Alexandria, LA</option>
+<option value="3287">Alexandria, VA</option>
+<option value="3475">Alhambra</option>
+<option value="3976">Aliso Viejo</option>
+<option value="3484">Allen</option>
+<option value="3368">Allentown</option>
+<option value="3810">Alpharetta</option>
+<option value="4014">Altamonte Springs</option>
+<option value="3892">Altoona</option>
+<option value="3251">Amarillo</option>
+<option value="3728">Ames</option>
+<option value="5021">Ames_</option>
+<option value="3185">Anaheim</option>
+<option value="3195">Anchorage</option>
+<option value="3719">Anderson</option>
+<option value="3957">Ankeny</option>
+<option value="3353">Ann Arbor</option>
+<option value="4079">Annapolis</option>
+<option value="3401">Antioch</option>
+<option value="4037">Apopka</option>
+<option value="3585">Apple Valley, CA</option>
+<option value="3836">Apple Valley, MN</option>
+<option value="3576">Appleton</option>
+<option value="3733">Arcadia</option>
+<option value="3081">Arizona</option>
+<option value="3082">Arkansas</option>
+<option value="3551">Arlington Heights</option>
+<option value="3178">Arlington, TX</option>
+<option value="3225">Arlington, VA</option>
+<option value="3367">Arvada</option>
+<option value="3529">Asheville</option>
+<option value="3349">Athens-Clarke County</option>
+<option value="3162">Atlanta</option>
+<option value="5012">Atlanta_</option>
+<option value="4023">Atlantic City</option>
+<option value="3935">Attleboro</option>
+<option value="3710">Auburn, AL</option>
+<option value="3645">Auburn, WA</option>
+<option value="3243">Augusta-Richmond County</option>
+<option value="3188">Aurora, CO</option>
+<option value="3263">Aurora, IL</option>
+<option value="3144">Austin</option>
+<option value="3474">Avondale</option>
+<option value="3884">Azusa</option>
+<option value="5002">BONFIRE HOME DESIGNS</option>
+<option value="3187">Bakersfield</option>
+<option value="3528">Baldwin Park</option>
+<option value="3150">Baltimore</option>
+<option value="3893">Barnstable Town</option>
+<option value="4115">Bartlesville</option>
+<option value="3952">Bartlett, IL</option>
+<option value="3868">Bartlett, TN</option>
+<option value="3217">Baton Rouge</option>
+<option value="3802">Battle Creek</option>
+<option value="3707">Bayonne</option>
+<option value="3578">Baytown</option>
+<option value="3359">Beaumont</option>
+<option value="3975">Beavercreek</option>
+<option value="3432">Beaverton</option>
+<option value="3842">Bedford</option>
+<option value="4098">Bell</option>
+<option value="3918">Bell Gardens</option>
+<option value="3982">Belleville</option>
+<option value="3820">Bellevue, NE</option>
+<option value="3321">Bellevue, WA</option>
+<option value="3557">Bellflower</option>
+<option value="3510">Bellingham</option>
+<option value="4096">Beloit</option>
+<option value="3524">Bend</option>
+<option value="4080">Bentonville</option>
+<option value="3390">Berkeley</option>
+<option value="3847">Berwyn</option>
+<option value="3552">Bethlehem</option>
+<option value="4024">Beverly</option>
+<option value="3373">Billings</option>
+<option value="3899">Biloxi</option>
+<option value="3924">Binghamton</option>
+<option value="3212">Birmingham</option>
+<option value="3675">Bismarck</option>
+<option value="3947">Blacksburg</option>
+<option value="3732">Blaine</option>
+<option value="3544">Bloomington, IL</option>
+<option value="3569">Bloomington, IN</option>
+<option value="3491">Bloomington, MN</option>
+<option value="5032">Bloomington_</option>
+<option value="3744">Blue Springs</option>
+<option value="3465">Boca Raton</option>
+<option value="3229">Boise City</option>
+<option value="3577">Bolingbrook</option>
+<option value="5001">Bonfire Uber Corp</option>
+<option value="3948">Bonita Springs</option>
+<option value="3647">Bossier City</option>
+<option value="3149">Boston</option>
+<option value="3405">Boulder</option>
+<option value="3921">Bountiful</option>
+<option value="3783">Bowie</option>
+<option value="3729">Bowling Green</option>
+<option value="3588">Boynton Beach</option>
+<option value="4027">Bozeman</option>
+<option value="3773">Bradenton</option>
+<option value="4044">Brea</option>
+<option value="3846">Brentwood, CA</option>
+<option value="4070">Brentwood, TN</option>
+<option value="3306">Bridgeport</option>
+<option value="3676">Bristol</option>
+<option value="3430">Brockton</option>
+<option value="3423">Broken Arrow</option>
+<option value="4030">Brookfield</option>
+<option value="3566">Brooklyn Park</option>
+<option value="3739">Broomfield</option>
+<option value="3260">Brownsville</option>
+<option value="3541">Bryan</option>
+<option value="3803">Buckeye</option>
+<option value="3511">Buena Park</option>
+<option value="3199">Buffalo</option>
+<option value="3949">Buffalo Grove</option>
+<option value="3997">Bullhead City</option>
+<option value="3389">Burbank</option>
+<option value="4113">Burleson</option>
+<option value="3809">Burlington, NC</option>
+<option value="4040">Burlington, VT</option>
+<option value="3700">Burnsville</option>
+<option value="3941">Caldwell</option>
+<option value="4036">Calexico</option>
+<option value="3083">California</option>
+<option value="4093">Calumet City</option>
+<option value="3639">Camarillo</option>
+<option value="3365">Cambridge</option>
+<option value="3515">Camden</option>
+<option value="4035">Campbell</option>
+<option value="3518">Canton</option>
+<option value="3282">Cape Coral</option>
+<option value="4063">Cape Girardeau</option>
+<option value="3412">Carlsbad</option>
+<option value="3589">Carmel</option>
+<option value="4010">Carol Stream</option>
+<option value="4055">Carpentersville</option>
+<option value="3317">Carrollton</option>
+<option value="3439">Carson</option>
+<option value="3758">Carson City</option>
+<option value="3308">Cary</option>
+<option value="3933">Casa Grande</option>
+<option value="3762">Casper</option>
+<option value="3901">Castle Rock</option>
+<option value="3795">Cathedral City</option>
+<option value="4038">Cedar Falls</option>
+<option value="3909">Cedar Hill</option>
+<option value="3635">Cedar Park</option>
+<option value="3318">Cedar Rapids</option>
+<option value="3404">Centennial</option>
+<option value="3956">Ceres</option>
+<option value="3815">Cerritos</option>
+<option value="3507">Champaign</option>
+<option value="3205">Chandler</option>
+<option value="3780">Chapel Hill</option>
+<option value="3347">Charleston, SC</option>
+<option value="3832">Charleston, WV</option>
+<option value="3147">Charlotte</option>
+<option value="3969">Charlottesville</option>
+<option value="3269">Chattanooga</option>
+<option value="4067">Chelsea</option>
+<option value="3220">Chesapeake</option>
+<option value="4072">Chester</option>
+<option value="3898">Chesterfield</option>
+<option value="3713">Cheyenne</option>
+<option value="3132">Chicago</option>
+<option value="3478">Chico</option>
+<option value="3740">Chicopee</option>
+<option value="3493">Chino</option>
+<option value="3547">Chino Hills</option>
+<option value="3219">Chula Vista</option>
+<option value="3509">Cicero</option>
+<option value="3186">Cincinnati</option>
+<option value="3480">Citrus Heights</option>
+<option value="4127">Claremont</option>
+<option value="3326">Clarksville</option>
+<option value="3372">Clearwater</option>
+<option value="3905">Cleveland Heights</option>
+<option value="3172">Cleveland, OH</option>
+<option value="4006">Cleveland, TN</option>
+<option value="3519">Clifton</option>
+<option value="3433">Clovis</option>
+<option value="4007">Coachella</option>
+<option value="3829">Coconut Creek</option>
+<option value="3934">Coeur d&#39;Alene</option>
+<option value="3463">College Station</option>
+<option value="4022">Collierville</option>
+<option value="3084">Colorado</option>
+<option value="3175">Colorado Springs</option>
+<option value="3830">Colton</option>
+<option value="3394">Columbia, MS</option>
+<option value="3316">Columbia, SC</option>
+<option value="3250">Columbus, GA</option>
+<option value="4003">Columbus, IN</option>
+<option value="3145">Columbus, OH</option>
+<option value="3929">Commerce City</option>
+<option value="3427">Compton</option>
+<option value="3332">Concord, CA</option>
+<option value="3608">Concord, NC</option>
+<option value="3962">Concord, NH</option>
+<option value="3085">Connecticut</option>
+<option value="3705">Conroe</option>
+<option value="3693">Conway</option>
+<option value="3658">Coon Rapids</option>
+<option value="4021">Coppell</option>
+<option value="3923">Coral Gables</option>
+<option value="3322">Coral Springs</option>
+<option value="3286">Corona</option>
+<option value="3194">Corpus Christi</option>
+<option value="3811">Corvallis</option>
+<option value="3358">Costa Mesa</option>
+<option value="4129">Cottonwood Heights</option>
+<option value="3682">Council Bluffs</option>
+<option value="3882">Covina</option>
+<option value="3944">Covington</option>
+<option value="3508">Cranston</option>
+<option value="3971">Crystal Lake</option>
+<option value="4046">Culver City</option>
+<option value="3770">Cupertino</option>
+<option value="3818">Cuyahoga Falls</option>
+<option value="3878">Cypress</option>
+<option value="3138">Dallas</option>
+<option value="5015">Dallas_</option>
+<option value="3396">Daly City</option>
+<option value="4123">Dana Point</option>
+<option value="3512">Danbury</option>
+<option value="3977">Danville, CA</option>
+<option value="3925">Danville, VA</option>
+<option value="3399">Davenport</option>
+<option value="3443">Davie</option>
+<option value="3651">Davis</option>
+<option value="3283">Dayton</option>
+<option value="3641">Daytona Beach</option>
+<option value="3900">DeKalb</option>
+<option value="3865">DeSoto</option>
+<option value="3482">Dearborn</option>
+<option value="3824">Dearborn Heights</option>
+<option value="3730">Decatur, AL</option>
+<option value="3534">Decatur, IL</option>
+<option value="3539">Deerfield Beach</option>
+<option value="4088">Del Rio</option>
+<option value="3792">Delano</option>
+<option value="3086">Delaware</option>
+<option value="3632">Delray Beach</option>
+<option value="3488">Deltona</option>
+<option value="3331">Denton</option>
+<option value="3153">Denver</option>
+<option value="3237">Des Moines</option>
+<option value="5020">Des Moines_</option>
+<option value="3723">Des Plaines</option>
+<option value="3140">Detroit</option>
+<option value="3721">Diamond Bar</option>
+<option value="3087">District of Columbia</option>
+<option value="3606">Dothan</option>
+<option value="4097">Dover</option>
+<option value="3853">Downers Grove</option>
+<option value="3371">Downey</option>
+<option value="3942">Draper</option>
+<option value="3919">Dublin, CA</option>
+<option value="4026">Dublin, OH</option>
+<option value="3717">Dubuque</option>
+<option value="3483">Duluth</option>
+<option value="4103">Duncanville</option>
+<option value="4119">Dunedin</option>
+<option value="3214">Durham</option>
+<option value="3637">Eagan</option>
+<option value="3903">East Lansing</option>
+<option value="3072">East North Central</option>
+<option value="3630">East Orange</option>
+<option value="3936">East Point</option>
+<option value="3859">East Providence</option>
+<option value="3075">East South Central</option>
+<option value="3619">Eau Claire</option>
+<option value="5028">Eau Claire_</option>
+<option value="3657">Eden Prairie</option>
+<option value="3885">Edina</option>
+<option value="3564">Edinburg</option>
+<option value="3501">Edmond</option>
+<option value="3996">Edmonds</option>
+<option value="3426">El Cajon</option>
+<option value="3984">El Centro</option>
+<option value="3335">El Monte</option>
+<option value="3151">El Paso</option>
+<option value="3369">Elgin</option>
+<option value="3324">Elizabeth</option>
+<option value="3309">Elk Grove</option>
+<option value="3787">Elkhart</option>
+<option value="3891">Elmhurst</option>
+<option value="3761">Elyria</option>
+<option value="3669">Encinitas</option>
+<option value="3869">Enid</option>
+<option value="3384">Erie</option>
+<option value="3303">Escondido</option>
+<option value="3880">Euclid</option>
+<option value="3284">Eugene</option>
+<option value="3784">Euless</option>
+<option value="3522">Evanston</option>
+<option value="3345">Evansville</option>
+<option value="4050">Everett, MA</option>
+<option value="3407">Everett, WA</option>
+<option value="3383">Fairfield, CA</option>
+<option value="3961">Fairfield, OH</option>
+<option value="3448">Fall River</option>
+<option value="3419">Fargo</option>
+<option value="3937">Farmington</option>
+<option value="3516">Farmington Hills</option>
+<option value="3527">Fayetteville, AR</option>
+<option value="3241">Fayetteville, NC</option>
+<option value="3470">Federal Way</option>
+<option value="4090">Findlay</option>
+<option value="3575">Fishers</option>
+<option value="3972">Fitchburg</option>
+<option value="3679">Flagstaff</option>
+<option value="3356">Flint</option>
+<option value="4052">Florence</option>
+<option value="3088">Florida</option>
+<option value="5009">Florida_</option>
+<option value="3828">Florissant</option>
+<option value="3584">Flower Mound</option>
+<option value="3603">Folsom</option>
+<option value="3965">Fond du Lac</option>
+<option value="3252">Fontana</option>
+<option value="5060">Foreign</option>
+<option value="3304">Fort Collins</option>
+<option value="3255">Fort Lauderdale</option>
+<option value="4108">Fort Lee</option>
+<option value="3634">Fort Myers</option>
+<option value="3959">Fort Pierce</option>
+<option value="3472">Fort Smith</option>
+<option value="3201">Fort Wayne</option>
+<option value="3146">Fort Worth</option>
+<option value="3743">Fountain Valley</option>
+<option value="3678">Franklin, TN</option>
+<option value="4073">Franklin, WI</option>
+<option value="3691">Frederick</option>
+<option value="3932">Freeport</option>
+<option value="3231">Fremont</option>
+<option value="3165">Fresno</option>
+<option value="3393">Frisco</option>
+<option value="3314">Fullerton</option>
+<option value="4085">Gadsden</option>
+<option value="3344">Gainesville, FL</option>
+<option value="4125">Gainesville, GA</option>
+<option value="3687">Gaithersburg</option>
+<option value="3735">Galveston</option>
+<option value="3271">Garden Grove</option>
+<option value="3706">Gardena</option>
+<option value="3222">Garland</option>
+<option value="3418">Gary</option>
+<option value="3556">Gastonia</option>
+<option value="3823">Georgetown</option>
+<option value="3089">Georgia</option>
+<option value="5011">Georgia_</option>
+<option value="3985">Germantown</option>
+<option value="3221">Gilbert</option>
+<option value="3835">Gilroy</option>
+<option value="3204">Glendale, AZ</option>
+<option value="3242">Glendale, CA</option>
+<option value="3845">Glendora</option>
+<option value="3894">Glenview</option>
+<option value="4049">Goldsboro</option>
+<option value="3643">Goodyear</option>
+<option value="4031">Goose Creek</option>
+<option value="3814">Grand Forks</option>
+<option value="3881">Grand Island</option>
+<option value="3704">Grand Junction</option>
+<option value="3273">Grand Prairie</option>
+<option value="3244">Grand Rapids</option>
+<option value="3817">Grapevine</option>
+<option value="3695">Great Falls</option>
+<option value="3436">Greeley</option>
+<option value="3397">Green Bay</option>
+<option value="5030">Green Bay_</option>
+<option value="4104">Greenfield</option>
+<option value="3202">Greensboro</option>
+<option value="3497">Greenville, NC</option>
+<option value="3665">Greenville, SC</option>
+<option value="3864">Greenwood</option>
+<option value="3395">Gresham</option>
+<option value="3579">Gulfport</option>
+<option value="3950">Hackensack</option>
+<option value="4011">Hagerstown</option>
+<option value="4034">Hallandale Beach</option>
+<option value="3993">Haltom City</option>
+<option value="3655">Hamilton</option>
+<option value="3530">Hammond</option>
+<option value="3295">Hampton</option>
+<option value="3838">Hanford</option>
+<option value="4086">Hanover Park</option>
+<option value="3629">Harlingen</option>
+<option value="3875">Harrisburg</option>
+<option value="3911">Harrisonburg</option>
+<option value="3328">Hartford</option>
+<option value="3778">Hattiesburg</option>
+<option value="3671">Haverhill</option>
+<option value="3090">Hawaii</option>
+<option value="3485">Hawthorne</option>
+<option value="3293">Hayward</option>
+<option value="5018">Heartland_</option>
+<option value="3570">Hemet</option>
+<option value="3774">Hempstead</option>
+<option value="3200">Henderson</option>
+<option value="3863">Hendersonville</option>
+<option value="3468">Hesperia</option>
+<option value="3224">Hialeah</option>
+<option value="3978">Hickory</option>
+<option value="3386">High Point</option>
+<option value="3821">Highland</option>
+<option value="3420">Hillsboro</option>
+<option value="3988">Hoboken</option>
+<option value="3777">Hoffman Estates</option>
+<option value="3300">Hollywood</option>
+<option value="4001">Holyoke</option>
+<option value="3689">Homestead</option>
+<option value="3179">Honolulu</option>
+<option value="3554">Hoover</option>
+<option value="4020">Hot Springs</option>
+<option value="3133">Houston</option>
+<option value="5016">Houston_</option>
+<option value="4075">Huber Heights</option>
+<option value="3912">Huntersville</option>
+<option value="3854">Huntington</option>
+<option value="3245">Huntington Beach</option>
+<option value="3677">Huntington Park</option>
+<option value="3258">Huntsville, AL</option>
+<option value="4053">Huntsville, TX</option>
+<option value="4032">Hurst</option>
+<option value="3995">Hutchinson</option>
+<option value="3091">Idaho</option>
+<option value="3753">Idaho Falls</option>
+<option value="3092">Illinois</option>
+<option value="3336">Independence</option>
+<option value="3093">Indiana</option>
+<option value="3143">Indianapolis</option>
+<option value="3476">Indio</option>
+<option value="3354">Inglewood</option>
+<option value="3094">Iowa</option>
+<option value="3592">Iowa City</option>
+<option value="5019">Iowa_</option>
+<option value="3226">Irvine</option>
+<option value="3230">Irving</option>
+<option value="3261">Jackson, MS</option>
+<option value="3642">Jackson, TN</option>
+<option value="3142">Jacksonville, FL</option>
+<option value="3506">Jacksonville, NC</option>
+<option value="3646">Janesville</option>
+<option value="3981">Jefferson City</option>
+<option value="3207">Jersey City</option>
+<option value="3664">Johns Creek</option>
+<option value="3649">Johnson City</option>
+<option value="3288">Joliet</option>
+<option value="3623">Jonesboro</option>
+<option value="3834">Joplin</option>
+<option value="3827">Jupiter</option>
+<option value="3560">Kalamazoo</option>
+<option value="3938">Kannapolis</option>
+<option value="3095">Kansas</option>
+<option value="5023">Kansas City -KS_</option>
+<option value="3299">Kansas City, KS</option>
+<option value="3164">Kansas City, MS</option>
+<option value="5026">Kansas City-MO_</option>
+<option value="5022">Kansas_</option>
+<option value="4099">Kearny</option>
+<option value="4114">Keizer</option>
+<option value="4009">Keller</option>
+<option value="3601">Kenner</option>
+<option value="3602">Kennewick</option>
+<option value="3413">Kenosha</option>
+<option value="3473">Kent</option>
+<option value="3096">Kentucky</option>
+<option value="3872">Kentwood</option>
+<option value="3781">Kettering</option>
+<option value="3340">Killeen</option>
+<option value="3913">Kingsport</option>
+<option value="3860">Kirkland</option>
+<option value="3656">Kissimmee</option>
+<option value="3254">Knoxville</option>
+<option value="3906">Kokomo</option>
+<option value="3813">La Crosse</option>
+<option value="3694">La Habra</option>
+<option value="3750">La Mesa</option>
+<option value="3844">La Mirada</option>
+<option value="3998">La Puente</option>
+<option value="3916">La Quinta</option>
+<option value="3974">Lacey</option>
+<option value="3626">Lafayette, IN</option>
+<option value="3350">Lafayette, LA</option>
+<option value="3633">Laguna Niguel</option>
+<option value="3572">Lake Charles</option>
+<option value="3816">Lake Elsinore</option>
+<option value="3535">Lake Forest</option>
+<option value="3747">Lake Havasu City</option>
+<option value="4064">Lake Oswego</option>
+<option value="4117">Lake Worth</option>
+<option value="3429">Lakeland</option>
+<option value="3738">Lakeville</option>
+<option value="3520">Lakewood, CA</option>
+<option value="3301">Lakewood, CO</option>
+<option value="3833">Lakewood, OH</option>
+<option value="3711">Lakewood, WA</option>
+<option value="3292">Lancaster, CA</option>
+<option value="4069">Lancaster, OH</option>
+<option value="3751">Lancaster, PA</option>
+<option value="4112">Lancaster, TX</option>
+<option value="3352">Lansing</option>
+<option value="3215">Laredo</option>
+<option value="3549">Largo</option>
+<option value="3431">Las Cruces</option>
+<option value="3157">Las Vegas</option>
+<option value="3607">Lauderhill</option>
+<option value="3927">Lawrence, IN</option>
+<option value="3441">Lawrence, KA</option>
+<option value="3581">Lawrence, MA</option>
+<option value="3444">Lawton</option>
+<option value="3614">Layton</option>
+<option value="3571">League City</option>
+<option value="3464">Lee&#39;s Summit</option>
+<option value="3991">Leesburg</option>
+<option value="3855">Lehi</option>
+<option value="3867">Lenexa</option>
+<option value="3967">Leominster</option>
+<option value="3377">Lewisville</option>
+<option value="3192">Lexington-Fayette</option>
+<option value="4062">Lima</option>
+<option value="3922">Lincoln, CA</option>
+<option value="3203">Lincoln, NE</option>
+<option value="4025">Linden</option>
+<option value="3248">Little Rock</option>
+<option value="3987">Littleton</option>
+<option value="3502">Livermore</option>
+<option value="3454">Livonia</option>
+<option value="3674">Lodi</option>
+<option value="3849">Logan</option>
+<option value="3951">Lombard</option>
+<option value="3986">Lompoc</option>
+<option value="3168">Long Beach, CA</option>
+<option value="4122">Long Beach, NY</option>
+<option value="3455">Longmont</option>
+<option value="3521">Longview, TX</option>
+<option value="4102">Longview, WA</option>
+<option value="3583">Lorain</option>
+<option value="3131">Los Angeles</option>
+<option value="3097">Louisiana</option>
+<option value="3158">Louisville Jefferson County</option>
+<option value="3622">Loveland</option>
+<option value="3381">Lowell</option>
+<option value="3216">Lubbock</option>
+<option value="3546">Lynchburg</option>
+<option value="3460">Lynn</option>
+<option value="3587">Lynwood</option>
+<option value="3437">Macon</option>
+<option value="3727">Madera</option>
+<option value="4016">Madison, AL</option>
+<option value="3210">Madison, WI</option>
+<option value="3098">Maine</option>
+<option value="3736">Malden</option>
+<option value="4100">Manassas</option>
+<option value="3361">Manchester</option>
+<option value="3791">Manhattan</option>
+<option value="4095">Manhattan Beach</option>
+<option value="4101">Mankato</option>
+<option value="3851">Mansfield, OH</option>
+<option value="3877">Mansfield, TX</option>
+<option value="3628">Manteca</option>
+<option value="3644">Maple Grove</option>
+<option value="4084">Maplewood</option>
+<option value="3769">Margate</option>
+<option value="3917">Maricopa</option>
+<option value="3612">Marietta</option>
+<option value="4124">Marion</option>
+<option value="4042">Marlborough</option>
+<option value="4126">Martinez</option>
+<option value="3099">Maryland</option>
+<option value="3100">Massachusetts</option>
+<option value="3315">McAllen</option>
+<option value="3319">McKinney</option>
+<option value="3748">Medford, MA</option>
+<option value="3548">Medford, OR</option>
+<option value="3523">Melbourne</option>
+<option value="3148">Memphis</option>
+<option value="3902">Menifee</option>
+<option value="3800">Mentor</option>
+<option value="3532">Merced</option>
+<option value="3698">Meriden</option>
+<option value="3597">Meridian, ID</option>
+<option value="4019">Meridian, MS</option>
+<option value="3166">Mesa</option>
+<option value="3313">Mesquite</option>
+<option value="3926">Methuen</option>
+<option value="3171">Miami</option>
+<option value="3456">Miami Beach</option>
+<option value="3360">Miami Gardens</option>
+<option value="3101">Michigan</option>
+<option value="3071">Middle Atlantic</option>
+<option value="3862">Middletown, CT</option>
+<option value="3807">Middletown, OH</option>
+<option value="3994">Midland, MI</option>
+<option value="3366">Midland, TX</option>
+<option value="3067">Midwest</option>
+<option value="3718">Midwest City</option>
+<option value="5004">Midwest_</option>
+<option value="3765">Milford</option>
+<option value="3600">Milpitas</option>
+<option value="3155">Milwaukee</option>
+<option value="5029">Milwaukee_</option>
+<option value="3177">Minneapolis</option>
+<option value="5031">Minneapolis_</option>
+<option value="3102">Minnesota</option>
+<option value="5005">Minnesota_</option>
+<option value="3825">Minnetonka</option>
+<option value="4111">Minot</option>
+<option value="3363">Miramar</option>
+<option value="3837">Mishawaka</option>
+<option value="3593">Mission</option>
+<option value="3424">Mission Viejo</option>
+<option value="3103">Mississippi</option>
+<option value="3594">Missoula</option>
+<option value="3104">Missouri</option>
+<option value="3540">Missouri City</option>
+<option value="5024">Missouri_</option>
+<option value="3246">Mobile</option>
+<option value="3234">Modesto</option>
+<option value="3945">Moline</option>
+<option value="3806">Monroe</option>
+<option value="4065">Monrovia</option>
+<option value="3105">Montana</option>
+<option value="4107">Montclair</option>
+<option value="3667">Montebello</option>
+<option value="3672">Monterey Park</option>
+<option value="3235">Montgomery</option>
+<option value="3775">Moore</option>
+<option value="4082">Moorhead</option>
+<option value="4087">Moorpark</option>
+<option value="3249">Moreno Valley</option>
+<option value="4041">Morgan Hill</option>
+<option value="3618">Mount Pleasant</option>
+<option value="3788">Mount Prospect</option>
+<option value="3595">Mount Vernon</option>
+<option value="3077">Mountain</option>
+<option value="3565">Mountain View</option>
+<option value="3604">Muncie</option>
+<option value="3376">Murfreesboro</option>
+<option value="3886">Murray</option>
+<option value="3414">Murrieta</option>
+<option value="4029">Muskegon</option>
+<option value="4012">Muskogee</option>
+<option value="3500">Nampa</option>
+<option value="3538">Napa</option>
+<option value="3298">Naperville</option>
+<option value="3459">Nashua</option>
+<option value="3154">Nashville-Davidson</option>
+<option value="3737">National City</option>
+<option value="3106">Nebraska</option>
+<option value="3107">Nevada</option>
+<option value="4066">New Albany</option>
+<option value="3446">New Bedford</option>
+<option value="4028">New Berlin</option>
+<option value="3742">New Braunfels</option>
+<option value="3582">New Britain</option>
+<option value="3808">New Brunswick</option>
+<option value="3070">New England</option>
+<option value="3108">New Hampshire</option>
+<option value="3330">New Haven</option>
+<option value="3109">New Jersey</option>
+<option value="3110">New Mexico</option>
+<option value="3182">New Orleans</option>
+<option value="3543">New Rochelle</option>
+<option value="3111">New York</option>
+<option value="3130">New York, NY</option>
+<option value="3970">Newark, CA</option>
+<option value="3197">Newark, NJ</option>
+<option value="3876">Newark, OH</option>
+<option value="3499">Newport Beach</option>
+<option value="3247">Newport News</option>
+<option value="3481">Newton</option>
+<option value="3812">Niagara Falls</option>
+<option value="3946">Noblesville</option>
+<option value="3211">Norfolk</option>
+<option value="3793">Normal</option>
+<option value="3364">Norman</option>
+<option value="3112">North Carolina</option>
+<option value="3415">North Charleston</option>
+<option value="3113">North Dakota</option>
+<option value="3218">North Las Vegas</option>
+<option value="3958">North Lauderdale</option>
+<option value="3685">North Little Rock</option>
+<option value="3709">North Miami</option>
+<option value="3983">North Miami Beach</option>
+<option value="3772">North Port</option>
+<option value="3625">North Richland Hills</option>
+<option value="5003">North_</option>
+<option value="3066">Northeast</option>
+<option value="3392">Norwalk, CA</option>
+<option value="3486">Norwalk, CT</option>
+<option value="4092">Norwich</option>
+<option value="3782">Novato</option>
+<option value="3766">Novi</option>
+<option value="3514">O&#39;Fallon</option>
+<option value="3790">Oak Lawn</option>
+<option value="3786">Oak Park</option>
+<option value="3173">Oakland</option>
+<option value="3960">Oakland Park</option>
+<option value="3749">Ocala</option>
+<option value="3264">Oceanside</option>
+<option value="3403">Odessa</option>
+<option value="3489">Ogden</option>
+<option value="3114">Ohio</option>
+<option value="3115">Oklahoma</option>
+<option value="3160">Oklahoma City</option>
+<option value="3334">Olathe</option>
+<option value="3897">Olympia</option>
+<option value="3169">Omaha</option>
+<option value="3268">Ontario</option>
+<option value="3307">Orange</option>
+<option value="3116">Oregon</option>
+<option value="3421">Orem</option>
+<option value="3756">Orland Park</option>
+<option value="3209">Orlando</option>
+<option value="5014">Orlando_</option>
+<option value="4060">Ormond Beach</option>
+<option value="3930">Oro Valley</option>
+<option value="3636">Oshkosh</option>
+<option value="3262">Overland Park</option>
+<option value="3746">Owensboro</option>
+<option value="3253">Oxnard</option>
+<option value="3078">Pacific</option>
+<option value="4057">Pacifica</option>
+<option value="3616">Palatine</option>
+<option value="3402">Palm Bay</option>
+<option value="3843">Palm Beach Gardens</option>
+<option value="3550">Palm Coast</option>
+<option value="3801">Palm Desert</option>
+<option value="3866">Palm Springs</option>
+<option value="3296">Palmdale</option>
+<option value="3684">Palo Alto</option>
+<option value="4091">Panama City</option>
+<option value="3760">Paramount</option>
+<option value="4081">Park Ridge</option>
+<option value="3914">Parker</option>
+<option value="3526">Parma</option>
+<option value="3297">Pasadena, CA</option>
+<option value="3291">Pasadena, TX</option>
+<option value="3703">Pasco</option>
+<option value="3611">Passaic</option>
+<option value="3290">Paterson</option>
+<option value="3567">Pawtucket</option>
+<option value="3804">Peabody</option>
+<option value="3467">Pearland</option>
+<option value="3289">Pembroke Pines</option>
+<option value="3117">Pennsylvania</option>
+<option value="3776">Pensacola</option>
+<option value="3274">Peoria, AZ</option>
+<option value="3348">Peoria, IL</option>
+<option value="3734">Perris</option>
+<option value="3858">Perth Amboy</option>
+<option value="3757">Petaluma</option>
+<option value="3955">Pflugerville</option>
+<option value="3621">Pharr</option>
+<option value="3135">Philadelphia</option>
+<option value="3134">Phoenix</option>
+<option value="3653">Pico Rivera</option>
+<option value="3831">Pine Bluff</option>
+<option value="3879">Pinellas Park</option>
+<option value="3631">Pittsburg</option>
+<option value="3190">Pittsburgh</option>
+<option value="3963">Pittsfield</option>
+<option value="3840">Placentia</option>
+<option value="4089">Plainfield, IL</option>
+<option value="3890">Plainfield, NJ</option>
+<option value="3198">Plano</option>
+<option value="3477">Plantation</option>
+<option value="3605">Pleasanton</option>
+<option value="3559">Plymouth</option>
+<option value="3759">Pocatello</option>
+<option value="3285">Pomona</option>
+<option value="3391">Pompano Beach</option>
+<option value="3620">Pontiac</option>
+<option value="3726">Port Arthur</option>
+<option value="3768">Port Orange</option>
+<option value="3281">Port St. Lucie</option>
+<option value="4068">Portage, IN</option>
+<option value="3889">Portage, MI</option>
+<option value="3798">Porterville</option>
+<option value="3650">Portland, ME</option>
+<option value="3159">Portland, OR</option>
+<option value="3408">Portsmouth</option>
+<option value="3841">Poway</option>
+<option value="3953">Prescott</option>
+<option value="4043">Prescott Valley</option>
+<option value="3266">Providence</option>
+<option value="3339">Provo</option>
+<option value="3379">Pueblo</option>
+<option value="4061">Puyallup</option>
+<option value="4008">Quincy, IL</option>
+<option value="3447">Quincy, MA</option>
+<option value="3495">Racine</option>
+<option value="3174">Raleigh</option>
+<option value="3652">Rancho Cordova</option>
+<option value="3267">Rancho Cucamonga</option>
+<option value="3990">Rancho Palos Verdes</option>
+<option value="3850">Rancho Santa Margarita</option>
+<option value="3610">Rapid City</option>
+<option value="3503">Reading</option>
+<option value="3450">Redding</option>
+<option value="3586">Redlands</option>
+<option value="3796">Redmond</option>
+<option value="3615">Redondo Beach</option>
+<option value="3542">Redwood City</option>
+<option value="3223">Reno</option>
+<option value="3662">Renton</option>
+<option value="3805">Revere</option>
+<option value="3118">Rhode Island</option>
+<option value="3411">Rialto</option>
+<option value="3387">Richardson</option>
+<option value="3874">Richland</option>
+<option value="3388">Richmond, CA</option>
+<option value="4094">Richmond, IN</option>
+<option value="3232">Richmond, VA</option>
+<option value="3494">Rio Rancho</option>
+<option value="3191">Riverside</option>
+<option value="3999">Riverton</option>
+<option value="4078">Riviera Beach</option>
+<option value="3425">Roanoke</option>
+<option value="3591">Rochester Hills</option>
+<option value="3385">Rochester, MN</option>
+<option value="3227">Rochester, NY</option>
+<option value="5033">Rochester_</option>
+<option value="3590">Rock Hill</option>
+<option value="4054">Rock Island</option>
+<option value="3278">Rockford</option>
+<option value="3779">Rocklin</option>
+<option value="3659">Rockville</option>
+<option value="4083">Rockwall</option>
+<option value="3692">Rocky Mount</option>
+<option value="3702">Rogers</option>
+<option value="3992">Rohnert Park</option>
+<option value="4116">Rome</option>
+<option value="4056">Romeoville</option>
+<option value="3771">Rosemead</option>
+<option value="3346">Roseville, CA</option>
+<option value="3883">Roseville, MI</option>
+<option value="3457">Roswell, GA</option>
+<option value="3888">Roswell, NM</option>
+<option value="3375">Round Rock</option>
+<option value="3725">Rowlett</option>
+<option value="4110">Roy</option>
+<option value="3720">Royal Oak</option>
+<option value="3167">Sacramento</option>
+<option value="3755">Saginaw</option>
+<option value="3980">Salem, MA</option>
+<option value="3280">Salem, OR</option>
+<option value="3895">Salina</option>
+<option value="3294">Salinas</option>
+<option value="3256">Salt Lake City</option>
+<option value="3966">Sammamish</option>
+<option value="3440">San Angelo</option>
+<option value="3136">San Antonio</option>
+<option value="5017">San Antonio_</option>
+<option value="3240">San Bernardino</option>
+<option value="3979">San Bruno</option>
+<option value="3380">San Buenaventura (Ventura)</option>
+<option value="3668">San Clemente</option>
+<option value="3137">San Diego</option>
+<option value="3141">San Francisco</option>
+<option value="4005">San Gabriel</option>
+<option value="4058">San Jacinto</option>
+<option value="3139">San Jose</option>
+<option value="3517">San Leandro</option>
+<option value="3928">San Luis Obispo</option>
+<option value="3504">San Marcos, CA</option>
+<option value="3785">San Marcos, TX</option>
+<option value="3435">San Mateo</option>
+<option value="3741">San Rafael</option>
+<option value="3848">San Ramon</option>
+<option value="3416">Sandy</option>
+<option value="3471">Sandy Springs</option>
+<option value="3822">Sanford</option>
+<option value="3184">Santa Ana</option>
+<option value="3466">Santa Barbara</option>
+<option value="3355">Santa Clara</option>
+<option value="3270">Santa Clarita</option>
+<option value="3724">Santa Cruz</option>
+<option value="3545">Santa Fe</option>
+<option value="3462">Santa Maria</option>
+<option value="3458">Santa Monica</option>
+<option value="3277">Santa Rosa</option>
+<option value="3752">Santee</option>
+<option value="3799">Sarasota</option>
+<option value="3310">Savannah</option>
+<option value="3968">Sayreville</option>
+<option value="3573">Schaumburg</option>
+<option value="3673">Schenectady</option>
+<option value="3208">Scottsdale</option>
+<option value="3568">Scranton</option>
+<option value="3152">Seattle</option>
+<option value="3666">Shawnee</option>
+<option value="3871">Sheboygan</option>
+<option value="4004">Shelton</option>
+<option value="4048">Sherman</option>
+<option value="3794">Shoreline</option>
+<option value="3239">Shreveport</option>
+<option value="3943">Sierra Vista</option>
+<option value="3338">Simi Valley</option>
+<option value="3492">Sioux City</option>
+<option value="3275">Sioux Falls</option>
+<option value="3617">Skokie</option>
+<option value="3826">Smyrna, GA</option>
+<option value="4017">Smyrna, TN</option>
+<option value="3531">Somerville</option>
+<option value="3068">South</option>
+<option value="3074">South Atlantic</option>
+<option value="3382">South Bend</option>
+<option value="3119">South Carolina</option>
+<option value="3120">South Dakota</option>
+<option value="3417">South Gate</option>
+<option value="3763">South Jordan</option>
+<option value="3654">South San Francisco</option>
+<option value="5007">South_</option>
+<option value="3907">Southaven</option>
+<option value="3537">Southfield</option>
+<option value="3453">Sparks</option>
+<option value="4002">Spartanburg</option>
+<option value="3233">Spokane</option>
+<option value="3461">Spokane Valley</option>
+<option value="3598">Springdale</option>
+<option value="3716">Springfield</option>
+<option value="3341">Springfield, IL</option>
+<option value="3279">Springfield, MA</option>
+<option value="3276">Springfield, MS</option>
+<option value="3660">Springfield, OH</option>
+<option value="3627">St. Charles</option>
+<option value="3683">St. Clair Shores</option>
+<option value="3609">St. Cloud</option>
+<option value="3561">St. George</option>
+<option value="3533">St. Joseph</option>
+<option value="3181">St. Louis</option>
+<option value="3904">St. Louis Park</option>
+<option value="3196">St. Paul</option>
+<option value="3731">St. Peters</option>
+<option value="3206">St. Petersburg</option>
+<option value="5025">St.Louis_</option>
+<option value="5006">St.Paul_</option>
+<option value="3337">Stamford</option>
+<option value="4059">Stanton</option>
+<option value="4015">State College</option>
+<option value="3320">Sterling Heights</option>
+<option value="3896">Stillwater</option>
+<option value="3193">Stockton</option>
+<option value="4074">Streamwood</option>
+<option value="3964">Strongsville</option>
+<option value="3487">Suffolk</option>
+<option value="3498">Sugar Land</option>
+<option value="3910">Summerville</option>
+<option value="4047">Sumter</option>
+<option value="3311">Sunnyvale</option>
+<option value="3451">Sunrise</option>
+<option value="3422">Surprise</option>
+<option value="3305">Syracuse</option>
+<option value="3238">Tacoma</option>
+<option value="3265">Tallahassee</option>
+<option value="3690">Tamarac</option>
+<option value="3183">Tampa</option>
+<option value="5013">Tampa_</option>
+<option value="3745">Taunton</option>
+<option value="3696">Taylor</option>
+<option value="3701">Taylorsville</option>
+<option value="3409">Temecula</option>
+<option value="3259">Tempe</option>
+<option value="3686">Temple</option>
+<option value="4051">Temple City</option>
+<option value="3121">Tennessee</option>
+<option value="3688">Terre Haute</option>
+<option value="4071">Texarkana</option>
+<option value="3122">Texas</option>
+<option value="3931">Texas City</option>
+<option value="5008">Texas_</option>
+<option value="3915">The Colony</option>
+<option value="3342">Thornton</option>
+<option value="3329">Thousand Oaks</option>
+<option value="3852">Tigard</option>
+<option value="3699">Tinley Park</option>
+<option value="3920">Titusville</option>
+<option value="3189">Toledo</option>
+<option value="3327">Topeka</option>
+<option value="3302">Torrance</option>
+<option value="4128">Torrington</option>
+<option value="3513">Tracy</option>
+<option value="3490">Trenton</option>
+<option value="3505">Troy, MI</option>
+<option value="3873">Troy, NY</option>
+<option value="3161">Tucson</option>
+<option value="3712">Tulare</option>
+<option value="3176">Tulsa</option>
+<option value="4105">Tupelo</option>
+<option value="3596">Turlock</option>
+<option value="3434">Tuscaloosa</option>
+<option value="3562">Tustin</option>
+<option value="3954">Twin Falls</option>
+<option value="3410">Tyler</option>
+<option value="3065">USA</option>
+<option value="3558">Union City, CA</option>
+<option value="3663">Union City, NJ</option>
+<option value="4109">University City</option>
+<option value="3555">Upland</option>
+<option value="4013">Urbana</option>
+<option value="4039">Urbandale</option>
+<option value="3123">Utah</option>
+<option value="3708">Utica</option>
+<option value="3442">Vacaville</option>
+<option value="3797">Valdosta</option>
+<option value="3351">Vallejo</option>
+<option value="4106">Valley Stream</option>
+<option value="3272">Vancouver</option>
+<option value="3124">Vermont</option>
+<option value="3648">Victoria</option>
+<option value="3357">Victorville</option>
+<option value="3697">Vineland</option>
+<option value="3125">Virginia</option>
+<option value="3170">Virginia Beach</option>
+<option value="3333">Visalia</option>
+<option value="3438">Vista</option>
+<option value="3323">Waco</option>
+<option value="3638">Walnut Creek</option>
+<option value="3680">Waltham</option>
+<option value="3661">Warner Robins</option>
+<option value="3312">Warren, MI</option>
+<option value="3939">Warren, OH</option>
+<option value="3479">Warwick</option>
+<option value="3126">Washington</option>
+<option value="3156">Washington, DC</option>
+<option value="3370">Waterbury</option>
+<option value="3613">Waterloo</option>
+<option value="3819">Watsonville</option>
+<option value="3449">Waukegan</option>
+<option value="3599">Waukesha</option>
+<option value="4045">Wausau</option>
+<option value="3908">Wauwatosa</option>
+<option value="3764">Wellington</option>
+<option value="3069">West</option>
+<option value="3681">West Allis</option>
+<option value="3374">West Covina</option>
+<option value="3722">West Des Moines</option>
+<option value="3789">West Haven</option>
+<option value="4121">West Hollywood</option>
+<option value="3378">West Jordan</option>
+<option value="3887">West New York</option>
+<option value="3073">West North Central</option>
+<option value="3406">West Palm Beach</option>
+<option value="3870">West Sacramento</option>
+<option value="3076">West South Central</option>
+<option value="3325">West Valley City</option>
+<option value="3127">West Virginia</option>
+<option value="4077">Westerville</option>
+<option value="3973">Westfield</option>
+<option value="3525">Westland</option>
+<option value="3452">Westminster, CA</option>
+<option value="3362">Westminster, CO</option>
+<option value="3640">Weston</option>
+<option value="3767">Wheaton</option>
+<option value="4120">Wheeling</option>
+<option value="3714">White Plains</option>
+<option value="3496">Whittier</option>
+<option value="3180">Wichita</option>
+<option value="3400">Wichita Falls</option>
+<option value="3989">Wilkes-Barre</option>
+<option value="3553">Wilmington, DE</option>
+<option value="3398">Wilmington, NC</option>
+<option value="3857">Wilson</option>
+<option value="3213">Winston-Salem</option>
+<option value="3128">Wisconsin</option>
+<option value="5027">Wisconsin_</option>
+<option value="4033">Woburn</option>
+<option value="3715">Woodbury</option>
+<option value="3754">Woodland</option>
+<option value="3940">Woonsocket</option>
+<option value="3257">Worcester</option>
+<option value="4018">Wylie</option>
+<option value="3129">Wyoming</option>
+<option value="3580">Wyoming, MI</option>
+<option value="3469">Yakima</option>
+<option value="3236">Yonkers</option>
+<option value="3624">Yorba Linda</option>
+<option value="4000">York</option>
+<option value="3563">Youngstown</option>
+<option value="3670">Yuba City</option>
+<option value="3839">Yucaipa</option>
+<option value="3445">Yuma</option></select>
+                                </div>
+                                    
+                                    
+                                
+                            </div>
+                            
+                        
+                    
+
+                        
+                            
+                            
+                            
+                        
+                    
+
+                        
+                            
+                            <input type="hidden" name="reportParameterInfoList[5].id" value="5003">
+
+                            <div class="control-group">
+                                <label class="control-label"
+                                    for="department">
+                                    Department(s)
+                                </label>
+                                <div class="controls">
+                                
+                                    
+                                    
+                                    
+                                        <select name="reportParameterInfoList[5].values" multiple="multiple" id="department"><option value="show_all" selected="selected">show all</option>
+                                            <option value="Accounting">Accounting</option>
+<option value="hr">Human Resources Human Resources Human Resources Human Resources Human Resources Human Resources Human Resources Human Resources Human Resources Human Resources</option>
+<option value="offc">Office</option>
+<option value="sales">Sales</option>
+<option value="svc">Service</option></select>
+                                </div>
+                                    
+                                    
+                                    
+                                
+                            </div>
+                            
+                        
+                    
+
+                        
+                            
+                            <input type="hidden" name="reportParameterInfoList[7].id" value="5006">
+
+                            <div class="control-group">
+                                <label class="control-label"
+                                    for="loginType">
+                                    Logged In
+                                </label>
+                                <div class="controls">
+                                
+                                    
+                                    
+                                        <select name="reportParameterInfoList[7].value" id="loginType"><option value="show_all" selected="selected">show all</option>
+                                            <option value="loggedIn">Have Logged In</option>
+<option value="haveNotLoggedIn">Have Not Logged In</option></select>
+                                </div>
+                                    
+                                    
+                                    
+                                    
+                                
+                            </div>
+                            
+                                </fieldset>
+                            
+                        
+                    
+                </div>
+            
+        </div>
+        
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+        
+    </div>
+    <!-- span12 -->
+    <div class="row">
+        <div class="form-actions">
+            <button id="submitButton" type="button" class="btn btn-primary">Update
+                Report</button>
+            <button id="cancelButton" type="button" class="btn">Cancel</button>
+        </div>
+    </div>
+    <!-- span12 -->
+</form>

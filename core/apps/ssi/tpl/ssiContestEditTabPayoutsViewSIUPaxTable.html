@@ -1,0 +1,112 @@
+<div class="spincover" style="display:none;"><div class="spin"></div></div>
+<div class="paginationConts pagination pagination-right"></div>
+<div class="emptyMsg alert" style="display:none">You have not added anyone.</div>
+<div class="hasPax well container-splitter participantCollectionViewWrapper" style="display:none">
+    <table class="paxPayoutTable">
+        <thead>
+            <tr>
+                <th class="participant sortHeader">
+                    Participant
+                    <i data-sort="lastName" class="sortControl icon-sort"></i>
+                </th>
+
+                <th class="baseline sortHeader">
+                    Baseline
+                    <i data-sort="baselineAmount" class="sortControl icon-sort"></i>
+                </th>
+
+                {{#extraJson.levels}}
+                <th class="level">
+                    <div>Level {{sequenceNumber}}</div>
+                    <div>+ <span class="currSymb act"></span>{{amount}}<span class="currSymbAfter act"></span></div>
+                </th>
+                {{/extraJson.levels}}
+
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td>
+                    <button class="calculateTotalsBtn btn btn-primary btn-small" data-msg-loading="calculating...">Calculate Totals</button>
+                </td>
+
+                <td class="totalDisp">
+                    <span class="currSymb act"></span><!--
+                    --><span class="baselineTotal">--</span>
+                    <span class="currDisp act"></span>
+                </td>
+
+                {{#extraJson.levels}}
+                <td class="totalDisp">
+                    <span class="currSymb act"></span><!--
+                    --><span class="levelTotal{{id}}">--</span>
+                    <span class="currDisp act"></span>
+                </td>
+                {{/extraJson.levels}}
+            </tr>
+        </tfoot>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+<div class="paginationConts pagination pagination-right"></div>
+
+<!-- VALIDATION MSGS - informational tooltip for validation -->
+<div class="participantPaginatedViewErrorTipWrapper" style="display:none">
+    <div class="errorTip">
+
+        <div class="errorMsg msgNumeric" style="display:none" >
+            This field must be a number.
+        </div>
+        <div class="errorMsg msg_natural" style="display:none" >
+            Must be a whole number.
+        </div>
+        <div class="errorMsg msgDecimal2 msg_decimal_2" style="display:none" >
+            Please enter a number with up to 2 decimals. Do not enter currency symbol or commas/period/spaces.
+        </div>
+        <div class="errorMsg msgDecimal4 msg_decimal_4" style="display:none" >
+            Please enter a number with up to 4 decimals. Do not enter commas/periods/space.
+        </div>
+        <div class="errorMsg msgNumberTooLarge" style="display:none" >
+            This number must be less than 10000000000.
+        </div>
+        <div class="errorMsg msgRequired" style="display:none" >
+            One or more required <br>
+            fields are missing.
+        </div>
+
+    </div><!-- /.errorTip -->
+</div><!-- /.participantPaginatedViewErrorTipWrapper -->
+
+<div id="sameForAllTipTpl" class="sameForAllTip" style="display:none">
+    <a href="#">same for all<br>participants</a>
+</div><!-- /#sameForAllTipTpl -->
+
+<!--subTpl.paxRow=
+
+    <tr class="participant-item" data-participant-id="{{id}}">
+
+        <td class="participant">
+            <a class="participant-popover" href="#" data-participant-ids="[{{userId}}]">
+                {{lastName}}, {{firstName}}
+            </a>
+        </td>
+
+
+        <td class="textInputCell">
+            <input type="text"
+                class="paxDatTextInput paxDatBaseline"
+                data-model-key="baselineAmount"
+                data-model-id="{{id}}"
+                data-validation="number"
+                value="{{baselineAmount}}" />
+        </td>
+
+        {{#extraJson.levels}}
+        <td class="levelTD">
+            <span class="levelCalc level{{id}}"></span>
+        </td>
+        {{/extraJson.levels}}
+    </tr>
+
+subTpl-->

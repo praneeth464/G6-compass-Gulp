@@ -1,0 +1,177 @@
+<?php sleep(1); ?>
+{
+    "messages": [],
+
+    "activityPods": [
+        {
+            "activityId": 1001,
+            "userInfo": [
+                {
+                    "userName": "Firstname Lastname",
+                    "contributorID": 12345,
+                    "signedIn": "true",
+                    "profileLink": "layout.html?tpl=profilePage&tplPath=apps/profile/tpl/",
+                    "profilePhoto": "../../skins/default/img/avatar-blank-72.png"
+                }
+            ],
+            "commentText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu lectus eu mi rhoncus vulputate. Nunc venenatis fermentum hendrerit. Maecenas tellus risus, ullamcorper vel molestie eget, congue sit amet risus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+            "videoWebLink": "http://vimeo.com/11673745",
+            "media": []
+        },
+
+        {
+            "activityId": 1002,
+            "userInfo": [
+                {
+                    "userName": "Firstname Lastname",
+                    "contributorID": 12345,
+                    "signedIn": "false",
+                    "profileLink": "",
+                    "profilePhoto": "img/_samples/x-profile-pic2.jpg"
+                }
+            ],
+            "commentText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu lectus eu mi rhoncus vulputate. Nunc venenatis fermentum hendrerit.",
+            "videoWebLink": "",
+            "media": [
+                {
+                    "video": [],
+
+                    "photo":[
+                        {
+                            "src": "http://blog.buckconsultants.com/wp-content/uploads/2013/04/clown.jpg"
+                        }
+                    ]
+                }
+            ]
+        },
+
+        {
+            "activityId": 1003,
+            "userInfo": [
+                {
+                    "userName": "Firstname Lastname",
+                    "contributorID": 12345,
+                    "signedIn": "true",
+                    "profileLink": "layout.html?tpl=profilePage&tplPath=apps/profile/tpl/",
+                    "profilePhoto": "img/_samples/x-profile-pic2.jpg"
+                }
+            ],
+            "commentText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu lectus eu mi rhoncus vulputate. Nunc venenatis fermentum hendrerit.",
+            "videoWebLink": "http://www.youtube.com/watch?v=q1dpQKntj_w",
+            "media": []
+        },
+
+        {
+            "activityId": 1004,
+            "userInfo": [
+                {
+                    "userName": "Firstname Lastname",
+                    "contributorID": 12345,
+                    "signedIn": "true",
+                    "profileLink": "layout.html?tpl=profilePage&tplPath=apps/profile/tpl/",
+                    "profilePhoto": "img/_samples/x-profile-pic2.jpg"
+                }
+            ],
+            "commentText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu lectus eu mi rhoncus vulputate. Nunc venenatis fermentum hendrerit.",
+            "videoWebLink": "",
+            "media": []
+        },
+
+        {
+            "activityId": 1005,
+            "userInfo": [
+                {
+                    "userName": "VIDEOTEST Firstname Lastname",
+                    "contributorID": 12345,
+                    "signedIn": "true",
+                    "profileLink": "layout.html?tpl=profilePage&tplPath=apps/profile/tpl/",
+                    "profilePhoto": "img/_samples/x-profile-pic2.jpg"
+                }
+            ],
+            "commentText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu lectus eu mi rhoncus vulputate. Nunc venenatis fermentum hendrerit.",
+            "videoWebLink": "",
+            "media": [
+                {
+                    "video": [
+                        {
+                            "fileType": "mp4",
+                            "src": "http://www.rickety.us/wp-content/uploads/2011/06/Tyrannosaurus_Rex.m4v"
+                        }
+                    ],
+
+                    "photo":[]
+                }
+            ]
+        },
+
+        {
+            "activityId": 1006,
+            "userInfo": [
+                {
+                    "userName": "Firstname Lastname",
+                    "contributorID": 12345,
+                    "signedIn": "true",
+                    "profileLink": "layout.html?tpl=profilePage&tplPath=apps/profile/tpl/",
+                    "profilePhoto": "../../skins/default/img/avatar-blank-72.png"
+                }
+            ],
+            "commentText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu lectus eu mi rhoncus vulputate. Nunc venenatis fermentum hendrerit.",
+            "videoWebLink": "",
+            "media": [
+                {
+                    "video": [
+                        {
+                            "fileType": "webm",
+                            "src": "http://krystencunningham.com/video/hypercube.webm"
+                        },
+                        {
+                            "fileType": "mp4",
+                            "src": "http://krystencunningham.com/video/hypercube.mp4"
+                        }
+                    ],
+
+                    "photo":[]
+                }
+            ]
+        },
+
+        {
+            "activityId": 1007,
+            "userInfo": [
+                {
+                    "userName": "Firstname Lastname",
+                    "contributorID": 12345,
+                    "signedIn": "true",
+                    "profileLink": "layout.html?tpl=profilePage&tplPath=apps/profile/tpl/",
+                    "profilePhoto": "img/_samples/x-profile-pic2.jpg"
+                }
+            ],
+            "commentText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu lectus eu mi rhoncus vulputate. Nunc venenatis fermentum hendrerit.",
+            "videoWebLink": "",
+            "media": [
+                {
+                    "video": [
+                        {
+                            "fileType": "mp4",
+                            "src": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+                        },
+                        {
+                            "fileType": "ogg",
+                            "src": "http://www.kaltura.com/p/243342/sp/24334200/playManifest/entryId/0_c0r624gh/flavorId/0_g4hvuve3/format/url/protocol/http/a.ogg"
+                        },
+                        {
+                            "fileType": "webm",
+                            "src": "http://www.kaltura.com/p/243342/sp/24334200/playManifest/entryId/0_c0r624gh/flavorId/0_1c89hhxb/format/url/protocol/http/a.webm"
+                        },
+                        {
+                            "fileType": "h264",
+                            "src": "http://www.kaltura.com/p/243342/sp/24334200/playManifest/entryId/0_c0r624gh/flavorId/0_w48dtkyq/format/url/protocol/http/a.mp4"
+                        }
+                    ],
+
+                    "photo":[]
+                }
+            ]
+        }
+    ]
+}

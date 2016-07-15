@@ -1,0 +1,93 @@
+// Partial-specific variables (uncomment to use)
+// =========================
+// $pages_pageContentBgColor: ;
+// $pages_pageContentBorderWidth: ;
+// $pages_pageContentBorderWidth1200: ;
+// $pages_pageContentBorderWidth768: ;
+// $pages_pageContentBorderColor: ;
+
+// $pages_pageContentH2FontSize: ;
+// $pages_pageContentH2FontWeight: ;
+$pages_pageContentH2Color: #094D75;
+
+$pages_pageTopperBgColor: $g5ModuleBgColor;
+// $pages_pageTopperGradType: ;
+// $pages_pageTopperGradMeta: ;
+$pages_pageTopperGradStops: $pages_pageTopperBgColor, scale-color($pages_pageTopperBgColor, $lightness: -25%);
+
+// $pages_pageTopperTextColor: ;
+// $pages_pageTopperLinkColor: ;
+// $pages_pageTopperLinkHoverColor: ;
+// $pages_pageTopperControlLinkColor: ;
+// $pages_pageTopperControlLinkHoverColor: ;
+
+// tabs text
+// $pages_navTabsTextColor: ;
+// $pages_navTabsTextHoverColor: ;
+// $pages_navTabsTextActiveColor: ;
+// $pages_navTabsTextSelectedColor: ;
+// tabs text shadow
+// $pages_navTabsTextShadow: ;
+// $pages_navTabsTextShadowHover: ;
+// $pages_navTabsTextShadowActive: ;
+// $pages_navTabsTextShadowSelected: ;
+// tabs bg color
+// $pages_navTabsBgColor: ;
+// $pages_navTabsBgHoverColor: ;
+// $pages_navTabsBgActiveColor: ;
+// $pages_navTabsBgSelectedColor: ;
+// tabs box shadow
+// $pages_navTabsBoxShadow: ;
+// $pages_navTabsBoxShadowHover: ;
+// $pages_navTabsBoxShadowActive: ;
+// $pages_navTabsBoxShadowSelected: ;
+
+// progress well
+// $pages_progressHeight: ;
+
+// container-splitter
+$pages_splitterH2Color: $grayLight;
+$pages_splitterTextColor: $white;
+$pages_splitterLinkColor: $white;
+// $pages_splitterLinkHoverColor: ;
+$pages_splitterLinkIconColor: $gray80pct;
+$pages_splitterLinkIconHoverColor: $white;
+$pages_splitterBgColor: $gray25pct;
+$pages_splitterBgGradType: false;
+// $pages_splitterBgGradMeta: ;
+// $pages_splitterBgGradStops: ;
+$pages_splitterBorderTopBottomWidth: 0;
+// $pages_splitterBorderTopBottomColor: ;
+// $pages_splitterBoxShadow: ;
+
+$pages_fileLinkIconUrlPath: $appImagesPath; // setting this to $appImagesPath points at core/base/img. Leave blank to use images in this skin
+$pages_displayTableIconUrlPath: $appImagesPath; // setting this to $appImagesPath points at core/base/img. Leave blank to use images in this skin
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "partials/pages";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// Partial-specific code for this skin
+// ==================================================
+// ----- START output ----->
+@if $base_variablesOnly == false {
+
+
+
+
+// PUT CUSTOM CODE HERE
+
+
+
+
+// <----- END output -----
+} // end @if $base_variablesOnly == false

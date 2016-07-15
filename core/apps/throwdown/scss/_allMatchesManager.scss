@@ -1,0 +1,259 @@
+// App-specific variables
+// =========================
+$throwdownAllMatches_headerBgColor: $black !default;
+$throwdownAllMatches_tabsNavBgColor: $black !default;
+$throwdownAllMatches_tabsIconColor: $grayLight !default;
+$throwdownAllMatches_tabsIconShadow: 0 -1px 0 $gray !default;
+$throwdownAllMatches_tabsIconColorHover: $white !default;
+$throwdownAllMatches_tabsIconShadowHover: $throwdownAllMatches_tabsIconShadow !default;
+$throwdownAllMatches_tabsTabBgHover: $throwdown_secondaryAccentColor !default;
+$throwdownAllMatches_tabsTabBoxShadowClick: $gray 0 2px 5px inset !default;
+$throwdownAllMatches_tabsIconColorActive: $throwdown_secondaryAccentColor !default;
+$throwdownAllMatches_tabsIconShadowActive: none !default;
+$throwdownAllMatches_tabsTabBgActive: $white !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.throwdownAllMatchesModule {
+    color: $throwdown_textColor;
+
+}/* /.throwdownAllMatchesModule */
+
+/* ----- MODULE STYLES ----- */
+.module.throwdownAllMatchesModule {
+    font-family: $throwdown_primaryFontFamily;
+
+    .title-icon-view {
+        display: block;
+    }
+    .wide-view {
+        background-color: $white;
+        height: 243px;
+        min-height: 245px;
+        overflow-y: scroll;
+        padding: 10px 18px;
+    }
+    .main-nav {
+        @include gradient-vertical($throwdownAllMatches_tabsNavBgColor, $black);
+        height: 45px;
+
+        h3 {
+            color: $throwdown_secondaryAccentColor;
+            font-family: $throwdown_primaryFontFamily;
+            font-size: $baseFontSize * 1.7857;
+            font-weight: bold;
+            line-height: 45px;
+            float: left;
+            margin: 0 12px;
+            text-transform: uppercase;
+        }
+        ul.allMatchesTabs {
+            float: right;
+            margin: 0 40px 0 0;
+
+            li {
+                a {
+                    color: $throwdownAllMatches_tabsIconColor;
+                    @include text-shadow($throwdownAllMatches_tabsIconShadow);
+
+                    &:hover {
+                        @if $throwdownAllMatches_tabsIconColorHover {
+                            color: $throwdownAllMatches_tabsIconColorHover;
+                        }
+                        @if $throwdownAllMatches_tabsIconShadowHover and $throwdownAllMatches_tabsIconShadowHover != $throwdownAllMatches_tabsIconShadow {
+                            text-shadow: $throwdownAllMatches_tabsIconShadowHover;
+                        }
+                        @if throwdownAllMatches_tabsTabBgHover {
+                            background-color: $throwdownAllMatches_tabsTabBgHover;
+                        }
+                    }
+                    &:active {
+                        @if $throwdownAllMatches_tabsTabBoxShadowClick {
+                            @include box-shadow($throwdownAllMatches_tabsTabBoxShadowClick);
+                        }
+                    }
+                    span {
+                        @include inline-block;
+                        text-indent: -9999px;
+                        white-space: nowrap;
+                    }
+                    i {
+                        font-size: $baseFontSize * 1.4; //~20px
+                        height: 24px;
+                        line-height: $baseLineHeight * 1.2;
+                        margin: 0 -10px;
+                        vertical-align: middle;
+                        width: 36px;
+                    }
+                    .icon-g5-pubrec-global {
+                        font-size: 26px;
+                        *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf102;');
+
+                        &:before {
+                            content: "\f102";
+                        }
+                    }
+                    .icon-g5-pubrec-team {
+                        *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf103;');
+
+                        &:before {
+                            content: "\f103";
+                        }
+                    }
+                }
+                &.active {
+                    a {
+                        @include text-shadow($throwdownAllMatches_tabsIconShadowActive);
+                        background-color: $throwdownAllMatches_tabsTabBgActive;
+                        color: $throwdownAllMatches_tabsIconColorActive;
+
+                        &:hover {
+                            background-color: $throwdownAllMatches_tabsTabBgActive;
+                        }
+                        &:active {
+                            @include box-shadow(none);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .roundPagination {
+        margin: 0 auto;
+
+        ul {
+            display: block;
+            float: none;
+            height: 20px;
+            margin: auto;
+            max-width: 195px;
+
+            li {
+                float: left;
+                width: auto;
+
+                p {
+                    font-size: $baseFontSize * 1.4;
+                    margin-bottom: 0;
+                    text-transform: uppercase;
+
+                    .your-round,
+                    .round-total {
+                        color: $throwdown_secondaryAccentColor;
+                        font-weight: $throwdown_secondaryFontWeight;
+                    }
+                }
+                a {
+                    background-color: transparent;
+                    border: none;
+                    color: $throwdown_textLight;
+                    font-size: $baseFontSize * 3.58;
+                    line-height: $baseLineHeight* 0.65;
+                    padding-top: 2px;
+
+                    &:hover {
+                        background-color: transparent;
+                    }
+                }
+            }
+            .prev,
+            .next {
+                width: auto;
+
+                a {
+                    cursor: pointer;
+                }
+            }
+            .prev:disabled a,
+            .next:disabled a {
+                cursor: default;
+            }
+        }
+        @media( max-width: 567px ){
+            ul li {
+                display: inline-block;
+            }
+        }
+    }
+    .clearBoth {
+        clear: both;
+    }
+    .td-fine-print {
+
+    }
+    .table {
+        font-family: $throwdown_secondaryFontFamily;
+        margin-bottom: 5px;
+
+        thead th {
+            background-color: $throwdownAllMatches_headerBgColor;
+            padding: 1px 8px;
+        }
+        tbody {
+            td {
+                border-top: none;
+                border-color: $throwdown_tableBorderColor;
+                padding: 4px 8px;
+                vertical-align: middle;
+
+                p {
+                    color: $throwdown_textColor;
+                    float: left;
+                    height: 18px;
+                    margin: 0;
+
+                    span {
+                        color: $throwdown_numberColor;
+                    }
+                }
+                br {
+                    clear: left;
+                }
+                .chevron {
+                    margin: 0 5px 0 0;
+                    text-align: center;
+                    vertical-align: middle;
+                }
+            }
+            .td-current-progress p {
+                color: $throwdown_numberColor;
+
+                span {
+                    color: $throwdown_winnerColor;
+                    font-weight: $throwdown_secondaryFontWeight;
+                    padding-left: 3px;
+                    text-shadow: 1px 1px 2px rgba(0,0,0,.3);
+                }
+            }
+        }
+    }
+
+    &.grid-dimension-2x2 {
+        .title-icon-view,
+        .table tbody img {
+            display: none;
+        }
+        .td-record {
+            display: none;
+        }
+    }
+    &.grid-dimension-4x2 {
+        .title-icon-view {
+            display: none;
+        }
+        .table tbody img {
+            float: left;
+            margin: 0 8px 0 0;
+            width: 20px;
+
+            &:first-child {
+                margin-bottom: 4px;
+            }
+        }
+    }
+} /* /.module.throwdownMatch */

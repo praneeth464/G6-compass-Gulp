@@ -1,0 +1,10 @@
+<?php sleep(1); ?>
+{
+    "messages": [
+        {
+            "type": "serverCommand",
+            "text": "Your Participation Score Detail extract is being generated and will be available shortly. You will be notified when the extract is available to download.",
+            "command": "modal"
+        }
+    ]
+}

@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="span12">
+        <p><a href="#" class="btn btn-danger replaceAllImages">Replace all images and start over</a></p>
+
+        {{#if page}}<h3>Module Previews</h3>{{/if}}
+        {{#each modules}}
+        <div class="module {{../type}} {{../type}}Module grid-dimension-{{size}}">
+            <div class="module-wrapper">
+                <div class="module-liner">
+                    <a class="visitAppBtn">
+                        <i class="icon-arrow-right"></i>
+                    </a>
+
+                    <div class="wide-view">
+                        <div class="carousel">
+                            <div class="carousel-inner">
+                                <div class="item">
+                                    <img class="fauxBgImg" src="{{imageUrl}}" alt="preview">
+                                    {{#eq ../type "news"}}
+                                    <div class="wide-view comm-story">
+                                        <h3>Title Goes Here</h3>
+                                        <div class="read-more"><p><a>Read More &raquo;</i></a></p></div>
+                                    </div>
+                                    {{/eq}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.module-liner -->
+            </div><!-- /.module-wrapper -->
+
+            <div class="replaceImage">
+                <a class="btn btn-mini btn-danger replaceImageBtn" id="replaceImage{{size}}" data-size="{{size}}">Replace image</a>
+            </div>
+        </div><!-- /.module -->
+        {{/each}}
+    </div>
+</div>
+
+{{#if page}}
+{{#with page}}
+<div class="row pageUploadPreview">
+    <div class="span12">
+        <h3>List Page Preview</h3>
+    </div>
+    <div class="span2">
+        <div class="module grid-dimension-page">
+            <div class="module-liner">
+                <img src="{{imageUrl}}" alt="preview" height="162" width="162">
+            </div>
+
+            <div class="replaceImage">
+                <a class="btn btn-mini btn-danger replaceImageBtn" id="replaceImage{{size}}" data-size="{{size}}">Replace image</a>
+            </div>
+        </div>
+    </div>
+    <div class="span10 page news">
+        <h3>Title Goes Here</h3>
+        <p class="timeStamp"><time datetime="YYYY-MM-DD">MM/DD/YYYY</time></p>
+        <div class="read-more"><p><a>Read More &raquo;</a></p></div>
+    </div>
+</div>
+{{/with}}
+{{/if}}

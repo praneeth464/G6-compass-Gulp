@@ -1,0 +1,41 @@
+<!-- ======== PROFILE: MESSAGE DETAILS ======== -->
+
+<div id="profilePageAlertDetailView" class="claimPage-liner page-content">
+    <div id="profilePageAlertDetailContent">
+        <div class="row">
+             <div class="span12">
+                <h2>Here is a message title.</h2>
+                <p>01/01/2012<br>
+                   Here is a promotion name.</p>
+            </div>
+        </div>
+
+        <div class="row">
+             <div class="span12">
+                <p>Here is the text that would be inside a tooltip for that message. It can be HTML and include <a href="#">links</a> to other pages. <strong>There should only be one message in this JSON since only one is displayed on this page.</strong></p><p>Lorem ipsum and the like.</p>
+            </div>
+            <a href="Place URL here" target="_blank" class="btn btn-primary">Select Award</a>
+        </div>
+    </div>
+</div> <!-- ./claimPage-liner -->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    //attach the view to an existing DOM element
+    $(document).ready(function() {
+      var prp = new PageView({
+        el: $('#profilePageAlertDetailView'),
+        pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Message Details'
+        });
+    });
+</script>

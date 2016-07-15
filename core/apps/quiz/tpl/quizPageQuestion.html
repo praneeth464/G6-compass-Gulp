@@ -1,0 +1,67 @@
+{{#if showDots}}
+
+<div class="quiz-progress quiz-question-progress">
+    <div class="contributorSteps clearfix tc row">
+        <div class="ib clearfix">
+        {{#each dots}}
+            <div class="step active lastStep {{#unless active}}{{#if locked}}locked{{/if}}{{/unless}} {{#if visited}}visited{{/if}} {{#if lastDot}}lastQuestion{{/if}}" {{#unless lastDot}}style="width: {{spacing}}%"{{/unless}}>
+            <div class="doodle"></div>
+        </div>
+        {{/each}}
+    </div>
+</div> 
+
+{{/if}}
+
+{{#if isComplete}}
+<div class="row">
+    <div class="span12">
+        <p>Completed quizzes cannot be accessed.</p>
+    </div>
+</div>
+<div class="row">
+    <div class="span12">
+        {{#each buttons}}
+            {{#if buttonDisplay}}
+            <!--disabled-->
+            <button class="btn  {{#if buttonClass}}{{buttonClass}}{{/if}}" id="{{buttonType}}" type="button">{{buttonText}}</button>
+            {{/if}}
+        {{/each}}
+    </div>
+</div>
+
+{{else}}
+<div class="row">
+    <div class="span12">
+        <h4>{{questionTitle}}</h4>
+        {{{questionText}}}
+        <!-- the action attribute will be used to post the answers -->
+        <form id="quizAnswersForm" action="ajax/quizAnswer1.json">
+            <!-- include any necessary hidden inputs here -->
+            <input type="hidden" value="{{quizParent.id}}" id="quizid" name="quizId" />
+            <input type="hidden" value="{{id}}" id="questionid" name="questionId" />
+
+            <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please select an option"}'>
+            {{#each questionChoices}}
+                <div class="controls">
+                    <label class="radio">
+                        <input type="radio" name="selectedAnswer" value="{{choice}}"> <span class="optlabel">{{choice}}</span>
+                    </label>
+                </div>
+            {{/each}}
+            </div>            
+        </form>
+    </div>
+</div>
+<div id="quizAnswerContent">
+    <div class="row">
+        <div class="span12">
+            {{#each buttons}}
+                {{#if buttonDisplay}}
+                <button class="btn  {{#if buttonClass}}{{buttonClass}}{{/if}}" id="{{buttonType}}" type="button">{{buttonText}}</button>
+                {{/if}}
+            {{/each}}
+        </div>
+    </div>   
+</div>
+{{/if}}

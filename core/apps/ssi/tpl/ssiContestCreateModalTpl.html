@@ -1,0 +1,98 @@
+<div class="container container10">
+    <div class="row-fluid">
+        <div class="span12">
+            <h1>Select A Contest Type</h1>
+            <button type="button" class="close">
+                <i class="icon-remove-circle"></i>
+            </button>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12 text-right">
+            <a href="{{contestGuideUrl}}" title="Contest Guide" target="_blank" class="contestGuide">Contest Guide<img src="../base/img/fileIcons/pdf34x34.png" alt=""></a>
+        </div>
+    </div>
+    <div class="row-fluid navContainer">
+        {{#each contestTypes}}
+            <div class="tabGroup {{contestType}}" data-id="{{contestType}}">
+                <div class="tabNav span2 offset{{offset}}">
+                    <div class="tabNavContent">
+                        <h3>
+                            {{contestTypeName}}
+                        </h3>
+                        <div class="tabLargeContainer">
+                            {{#eq contestType "objectives"}}
+                                <i class="icon-g5-objective"></i>
+                            {{/eq}}
+                            {{#eq contestType "stepItUp"}}
+                                <i class="icon-g5-stepitup"></i>
+                            {{/eq}}
+                            {{#eq contestType "doThisGetThat"}}
+                                <i class="icon-g5-dothisgetthat"></i>
+<!--                                <div class="tabDataContainer">
+                                    <div class="row dtgtMockData">
+                                        <div class="activityProgress">
+                                            <h4>4</h4>
+                                            <span>Approved</span>
+                                        </div>
+                                        <div class="activityPayout">
+                                            <h4>120</h4>
+                                            <span>Points</span>
+                                        </div>
+                                    </div>
+                                    <div class="row dtgtMockData">
+                                        <div class="activityProgress">
+                                            <h4>10</h4>
+                                            <span>Approved</span>
+                                        </div>
+                                        <div class="activityPayout">
+                                            <h4><i class="icon-gift"></i></h4>
+                                            <span>Award</span>
+                                        </div>
+                                    </div>
+                                </div>-->
+                            {{/eq}}
+                            {{#eq contestType "stackRank"}}
+                                <i class="icon-g5-stackrank"></i>
+<!--                                <div class="tabDataContainer">
+                                    <div class="row stackRankMockData">
+                                        <b>1.</b>
+                                        <img src="img/avatar-48.jpg" class="avatar" />
+                                        <span class="leaderName">Name</span>
+                                        <span>pts</span>
+                                    </div>
+                                    <div class="row stackRankMockData">
+                                        <b>1.</b>
+                                        <img src="img/avatar-48.jpg" class="avatar" />
+                                        <span class="leaderName">Name</span>
+                                        <span>pts</span>
+                                    </div>
+                                    <div class="row stackRankMockData">
+                                        <b>1.</b>
+                                        <img src="img/avatar-48.jpg" class="avatar" />
+                                        <span class="leaderName">Name</span>
+                                        <span>pts</span>
+                                    </div>
+                                </div>-->
+                            {{/eq}}
+                            {{#eq contestType "awardThemNow"}}
+                                <i class="icon-g5-awardnow"></i>
+                            {{/eq}}
+                        </div>
+                    </div>
+                </div>
+                <div class="tabContent span10">
+                    <h2>{{contestTypeName}} Contest</h2>
+                    <p>
+                        {{description}}
+                    </p>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+    <div class="row-fluid createButtonWrap">
+        <div class="span10">
+            <button class="btn btn-large btn-primary qtipSubmit">Create Contest</button>
+        </div>
+    </div>
+</div>

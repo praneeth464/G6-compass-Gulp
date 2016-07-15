@@ -1,0 +1,10 @@
+<?php sleep(1); ?>
+{
+    "messages":[
+        {
+            "type":"serverCommand",
+            "command":"redirect",
+            "url":"layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html"
+        }
+    ]
+}

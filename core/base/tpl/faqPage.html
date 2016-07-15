@@ -1,0 +1,24 @@
+<?php include('faqSheet.html'); ?>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+
+    $(document).ready(function() {
+        //attach the view to an existing DOM element
+        var fqp = new PageView({
+            el:$('#faqPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'FAQs'
+        });
+    });
+
+</script>

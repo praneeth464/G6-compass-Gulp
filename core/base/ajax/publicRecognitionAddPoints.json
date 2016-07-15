@@ -1,0 +1,16 @@
+{
+	"messages":[],
+	"comment":{
+		"recognitionId":1234,
+		"isMine":true,
+		"allowAddPoints":true,
+		"id":23,
+		"commenter":{
+			"id":12,
+			"firstName":"Christian",
+			"lastName":"Smith",
+			"avatarUrl":"img/_samples/x-profile-pic2.jpg"
+		},
+		"comment":"You've put in lots of late hours and nights, now go out there and get something cool!"
+	}
+}

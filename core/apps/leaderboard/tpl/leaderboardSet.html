@@ -1,0 +1,55 @@
+<div class="set" data-nameId="{{nameId}}" data-name="{{name}}">
+
+    {{#each leaderboards}}{{/each}}
+    <div class="item" data-id="{{this.id}}">
+
+        <div class="app-row">
+        
+            <h3>{{this.name}}</h3>
+            <p class="startdate"><span>Start Date</span> <strong>{{this.startDate}}</strong></p>
+            <p class="enddate"><span>End Date</span> <strong>{{this.endDate}}</strong></p>
+            
+        </div>
+
+        <!-- Account info and ranking -->
+
+        <div class="app-row">
+        
+            <div class="app-col">
+            
+                <img alt="" src="http://placehold.it/60x60" align="left" />
+                                
+            </div>
+
+            <div class="app-col">
+                
+                <p>
+                    You are <span class="large-rank-text">43rd</span><br />
+                    96 claims submitted<br />
+                    <span class="activitydate"><span>As of</span> <strong>{{this.activityDate}}</strong></span>
+                </p>
+
+            </div>
+            
+        </div>
+
+        <div class="app-row">
+        
+            <ol class="">
+
+                {{#each this.leaders}}
+                <li value="{{this.rank}}" {{#if this.tied}} class="tied" {{/if}}>
+                    <img alt="{{this.firstName}} {{this.lastName}}" src="{{this.avatarUrl}}">
+                    <strong>{{this.firstName}} {{this.lastName}}</strong>
+                    <span>{{this.score}}</span>
+                </li>
+                {{/each}}
+
+            </ol>
+            
+        </div>
+        
+    </div>
+    {{#each leaderboards}}{{/each}}
+
+</div>

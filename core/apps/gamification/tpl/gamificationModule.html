@@ -1,0 +1,46 @@
+<!-- - - - - - - - - GAMIFICATION MODULE - - - - - - - - - - - - - -->
+
+<div class="module-liner">
+
+    <a href="layout.html?tplPath=apps/profile/tpl/&amp;tpl=profilePage.html#tab/Badges" class="visitAppBtn">
+        <i class="icon-arrow-right"></i>
+    </a>
+
+    <div class="wide-view">
+        <h3>My Badges</h3>
+        <div class="badges">
+            <ul>
+                {{#badges}}
+                    <li class="badge-item {{this.type}}-type earned-{{#if earned}}true{{else}}false{{/if}}" id="badge{{id}}">
+                        <a href="layout.html?tplPath=apps/profile/tpl/&amp;tpl=profilePage.html#tab/Badges/badge{{id}}">
+                            <img src="{{this.img}}" align="left" />
+                            <div class="badge-name{{#if dateEarned}} hasDateEarned{{/if}}">
+                                {{#if contestName}}
+                                    {{this.contestName}}
+                                {{else}}
+                                    {{this.name}}
+                                {{/if}}
+
+                            </div>
+                            <!-- <div class="badge-how-to-earn">{{this.howToEarnText}}</div> -->
+                            <div class="progress">
+                                <span>{{this.progressNumerator}}/{{this.progressDenominator}}</span>
+                                <div class="bar"></div>
+                            </div>
+
+                            {{#if earned}}
+                            <div class="badge-date-earned">Earned {{this.dateEarned}}</div>
+                            {{/if}}
+                        </a>
+                    </li>
+                {{/badges}}
+            </ul>
+        </div>
+    </div>
+
+    <div class="title-icon-view">
+        <h3>My Badges</h3>
+        <i class="icon-g5-gamification"></i>
+    </div>
+
+</div>

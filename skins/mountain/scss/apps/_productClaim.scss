@@ -1,0 +1,46 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $productClaim_bgColor: ;
+// $productClaim_gradType: ;
+// $productClaim_gradMeta: ; // list the gradient non-color properties such as position, shape, etc.
+// $productClaim_gradStops: ; // list the stops as one would a series of raw gradient stops
+
+// $productClaim_iconColor: ;
+// $productClaim_titleColor: ;
+// $productClaim_titleFontFamily: ;
+// $productClaim_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $productClaim_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+$productClaim_bgColorBig: #094d75;
+// $productClaim_gradTypeBig: ;
+// $productClaim_gradMetaBig: ;
+$productClaim_gradStopsBig: #073a58, #094d75, #073a58;
+
+// $productClaim_promoTitleColor: ;
+// $productClaim_promoTitleFontFamily: ;
+// $productClaim_promoTitleFontSize: ;
+// $productClaim_promoTitleFontWeight: ;
+// $productClaim_textColor: ;
+// $productClaim_textCalloutColor: ;
+// $productClaim_submitApprovalFontFamily: ;
+// $productClaim_submitApprovalFontSize: ;
+// $productClaim_claimBgModuleOdd: ;
+// $productClaim_claimBgModuleEven: ;
+
+$productClaim_productEditIconColor: $gray80pct; // should match $participantItem_editRemoveIconColor in _participantItem.scss
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "productClaim/scss/productClaim";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

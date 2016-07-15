@@ -1,0 +1,60 @@
+{
+	"messages":[],
+	"quizViewResults":[
+		{
+			"id" : 1000,
+			"passedQuiz":				false,
+			"quizMessage":				"Congratulations! You Passed! (but this is set up like you didn't)",
+			"quizAward": 				"500 points",
+			"questionsCorrect":			3,
+			"questionsCorrectNeeded":	4,
+			"attemptsRemaining":		"0",
+			"canRetakeQuiz":			false,
+			"quizCertificate": "<img src='http://localhost/core/base/img/certificates/8bit01-thumb.jpg'><a>View Certificate</a>",
+			"quizBadge": "<div id='badgeAwardWrapper'><img src='img/badges/conquest_sale_sm.png' align='left'><span class='badge-name'>Earned Behavior Badge Name 5 2d<br></span><span class='badge-how-to-earn'>5 How to earn badge<br></span><div class='progress hide'><div class='bar hide'>/</div></div><span class='badge-date-earned'>Earned 2012-05-15</span></div>",
+			"quizResults":
+			[
+				{
+					"id" : 4000,
+					"quizQuestion":		"Question 1 goes here",
+					"quizChoice":		"Answer selection goes here",
+					"isUserCorrect":	true,
+					"answer":			"A) Answer1.",
+					"answerSummary":	"<p>An explanation why the answer is correct.</p>"
+				},
+				{
+					"id" : 4001,
+					"quizQuestion":		"Question 2 goes here",
+					"quizChoice":		"Answer selection goes here (was wrong)",
+					"isUserCorrect":	false,
+					"answer":			"A) Answer1.",
+					"answerSummary":	"<p>An explanation why the answer is correct.</p>"
+				},
+				{
+					"id" : 4002,
+					"quizQuestion":		"Question 3 goes here",
+					"quizChoice":		"Answer selection goes here",
+					"isUserCorrect":	true,
+					"answer":			"C) Answer3.",
+					"answerSummary":	"<p>An explanation why the answer is correct.</p>"
+				},
+				{
+					"id" : 4003,
+					"quizQuestion":		"Question 4 goes here",
+					"quizChoice":		"Answer selection goes here",
+					"isUserCorrect":	true,
+					"answer":			"B) Answer2.",
+					"answerSummary":	"<p>An explanation why the answer is correct.</p>"
+				},
+				{
+					"id" : 4004,
+					"quizQuestion":		"Question 5 goes here",
+					"quizChoice":		"Answer selection goes here",
+					"isUserCorrect":	true,
+					"answer":			"D) Answer4.",
+					"answerSummary":	"<p>An explanation why the answer is correct.</p>"
+				}
+			]
+		}
+	]
+}	

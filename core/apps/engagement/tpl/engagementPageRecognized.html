@@ -1,0 +1,64 @@
+<!-- ======== ENGAGEMENT PAGE RECOGNIZED ======== -->
+
+<div id="engagementPageRecognized" class="engagement engagementPage engagementPageRecognized page-content"><div class="row">
+
+    <!-- DIV.ROW up next to wrapping div.page-content for IE7 -->
+        <div class="span12">
+
+            <h4 class="subhead">Your team has recognized 85 people -or- Your team has been recognized by 121 people</h4>
+
+            <div class="engagementRecognizedModelView"></div><!-- /.engagementRecognizedModelView -->
+
+        </div><!-- /.span12 -->
+    </div><!-- /.row -->
+</div>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function() {
+        // overrides for the JSON variables (these are set in settings.js but provided here for convenience in creating a JSP)
+        // G5.props.URL_JSON_ENGAGEMENT_RECOGNIZED_COLLECTION = G5.props.URL_ROOT+'ajax/engagementRecognizedModel.json';
+
+        //attach the view to an existing DOM element
+        G5.views.EngagementPageRecognized = new EngagementPageRecognizedView({
+            el:$('#engagementPageRecognized'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'javascript:history.go(-1);'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Team Recognized -or- Team Recognized By',
+
+            /*
+             * NOTE: the following attributes are required for the data model to initialize properly
+             *
+             * mode can be team/user
+             * type can be paxRecBy/paxRecTo
+             * userId and nodeId only apply to their corresponding modes
+             * modelUrl is the URL to the JSON for the recognized tree. it will use the JSON variable commented out above if nothing is passed
+             */
+            mode : "<?php echo( isset($_GET['mode']) ? $_GET['mode'] : 'user' ); ?>",
+            type : "<?php echo( isset($_GET['type']) ? $_GET['type'] : 'paxRecTo' ); ?>",
+            userId : "<?php echo( isset($_GET['userId']) ? $_GET['userId'] : null ); ?>",
+            nodeId : "<?php echo( isset($_GET['nodeId']) ? $_GET['nodeId'] : null ); ?>",
+            /*
+             * NOTE: the following attributes are optional for loading the recognized tree JSON
+             *
+             * modelUrl is the URL to the JSON. it will use the JSON variable commented out above if nothing is passed
+             * modelParams is a JSON object of additional request parameters to be sent to the URL
+             */
+            modelUrl : "<?php echo( isset($_GET['modelUrl']) ? $_GET['modelUrl'] : null ); ?>",
+            modelParams : {
+                timeframeType : "<?php echo( isset($_GET['timeframeType']) ? $_GET['timeframeType'] : null ); ?>",
+                timeframeMonthId : "<?php echo( isset($_GET['timeframeMonthId']) ? $_GET['timeframeMonthId'] : null ); ?>",
+                timeframeYear : "<?php echo( isset($_GET['timeframeYear']) ? $_GET['timeframeYear'] : null ); ?>"
+            }
+        });
+
+    });
+</script>

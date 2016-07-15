@@ -1,0 +1,411 @@
+// CORE APPLICATION VARIABLES AND MEASUREMENTS
+@import "partials/variables";
+@import "partials/mixins";
+
+//3rd party goodies
+@import "compass/css3";
+
+// Partial-specific variables
+// =========================
+$email_bodyBgColor: #b3b3b3 !default;
+
+$email_baseFontFamily: $bodyFont !default;
+$email_baseFontSize: $baseFontSize !default;
+$email_baseLineHeight: $baseLineHeight !default;
+$email_baseFontColor: $textColor !default;
+$email_headlineFontFamily: $titleFont !default;
+$email_headlineFontSize: $baseFontSize * 2 !default;
+$email_headlineLineHeight: $baseLineHeight * 2 !default;
+$email_headlineFontColor: $gray !default;
+$email_linkColor: $linkColor !default;
+
+$email_frameBgColor: #f6f6f6 !default;
+$email_frameBorderWidth: false !default;
+$email_frameBorderColor: false !default;
+
+$email_contentBgColor: $white !default;
+$email_contentBorderWidth: 1px !default;
+$email_contentBorderColor: #eaeaea !default;
+
+$email_contentCommentFontSize: 21px !default;
+$email_contentCommentFontColor: $email_linkColor !default;
+$email_cardBadgeBgColor: #b3b3b3 !default;
+
+// these should be copied over from partials/progress-bars (more or less)
+$email_progressBackBorderRadius: $baseBorderRadius !default;
+$email_progressBackBgColor: $grayLighter !default;
+$email_progressBackGradMeta: top !default;
+$email_progressBackGradStops: $email_progressBackBgColor, scale-color($email_progressBackBgColor, $lightness: 50%) !default;
+$email_progressBarBgColor: $email_linkColor !default;
+$email_progressBarGradMeta: top !default;
+$email_progressBarGradStops: false !default;
+
+$email_footerBgColor: $linkColor !default;
+$email_footerBorderWidth: $email_contentBorderWidth !default;
+$email_footerBorderColor: $email_contentBorderColor !default;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+html {
+    height: 100%;
+}
+
+body {
+    width: 100% !important;
+    height: 100% !important;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    margin: 0;
+    padding: 0;
+
+    .lt-ie9 & {
+        height: auto !important;
+    }
+}
+
+#backgroundTable {
+    margin: 0;
+    padding: 0;
+    width:100% !important;
+    min-height: 100%;
+    line-height: 100% !important;
+    margin: auto;
+}
+
+// body, // Marc tells me that a lot of people have been complaining about the background color sticking around when users reply to a message. Maybe this will solve it.
+#backgroundTable {
+    background-color: $email_bodyBgColor;
+    font-family: $email_baseFontFamily !important;
+    font-size: $email_baseFontSize;
+    line-height: $email_baseLineHeight;
+    color: $email_baseFontColor;
+}
+
+/* these seem important, but what they're used for is a mystery to me (JS: 05 Sept 2013) =====> */
+#outlook a {
+    padding:0;
+}
+
+.ExternalClass {
+    width:100%;
+}
+
+.ExternalClass,
+.ExternalClass p,
+.ExternalClass span,
+.ExternalClass font,
+.ExternalClass td,
+.ExternalClass div {
+    line-height: 100%;
+}
+/* <===== */
+
+/* this appears to be some basic reset rules (JS: 05 Sept 2013) =====> */
+img {
+    outline: none;
+    text-decoration: none;
+    -ms-interpolation-mode: bicubic;
+}
+
+a img {
+    border: none;
+}
+
+.image_fix {
+    display:block;
+}
+
+p {
+    margin: 1em 0;
+}
+
+// h1, h2, h3, h4, h5, h6 {color: black !important;}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+    color: #666 !important;
+}
+
+h1 a:active,
+h2 a:active,
+h3 a:active,
+h4 a:active,
+h5 a:active,
+h6 a:active {
+    color: red !important;
+}
+
+h1 a:visited,
+h2 a:visited,
+h3 a:visited,
+h4 a:visited,
+h5 a:visited,
+h6 a:visited {
+    color: #666 !important;
+}
+
+table td {
+    border-collapse: collapse;
+}
+
+table {
+    border-collapse: collapse;
+    mso-table-lspace: 0pt;
+    mso-table-rspace: 0pt;
+}
+
+table,
+table th,
+table td,
+.table,
+.table th,
+.table td {
+    font-size: $baseFontSize;
+    font-family: $bodyFont;
+}
+
+@media only screen and (max-device-width: 480px) {
+    a[href^="tel"],
+    a[href^="sms"] {
+        text-decoration: none;
+        color: blue; /* or whatever your want */
+        pointer-events: none;
+        cursor: default;
+    }
+
+    .mobile_link a[href^="tel"],
+    .mobile_link a[href^="sms"] {
+        text-decoration: default;
+        color: orange !important;
+        pointer-events: auto;
+        cursor: default;
+    }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    a[href^="tel"],
+    a[href^="sms"] {
+        text-decoration: none;
+        color: blue; /* or whatever your want */
+        pointer-events: none;
+        cursor: default;
+    }
+    .mobile_link a[href^="tel"],
+    .mobile_link a[href^="sms"] {
+        text-decoration: default;
+        color: orange !important;
+        pointer-events: auto;
+        cursor: default;
+    }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+}
+@media only screen and (-webkit-device-pixel-ratio:.75){
+}
+@media only screen and (-webkit-device-pixel-ratio:1){
+}
+@media only screen and (-webkit-device-pixel-ratio:1.5){
+}
+/* <===== */
+
+// outer frame that contains the logo and wraps around the content area
+#columnTable {
+    background-color: $email_frameBgColor;
+
+    @if $email_frameBorderWidth {
+        border: $email_frameBorderWidth solid $email_frameBorderColor;
+    }
+}
+
+// content region
+#topContainer {
+    padding: 26px 26px 30px 26px;
+    font-family: $email_baseFontFamily;
+    font-size: $email_baseFontSize;
+    line-height: $email_baseLineHeight;
+    color: $email_baseFontColor;
+    background: $email_contentBgColor;
+
+    @if $email_contentBorderWidth {
+        border: $email_contentBorderWidth solid $email_contentBorderColor;
+    }
+    @else {
+        border: 0;
+    }
+}
+
+.headline {
+    margin-top: 0;
+    margin-bottom: $baseLineHeight;
+    font-family: $email_headlineFontFamily;
+    font-size: $email_headlineFontSize;
+    line-height: $email_headlineLineHeight;
+    color: $email_headlineFontColor;
+    letter-spacing: -0.21px;
+}
+
+#commentContainer {
+    background: #f6f6f6;
+}
+
+#comment {
+    background: $white;
+    color: $email_contentCommentFontColor;
+    font-family: $email_headlineFontFamily;
+    font-size: $email_contentCommentFontSize;
+    line-height: 1.5;
+    padding: 15px 20px;
+    text-align: justify;
+}
+
+#comment p {
+    margin: 0;
+}
+
+.cardContainer {
+    text-align: center;
+
+    .card-earned {
+        color: #777;
+        font-style: italic;
+    }
+}
+
+.learnMoreLinks a {
+    color: $email_linkColor;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+// progres bars snagged from partials/bootstrap/_progress-bars.scss
+// a few rules have been commented out so the skin can define them instead
+// a few other rules have been converted to use variables from this file
+
+// THE BARS
+// --------
+
+// Outer container
+.progress {
+  overflow: hidden;
+  height: $email_baseLineHeight;
+  margin-bottom: $email_baseLineHeight;
+  @include border-radius($baseBorderRadius);
+}
+
+// Bar of progress
+.progress .bar {
+  height: 100%;
+  color: #333;
+  float: left;
+  font-size: 12px;
+  text-align: center;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  @include box-shadow(inset 0 -1px 0 rgba(0,0,0,.15));
+  @include box-sizing(border-box);
+  @include transition(width .6s ease);
+}
+
+// progress bar color styles pulled from the core files instead of Bootstrap
+// Outer container
+.progress {
+    filter: none;
+    @include border-radius($email_progressBackBorderRadius);
+    @include progressBarHelper($email_progressBackBgColor, $email_progressBackGradMeta, $email_progressBackGradStops);
+}
+
+// Bar of progress
+.progress .bar {
+    filter: none;
+    @include progressBarHelper($email_progressBarBgColor, $email_progressBarGradMeta, $email_progressBarGradStops);
+}
+
+// badge styles snagged from core/base/partials/_profile.scss
+.badge-item {
+    background: $email_cardBadgeBgColor;
+    height: 450px;
+    margin: 0 auto 1em;
+    width: 450px;
+
+    img {
+        height: 248px;
+        width: 248px;
+        margin-top: 3em;
+        text-align:center;
+    }
+
+    td {
+        text-align: center;
+    }
+
+    .badge-name,
+    .badge-how-to-earn,
+    .badge-date-earned {
+        line-height: 1.3;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .badge-name {
+        color: $white;
+        font-family: $email_headlineFontFamily;
+        font-size: 30px;
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+
+    .badge-how-to-earn {
+        font-size: 13px;
+    }
+
+    .badge-date-earned {
+        color: $gray;
+        font-size: 13px;
+    }
+
+    .progress {
+        margin: 2px auto;
+        width: 70%;
+        height: 15px;
+        filter: 80;
+
+        .bar {
+            font-size: 11px;
+            line-height: 15px;
+            text-indent: 5px;
+        }
+    }
+}
+
+//eCard and Video Link
+.ecard,
+.video {
+    height: 450px;
+    margin: 0 auto 1em;
+    width: 450px;
+
+    img {
+        display: block;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    td {
+        vertical-align: middle;
+        text-align: center;
+    }
+}
+
+.cardVideo-wrapper {
+    height: 444px;
+}

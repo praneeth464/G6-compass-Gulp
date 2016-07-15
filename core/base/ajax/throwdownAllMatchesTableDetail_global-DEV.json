@@ -1,0 +1,290 @@
+<?php
+sleep(1);
+$pageid = $_GET['currentPage'];
+if (isset($pageid)) {
+} else {$pageid = 1;}
+
+$round = $_GET['currentRound'];
+if(isset($round)){
+}else{$round = 1;}
+
+?>
+{
+            "visible": true,
+            "tabularData": {
+                "meta": {
+                    "columns": [
+                        {
+                            "id": "1",
+                            "name": "Player",
+                            "description": "Players Names",
+                            "type": "string",
+                            "alignment": "",
+                            "colSpan": 2,
+                            "nameId": ""
+                        },
+                        {
+                            "id": "2",
+                            "name": "Record",
+                            "description": "Players Records",
+                            "type": "string",
+                            "alignment": "",
+                            "nameId": ""
+                        },
+                        {
+                            "id": "3",
+                            "name": "Scores",
+                            "description": "Players Scores",
+                            "type": "string",
+                            "alignment": "",
+							"colSpan": 2,
+                            "nameId": ""
+                        }
+                    ]
+                }
+            },
+            "currentRound" : <?php echo $round ?>,
+            "totalRounds" : 7,
+            "roundStartDate" : "4/10/2013",
+            "roundEndDate" : "4/26/2013",
+            "totalMatches": 100,
+            "matchesPerPage": 15,
+            "currentPage": <?php echo $pageid ?>,
+            "teams": [
+                {
+                "primaryTeam":{
+                    "stats":{
+                        "none":0,
+                        "wins":10,
+                        "losses":5,
+                        "ties":1,
+                        "byes":0,
+                        "forfeits":0,
+                        "disqualifications":0
+                    },
+                    "id" : "100",
+                    "rank":43,
+                    "currentProgress":2322,
+                    "avatarUrl":"http://www.placecage.com/140/140",
+                    "smallAvatarUrl":"http://www.placecage.com/30/30",
+                    "name":"Lucille Jones",
+                    "currentProgressForDisplay":"2,322 UNITS",
+                    "badgeInfos":[
+                        {
+                            "noBadgesCompleteText":"well, this is the string for no badges..orsomething",
+                            "headerTitle":"my badge header",
+                            "badges":[
+                                {
+                                    "imgLarge":"/url/to/image/LARGE",
+                                    "img":"img/throwdown/badges/gold.png",
+                                    "earned":true,
+                                    "dateEarned":"10/10/1974",
+                                    "progressNumerator":5,
+                                    "progressDenominator":5,
+                                    "progressVisible":false,
+                                    "id":-111,
+                                    "type":"earned",
+                                    "name":"Gold Badge!",
+                                    "howToEarnText":"This is how you can become awesome and earn this badge!",
+                                    "earnCount":1
+                                },
+                                {
+                                    "imgLarge":"/url/to/image/LARGE",
+                                    "img":"img/throwdown/badges/silver.png",
+                                    "earned":true,
+                                    "dateEarned":"10/10/1974",
+                                    "progressNumerator":5,
+                                    "progressDenominator":5,
+                                    "progressVisible":false,
+                                    "id":-111,
+                                    "type":"earned",
+                                    "name":"Silver Badge!",
+                                    "howToEarnText":"This is how you can become awesome and earn this badge!",
+                                    "earnCount":2
+                                }
+                            ]
+                        }
+                    ],
+                    "isShadowPlayer":false,
+                    "isMyTeam":true,
+                    "isAhead": true
+                },
+                "secondaryTeam":{
+                    "stats":{
+                        "none":0,
+                        "wins":13,
+                        "losses":3,
+                        "ties":1,
+                        "byes":0,
+                        "forfeits":0,
+                        "disqualifications":0
+                    },
+                    "id" : "101",
+                    "rank":29,
+                    "currentProgress":132,
+                    "avatarUrl":"http://www.fillmurray.com/g/140/140",
+                    "smallAvatarUrl":"http://www.fillmurray.com/g/30/30",
+                    "name":"Jessica Jones",
+                    "currentProgressForDisplay":"132 UNITS",
+                    "badgeInfos":[
+                        {
+                            "noBadgesCompleteText":"well, this is the string for no badges..orsomething",
+                            "headerTitle":"my badge header",
+                            "badges":[
+                                {
+                                    "imgLarge":"/url/to/image/LARGE",
+                                    "img":"img/throwdown/badges/gold.png",
+                                    "earned":true,
+                                    "dateEarned":"10/10/1974",
+                                    "progressNumerator":5,
+                                    "progressDenominator":5,
+                                    "progressVisible":false,
+                                    "id":-111,
+                                    "type":"earned",
+                                    "name":"Gold Badge!",
+                                    "howToEarnText":"This is how you can become awesome and earn this badge!",
+                                    "earnCount":3
+                                },
+                                {
+                                    "imgLarge":"/url/to/image/LARGE",
+                                    "img":"img/throwdown/badges/silver.png",
+                                    "earned":true,
+                                    "dateEarned":"10/10/1974",
+                                    "progressNumerator":5,
+                                    "progressDenominator":5,
+                                    "progressVisible":false,
+                                    "id":-111,
+                                    "type":"earned",
+                                    "name":"Silver Badge!",
+                                    "howToEarnText":"This is how you can become awesome and earn this badge!",
+                                    "earnCount":1
+                                },
+                                {
+                                    "imgLarge":"/url/to/image/LARGE",
+                                    "img":"img/throwdown/badges/bronze.png",
+                                    "earned":true,
+                                    "dateEarned":"10/10/1974",
+                                    "progressNumerator":5,
+                                    "progressDenominator":5,
+                                    "progressVisible":false,
+                                    "id":-111,
+                                    "type":"earned",
+                                    "name":"Silver Badge!",
+                                    "howToEarnText":"This is how you can become awesome and earn this badge!",
+                                    "earnCount":4
+                                }
+                            ]
+                        }
+                    ],
+                    "isShadowPlayer":false,
+                    "isMyTeam":false
+                },
+                "rulesUrl":"/urlToRules.do",
+                "matchUrl":"layout.html?tpl=throwdownMatchPage&amp;tplPath=apps/throwdown/tpl/",
+                "allMatchesUrl": "urlToAllMatches.do",
+                "promotionId":2530,
+                "promotionName": "Promotion 1",
+                "endDate": 1388556000000,
+                "roundNumber":1,
+                "matchId":2987,
+                "numberOfRounds":3,
+                "displayProgress":true
+            },
+
+            {
+                "primaryTeam":{
+                    "stats":{
+                        "none":0,
+                        "wins":0,
+                        "losses":0,
+                        "ties":0,
+                        "byes":0,
+                        "forfeits":0,
+                        "disqualifications":0
+                    },
+                    "id" : "102",
+                    "rank":-25555,
+                    "avatarUrl":"http://www.placecage.com/c/140/140",
+                    "smallAvatarUrl":"http://www.placecage.com/30/30",
+                    "name":"Lucille Jones",
+                    "currentProgressForDisplay":"2,322 UNITS",
+                    "badgeInfos":[
+                        {
+                            "noBadgesCompleteText":"well, this is the string for no badges..orsomething",
+                            "headerTitle":"my badge header",
+                            "badges":[
+                                {
+                                    "imgLarge":"/url/to/image/LARGE",
+                                    "img":"/url/to/image",
+                                    "earned":true,
+                                    "dateEarned":"10/10/1974",
+                                    "progressNumerator":5,
+                                    "progressDenominator":5,
+                                    "progressVisible":false,
+                                    "id":-111,
+                                    "type":"earned",
+                                    "name":"The You Are Awesome Badge!",
+                                    "howToEarnText":"This is how you can become awesome and earn this badge!"
+                                }
+                            ]
+                        }
+                    ],
+                    "isShadowPlayer":false,
+                    "isMyTeam":true,
+                    "isTied":true
+                },
+                "secondaryTeam":{
+                    "stats":{
+                        "none":0,
+                        "wins":0,
+                        "losses":0,
+                        "ties":0,
+                        "byes":0,
+                        "forfeits":0,
+                        "disqualifications":0
+                    },
+                    "id" : "103",
+                    "rank":-25555,
+                    "avatarUrl":"http://www.fillmurray.com/g/140/140",
+                    "smallAvatarUrl":"http://www.fillmurray.com/g/30/30",
+                    "name":"Jessica Jones",
+                    "currentProgressForDisplay":"132 UNITS",
+                    "badgeInfos":[
+                        {
+                            "noBadgesCompleteText":"well, this is the string for no badges..orsomething",
+                            "headerTitle":"my badge header",
+                            "badges":[
+                                {
+                                    "imgLarge":"/url/to/image/LARGE",
+                                    "img":"/url/to/image",
+                                    "earned":true,
+                                    "dateEarned":"10/10/1974",
+                                    "progressNumerator":5,
+                                    "progressDenominator":5,
+                                    "progressVisible":false,
+                                    "id":-111,
+                                    "type":"earned",
+                                    "name":"The You Are Awesome Badge!",
+                                    "howToEarnText":"This is how you can become awesome and earn this badge!"
+                                }
+                            ]
+                        }
+                    ],
+                    "isShadowPlayer":false,
+                    "isMyTeam":false,
+                    "isTied": true
+                },
+                "rulesUrl":"/urlToRules.do",
+                "matchUrl":"/urlToMatchDetails.doThatThing",
+                "allMatchesUrl": "urlToAllMatches.do",
+                "promotionId":2530,
+                "promotionName": "Promotion 1",
+                "endDate": 1388556000000,
+                "roundNumber":1,
+                "matchId":2987,
+                "numberOfRounds":3,
+                "displayProgress":true
+            }
+]
+
+}

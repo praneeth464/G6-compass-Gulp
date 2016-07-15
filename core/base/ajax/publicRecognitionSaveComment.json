@@ -1,0 +1,14 @@
+{
+	"messages":[],
+	"comment":{
+		"recognitionId":1234,
+		"id":23,
+		"commenter":{
+			"id":12,
+			"firstName":"Christian",
+			"lastName":"Smith",
+			"avatarUrl":"img/_samples/x-profile-pic2.jpg"
+		},
+		"comment":"You rock!"
+	}
+}

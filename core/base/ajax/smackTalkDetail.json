@@ -1,0 +1,71 @@
+{
+    "messages":[],
+
+    "smackTalk": {
+
+        "id":1234,
+        "isDetail": true,
+        "isMyMatch": true,
+        "player1":{
+            "id":45,
+            "firstName":"Ron",
+            "lastName":"Smith",
+            "avatarUrl":"img/_samples/x-profile-pic2.jpg",
+            "orgName":"Sales",
+            "title":"Director",
+            "viewCertificateUrl":"#",
+            "countryCode":"us",
+            "countryName":"United States"
+        },
+        "player2": {
+            "id":457,
+            "firstName":"Jason",
+            "lastName":"Billings",
+            "avatarUrl":"img/_samples/x-profile-pic3.jpg",
+            "orgName":"Accounting",
+            "title":"Head Accountant",
+            "countryCode":"us",
+            "countryName":"United States"
+        },
+        "commenterMain":{
+            "id":102,
+            "firstName":"Jane",
+            "lastName":"Anderson",
+            "avatarUrl":"img/_samples/x-profile-pic1.jpg",
+            "orgName":"TSG",
+            "title":"Director",
+            "countryCode":"us",
+            "countryName":"United States"
+        },
+        "comment":"Great work, keep it up! Thanks for the extra work. Culpa brooklyn cardigan, delectus quis eu nulla. Viral bespoke semiotics single-origin coffee nesciunt echo park. This is precisely 179 characters long. Portland Sed banh mi chillwave iphone. Culpa brooklyn cardigan, delectus quis eu nulla. Viral bespoke semiotics single-origin coffee nesciunt echo park.",
+        "promotionName":"Core Values",
+        "date":"01/01/2013",
+        "numLikers":1,
+        "isMine":true,
+        "isHidden":false,
+        "time": "2 days ago",
+        "countryRatio":1.0,
+        "comments":[
+            {
+                "id":23,
+                "commenter":{
+                    "id":12,
+                    "firstName":"Willford",
+                    "lastName":"Brinkely",
+                    "avatarUrl":"img/_samples/x-profile-pic1.jpg"
+                },
+                "comment":"You make it so fun to come to work."
+            },
+            {
+                "id":833,
+                "commenter":{
+                    "id":12,
+                    "firstName":"Jonathan",
+                    "lastName":"Cole",
+                    "avatarUrl":"img/_samples/x-profile-pic2.jpg"
+                },
+                "comment":"Thank you for doing the RFP. Couldn't have made the sale without you."
+            }
+        ]
+    }
+}

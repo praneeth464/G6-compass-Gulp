@@ -1,0 +1,92 @@
+<h2>Personal Info</h2>
+
+<div class="row">
+    <div class="span3 profilePictureUploadContainer">
+        <img alt="User Profile Picture" class="avatar" id="personalInformationAvatar" src="../../skins/default/img/avatar-blank-288.png">
+        <a href="#" id="personalInformationUploadImageLink">Upload a New Profile Picture</a>
+        <div id="personalInformationUploadImageForm" style="display:none;">
+            <form id="personalInformationFormUploadImage">
+                <input class="" type="file" name="profileImage" id="personalInformationButtonUploadImage">
+                <p class="muted">File size limit 10mb. Supports Jpeg, PNG and GIF</p>
+                <p class="alert alert-info hide no-fileinput">Sorry! Your device does not support file uploads. Please use a desktop browser to complete this upload.</p>
+            </form>
+        </div>
+    </div>
+    <div id="imageResult">
+    </div>
+
+    <div class="span4">
+        <dl class="dl-h1">
+            <dt>Name</dt>
+            <dd>Christian Smith</dd>
+
+            <dt>Org Name</dt>
+                <dd>Title1 - Org Name 1</dd>
+                <dd>Title2 - Org Name 2</dd>
+
+            <dt>Department</dt>
+            <dd>Department Name</dd>
+
+            <dt>Job Title</dt>
+            <dd>Job Title</dd>
+
+            <dt>Hire Date</dt>
+            <dd>MM/DD/YYYY</dd>
+
+            <dt>Birth Date</dt>
+            <dd>Month DD</dd>
+        </dl>
+    </div>
+
+    <div class="span5">
+        <dl>
+            <dt>Address</dt>
+                <dd>123 Fake Street</dd>
+                <dd>FakeTown, Georgia 12345</dd>
+
+            <dt>Country</dt>
+            <dd><img src="img/flags/us.png"> USA</dd>
+
+            <dt>Phone</dt>
+            <dd>1-555-555-5555 x5555</dd>
+
+            <dt>Email Address</dt>
+            <dd>myEmail@home.com</dd>
+
+        </dl>
+    </div>
+</div>
+
+<h2>About Me</h2>
+<div class="row profileQuestionWrapper">
+    <div class="span12">
+        <form id="personalInformationFormUpdateAnswers">
+            <fieldset id="personalInformationFieldsetAnswers">
+
+                <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter an answer to this question."}'>
+                    <label class="control-label" for="answer1">Here is an example question</label>
+                    <div class="controls">
+                        <div class="row">
+                            <input type="text" class="answerField span6" name="answer1" value="Here is an example answer">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter an answer to this question."}'>
+                    <label class="control-label" for="answer1">Here is an example question also</label>
+                    <div class="controls">
+                        <div class="row">
+                            <input type="text" class="answerField span6" name="answer2" value="Here is an example answer as well">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn btn-primary" id="personalInformationButtonSaveAnswers">Submit</button>
+                    <input type="reset" value="Reset" id="personalInfoTabResetButton" class="btn resetButton">
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>

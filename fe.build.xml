@@ -1,0 +1,1455 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project name="G5FrontEnd" default="fe.DoIt" basedir=".">
+    <!-- IF this is being called from within the full build.xml, the fe.basedir property has been set inside that file -->
+    <!-- IF this is being run independently, the fe.basedir property is set to the current directory -->
+    <target name="-set-props-if-basedir-not-set" unless="fe.basedir">
+        <property name="fe.basedir" value="${basedir}" />
+    </target>
+
+    <!-- set properties using the target above to test whether or not fe.basedir has been set outside this script -->
+    <target name="fe.setProps" depends="-set-props-if-basedir-not-set">
+        <property name="fe.src.dir" value="${fe.basedir}" />
+    </target>
+    
+    <tstamp>
+        <format property="fe.build.time"
+                pattern="MMMM d, yyyy hh:mm:ss"
+                locale="en,US" />
+    </tstamp>
+
+    <description>Front-End G5 build file</description>
+
+
+    <target name="fe.backend.build.dev">
+        <property name="fe.backend"             value="dev" />
+        <property name="fe.is.backend"          value="true" />
+        <property name="fe.build.prod.request"  value="false" />
+        <property name="fe.build.ci.request"    value="false" />
+        <property name="fe.build.dev.request"   value="true" />
+        <antcall target="fe.DoIt" />
+    </target>
+
+
+    <target name="fe.backend.build.prod">
+        <property name="fe.backend"             value="prod" />
+        <property name="fe.is.backend"          value="true" />
+        <property name="fe.build.prod.request"  value="true" />
+        <property name="fe.build.ci.request"    value="false" />
+        <property name="fe.build.dev.request"   value="false" />
+        <antcall target="fe.DoIt" />
+    </target>
+
+
+    <target name="fe.DoIt"
+            depends="fe.setProps, -fe.help">
+
+        <if><istrue value="${fe.build.prod.request}" />
+        <then>
+            <var name="fe.build.ci.request" unset="true" />
+            <property name="fe.build.ci.request" value="true" />
+            <var name="fe.build.dev.request" unset="true" />
+            <property name="fe.build.dev.request" value="true" />
+            <antcall target="-fe.build.prod" />
+        </then>
+
+        <elseif><istrue value="${fe.build.ci.request}" />
+        <then>
+            <var name="fe.build.dev.request" unset="true" />
+            <property name="fe.build.dev.request" value="true" />
+            <antcall target="-fe.build.ci" />
+        </then>
+        </elseif>
+
+        <elseif><istrue value="${fe.build.dev.request}" />
+        <then>
+            <antcall target="-fe.build.dev" />
+        </then>
+        </elseif>
+        </if>
+
+        <if><isfalse value="${fe.save.build.temp}" />
+        <then>
+            <delete dir="${fe.build.dir}/temp" />
+        </then>
+        </if>
+
+        <echo>done with fe.DoIt</echo>
+    </target>
+
+
+    <target name="-fe.ant.contrib" depends="fe.setProps" unless="fe.is.backend">
+        <!-- (the backend uses an older version) -->
+        <!-- (adds useful logic tasks like <if>) -->
+        <taskdef resource="net/sf/antcontrib/antlib.xml" onerror="report">
+            <classpath>
+                <pathelement location="${fe.basedir}/buildTools/ant-contrib-1.0b3.jar"/>
+            </classpath>
+        </taskdef>
+    </target>
+
+
+    <target name="-fe.load.properties"
+            depends="-fe.ant.contrib">
+        <!-- create user properties override file if it doesn't exist -->
+        <property name="fe.cvs.user" value="${user.name}" />
+        <property name="fe.user.properties.file" value="${fe.src.dir}/fe.user.${user.name}.properties" />
+        <property name="fe.user.DEFAULT.file"    value="${fe.src.dir}/fe.user.DEFAULT.properties" />
+        <property name="fe.build.properties.file" value="${fe.src.dir}/fe.build.properties" />
+        <basename property="fe.user.properties.file.basename" file="${fe.user.properties.file}"/>
+        <basename property="fe.build.properties.file.basename" file="${fe.build.properties.file}"/>
+        <property name="fe.is.backend" value="false" /> <!-- if not already true -->
+
+        <if><isfalse value="${fe.is.backend}"/>
+        <then>
+
+            <if><not><available file="${fe.user.properties.file}" /></not>
+            <then>
+                <copy file="${fe.user.DEFAULT.file}" tofile="${fe.user.properties.file}" />
+            </then>
+            </if>
+
+            <!-- fail if user properties override file still doesn't exist -->
+            <if><not><available file="${fe.user.properties.file}" /></not>
+            <then>
+                <fail message="${fe.user.properties.file.basename} DOES NOT EXIST" />
+            </then>            
+            </if>
+
+            <!-- load user properties override override file -->
+            <echo>Reading ${fe.user.properties.file.basename}</echo>
+            <loadproperties srcfile="${fe.user.properties.file}" />
+
+        </then>
+        </if>
+
+        <!-- fail if build properties file doesn't exist -->
+        <if><not><available file="${fe.build.properties.file}" /></not>
+        <then>
+            <fail message="${fe.build.properties.file.basename} DOES NOT EXIST" />
+        </then>
+        </if>
+
+        <!-- load build properties not overridden locally -->
+        <echo>Reading ${fe.build.properties.file.basename}</echo>
+        <loadproperties srcfile="${fe.build.properties.file}" />
+    </target>
+
+
+    <target name="-fe.list.props"
+            depends="-fe.load.properties">
+
+        <if><istrue value="${fe.show.properties}" />
+        <then>
+
+            <echo>**************************************************************</echo>
+            <echo></echo>
+            <echo>fe.show.properties  </echo>
+            <echo></echo>
+            <echo>**************************************************************</echo>
+            <echo>fe.build.time=${fe.build.time}</echo>
+            <echo>ant.home=${ant.home}</echo>
+            <echo>java.home=${java.home}</echo>
+            <echo>user.home=${user.home}</echo>
+            <echo>user.name=${user.name}</echo>
+            <echo>ant.file=${ant.file}</echo>
+            <echo>ant.project.name=${ant.project.name}</echo>
+            <echo>ant.version=${ant.version}</echo>
+            <echo></echo>
+            <echo>ant.java.version=${ant.java.version}</echo>
+            <echo>os.name=${os.name}</echo>
+            <echo>file.separator=${file.separator}</echo>
+<!-- 
+            <echo>java.class.path=${java.class.path}</echo>
+ -->
+            <echo>java.version=${java.version}</echo>
+            <echo>line.separator=${line.separator}</echo>
+            <echo>path.separator=${path.separator}</echo>
+            <echo>user.dir=${user.dir}</echo>
+            <echo></echo>
+            <echo>basedir=${basedir}</echo>
+            <echo>fe.basedir=${fe.basedir}</echo>
+            <echo>fe.src.dir=${fe.src.dir}</echo>
+            <echo></echo>
+            <echo>user.name=${user.name}</echo>
+            <echo>fe.cvs.user=${fe.cvs.user}</echo>
+            <echo>(not used) user.home=${user.home}</echo>
+            <echo></echo>
+            <echo>fe.show.properties=${fe.show.properties}</echo>
+            <echo></echo>
+            <echo>fe.build.dir=${fe.build.dir}</echo>
+            <echo>fe.build.tools.dir=${fe.build.tools.dir}</echo>
+            <echo>fe.export.dir=${fe.export.dir}</echo>
+            <echo>fe.cvs.root=${fe.cvs.root}</echo>
+            <echo>fe.ant-contrib=${fe.ant-contrib}</echo>
+            <echo>fe.yuicompressor=${fe.yuicompressor}</echo>
+            <echo>env=${env}</echo>
+            <echo>**************************************************************</echo>
+            <echo></echo>
+            <echo></echo>
+            <echo>**************************************************************</echo>
+        </then>
+
+        <else>
+            <echo>skipping, fe.show.properties=${fe.show.properties}</echo>
+        </else>
+        </if>
+    </target>
+
+
+    <target name="-fe.assert.setup"
+            depends="-fe.list.props, -fe.load.properties">
+
+        <!-- Assertions -->
+        <fail unless="fe.cvs.user"
+                message="fe.cvs.user property is not setup in fe.user.${user.name}.properties file" />
+
+        <if><not><available file="${fe.build.tools.dir}/${fe.yuicompressor}" /></not>
+        <then>
+            <fail message="${fe.build.tools.dir}/${fe.yuicompressor} DOES NOT EXIST" />
+        </then>
+        </if>
+
+        <if><and>
+            <not><contains string="${os.name}" substring="Windows" /></not>
+            <not><equals arg1="${os.name}" arg2="Mac OS X" /></not>
+        </and>
+        <then>
+            <fail message="${os.name} NOT SUPPORTED" />
+        </then>
+        </if>
+
+        <echo>OK</echo>
+    </target>
+
+
+    <target name="-fe.help"
+            depends="-fe.assert.setup">
+
+        <if><istrue value="${fe.is.backend}" />
+        <then>
+            <echo>Ant build commands:</echo>
+            <echo></echo>
+            <echo>ant -f fe.build.xml fe.backend.build.dev</echo>
+            <echo>ant -f fe.build.xml fe.backend.build.prod</echo>
+            <echo></echo>
+        </then>
+        <else>
+            <echo>Ant build commands:</echo>
+            <echo></echo>
+            <echo>ant -f fe.build.xml</echo>
+            <echo> (Set the appropriate build request in your properties file)</echo>
+            <echo> (fe.build.prod.request or fe.build.ci.request or fe.build.dev.request)</echo>
+            <echo></echo>
+            <echo>ant -f fe.build.xml fe.new -Dfe.new.sandbox=someNewSandboxName</echo>
+            <echo>          (someNewSandboxName created as a peer/sibling directory)</echo>
+        </else>
+        </if>
+    </target>
+
+<!-- Adding properties
+    <target name="newProp">
+        <echo>${user.name}</echo>
+        <propertyfile file="fe.user.${user.name}.properties">
+            <entry key="fe.asdasdf" value="123asdf" />
+        </propertyfile>
+    </target>
+ -->
+
+
+    <target name="fe.new"
+            depends="-fe.help">
+
+        <fail unless="fe.new.sandbox">
+            Requires fe.new.sandbox to be set with new name.
+
+                ant fe.new -Dfe.new.sandbox=someNewSandboxName
+                    (someNewSandboxName created as a peer/sibling directory)
+        </fail>
+
+        <mkdir dir="../../../${fe.new.sandbox}" />
+
+        <cvs cvsRoot="${fe.cvs.root}"
+                dest="../../../${fe.new.sandbox}"
+                package="products/penta-g/src/fe"
+                command="checkout -P" />
+
+        <echo></echo>
+        <echo>finished</echo>
+    </target>
+
+<!-- 
+    <target name="fe.update"
+            depends="fe.help">
+        <cvs cvsRoot="${fe.cvs.root}"
+                dest="/altiris/awork/new1"
+                package="products/beacon/src/fe"
+                command="update -r G5_head" />
+        <echo></echo>
+        <echo>finished</echo>
+    </target>
+
+    <target name="fe.commit"
+            depends="fe.help">
+        <cvs cvsRoot="${fe.cvs.root}"
+                dest="../../"
+                package="products/beacon/src/fe"
+                command="commit -m 'AN' -r G5_head" />
+        <echo></echo>
+        <echo>finished</echo>
+    </target>
+
+    <target name="fe.cvs.export"
+            depends="fe.help">
+        <cvs cvsRoot="${fe.cvs.root}"
+                dest="${fe.export.dir}"
+                package="products/beacon/src/fe"
+                command="export -f -r G5_head" />
+        <echo></echo>
+        <echo>finished</echo>
+    </target>
+ -->
+
+
+    <target name="-fe.clean">
+        <delete dir="${fe.build.dir}" />
+        <echo>finished -fe.clean</echo>
+    </target>
+
+
+    <target name="-fe.init.temp.core" depends="-fe.clean">
+        <echo>***** Core apps copied to temp.apps directory</echo>
+        <fecopy whereto="${fe.build.dir}/temp/core"
+                wherefrom="${fe.src.dir}/core"
+                includingwhat="**/*" 
+                excludingwhat="${fe.exclude.core.dirs}"
+                overwriting="false"/>
+
+        <if><or>
+            <istrue value="${fe.custom.override}" />
+            <istrue value="${fe.dev.custom}" />
+        </or>
+        <then>
+            <echo>***** Core apps overridden by custom apps to temp.apps directory</echo>
+            <if><available type="dir" file="${fe.src.dir}/custom" />
+            <then>
+                <fecopy whereto="${fe.build.dir}/temp/core"
+                        wherefrom="${fe.src.dir}/custom"
+                        includingwhat="**/*" 
+                        excludingwhat="**/.sass-cache/**"
+                        overwriting="true"/>
+            </then>
+            <else>
+                <echo>NOT AVAILABLE:  ${fe.src.dir}/custom</echo>
+            </else>
+            </if>
+        </then>
+        </if>
+
+        <if><and>
+            <istrue value="${fe.dev.custom}" />
+            <available type="dir" file="${fe.src.dir}/custom" />
+        </and>
+        <then>
+            <echo>***** SPECIAL dev overridden by all of custom to temp.apps directory</echo>
+            <fecopy whereto="${fe.build.dir}/temp/core"
+                    wherefrom="${fe.src.dir}/custom"
+                    includingwhat="**/*" 
+                    excludingwhat="**/.sass-cache/**"
+                    overwriting="true"/>
+        </then>
+        </if>
+
+        <echo>finished -fe.init.temp.core</echo>
+    </target>
+
+
+    <target name="-fe.init.temp.skins" depends="-fe.init.temp.core">
+        <if><available type="dir" file="${fe.src.dir}/skins" />
+        <then>
+            <if><isset property="fe.skin.list" />
+            <then>
+            	<echo message="fe.skin.list var is set to ${fe.skin.list}; copying only selected skin(s)"/>
+                <for list="${fe.skin.list}" param="theSkin" trim="true">
+                <sequential>
+                    <fecopy whereto="${fe.build.dir}/temp/skins/@{theSkin}"
+                            wherefrom="${fe.src.dir}/skins/@{theSkin}"
+                            includingwhat="**/*" 
+                            overwriting="true"/>
+                	<fecopy whereto="${fe.build.dir}/temp/skins"
+                            wherefrom="${fe.src.dir}/skins"
+                            includingwhat="config.rb" 
+                            overwriting="true"/>
+                	                	
+                </sequential>
+                </for>
+            </then>
+            <else>
+            	<echo message="fe.skin.list is NOT set, copying all skins "/>
+                <fecopy whereto="${fe.build.dir}/temp/skins"
+                        wherefrom="${fe.src.dir}/skins"
+                        includingwhat="**/*" 
+                        overwriting="true"/>
+            </else>
+            </if>
+        </then>
+
+        <else>
+            <echo>NOT AVAILABLE:  ${fe.src.dir}/skins</echo>
+        </else>
+        </if>
+        <mkdir dir="${fe.build.dir}/temp/skins" />
+
+        <echo>finished -fe.init.temp.skins</echo>
+    </target>
+
+
+    <target name="-fe.init.dev" depends="-fe.init.temp.skins">
+        <fecopyflat whereto="${fe.build.dir}/temp/tpl"
+                wherefrom="${fe.build.dir}/temp/core"
+                includingwhat="**/tpl/*.*" 
+                overwriting="false"/>
+        <fecopyflat whereto="${fe.build.dir}/temp/ajax"
+                wherefrom="${fe.build.dir}/temp/core"
+                includingwhat="**/ajax/*.*" 
+                overwriting="false"/>
+        <fecopy whereto="${fe.build.dir}/temp/img"
+                wherefrom="${fe.build.dir}/temp/core/base/img"
+                includingwhat="**" 
+                overwriting="false"/>
+        <fecopy whereto="${fe.build.dir}/temp/rsrc"
+                wherefrom="${fe.build.dir}/temp/core/base/rsrc"
+                includingwhat="**" 
+                overwriting="false"/>
+
+        <echo>finished -fe.init.dev</echo>
+    </target>
+
+<!--
+        <property name="src.js.dir" value="${fe.basedir}/js"/>
+        <property name="src.css.dir" value="${fe.basedir}/css"/>
+        <property name="jslint.js" value="${fe.basedir}/lint/jshint.js"/>
+        <property name="js.jar" value="${fe.basedir}/lint/rhino/js.jar"/>
+        <property name="fe.build.dir" value="build"/>
+        <property name="fe.build.major" value="1"/>
+        <property name="fe.build.minor" value="1"/>
+-->
+
+    <!--JS Lint-->
+    <target name="-fe.js.lint">
+<!-- 
+        <pathconvert pathsep=" " property="jsfiles">
+            <fileset dir="${fe.build.dir}/js/">
+                <include name="*.js"/>
+            </fileset>
+        </pathconvert>
+        <exec dir="${fe.build.dir}/js/" executable="java" failonerror="true">
+            <arg line="-fe.jar ${js.jar} ${jslint.js} ${jsfiles}"/>
+        </exec>
+ -->
+        <echo>NOTHING TO DO finished -fe.js.lint</echo>
+    </target>
+
+
+    <target name="-fe.validate">
+        <echo>NOTHING TO DO finished -fe.validate</echo>
+    </target>
+
+
+    <target name="-fe.replace">
+        <fileset
+            id="fe.id.replace.settings"
+            dir="${fe.build.dir}/temp/core/base/js/backbone" 
+            includes="settings.js"/>
+        <replaceregexp match="G5.props.URL_TPL_ROOT = false;" replace="G5.props.URL_TPL_ROOT = './tpl/';" flags="g">
+            <fileset refid="fe.id.replace.settings" />
+        </replaceregexp>
+
+        <if><istrue value="${fe.debug.js}" />
+        <then>
+            <var name="fe.template.page.files" unset="true" />
+            <property name="fe.template.page.files" value=""/>
+            <for param="file"><path>
+                <fileset dir="${fe.build.dir}/temp/tpl"
+                        includes="*Page*.*" />
+            </path>
+            <sequential>
+                <var name="fe.file.basename" unset="true" />
+                <basename property="fe.file.basename" file="@{file}"/>
+                <var name="fe.temp.template.page.files" unset="true" />
+                <property name="fe.temp.template.page.files" value="${fe.template.page.files}${fe.file.basename},"/>
+                <var name="fe.template.page.files" unset="true" />
+                <property name="fe.template.page.files" value="${fe.temp.template.page.files}"/>
+                <echo>${fe.file.basename}</echo>
+            </sequential>
+            </for>
+            <echo>${fe.template.page.files}</echo>
+            <replaceregexp match="@templatePageLinks@" replace="${fe.template.page.files}" flags="g">
+                <fileset refid="fe.id.replace.settings" />
+            </replaceregexp>
+        </then>
+        </if>
+
+        <fileset 
+            id="fe.id.replace.html"
+            dir="${fe.build.dir}/temp/core/base"
+            includes="*.html,*.htm" />
+        <replaceregexp match="\.\.[/\\]\.\.[/\\]skins" replace="skins" flags="g"> 
+            <fileset refid="fe.id.replace.html" />
+        </replaceregexp>
+        <replaceregexp match="\.\.[/\\]libs" replace="libs" flags="g"> 
+            <fileset refid="fe.id.replace.html" />
+        </replaceregexp>
+        <replaceregexp match="js[/\\]backbone[/\\]" replace="js/" flags="g">
+            <fileset refid="fe.id.replace.html" />
+        </replaceregexp>
+        <replaceregexp match="\.\.[/\\]apps[/\\]\S*[/\\]tpl" replace="tpl" flags="g">
+            <fileset refid="fe.id.replace.html" />
+        </replaceregexp>
+        <replaceregexp match="\.\.[/\\]apps[/\\]\S*[/\\]js" replace="js" flags="g">
+            <fileset refid="fe.id.replace.html" />
+        </replaceregexp>
+
+        <fileset 
+            id="fe.id.replace.ajax"
+            dir="${fe.build.dir}/temp/ajax"
+            includes="*.json" />
+        <replaceregexp match="\.\.[/\\]\.\.[/\\]skins" replace="skins" flags="g"> 
+            <fileset refid="fe.id.replace.ajax" />
+        </replaceregexp>
+
+        <fileset 
+            id="fe.id.replace.tpl.html"
+            dir="${fe.build.dir}/temp/tpl"
+            includes="*.html,*.htm" />
+        <replaceregexp match="\.\.[/\\]apps[/\\]\S*[/\\]tpl" replace="tpl" flags="g">
+            <fileset refid="fe.id.replace.tpl.html" />
+        </replaceregexp>
+        <replaceregexp match="\.\.[/\\]apps[/\\]\S*[/\\]js" replace="js" flags="g">
+            <fileset refid="fe.id.replace.tpl.html" />
+        </replaceregexp>
+        <replaceregexp match="\.\.[/\\]libs" replace="libs" flags="g">
+            <fileset refid="fe.id.replace.tpl.html" />
+        </replaceregexp>
+        <replaceregexp match="\.\.[/\\]\.\.[/\\]skins" replace="skins" flags="g"> 
+            <fileset refid="fe.id.replace.tpl.html" />
+        </replaceregexp>
+
+        <fileset 
+            id="fe.id.buildtime"
+            dir="${fe.build.dir}/temp"
+            includes="**/*.js,**/*.rb" />
+        <replaceregexp match="@buildtime@" replace="Build time: ${fe.build.time}" flags="g">
+            <fileset refid="fe.id.buildtime" />
+        </replaceregexp>
+
+        <!-- regex replace for *simple* log statements (no nested parens) -->
+        <if><istrue value="${fe.removelogs.js}" />
+            <then>
+            <echo>removing info console logs</echo>
+            <fileset 
+                id="fe.id.replace.log.js"
+                dir="${fe.build.dir}/temp/core"
+                includes="**/*.js" />
+            <replaceregexp match="console\.log\((&apos;|&quot;)\[INFO\].*?\1.*?\);" replace="" flags="g" byline="false">
+                <fileset refid="fe.id.replace.log.js" />
+            </replaceregexp>
+            </then>
+        </if>
+
+
+        <if><istrue value="${fe.debug.js}" />
+        <then>
+<!-- 
+            <copy file="${fe.src.dir}/buildTools/other/qunitz/qunit.css" tofile="${fe.build.dir}/dev/css/qunit.css" />
+            <copy file="${fe.src.dir}/buildTools/other/qunitz/qunit.js" tofile="${fe.build.dir}/dev/js/qunit.js" />
+            <fecopyflat whereto="${fe.build.dir}/dev/js"
+                    wherefrom="${fe.src.dir}/testsz"
+                    includingwhat="**/*.js" 
+                    overwriting="false"/>
+ -->
+
+            <fileset 
+                id="fe.id.replace.js"
+                dir="${fe.build.dir}/temp/core"
+                includes="**/*.js" />
+            <replaceregexp match="((?-i)//feAssert//)|((?-i)//ARNxyzzy//)" replace="" flags="g">
+                <fileset refid="fe.id.replace.js" />
+            </replaceregexp>
+
+<!-- 
+            <fileset 
+                id="fe.id.replace.js"
+                dir="${fe.build.dir}/temp/core"
+                includes="**/*.js" />
+            <replaceregexp match="((?-i)//ARNxyzzy//)" replace="" flags="g">
+                <fileset refid="fe.id.replace.js" />
+            </replaceregexp>
+ -->
+<!-- 
+            <fileset 
+                id="fe.id.replace.js"
+                dir="${fe.build.dir}/temp/core"
+                includes="**/*.js" />
+            <replaceregexp match="((?-i)//feAssert//)" replace="" flags="g">
+                <fileset refid="fe.id.replace.js" />
+            </replaceregexp>
+ -->
+        </then>
+        </if>
+
+
+
+        <echo>finished -fe.replace</echo>
+    </target>
+
+
+    <target name="-fe.concat.minify">
+        <echo>Flatten files in one directory</echo>
+
+        <!-- With no concatenation flagged, at least flatten the base and apps js into one dir -->
+        <fecopyflat whereto="${fe.build.dir}/temp/js"
+                wherefrom="${fe.build.dir}/temp/core/base"
+                includingwhat="**/*.js" 
+                overwriting="false"/>
+        <fecopyflat whereto="${fe.build.dir}/temp/js"
+                wherefrom="${fe.build.dir}/temp/core/apps"
+                includingwhat="**/*.js" 
+                overwriting="false"/>
+
+        <if><or>
+            <and><istrue value="${fe.build.dev.request}"/><istrue value="${fe.build.dev.concatenate.js}"/></and>
+            <and><istrue value="${fe.build.ci.request}"/><istrue value="${fe.build.ci.concatenate.js}"/></and>
+            <and><istrue value="${fe.build.prod.request}"/><istrue value="${fe.build.prod.concatenate.js}"/></and>
+        </or>
+        <then>
+            <echo>Concatenate files in one file</echo>
+
+            <!-- Move lib files into one dir as well -->
+            <fecopyflat whereto="${fe.build.dir}/temp/js"
+                    wherefrom="${fe.build.dir}/temp/core/libs"
+                    includingwhat="**/*.js" 
+                    overwriting="false"/>
+
+            <!-- Remove hack -->
+            <replaceregexp match="\.\.[/\\]libs[/\\]plugins[/\\]" replace="" flags="g">
+                <fileset 
+                    dir="${fe.build.dir}/temp/js"
+                    includes="FusionCharts.js" />
+            </replaceregexp>
+
+            <!-- Validate fe.concatenate.order list contents -->
+            <for param="file"><path>
+                <fileset dir="${fe.build.dir}/temp/js"
+                        includes="${fe.concatenate.order}" />
+            </path>
+            <sequential>
+                <if><not><available file="@{file}" /></not>
+                <then>
+                    <fail>NOT AVAILABLE:  @{file} specified in fe.concatenate.order</fail>
+                </then>
+                </if>
+            </sequential>
+            </for>
+
+            <!-- Skipping files not to be concatenated, mark files for concat with header / footer -->
+            <for param="file"><path>
+                <fileset dir="${fe.build.dir}/temp/js"
+                        includes="*.js"
+                        excludes="${fe.concatenate.skip}" />
+            </path>
+            <sequential>
+                <var name="fe.file.basename" unset="true" />
+                <basename property="fe.file.basename" file="@{file}"/>
+                <concat destfile="${fe.build.dir}/temp/jsmod/${fe.file.basename}" 
+                        fixlastline="yes">
+                    <fileset file="@{file}" />
+                    <header>/* ${fe.file.basename} START - Build Time: ${fe.build.time} */</header>
+                    <footer>/* ${fe.file.basename} END - Build Time: ${fe.build.time} */</footer>
+                </concat>
+            </sequential>
+            </for>
+
+            <concat destfile="${fe.build.dir}/temp/jsConcat/script.js" 
+                    fixlastline="yes">
+                <filelist 
+                    dir="${fe.build.dir}/temp/jsmod"
+                    files="${fe.concatenate.order}" />
+            </concat>
+
+            <fecopyflat whereto="${fe.build.dir}/temp/jsConcat"
+                    wherefrom="${fe.build.dir}/temp/js"
+                    includingwhat="${fe.concatenate.skip}"
+                    overwriting="false"/>
+
+            <if><istrue value="${fe.minify.after.concatenate}"/>
+            <then>
+                <echo>Starting TIME CONSUMING minify...</echo>
+                <mkdir dir="${fe.build.dir}/temp/jsMin" />
+
+                <apply executable="java"
+                       parallel="false"
+                       failonerror="true"
+                       dest="${fe.build.dir}/temp/jsMin">
+                    <fileset 
+                        dir="${fe.build.dir}/temp/jsConcat"
+                        includes="script.js" />
+                    <arg line="-jar" />
+                    <arg path="${fe.build.tools.dir}/${fe.yuicompressor}" />
+                    <srcfile />
+                    <!-- if minify fails, turn on verbose mode. Be forewarned, you will get a LOT of messages in your console -->
+                    <!-- <arg line="-v" /> -->
+                    <arg line="-o" />
+                    <mapper type="glob" from="*.js" to="*.js" />
+                    <targetfile />
+                </apply>
+
+            </then>
+            </if>
+
+            <fecopyflat whereto="${fe.build.dir}/temp/jsRefTPL"
+                    wherefrom="${fe.build.dir}/temp/tpl"
+                    includingwhat="*.*" 
+                    overwriting="false"/>
+            <fecopyflat whereto="${fe.build.dir}/temp/jsRefHTML"
+                    wherefrom="${fe.build.dir}/temp/core/base"
+                    includingwhat="*.html,*.htm" 
+                    overwriting="false"/>
+
+            <fileset
+                id="fe.id.replace.jsRefTPL"
+                dir="${fe.build.dir}/temp/jsRefTPL"
+                includes="*.html,*.htm" />
+
+            <replaceregexp match="\&lt;script \S*\.js\S*/script\&gt;" replace="" flags="g">
+                <fileset refid="fe.id.replace.jsRefTPL" />
+            </replaceregexp>
+
+            <fileset
+                id="fe.id.replace.jsRefHTML"
+                dir="${fe.build.dir}/temp/jsRefHTML"
+                includes="*.html,*.htm" />
+            <replaceregexp match="libs[/\\]modernizr\.js" replace="js/modernizr.xyzzy" flags="g">
+                <fileset refid="fe.id.replace.jsRefHTML" />
+            </replaceregexp>
+            <replaceregexp match="libs[/\\]jquery\.js" replace="js/jquery.xyzzy" flags="g">
+                <fileset refid="fe.id.replace.jsRefHTML" />
+            </replaceregexp>
+            <replaceregexp match="libs[/\\]backbone\.js" replace="js/script.xyzzy" flags="g">
+                <fileset refid="fe.id.replace.jsRefHTML" />
+            </replaceregexp>
+            <replaceregexp match="\&lt;script \S*\.js\S*/script\&gt;" replace="" flags="g">
+                <fileset refid="fe.id.replace.jsRefHTML" />
+            </replaceregexp>
+            <replaceregexp match="\.xyzzy" replace="\.js" flags="g">
+                <fileset refid="fe.id.replace.jsRefHTML" />
+            </replaceregexp>
+
+        </then>
+        </if>
+
+        <echo>finished -fe.concat.minify</echo>
+    </target>
+
+
+    <target name="-fe.js.libs">
+        <feMoveJS buildType="dev" concatenateJS="${fe.build.dev.concatenate.js}" />
+        <echo>finished -fe.js.libs</echo>
+    </target>
+
+
+    <target name="-fe.scss">
+        <feCompileSCSS 
+                config="${fe.build.dir}/temp/core/base/config.rb" 
+                wherefrom="${fe.build.dir}/temp/core/base"/>
+        <!-- <copy file="${fe.build.dir}/temp/core/base/css/style.css" tofile="${fe.build.dir}/dev/css/style.css" /> -->
+        <!-- Attempt to copy any CSS file into the Build CSS directory -->
+        <copy todir="${fe.build.dir}/dev/css/">
+            <fileset dir="${fe.build.dir}/temp/core/base/css/" includes="*.css" />
+        </copy>
+
+        <if><istrue value="${fe.build.css.in.source}" />
+        <then>
+            <feInSourceCompileSCSS 
+                    config="${fe.src.dir}/core/base/config.rb" 
+                    wherefrom="${fe.src.dir}/core/base"/>
+        </then>
+        </if>
+
+        <echo>finished -fe.scss</echo>
+    </target>
+
+
+    <target name="-fe.tpl">
+        <feMoveTPL buildType="dev" concatenateJS="${fe.build.dev.concatenate.js}" />
+        <echo>finished -fe.tpl</echo>
+    </target>
+
+
+    <target name="-fe.root">
+        <feMoveRoot buildType="dev" concatenateJS="${fe.build.dev.concatenate.js}" />
+        <echo>finished -fe.root</echo>
+    </target>
+
+
+    <target name="-fe.skins">
+
+        <if><not><available type="dir" file="${fe.src.dir}/skins" /></not>
+        <then>
+            <echo>NOT AVAILABLE:  ${fe.src.dir}/skins</echo>
+        </then>
+
+        <!-- otherwise loop through fe.skin.list or fe.skin.subdirs -->
+        <else>
+
+            <dirset id="fe.skin.subdirs"
+                    dir="${fe.build.dir}/temp/skins"
+                    includes="*"/>
+
+            <for param="theDir"><path><dirset refid="fe.skin.subdirs"/></path>
+            <sequential>
+                <var name="fe.skin.config.rb" unset="true" />
+                <var name="fe.skin.dir.basename" unset="true" />
+                <basename property="fe.skin.dir.basename" file="@{theDir}"/>
+
+                <if><or>
+                    <not><available file="@{theDir}/config.rb" /></not>
+                    <istrue value="${fe.skin.ALL.with.common.config.rb}" />
+                </or>
+                <then>
+                    <if><available file="${fe.build.dir}/temp/skins/config.rb" />
+                    <then>
+                        <property name="fe.skin.config.rb" value="${fe.build.dir}/temp/skins/config.rb" />
+                    </then>
+                    <else>
+                        <property name="fe.skin.config.rb" value="${fe.build.dir}/temp/core/base/config.rb" />
+                    </else>
+                    </if>
+                </then>
+                <else>
+                    <property name="fe.skin.config.rb" value="@{theDir}/config.rb" />
+                </else>
+                </if>
+
+                <!-- search and replace in _variables.scss to change file paths from dev to build -->
+                <replaceregexp file="@{theDir}/scss/base/_variables.scss"
+                               match="\$appSourcePath:.*\$devSourcePath;"
+                               replace="$appSourcePath: $buildSourcePath;" />
+
+                <feSkinCompileSCSS 
+                        config="${fe.skin.config.rb}"
+                        wherefrom="@{theDir}/"/>
+                <echo>COMPILED:  @{theDir}/scss/</echo>
+            </sequential>
+            </for>
+
+            <!-- After looping, move to build/dev/skins -->
+            <feMoveSkins buildType="dev" />
+            <feMoveImg buildType="dev" />
+            <feMoveRsrc buildType="dev" />
+        </else>
+        </if>
+
+        <echo>finished -fe.skins</echo>
+    </target>
+
+
+    <target name="-fe.deliver.dev" if="fe.deliver.dev.to">
+        <delete>
+            <fileset 
+                dir="${fe.deliver.dev.to}"
+                includes="**/*.*" />
+        </delete>
+        <fecopy whereto="${fe.deliver.dev.to}"
+                wherefrom="${fe.build.dir}/dev"
+                includingwhat="**/*"
+                overwriting="true"/>
+        <echo>finished -fe.deliver.dev</echo>
+    </target>
+
+
+    <target name="-fe.build.dev" 
+            depends="-fe.clean,
+                    -fe.init.dev,
+                    -fe.js.lint,
+                    -fe.validate,
+                    -fe.replace,
+                    -fe.concat.minify,
+                    -fe.js.libs,
+                    -fe.scss,
+                    -fe.tpl,
+                    -fe.root,
+                    -fe.skins,
+                    -fe.deliver.dev"
+            description="Full text development build">
+
+        <echo>finished -fe.build.dev with above dependant tasks</echo>
+    </target>
+
+
+    <target name="-fe.init.ci">
+        <!-- <copy file="${fe.build.dir}/temp/core/base/css/style.css" tofile="${fe.build.dir}/ci/css/style.css" /> -->
+        <copy todir="${fe.build.dir}/ci/css/">
+            <fileset dir="${fe.build.dir}/temp/core/base/css/" includes="*.css" />
+        </copy>
+        <feMoveSkins    buildType="ci" />
+        <feMoveImg      buildType="ci" />
+        <feMoveRsrc     buildType="ci" />
+        <feMoveJS       buildType="ci" concatenateJS="${fe.build.ci.concatenate.js}" />
+        <feMoveRoot     buildType="ci" concatenateJS="${fe.build.ci.concatenate.js}" />
+        <feMoveTPL      buildType="ci" concatenateJS="${fe.build.ci.concatenate.js}" />
+
+        <echo></echo>
+        <echo>finished -fe.init.ci</echo>
+    </target>
+
+
+    <target name="-fe.test">
+        <echo>NOTHING TO DO YET</echo>
+        <echo></echo>
+        <echo>finished -fe.test</echo>
+    </target>
+
+
+    <target name="-fe.document">
+        <echo>NOTHING TO DO YET</echo>
+        <echo></echo>
+        <echo>finished -fe.document</echo>
+    </target>
+
+
+    <target name="-fe.build.ci" 
+            depends="-fe.build.dev,
+                    -fe.init.ci,
+                    -fe.test,
+                    -fe.document"
+            description="Continuos Integration build">
+        <echo>finished -fe.build.ci</echo>
+    </target>
+
+
+    <target name="-fe.init.prod">
+        <!-- <copy file="${fe.build.dir}/temp/core/base/css/style.css" tofile="${fe.build.dir}/prod/css/style.css" /> -->
+        <copy todir="${fe.build.dir}/prod/css/">
+            <fileset dir="${fe.build.dir}/temp/core/base/css/" includes="*.css" />
+        </copy>
+        <feMoveSkins    buildType="prod" />
+        <feMoveImg      buildType="prod" />
+        <feMoveRsrc     buildType="prod" />
+        <feMoveJS       buildType="prod" concatenateJS="${fe.build.prod.concatenate.js}" />
+        <feMoveRoot     buildType="prod" concatenateJS="${fe.build.prod.concatenate.js}" />
+        <feMoveTPL      buildType="prod" concatenateJS="${fe.build.prod.concatenate.js}" />
+
+        <echo></echo>
+        <echo>finished -fe.init.prod</echo>
+    </target>
+
+
+    <target name="-fe.bake">
+        <!-- Post prod build process, if any -->
+        <echo>finished -fe.bake</echo>
+    </target>
+
+
+    <target name="-fe.build.prod" 
+            depends="-fe.build.ci,
+                    -fe.init.prod,
+                    -fe.bake"
+            description="Production build">
+        <echo>finished -fe.build.prod</echo>
+    </target>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <macrodef name="fecopy">
+        <attribute name="whereto"/>
+        <attribute name="wherefrom"/>
+        <attribute name="includingwhat"/>
+        <attribute name="excludingwhat" default=""/>
+        <attribute name="overwriting" default="false"/>
+        <sequential>
+            <copy todir="@{whereto}"
+                    flatten="false"
+                    failonerror="true"
+                    overwrite="@{overwriting}">
+                <fileset dir="@{wherefrom}"
+                        includes="@{includingwhat}"
+                        excludes="@{excludingwhat}" />
+            </copy>
+        </sequential>
+    </macrodef>
+
+
+    <macrodef name="fecopyflat">
+        <attribute name="whereto"/>
+        <attribute name="wherefrom"/>
+        <attribute name="includingwhat"/>
+        <attribute name="excludingwhat" default=""/>
+        <attribute name="overwriting" default="false"/>
+        <sequential>
+            <mkdir dir="@{whereto}"/>
+
+            <!-- Checking file counts before copy -->
+            <fileset 
+                    id="fe.files.already"
+                    dir="@{whereto}"
+                    includes="*" />
+            <resourcecount property="fe.x">
+                <fileset refid="fe.files.already" />
+            </resourcecount>
+
+            <fileset 
+                    id="fe.files.to.copy"
+                    dir="@{wherefrom}"
+                    includes="@{includingwhat}"
+                    excludes="@{excludingwhat}" />
+            <resourcecount property="fe.y">
+                <fileset refid="fe.files.to.copy" />
+            </resourcecount>
+
+            <!-- Actual copy -->
+            <copy todir="@{whereto}"
+                    flatten="true"
+                    failonerror="true"
+                    overwrite="@{overwriting}">
+                <fileset refid="fe.files.to.copy" />
+            </copy>
+
+            <!-- Checking file counts before copy -->
+            <fileset id="fe.files.resulting"
+                    dir="@{whereto}"
+                    includes="*" />
+            <resourcecount property="fe.z">
+                <fileset refid="fe.files.resulting" />
+            </resourcecount>
+
+            <math result="fe.s"
+                    operand1="${fe.x}"
+                    operation="+"
+                    operand2="${fe.y}"
+                    datatype="int" />
+
+            <!-- If results expected, simply clean up variables -->
+            <if><equals arg1="${fe.s}" arg2="${fe.z}" />
+            <then>
+                <var name="fe.files.already" unset="true" />
+                <var name="fe.files.to.copy" unset="true" />
+                <var name="fe.files.resulting" unset="true" />
+                <var name="fe.s" unset="true" />
+                <var name="fe.x" unset="true" />
+                <var name="fe.y" unset="true" />
+                <var name="fe.z" unset="true" />
+            </then>
+
+            <!-- Some file name collision most likely ocurred. -->
+            <else>
+                <echo message="*******************************************" />
+                <echo message="*******************************************" />
+                <echo message="*******************************************" />
+                <echo>
+With ${fe.x} files at destination of:
+@{whereto}
+                </echo>
+
+                <for param="file"><path><fileset refid="fe.files.already" /></path>
+                <sequential>
+                    <echo>   @{file}</echo>
+                </sequential>
+                </for>
+
+                <echo>
+The result of adding ${fe.y} files from:
+@{wherefrom}
+                </echo>
+
+                <for param="file"><path><fileset refid="fe.files.to.copy" /></path>
+                <sequential>
+                    <echo>   @{file}</echo>
+                </sequential>
+                </for>
+
+                <echo>
+Resulted in ${fe.z} files
+                </echo>
+
+                <for param="file"><path><fileset refid="fe.files.resulting" /></path>
+                <sequential>
+                    <echo>   @{file}</echo>
+                </sequential>
+                </for>
+
+                <echo message="*******************************************" />
+                <echo message="*******************************************" />
+                <echo message="*******************************************" />
+
+                <var name="fe.files.already" unset="true" />
+                <var name="fe.files.to.copy" unset="true" />
+                <var name="fe.files.resulting" unset="true" />
+                <var name="fe.s" unset="true" />
+                <var name="fe.x" unset="true" />
+                <var name="fe.y" unset="true" />
+                <var name="fe.z" unset="true" />
+
+                <fail>
+                    Some file name collision most likely ocurred.
+                </fail>
+            </else>
+            </if>
+        </sequential>
+    </macrodef>
+<!-- 
+    <macrodef name="fecopyToEachChildDir">
+        <attribute name="whereto"/>
+        <attribute name="wherefrom"/>
+        <attribute name="includingwhat"/>
+        <attribute name="overwriting"/>
+        <sequential>
+            <dirset id="fe.subdirs"
+                    dir="@{whereto}"
+                    includes="*"/>
+            <for param="theDir">
+                <path>
+                    <dirset refid="fe.subdirs"/>
+                </path>
+                <sequential>
+                    <fecopy whereto="@{theDir}"
+                            wherefrom="@{wherefrom}"
+                            includingwhat="@{includingwhat}" 
+                            overwriting="@{overwriting}"/>
+                </sequential>
+            </for>
+        </sequential>
+    </macrodef>
+ -->
+
+    <macrodef name="feMoveSkins">
+        <attribute name="buildType"/>
+        <sequential>
+            <fecopy whereto="${fe.build.dir}/@{buildType}/skins"
+                    wherefrom="${fe.build.dir}/temp/skins"
+                    includingwhat="**/css/**/*.*,**/img/**/*.*,**/js/**/*.*,**/tpl/**/*.*,**/rsrc/**/*.*" 
+                    overwriting="false"/>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="feMoveImg">
+        <attribute name="buildType"/>
+        <sequential>
+            <fecopy whereto="${fe.build.dir}/@{buildType}/img"
+                    wherefrom="${fe.build.dir}/temp/img"
+                    includingwhat="**" 
+                    overwriting="false"/>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="feMoveRsrc">
+        <attribute name="buildType"/>
+        <sequential>
+            <fecopy whereto="${fe.build.dir}/@{buildType}/rsrc"
+                    wherefrom="${fe.build.dir}/temp/rsrc"
+                    includingwhat="**" 
+                    overwriting="false"/>
+        </sequential>
+    </macrodef>
+
+
+    <macrodef name="feMoveRoot">
+        <attribute name="concatenateJS"/>
+        <attribute name="buildType"/>
+        <sequential>
+            <if><istrue value="@{concatenateJS}"/>
+            <then>
+                <fecopyflat whereto="${fe.build.dir}/@{buildType}"
+                        wherefrom="${fe.build.dir}/temp/jsRefHTML"
+                        includingwhat="*.html,*.htm" 
+                        overwriting="false"/>
+            </then>
+            <else>
+                <fecopyflat whereto="${fe.build.dir}/@{buildType}"
+                        wherefrom="${fe.build.dir}/temp/core/base"
+                        includingwhat="*.html,*.htm" 
+                        overwriting="false"/>
+            </else>
+            </if>
+            <fecopyflat whereto="${fe.build.dir}/@{buildType}/ajax"
+                    wherefrom="${fe.build.dir}/temp/ajax"
+                    includingwhat="*.*" 
+                    overwriting="false"/>
+        </sequential>
+    </macrodef>
+
+
+    <macrodef name="feMoveTPL">
+        <attribute name="concatenateJS"/>
+        <attribute name="buildType"/>
+        <sequential>
+            <if><istrue value="@{concatenateJS}"/>
+            <then>
+                <fecopyflat whereto="${fe.build.dir}/@{buildType}/tpl"
+                        wherefrom="${fe.build.dir}/temp/jsRefTPL"
+                        includingwhat="*.*" 
+                        overwriting="false"/>
+            </then>
+            <else>
+                <fecopyflat whereto="${fe.build.dir}/@{buildType}/tpl"
+                        wherefrom="${fe.build.dir}/temp/tpl"
+                        includingwhat="*.*" 
+                        overwriting="false"/>
+            </else>
+            </if>
+        </sequential>
+    </macrodef>
+
+
+    <macrodef name="feMoveJS">
+        <attribute name="concatenateJS"/>
+        <attribute name="buildType"/>
+        <sequential>
+            <if><istrue value="@{concatenateJS}"/>
+            <then>
+                <fecopy whereto="${fe.build.dir}/@{buildType}/js"
+                        wherefrom="${fe.build.dir}/temp/jsConcat"
+                        includingwhat="*.js"
+                        overwriting="false"/>
+                <if><istrue value="${fe.minify.after.concatenate}"/>
+                <then>
+                    <fecopy whereto="${fe.build.dir}/@{buildType}/js"
+                            wherefrom="${fe.build.dir}/temp/jsMin"
+                            includingwhat="*.js"
+                            overwriting="true"/>
+                </then>
+                </if>
+            </then>
+            <else>
+                <fecopy whereto="${fe.build.dir}/@{buildType}/js"
+                        wherefrom="${fe.build.dir}/temp/js"
+                        includingwhat="*.js"
+                        overwriting="false"/>
+                <fecopy whereto="${fe.build.dir}/@{buildType}/libs"
+                        wherefrom="${fe.build.dir}/temp/core/libs"
+                        includingwhat="**/*.js" 
+                        overwriting="false"/>
+            </else>
+            </if>
+        </sequential>
+    </macrodef>
+
+
+    <macrodef name="feCompileSCSS">
+        <attribute name="config"/>
+        <attribute name="wherefrom"/>
+        <sequential>
+            <echo>CONFIG = [@{config}]</echo>
+            <echo>WHEREFROM = [@{wherefrom}]</echo>
+
+            <delete dir="@{wherefrom}/../../css" />
+            <delete dir="@{wherefrom}/../../.sass-cache" />
+            <delete dir="@{wherefrom}/css" />
+            <delete dir="@{wherefrom}/.sass-cache" />
+
+            <if>
+                <contains string="${os.name}" substring="Windows" />
+            <then>
+                <if><istrue value="${fe.no.line.comments.css}" />
+                <then>
+                    <exec executable="cmd" failonerror="true" dir="@{wherefrom}">
+                        <arg value="/c" /><arg value="compass" />       <!-- WINDOWS ONLY -->
+                        <arg value="compile" />
+                        <arg value="--config" />            <arg value="@{config}" />
+                        <arg value="--trace" />
+
+                        <!-- UNIQUE -->
+                        <arg value="--no-line-comments" />
+                    </exec>
+                </then>
+                <else>
+                    <exec executable="cmd" failonerror="true" dir="@{wherefrom}">
+                        <arg value="/c" /><arg value="compass" />       <!-- WINDOWS ONLY -->
+                        <arg value="compile" />
+                        <arg value="--config" />            <arg value="@{config}" />
+                        <arg value="--trace" />
+                    </exec>
+                </else>
+                </if>
+            </then>
+            </if>
+
+            <if><equals arg1="${os.name}" arg2="Mac OS X" />
+            <then>
+                <if><istrue value="${fe.no.line.comments.css}" />
+                <then>
+                    <exec executable="compass" failonerror="true" dir="@{wherefrom}">
+                        <arg value="compile" />
+                        <arg value="--config" />            <arg value="@{config}" />
+                        <arg value="--trace" />
+
+                        <!-- UNIQUE -->
+                        <arg value="--no-line-comments" />
+                    </exec>
+                </then>
+                <else>
+                    <exec executable="compass" failonerror="true" dir="@{wherefrom}">
+                        <arg value="compile" />
+                        <arg value="--config" />            <arg value="@{config}" />
+                        <arg value="--trace" />
+                    </exec>
+                </else>
+                </if>
+            </then>
+            </if>
+
+            <delete dir="@{wherefrom}/.sass-cache" />
+
+        </sequential>
+    </macrodef>
+
+
+    <macrodef name="feSkinCompileSCSS">
+        <attribute name="config"/>
+        <attribute name="wherefrom"/>
+        <sequential>
+            <echo>CONFIG = [@{config}]</echo>
+            <echo>WHEREFROM = [@{wherefrom}]</echo>
+
+            <delete dir="@{wherefrom}/css" />
+            <delete dir="@{wherefrom}/.sass-cache" />
+
+            <if>
+            	<contains string="${os.name}" substring="Windows" />
+            <then>
+                <if><istrue value="${fe.no.line.comments.css}" />
+                <then>
+                    <exec executable="cmd" failonerror="true" dir="@{wherefrom}">
+                        <arg value="/c" /><arg value="compass" />       <!-- WINDOWS ONLY -->
+                        <arg value="compile" />
+                        <arg value="--config" />            <arg value="@{config}" />
+                        <arg value="--trace" />
+
+                        <!-- UNIQUE -->
+                        <arg value="--no-line-comments" />
+                    </exec>
+                </then>
+                <else>
+                    <exec executable="cmd" failonerror="true" dir="@{wherefrom}">
+                        <arg value="/c" /><arg value="compass" />       <!-- WINDOWS ONLY -->
+                        <arg value="compile" />
+                        <arg value="--config" />            <arg value="@{config}" />
+                        <arg value="--trace" />
+                    </exec>
+                </else>
+                </if>
+            </then>
+            </if>
+
+            <if><equals arg1="${os.name}" arg2="Mac OS X" />
+            <then>
+                <if><istrue value="${fe.no.line.comments.css}" />
+                <then>
+                    <exec executable="compass" failonerror="true" dir="@{wherefrom}">
+                        <arg value="compile" />
+                        <arg value="--config" />            <arg value="@{config}" />
+                        <arg value="--trace" />
+
+                        <!-- UNIQUE -->
+                        <arg value="--no-line-comments" />
+                    </exec>
+                </then>
+                <else>
+                    <exec executable="compass" failonerror="true" dir="@{wherefrom}">
+                        <arg value="compile" />
+                        <arg value="--config" />            <arg value="@{config}" />
+                        <arg value="--trace" />
+                    </exec>
+                </else>
+                </if>
+            </then>
+            </if>
+
+            <delete dir="@{wherefrom}/.sass-cache" />
+
+        </sequential>
+    </macrodef>
+
+
+    <macrodef name="feInSourceCompileSCSS">
+        <attribute name="config"/>
+        <attribute name="wherefrom"/>
+        <sequential>
+            <echo>CONFIG = [@{config}]</echo>
+            <echo>WHEREFROM = [@{wherefrom}]</echo>
+
+            <delete dir="@{wherefrom}/css" />
+            <delete dir="@{wherefrom}/.sass-cache" />
+
+            <if>
+            	<contains string="${os.name}" substring="Windows" />
+            <then>
+                <if><istrue value="${fe.no.line.comments.css}" />
+                <then>
+                    <exec executable="cmd" failonerror="true" dir="@{wherefrom}">
+                        <arg value="/c" /><arg value="compass" />       <!-- WINDOWS ONLY -->
+                        <arg value="compile" />
+                        <arg value="--config" />            <arg value="@{config}" />
+                        <arg value="--trace" />
+
+                        <!-- UNIQUE -->
+                        <arg value="--no-line-comments" />
+                    </exec>
+                </then>
+                <else>
+                    <exec executable="cmd" failonerror="true" dir="@{wherefrom}">
+                        <arg value="/c" /><arg value="compass" />       <!-- WINDOWS ONLY -->
+                        <arg value="compile" />
+                        <arg value="--config" />            <arg value="@{config}" />
+                        <arg value="--trace" />
+                    </exec>
+                </else>
+                </if>
+            </then>
+            </if>
+
+            <if><equals arg1="${os.name}" arg2="Mac OS X" />
+            <then>
+                <if><istrue value="${fe.no.line.comments.css}" />
+                <then>
+                    <exec executable="compass" failonerror="true" dir="@{wherefrom}">
+                        <arg value="compile" />
+                        <arg value="--config" />            <arg value="@{config}" />
+                        <arg value="--trace" />
+
+                        <!-- UNIQUE -->
+                        <arg value="--no-line-comments" />
+                    </exec>
+                </then>
+                <else>
+                    <exec executable="compass" failonerror="true" dir="@{wherefrom}">
+                        <arg value="compile" />
+                        <arg value="--config" />            <arg value="@{config}" />
+                        <arg value="--trace" />
+                    </exec>
+                </else>
+                </if>
+            </then>
+            </if>
+
+            <delete dir="@{wherefrom}/.sass-cache" />
+
+        </sequential>
+    </macrodef>
+
+    <!-- TODO: Code not complete. Next step(s): 
+        (probably take a couple of hours)
+        1. Refactor compass compiles to use arg line= instead of arg value= in order to have dynamic control of compile options for less duplication and for additional compress option
+
+        2. Change out file lists to be from file content for fe.concatenate.skip and fe.concatenate.order properties
+        <loadfile property="testingFile" srcFile="loadfile1.tmp" />
+        <for list="${testingFile}" param="fileName" delimiter="${line.separator}" trim="true">
+            <sequential>
+                <echo>[@{fileName}]</echo>
+            </sequential>
+        </for>
+
+        3. Inform of files not in either of these lists, since they exist in the proper location, but not yet be ready to be added or they were forgotten about.
+    -->
+
+</project>

@@ -1,0 +1,11 @@
+{
+	"messages":[
+        {
+            "type":"dataUpdate",
+            "name":"participantProfile",
+            "data":{
+                "points":27876
+            }
+        }
+    ]
+}

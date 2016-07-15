@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="span12">
+        <div id="answerContainer" class="row {{#if isUserCorrect}}quizAnswerCorrect{{/if}}">
+            <div class="span12">
+                <h4>{{#if isUserCorrect}}<i class="icon-ok-sign"></i>{{else}}<i class="icon-remove-sign"></i>{{/if}} {{questionAnswerTitle}}</h4>
+
+                {{#if questionAnswerDescription}}
+                <p>
+                    {{{questionAnswerDescription}}}
+                </p>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="span12">
+        {{#each buttons}}
+            {{#if buttonDisplay}}
+            <!--disabled-->
+            <button class="btn  {{#if buttonClass}}{{buttonClass}}{{/if}}" id="{{buttonType}}" type="button">{{buttonText}}</button>
+            {{/if}}
+        {{/each}}
+    </div>
+</div>

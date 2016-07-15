@@ -1,0 +1,301 @@
+{
+	"messages":[],
+
+	"recognitionSets":[
+		{
+			"nameId":"global",
+			"name":"Global",
+			"desc":"Company wide recognitions",
+			"totalCount":45,
+			"recognitions":[
+				{
+					"id":12340,
+					"publicRecognitionPageDetailUrl":"layout.html?tpl=publicRecognitionPageDetail&tplPath=apps/publicRecognition/tpl/&promotionId=12340",
+					"recipients":[
+						{
+							"id":45,
+							"firstName":"Ron",
+							"lastName":"Smith",
+							"avatarUrl":"img/_samples/x-profile-pic2.jpg"
+						}
+					],
+					"recognizer":{
+						"id":102,
+						"firstName":"Jane",
+						"lastName":"Anderson",
+						"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+					},
+					"comment":"Thanks for the extra work.",
+					"numLikers":12,
+					"isLiked":true,
+					"isNew":true,
+					"isPublicClaim":true,
+					"time": "2 days ago",
+					"allowAddPoints":true,
+                    "allowTranslate": true,
+					"awardAmountMin":1,
+					"awardAmountMax":50,
+					"countryRatio":1.0,
+					"comments":[
+						{
+							"id":23,
+							"commenter":{
+								"id":12,
+								"firstName":"Willford",
+								"lastName":"Brimley",
+								"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+							},
+							"comment":"Nice work!"
+						},
+						{
+							"id":833,
+                            "allowTranslate": true,
+							"commenter":{
+								"id":12,
+								"firstName":"Willford",
+								"lastName":"Brimley",
+								"avatarUrl":"img/_samples/x-profile-pic2.jpg"
+							},
+							"comment":"Impressive work Ron. Keep it up!"
+						}
+					]
+				},
+
+				{
+					"id":22304,
+					"publicRecognitionPageDetailUrl":"layout.html?tpl=publicRecognitionPageDetail&tplPath=apps/publicRecognition/tpl/&promotionId=22304",
+					"recipients":[
+						{
+							"id":45,
+							"firstName":"Lei",
+							"lastName":"Martin",
+							"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+						}
+					],
+					"avatarUrl":"img/_samples/x-profile-pic1.jpg",
+					"recognizer":{
+						"id":102,
+						"firstName":"Henry",
+						"lastName":"DuBois",
+						"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+					},
+					"comment":"You showed immense creativity on that last product design.",
+					"numLikers":12,
+					"isNew":true,
+					"isPublicClaim":true,
+					"time":"15 minutes ago",
+					"allowAddPoints":true,
+					"awardAmountFixed":50,
+					"countryRatio":0.5,
+					"comments":[
+						{
+							"id":23,
+							"commenter":{
+								"id":102,
+								"firstName":"",
+								"lastName":"Kissinger",
+								"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+							},
+							"comment":"I worked several late nights and weekends with Lei. He truly goes above and beyond."
+						}
+					]
+				}
+
+			]
+		},
+		{
+			"nameId":"team",
+			"name":"Team",
+			"desc":"Recognitions within my team/org unit",
+			"totalCount":10,
+			"recognitions":[
+				{
+					"id":20234,
+					"publicRecognitionPageDetailUrl":"layout.html?tpl=publicRecognitionPageDetail&tplPath=apps/publicRecognition/tpl/&promotionId=20234",
+					"recipients":[
+						{
+							"id":457,
+							"firstName":"Jon",
+							"lastName":"Hansen",
+							"avatarUrl":"img/_samples/x-profile-pic2.jpg"
+						},
+
+						{
+							"id":487,
+							"firstName":"Walt",
+							"lastName":"Ruckes",
+							"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+						}
+					],
+					"avatarUrl":"img/_samples/x-profile-pic1.jpg",
+					"recognizer":{
+						"id":102,
+						"firstName":"Tim",
+						"lastName":"Houlihan",
+						"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+					},
+					"comment":"Go Team. We exceeded our quarterly goal!",
+					"numLikers":12,
+					"isLiked":false,
+					"isNew":true,
+					"isPublicClaim":true,
+					"time":"about an hour ago",
+					"comments":[
+						{
+							"id":23,
+							"commenter":{
+								"id":102,
+								"firstName":"Gary",
+								"lastName":"Hansen",
+								"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+							},
+							"comment":"Goal Setting relies on relevance - even for Olympians.Check this out. http://tinyurl.com/bloteom"
+						},
+						{
+							"id":13,
+							"commenter":{
+								"id":102,
+								"firstName":"Laura",
+								"lastName":"Chaney",
+								"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+							},
+							"comment":"Good info. Thank you for sharing."
+						},
+						{
+							"id":45,
+							"commenter":{
+								"id":102,
+								"firstName":"Corey",
+								"lastName":"Stern",
+								"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+							},
+							"comment":"Want to see the latest design trends in websites, graphic design, branding, typography, photography, illustration and art? Check out Behance.net. This is one of the best references for a wide variety of innovative design."
+						},
+						{
+							"id":77,
+							"commenter":{
+								"id":102,
+								"firstName":"Mark",
+								"lastName":"Mironer",
+								"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+							},
+							"comment":"This week's, This American Life, featured the young manager of the games department of a small amusement park. This guy knows engagement and motivation- and the videos are a hoot. You can check it out here"
+						}
+					]
+				}
+			]
+		},
+		{
+			"nameId":"followed",
+			"name":"Followed",
+			"desc":"Recognitions of those I follow",
+			"totalCount":0,
+			"recognitions":[]
+		},
+		{
+			"nameId":"mine",
+			"name":"Mine",
+			"desc":"Recognitions I've received",
+			"totalCount":0,
+			"recognitions":[
+					{
+					"id":223400,
+					"publicRecognitionPageDetailUrl":"layout.html?tpl=publicRecognitionPageDetail&tplPath=apps/publicRecognition/tpl/&promotionId=223400",
+					"recipients":[
+						{
+							"id":457,
+							"firstName":"Troy",
+							"lastName":"Grengs",
+							"avatarUrl":"img/_samples/x-profile-pic2.jpg"
+						},
+
+						{
+							"id":487,
+							"firstName":"Lisa",
+							"lastName":"Miotti",
+							"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+						}
+					],
+					"avatarUrl":"img/_samples/x-profile-pic1.jpg",
+					"recognizer":{
+						"id":102,
+						"firstName":"Amy",
+						"lastName":"Thompson",
+						"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+					},
+					"comment":"Thanks so much for your continued focus and dedication to the new G4 design. It looks so faboulous and clean!",
+					"numLikers":12,
+					"isLiked":false,
+					"isNew":true,
+					"isPublicClaim":true,
+					"time":"6 months ago",
+					"shareLinks":[
+						{
+							"url":"http://www.salesforce.com/chatter/chatter.foo?u=http://some.server.com/some/page.html",
+							"name":"Chatter",
+							"nameId":"chatter"
+						},
+						{
+							"url":"http://www.facebook.com/share.php?u=http://some.server.com/some/page.html",
+							"name":"Facebook",
+							"nameId":"facebook"
+						},
+						{
+							"url":"http://www.linkedin.com/shareArticle?mini=true&url=articleUrl&title=articleTitle&summary=articleSummary&source=articleSource",
+							"name":"Linkedin",
+							"nameId":"linkedin"
+						},
+						{
+							"url":"http://twitter.com/home/?status=Checkin'%20out%20http://some.server.com/some/page.html%20by%20@someuser",
+							"name":"Twitter",
+							"nameId":"twitter"
+						}
+					],
+					"comments":[
+						{
+							"id":23,
+							"commenter":{
+								"id":102,
+								"firstName":"Laura",
+								"lastName":"Cheney",
+								"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+							},
+							"comment":"Mark your calendar for the new event"
+						},
+						{
+							"id":13,
+							"commenter":{
+								"id":102,
+								"firstName":"Carol",
+								"lastName":"Demeritt",
+								"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+							},
+							"comment":"Great week on our team. Bravo!"
+						},
+						{
+							"id":45,
+							"commenter":{
+								"id":102,
+								"firstName":"Tim",
+								"lastName":"Houlihan",
+								"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+							},
+							"comment":"Check out 3 Things Your GEN Y Employees Want Besides Money. The author emphasizes the social contract employees have with employers in #2: The Feeling of Being Valued. Fits right into our New Rules!"
+						},
+						{
+							"id":77,
+							"commenter":{
+								"id":102,
+								"firstName":"Marc",
+								"lastName":"Laskow",
+								"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+							},
+							"comment":"Good stuff Tim!..a Dark and Stormy never hurts either."
+						}
+					]
+				}
+			]
+		}
+	]
+
+}

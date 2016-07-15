@@ -1,0 +1,15 @@
+{
+	"messages":[],
+
+	"ProfilePageStatementTabSummary":[
+			{
+				"accountNumber": "971000420666",
+				"beginningBalance": 240,
+				"earnedPoints": 30,
+				"redeemedPoints": 0,
+				"adjustedPoints": 0,
+				"pendingOrder": 0,
+				"endingBalance": 240
+			}
+	]
+}

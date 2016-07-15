@@ -1,0 +1,47 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $news_bgColor: ;
+// $news_gradType: ;
+// $news_gradMeta: ; // list the gradient non-color properties such as position, shape, etc.
+// $news_gradStops: ; // list the stops as one would a series of raw gradient stops
+
+// $news_iconColor: ;
+// $news_titleColor: ;
+// $news_titleFontFamily: ;
+// $news_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $news_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+// $news_cycleDotWidth: ;
+// $news_cycleDotBkg: ;
+// $news_cycleDotBorder: ;
+// $news_cycleDotBkgHover: ;
+// $news_cycleDotBorderHover: ;
+// $news_cycleDotBkgActive: ;
+// $news_cycleDotBorderActive: ;
+// $news_cycleDotBorderRadius: ;
+
+// $news_storyBoxBkg: ;
+// $news_storyBoxTextSize: ;
+// $news_storyBoxTitleSize: ;
+// $news_storyBoxTextColor: ;
+// $news_storyBoxTitleColor: ;
+// $news_storyBoxLinkColor: ;
+// $news_storyBoxLinkHoverColor: ;
+
+// $news_pageTimeStampColor: ;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "news/scss/news";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

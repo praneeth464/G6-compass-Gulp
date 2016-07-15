@@ -1,0 +1,23 @@
+<?php
+header('Content-Type: application/json');
+sleep(1);
+// $isError = rand(0,10) > 8;
+$isError = false;
+?>
+{
+    "messages":[
+        {
+        <?php if($isError) { ?>
+            "type":"error",
+            "code":"validationError",
+            "name":"Name of error",
+            "text":"Details of error"
+        <?php } else { ?>
+            "type":"success",
+            "name":"Approve Success",
+            "isSuccess": true,
+            "text":"Some text explaining the nature of the success."
+        <?php } ?>
+        }
+    ]
+}

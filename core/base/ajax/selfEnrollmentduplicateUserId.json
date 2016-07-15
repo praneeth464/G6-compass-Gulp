@@ -1,0 +1,15 @@
+<?php sleep(2); ?>
+{
+    "messages":[
+        {
+            "type":"error",
+            "code":"validationError",
+            "fields": [
+                {
+                    "name": "userName",
+                    "text": "User Name taken, please try another."
+                }
+    		]
+		}
+	]
+}

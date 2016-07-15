@@ -1,0 +1,72 @@
+{
+    "messages":[],
+    "totalCount":1,
+    "allowBadge":true,
+    "allowPublicRecFollowList":true,
+    "participants":[
+        {
+            "id":45,
+            "firstName":"Christian",
+            "lastName":"Smith",
+            "orgName":"Sales",
+            "countryCode":"us",
+            "countryName":"United States",
+            "avatarUrl":"../../skins/default/img/avatar-blank-48.png",
+            "profileUrl":"../apps/publicProfile/tpl/publicProfilePage.html",
+            "isFollowed":false,
+            "isPublic":true,
+            "isSelf": false,
+            "isDelegate":true,
+            "canRecognize":true,
+            "throwdownEnabled":true,
+            "badges":[
+                {
+                    "id":               "23",
+                    "type":             "progress",
+                    "name":             "Earned Badge Name 1 2a",
+                    "howToEarnText":    "1 How to earn badge",
+                    "imgLarge":         "img/badges/above_beyond_lg.png",
+                    "img":              "img/badges/above_beyond_sm.png",
+                    "earned":           true,
+                    "dateEarned":       "2012-09-01 (< 2 wks)",
+                    "progressNumerator":  "",
+                    "progressDenominator":  ""
+                },
+                {
+                    "id":               "24",
+                    "type":             "progress",
+                    "name":             "Earned Badge Name 2 2a",
+                    "howToEarnText":    "2 How to earn badge",
+                    "imgLarge":         "img/badges/birthday_lg.png",
+                    "img":              "img/badges/birthday_sm.png",
+                    "earned":           true,
+                    "dateEarned":       "2012-09-02 (< 2 wks)",
+                    "progressNumerator":  "",
+                    "progressDenominator":  ""
+                },
+                {
+                    "id":               "25",
+                    "type":             "progress",
+                    "name":             "Earned Badge Name 3 2a",
+                    "howToEarnText":    "3 How to earn badge",
+                    "imgLarge":         "img/badges/bronze_lg.png",
+                    "img":              "img/badges/bronze_sm.png",
+                    "earned":           true,
+                    "dateEarned":       "2012-09-03 (< 2 wks)",
+                    "progressNumerator":  "",
+                    "progressDenominator":  ""
+                }
+            ],
+            "nodes":[
+                {
+                    "id": 23456,
+                    "name": "OrgUnit1"
+                },
+                {
+                    "id": 23457,
+                    "name": "OrgUnit2"
+                }
+            ]
+        }
+    ]
+}

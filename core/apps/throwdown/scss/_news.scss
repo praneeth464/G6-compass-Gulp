@@ -1,0 +1,218 @@
+// App-specific variables
+// =========================
+$throwdownNewsPage_bgColor: $g5ModuleBgColor !default;
+$throwdownNewsPage_gradType: $g5ModuleGradType !default;
+$throwdownNewsPage_gradMeta: $g5ModuleGradMeta !default;
+$throwdownNewsPage_gradStops: $g5ModuleGradStops !default;
+$throwdownNewsPage_titleColor: $throwdown_secondaryAccentColor !default;
+$throwdownNewsPage_pageTimeStampColor: $grayLight !default;
+
+$throwdownNewsPage_storyBoxBkg: transparentize($grayDarker,0.2) !default;
+$throwdownNewsPage_storyBoxBkgSafe: $grayDarker !default;
+$throwdownNewsPage_storyBoxTextSize: false !default;
+$throwdownNewsPage_storyBoxTitleSize: false !default;
+$throwdownNewsPage_storyBoxTextColor: $grayLight !default;
+$throwdownNewsPage_storyBoxTitleColor: $white !default;
+$throwdownNewsPage_storyBoxLinkColor: false !default;
+$throwdownNewsPage_storyBoxLinkHoverColor: false !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.throwdownNews {
+
+} /* /.throwdownNews */
+
+/* ----- MODULE STYLES ----- */
+.module.throwdownNews {
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $throwdownNewsPage_bgColor,
+            $gradType: $throwdownNewsPage_gradType,
+            $gradMeta: $throwdownNewsPage_gradMeta,
+            $gradStops: $throwdownNewsPage_gradStops
+        );
+    }
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $throwdown_iconColor,
+            $titleColor: $throwdownNewsPage_titleColor,
+            $titleFontFamily: $throwdown_primaryFontFamily
+        );
+
+        h3 {
+            font-size: 37px;
+			font-weight: $throwdown_secondaryFontWeight;
+			padding: 0 0 0 48%;
+            margin-right: 3%;
+            text-align: center;
+            text-transform: uppercase;
+            word-spacing: 150px;
+
+        }
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            @include g5HomeAppIconBoxReflect(-56px);
+        }
+    }
+
+    &.grid-dimension-2x1 {
+        .wide-view {
+            display: none;
+        }
+        .title-icon-view h3 {
+            position: absolute;
+            top: 30%;
+        }
+    }
+    &.grid-dimension-1x1 {
+        .wide-view {
+            display: none;
+        }
+
+        .title-icon-view h3 {
+            bottom: 0;
+            padding: 0;
+
+            span {
+                display: inline-block;
+                font-size: $baseFontSize * 1.15;
+                line-height: $baseLineHeight * .9;
+            }
+            .firstLine {
+                color: $throwdown_textLight;
+                margin-right: 5px;
+            }
+        }
+    }
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        .title-icon-view {
+            display: none;
+        }
+        .wide-view {
+			height: 100%;
+            padding: 0;
+        }
+        .carousel {
+            height: 100%;
+
+            .carousel-inner {
+                height: 100%;
+
+                .item {
+					background-position: left bottom;
+                    height: 100%;
+					position: relative;
+                    width: 100%;
+
+                    .comm-story {
+						@include module_moduleLiner(0, 1);
+						@include safeBkgs($throwdownNewsPage_storyBoxBkg, $property: 'background-color');
+						bottom: 0;
+						color: $throwdownNewsPage_storyBoxTextColor;
+                        left: 0;
+                        padding: 0;
+                        position: absolute;
+                        width: 100%;
+
+                        @if $throwdownNewsPage_storyBoxTextSize {
+                            font-size: $throwdownNewsPage_storyBoxTextSize;
+                        }
+                        h3 {
+							color: $throwdownNewsPage_storyBoxTitleColor;
+                            margin: 0;
+                            overflow: hidden;
+							padding: $g5ModulePadding $g5ModulePadding 0 $g5ModulePadding;
+                            text-overflow: ellipsis;
+							white-space: nowrap;
+
+                            @if $throwdownNewsPage_storyBoxTitleSize {
+                                font-size: $throwdownNewsPage_storyBoxTitleSize;
+                            }
+                        }
+                        .story-content-short {
+                            padding: 0 $g5ModulePadding;
+                            white-space: nowrap;
+
+                            p {
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            }
+                        }
+                        .read-more {
+                            padding: 0 $g5ModulePadding $g5ModulePadding $g5ModulePadding;
+
+                            @if $throwdownNewsPage_storyBoxLinkColor {
+                                a {
+                                    color: $throwdownNewsPage_storyBoxLinkColor;
+                                }
+                            }
+                            @if $throwdownNewsPage_storyBoxLinkHoverColor {
+                                &:hover {
+                                    color: $throwdownNewsPage_storyBoxLinkHoverColor;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2 {
+        .carousel {
+            .carousel-inner {
+                .item {
+                    .comm-story {
+                        @include module_moduleLiner(0, 0.5);
+                        width: 100%;
+
+                        h3 {
+							font-size: $baseFontSize;
+                            line-height: $baseLineHeight;
+                            padding-top: $g5ModulePadding / 2;
+                        }
+                        .story-content-short {
+                            display: none;
+                        }
+                        .story-content-short {
+                            padding-bottom: $g5ModulePadding / 2;
+                        }
+                    }
+                }
+            }
+        }
+    }
+} /* /.module.throwdownNews */
+
+.lt-ie8 .module.throwdownNews .title-icon-view h3 { margin-top: 32px; }
+
+/* ----- PAGE STYLES ----- */
+.page.commissionerNews {
+    h3 {
+        margin: 0;
+        line-height: 1.1;
+    }
+    .timeStamp {
+        color: $throwdownNewsPage_pageTimeStampColor;
+    }
+    #collectionOfStories {
+        .row {
+            margin-bottom: 20px;
+        }
+    }
+    .spin {
+        display: block;
+        margin: 0 auto;
+        width: $spinner_widthHeight;
+        height: $spinner_widthHeight;
+    }
+} /* /.page.throwdownNews */

@@ -1,0 +1,24 @@
+{
+    "pastResults": [
+        {
+            "imgUrl": "img/workHappier/happiness-slider/backups/0.png",
+            "date": "11/02/15",
+            "mood": "Demoralized"
+        },
+        {
+            "imgUrl": "img/workHappier/happiness-slider/backups/25.png",
+            "date": "11/05/15",
+            "mood": "Frusterated"
+        },
+        {
+            "imgUrl": "img/workHappier/happiness-slider/backups/75.png",
+            "date": "11/10/15",
+            "mood": "Encouraged"
+        },
+        {
+            "imgUrl": "img/workHappier/happiness-slider/backups/100.png",
+            "date": "11/12/15",
+            "mood": "Energized"
+        }
+    ]
+}

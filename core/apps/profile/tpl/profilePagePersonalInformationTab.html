@@ -1,0 +1,69 @@
+<div id="profilePagePersonalInformationContent">
+
+    <h2>Personal Information</h2>
+    <div class="row">
+        <div class="span2">
+            <img alt="{{imageUrl}}" class="avatar" id="personalInformationAvatar" src="../../skins/default/img/avatar-blank.png">
+            <form id="personalInformationFormUploadImage">
+                <input class="btn" type="file" name="profileImage" id="personalInformationButtonUploadImage">
+            </form>
+        </div>
+        <div id="imageResult">
+        </div>
+
+        <div class="span5">
+            <dl class="dl-horizontal dl-h1">
+                <dt>Name</dt>
+                <dd>{{name}}</dd>
+
+                <dt>Org Name</dt>
+                {{#each orgName}}
+                    <dd>{{title}} - {{thisOrgName}}</dd>
+                {{/each}}
+
+                <dt>Department</dt>
+                <dd>{{department}}</dd>
+
+            </dl>
+        </div>
+
+        <div class="span5">
+            <dl class="dl-horizontal">
+                <dt>Address</dt>
+                {{#with address}}
+                    <dd>{{line1}}</dd>
+                    <dd>{{line2}}</dd>
+                {{/with}}
+
+                <dt>Country</dt>
+                <dd><i class="icon-th-list"></i> {{country}}</dd>
+
+                <dt>Phone</dt>
+                <dd>{{phone}}</dd>
+
+                <dt>Email Address</dt>
+                <dd>{{email}}</dd>
+
+            </dl>
+        </div>
+    </div>
+
+    <h2>About Me</h2>
+    <div class="row">
+        <div class="span12">
+            <form id="personalInformationFormUpdateAnswers">
+                <fieldset id="personalInformationFieldsetAnswers">
+                    {{#each questionList}}
+                    <label>{{question}}</label>
+                    <input type="text" value="{{answer}}" class="ifw" name="answer">
+                    {{/each}}
+                    <div class="form-actions">
+                        <button class="btn btn-primary" id="personalInformationButtonSaveAnswers">Submit</button>
+                        <button class="btn" id="personalInformationButtonResetAnswers">Reset</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+</div>

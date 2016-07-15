@@ -1,0 +1,25 @@
+{
+    "id":3456,
+    "isDetail": true,
+    "isMyMatch": false,
+    "commenterMain":{
+        "id":102,
+        "firstName":"Albert",
+        "lastName":"Brown",
+        "avatarUrl":"img/_samples/x-profile-pic1.jpg",
+        "orgName":"TSG",
+        "title":"Director",
+        "countryCode":"us",
+        "countryName":"United States"
+    },
+    "comment":"Great work, keep it up! Thanks for the extra work. Culpa brooklyn cardigan, delectus quis eu nulla. Viral bespoke semiotics single-origin coffee nesciunt echo park. This is precisely 179 characters long. Portland Sed banh mi chillwave iphone. Culpa brooklyn cardigan, delectus quis eu nulla. Viral bespoke semiotics single-origin coffee nesciunt echo park.",
+    "promotionName":"Core Values",
+    "date":"01/01/2013",
+    "numLikers":4,
+    "isLiked":false,
+    "isMine":false,
+    "isHidden":false,
+    "time": "2 days ago",
+    "countryRatio":1.0,
+    "comments":[]
+}

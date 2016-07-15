@@ -1,0 +1,100 @@
+<!-- ======== CONTEST SUMMARY PAGE ======== -->
+
+<div id="ssiContestSummary" class="contestPage ssiContestSummary page-content"><div class="row">
+
+    <!-- DIV.ROW up next to wrapping div.page-content for IE7 -->
+        <div class="span12">
+            <div id="ssiATNGeneralInfo">
+                <!-- dynamic content -->
+            </div>
+
+            <script id="ssiATNGeneralInfoTpl" type="text/x-handlebars-template">
+                <div class="ssiPreviewSection well">
+                    <div class="">
+                        {{#eq status "live"}}
+                        <a href="{{extraJSON.editUrl}}&amp;id={{id}}" class="btn btn-primary btn-small editStepBtn" data-step-name="stepInfo"><i class="icon-pencil"></i> Edit</a>
+                        {{/eq}}
+                        <h3>General Info</h3>
+                            <dl class="dl-horizontal">
+                            <dt>Contest Name</dt>
+                            <dd>{{name}}</dd>
+                            <dt>Contest Dates</dt>
+                            <dd>{{startDate}} - {{endDate}}</dd>
+                            <dt>Contest Description</dt>
+                            <dd>{{description}}</dd>
+                            {{#if badge.img}}
+                                <br>
+                                <dt>Badge</dt>
+                                <dd><img src="{{badge.img}}" alt="{{badge.name}}" /> {{badge.name}}</dd>
+                            {{/if}}
+                        </dl>
+                        {{#eq status "live"}}
+                        <a href="{{extraJSON.issueAwardsUrl}}&amp;id={{id}}" title="" class="btn btn-primary">Issue More Awards</a>
+                        {{/eq}}
+                    </div>
+                </div>
+            </script>
+        </div><!-- /.span12 -->
+    </div><!-- /.row -->
+
+
+    <div class="row">
+        <div class="span12">
+            <h3>Award History</h3>
+            <div id="ssiATNHistory" class="spinnerOverlayWrap">
+                <!-- dynamic content -->
+            </div>
+        </div><!-- /.span12 -->
+    </div><!-- /.row -->
+
+</div><!-- /#ssiContestPageEditView -->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function() {
+        var contestJson = null;
+
+        // JAVA NOTE: url for ATN history pagination
+        G5.props.URL_JSON_CONTEST_SUMMARY_HISTORY = G5.props.URL_ROOT+'ajax/ssiContestSummary.json';
+
+        // JAVA NOTE: set these for navigation
+        G5.props.URL_SSI_ATN_ISSUE_AWARDS = "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiContestPageEdit.html&contestType=awardThemNow&awardThemNowStatus=issueMoreAwards";
+        G5.props.URL_SSI_ATN_CONTEST_EDIT = "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiContestPageEdit.html&contestType=awardThemNow&awardThemNowStatus=editInfo";
+
+        // JAVA NOTE: bootstrapped JSON
+        contestJson = {
+            id: "3",
+            startDate: "01/01/2014",
+            endDate: "02/01/2014",
+            status: "live",
+            name: "Objective Creator Example",
+            description: "Lorem ipsum Esse eiusmod nostrud dolore laboris amet laborum cillum cillum dolor esse dolor mollit quis qui irure quis veniam consequat et qui sed anim est occaecat in commodo voluptate.",
+            badge: {
+                "id":2504,
+                "name":"1 Year Anniversary",
+                "img":"img/badges/service1_sm.png"
+            },
+            totalParticipantsCount : "300",
+            totalActivity : "20,000.0100",
+            totalPayoutAmount : "12,000",
+            sortedOn: "dateCreated",
+            sortedBy: "asc",
+            payoutType: "other" // or "points"
+        };
+        var contest = new SSIContestSummary_ATN({
+            el:$('#ssiContestSummary'),
+            contestJson: contestJson, // contest json to populate model
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'moduleSandbox.html'
+                }
+            },
+            pageTitle : 'Page Title'
+        });
+    });
+</script>

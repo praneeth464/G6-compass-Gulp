@@ -1,0 +1,1728 @@
+<!-- SEND RECOGNITION PAGE (EZ, PURL, etc) -->
+
+
+<!-- =====================================================================
+    DATA FORM (java/struts generated)
+
+    METHOD and ACTION from this form will be used on the 'send form' below.
+
+    Cases where values will be set:
+        1) the Promo, Node, and a Recipient have been preselected from Module/Tile
+        2) there was a server detected error, or the user went back from the preview to change something
+        3) custom data values may have default settings
+
+    Questions? aaron.stricker@biworldwide.com
+
+    ====================================================================== -->
+
+<form id="dataForm" class="recognitionDataForm" action="layout.html?tplPath=apps/recognition/tpl/&amp;tpl=recognitionPagePreviewPoints.html" method="post">
+
+    <!-- method -->
+    <input type="hidden" name="method" value="prepareForward" />
+
+    <!-- promotion id and node id -->
+    <input type="hidden" name="promotionId" value="123477777" />
+    <input type="hidden" name="nodeId" value="23456" />
+
+    <!-- team name (for Nomination only) -->
+    <input type="hidden" name="teamName" value="I am a team name from struts!" />
+
+    <!-- RECIPIENT(S) beans -->
+    <input type="hidden" name="claimRecipientFormBeansCount" value="2" />
+
+    <input type="hidden" name="claimRecipientFormBeans[1].id" value="456777" />
+    <input type="hidden" name="claimRecipientFormBeans[1].awardQuantity" value="25" />
+    <input type="hidden" name="claimRecipientFormBeans[1].awardLevel" value="23" />
+    <input type="hidden" name="claimRecipientFormBeans[1].countryCode" value="us" />
+    <input type="hidden" name="claimRecipientFormBeans[1].countryRatio" value="1" />
+    <input type="hidden" name="claimRecipientFormBeans[1].countryName" value="United States" />
+    <input type="hidden" name="claimRecipientFormBeans[1].firstName" value="Bradley" />
+    <input type="hidden" name="claimRecipientFormBeans[1].lastName" value="Smithson" />
+    <input type="hidden" name="claimRecipientFormBeans[1].departmentName" value="Department Name" />
+    <input type="hidden" name="claimRecipientFormBeans[1].jobName" value="Job Name" />
+    <input type="hidden" name="claimRecipientFormBeans[1].emailAddr" value="katie.desmet@biworldwide.com" />
+    <input type="hidden" name="claimRecipientFormBeans[1].calculatorResultBeans[0].criteriaId" value="12347">
+    <input type="hidden" name="claimRecipientFormBeans[1].calculatorResultBeans[0].ratingId" value="9">
+    <input type="hidden" name="claimRecipientFormBeans[1].calculatorResultBeans[1].criteriaId" value="12346">
+    <input type="hidden" name="claimRecipientFormBeans[1].calculatorResultBeans[1].ratingId" value="6">
+    <input type="hidden" name="claimRecipientFormBeans[1].calculatorResultBeans[2].criteriaId" value="12345">
+    <input type="hidden" name="claimRecipientFormBeans[1].calculatorResultBeans[2].ratingId" value="2">
+    <input type="hidden" name="claimRecipientFormBeans[1].nodeId" value="12377" />
+    <textarea name="claimRecipientFormBeans[1].nodes" style="display:none">
+        [{"id":12377,"name":"ORG NODE NAME"}]
+    </textarea>
+
+    <input type="hidden" name="claimRecipientFormBeans[0].id" value="123777" />
+    <input type="hidden" name="claimRecipientFormBeans[0].awardQuantity" value="50" />
+    <input type="hidden" name="claimRecipientFormBeans[0].awardLevelId" value="123" />
+    <input type="hidden" name="claimRecipientFormBeans[0].countryCode" value="de" />
+    <input type="hidden" name="claimRecipientFormBeans[0].countryRatio" value="0.5" />
+    <input type="hidden" name="claimRecipientFormBeans[0].countryName" value="Germany" />
+    <input type="hidden" name="claimRecipientFormBeans[0].firstName" value="Billy" />
+    <input type="hidden" name="claimRecipientFormBeans[0].lastName" value="Smith" />
+    <input type="hidden" name="claimRecipientFormBeans[0].departmentName" value="Department Name" />
+    <input type="hidden" name="claimRecipientFormBeans[0].jobName" value="Job Name" />
+    <input type="hidden" name="claimRecipientFormBeans[0].emailAddr" value="billy.smith@biworldwide.com" />
+    <input type="hidden" name="claimRecipientFormBeans[0].calculatorResultBeans[0].criteriaId" value="12347">
+    <input type="hidden" name="claimRecipientFormBeans[0].calculatorResultBeans[0].ratingId" value="8">
+    <input type="hidden" name="claimRecipientFormBeans[0].calculatorResultBeans[1].criteriaId" value="12346">
+    <input type="hidden" name="claimRecipientFormBeans[0].calculatorResultBeans[1].ratingId" value="5">
+    <input type="hidden" name="claimRecipientFormBeans[0].calculatorResultBeans[2].criteriaId" value="12345">
+    <input type="hidden" name="claimRecipientFormBeans[0].calculatorResultBeans[2].ratingId" value="1">
+    <input type="hidden" name="claimRecipientFormBeans[0].nodeId" value="1234" />
+    <textarea name="claimRecipientFormBeans[0].nodes" style="display:none">
+        [{"id":1231,"name":"Super long org name that never stops"},{"id":1232,"name":"Org/Node B"},{"id":1233,"name":"Yet another Org/Node"},{"id":1234,"name":"Last Org/Node"}]
+    </textarea>
+
+    <!-- particulars of recognition (claim) -->
+<!--     <input type="hidden" name="selectedBehavior" value="25" /> -->
+
+    <!--
+        eCards:
+        cardType: none|card|cert|upload|drawing
+        cardId: <for 'card' or 'cert' types>
+        cardUrl: <for 'upload' type>
+        drawingData: <for 'drawing' type>
+
+        * on submit of send form with drawing the server will receive
+          parameters "cardData" and "drawingData" (b64 encoded image string)
+
+        * cardData - the flattened drawing+background, needs to be saved
+        * drawingData - the drawing layer alone, just needs to be passed back on edit
+
+        * on upload image, the server will receive an ajax upload of an image
+        and return its urls to the client - this happens before the FORM submit
+    -->
+
+    <!-- NONE
+    <input type="hidden" name="cardType" value="none">
+    <input type="hidden" name="cardId" value="">
+    <input type="hidden" name="cardUrl" value="">
+    <input type="hidden" name="drawingData" value="">
+    -->
+
+    <!-- CARD
+    <input type="hidden" name="cardType" value="card">
+    <input type="hidden" name="cardId" value="11542">
+    <input type="hidden" name="cardUrl" value="">
+    <input type="hidden" name="drawingData" value="">
+    -->
+
+    <!-- CERT
+    <input type="hidden" name="cardType" value="cert">
+    <input type="hidden" name="cardId" value="123">
+    <input type="hidden" name="cardUrl" value="">
+    <input type="hidden" name="drawingData" value="">
+    -->
+
+    <!-- DRAWING
+    <input type="hidden" name="cardType" value="drawing" />
+    <input type="hidden" name="cardId" value="12345" />
+    <input type="hidden" name="cardUrl" value="" />
+    <input type="hidden" name="drawingData" value="data:image/png;base64,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J3nbykKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQcov3fsAAABoSURBVCsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyEKAuLIkqQ4EEECgCAHiKhK0MhFAAIEsBIgrS5LqQAABBIoQIK4iQSsTAQQQyELg/wHBwD4YQqREzwAAAABJRU5ErkJggg==" />
+    -->
+
+    <!-- UPLOAD
+    <input type="hidden" name="cardType" value="upload" />
+    <input type="hidden" name="cardId" value="" />
+    <input type="hidden" name="cardUrl" value="http://pentagqa.performnet.com/pentag/assets/img/cards/above2_lg.jpg"
+    <input type="hidden" name="drawingData" value="">
+    -->
+
+
+    <input type="hidden" name="comments" value="Up to 2000 chars here." />
+
+    <input type="hidden" name="sendCopyToManager" value="on" />
+    <input type="hidden" name="sendCopyToMe" value="on" />
+    <input type="hidden" name="sendCopyToOthers" value="asdf@asdf.com, xxx@ssss.se" />
+
+    <input type="hidden" name="recipientSendDate" value="09/25/2012" />
+    <input type="hidden" name="anniversaryYears" value="5" />
+    <input type="hidden" name="anniversaryDays" value="25" />
+    <input type="hidden" name="makeRecPrivate" value="true" />
+
+
+    <!-- PURL contributor beans (PURL ONLY) -->
+    <input type="hidden" name="claimContributorFormBeansCount" value="4" />
+
+    <input type="hidden" name="claimContributorFormBeans[0].id" value="999" />
+    <input type="hidden" name="claimContributorFormBeans[0].countryCode" value="de" />
+    <input type="hidden" name="claimContributorFormBeans[0].countryName" value="Germany" />
+    <input type="hidden" name="claimContributorFormBeans[0].firstName" value="Billy" />
+    <input type="hidden" name="claimContributorFormBeans[0].lastName" value="Smith" />
+    <input type="hidden" name="claimContributorFormBeans[0].orgName" value="Organific Org." />
+    <input type="hidden" name="claimContributorFormBeans[0].departmentName" value="Departific Dept." />
+    <input type="hidden" name="claimContributorFormBeans[0].jobName" value="Jobtastic Job" />
+    <input type="hidden" name="claimContributorFormBeans[0].contribType" value="additional" />
+    <input type="hidden" name="claimContributorFormBeans[0].sourceType" value="team" />
+    <input type="hidden" name="claimContributorFormBeans[0].invitationSentDate" value="03/30/2013" />
+    <input type="hidden" name="claimContributorFormBeans[0].invitationSentDateSort" value="20130330" />
+
+    <input type="hidden" name="claimContributorFormBeans[1].id" value="888" />
+    <input type="hidden" name="claimContributorFormBeans[1].countryCode" value="us" />
+    <input type="hidden" name="claimContributorFormBeans[1].countryName" value="United States" />
+    <input type="hidden" name="claimContributorFormBeans[1].firstName" value="Bradley" />
+    <input type="hidden" name="claimContributorFormBeans[1].lastName" value="Smithson" />
+    <input type="hidden" name="claimContributorFormBeans[1].orgName" value="Some Org." />
+    <input type="hidden" name="claimContributorFormBeans[1].departmentName" value="Some Dept." />
+    <input type="hidden" name="claimContributorFormBeans[1].jobName" value="Some Job" />
+    <input type="hidden" name="claimContributorFormBeans[1].contribType" value="preselected" />
+    <input type="hidden" name="claimContributorFormBeans[1].sourceType" value="social" />
+    <input type="hidden" name="claimContributorFormBeans[1].invitationSentDate" value="02/30/2013" />
+    <input type="hidden" name="claimContributorFormBeans[1].invitationSentDateSort" value="20130230" />
+
+    <input type="hidden" name="claimContributorFormBeans[2].id" value="boomer.bunson@gmail.com" />
+    <input type="hidden" name="claimContributorFormBeans[2].email" value="boomer.bunson@gmail.com" />
+    <input type="hidden" name="claimContributorFormBeans[2].firstName" value="Boomerang" />
+    <input type="hidden" name="claimContributorFormBeans[2].lastName" value="Bunson" />
+    <input type="hidden" name="claimContributorFormBeans[2].contribType" value="other" />
+    <input type="hidden" name="claimContributorFormBeans[2].sourceType" value="other" />
+    <input type="hidden" name="claimContributorFormBeans[2].invitationSentDate" value="" />
+    <input type="hidden" name="claimContributorFormBeans[2].invitationSentDateSort" value="" />
+
+    <input type="hidden" name="claimContributorFormBeans[3].id" value="666" />
+    <input type="hidden" name="claimContributorFormBeans[3].countryCode" value="us" />
+    <input type="hidden" name="claimContributorFormBeans[3].countryName" value="United States" />
+    <input type="hidden" name="claimContributorFormBeans[3].firstName" value="Zed" />
+    <input type="hidden" name="claimContributorFormBeans[3].lastName" value="Zoot" />
+    <input type="hidden" name="claimContributorFormBeans[3].orgName" value="Some Org." />
+    <input type="hidden" name="claimContributorFormBeans[3].departmentName" value="Some Dept." />
+    <input type="hidden" name="claimContributorFormBeans[3].jobName" value="Some Job" />
+    <input type="hidden" name="claimContributorFormBeans[3].contribType" value="preselected" />
+    <input type="hidden" name="claimContributorFormBeans[3].sourceType" value="team" />
+
+
+    <!-- PURL only, the set of pre-selected filters (Teams) -->
+    <textarea name="contributorTeamsSearchFilters" style="display:none">
+    {
+        "name":"Search by Recipient's Team",
+        "instruction":"Select Team",
+        "filters":[
+            {"type":"orgUnit", "typeName":"Team", "id":1234, "name":"Super long org name that never stops"},
+            {"type":"orgUnit", "typeName":"Team", "id":2345, "name":"Org Unit 51"},
+            {"type":"orgUnit", "typeName":"Team", "id":3456, "name":"Yet another Org/Node"},
+            {"type":"orgUnit", "typeName":"Team", "id":4576, "name":"Last Org/Node"}
+        ]
+    }
+    </textarea>
+
+    <!--
+        ERRORS
+        - these will be passed on into the display below
+        - must have class 'errors'
+    -->
+    <div class="error">
+        <h4>The following errors occurred:</h4>
+        <ul>
+            <li>Recipient must be selected</li>
+            <li>Date for recipient send is not a date. Date must follow the format MM/DD/YYYY.</li>
+        </ul>
+    </div>
+
+    <!--
+        custom form elements outside of standard
+        - get injected into user-interface matching based on ID
+        - each child element's ID will be used to match sendForm elements data-form-placeholder-id
+        - contents of dataForm elements will replace matching sendForm elements
+    -->
+    <div class="customFormContent" style="display:none">
+
+        <input type="text" name="customTextInput" id="customTextInputHtml" value="" />
+        <input type="checkbox" name="customCheckbox" id="customCheckboxHtml" checked />
+
+        <div id="customRadioGroupHtml" class="control-group">
+            <div class="controls">
+                <label class="radio" for="customRadioGroupA">
+                    <input type="radio" name="customRadioGroup" id="customRadioGroupA" value="a" checked />
+                    Custom Radio Input A
+                </label>
+
+                <label class="radio" for="customRadioGroupB">
+                    <input type="radio" name="customRadioGroup" id="customRadioGroupB" value="b" />
+                    Custom Radio Input B
+                </label>
+            </div>
+        </div>
+
+        <select name="customSelect" id="customSelectHtml">
+            <option selected="selected" value="">choose one</option>
+            <option value="0">Item A</option>
+            <option value="1">Item B Item B Item B Item B Item B Item B Item B Item B Item B</option>
+        </select>
+
+        <textarea name="customTextarea" id="customTextareaHtml">Some text area text.
+        </textarea>
+
+
+    </div><!-- /.customFormContent -->
+
+</form><!-- /#dataForm -->
+<!-- =============== END - DATA FORM =================== -->
+
+
+<!-- =============== PAGE CONTENT ========================= -->
+<!--
+    IE7 likes the following div and row to have no space between them if they are not dynamically loaded
+    if they are not next to one another you may experience style issues
+-->
+<div id="recognitionPageSendView" class="page-content"><div class="row">
+
+        <div class="span12">
+            <!-- for errors -->
+            <div id="serverErrorsContainer" class="alert alert-block alert-error" style="display:none">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <!-- dynamic content from dataForm (struts form) -->
+            </div>
+
+
+            <!-- SEND FORM
+                - this is not a struts form (but it uses the struts form @ the top to set its values)
+                - the action of this form will be taken from the #dataForm (struts) above
+                - this is the form displayed to the user
+                - JAVA: only i18n, and custom form input placeholders (if any) in this form
+            -->
+            <form id="sendForm" method="post">
+                <!-- method - populate from struts form -->
+                <input type="hidden" name="method" id="sendFormMethod" />
+
+                <!-- PROMOTION and NODE -->
+                <fieldset class="formSection promotionSection" id="recognitionFieldsetPromotion">
+
+                    <h2>Select Promotion</h2>
+
+                    <div class="control-group validateme"
+                        data-validate-fail-msgs='{"nonempty":"You must select a promotion."}'
+                        data-validate-flags='nonempty'>
+                        <label class="control-label" for="promotionId">
+                            <!-- Select Promotion - big, set above in H2 -->
+                        </label>
+
+                        <div class="controls promoWrapper">
+                            <select id="promotionId" name="promotionId" data-msg-instructions="Start the recognition process by selecting a promotion. This page will populate.">
+                                <option class="defaultOption" selected="selected" value="">Choose one</option>
+                                <!-- dynamic -  once on page load  -->
+                            </select>
+                            <a href="#" class="doViewRules btn" style="display:none">View Rules</a>
+                        </div><!-- /.promoWrapper -->
+
+                        <div class="controls promoChangeWrapper" style="display:none">
+                            <span class="recognitionPromotionName"><!-- dynamic --></span>
+                            <button type="button" id="recognitionButtonChangePromo" class="btn btn-primary">Change</button>
+                            <a href="#" class="doViewRules btn" style="display:none">View Rules</a>
+                        </div><!-- /.promoChangeWrapper -->
+
+                        <div id="rulesModal" class="modal hide fade">
+                            <div class="modal-header">
+                                <button data-dismiss="modal" class="close" type="button">
+                                    <i class="icon-remove"></i>
+                                </button>
+                                <h3>Rules</h3>
+                            </div>
+                            <div class="modal-body">
+                                <!-- dynamic -->
+                            </div>
+                        </div><!-- /#rulesModal -->
+
+                        <div class="promoChangeConfirmDialog" style="display:none">
+                            <p>
+                                <i class="icon-question-sign"></i>
+                                <b>Change the promotion?</b>
+                            </p>
+                            <p>
+                                Your current selections and entries will be lost.
+                            </p>
+                            <p class="tc">
+                                <button id="recognitionButtonChangePromoConfirm" class="btn btn-primary">Yes</button>
+                                <button id="recognitionButtonChangePromoCancel" class="btn">Cancel</button>
+                            </p>
+                        </div><!-- /.promoChangeConfirmDialog -->
+                    </div>
+
+                    <div class="control-group nodeWrapper validateme" style="display:none"
+                        data-validate-fail-msgs='{"nonempty":"You must select a node."}'
+                        data-validate-flags='nonempty' >
+
+                        <h4>
+                            Select Org Unit for Reporting
+                        </h4>
+
+                        <div class="controls nodeControls">
+                            <select id="nodeId" name="nodeId" data-msg-instructions="A node selection is also necessary for this form to populate." >
+                                <option class="defaultOption" selected="selected" value="">Choose one</option>
+                                <!-- dynamic - on promo change  -->
+                            </select>
+                        </div><!-- /.nodeControls -->
+
+                        <div class="controls nodeChangeWrapper" style="display:none">
+                            <span class="recognitionNodeName"><!-- dynamic --></span>
+                            <button type="button" id="recognitionButtonChangeNode" class="btn btn-primary">Change</button>
+                        </div><!-- /.promoChangeWrapper -->
+
+                        <div class="nodeChangeConfirmDialog" style="display:none">
+                            <p>
+                                <i class="icon-question-sign"></i>
+                                <b>Change the node?</b>
+                            </p>
+                            <p>
+                                Your current recipient selection(s) will be lost.
+                            </p>
+                            <p class="tc">
+                                <button id="recognitionButtonChangeNodeConfirm" class="btn btn-primary">Yes</button>
+                                <button id="recognitionButtonChangeNodeCancel" class="btn">Cancel</button>
+                            </p>
+                        </div><!-- /.nodeChangeConfirmDialog -->
+
+                    </div><!-- /.nodeWrapper -->
+
+                    <div class="alert alert-error generalPromoNodeError" style="display:none">
+                        <strong><!-- dynamic --></strong>
+                        <span><!-- dynamic --></span>
+                    </div><!-- /.generalPromoNodeError -->
+
+                </fieldset><!-- /#recognitionFieldsetPromotion -->
+                <!-- END PROMOTION and NODE -->
+
+
+                <!-- TEAM NAME (Nomination Only) -->
+                <fieldset class="formSection teamSection" id="recognitionFieldsetTeam" style="display:none">
+                    <div class="control-group validateme"
+                        data-validate-flags='nonempty,maxlength'
+                        data-validate-fail-msgs='{"nonempty":"Please enter a team name.","maxlength":"Your team name is limited to 40 characters"}'
+                        data-validate-max-length="40">
+                        <label for="teamName" class="control-label">Team Name</label>
+                        <div class="controls">
+                            <!-- placeholder -->
+                            <input type="text" value="" id="teamName" name="teamName">
+                        </div>
+                    </div>
+                </fieldset><!-- /#recognitionFieldsetCopies -->
+
+
+                <!-- PARTICIPANT SEARCH -->
+                <fieldset class="formSection participantSearchSection" id="recognitionFieldsetParticipantSearch" style="display:none">
+                    <h2 class="findRecipientTitle" data-purl-title="Find Recipient">Find Recipients</h2>
+                    <!--
+                        Participant search view Element
+                        - data-search-types: defines the dropdowns and autocompletes
+                        - data-search-params: defines extra static parameters to send with autocomp and participant requests
+                        - data-autocomp-delay: how long to wait after key entry to query server
+                        - data-autocomp-min-chars: min num chars before querying server
+                        - data-search-url: override search json provider (usually needed)
+                        - data-select-mode: 'single' OR 'multiple' select behavior
+                        - data-msg-select-txt: link to select (optional)
+                        - data-msg-selected-txt: text to show something is selected (optional)
+                    -->
+                    <div class="" id="participantSearchView" style="display:none"
+                        data-search-types='[{"id":"lastName","name":"Last Name"},{"id":"firstName","name":"First Name"},{"id":"location","name":"Location"},{"id":"jobTitle","name":"Job Title"},{"id":"department","name":"Department"}]'
+                        data-search-params='{"extraKey":"extraValue","anotherKey":"some value"}'
+                        data-autocomp-delay="500"
+                        data-autocomp-min-chars="2"
+                        data-autocomp-url="ajax/participantSearch_autocomp_firstName.json"
+                        data-search-url="ajax/participantSearchResults_sendRecognition.json"
+                        data-select-mode="multiple"
+                        data-msg-select-txt="add"
+                        data-msg-selected-txt="<i class='icon icon-ok'></i>"
+                        data-msg-validation="You must add a recipient."
+                        data-visibility-controls="hideOnly">
+                        <!-- added by view -->
+                    </div>
+                    <div class="controls addRecipientsWrapper" style="display:none">
+                        <span class="recipientInfo"><!-- dynamic --></span>
+                        <button id="recognitionButtonShowRecipientSearch" class="btn btn-primary" data-purl-title="Add Recipient">
+                            Add Recipients
+                        </button>
+                    </div>
+                </fieldset><!-- /#recognitionFieldsetParticipantSearch -->
+
+
+                <!-- RECIPIENT(s) -->
+                <fieldset class="formSection recipientsSection" id="recognitionFieldsetRecipients" style="display:none">
+                    <div class="well container-splitter participantCollectionViewWrapper"
+                        data-msg-validation-over-budget="Over budget, please reduce points usage." >
+
+                        <input type="hidden" name="paxCount" value="0" class="participantCount" />
+
+                        <h3 class="selectRecipientTitle" data-purl-title="Selected Recipient">Selected Recipients</h3>
+
+                        <div class="recipCount" style="display:none">
+                            <b class="num"></b>/<b class="den"></b>
+                            <i class="icon icon-user" alt="team members"></i>
+                        </div>
+
+                        <!-- Hidden unless calc needs it -->
+                        <!-- <a id="recogCalcPayoutTableLink" class="recogCalcPayoutTableLink" href="#" style="display:none">View Payout Grid</a>  -->
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="participant">Recipient</th>
+                                    <th data-msg-points-range="Award Range"
+                                        data-msg-points-fixed="Award"
+                                        data-msg-levels="Award Level"
+                                        data-msg-calculated="Award"
+                                        class="award"><!-- dynamic --></th>
+                                    <th class="calcDeduction">Calculated Budget Deduction</th>
+                                    <th class="remove">Remove</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="recipientsView"
+                                class="participantCollectionView"
+                                data-msg-empty="You have not added anyone."
+                                data-hide-on-empty="false">
+                            </tbody>
+                        </table>
+
+                        <div class="budgetDeduction">
+                            <h3>Budget Deduction</h3>
+                            <div class="progress">
+                                <div class="bar" style="width: 0%;"></div>
+                            </div>
+                            <div class="totals clearfix">
+                                <div class="budgetMin">0</div>
+                                <div class="budgetMax"></div>
+                            </div>
+                            <p class="discrepancyWarning" style="display:none">
+                                <small><i>Budget deduction amounts may not add up due to rounding</i></small>
+                            </p>
+                        </div>
+
+                        <div id="sameForAllTipTpl" class="sameForAllTip" style="display:none">
+                            <a href="#">same for all<br>recipients</a>
+                        </div><!-- /#sameForAllTipTpl -->
+
+                        <div id="levelMerchModal" class="modal-stack container hide fade" data-y-offset="adjust">
+                            <div class="modal-header">
+                                <button data-dismiss="modal" class="close" type="button"><i class="icon-remove"></i></button>
+                                <h3>Browse Awards</h3>
+                            </div>
+                            <div class="modal-body">
+                                <!-- dynamic -->
+                            </div>
+                            <!--div class="modal-footer">
+                                <a data-dismiss="modal" class="btn" href="#">Close</a>
+                                <a data-dismiss="modal" class="btn btn-primary" href="#">Save changes</a>
+                            </div-->
+                        </div><!-- /.levelMerchModal -->
+
+                        <div class="maxRecipientsExceededMsg" style="display:none">
+                            <i class="icon-warning-sign"></i>
+                            Maximum of {{max}} team members can be selected.
+                        </div>
+
+                    </div><!-- /.participantCollectionViewWrapper -->
+                </fieldset><!-- /#recognitionFieldsetRecipients -->
+
+                <!-- ECARDS -->
+                <fieldset class="formSection ecardsSection" id="recognitionFieldsetECards" style="display:none">
+                    <h2>Select an eCard</h2>
+
+                    <div id="drawToolShell">
+                        <!-- dynamice - draw tool widget -->
+                    </div>
+
+                    <!-- card types: none|upload|drawing|eCard
+                    <input type="hidden" name="cardType" value="drawing" />
+                    <input type="hidden" name="eCardId" value="123" />
+                    <input type="hidden" name="cardUrl" value="http://placehold.it/322x322" />
+                    <input type="hidden" name="cardData" value="datadatadata" />-->
+
+                    <!-- dynamic - backbone view -->
+                </fieldset><!-- /#recognitionFieldsetECards -->
+
+                <!-- BEHAVIOR -->
+                <fieldset class="formSection behaviorSection" id="recognitionFieldsetBehavior" style="display:none">
+                    <h2>Tell Us Why</h2>
+
+                    <div class="control-group badgesSelector validateme"
+                    data-no-badge-json='{"id":null,"name":"Select a Behavior","iconClass":" ","contClass":"noBadgeContent"}'
+                        data-validate-fail-msgs='{"nonempty":"You must select a behavior."}'
+                        data-validate-flags='nonempty'>
+                        <div class="btn-group">
+                            <a class="btn dropdown-toggle badgeBtn" data-toggle="dropdown" href="#">
+                                <!-- dyn -->
+                            </a>
+                            <ul class="dropdown-menu badgeItems">
+                                <!-- dropdown menu links -->
+                            </ul>
+                        </div>
+                        <!-- this input is styled to be "hidden", but can't be type="hidden" simply because the validateme function can't find it to attach the qtip -->
+                        <input type="text" id="selectedBehavior" name="selectedBehavior" value="" />
+                    </div><!-- /.control-group.badgesSelector -->
+
+                    <script id="badgeBtnTpl" type="text/x-handlebars-template">
+                        <span class="badgeBtnContent {{contClass}}">
+                            {{#if img}}<img src="{{img}}" alt="{{name}}">{{/if}}
+                            {{#if iconClass}}<i class="{{iconClass}}"></i>{{/if}}
+                            <span>{{name}}</span>
+                        </span>
+                        <i class="icon-caret-down badgeBtnCaret"></i>
+                    </script><!-- /#badgeBtnTpl -->
+
+                    <script id="badgeItemTpl" type="text/x-handlebars-template">
+                        <li class="badgeItem">
+                            <a href="#" data-badge-id="{{id}}">
+                                {{#if img}}<img src="{{img}}" alt="{{name}}">{{/if}}
+                                {{#if iconClass}}<i class="{{iconClass}}"></i>{{/if}}
+                                {{name}}
+                            </a>
+                        </li>
+                    </script><!-- /#badgeItemTpl -->
+
+                </fieldset><!-- /#recognitionFieldsetBehavior -->
+
+                <!-- MESSAGE -->
+                <fieldset class="formSection messageSection validateme" id="recognitionFieldsetMessage" style="display:none" data-validate-flags='nonempty,maxlength' data-validate-max-length="2000" data-validate-fail-msgs='{"nonempty":"You must enter comments.","maxlength":"Your comments are limited to 2000 characters"}'>
+                    <label for="comments">Comments</label>
+                    <textarea name="comments" id="comments" data-max-chars="2000" class="richtext"></textarea>
+                </fieldset><!-- /#recognitionFieldsetMessage -->
+
+                <!-- COPIES -->
+                <fieldset class="formSection copiesSection" id="recognitionFieldsetCopies" style="display:none">
+                    <h2>Send Copies</h2>
+                    <div  class="control-group copyManagerWrapper">
+                        <div class="controls">
+                            <label class="checkbox" for="sendCopyToManager">
+                                <!-- placeholder -->
+                                <input type="checkbox" name="sendCopyToManager" id="sendCopyToManager" />
+                                Send copy to manager
+                            </label>
+                        </div>
+                    </div>
+                    <div  class="control-group copyMeWrapper">
+                        <div class="controls">
+                            <label class="checkbox" for="sendCopyToMe">
+                                <input type="checkbox" name="sendCopyToMe" id="sendCopyToMe" />
+                                Send copy to me
+                            </label>
+                        </div>
+                    </div>
+                    <div  class="control-group form-horizontal validateme  copyOthersWrapper"
+                        data-validate-fail-msgs='{"email":"Please enter one or more email addresses separated by commas."}' data-validate-flags='email' >
+                        <label class="control-label checkbox" for="sendCopyToOthers">Send copy to others:</label>
+                        <div class="controls">
+                            <input type="text" class="" name="sendCopyToOthers" id="sendCopyToOthers" />
+                        </div>
+                    </div>
+                </fieldset><!-- /#recognitionFieldsetCopies -->
+
+                <!-- DELIVER DATE -->
+                <fieldset class="formSection deliverDateSection" id="recognitionFieldsetDeliverDate" style="display:none">
+                    <h2>Deliver On (optional)</h2>
+                    <div class="control-group">
+                        <label class="control-label">Calendar is based on your local time zone.</label>
+                        <div class="controls">
+                            <!--
+                                NOTE: JSP set data-date-format AND data-date-startdate
+                            -->
+                            <span class="input-append datepickerTrigger"
+                                data-date-format="mm/dd/yyyy"
+                                data-date-language="zh-CN"
+                                data-date-startdate="09/24/2012"
+                                data-date-autoclose="true">
+                                <input type="text" class="date datepickerInp" name="recipientSendDate" readonly="readonly"><button class="btn datepickerBtn"><i class="icon-calendar"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </fieldset><!-- /#recognitionFieldsetDeliverDate -->
+
+                <!-- DELIVER DATE PURL -->
+                <fieldset class="formSection deliverDatePurlSection form-horizontal" id="recognitionFieldsetDeliverDatePurl" style="display:none">
+                    <h2>Set Dates</h2>
+                    <div>
+                        <p>
+                            Select the date your recognition PURL will be sent to the recipient.
+                            Contributor access will close the day prior.
+                        </p>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Contributions Open</label>
+                        <div class="controls">
+                            <strong id="contributionsOpen" class="contributionsDate">(today)</strong>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Contributions Close</label>
+                        <div class="controls">
+                            <strong id="contributionsClose" class="contributionsDate"><!-- dynamic --></strong>
+                        </div>
+                    </div>
+
+                    <div class="control-group validateme"
+                        data-validate-fail-msgs='{"nonempty":"You must select delivery date."}'
+                        data-validate-flags='nonempty' >
+                        <label for="recipientSendDatePurl" class="control-label">PURL Sent to Recipient</label>
+                        <div class="controls">
+                            <!--
+                                NOTE: JSP set data-date-format AND data-date-startdate
+                            -->
+                            <span class="input-append datepickerTrigger"
+                                data-date-format="mm/dd/yyyy"
+                                data-date-language="fr"
+                                data-date-startdate="09/24/2012"
+                                data-date-autoclose="true">
+                                <input type="text" class="date datepickerInp"
+                                    name="recipientSendDate"
+                                    id="recipientSendDatePurl"
+                                    readonly="readonly"><button class="btn datepickerBtn"><i class="icon-calendar"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </fieldset><!-- /#recognitionFieldsetDeliverDatePurl -->
+
+
+                <!-- CUSTOM FORM EXAMPLE
+                    (data form elements passed through to this form)
+
+                    - .customSection for identifying this as a custom section
+                    - id must match a json <id>Active flag for a promotion setup to show a cust. sec.
+                -->
+                <fieldset class="formSection myNewSection customSection" id="myNewSection" style="display:none"
+                    data-custom-section-id="myNewSection">
+                    <h2>My New Section (custom)</h2>
+                    <div class="control-group validateme"
+                        data-validate-fail-msgs='{"nonempty":"<b>Must enter custom text</b><br>use class validateme along with data-validate-fail-msgs and data-validate-flags (ask Joel or Aaron)"}'
+                        data-validate-flags='nonempty' >
+                        <label class="control-label" for="customTextInputHtml">Custom Text Input</label>
+                        <div class="controls">
+                            <!-- placeholder -->
+                            <i data-form-placeholder-id="customTextInputHtml"></i>
+                        </div>
+                    </div>
+
+                    <div  class="control-group">
+                        <div class="controls">
+                            <label class="checkbox" for="customCheckboxHtml">
+                                <!-- placeholder -->
+                                <i data-form-placeholder-id="customCheckboxHtml"></i>
+                                Custom Checkbox Input
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- formatting included in data form (dynamic labels) -->
+                    <i data-form-placeholder-id="customRadioGroupHtml"></i>
+
+                    <div id="customSelectHtml" class="control-group">
+                        <label class="control-label" for="customSelectHtml">Custom Select</label>
+                        <div class="controls">
+                            <!-- placeholder -->
+                            <i data-form-placeholder-id="customSelectHtml"></i>
+                        </div>
+                    </div>
+
+                    <div id="customTextareaHtml" class="control-group">
+                        <label class="control-label" for="customTextareaHtml">Custom Textarea</label>
+                        <div class="controls">
+                            <!-- placeholder -->
+                            <i data-form-placeholder-id="customTextareaHtml"></i>
+                        </div>
+                    </div>
+
+                </fieldset><!-- /#recognitionFieldsetCustom -->
+
+
+                <!-- ANNIVERSARY (CELEBRATION)-->
+                <fieldset class="formSection anniversaryCelebrateSection" id="recognitionFieldsetAnniversaryCelebrate" style="display:none">
+                    <h2>Celebration Anniversary</h2>
+
+                    <div class="annivDateYears">
+                        <div class="annivDateYears control-group validateme"
+                            data-validate-fail-msgs='{"nonempty":"You must enter an anniversary.","numeric":"Anniversary can only contain numbers."}'
+                            data-validate-flags='nonempty,numeric'>
+                            <label class="control-label" for="anniversaryYears">Anniversary Number of Years</label>
+                            <div class="controls">
+                                <input type="text" name="anniversaryYears" id="anniversaryYears" maxlength="5" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="annivDateDays">
+                        <div class="annivDateDays control-group validateme"
+                            data-validate-fail-msgs='{"nonempty":"You must enter an anniversary.","numeric":"Anniversary can only contain numbers."}'
+                            data-validate-flags='nonempty,numeric'>
+                            <label class="control-label" for="anniversaryDays">Anniversary Number of Days</label>
+                            <div class="controls">
+                                <input type="text" name="anniversaryDays" id="anniversaryDays" maxlength="5" />
+                            </div>
+                        </div>
+                    </div>
+                </fieldset><!-- /#recognitionFieldsetAnniversaryCelebrate -->
+
+
+                <!-- PRIVATE RECOGNITION -->
+                <fieldset class="formSection recognitionPrivateSection" id="recognitionFieldsetPrivate" style="display:none">
+                    <h2>Private Recognition</h2>
+
+                    <div  class="control-group privateRec">
+                        <div class="controls">
+                            <label class="checkbox" for="makeRecPrivate">
+                                <input type="checkbox" name="makeRecPrivate" id="makeRecPrivate" />
+                                Make Recognition Private
+                            </label>
+                        </div>
+                    </div>
+                </fieldset><!-- /#recognitionFieldsetPrivate -->
+
+
+                <!-- CONTRIBUTORS (PURL)
+                    NOTE: must be last item before buttons
+                -->
+                <fieldset class="formSection contributorsSection" id="recognitionFieldsetContributors" style="display:none">
+                    <div id="contributorsView">
+                        <!-- dynamic -->
+                    </div>
+                </fieldset><!-- /#recognitionFieldsetContributors -->
+
+
+                <!-- ACTIONS -->
+                <fieldset class="form-actions formSection actionsSection pullBottomUp" id="recognitionFieldsetActions" style="display:none">
+
+                    <button class="btn"
+                        type="button"
+                        value="recognitionButtonCancel"
+                        name="button"
+                        id="recognitionButtonCancel"
+                        data-url="layout.html">
+                        Cancel
+                    </button>
+
+                    <button class="btn purlBtn backBtn" style="display:none">
+                        &laquo; Back
+                    </button>
+                    <button class="btn btn-primary purlBtn nextBtn" style="display:none">
+                        Next &raquo;
+                    </button>
+
+                    <button class="btn btn-primary"
+                        value="recognitionButtonPreview"
+                        name="button"
+                        id="recognitionButtonPreview"
+                        type="submit"
+                        style="display:none">
+                        Preview
+                    </button>
+
+                     <button class="btn btn-primary"
+                        value="recognitionButtonSendPurl"
+                        name="button"
+                        id="recognitionButtonSendPurl"
+                        type="submit"
+                        style="display:none">
+                        Send
+                    </button>
+
+                    <div class="recognitionSendCancelDialog" style="display:none">
+                        <p>
+                            <i class="icon-question-sign"></i>
+                            <b>Cancel Send Recognition?</b>
+                        </p>
+                        <p>
+                            All changes will be discarded.
+                        </p>
+                        <p class="tc">
+                            <button type="submit" id="recognitionSendCancelDialogConfirm" class="btn btn-primary">Yes</button>
+                            <button type="submit" id="recognitionSendCancelDialogCancel" class="btn">No</button>
+                        </p>
+                    </div>
+
+                </fieldset><!-- /recognitionFieldsetActions -->
+
+            </form><!-- /#sendForm -->
+
+        </div>
+
+    </div><!-- /.row -->
+</div><!-- /#recognitionPageSendView -->
+
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function(){
+        var formSetup, rpsv;
+
+        // BOOTSTRAPPED JSON DATA - render this dynamically in the JSP
+        // JSON object with valid nodes and promotion + form setup for each promo
+        // JAVA/JSP: generate this array of 'form setups' for different promos
+        formSetup = {
+            //list of promotions + form options
+            promotions: [
+                {
+                    "id":12345555,
+                    "name":"No Awards Promo",
+                    "pageTitle":"Page Title From promotions json",
+                    "awardType":"none", // none|pointsRange|pointsFixed|levels|calculated
+                    "behaviors":[
+                        {
+                            "id":                   "23",
+                            "type":                 "progress",
+                            "name":                 "1st Earned Progress Badge Name 1 2a",
+                            "howToEarnText":        "1 How to earn badge",
+                            "img":                  "img/badges/above_beyond_sm.png"
+                        },
+                        {
+                            "id":                   "24",
+                            "type":                 "progress",
+                            "name":                 "1st Earned Progress Badge Name 2 2a",
+                            "howToEarnText":        "2 How to earn badge",
+                            "img":                  "img/badges/birthday_sm.png"
+                        },
+                        {
+                            "id":                   "25",
+                            "type":                 "progress",
+                            "name":                 "1stProgress Badge Name 3 2b",
+                            "howToEarnText":        "3 How to earn badge",
+                            "img":                  "img/badges/bronze_sm.png"
+                        },
+                        {
+                            "id":                   "26",
+                            "type":                 "progress",
+                            "name":                 "1st Progress Badge Name 4 2c",
+                            "howToEarnText":        "4 How to earn badge",
+                            "img":                  "img/badges/cold_call_sm.png"
+                        }
+                    ],
+                    "rulesText":"<p>I am some rules text</p><p><b>I am bold</b></p>.",
+                    "drawToolSettings": {
+                        "canUpload": true,
+                        "canDraw": true,
+                        "sizes": [4, 8, 16, 32],
+                        "colors":[
+                            { "hex" : "000000", "title" : "black" },
+                            { "hex" : "ffffff", "title" : "white" },
+                            { "hex" : "676767", "title" : "dark gray" },
+                            { "hex" : "ADADAD", "title" : "gray" },
+                            { "hex" : "E9E9E9", "title" : "light gray" },
+                            { "hex" : "960000", "title" : "burgundy" },
+                            { "hex" : "F50008", "title" : "red" },
+                            { "hex" : "FB5A15", "title" : "orange" },
+                            { "hex" : "FCA605", "title" : "tangerine" },
+                            { "hex" : "FEE150", "title" : "gold" },
+                            { "hex" : "F8F338", "title" : "yellow" },
+                            { "hex" : "67CF31", "title" : "green" },
+                            { "hex" : "26821F", "title" : "grass" },
+                            { "hex" : "0B4E1B", "title" : "pine" },
+                            { "hex" : "73B592", "title" : "seafoam" },
+                            { "hex" : "2AA3E5", "title" : "sky" },
+                            { "hex" : "1747BE", "title" : "blue" },
+                            { "hex" : "0B2666", "title" : "navy" },
+                            { "hex" : "5B3999", "title" : "indigo" },
+                            { "hex" : "AB4BCB", "title" : "purple" },
+                            { "hex" : "FB77A9", "title" : "pink" },
+                            { "hex" : "664629", "title" : "brown" },
+                            { "hex" : "B28E48", "title" : "tan" },
+                            { "hex" : "F2D992", "title" : "sand" }
+                        ]
+                    },
+                    "eCards":[
+                        {
+                            "id":123,
+                            "name":"Certificate (cannot edit)",
+                            "smallImage":"http://lorempixel.com/144/144/people/2/Certificate",
+                            "largeImage":"http://lorempixel.com/432/432/people/2/Certificate",
+                            "canEdit":false, // can we draw on this eCard?
+                            "cardType": "cert"
+                        },
+                        {
+                            "id":1234,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://placehold.it/144x144",
+                            "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":12345,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://lorempixel.com/144/144/business/2/Card 02",
+                            "largeImage":"http://lorempixel.com/432/432/business/2/Card 02",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":12543,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://lorempixel.com/144/144/animals/1/Card 03",
+                            "largeImage":"http://lorempixel.com/432/432/animals/1/Card 03",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":11234,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://lorempixel.com/144/144/animals/2/Card 04",
+                            "largeImage":"http://lorempixel.com/432/432/animals/2/Card 04",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":11876,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://lorempixel.com/144/144/animals/3/Card 05",
+                            "largeImage":"http://lorempixel.com/432/432/animals/3/Card 05",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":11548,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://lorempixel.com/144/144/animals/4/Card 06",
+                            "largeImage":"http://lorempixel.com/432/432/animals/4/Card 06",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":11468,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://lorempixel.com/144/144/abstract/1/Card 07 no edit",
+                            "largeImage":"http://lorempixel.com/432/432/abstract/1/Card 07 no edit",
+                            "canEdit":false, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":11945,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://lorempixel.com/144/144/abstract/2/Card 08",
+                            "largeImage":"http://lorempixel.com/432/432/abstract/2/Card 08",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":11542,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://lorempixel.com/144/144/abstract/3/Card 09",
+                            "largeImage":"http://lorempixel.com/432/432/abstract/3/Card 09",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":123,
+                            "name":"Certificate (cannot edit)",
+                            "smallImage":"http://lorempixel.com/144/144/people/2/Certificate",
+                            "largeImage":"http://lorempixel.com/432/432/people/2/Certificate",
+                            "canEdit":false, // can we draw on this eCard?
+                            "cardType": "cert"
+                        },
+                        {
+                            "id":1234,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://placehold.it/144x144",
+                            "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":12345,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://lorempixel.com/144/144/business/2/Card 02",
+                            "largeImage":"http://lorempixel.com/432/432/business/2/Card 02",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":12543,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://lorempixel.com/144/144/animals/1/Card 03",
+                            "largeImage":"http://lorempixel.com/432/432/animals/1/Card 03",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":11234,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://lorempixel.com/144/144/animals/2/Card 04",
+                            "largeImage":"http://lorempixel.com/432/432/animals/2/Card 04",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":11876,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://lorempixel.com/144/144/animals/3/Card 05",
+                            "largeImage":"http://lorempixel.com/432/432/animals/3/Card 05",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":11548,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://lorempixel.com/144/144/animals/4/Card 06",
+                            "largeImage":"http://lorempixel.com/432/432/animals/4/Card 06",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":11468,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://lorempixel.com/144/144/abstract/1/Card 07 no edit",
+                            "largeImage":"http://lorempixel.com/432/432/abstract/1/Card 07 no edit",
+                            "canEdit":false, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":11945,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://lorempixel.com/144/144/abstract/2/Card 08",
+                            "largeImage":"http://lorempixel.com/432/432/abstract/2/Card 08",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":11542,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://lorempixel.com/144/144/abstract/3/Card 09",
+                            "largeImage":"http://lorempixel.com/432/432/abstract/3/Card 09",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":123,
+                            "name":"Certificate (cannot edit)",
+                            "smallImage":"http://lorempixel.com/144/144/people/2/Certificate",
+                            "largeImage":"http://lorempixel.com/432/432/people/2/Certificate",
+                            "canEdit":false, // can we draw on this eCard?
+                            "cardType": "cert"
+                        },
+                        {
+                            "id":1234,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://placehold.it/144x144",
+                            "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":12345,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://lorempixel.com/144/144/business/2/Card 02",
+                            "largeImage":"http://lorempixel.com/432/432/business/2/Card 02",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":12543,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://lorempixel.com/144/144/animals/1/Card 03",
+                            "largeImage":"http://lorempixel.com/432/432/animals/1/Card 03",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":11234,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://lorempixel.com/144/144/animals/2/Card 04",
+                            "largeImage":"http://lorempixel.com/432/432/animals/2/Card 04",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":11876,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://lorempixel.com/144/144/animals/3/Card 05",
+                            "largeImage":"http://lorempixel.com/432/432/animals/3/Card 05",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":11548,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://lorempixel.com/144/144/animals/4/Card 06",
+                            "largeImage":"http://lorempixel.com/432/432/animals/4/Card 06",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":11468,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://lorempixel.com/144/144/abstract/1/Card 07 no edit",
+                            "largeImage":"http://lorempixel.com/432/432/abstract/1/Card 07 no edit",
+                            "canEdit":false, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":11945,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://lorempixel.com/144/144/abstract/2/Card 08",
+                            "largeImage":"http://lorempixel.com/432/432/abstract/2/Card 08",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":11542,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://lorempixel.com/144/144/abstract/3/Card 09",
+                            "largeImage":"http://lorempixel.com/432/432/abstract/3/Card 09",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        }
+                    ],
+                    "promoType": 'none', // none|purl|nomination...
+                    "defaultDeliverDate": "01/01/2013", // today, almost always
+                    "copyManagerAlways":true, // only used if copyManagerActive
+                    //ACTIVE FORM ELEMENTS
+                    "ecardsActive":true,
+                    "behaviorActive":true,
+                    "behaviorRequired":true, // is behavior required
+                    "messageActive":false,
+                    "copyManagerActive":true,
+                    "copyMeActive":true,
+                    "copyOthersActive":true,
+                    "deliverDateActive":true,
+                    "anniversaryCelebrateActive": false,
+                    "anniversaryYears": false,
+                    "recognitionPrivateActive": false,
+                    "contributorsActive":false//PURL ONLY
+                },
+                {
+                    "id":123477777,
+                    "name":"Levels Promo",
+                    "pageTitle":"Levels Promo Page Title",
+                    "awardType":"levels", // none|pointsRange|pointsFixed|levels|calculated
+                    "awardLevels": {
+                        "us":[
+                            {"id":45,"name":"Level 1","points":50},
+                            {"id":77,"name":"Level 2","points":500},
+                            {"id":23,"name":"Level 3","points":100}
+                        ],
+                        "de":[
+                            {"id":10,"name":"Zee Level 1","points":75},
+                            {"id":123,"name":"Ein Level 2","points":200}
+                        ]
+                    },
+                    "behaviors":[
+                        {
+                            "id":                   "23",
+                            "type":                 "progress",
+                            "name":                 "2nd Earned Progress Badge Name 1 2a",
+                            "howToEarnText":        "1 How to earn badge",
+                            "img":                  "img/badges/above_beyond_sm.png"
+                        },
+                        {
+                            "id":                   "24",
+                            "type":                 "progress",
+                            "name":                 "2nd Earned Progress Badge Name 2 2a",
+                            "howToEarnText":        "2 How to earn badge",
+                            "img":                  "img/badges/birthday_sm.png"
+                        },
+                        {
+                            "id":                   "25",
+                            "type":                 "progress",
+                            "name":                 "2nd Progress Badge Name 3 2b",
+                            "howToEarnText":        "3 How to earn badge",
+                            "img":                  "img/badges/bronze_sm.png"
+                        },
+                        {
+                            "id":                   "26",
+                            "type":                 "progress",
+                            "name":                 "2nd Progress Badge Name 4 2c",
+                            "howToEarnText":        "4 How to earn badge",
+                            "img":                  "img/badges/cold_call_sm.png"
+                        }
+                    ],
+                    "drawToolSettings": {
+                        "canUpload": false,
+                        "canDraw": true,
+                        "sizes": [4, 8, 16, 32],
+                        "colors":[
+                            { "hex" : "000000", "title" : "black" },
+                            { "hex" : "ffffff", "title" : "white" },
+                            { "hex" : "676767", "title" : "dark gray" },
+                            { "hex" : "ADADAD", "title" : "gray" },
+                            { "hex" : "E9E9E9", "title" : "light gray" },
+                            { "hex" : "960000", "title" : "burgundy" },
+                            { "hex" : "F50008", "title" : "red" },
+                            { "hex" : "FB5A15", "title" : "orange" },
+                            { "hex" : "FCA605", "title" : "tangerine" },
+                            { "hex" : "FEE150", "title" : "gold" },
+                            { "hex" : "F8F338", "title" : "yellow" },
+                            { "hex" : "67CF31", "title" : "green" },
+                            { "hex" : "26821F", "title" : "grass" },
+                            { "hex" : "0B4E1B", "title" : "pine" },
+                            { "hex" : "73B592", "title" : "seafoam" },
+                            { "hex" : "2AA3E5", "title" : "sky" },
+                            { "hex" : "1747BE", "title" : "blue" },
+                            { "hex" : "0B2666", "title" : "navy" },
+                            { "hex" : "5B3999", "title" : "indigo" },
+                            { "hex" : "AB4BCB", "title" : "purple" },
+                            { "hex" : "FB77A9", "title" : "pink" },
+                            { "hex" : "664629", "title" : "brown" },
+                            { "hex" : "B28E48", "title" : "tan" },
+                            { "hex" : "F2D992", "title" : "sand" }
+                        ]
+                    },
+                    "eCards":[
+                        {
+                            "id":11234,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://placehold.it/104x104",
+                            "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                            "canEdit":false, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":11876,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://placehold.it/105x105",
+                            "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":21876,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://placehold.it/105x105",
+                            "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":31234,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://placehold.it/104x104",
+                            "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                            "canEdit":false, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":41876,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://placehold.it/105x105",
+                            "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":51876,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://placehold.it/105x105",
+                            "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":61234,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://placehold.it/104x104",
+                            "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                            "canEdit":false, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":71876,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://placehold.it/105x105",
+                            "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":81876,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://placehold.it/105x105",
+                            "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":91234,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://placehold.it/104x104",
+                            "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                            "canEdit":false, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":12876,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://placehold.it/105x105",
+                            "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":13876,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://placehold.it/105x105",
+                            "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":14234,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://placehold.it/104x104",
+                            "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                            "canEdit":false, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":15876,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://placehold.it/105x105",
+                            "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":16876,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://placehold.it/105x105",
+                            "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":17234,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://placehold.it/104x104",
+                            "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                            "canEdit":false, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":18876,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://placehold.it/105x105",
+                            "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":19876,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://placehold.it/105x105",
+                            "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        },
+                        {
+                            "id":19876,
+                            "name":"Another eCard Name",
+                            "smallImage":"http://placehold.it/105x105",
+                            "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                            "canEdit":true, // can we draw on this eCard?
+                            "cardType": "card"
+                        }
+                    ],
+                    "promoType": 'none', // none|purl|nomination...
+                    //ACTIVE FORM ELEMENTS
+                    "ecardsActive":true,
+                    "behaviorActive":true,
+                    "behaviorRequired":false, // is behavior required
+                    "messageActive":false,
+                    "copyManagerActive":false,
+                    "copyMeActive":false,
+                    "copyOthersActive":false,
+                    "deliverDateActive":false,
+                    "anniversaryCelebrateActive": true,
+                    "anniversaryYears": false,
+                    "recognitionPrivateActive": true,
+                    "contributorsActive":false //PURL ONLY
+                },
+                {
+                    "id":12345,
+                    "name":"Points Range Promo",
+                    "pageTitle":"Points Range Promo Page Title",
+                    "awardType":"pointsRange", // none|pointsRange|pointsFixed|levels|calculated
+                    "awardMin":1,
+                    "awardMax":100,
+                    "behaviors":[
+                        {
+                            "id":                   "23",
+                            "type":                 "progress",
+                            "name":                 "3rd Earned Progress Badge Name 1 2a",
+                            "howToEarnText":        "1 How to earn badge",
+                            "img":                  "img/badges/above_beyond_sm.png"
+                        },
+                        {
+                            "id":                   "24",
+                            "type":                 "progress",
+                            "name":                 "3rd Earned Progress Badge Name 2 2a",
+                            "howToEarnText":        "2 How to earn badge",
+                            "img":                  "img/badges/birthday_sm.png"
+                        },
+                        {
+                            "id":                   "25",
+                            "type":                 "progress",
+                            "name":                 "3rd Progress Badge Name 3 2b",
+                            "howToEarnText":        "3 How to earn badge",
+                            "img":                  "img/badges/bronze_sm.png"
+                        },
+                        {
+                            "id":                   "26",
+                            "type":                 "progress",
+                            "name":                 "3rd Progress Badge Name 4 2c",
+                            "howToEarnText":        "4 How to earn badge",
+                            "img":                  "img/badges/cold_call_sm.png"
+                        }
+                    ],
+                    "promoType": 'none', // none|purl|nomination...
+                    //ACTIVE FORM ELEMENTS
+                    "ecardsActive":false,
+                    "behaviorActive":true,
+                    "messageActive":true,
+                    "copyManagerActive":true,
+                    "copyMeActive":true,
+                    "copyOthersActive":true,
+                    "deliverDateActive":true,
+                    "anniversaryCelebrateActive": false,
+                    "anniversaryYears": false,
+                    "recognitionPrivateActive": false,
+                    "contributorsActive":false,//PURL ONLY
+                    //CUSTOM SECTION hide/show
+                    "myNewSectionActive":true
+                },
+                {
+                    "id":9123459,
+                    "name":"Points Fixed Promo",
+                    "awardType":"pointsFixed", // none|pointsRange|pointsFixed|levels|calculated
+                    "awardFixed":5000,
+                    "behaviors":[
+                        {
+                            "id":                   "23",
+                            "type":                 "progress",
+                            "name":                 "4th Earned Progress Badge Name 1 2a",
+                            "howToEarnText":        "1 How to earn badge",
+                            "img":                  "img/badges/above_beyond_sm.png"
+                        },
+                        {
+                            "id":                   "24",
+                            "type":                 "progress",
+                            "name":                 "4th Earned Progress Badge Name 2 2a",
+                            "howToEarnText":        "2 How to earn badge",
+                            "img":                  "img/badges/birthday_sm.png"
+                        },
+                        {
+                            "id":                   "25",
+                            "type":                 "progress",
+                            "name":                 "4th Progress Badge Name 3 2b",
+                            "howToEarnText":        "3 How to earn badge",
+                            "img":                  "img/badges/bronze_sm.png"
+                        },
+                        {
+                            "id":                   "26",
+                            "type":                 "progress",
+                            "name":                 "4th Progress Badge Name 4 2c",
+                            "howToEarnText":        "4 How to earn badge",
+                            "img":                  "img/badges/cold_call_sm.png"
+                        }
+                    ],
+                    "promoType": 'none', // none|purl|nomination...
+                    //ACTIVE FORM ELEMENTS
+                    "ecardsActive":false,
+                    "behaviorActive":true,
+                    "messageActive":true,
+                    "copyManagerActive":true,
+                    "copyMeActive":true,
+                    "copyOthersActive":true,
+                    "deliverDateActive":true,
+                    "anniversaryCelebrateActive": false,
+                    "anniversaryYears": false,
+                    "recognitionPrivateActive": false,
+                    "contributorsActive":false,//PURL ONLY
+                    //CUSTOM SECTION hide/show
+                    "myNewSectionActive":true
+                },
+                {
+                    "id":55555,
+                    "name":"PURL Promotion",
+                    "awardType":"pointsRange",
+                    "awardMin":100,
+                    "awardMax":2000,
+                    "behaviors":[
+                        {
+                            "id":                   "23",
+                            "type":                 "progress",
+                            "name":                 "5th Earned Progress Badge Name 1 2a",
+                            "howToEarnText":        "1 How to earn badge",
+                            "img":                  "img/badges/above_beyond_sm.png"
+                        },
+                        {
+                            "id":                   "24",
+                            "type":                 "progress",
+                            "name":                 "5th Earned Progress Badge Name 2 2a",
+                            "howToEarnText":        "2 How to earn badge",
+                            "img":                  "img/badges/birthday_sm.png"
+                        },
+                        {
+                            "id":                   "25",
+                            "type":                 "progress",
+                            "name":                 "5th Progress Badge Name 3 2b",
+                            "howToEarnText":        "3 How to earn badge",
+                            "img":                  "img/badges/bronze_sm.png"
+                        },
+                        {
+                            "id":                   "26",
+                            "type":                 "progress",
+                            "name":                 "5th Progress Badge Name 4 2c",
+                            "howToEarnText":        "4 How to earn badge",
+                            "img":                  "img/badges/cold_call_sm.png"
+                        }
+                    ],
+                    "promoType": 'purl', // none|purl|nomination...
+                    //"defaultDeliverDate": "02/02/2013", // today, almost always
+                    //ACTIVE FORM ELEMENTS
+                    "ecardsActive":false,
+                    "behaviorActive":false,
+                    "messageActive":false,
+                    "copyManagerActive":false,
+                    "copyMeActive":true,
+                    "copyOthersActive":false,
+                    "deliverDateActive":false,
+                    "anniversaryCelebrateActive": true,
+                    "anniversaryYears": true,
+                    "recognitionPrivateActive": false,
+                    "contributorsActive":true //PURL ONLY
+                },
+                {
+                    "id":12348888,
+                    "name":"Calc Levels Promo",
+                    "awardType":"calculated", // none|pointsRange|pointsFixed|levels|calculated
+                    "isAwardCalcLevels": true, // disp. levels info
+                    "behaviors":[
+                          {
+                            "id":                   "23",
+                            "type":                 "progress",
+                            "name":                 "6th Earned Progress Badge Name 1 2a",
+                            "howToEarnText":        "1 How to earn badge",
+                            "img":                  "img/badges/above_beyond_sm.png"
+                        },
+                        {
+                            "id":                   "24",
+                            "type":                 "progress",
+                            "name":                 "6th Earned Progress Badge Name 2 2a",
+                            "howToEarnText":        "2 How to earn badge",
+                            "img":                  "img/badges/birthday_sm.png"
+                        },
+                        {
+                            "id":                   "25",
+                            "type":                 "progress",
+                            "name":                 "6th Progress Badge Name 3 2b",
+                            "howToEarnText":        "3 How to earn badge",
+                            "img":                  "img/badges/bronze_sm.png"
+                        },
+                        {
+                            "id":                   "26",
+                            "type":                 "progress",
+                            "name":                 "6th progress Badge Name 4 2c",
+                            "howToEarnText":        "4 How to earn badge",
+                            "img":                  "img/badges/cold_call_sm.png"
+                        }
+
+                    ],
+                    "promoType": 'none', // none|purl|nomination...
+                    //ACTIVE FORM ELEMENTS
+                    "ecardsActive":false,
+                    "behaviorActive":true,
+                    "messageActive":true,
+                    "copyManagerActive":true,
+                    "copyMeActive":true,
+                    "copyOthersActive":true,
+                    "deliverDateActive":true,
+                    "anniversaryCelebrateActive": false,
+                    "anniversaryYears": false,
+                    "recognitionPrivateActive": false,
+                    "contributorsActive":false,//PURL ONLY
+                    //CUSTOM SECTION hide/show
+                    "customSections": [
+                        // will be converted to myNewSectionActive on promo obj.
+                        "myNewSection"
+                    ]
+                },
+                {
+                    "id":95559,
+                    "name":"Nomination Promotion",
+                    "awardType":"pointsRange",
+                    "awardMin":100,
+                    "awardMax":2000,
+                    "behaviors":[
+                        {
+                            "id":                   "23",
+                            "type":                 "progress",
+                            "name":                 "7th Earned Progress Badge Name 1 2a",
+                            "howToEarnText":        "1 How to earn badge",
+                            "img":                  "img/badges/above_beyond_sm.png"
+                        },
+                        {
+                            "id":                   "24",
+                            "type":                 "progress",
+                            "name":                 "7th Earned Progress Badge Name 2 2a",
+                            "howToEarnText":        "2 How to earn badge",
+                            "img":                  "img/badges/birthday_sm.png"
+                        },
+                        {
+                            "id":                   "25",
+                            "type":                 "progress",
+                            "name":                 "7th Progress Badge Name 3 2b",
+                            "howToEarnText":        "3 How to earn badge",
+                            "img":                  "img/badges/bronze_sm.png"
+                        },
+                        {
+                            "id":                   "26",
+                            "type":                 "progress",
+                            "name":                 "7th Progress Badge Name 4 2c",
+                            "howToEarnText":        "4 How to earn badge",
+                            "img":                  "img/badges/cold_call_sm.png"
+                        }
+                    ],
+                    "promoType": 'nomination', // none|purl|nomination...
+                    "maxRecipients":3,
+                    //ACTIVE FORM ELEMENTS
+                    "ecardsActive":false,
+                    "behaviorActive":false,
+                    "messageActive":false,
+                    "copyManagerActive":false,
+                    "copyMeActive":false,
+                    "copyOthersActive":true,
+                    "deliverDateActive":false,
+                    "anniversaryCelebrateActive": false,
+                    "anniversaryYears": false,
+                    "recognitionPrivateActive": false,
+                    "contributorsActive":false,//PURL ONLY
+                    "teamActive":true, //Nomination ONLY
+                    //CUSTOM SECTION hide/show
+                    "myNewSectionActive":true
+                }
+            ],//promotions
+
+            nodes: [
+                {"id":23456,"name":"Node A"},
+                {"id":99456,"name":"Node B"},
+                {"id":53456,"name":"Node X"},
+                {"id":59456,"name":"Node Y"}
+            ]//nodes
+        };
+
+        // If the bootstrapped JSON proves to be the performance bottleneck that I suspect it is, remove the variable and object above (commented out at the moment for testing)
+        // RecognitionPageSendView has some if(formSetup) {...} logic that will make an ajax request for the data if none was passed directly
+
+        // attach the view to an existing DOM element
+        window.rpsv = new RecognitionPageSendView({
+            el: $('#recognitionPageSendView'),
+            $dataForm: $('#dataForm'), //pass a reference to the 'data' form (struts populated)
+            formSetup: formSetup, //form setup data
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Send a Recognition/PURL',
+            cancelUrl: 'layout.html'
+        });
+
+        // NOTE: This G5.props.globalHeader object will override the one set in a client-specific JS file because it is wrapped inside the $(document).ready(). If this block of code were to be moved down one line so it falls after the closing }); of $(document).ready(), the client-specific JS file would take precedence because it is executed second. Getting an inline initialization of this object to work would require placing it after the client-specific JS.
+        G5.props.globalHeader = {
+            clientLogo : '../../skins/default/img/logo-primary.png',
+            clientName : 'Client Name',
+            programLogo : '../../skins/default/img/logo-secondary.png',
+            programName : 'Program Name'
+        };
+    });
+</script>

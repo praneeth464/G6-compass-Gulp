@@ -1,0 +1,111 @@
+<?php sleep(1); ?>
+{
+    "messages" : [],
+
+    "_comment" : "Instant Polls are an extension of surveys, so the JSON structure of each poll object should be similar to that of a surveyJson object",
+    "polls" : [
+        {
+            "id": 1234,
+            "promotionId": "IfItExists",
+            "name": "This is a survey name",
+            "startDate": "08/16/2013",
+            "endDate": "08/16/2015",
+            "_comment": "This isComplete indicates that the user has already taken the survey/poll",
+            "isComplete": false,
+            "_comment": "This showResults can be turned on for surveys, too, but will likely only be used for instant polls",
+            "showResults": true,
+
+            "_comment": "Polls are a single-question survey",
+            "questions":[
+                {
+                    "_comment": "Checkbox-type questions currently aren't possible, but I started working on them so I'm leaving this in for potential future additions. Ignore for now",
+                    "id": 2345,
+                    "number": 1,
+                    "type": "checkbox",
+                    "answerLimit": 2,
+                    "text": "What is color?",
+                    "isAnswered": false,
+                    "answers": [
+                        {
+                            "number": 1,
+                            "id": 3456,
+                            "text": "Purple",
+                            "_comment": "The count and percent fields only apply when the question is already answered and we're displaying live results",
+                            "count": 10
+                        },
+                        {
+                            "number": 2,
+                            "id": 3457,
+                            "text": "The optical sensation ellicited when quanta of light bombard the retina, sending neurotransmitters to frolick about the visual cortex.",
+                            "_comment": "The count and percent fields only apply when the question is already answered and we're displaying live results",
+                            "count": 200
+                        },
+                        {
+                            "number": 3,
+                            "id": 3458,
+                            "text": "It is a city in Spain.",
+                            "_comment": "The count and percent fields only apply when the question is already answered and we're displaying live results",
+                            "count": 0
+                        },
+                        {
+                            "number": 4,
+                            "id": 3459,
+                            "text": "\"color\" is just a word.",
+                            "_comment": "The count and percent fields only apply when the question is already answered and we're displaying live results",
+                            "count": 100
+                        },
+                        {
+                            "number": 5,
+                            "id": 3460,
+                            "text": "Nothing of concern to you",
+                            "_comment": "The count and percent fields only apply when the question is already answered and we're displaying live results",
+                            "count": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 1235,
+            "promotionId": "IfItExists",
+            "name": "This is a survey name",
+            "startDate": "08/16/2013",
+            "endDate": "08/16/2015",
+            "_comment": "This isComplete indicates that the user has already taken the survey/poll",
+            "isComplete": true,
+            "_comment": "This showResults can be turned on for surveys, too, but will likely only be used for instant polls",
+            "showResults": true,
+
+            "_comment": "Polls are a single-question survey",
+            "questions":[
+                {
+                    "id": 2346,
+                    "number": 2,
+                    "type": "radio",
+                    "text": "Is G5 delicious?",
+                    "isAnswered": true,
+                    "answers": [
+                        {
+                            "number": 1,
+                            "id": 4567,
+                            "text": "Yes, G5 is quite delicious.",
+                            "_comment": "The count and percent fields only apply when the question is already answered and we're displaying live results",
+                            "count": 20,
+                            "percent": 66.7,
+                            "_comment": "If this question is already answered and this is the answer chosen, flag the following attribute as true",
+                            "isChosen": true
+                        },
+                        {
+                            "number": 2,
+                            "id": 4568,
+                            "text": "No, I don't think so.",
+                            "_comment": "The count and percent fields only apply when the question is already answered and we're displaying live results",
+                            "count": 10,
+                            "percent": 33.3
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

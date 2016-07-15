@@ -1,0 +1,18 @@
+<?php sleep(2); 
+if($_REQUEST["quizName"] == "asdf"){ ?>
+
+{
+    "__COMMENT__":"if not valid, return error, no error will be interpreted as VALID",
+    
+    "messages":[
+        {   
+            "type":"error",
+            "code":"validationError",
+            "name":"",
+            "text":"the quiz name you entered has been used"
+        }
+    ]
+
+}
+
+<?php } else { ?>{}<?php } ?>

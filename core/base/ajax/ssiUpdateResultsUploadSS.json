@@ -1,0 +1,11 @@
+{
+    "messages" : [
+<?php if( isset($_POST) && $_POST['method'] == 'save') { ?>
+        {
+            "type":"serverCommand",
+            "command":"redirect",
+            "url":"layout.html?tplPath=apps/ssi/tpl/&tpl=ssiCreatorPage"
+        }
+<?php } ?>
+    ]
+}

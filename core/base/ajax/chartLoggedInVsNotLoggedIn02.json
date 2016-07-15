@@ -1,0 +1,13 @@
+{
+  "chart": {},
+  "data": [
+    {
+      "value": "95",
+      "label": "Logged In"
+    },
+    {
+      "value": "5",
+      "label": "Not Logged In"
+    }
+  ]
+}

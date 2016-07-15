@@ -1,0 +1,39 @@
+<!-- ======== FORUM PAGE ======== -->
+
+<div id="forumPageView" class="forumPage-liner page-content">
+    <div class="row">
+        <div class="span12">
+            <ul class="breadcrumbs">
+                <li class="forum active">
+                    Forum
+                </li>
+            </ul>
+            <h2>Forum Topics</h2>
+
+            <div class="displayTableTopics"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function() {
+        G5.props.URL_HTML_TOPICS = G5.props.URL_ROOT+'ajax/forumTopicsDisplayTableAjaxResponse.html';
+        //attach the view to an existing DOM element
+        var forumPageView = new ForumPageView({
+
+            el:$('#forumPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'javascript:history.go(-1);'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Forum'
+        });
+    });
+</script>

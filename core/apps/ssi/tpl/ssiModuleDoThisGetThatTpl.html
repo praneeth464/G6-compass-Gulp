@@ -1,0 +1,208 @@
+{{! note: isCreator is set in javascript }}
+
+{{! 2x2 module }}
+<div class="narrowModule">
+  <div class="scrollArea">
+    {{#if isCreator}}
+      {{#each activities}}
+        <div class="dtgtActivity">
+          <div class="row-fluid">
+            <div class="span12 ">
+              <p class="activityDescription">{{activityDescription}}</p>
+            </div>
+          </div>
+          <div class="row-fluid">
+            <div class="span6 activityGoal dataSection">
+              <h5>{{goal}}</h5><br>
+              <span>goal</span>
+            </div>
+            <div class="span6 activityProgress dataSection">
+              <h5>{{progress}}</h5><br>
+              {{#eq ../status "finalize_results"}}
+                  <span>Final Activity</span>
+              {{else}}
+                  <span>Activity</span>
+              {{/eq}}
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    {{else}}
+      {{#each activities}}
+        <div class="dtgtActivity">
+          <div class="row-fluid">
+            <div class="span12 ">
+              <p class="activityDescription">{{activityDescription}}</p>
+            </div>
+          </div>
+          <div class="row-fluid">
+            <!--
+            {{! removed for phase 1}}
+            <div class="span6 activityPaid dataSection">
+              <h5>{{paid}}</h5><br>
+              <span>Activity Paid</span>
+            </div>
+            -->
+            <div class="span12 activityPayout dataSection">
+              {{#eq payoutType "points"}}
+                <h5>{{payout}}</h5><br>
+               <span>points</span>
+              {{/eq}}
+              {{#eq payoutType "other"}}
+                <div class="payoutGift">
+                  <i class="icon-gift"></i>
+                  {{#ueq payout "0"}}
+                  <div class="giftCount">
+                    {{payout}}
+                  </div>
+                  {{/ueq}}
+                </div>
+                <span>award</span>
+              {{/eq}}
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    {{/if}}
+  </div>
+</div>
+
+{{! 4x4 and 4x2 module }}
+<div class="wideModule shortAndWideModule">
+  <div class="scrollArea">
+    {{#if isCreator}}
+      {{#each activities}}
+        <div class="dtgtActivity">
+          <div class="row-fluid">
+            <div class="span12 ">
+              <p class="activityDescription">{{activityDescription}}</p>
+            </div>
+          </div>
+          <div class="row-fluid">
+            <div class="activityGoal dataSection">
+             <h5>{{goal}}</h5><br>
+              <span>Goal</span>
+            </div>
+            <div class="activityProgress dataSection">
+              <h5>{{progress}}</h5><br>
+              {{#eq ../status "finalize_results"}}
+                  <span>Final Activity</span>
+              {{else}}
+                  <span>Activity</span>
+              {{/eq}}
+            </div>
+            {{#ueq ../daysToEnd "0"}}
+            <div class="activityRemaining dataSection">
+              {{#ueq remaining "0"}}
+                <h5>{{remaining}}</h5><br>
+                <span>To Go</span>
+              {{else}}
+                <h5 class="activityGoalAchieved"><i class="icon-ok-circle"></i></h5><br/>
+                <span>Goal Achieved</span>
+              {{/ueq}}
+            </div>
+            {{/ueq}}
+          </div>
+        </div>
+      {{/each}}
+    {{else}}
+      {{#each activities}}
+        <div class="dtgtActivity">
+          <div class="row-fluid">
+            <div class="span12">
+              <p class="activityDescription">{{activityDescription}}</p>
+            </div>
+          </div>
+          <div class="row-fluid">
+            {{#if ../includeStackRanking}}
+              <div class="activityRank dataSection">
+                <h5>#{{stackRank.rank}}</h5><br>
+                <span>rank</span>
+              </div>
+
+              <div class="activitySubmitted dataSection">
+                  <h5>{{submitted}}</h5><br>
+                  <span>Activity</span>
+              </div>
+
+              <!--
+                {{! removed for phase 1}}
+                <div class="span6">
+                  <h5>{{!paid}}</h5><br>
+                  Activity Paid
+                </div>
+                -->
+
+              <div class="activityPayout dataSection">
+                  {{#eq payoutType "points"}}
+                      <h5>{{payout}}</h5><br>
+                      {{#eq extraJSON.status "finalize_results"}}
+                      <span>Final Points</span>
+                      {{else}}
+                      <span>Points</span>
+                      {{/eq}}
+                  {{/eq}}
+                  {{#eq payoutType "other"}}
+                    <div class="payoutGift">
+                        <i class="icon-gift"></i>
+                        {{#ueq payout "0"}}
+                        <div class="giftCount">
+                            {{payout}}
+                        </div>
+                        {{/ueq}}
+                    </div>
+                    {{#eq extraJSON.status "finalize_results"}}
+                    <span>Final Award</span>
+                    {{else}}
+                    <span>Award</span>
+                    {{/eq}}
+                  {{/eq}}
+              </div>
+
+            {{else}}
+               <div class="span6 activitySubmitted dataSection">
+                    <h5>{{submitted}}</h5><br>
+                    <span>Activity</span>
+                </div>
+
+                <!--
+                {{! removed for phase 1}}
+                <div class="span6">
+                  <h5>{{!paid}}</h5><br>
+                  Activity Paid
+                </div>
+                -->
+
+                <div class="span6 activityPayout dataSection">
+                {{#eq payoutType "points"}}
+                    <h5>{{payout}}</h5><br>
+                    {{#eq extraJSON.status "finalize_results"}}
+                    <span>Final Points</span>
+                    {{else}}
+                    <span>Potential Points</span>
+                    {{/eq}}
+                {{/eq}}
+                {{#eq payoutType "other"}}
+                    <div class="payoutGift">
+                        <i class="icon-gift"></i>
+                        {{#ueq payout "0"}}
+                        <div class="giftCount">
+                            {{payout}}
+                        </div>
+                        {{/ueq}}
+                    </div>
+                    {{#eq extraJSON.status "finalize_results"}}
+                    <span>Final Award</span>
+                    {{else}}
+                    <span>Potential Award</span>
+                    {{/eq}}
+                {{/eq}}
+                </div>
+            {{/if}}
+
+          </div>
+        </div>
+      {{/each}}
+    {{/if}}
+  </div>
+</div>

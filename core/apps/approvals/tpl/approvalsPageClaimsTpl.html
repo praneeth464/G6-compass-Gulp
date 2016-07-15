@@ -1,0 +1,180 @@
+{{!debug}}
+<div class="row">
+    <div class="span12">
+
+        <a href="javascript:window.print();" id="printPage" class="pull-right"><i class="icon-print"></i> Print</a>
+
+        {{#with promotion}}
+
+        <h2 class="promoName">{{name}}</h2>
+        <h3>Claim Approvals</h3>
+        {{#if timestamp}}<p id="timestamp">As of {{timestamp}}</p>{{/if}}
+
+        {{#if stats}}
+        <ul class="stats unstyled">
+            {{#each stats}}
+            <li class="stat {{type}} {{status}}">
+                <strong class="count">{{count}}</strong>
+                <span class="name">{{name}}</span>
+            </li>
+            {{/each}}
+        </ul>
+        {{/if}}
+
+        {{/with}}
+
+    </div><!-- /.span12 -->
+</div><!-- /.row -->
+
+
+<div class="row">
+    <div class="span12">
+
+        <form id="claimSubmissionForm" action="layout.html?tpl=approvalsPageClaims&amp;tplPath=apps/approvals/tpl/" method="POST">
+
+        {{#with promotion}}
+
+            {{#if claims.results}}
+            {{#if claims.meta.exportUrl}}
+            <ul id="exportCurrentView" class="export-tools fr">
+                <li class="export"><a href="{{claims.meta.exportUrl}}" class="exportXlsButton"><img src="img/reports/reports_exportXls.png" alt="CSV"></a></li>
+            </ul>
+            {{/if}}
+            {{/if}}
+
+            {{#if claims.results}}
+            <div class="pagination pagination-right paginationControls"></div>
+            <!--XXXsubTpl.paginationTpl=
+                NOTE: you can safely take the JSP conversion of core/base/tpl/paginationView.html and include it here. Then, remove the "XXX" above and the script will use this child template instead of the remote one
+            subTpl-->
+            {{/if}}
+
+        {{/with}}
+
+        {{#with parameters}}
+            <p class="parameters">All {{claimStatus}} claims from {{startDate}} to {{endDate}}.</p>
+        {{/with}}
+
+        {{#with promotion}}
+
+            {{#if claims.results}}
+            <div id="claimsTableWrapper">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            {{#each claims.meta.columns}}
+                            <th class="{{name}} {{#if sortable}}sortable {{#if sortedOn}}sorted{{else}}unsorted{{/if}}{{/if}}"{{#if sortable}} data-sorted-on="{{name}}" {{#if sortedBy}} data-sorted-by="{{sortedBy}}"{{/if}}{{/if}}>
+                                {{#if sortable}}
+                                    <a href="#">{{text}} {{#eq sortedBy "desc"}}<i class="icon-sort-down"></i>{{else}}<i class="icon-sort-up"></i>{{/eq}}</a>
+                                {{else}}
+                                    {{text}}
+                                {{/if}}
+                            </th>
+                            {{/each}}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each claims.results}}
+                        <tr data-claim-id="{{id}}">
+                            <td class="number">
+                                <a href="layout.html?tpl=approvalsPageClaimsDetail&amp;tplPath=apps/approvals/tpl/">{{number}}</a>
+                                <input type="hidden" id="claim[{{id}}].id" value="{{id}}">
+                                <input type="hidden" id="claim[{{id}}].number" value="{{number}}">
+                            </td>
+                            <td class="date">{{date}}</td>
+                            <td class="submitter">{{submitter}}</td>
+                            <td class="approver">
+                                {{#each products}}
+                                <span class="text">{{approver}}&nbsp;</span><!-- &nbsp; acts like a shim to give this element a height when empty -->
+                                {{/each}}
+                            </td>
+                            <td class="products">
+                                {{#each products}}
+                                <span class="text">{{name}}</span>
+                                {{/each}}
+                            </td>
+                            <td class="status form-inline">
+                                {{#each products}}
+                                {{#unless _showSelects}}
+                                    {{#eq status "approv"}}<span class="text">Approved</span>{{/eq}}
+                                    {{#eq status "deny"}}<span class="text">Denied: {{statusReason}}</span>{{/eq}}
+                                {{else}}
+                                    <span class="selects" data-product-id="{{id}}">
+                                        <span class="validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please select a status"}'>
+                                            <select id="claimProductApprovalFormByClaimProductIdString({{id}}).status" name="claimProductApprovalFormByClaimProductIdString({{id}}).approvalStatusType" class="status" data-start-val="{{status}}">
+                                                {{#each ../../../this.claims.meta.statuses}}
+                                                <option value="{{value}}">{{text}}</option>
+                                                {{/each}}
+                                            </select>
+                                        </span>
+                                        <!-- the JS will dynamically add/remove the "validateme" class from this span, depending on whether or not the select is visible -->
+                                        <span class="" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please select a reason"}'>
+                                            <select id="claimProductApprovalFormByClaimProductIdString({{id}}).statusReasonDeny" name="claimProductApprovalFormByClaimProductIdString({{id}}).denyPromotionApprovalOptionReasonType" class="statusReason deny hide" data-start-val="{{statusReason}}">
+                                                {{#each ../../../this.claims.meta.statuses}}
+                                                {{#eq value "deny"}}
+                                                <option value="">Select Reason</option>
+                                                    {{#each reasons}}
+                                                <option value="{{value}}">{{text}}</option>
+                                                    {{/each}}
+                                                {{/eq}}
+                                                {{/each}}
+                                            </select>
+                                        </span>
+                                        <span class="" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please select a reason"}'>
+                                            <select id="claimProductApprovalFormByClaimProductIdString({{id}}).statusReasonHold" name="claimProductApprovalFormByClaimProductIdString({{id}}).holdPromotionApprovalOptionReasonType" class="statusReason hold hide" data-start-val="{{statusReason}}">
+                                                {{#each ../../../this.claims.meta.statuses}}
+                                                {{#eq value "hold"}}
+                                                <option value="">Select Reason</option>
+                                                    {{#each reasons}}
+                                                <option value="{{value}}">{{text}}</option>
+                                                    {{/each}}
+                                                {{/eq}}
+                                                {{/each}}
+                                            </select>
+                                        </span>
+                                    </span>
+                                {{/unless}}
+                                {{/each}}
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+
+                <div id="sameForAllTipTpl" class="sameForAllTip" style="display:none">
+                    <span class="singleClaim"><a href="#">same for all</a></span>
+                    <span class="multiClaim">same for all:<br><a href="#" class="this">this claim</a> | <a href="#" class="all">all claims</a></span>
+                </div><!-- /#sameForAllTipTpl -->
+            </div><!-- /#claimsTableWrapper -->
+
+            <div class="pagination pagination-right paginationControls"></div>
+
+                {{#unless ../../_hideFormActions}}
+            <div class="form-actions pullBottomUp">
+                <button type="submit" class="btn btn-primary" id="claimsSubmitBtn">Save</button>
+                <button type="button" class="btn" id="claimsCancelBtn">Cancel</button>
+
+                <div class="approvalsClaimsCancelDialog" style="display:none">
+                    <p>
+                        <b>Cancel these claims?</b>
+                    </p>
+                    <p>
+                        All changes will be discarded.
+                    </p>
+                    <p class="tc">
+                        <a href="layout.html" id="approvalsClaimsCancelDialogConfirm" class="btn btn-primary">Yes</a>
+                        <a href="#" id="approvalsClaimsCancelDialogCancel" class="btn">No</a>
+                    </p>
+                </div>
+            </div>
+                {{/unless}}
+            {{else}}
+            <div class="alert noClaimsFound">No claims found</div>
+            {{/if}} <!-- /#if claims.results -->
+
+        {{/with}}
+
+        </form>
+
+    </div><!-- /.span12 -->
+</div><!-- /.row -->

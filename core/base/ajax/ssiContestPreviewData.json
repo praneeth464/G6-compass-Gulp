@@ -1,0 +1,82 @@
+
+{
+
+    "id": "3",
+    "clientState": "AlY01PSM1juDesAVNC5olTvtDaKv%2FigT5abqEcBR%2BzGBR7QUVLsL5H9u%2BBEm20kVqrp4DJuXxgkq%0AJr9CT%2FIX83fP4gJ0pyt9RkHyBXtXuZYTdWN45zLngf0WGCNeswjLyiHMFOP9%2B9huArPENnsImAoO%0AjBcNi2aSEAkcYMmzZxLB7eKCOSZWIEq0HC5p01L2I1lqcSQiVxRxVjWQqE5W4g7yp6%2BZHnMuPzGd%0A45OueXoC82%2BbOy3lg9g3K1BmjSiV4kmKe4FdDYfBR%2BDHMsaZw0zNL1mKpneTDGZe%2BdH2AdUv%2B3xG%0A7u19lRNP8jI%3D",
+    "nextUrl": "ajax/ssiContestEditSave.json",
+    "startDate": "01/01/2014",
+    "endDate": "02/01/2014",
+    "tileStartDate": "01/01/2014",
+    "name": "Super Summer Objectives Contest",
+    "description": "Lorem ipsum Esse eiusmod nostrud dolore laboris amet laborum cillum cillum dolor esse dolor mollit quis qui irure quis veniam consequat et qui sed anim est occaecat in commodo voluptate.",
+    "includeMessage": true,
+    "message": "Incididunt sint qui irure aliquip est velit est sint tempor nostrud Duis aliqua reprehenderit est tempor tempor sed exercitation ut incididunt exercitation eu eu veniam et in velit laborum do sint et culpa dolor nisi labore ut consectetur incididunt.",
+    "attachmentTitle": "Contest Rules",
+    "attachmentUrl": "//placehold.it/300x300",
+    "activityDescription": "Objective Description",
+    "activityMeasuredIn": "currency",
+    "activityMeasuredName": "Currency",
+    "includeBonus": true,
+    "bonus": "For every 1,000 over the Objective, the participant will earn 500 points",
+    "individualBonusCap": "5,000.0110",
+    "badge": {
+        "id":2504,
+        "name":"1 Year Anniversary",
+        "img":"img/badges/service1_sm.png"
+    },
+    "goal": "1,000.1000",
+    "objectiveAmount": "300,000.0110",
+    "payoutAmount": "2,000",
+    "maximumPayout": "50,000",
+    "maximumPayoutBonus": "100,000",
+    "payoutType": "points",
+    "payoutTypeName":"points",
+    "payoutDescription": "$50 gift card",
+    "maximumPotential": "$100,000 USD",
+    "chargeContestTo": "Creator Org Unit",
+    "participantsCount": "27",
+    "managersCount": "3",
+    "includeStackRanking": true,
+    "rankCount": 11,
+    "minimumQualifier": "1234",
+    "contestLevels":[
+    {
+        "id":5000,
+        "name":"Level 1",
+        "payout":"200 points",
+        "activityLabel":"Currency",
+        "payoutDescription":"Just a payout description here, move along.",
+        "badge":{},
+        "sequenceNumber": 1,
+        "amount": "$15.1 USD",
+        "badgeId": 2504
+    },
+    {
+        "id":5001,
+        "name":"Level 2",
+        "payout": "50 points",
+        "activityLabel": "Currency",
+        "payoutDescription": "$50 gift certificate.",
+        "badge":{},
+        "sequenceNumber": 2,
+        "amount": "$50 USD",
+        "badgeId": null
+    }
+    ],
+    "activities":[
+      {
+         "id":5141,
+         "forEvery":"1",
+         "minQualifier":"3",
+         "maxPayout":"8",
+         "maxPotential":"10",
+         "goal":"5",
+         "payoutDescription":null,
+         "description":"asdfasdf asdf asdf",
+         "individualPayoutCap":"4",
+         "willEarn":"2",
+         "payoutAmount":"2",
+         "valueDescription":null
+      }
+    ]
+}

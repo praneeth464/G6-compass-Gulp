@@ -1,0 +1,98 @@
+<a href="javascript:window.print();" id="printPage" class="pull-right"><i class="icon-print"></i> Print Results<!--JAVA: remove this comment from the JSP {{cm.claims.quiz.submission.PRINT}}--></a>
+
+{{#if userPassed}}
+<h3>Congratulations! You passed the quiz!</h3>
+{{else}}
+<h3>Sorry. You did not pass the quiz.</h3>
+{{/if}}
+
+<p class="questionStats">
+    <span>Number of Questions:</span> <strong>{{totalQuestions}}</strong>
+    {{#if passingScore}}
+    <br><span>Need to Pass:</span> <strong>{{passingScore}}</strong>
+    {{/if}}
+    <br><span>Questions Correct:</span> <strong>{{questionsCorrect}}</strong>
+    {{#unless userPassed}}
+    <br><span>Attempts Remaining:</span> <strong>{{#if isAttemptsLimit}}{{attemptsRemaining}}{{else}}Unlimited{{/if}}</strong>
+    {{/unless}}
+</p>
+
+{{#if showAward}}
+<div class="well container-splitter clearfix">
+    {{#if quizAward}}
+    <h4>You earned: <span>{{quizAward}}</span></h4>
+        {{#or badge certificate}}
+        <h4>You also earned:</h4>
+        {{/or}}
+    {{else}}
+        {{#or badge certificate}}
+        <h4>You earned:</h4>
+        {{/or}}
+    {{/if}}
+
+    {{#if certificate}}
+    <div class="certificateWrapper">
+        <img src="{{certificate.img}}" alt="{{certificate.name}} certificate preview">
+        <p>
+            <strong>{{certificate.name}}</strong>
+            <a href="{{certificate.url}}" target="_blank">
+                <span class="muted">(view/download certificate)</span>
+            </a>
+        </p>
+    </div>
+    {{/if}}
+
+    {{#if badge}}
+    <div class="badgeWrapper">
+        <img src="{{badge.img}}" alt="{{badge.name}} badge preview">
+        <p class="badge-name">{{badge.name}}</p>
+    </div>
+    {{/if}}
+</div><!-- /.well.container-splitter -->
+{{/if}}
+
+<h4 class="fullResults">Full Results</h4>
+<ol class="results questions">
+    {{#each questions}}
+    <li>
+        <h5 class="question">{{text}}</h5>
+        <ol class="answers">
+            {{#each answers}}
+            <li class="{{#if isCorrect}}isCorrect{{/if}}{{#eq ../selectedAnswerId id}} {{#if ../../answeredCorrectly}}correctAnswer{{else}}incorrectAnswer{{/if}}{{/eq}}">
+                {{#eq ../selectedAnswerId id}}
+                    {{#if ../../answeredCorrectly}}
+                    <i class="icon-ok-sign"></i>
+                    {{else}}
+                    <i class="icon-remove-sign"></i>
+                    {{/if}}
+                {{else}}
+                    {{#if isCorrect}}<i class="icon-ok"></i>{{/if}}
+                {{/eq}}
+                {{text}}
+            </li>
+            {{/each}}
+        </ol>
+        {{#if correctAnswerExplanation}}
+        <p class="correctAnswerExplanation">
+            {{#each correctAnswerExplanation}}<span>{{this}}</span>{{/each}}
+        </p>
+        {{/if}}
+    </li>
+    {{/each}}
+</ol>
+
+
+<div class="stepContentControls form-actions pullBottomUp">
+    {{#if allowRetake}}
+    <a class="btn btn-primary" href="{{retakeQuizUrl}}">
+        <i class="icon-repeat"></i> Take Quiz Again
+    </a>
+    <a class="btn" href="layout.html?tplPath=apps/quiz/tpl/&amp;tpl=quizPage">
+        Done
+    </a>
+    {{else}}
+    <a class="btn btn-primary" href="layout.html?tplPath=apps/quiz/tpl/&amp;tpl=quizPage">
+        Done
+    </a>
+    {{/if}}
+</div>

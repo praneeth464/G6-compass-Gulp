@@ -1,0 +1,154 @@
+// App-specific variables
+// =========================
+$throwdownTrainingCamp_bgColor: $g5ModuleBgColor !default;
+$throwdownTrainingCamp_gradType: $g5ModuleGradType !default;
+$throwdownTrainingCamp_gradMeta: $g5ModuleGradMeta !default;
+$throwdownTrainingCamp_gradStops: $g5ModuleGradStops !default;
+
+$throwdownTrainingCamp_titleColor: $throwdown_tertiaryAccentColor !default;
+$throwdownTrainingCamp_linkColor: $white !default;
+$throwdownTrainingCamp_linkHoverColor: $white !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.throwdownTrainingCamp {
+
+} /* /.throwdownTrainingCamp */
+
+/* ----- MODULE STYLES ----- */
+.module.throwdownTrainingCamp {
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $throwdownTrainingCamp_bgColor,
+            $gradType: $throwdownTrainingCamp_gradType,
+            $gradMeta: $throwdownTrainingCamp_gradMeta,
+            $gradStops: $throwdownTrainingCamp_gradStops
+        );
+    }
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $throwdown_iconColor,
+            $titleColor: $throwdownTrainingCamp_titleColor,
+            $titleFontFamily: $throwdown_primaryFontFamily
+        );
+
+        h3 {
+            font-size: 37px;
+            font-weight: $throwdown_secondaryFontWeight;
+            text-align: center;
+            text-transform: uppercase;
+            top: 27%;
+            word-spacing: 150px;
+
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                @include g5HomeAppIconBoxReflect(-45px);
+            }
+        }
+    }
+
+    a {
+        color: $throwdownTrainingCamp_linkColor;
+        font-weight: $throwdown_secondaryFontWeight;
+
+        &:hover {
+            color: $throwdownTrainingCamp_linkHoverColor;
+        }
+    }
+    .wide-view h3 {
+        @include inline-block;
+        color: $throwdownTrainingCamp_titleColor;
+        font-family: $throwdown_primaryFontFamily;
+        padding-top: 0;
+    }
+    span:hover {
+        text-decoration: none;
+    }
+    &.grid-dimension-1x1,
+    &.grid-dimension-2x1 {
+        .module-liner {
+            cursor: pointer;
+            position: relative;
+        }
+        .wide-view,
+        .visitAppBtn {
+            display: none;
+        }
+    }
+    &.grid-dimension-1x1 {
+        .title-icon-view h3 {
+            bottom: 0;
+            padding: 0;
+            top: inherit;
+            word-spacing: normal;
+
+            span {
+                display: inline-block;
+                font-size: $baseFontSize * 1.15;
+                line-height: $baseLineHeight * .9;
+            }
+            .firstLine {
+                color: $throwdown_textLight;
+                margin-right: 5px;
+            }
+        }
+    }
+    &.grid-dimension-2x1 {
+        .title-icon-view h3 {
+            padding: 0 4% 0 54%;
+            position: absolute;
+        }
+    }
+    &.grid-dimension-2x2 {
+        .title-icon-view h3,
+        .visitAppBtn {
+            display: none;
+        }
+        .title-icon-view {
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                @include g5HomeAppIconBoxReflect(-170px);
+                left: 22.5%; //21%
+                top: 22.5%; //25%
+            }
+        }
+        .wide-view {
+            padding-left: 0;
+            padding-right: 0;
+            position: relative;
+            z-index: 1;
+
+            h3 {
+                font-size: $baseFontSize * 2.6;
+                height: 2.333em;
+                line-height: $baseLineHeight * 2;
+                padding: 0 7% 0 20%;
+            }
+            ul {
+                height: ($g5ModuleUnit * 2) - ($g5ModuleGutter * 2) - ($g5ModulePadding * 2) - ($baseLineHeight / 2 * 2) - (36px * 2.333);
+                list-style-type: none;
+                list-style-position: outside;
+                margin: 0 $g5ModulePadding;
+                overflow-y: auto;
+            }
+        }
+    }
+} /* /.module.throwdownTrainingCamp */
+
+.lt-ie8 .module.throwdownTrainingCamp .title-icon-view h3 { margin-top: 32px; }
+
+/* ----- PAGE STYLES ----- */
+.page.throwdownTrainingCamp {
+    padding-top: 35px;
+
+    h3 {
+        font-family: $throwdown_primaryFontFamily;
+        margin-top: 0;
+    }
+} /* /.page.throwdownTrainingCamp */

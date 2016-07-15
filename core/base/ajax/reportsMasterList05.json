@@ -1,0 +1,61 @@
+{
+  "messages": [],
+  "reports": [
+    {
+      "displayName": "Login Activity",
+      "url": "http://sedey2-dv.biperf.com:7001/beacon2/reports/displayReport.do?reportName=loginactivitytoplevel&reportId=1&method=showReport",
+      "id": "1",
+      "category": "Login",
+      "desc": "Login Activity Report - shows various login activity"
+    },
+    {
+      "displayName": "Enrollment",
+      "url": "http://sedey2-dv.biperf.com:7001/beacon2/reports/displayReport.do?reportName=enrollmentsummary&method=showReport",
+      "id": "2",
+      "category": "Enrollment",
+      "desc": "Enrollment Activity Report - shows various enrollment activity"
+    },
+    {
+      "displayName": "Award Media",
+      "url": "http://sedey2-dv.biperf.com:7001/beacon2/reports/displayReport.do?reportName=loginactivitytoplevel&method=showReport",
+      "id": "3",
+      "category": "Awards",
+      "desc": "Award Media Report - shows various award media info"
+    },
+    {
+      "displayName": "Claims Submitted",
+      "url": "http://sedey2-dv.biperf.com:7001/beacon2/reports/displayReport.do?reportName=loginactivitytoplevel&method=showReport",
+      "id": "4",
+      "category": "Activity",
+      "desc": "Claims Submitted - shows claims submitted"
+    },
+    {
+      "displayName": "Budget",
+      "url": "http://sedey2-dv.biperf.com:7001/beacon2/reports/displayReport.do?reportName=loginactivitytoplevel&method=showReport",
+      "id": "5",
+      "category": "Budget Reports",
+      "desc": "Budget Report - shows budget info"
+    },
+    {
+      "displayName": "Quiz Activity",
+      "url": "http://sedey2-dv.biperf.com:7001/beacon2/reports/displayReport.do?reportName=loginactivitytoplevel&method=showReport",
+      "id": "6",
+      "category": "Activity",
+      "desc": "Quiz Activity - shows quiz info"
+    },
+    {
+      "displayName": "Recognition Activity",
+      "url": "http://sedey2-dv.biperf.com:7001/beacon2/reports/displayReport.do?reportName=loginactivitytoplevel&method=showReport",
+      "id": "7",
+      "category": "Activity",
+      "desc": "Recognition Activity - shows recognitions"
+    },
+    {
+      "displayName": "Nomination Activity",
+      "url": "http://sedey2-dv.biperf.com:7001/beacon2/reports/displayReport.do?reportName=loginactivitytoplevel&method=showReport",
+      "id": "8",
+      "category": "Activity",
+      "desc": "Nomination Activity - shows nomiations"
+    }
+  ]
+}

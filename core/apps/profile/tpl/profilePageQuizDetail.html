@@ -1,0 +1,103 @@
+<!-- ======== PROFILE: VIEW QUIZ DETAILS ======== -->
+
+<!-- go back + title -->
+<div class="row page-head">
+    <div class="span12">
+        <a class="btn btn-large" href="#"><i class="icon-chevron-left"></i> Back</a>
+        <span class="page-title">Profile</span>
+    </div>
+</div>
+
+<div id="profilePageQuizDetailView" class="quizPage-liner page-content">
+    <div class="row">
+        <div class="span11">
+            <ul class="export-tools fr">
+                <li><a href="#">Print</a></li>
+                <li><i class="icon-print"></i></li>
+            </ul>
+            <h3>Quiz Name</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span12">
+            <h4>Quiz Result</h4>
+            <dl class="dl-horizontal dl-h1">
+                <dt>Quiz Results</dt>
+                <dd>Did Not Pass</dd>
+
+                <dt>Number Correct</dt>
+                <dd>4</dd>
+
+                <dt>Needed To Pass</dt>
+                <dd>6</dd>
+
+                <dt>Date Completed</dt>
+                <dd>01/01/2099</dd>
+
+                <dt>Attempts Remaining</dt>
+                <dd>unlimited</dd>
+
+                <dt>Badge</dt>
+                <dd><img src="../base/img/badges/gold_sm.png" alt=""></dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span12">
+            <h4>Quiz Review</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span2">
+            <p><strong>Question 1</strong></p>
+        </div>
+        <div class="span1">
+            <p>Correct</p>
+        </div>
+        <div class="span9">
+            <p>Lorem ipsum onsectetuer adipiscing elit, sed diam nonummy?</p>
+            <p>Your Response: False<br />
+                Correct Response: False</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span2">
+            <p><strong>Question 2</strong></p>
+        </div>
+        <div class="span1">
+            <p>Incorrect</p>
+        </div>
+        <div class="span9">
+            <p>Lorem ipsum onsectetuer adipiscing elit, sed diam nonummy?</p>
+            <p>Your Response: False<br />
+                Correct Response: True</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span2">
+            <p><strong>Question 3</strong></p>
+        </div>
+        <div class="span1">
+            <p>Correct</p>
+        </div>
+        <div class="span9">
+            <p>Lorem ipsum onsectetuer adipiscing elit, sed diam nonummy?</p>
+            <p>Your Response: False<br />
+                Correct Response: False</p>
+        </div>
+    </div>
+
+</div> <!-- ./quizPage-liner -->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function(){
+        //attach the view to an existing DOM element
+        var prp = new PageView({el:$('#profilePageQuizDetailView')});
+    });
+</script>

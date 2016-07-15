@@ -1,0 +1,81 @@
+<!-- ======== MANAGER TOOLKIT PAGE ROSTER ======== -->
+
+<div id="quizPageManageView" class="page-content">
+
+    <div class="page-topper">
+        <div class="row"><!--
+         --><div class="span12 form-inline">
+
+                <fieldset>
+
+                    <div class="control-group control-group-pull-right">
+                        <!-- JAVA NOTE: set the proper add quiz URL on the HREF attribute below -->
+                        <a href="path/to/add/quiz.do" class="addQuizBtn topper-control-link">
+                            <i class="icon-plus-sign"></i> Create Quiz
+                        </a>
+                    </div><!-- /.control-group -->
+
+                    <div class="control-group">
+                        <div class="controls">
+                            <select id="quizFilterSelect" name="quizFilter" title="Filter Quizzes">
+                                <!-- JAVA NOTE: adjust the list below as necessary (value will be sent to AJAX table request) -->
+                                <option value="activePendingIncomplete">Active, Pending or Incomplete Quizzes</option>
+                                <option value="inactive">Inactive Quizzes</option>
+                            </select>
+                        </div>
+                    </div><!-- /.control-group -->
+
+                </fieldset>
+
+            </div>
+        </div>
+    </div><!-- /.page-topper -->
+
+
+    <div class="row">
+        <div class="span12">
+
+            <!-- DisplayTableAjaxView below -->
+            <!-- JAVA NOTE: set the data-url attribute to the URL which produces the table -->
+            <div class="displayTableAjaxView" data-url="../apps/quiz/tpl/quizPageManage_tableResponse.html">
+                <!-- dynamic -->
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JAVA NOTE: render the following HTML if the user has just saved a quiz -->
+    <div class="modal hide fade autoModal quizSavedModal">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+            <div class="padding">
+                <h4 class="tc">Your quiz has been saved.</h4>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+
+    $(document).ready(function(){
+        //attach the view to an existing DOM element
+        window.qpmv = new QuizPageManageView({
+            el:$('#quizPageManageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Manage Quizzes'
+        });
+    });
+
+
+</script>

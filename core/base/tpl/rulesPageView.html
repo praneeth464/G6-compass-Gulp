@@ -1,0 +1,39 @@
+<!--side column generated if multiple promotions exists -->
+
+{{#if generateSideBar}}
+<div class="span3">
+    <div id="col-left">
+    {{#listOfPromotions}}
+        {{#if this.categoryName}}
+            <h4>{{this.categoryName}}</h4>
+        {{/if}}
+        <ul class="nav nav-list">
+            {{#each this.promotions}} 
+                <li><a href="#" id="rules{{id}}">{{this.name}}</a></li>
+            {{/each}}
+        </ul>
+    {{/listOfPromotions}}
+    </div><!-- /#col-left -->
+</div><!-- /.span3 -->
+{{/if}}
+
+{{#if generateSideBar}}
+<div class="span9 offset3">
+{{else}}
+<div class="span12">
+{{/if}}
+    {{#if this.firstContent}}
+    <div id="col-right">
+        {{#if this.firstTitle}}
+        <h2 id="rulesTitle">{{this.firstTitle}}</h2>
+        {{/if}}
+
+        <div id="rulesContent">
+            {{{this.firstContent}}}
+        </div>
+
+    </div><!-- /#col-right -->
+    {{else}}
+    <p id="rulesEmpty" class="alert alert-info">Display content here that explains that there aren't any rules to view for this user.</p>
+    {{/if}}
+</div><!-- /.span9/12 -->

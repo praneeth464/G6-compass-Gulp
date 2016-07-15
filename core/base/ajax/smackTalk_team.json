@@ -1,0 +1,100 @@
+{
+	"messages":[],
+
+	"smackTalkSets":[
+		{
+			"nameId":"global",
+			"name":"Global",
+			"desc":"Company wide smackTalks",
+			"totalCount":0,
+			"smackTalks":[]
+		},
+		{
+			"nameId":"team",
+			"name":"Team",
+			"desc":"Recognitions within my team/org unit",
+			"totalCount":1,
+			"smackTalks":[
+				{
+					"id":2234,
+					"smackTalkPageDetailUrl":"layout.html?tpl=smackTalkPageDetail&tplPath=apps/throwdown/tpl/&promotionId=2234",
+					"player1":{
+							"id":457,
+							"firstName":"Iffy",
+							"lastName":"Questshun",
+							"avatarUrl":"img/_samples/x-profile-pic2.jpg"
+						},
+
+                                        "player2":{
+							"id":487,
+							"firstName":"Connie",
+							"lastName":"Isquell",
+							"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+                                        },
+
+					"avatarUrl":"img/_samples/x-profile-pic1.jpg",
+					"commenterMain":{
+						"id":102,
+						"firstName":"Henry",
+						"lastName":"Kissinger",
+						"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+					},
+					"comment":"Some comments lorem ipsum text.",
+					"numLikers":12,
+					"isLiked":false,
+					"time":"about an hour ago",
+					"comments":[
+						{
+							"id":23,
+							"commenter":{
+								"id":102,
+								"firstName":"Henry",
+								"lastName":"Kissinger",
+								"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+							},
+							"comment":"OH HOW NICE!!! Kisses!"
+						},
+						{
+							"id":13,
+							"commenter":{
+								"id":102,
+								"firstName":"Henry",
+								"lastName":"Kissinger",
+								"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+							},
+							"comment":"OH HOW NICE!!! Kisses!"
+						},
+						{
+							"id":45,
+							"commenter":{
+								"id":102,
+								"firstName":"Henry",
+								"lastName":"Kissinger",
+								"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+							},
+							"comment":"OH HOW NICE!!! Kisses!"
+						},
+						{
+							"id":77,
+							"commenter":{
+								"id":102,
+								"firstName":"Henry",
+								"lastName":"Kissinger",
+								"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+							},
+							"comment":"OH HOW NICE!!! Kisses!"
+						}
+					]
+				}
+			]
+		},
+		{
+			"nameId":"mine",
+			"name":"Mine",
+			"desc":"Recognitions I've received",
+			"totalCount":0,
+			"smackTalks":[]
+		}
+	]
+
+}

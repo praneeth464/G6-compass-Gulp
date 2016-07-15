@@ -1,0 +1,42 @@
+<!-- ======== GOALQUEST PAGE ======== -->
+
+<!--
+    List Page for Participants, Partners and Managers
+    - JSON powered
+-->
+
+<div id="goalquestPageListView" class="goalquest page-content"><div class="row">
+
+        <div class="span12">
+            <div class="goalquestItemsWrapper">
+                <!-- dynamic -->
+            </div>
+        </div>
+
+    </div><!-- /.row -->
+</div><!-- /#goalquestPageRulesView -->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+
+    $(document).ready(function(){
+
+        //attach the view to an existing DOM element
+        window.pageView = new GoalquestPageListView({
+            el:$('#goalquestPageListView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'GoalQuest List'
+        });
+
+    });
+
+</script>

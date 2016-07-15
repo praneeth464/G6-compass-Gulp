@@ -1,0 +1,947 @@
+<?php
+    /**
+     * PHP is used to mimic actual server interaction
+     */
+    sleep(1);
+
+    /**
+     * Control what is returned
+     * Change booleans to control what is returned to the page
+     */
+    $include = [
+        "completed"     => true,
+        "objectives"    => true,
+        "doThisGetThat" => true,
+        "stepItUp"      => true,
+        "stackRank"     => true
+    ];
+
+    /**
+     * Adds a comma when it's needed
+     */
+    $comma = "";
+
+
+// this all needs some cleanup
+
+/******************************************
+ *               START JSON               *
+ ******************************************/
+?>
+{
+    "messages": [],
+    "masterModuleList": [
+
+<?php
+/******************************************
+ *               OBJECTIVES               *
+ ******************************************/
+
+if($include['objectives']) { ?>
+    {
+        "id": "3",
+        "contestType": "objectives",
+        "creatorDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiCreatorPage.html",
+        "managerDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiManagerPage.html",
+        "participantDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiParticipantPage.html",
+        "updatedOnDate": "03/01/2014",
+        "startDate": "01/01/2014",
+        "endDate": "02/01/2014",
+        "daysToEnd": 31,
+        "name": "Objective Participant Example",
+        "description": "Lorem ipsum Esse eiusmod nostrud dolore laboris amet laborum cillum cillum dolor esse dolor mollit quis qui irure quis veniam consequat et qui sed anim est occaecat in commodo voluptate.",
+        "status": "live",
+        "includeSubmitClaim": true,
+        "attachmentTitle": "Contest Rules",
+        "attachmentUrl": "//placehold.it/300x300",
+        "detailPageUrl": "//foobar.com/.../x1v87kz",
+        "activityDescription": "Activity Description",
+        "includeBonus": false,
+        "badge": {
+            "id":2504,
+            "type":"1 Year Anniversary",
+            "name":"1 Year Anniversary",
+            "howToEarnText":"1 Year Anniversary",
+            "img":"http://localhost:7001/pentag/assets/img/badges/service1_sm.png"
+        },
+        "goal": "1000.1000",
+        "progress": "800.1200",
+        "remaining": "200.1230",
+        "amountInBonus": "0",
+        "includeStackRanking": true,
+        "stackRank": {
+            "rank": 5,
+            "participantsCount": 10,
+            "url": "localhost/.../"
+        },
+        "payout": "50",
+        "totalPayout": "150",
+        "percentProgress": "78",
+        "objectiveAchieved": true,
+        "bonusEligible": true
+    }
+<?php
+$comma = ",";
+} /* end $include['objectives'] */
+
+
+/*          COMPLETED CONTEST          */
+if($include['objectives'] && $include['completed']) {
+    echo $comma;
+?>
+    {
+        "id": "3c",
+        "creatorDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiCreatorPage.html",
+        "managerDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiManagerPage.html",
+        "participantDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiParticipantPage.html",
+        "contestType": "objectives",
+        "updatedOnDate": "03/01/2014",
+        "startDate": "01/01/2014",
+        "endDate": "02/01/2014",
+        "daysToEnd": 0,
+        "name": "Objectives Completed Participant Example",
+        "description": "Lorem ipsum Esse eiusmod nostrud dolore laboris amet laborum cillum cillum dolor esse dolor mollit quis qui irure quis veniam consequat et qui sed anim est occaecat in commodo voluptate.",
+        "status": "finalize_results",
+        "attachmentTitle": "Contest Rules",
+        "attachmentUrl": "//placehold.it/300x300",
+        "detailPageUrl": "//foobar.com/.../x1v87kz",
+        "activityDescription": "Activity Description",
+        "submitClaimActive": false,
+        "includeBonus": false,
+        "hasApprovePayout": false,
+        "badge": {
+            "id":2504,
+            "type":"1 Year Anniversary",
+            "name":"1 Year Anniversary",
+            "howToEarnText":"1 Year Anniversary",
+            "img":"http://localhost:7001/pentag/assets/img/badges/service1_sm.png"
+        },
+        "goal": "1000",
+        "progress": "800",
+        "remaining": "200",
+        "amountInBonus": "0",
+        "includeStackRanking": true,
+        "stackRank": {
+            "rank": 5,
+            "participantsCount": 10,
+            "url": "localhost/.../"
+        },
+        "payout": "50",
+        "totalPayout": "150",
+        "percentProgress": "78",
+        "payoutType": "points",
+        "objectiveAchieved": true,
+        "bonusEligible": true
+    }
+<?php
+$comma = ",";
+} /* end $include['objectives'] */
+
+/******************************************
+ *             END OBJECTIVES             *
+ ******************************************/
+
+
+
+
+
+
+
+
+
+/******************************************
+ *            DO THIS GET THAT            *
+ ******************************************/
+
+if($include['doThisGetThat']) {
+    echo $comma;
+?>
+    {
+        "id": "2",
+        "creatorDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiCreatorPage.html",
+        "managerDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiManagerPage.html",
+        "participantDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiParticipantPage.html",
+        "contestType": "doThisGetThat",
+        "updatedOnDate": "03/01/2014",
+        "startDate": "08/16/2013",
+        "endDate": "09/16/2014",
+        "daysToStart": 11,
+        "name": "Do This Get That Participant Example",
+        "status": "pending",
+        "activities": [
+            {
+                "activityDescription": "A description of this activity.",
+                "forEvery": 1,
+                "willEarn": 1600,
+                "minQualifier": 3,
+                "submitted": 0,
+                "pending": 1,
+                <?php /*"approved": 5,"activity": 0,*/ ?>
+                "paid": 0,
+                "name": "Level 1",
+                "payout": 0,
+                "payoutType": "points",
+                "includeStackRanking": false,
+                "stackRank": {
+                    "rank": 5,
+                    "participantsCount": 10,
+                    "url": "localhost/.../",
+                    "thumbnailUrl": "//placehold.it/40x40"
+                }
+            },
+            {
+                "activityDescription": "A description of this activity.",
+                "forEvery": 5,
+                "willEarn": 10,
+                "minQualifier": 5,
+                "submitted": 10,
+                "pending": 3,
+                <?php /*"approved": 7,"activity": 7,*/ ?>
+                "paid": 3,
+                "name": "Level 1",
+                "payout": 50,
+                "payoutType": "other",
+                "includeStackRanking": true,
+                "stackRank": {
+                    "rank": 5,
+                    "participantsCount": 10,
+                    "url": "localhost/.../",
+                    "thumbnailUrl": "//placehold.it/40x40"
+                }
+            }
+        ]
+    }
+<?php
+$comma = ",";
+} /* end $include['doThisGetThat']
+
+
+/*          COMPLETED CONTEST          */
+if($include['doThisGetThat'] && $include['completed']) {
+    echo $comma;
+?>
+    {
+        "id": "2c",
+        "creatorDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiCreatorPage.html",
+        "managerDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiManagerPage.html",
+        "participantDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiParticipantPage.html",
+        "contestType": "doThisGetThat",
+        "updatedOnDate": "03/01/2014",
+        "startDate": "08/16/2013",
+        "endDate": "09/16/2014",
+        "daysToEnd": 0,
+        "name": "Do This Get That Complete Participant Example",
+        "status": "finalize_results",
+        "payout": 50,
+        "totalPayout": "150",
+        "payoutType": "other",
+        "payoutOtherCurrency": "$50",
+        "payoutDescription": "Gift Card",
+        "includeStackRanking": true,
+        "activities": [
+            {
+                "activityDescription": "A description of this activity.",
+                "forEvery": 1,
+                "willEarn": 1600,
+                "minQualifier": 3,
+                "submitted": 7,
+                "pending": 1,
+                <?php /*"approved": 5,"activity": 5,*/ ?>
+                "paid": 3,
+                "name": "Level 1",
+                "payout": 50,
+                "payoutType": "points",
+                "stackRank": {
+                    "rank": 5,
+                    "participantsCount": 10,
+                    "url": "localhost/.../",
+                    "thumbnailUrl": "//placehold.it/40x40"
+                }
+            },
+            {
+                "activityDescription": "A description of this activity.",
+                "forEvery": 5,
+                "willEarn": 10,
+                "minQualifier": 5,
+                "submitted": 10,
+                "pending": 3,
+                <?php /*"approved": 7,"activity": 5,*/ ?>
+                "paid": 3,
+                "name": "Level 1",
+                "payout": 50,
+                "payoutType": "other",
+                "payoutOtherCurrency": "$",
+                "stackRank": {
+                    "rank": 5,
+                    "participantsCount": 10,
+                    "url": "localhost/.../",
+                    "thumbnailUrl": "//placehold.it/40x40"
+                }
+            }
+        ]
+    }
+<?php
+$comma = ",";
+} /* end $include['doThisGetThat'] */
+
+
+/******************************************
+ *          END DO THIS GET THAT          *
+ ******************************************/
+
+
+
+
+
+
+
+
+
+/******************************************
+ *               STEP IT UP               *
+ ******************************************/
+
+
+if($include['stepItUp']) {
+    echo $comma;
+?>
+    {
+        "id": "1",
+        "creatorDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiCreatorPage.html",
+        "managerDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiManagerPage.html",
+        "participantDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiParticipantPage.html",
+        "contestType": "stepItUp",
+        "updatedOnDate": "03/01/2014",
+        "daysToEnd": 31,
+        "name": "Step It Up Participant Example",
+        "status": "live",
+        "activityDescription": "Activity Description",
+        "payoutType": "points",
+        "bonusForEvery": "$100",
+        "bonusPayout": "100",
+        "baseline": "1,000",
+        "includeBonus": true,
+        "bonusActivity": "100",
+        "contestLevels": [
+
+            {
+                "index": 1,
+                "goal": 1050,
+                "goalFormatted": "1,050",
+                "name": "1",
+                "goalPercent": "105",
+                "isCompleted": true,
+                "payout": "25"
+            },
+            {
+                "index": 2,
+                "goal": 1100,
+                "goalFormatted": "1,100",
+                "name": "2",
+                "goalPercent": "110",
+                "isCompleted": true,
+                "payout": "50"
+            },
+            {
+                "index": 3,
+                "goal": 1150,
+                "goalFormatted": "1,150",
+                "goalPercent": "115",
+                "progressFormatted": "1,132",
+                "name": "3",
+                "payout": "75",
+                "isCurrentLevel": true,
+                "remainingProgress": "118",
+                "levelMin": 1100,
+                "progress": 1132,
+                "levelMax": 1150,
+                "remaining": 118,
+                "isCompleted": false
+            }
+        ],
+        "includeStackRanking": true,
+        "stackRank": {
+            "rank": 5,
+            "participantsCount": 10,
+            <?php /* "url": "localhost/.../", */ ?>
+            "thumbnailUrl": "//placehold.it/40x40"
+        }
+    }
+<?php
+$comma = ",";
+} /* end $include['stepItUp'] */
+
+
+/*          COMPLETED CONTEST          */
+if($include['stepItUp'] && $include['completed']) {
+    echo $comma;
+?>
+    {
+        "id": "1c",
+        "creatorDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiCreatorPage.html",
+        "managerDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiManagerPage.html",
+        "participantDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiParticipantPage.html",
+        "contestType": "stepItUp",
+        "updatedOnDate": "03/01/2014",
+        "daysToEnd": 0,
+        "name": "Step It Up Complete Participant Example",
+        "status": "finalize_results",
+        "activityDescription": "Activity Description",
+        "payoutType": "points",
+        "includeBonus": false,
+        "bonusForEvery": "$100",
+        "bonusPayout": "100",
+        "payout": "100",
+        "totalPayout": "150",
+        "baseline": "1,000",
+        "includeBonus": false,
+        "contestLevels": [
+            {
+                "index": 5,
+                "progress": 1325,
+                "goal": 1500,
+                "goalFormatted": "1,500",
+                "name": "5",
+                "goalPercent": "150",
+                "payout": "500",
+                "isCurrentLevel": false,
+                "isCompleted": false
+            },
+            {
+                "index": 1,
+                "progress": 500,
+                "goal": 1050,
+                "goalFormatted": "1,050",
+                "name": "1",
+                "goalPercent": "105",
+                "isCompleted": true,
+                "payout": "25"
+            },
+            {
+                "index": 2,
+                "goal": 1100,
+                "goalFormatted": "1,100",
+                "name": "2",
+                "goalPercent": "110",
+                "payout": "50",
+                "isCurrentLevel": false,
+                "remainingProgress": "118",
+                "levelMin": 1100,
+                "progress": 1132,
+                "levelMax": 1150,
+                "remaining": 118,
+                "isCompleted": true
+            },
+            {
+                "index": 3,
+                "goal": 1150,
+                "goalFormatted": "1,150",
+                "goalPercent": "115",
+                "progressFormatted": "1,132",
+                "name": "3",
+                "payout": "75",
+                "isCurrentLevel": true,
+                "isCompleted": true,
+                "progress": "1,000,000.99"
+            },
+            {
+                "index": 4,
+                "progress": 1225,
+                "goal": 1250,
+                "goalFormatted": "1,250",
+                "goalPercent": "125",
+                "name": "4",
+                "payout": "100",
+                "isCurrentLevel": false,
+                "isCompleted": false
+            }
+        ],
+        "includeStackRanking": true,
+        "stackRank": {
+            "rank": 5,
+            "participantsCount": 10,
+            <?php /* "url": "localhost/.../", */ ?>
+            "thumbnailUrl": "//placehold.it/40x40"
+        }
+    }
+<?php
+$comma = ",";
+} /* end $include['stepItUp'] */
+
+
+/******************************************
+ *             END STEP IT UP             *
+ ******************************************/
+
+
+
+
+
+
+
+
+
+/******************************************
+ *               STACK RANK               *
+ ******************************************/
+
+if($include['stackRank']) {
+    echo $comma;
+?>
+    {
+        "id": "4",
+        "creatorDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiCreatorPage.html",
+        "managerDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiManagerPage.html",
+        "participantDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiParticipantPage.html",
+        "contestType": "stackRank",
+        "updatedOnDate": "03/01/2014",
+        "startDate": "01/01/2014",
+        "endDate": "02/01/2014",
+        "daysToEnd": 31,
+        "name": "Stack Rank Participant Example",
+        "status": "live",
+        "activityDescription": "Activity Description",
+        "isProgressLoaded": false,
+        "leaders":[
+            {
+                "id":1020,
+                "participantId":123,
+                "firstName":"Firstname 20",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":8,
+                "rank": 15
+            },
+            {
+                "id":1000,
+                "participantId":123,
+                "firstName":"Firstname 0",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":200,
+                "rank": 1
+            },
+            {
+                "id":1001,
+                "participantId":123,
+                "firstName":"Firstname 1",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":180,
+                "rank": 2
+            },
+            {
+                "id":1002,
+                "participantId":123,
+                "firstName":"Firstname 2",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":180,
+                "rank": 2
+            },
+            {
+                "id":1003,
+                "participantId":123,
+                "firstName":"Firstname 3",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":180,
+                "rank": 2
+            },
+            {
+                "id":1004,
+                "participantId":123,
+                "firstName":"Firstname 4",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":170,
+                "rank": 3
+            },
+            {
+                "id":1005,
+                "participantId":123,
+                "firstName":"Firstname 5",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":160,
+                "rank": 4
+            },
+            {
+                "id":1006,
+                "participantId":123,
+                "firstName":"Firstname 6",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":159,
+                "rank": 5,
+                "currentUser":true
+            },
+            {
+                "id":1007,
+                "participantId":123,
+                "firstName":"Firstname 7",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":120,
+                "rank": 6
+            },
+            {
+                "id":1008,
+                "participantId":123,
+                "firstName":"Firstname 8",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":120,
+                "rank": 6
+            },
+            {
+                "id":1009,
+                "participantId":123,
+                "firstName":"Firstname 9",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":119,
+                "rank": 7
+            },
+            {
+                "id":1010,
+                "participantId":123,
+                "firstName":"Firstname 10",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":118,
+                "rank": 8
+            },
+            {
+                "id":1011,
+                "participantId":123,
+                "firstName":"Firstname 11",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":112,
+                "rank": 9
+            },
+            {
+                "id":1012,
+                "participantId":123,
+                "firstName":"Firstname 12",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":110,
+                "rank": 10
+            },
+            {
+                "id":1013,
+                "participantId":123,
+                "firstName":"Firstname 13",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":100,
+                "rank": 11
+            },
+            {
+                "id":1014,
+                "participantId":123,
+                "firstName":"Firstname 14",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":100,
+                "rank": 11
+            },
+            {
+                "id":1015,
+                "participantId":123,
+                "firstName":"Firstname 15",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":100,
+                "rank": 11
+            },
+            {
+                "id":1016,
+                "participantId":123,
+                "firstName":"Firstname 16",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":100,
+                "rank": 11
+            },
+            {
+                "id":1017,
+                "participantId":123,
+                "firstName":"Firstname 17",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":80,
+                "rank": 12
+            },
+            {
+                "id":1018,
+                "participantId":123,
+                "firstName":"Firstname 18",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":70,
+                "rank": 13
+            },
+            {
+                "id":1019,
+                "participantId":123,
+                "firstName":"Firstname 19",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":10,
+                "rank": 14
+            }
+        ],
+        "payout": "100",
+        "progress": "120",
+        "includeStackRanking": true,
+        "stackRank": {
+            "rank": 5,
+            "participantsCount": 10
+        }
+    }
+<?php
+$comma = ",";
+} /* end $include['stackRank'] */
+
+
+/*          COMPLETED CONTEST          */
+if($include['stackRank'] && $include['completed']) {
+    echo $comma;
+?>
+    {
+        "id": "4",
+        "creatorDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiCreatorPage.html",
+        "managerDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiManagerPage.html",
+        "participantDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiParticipantPage.html",
+        "contestType": "stackRank",
+        "updatedOnDate": "03/01/2014",
+        "startDate": "01/01/2014",
+        "endDate": "02/01/2014",
+        "daysToEnd": 0,
+        "name": "Stack Rank Participant Example",
+        "status": "finalize_results",
+        "activityDescription": "Activity Description",
+        "isProgressLoaded": true,
+        "leaders":[
+            {
+                "id":1020,
+                "participantId":123,
+                "firstName":"Firstname 20",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":8,
+                "rank": 15
+            },
+            {
+                "id":1000,
+                "participantId":123,
+                "firstName":"Firstname 0",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":200,
+                "rank": 1
+            },
+            {
+                "id":1001,
+                "participantId":123,
+                "firstName":"Firstname 1",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":180,
+                "rank": 2
+            },
+            {
+                "id":1002,
+                "participantId":123,
+                "firstName":"Firstname 2",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":180,
+                "rank": 2
+            },
+            {
+                "id":1003,
+                "participantId":123,
+                "firstName":"Firstname 3",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":180,
+                "rank": 2
+            },
+            {
+                "id":1004,
+                "participantId":123,
+                "firstName":"Firstname 4",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":170,
+                "rank": 3
+            },
+            {
+                "id":1005,
+                "participantId":123,
+                "firstName":"Firstname 5",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":160,
+                "rank": 4
+            },
+            {
+                "id":1006,
+                "participantId":123,
+                "firstName":"Firstname 6",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":159,
+                "rank": 5,
+                "currentUser":true
+            },
+            {
+                "id":1007,
+                "participantId":123,
+                "firstName":"Firstname 7",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":120,
+                "rank": 6
+            },
+            {
+                "id":1008,
+                "participantId":123,
+                "firstName":"Firstname 8",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":120,
+                "rank": 6
+            },
+            {
+                "id":1009,
+                "participantId":123,
+                "firstName":"Firstname 9",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":119,
+                "rank": 7
+            },
+            {
+                "id":1010,
+                "participantId":123,
+                "firstName":"Firstname 10",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":118,
+                "rank": 8
+            },
+            {
+                "id":1011,
+                "participantId":123,
+                "firstName":"Firstname 11",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":112,
+                "rank": 9
+            },
+            {
+                "id":1012,
+                "participantId":123,
+                "firstName":"Firstname 12",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":110,
+                "rank": 10
+            },
+            {
+                "id":1013,
+                "participantId":123,
+                "firstName":"Firstname 13",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":100,
+                "rank": 11
+            },
+            {
+                "id":1014,
+                "participantId":123,
+                "firstName":"Firstname 14",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":100,
+                "rank": 11
+            },
+            {
+                "id":1015,
+                "participantId":123,
+                "firstName":"Firstname 15",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":100,
+                "rank": 11
+            },
+            {
+                "id":1016,
+                "participantId":123,
+                "firstName":"Firstname 16",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":100,
+                "rank": 11
+            },
+            {
+                "id":1017,
+                "participantId":123,
+                "firstName":"Firstname 17",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":80,
+                "rank": 12
+            },
+            {
+                "id":1018,
+                "participantId":123,
+                "firstName":"Firstname 18",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":70,
+                "rank": 13
+            },
+            {
+                "id":1019,
+                "participantId":123,
+                "firstName":"Firstname 19",
+                "lastName":"Lastname",
+                "avatarUrl":"../../skins/default/img/avatar-blank-72.png",
+                "score":10,
+                "rank": 14
+            }
+        ],
+        "payout": "100",
+        "totalPayout": "150",
+        "progress": "120",
+        "includeStackRanking": true,
+        "stackRank": {
+            "rank": 5,
+            "participantsCount": 10
+        }
+    }
+<?php
+} /* end $include['stackRank'] */
+
+
+/******************************************
+ *             END STACK RANK             *
+ ******************************************/
+
+
+?>
+    ]
+}
+<?php
+/******************************************
+ *                END JSON                *
+ ******************************************/
+return;
+
+?>

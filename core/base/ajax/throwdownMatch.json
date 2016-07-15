@@ -1,0 +1,251 @@
+[
+       {
+        "visible":true,
+        "primaryTeam":{
+            "stats":{
+                "none":0,
+                "wins":10,
+                "losses":5,
+                "ties":1,
+                "byes":0,
+                "forfeits":0,
+                "disqualifications":0
+            },
+			"isWinner": true,
+            "rank":43,
+            "currentProgress":2322,
+			"currentProgressForDisplay":"2,322 UNITS",
+			"currentProgressText":"Ahead",
+            "avatarUrl":"http://www.placecage.com/140/140",
+			"profileUrl": "layout.html?tpl=publicProfilePage&amp;tplPath=apps/publicProfile/tpl/#PlayerStats",
+            "firstName":"Lucille",
+            "lastName":"Jones",
+            "badgeInfos":[
+                {
+                    "noBadgesCompleteText":"well, this is the string for no badges..or something",
+                    "headerTitle":"my badge header",
+                    "badges":[
+                        {
+                            "imgLarge":"/url/to/image/LARGE",
+                            "img":"img/throwdown/badges/gold_glove_sm.png",
+                            "earned":true,
+                            "dateEarned":"10/10/1974",
+                            "progressNumerator":5,
+                            "progressDenominator":5,
+                            "progressVisible":false,
+                            "id":-111,
+                            "type":"earned",
+                            "name":"Gold Badge!",
+                            "howToEarnText":"This is how you can become awesome and earn this badge!",
+                            "earnCount":1
+                        },
+                        {
+                            "imgLarge":"/url/to/image/LARGE",
+                            "img":"img/throwdown/badges/silver_glove_sm.png",
+                            "earned":true,
+                            "dateEarned":"10/10/1974",
+                            "progressNumerator":5,
+                            "progressDenominator":5,
+                            "progressVisible":false,
+                            "id":-111,
+                            "type":"earned",
+                            "name":"Silver Badge!",
+                            "howToEarnText":"This is how you can become awesome and earn this badge!",
+                            "earnCount":2
+                        }
+                    ]
+                }
+            ],
+            "isShadowPlayer":false,
+            "isMyTeam":true
+        },
+        "secondaryTeam":{
+            "stats":{
+                "none":0,
+                "wins":13,
+                "losses":3,
+                "ties":1,
+                "byes":0,
+                "forfeits":0,
+                "disqualifications":0
+            },
+			"isWinner":false,
+            "rank":29,
+            "currentProgress":132,
+			"currentProgressForDisplay":"132 UNITS",
+			"currentProgressText":"",
+            "avatarUrl":"http://www.fillmurray.com/g/140/140",
+			"profileUrl": "layout.html?tpl=publicProfilePage&amp;tplPath=apps/publicProfile/tpl/#PlayerStats",
+            "firstName":"Jessica",
+			"lastName":"Jones",
+            "badgeInfos":[
+                {
+                    "noBadgesCompleteText":"well, this is the string for no badges..orsomething",
+                    "headerTitle":"my badge header",
+                    "badges":[
+                        {
+                            "imgLarge":"/url/to/image/LARGE",
+                            "img":"img/throwdown/badges/gold_glove_sm.png",
+                            "earned":true,
+                            "dateEarned":"10/10/1974",
+                            "progressNumerator":5,
+                            "progressDenominator":5,
+                            "progressVisible":false,
+                            "id":-111,
+                            "type":"earned",
+                            "name":"Gold Badge!",
+                            "howToEarnText":"This is how you can become awesome and earn this badge!",
+                            "earnCount":3
+                        },
+                        {
+                            "imgLarge":"/url/to/image/LARGE",
+                            "img":"img/throwdown/badges/silver_glove_sm.png",
+                            "earned":true,
+                            "dateEarned":"10/10/1974",
+                            "progressNumerator":5,
+                            "progressDenominator":5,
+                            "progressVisible":false,
+                            "id":-111,
+                            "type":"earned",
+                            "name":"Silver Badge!",
+                            "howToEarnText":"This is how you can become awesome and earn this badge!",
+                            "earnCount":1
+                        },
+                        {
+                            "imgLarge":"/url/to/image/LARGE",
+                            "img":"img/throwdown/badges/bronze_glove_sm.png",
+                            "earned":true,
+                            "dateEarned":"10/10/1974",
+                            "progressNumerator":5,
+                            "progressDenominator":5,
+                            "progressVisible":false,
+                            "id":-111,
+                            "type":"earned",
+                            "name":"Silver Badge!",
+                            "howToEarnText":"This is how you can become awesome and earn this badge!",
+                            "earnCount":4
+                        }
+                    ]
+                }
+            ],
+            "isShadowPlayer":true,
+            "isMyTeam":false
+        },
+        "rulesUrl":"/urlToRules.do",
+        "matchUrl":"layout.html?tpl=throwdownMatchPage&amp;tplPath=apps/throwdown/tpl/",
+        "allMatchesUrl": "urlToAllMatches.do",
+        "promotionId":2530,
+        "promotionName": "Promotion 1",
+		"promotionOverview": "Match ranking based on units per thousand sold to people between the ages of 7 and 12.",
+		"promotionEnded": false,
+        "endDate": 1388556000000,
+        "startDate":"05/12/14",
+        "progressEndDate": "05/25/14",
+        "roundNumber":1,
+        "matchId":2987,
+		"matchButton": "Match Details",
+        "numberOfRounds":3,
+        "displayProgress":true
+    },
+
+    {
+        "primaryTeam":{
+            "stats":{
+                "none":0,
+                "wins":0,
+                "losses":0,
+                "ties":0,
+                "byes":0,
+                "forfeits":0,
+                "disqualifications":0
+            },
+			"isWinner": false,
+            "rank":-25555,
+            "currentProgress":132,
+			"currentProgressForDisplay":"132 UNITS",
+			"currentProgressText":"Tied",
+            "avatarUrl":"http://www.placecage.com/c/140/140",
+			"profileUrl": "layout.html?tpl=publicProfilePage&amp;tplPath=apps/publicProfile/tpl/#PlayerStats",
+            "firstName":"Lucille",
+			"lastName":"Jones",
+            "badgeInfos":[
+                {
+                    "noBadgesCompleteText":"well, this is the string for no badges..orsomething",
+                    "headerTitle":"my badge header",
+                    "badges":[
+                        {
+                            "imgLarge":"/url/to/image/LARGE",
+                            "img":"/url/to/image",
+                            "earned":true,
+                            "dateEarned":"10/10/1974",
+                            "progressNumerator":5,
+                            "progressDenominator":5,
+                            "progressVisible":false,
+                            "id":-111,
+                            "type":"earned",
+                            "name":"The You Are Awesome Badge!",
+                            "howToEarnText":"This is how you can become awesome and earn this badge!"
+                        }
+                    ]
+                }
+            ],
+            "isShadowPlayer":false,
+            "isMyTeam":true
+        },
+        "secondaryTeam":{
+            "stats":{
+                "none":0,
+                "wins":0,
+                "losses":0,
+                "ties":0,
+                "byes":0,
+                "forfeits":0,
+                "disqualifications":0
+            },
+			"isWinner":false,
+            "rank":-25555,
+            "currentProgress":132,
+			"currentProgressForDisplay":"132 UNITS",
+			"currentProgressText":"Tied",
+            "avatarUrl":"http://www.placecage.com/140/140",
+			"profileUrl": "layout.html?tpl=publicProfilePage&amp;tplPath=apps/publicProfile/tpl/#PlayerStats",
+            "firstName":"Jessica",
+			"lastName":"Jones",
+            "badgeInfos":[
+                {
+                    "noBadgesCompleteText":"well, this is the string for no badges..orsomething",
+                    "headerTitle":"my badge header",
+                    "badges":[
+                        {
+                            "imgLarge":"/url/to/image/LARGE",
+                            "img":"/url/to/image",
+                            "earned":true,
+                            "dateEarned":"10/10/1974",
+                            "progressNumerator":5,
+                            "progressDenominator":5,
+                            "progressVisible":false,
+                            "id":-111,
+                            "type":"earned",
+                            "name":"The You Are Awesome Badge!",
+                            "howToEarnText":"This is how you can become awesome and earn this badge!"
+                        }
+                    ]
+                }
+            ],
+            "isShadowPlayer":false,
+            "isMyTeam":false
+        },
+        "rulesUrl":"/urlToRules.do",
+        "matchUrl":"layout.html?tpl=throwdownMatchPage&amp;tplPath=apps/throwdown/tpl/",
+        "allMatchesUrl": "urlToAllMatches.do",
+        "promotionId":2530,
+        "promotionName": "Promotion 1",
+		"promotionOverview": "Match ranking based on units per thousand sold to people between the ages of 7 and 12.",
+		"promotionEnded":false,
+        "endDate": 1388556000000,
+        "roundNumber":1,
+        "matchId":2987,
+        "numberOfRounds":3,
+        "displayProgress":false
+    }
+]

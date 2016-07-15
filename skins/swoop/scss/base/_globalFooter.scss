@@ -1,0 +1,34 @@
+// Partial-specific variables (uncomment to use)
+// =========================
+// $global_footer_linksFontStyle: ;
+// $global_footer_linksFontWeight: ;
+// $global_footer_linksTextTransform: ;
+$global_footer_linksColor: #094d75;
+$global_footer_linksDisabledColor: mix($global_footer_linksColor, $white);
+// $global_footer_linksBgColor: ;
+// $global_footer_copyrightFontStyle: ;
+// $global_footer_copyrightFontWeight: ;
+// $global_footer_copyrightTextTransform: ;
+// $global_footer_copyrightTextColor: ;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "partials/globalFooter";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// Partial-specific code for this skin
+// ==================================================
+
+
+#globalFooterView {
+    // TODO 5.4: add a check of the footer text color against the body background color to run the font smoothing mixin
+    // -webkit-font-smoothing: antialiased; // makes light-on-dark text look a bit better
+}

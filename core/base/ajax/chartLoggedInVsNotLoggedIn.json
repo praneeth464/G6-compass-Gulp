@@ -1,0 +1,20 @@
+{
+  "chart": 
+    {
+    "caption": "Logged In vs Not Logged In",
+    "subcaption": "For Organization",
+    "showlabels":"0",
+    "showlegend": "1"
+  },
+  "data" :
+      [
+      {
+        "value": "95",
+        "label": "Logged In"
+      },
+      {
+        "value": "5",
+        "label": "Not Logged In"
+      }
+  ]
+}

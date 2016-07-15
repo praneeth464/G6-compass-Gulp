@@ -1,0 +1,165 @@
+<?php sleep(1);
+require_once('paxGenerator/paxGenerator.php');
+$ed = array('userId' => 456);
+echo '{"participants":';
+generatePaxesJson(50,$ed);
+echo '}';
+die();
+?>
+
+
+{
+	"messages":[],
+	"participants":[
+		{
+			"id":"34",
+			"userId": 123,
+			"lastName":"Aalexson",
+			"firstName":"Xaxon",
+			"countryName":"United States",
+			"countryCode":"us",
+			"jobName":"Some Job",
+			"departmentName":"Some Dept."
+		},
+		{
+			"id":"342",
+			"userId": 223,
+			"lastName":"XAbrahmson",
+			"firstName":"Aaron",
+			"countryName":"United States",
+			"countryCode":"us",
+			"jobName":"Some Job",
+			"departmentName":"Some Dept."
+		},
+		{
+			"id":"456",
+			"userId": 323,
+			"lastName":"Aalexson",
+			"firstName":"Tom",
+			"countryName":"United States",
+			"countryCode":"us",
+			"jobName":"Some Job",
+			"departmentName":"Some Dept."
+		},
+		{
+			"id":"9870",
+			"userId": 423,
+			"lastName":"Dupont",
+			"firstName":"Aaron",
+			"countryName":"United States",
+			"countryCode":"us",
+			"jobName":"Some Job",
+			"departmentName":"Some Dept."
+		},
+		{
+			"id":"341",
+			"userId": 523,
+			"lastName":"YAbrahmson",
+			"firstName":"Aaron",
+			"countryName":"United States",
+			"countryCode":"us",
+			"jobName":"Some Job",
+			"departmentName":"Some Dept."
+		},
+		{
+			"id":"12032",
+			"userId": 623,
+			"lastName":"XBillings",
+			"firstName":"Aaron",
+			"countryName":"Germany",
+			"countryCode":"de",
+			"jobName":"Some Job",
+			"departmentName":"Some Dept."
+		},
+		{
+			"id":"12031",
+			"userId": 723,
+			"lastName":"YBillings",
+			"firstName":"Aaron",
+			"countryName":"Germany",
+			"countryCode":"de",
+			"jobName":"Some Job",
+			"departmentName":"Some Dept."
+		},
+		{
+			"id":"4561",
+			"userId": 823,
+			"lastName":"YCorwin",
+			"firstName":"Aaron",
+			"countryName":"United States",
+			"countryCode":"us",
+			"jobName":"Some Job",
+			"departmentName":"Some Dept."
+		},
+		{
+			"id":"1203",
+			"userId": 923,
+			"lastName":"Aalexson",
+			"firstName":"Wilfred",
+			"countryName":"Germany",
+			"countryCode":"de",
+			"jobName":"Some Job",
+			"departmentName":"Some Dept."
+		},
+		{
+			"id":"98701",
+			"userId": 1023,
+			"lastName":"YDupont",
+			"firstName":"Aaron",
+			"countryName":"United States",
+			"countryCode":"us",
+			"jobName":"Some Job",
+			"departmentName":"Some Dept."
+		},
+		{
+			"id":"98741",
+			"userId": 1123,
+			"lastName":"YEvenson",
+			"firstName":"Aaron",
+			"countryName":"United States",
+			"countryCode":"us",
+			"jobName":"Some Job",
+			"departmentName":"Some Dept."
+		},
+		{
+			"id":"9874",
+			"userId": 1223,
+			"lastName":"Evenson",
+			"firstName":"Aaron",
+			"countryName":"United States",
+			"countryCode":"us",
+			"jobName":"Some Job",
+			"departmentName":"Some Dept."
+		},
+		{
+			"id":"4562",
+			"userId": 1323,
+			"lastName":"XCorwin",
+			"firstName":"Aaron",
+			"countryName":"United States",
+			"countryCode":"us",
+			"jobName":"Some Job",
+			"departmentName":"Some Dept."
+		},
+		{
+			"id":"98702",
+			"userId": 1423,
+			"lastName":"XDupont",
+			"firstName":"Aaron",
+			"countryName":"United States",
+			"countryCode":"us",
+			"jobName":"Some Job",
+			"departmentName":"Some Dept."
+		},
+		{
+			"id":"98742",
+			"userId": 1523,
+			"lastName":"XEvenson",
+			"firstName":"Aaron",
+			"countryName":"United States",
+			"countryCode":"us",
+			"jobName":"Some Job",
+			"departmentName":"Some Dept."
+		}
+	]
+}

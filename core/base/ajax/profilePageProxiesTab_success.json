@@ -1,0 +1,37 @@
+{
+    "messages":[],
+    "proxies":[
+        {
+            "id":"34",
+            "lastName":"Abrahmson",
+            "firstName":"Aaron",
+            "avatarUrl":"img/_samples/x-profile-pic1.jpg",
+            "orgName":"Organization X",
+            "departmentName":"Sales",
+            "jobName":"Legal Council",
+            "countryName":"United States",
+            "countryCode":"us",
+            "urlEdit":"profilePageProxiesTabEditForm.html",
+            "urlRemove":"profilePageProxiesTabRemoveProxy.json",
+            "coreAccess":[
+                "Roster Managment"
+            ],
+            "module":[
+                {
+                    "title":"Recognition",
+                    "promotions":[
+                        "Years of Service",
+                        "Manager to Employee",
+                        "Plateau Awards"
+                    ]
+                },
+                {
+                    "title":"Nomination",
+                    "promotions":[
+                        "Signature Service Nomination"
+                    ]
+                }
+            ]
+        }
+    ]
+}

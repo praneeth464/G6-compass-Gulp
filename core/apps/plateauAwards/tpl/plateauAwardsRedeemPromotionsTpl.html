@@ -1,0 +1,43 @@
+{{#if promotions.[1]}}
+<div class="redeem-multi-promotion">
+    <h2>Redeem Your Award. <span>Click below.</span></h2>
+    <ul>
+        {{#each promotions}}
+        <li class="promotion-info {{#if ../promotions.[2]}}long-list{{/if}}" data-end-date="{{endDate}}">
+            <a href="{{catalogUrl}}" target="_blank">
+                <span class="promo-name">{{name}}</span>
+                <span class="redeemCountdown">
+                    <span class="time-display"></span>
+                    <i class="icon-me-time"></i> <br/>
+                    <span class="time-label days">Days Left</span>
+                    <span class="time-label hours">Hours Left</span>
+                    <span class="time-label minutes">Minutes Left</span>
+                    <span class="time-label expired">Expired</span>
+                </span>
+
+            </a>
+        </li>
+        {{/each}}
+    </ul>
+</div>
+
+{{else}}
+<div class="redeem-single-promotion">
+    <h2>Choose Your Award. <span>You earned it.</span></h2>
+    <a href="{{promotions.[0].catalogUrl}}" class="btn btn-primary" target="_blank">Choose Award</a> <!-- link to catalog page -->
+
+    <div class="redeem-countdown-container promotion-info" data-end-date="{{promotions.[0].endDate}}">
+        <p>Time left to redeem</p>
+
+        <i class="icon-me-time"></i>
+
+        <div class="countdown redeemCountdown">
+            <span class="d"><span class="cd-digit">00</span>:</span><!-- Adding comments here to
+            --><span class="h"><span class="cd-digit">00</span>:</span><!-- prevent whitespace from
+            --><span class="m"><span class="cd-digit">00</span>:</span><!-- appearing between digits
+            --><span class="s"><span class="cd-digit">00</span></span>
+        </div>
+
+    </div>
+</div>
+{{/if}}

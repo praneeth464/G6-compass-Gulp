@@ -1,0 +1,425 @@
+<?php //usleep(.5*1000000);
+$seconds = $_GET['reportId'] - 5000;
+// print $seconds;
+// sleep($seconds);
+sleep(2);
+
+if( isset($_GET['userId']) ) {
+    include('reportsDisplayLoginActivityByPaxReportDetailDrill.json');
+    return false;
+}
+elseif( $_GET['reportId'] == 5022 ) {
+    include('reportsDisplayLoginActivityByPaxReportDetailExport.json');
+    return false;
+}
+elseif( isset($_POST['method']) && $_POST['method'] == 'loadReportParameters' ) {
+    include('temp_reportsParams1.html');
+    return false;
+}
+?>
+{
+    "messages":[
+        {
+            "type":"error",
+            "code":"noData",
+            
+            "name":"",
+            "text":"No data available for these parameters."
+        }
+    ],
+    "report":{
+        "id":"<?php echo( $_GET['reportId'] ); ?>",
+        "reportDisplayName":"Login Activity - List of Participants",
+        "parameters":[
+            {
+                "name":"Dates",
+                "value":"01/01/2012 - 11/01/2012"
+            }
+        ],
+        "tabularData":[
+            {
+                "meta":{
+                    "columns":[
+                        {
+                            "id":"1",
+                            "name":"Organization",
+                            "description":"Shows the organizational entity",
+                            "type":"string",
+                            "alignment":"",
+                            "nameId":"",
+                            "sortable":true,
+                            "sortUrl":"ajax/displayLoginActivityByPaxReport.do?method=displaySummaryReport&sortedOn=1&sortedBy=asc",
+                            "summary":"Total"
+                        },
+                        {
+                            "id":"2",
+                            "name":"Department",
+                            "description":"Shows the Participant department details",
+                            "type":"string",
+                            "alignment":"",
+                            "nameId":"",
+                            "sortable":true,
+                            "sortUrl":"ajax/displayLoginActivityByPaxReport.do?method=displaySummaryReport&sortedOn=2&sortedBy=",
+                            "summary":"1"
+                        },
+                        {
+                            "id":"3",
+                            "name":"Position",
+                            "description":"Shows the Participant role details",
+                            "type":"string",
+                            "alignment":"",
+                            "nameId":"",
+                            "sortable":true,
+                            "sortUrl":"ajax/displayLoginActivityByPaxReport.do?method=displaySummaryReport&sortedOn=3&sortedBy=&foo=bar",
+                            "summary":"4"
+                        },
+                        {
+                            "id":"4",
+                            "name":"Organization drill-down URL",
+                            "description":"",
+                            "type":"URL",
+                            "alignment":"",
+                            "nameId":"",
+                            "sortable":false,
+                            "sortUrl":"",
+                            "summary":"ajax/testthissucker.html",
+                            "target":"_sheet"
+                        },
+                        {
+                            "id":"5",
+                            "name":"Participant",
+                            "description":"Shows the Last, First name details of Participant",
+                            "type":"string",
+                            "alignment":"",
+                            "nameId":"",
+                            "sortable":true,
+                            "sortUrl":"ajax/displayLoginActivityByPaxReport.do?method=displaySummaryReport&sortedOn=5&sortedBy=",
+                            "summary":""
+                        },
+                        {
+                            "id":"6",
+                            "name":"Pax drill-down URL",
+                            "description":"",
+                            "type":"URL",
+                            "alignment":"",
+                            "nameId":"",
+                            "sortable":false,
+                            "sortUrl":"",
+                            "summary":""
+                        },
+                        {
+                            "id":"7",
+                            "name":"Last Logged In",
+                            "description":"Shows the date details of users last time login to system",
+                            "type":"string",
+                            "alignment":"",
+                            "nameId":"",
+                            "sortable":false,
+                            "sortUrl":"",
+                            "summary":""
+                        },
+                        {
+                            "id":"8",
+                            "name":"Total Visits",
+                            "description":"Shows the count of individual visits to the system",
+                            "type":"number",
+                            "alignment":"",
+                            "nameId":"",
+                            "sortable":false,
+                            "sortUrl":"",
+                            "summary":""
+                        }
+                    ],
+                    "sortedOn":"1",
+                    "sortedBy":"asc",
+                    "maxRows":213,
+                    "exportFullReportUrl":[
+                        {
+                            "label" : "Extract One With a Long Name",
+                            "url" : "ajax/displayLoginActivityByPaxReport.do?method=extractReport"
+                        },
+                        {
+                            "label" : "Extract Two",
+                            "url" : "ajax/displayLoginActivityByPaxReport.do?method=extractReport1"
+                        },
+                        {
+                            "label" : "Extract Three",
+                            "url" : "ajax/displayLoginActivityByPaxReport.do?method=extractReport2"
+                        },
+                        {
+                            "label" : "Extract Four",
+                            "url" : "ajax/displayLoginActivityByPaxReport.do?method=extractReport3"
+                        },
+                        {
+                            "label" : "Extract Five",
+                            "url" : "ajax/displayLoginActivityByPaxReport.do?method=extractReport4"
+                        }
+                    ],
+                    "exportCurrentView": {
+                        "label" : "Export Current View",
+                        "url" : "ajax/displayLoginActivityByPaxReport.do?method=extractReport&exportViewType=currentView"
+                    }
+                },
+                "results":[
+                    [
+                        "BONFIRE HOME DESIGNS",
+                        "Service",
+                        "Director",
+                        "",
+                        "Davis, Denny",
+                        "ajax/displayLoginActivityByPaxReport.do?method=displayParticipantLogonActivityReport&userId=5583",
+                        "10/31/2012",
+                        "11"
+                    ],
+                    [
+                        "BONFIRE HOME DESIGNS",
+                        "Sales",
+                        "Director",
+                        "",
+                        "Davis, Debra",
+                        false,
+                        "",
+                        "0"
+                    ],
+                    [
+                        "BONFIRE HOME DESIGNS",
+                        "Office",
+                        "Director",
+                        "",
+                        "Davis, Doug",
+                        false,
+                        "",
+                        "0"
+                    ],
+                    [
+                        "Bloomington_",
+                        "Sales",
+                        "Manager",
+                        "",
+                        "Tester, Chester",
+                        false,
+                        "",
+                        "0"
+                    ],
+                    [
+                        "Bloomington_",
+                        "Service",
+                        "Employee",
+                        "",
+                        "Testaroni, Tony",
+                        false,
+                        "",
+                        "0"
+                    ],
+                    [
+                        "Bloomington_",
+                        "Sales",
+                        "Employee",
+                        "",
+                        "Testguy, Virgil",
+                        false,
+                        "",
+                        "0"
+                    ],
+                    [
+                        "Bloomington_",
+                        "Sales",
+                        "",
+                        "ajax/displayLoginActivityByPaxReport.do?method=displayParticipantLogonActivityReport&userId=5583",
+                        "Testgal, Abigail",
+                        false,
+                        "",
+                        "0"
+                    ],
+                    [
+                        "Bloomington_",
+                        "Office",
+                        "Employee",
+                        "",
+                        "",
+                        "ajax/displayLoginActivityByPaxReport.do?method=displayParticipantLogonActivityReport&userId=5583",
+                        "",
+                        "0"
+                    ],
+                    [
+                        "Bloomington_",
+                        "Sales",
+                        "Employee",
+                        "",
+                        "Test, Yu",
+                        false,
+                        "",
+                        "0"
+                    ],
+                    [
+                        "Bloomington_",
+                        "Sales",
+                        "Employee",
+                        "",
+                        "Charles, Chester",
+                        false,
+                        "",
+                        "0"
+                    ],
+                    [
+                        "Bloomington_",
+                        "Service",
+                        "Employee",
+                        "",
+                        "Charles, Tony",
+                        false,
+                        "",
+                        "0"
+                    ],
+                    [
+                        "Bloomington_",
+                        "Sales",
+                        "Employee",
+                        "../apps/leaderboard/tpl/leaderboardPage.html",
+                        "Charles, Earl",
+                        false,
+                        "",
+                        "0"
+                    ],
+                    [
+                        "Bloomington_",
+                        "Sales",
+                        "Employee",
+                        "",
+                        "Testgal, Otto",
+                        false,
+                        "",
+                        "0"
+                    ]
+                ]
+            }
+        ],
+        "chartSet":[
+            {
+                "displayName":"Monthly Login Activity",
+                "category":"Login",
+                "chartType":"Column3D",
+                "dataUrl":"ajax/reportsDisplayLoginActivityByPaxReport-0.json",
+                "fusionChartsParameters":{
+                    "exportEnabled":"1",
+                    "exportFileName":"Monthly Login Activity",
+                    "exportAtClient":"0",
+                    "exportFormats":"PDF",
+                    "exportAction":"download",
+                    "exportShowMenuItem":"0",
+                    "html5ExportHandler":"exportToPDF.do",
+                    "showlabels":"1",
+                    "showlegend":"1",
+                    "xAxisName":"Month",
+                    "yAxisName":"Logins"
+                },
+                "pdfUrl":"ajax/displayLoginActivityByPaxReport.do?method=displayBarResults&amp;pdf=1",
+                "id":"5000"
+            },
+            {
+                "displayName":"Unique Monthly Login Activity",
+                "category":"Login",
+                "chartType":"Column3D",
+                "dataUrl":"ajax/reportsDisplayLoginActivityByPaxReport-1.json",
+                "fusionChartsParameters":{
+                    "exportEnabled":"1",
+                    "exportFileName":"Unique Monthly Login Activity",
+                    "exportAtClient":"0",
+                    "exportFormats":"PDF",
+                    "exportAction":"download",
+                    "exportShowMenuItem":"0",
+                    "html5ExportHandler":"exportToPDF.do",
+                    "showlabels":"1",
+                    "showlegend":"1",
+                    "xAxisName":"Month",
+                    "yAxisName":"Logins"
+                },
+                "pdfUrl":"ajax/displayLoginActivityByPaxReport.do?method=displayUniqueMonthlyResults&amp;pdf=1",
+                "id":"5001",
+                "chartDisplaysTop":"10"
+            },
+            {
+                "displayName":"Unique Login Activity by Timeframe",
+                "category":"Login",
+                "chartType":"Pie3D",
+                "dataUrl":"ajax/reportsDisplayLoginActivityByPaxReport-2.json",
+                "fusionChartsParameters":{
+                    "exportEnabled":"1",
+                    "exportFileName":"Unique Login Activity by Timeframe",
+                    "exportAtClient":"0",
+                    "exportFormats":"PDF",
+                    "exportAction":"download",
+                    "exportShowMenuItem":"0",
+                    "html5ExportHandler":"exportToPDF.do",
+                    "showlabels":"1",
+                    "showlegend":"1",
+                    "xAxisName":"Logged In",
+                    "yAxisName":"Not Logged In"
+                },
+                "pdfUrl":"ajax/displayLoginActivityByPaxReport.do?method=displayTimeFrameBarResults&amp;pdf=1",
+                "id":"5002",
+                "chartDisplaysTop":"15"
+            },
+            {
+                "displayName":"Login Activity by Organization",
+                "category":"Login",
+                "chartType":"Column3D",
+                "dataUrl":"ajax/reportsDisplayLoginActivityByPaxReport-3.json",
+                "fusionChartsParameters":{
+                    "exportEnabled":"1",
+                    "exportFileName":"Login Activity by Organization",
+                    "exportAtClient":"0",
+                    "exportFormats":"PDF",
+                    "exportAction":"download",
+                    "exportShowMenuItem":"0",
+                    "html5ExportHandler":"exportToPDF.do",
+                    "showlabels":"1",
+                    "showlegend":"1",
+                    "xAxisName":"Organization",
+                    "yAxisName":"Logins"
+                },
+                "pdfUrl":"ajax/displayLoginActivityByPaxReport.do?method=displayOrganizationBarResults&amp;pdf=1",
+                "id":"5003"
+            },
+            {
+                "displayName":"Organization Login %",
+                "category":"Login",
+                "chartType":"StackedColumn3D",
+                "dataUrl":"ajax/reportsDisplayLoginActivityByPaxReport-4.json",
+                "fusionChartsParameters":{
+                    "exportEnabled":"1",
+                    "exportFileName":"Organization Login %",
+                    "exportAtClient":"0",
+                    "exportFormats":"PDF",
+                    "exportAction":"download",
+                    "exportShowMenuItem":"0",
+                    "html5ExportHandler":"exportToPDF.do",
+                    "showlabels":"1",
+                    "showlegend":"1",
+                    "xAxisName":"Logins",
+                    "yAxisName":"Organization"
+                },
+                "pdfUrl":"ajax/displayLoginActivityByPaxReport.do?method=displayPercentageBarResults&amp;pdf=1",
+                "id":"5004"
+            }
+        ],
+        "chartConfigure":{
+            "_comment" : "Sets a custom message when chart is loading.",
+            "LoadingText" : "Loading Chart. Please Wait. - FROM CM",
+
+            "_comment" : "Sets a custom message when data is being parsed by chart.",
+            "ParsingDataText" : "Reading Data. Please Wait. - FROM CM",
+
+            "_comment" : "Sets a custom message when the chart has retrieved data which does not contain any data for chart to plot or the data does not conform to the data structure required by the chart type.",
+            "ChartNoDataText" : "No data to display. - FROM CM",
+
+            "_comment" : "Sets a custom message when the chart is being drawn.",
+            "RenderingChartText" : "Rendering Chart. Please Wait. - FROM CM",
+
+            "_comment" : "Sets a custom message when there is error in loading the chart data from the data URL provided as datasource.This may happen when the URL is invalid or inaccessible.",
+            "LoadDataErrorText" : "Error in loading data. - FROM CM"
+        },
+        "selectedChartId":"<?php if( isset($_GET['dashboardItemId']) ) { echo( $_GET['dashboardItemId'] ); } ?>",
+        "reportDetailAsOfTimestamp":"today"
+    }
+}

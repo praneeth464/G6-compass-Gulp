@@ -1,0 +1,20 @@
+<?php sleep(1); ?>
+{{#each .}}
+<li class="wtTab{{#if isActive}} active{{/if}}" 
+    data-tab-uid="{{id}}" 
+    data-tab-name="{{name}}" 
+    data-tab-content="{{contentSel}}"
+    data-tab-state="{{state}}" >
+    <div class="wtTabLiner">
+        <div class="wtNumber"><span>{{wtNumber}}{{! if empty, view will fill this in}}</span></div>
+        <div class="wtName"><span>{{wtName}}</span></div>
+        <div class="wtIconWrap">
+            <span class="wtIcon iconLocked"><i class="icon-lock"></i></span>
+            <span class="wtIcon iconUnlocked"><i class="icon-unlock"></i></span>
+            <span class="wtIcon iconIncomplete"><i class="icon-remove-sign"></i></span>
+            <span class="wtIcon iconComplete"><i class="icon-ok-sign"></i></span>
+        </div>
+    </div>
+    {{#unless hideDeedle}}{{! iff you want to hide the nubbin}}<div class="wtDeedle">&nbsp;</div>{{/unless}}
+</li><!-- /.wtTab -->
+{{/each}}

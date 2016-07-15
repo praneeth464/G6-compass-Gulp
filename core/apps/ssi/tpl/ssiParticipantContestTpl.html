@@ -1,0 +1,265 @@
+{{! NOTE: extraJSON is set in JS }}
+
+{{#if isParticipantDrillDown}}
+<div class="row paxDrillWrap">
+    <div class="span6">
+        <h3>{{participantDrillName}}</h3>
+    </div>
+</div>
+{{#unless isReportDrillDown}}
+<div class="row">
+    <div class="span12 backToContestWrap">
+        <a href="#" class="btn btn-primary">Back to Contest</a>
+    </div>
+</div>
+{{/unless}}
+{{/if}}
+
+<div class="row">
+    <div class="span12 creatorDetailsBtns backToContestWrap" style="display: none;">
+        <button type="button" class="btn btn-primary backToContest">Back</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span8 contestInfo">
+        <h2>{{name}}</h2>
+        <p>For questions contact: {{creatorName}}</p>
+
+        {{#eq activityMeasuredIn "currency"}}
+            <p>Note the currency used for this contest is {{currencyAbbr}}</p>
+        {{/eq}}
+
+        <div class="partialDescription toggleDescriptionWrap">
+            {{description}}
+        </div>
+        <div class="fullDescription toggleDescriptionWrap">
+            {{description}}
+        </div>
+        <a href="#" class="activityDescriptionToggle hide readMore">Read More</a>
+        <a href="#" class="activityDescriptionToggle hide readLess">Read Less</a>
+    </div>
+    <div class="span4 text-right contestMeta">
+        <p class="contestDates">Starts {{startDate}} | Ends {{endDate}}</p>
+
+        {{#eq status "live"}}
+        {{#ueq daysToEnd "0"}}
+        <p class="daysToGo"><i class="icon icon-time"></i>
+            {{#eq daysToEnd "1"}}
+                Last Day
+            {{else}}
+                {{daysToEnd}} Days to go
+            {{/eq}}
+        </p>
+        {{else}}
+        <p class="daysToGo">Contest Over</p>
+        {{/ueq}}
+        {{/eq}}
+
+        {{#eq status "finalize_results"}}
+        <p class="daysToGo">Contest Over</p>
+        {{/eq}}
+
+        {{#eq status "pending"}}
+        <p class="daysToGo"><i class="icon icon-time"></i>
+            {{daysToStart}} {{#eq daysToStart "1"}}Day{{else}}Days{{/eq}} to start
+        </p>
+        {{/eq}}
+
+        <div class="contestAttachment">
+        {{#if attachmentUrl}}
+            <a href="{{attachmentUrl}}" title="">
+                {{#eq attachmentType "pdf"}}
+                <img src="../base/img/fileIcons/pdf34x34.png" alt=""><br>
+                {{else}}
+                    {{#eq attachmentType "word"}}
+                    <img src="../base/img/fileIcons/word34x34.png" alt=""><br>
+                    {{/eq}}
+                {{/eq}}
+                {{attachmentTitle}}
+            </a>
+        {{/if}}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    {{#ueq contestType "stackRank"}}
+    <div class="span9">
+        {{#eq contestType "doThisGetThat"}}
+            {{#eq status "finalize_results"}}
+                <p class="sectionTitle">Final Results - Your Activity</p>
+                {{#ueq status "pending"}}
+                <p class="asOfDate">as of {{updatedOnDate}}</p>
+                {{/ueq}}
+            {{else}}
+                <p class="sectionTitle">Current Activity</p>
+                {{#ueq status "pending"}}
+                <p class="asOfDate">as of {{updatedOnDate}}</p>
+                {{/ueq}}
+            {{/eq}}
+        {{else}}
+            <p class="sectionTitle">
+            {{#eq status "finalize_results"}}
+                Final Results &ndash;
+            {{/eq}}
+            {{activityDescription}}
+            </p>
+            {{#ueq status "pending"}}
+            <p class="asOfDate">as of {{updatedOnDate}}</p>
+            {{/ueq}}
+        {{/eq}}
+    </div>
+    {{else}}
+        {{#eq status "finalize_results"}}
+            <div class="span9">
+                <p class="sectionTitle">Final Results</p>
+            </div>
+        {{/eq}}
+    {{/ueq}}
+
+    {{#unless isParticipantDrillDown}}
+        {{#if includeSubmitClaim}}
+        <div class="{{#eq contestType "stackRank"}}span12{{else}}span3{{/eq}} creatorDetailsBtns">
+            <div class="pullRightBtns">
+                {{#ueq claimDaysToEnd "0"}}
+                    <a href="layout.html?tplPath=apps/ssi/tpl/&tpl=ssiParticipantSubmitClaimPageView.html" class="btn btn-primary">Submit Claim</a>
+                {{/ueq}}
+            </div>
+        </div>
+        {{/if}}
+    {{/unless}}
+</div>
+
+<div class="row earnAwardDescription">
+    <div class="span12">
+        {{#eq contestType "objectives"}}
+        <p>Achieve 100% of your Objective to earn the corresponding award.</p>
+        {{/eq}}
+
+        {{#eq contestType "stepItUp"}}
+        <p>Earn the award for the highest level achieved. Awards earned are not cumulative.</p>
+        {{/eq}}
+
+        {{#eq contestType "stackRank"}}
+        <p>Be one of the top ranked participants and earn the corresponding award.</p>
+        {{/eq}}
+    </div>
+</div>
+
+{{#eq daysToEnd "0"}}
+    <div class="row paxStatusBanner">
+        <div class="span12 statusBanner">
+
+            <div class="paxBadge">
+                {{#eq status "finalize_results"}}
+                    {{#if badge.img}}
+                    <img src="{{badge.img}}" alt="{{badge.name}}" />
+                    {{/if}}
+                {{/eq}}
+                {{#eq status "closed"}}
+                    {{#if badge.img}}
+                    <img src="{{badge.img}}" alt="{{badge.name}}" />
+                    {{/if}}
+                {{/eq}}
+            </div>
+
+            {{#eq status "finalize_results"}}
+                <div class="payoutAmount">
+                {{#if totalPayout}}
+                    {{#if multipleActivities}}
+                        <span>Congratulations you have earned Awards</span>
+                    {{else}}
+                        {{#eq payoutType "points"}}
+                        <span>You Earned <strong>{{totalPayout}}</strong> Points</span>
+                        {{else}}
+                        <span>You Earned <strong>{{totalPayout}}</strong></span>
+                        {{/eq}}
+                    {{/if}}
+                {{else}}
+                    <span>No Award Achieved</span>
+                {{/if}}
+                </div>
+            {{else}}
+
+                {{#eq status "closed"}}
+                    <div class="payoutAmount">
+                    {{#if totalPayout}}
+                        {{#if multipleActivities}}
+                            <span>Congratulations you have earned Awards</span>
+                        {{else}}
+                            {{#eq payoutType "points"}}
+                            <span>You Earned <strong>{{totalPayout}}</strong> Points</span>
+                            {{else}}
+                            <span>You Earned <strong>{{totalPayout}}</strong></span>
+                            {{/eq}}
+                        {{/if}}
+                    {{else}}
+                        <span>No Award Achieved</span>
+                    {{/if}}
+                    </div>
+
+                {{else}}
+                    <div class="payoutAmount">
+                        <span>Results Pending</span>
+                    </div>
+                {{/eq}}
+            {{/eq}}
+
+            {{#unless isParticipantDrillDown}}
+                <div class="text-center shopNow">
+                {{#eq payoutType "points"}}
+                    {{#if totalPayout}}
+                    <a href="{{shopUrl}}" title="" class="btn btn-primary" target="_blank">Shop Now</a>
+                    {{/if}}
+                {{/eq}}
+                </div>
+            {{/unless}}
+        </div>
+    </div>
+{{/eq}}
+
+<div class="contestUniqueContentWrapper">
+    <div class="contestUniqueContent participantContest">
+        <div class="contestWrapper {{contestType}} {{#eq status "finalize_results"}}complete{{/eq}} {{#eq status "closed"}}complete{{/eq}}">
+            {{! triple curly brackets prevents Handlebars from processing the data }}
+            {{{contestHtml}}}
+        </div>
+
+        {{#if includeSubmitClaim}}
+        <div class="row activityHistory">
+            <div class="span12">
+            </div>
+        </div>
+        {{/if}}
+    </div><!-- .contestUniqueContent -->
+
+{{#if includeStackRanking}}
+    <div class="contestFullStackRankWrap" style="display:none">
+        {{! contest stack rank table}}
+        <div class="row">
+            <div class="span12">
+                <div class="stackRankBoard contestFullStackRank"
+                    data-stackrank-offset=""
+                    data-stackrank-limit="{{payoutCount}}"
+                    data-stackrank-rowcount="11">
+                    {{! subTpl.leaderTpl}}
+                </div>
+                <div class="pagination pagination-right paginationControls"></div>
+            </div>
+        </div><!-- .row -->
+    </div>
+{{/if}}
+{{#if includeSubmitClaim}}
+    <div class="row activityHistoryWrap" style="display:none">
+        <div class="span12">
+        </div>
+    </div>
+{{/if}}
+
+</div>
+<div class="row">
+    <div class="span12 creatorDetailsBtns backToContestWrap" style="display: none;">
+        <button type="button" class="btn btn-primary backToContest">Back</button>
+    </div>
+</div>

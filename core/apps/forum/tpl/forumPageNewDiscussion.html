@@ -1,0 +1,165 @@
+<!-- ======== FORUM PAGE SERVER SIDE ERRORS ========  -->
+<div id="serverReturnedErrored" class="hide  errors span12">
+    <div data-error-field="selectedTitle" class="alert alert-block alert-error">
+    Test title here
+    </div>
+
+</div>
+
+
+<!-- ======== FORUM PAGE DISCUSSIONS ======== -->
+
+<div id="forumPageDiscussionView" class="forumPage-liner page-content">
+    <div class="row">
+        <div class="span12">
+            <form class="comment-form" id="newDiscussionForm">
+                <ul class="breadcrumbs">
+                    <li class="forum">
+                        <a href="#">Forum</a>
+                    </li>
+
+                    <!-- if no topic has been set -->
+                    <li class="topic">
+                        <em>Select a topic</em>
+                    </li>
+                    <!-- else if a topic has been set -->
+                    <li class="topic">
+                        <a href="#">TopicName</a>
+                    </li>
+
+                    <li class="discussion active">
+                        <em>Start a Discussion</em>
+                    </li>
+                </ul>
+                <h2 class="discussion"><em>Start a Discussion</em></h2>
+
+                <div class="discussionNewDiscussionForm commonDiscussionWrapper">
+                    <div class="innerCommentWrapper">
+                        <!-- currently logged in user information -->
+                        <img alt="FirstName LastName" class="avatar" src="../../skins/default/img/avatar-blank-288.png">
+
+                        <div class="indent">
+                            <div class="userInfo">
+                                <span class="author">
+                                    FirstName LastName
+                                </span>
+                            </div>
+
+                            <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs="{&quot;nonempty&quot; : &quot;Please enter a topic&quot;, &quot;match&quot; : &quot;asdf&quot;}">
+                                <label class="control-label" for="selectedTopic">Topic</label>
+                                <div class="controls">
+                                    <select id="selectedTopic" name="topicId">
+                                        <option selected disabled value="">Select a topic</option>
+                                        <option value="1">Cars</option>
+                                        <option value="2">Destinations</option>
+                                        <option value="3">Movies &amp; Music</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="control-group validateme" data-validate-flags="nonempty,maxlength" data-validate-max-length="150" data-validate-fail-msgs="{&quot;nonempty&quot; : &quot;Please enter Discussion Title.&quot;, &quot;maxlength&quot; : &quot;Please enter a Title under 150 charicters.&quot;}">
+                                <label class="control-label" for="title">Discussion Title</label>
+                                <div class="controls">
+                                    <input  id="selectedTitle" name="title" maxlength="150" data-max-chars="150" required type='text' />
+                                </div>
+                            </div>
+
+                            <div class="control-group validateme" data-validate-flags="nonempty,maxlength" data-validate-fail-msgs="{&quot;nonempty&quot; : &quot;Please enter Body Copy.&quot;, &quot;maxlength&quot; : &quot;Please enter copy of a valid length.&quot;}" data-validate-max-length="2000">
+                                <label class="control-label" for="selectedText">Body</label>
+                                <div class="controls">
+                                    <textarea class="richtext input-xxlarge" id="selectedText" data-max-chars="2000" name="selectedText" required type='text'></textarea>
+                                </div>
+                            </div>
+                        </div><!-- /.indent -->
+                    </div><!-- /.innerCommentWrapper -->
+                </div>
+
+                <div class="form-actions pullBottomUp">
+                    <a href='#' class="previewButton btn btn-primary">Preview</a>
+                    <a href='layout.html' class="cancelButton btn">Cancel</a>
+                </div>
+            </form>
+
+            <div class="createDiscussion preview"></div>
+
+            <script id="createDiscussionTpl" type="text/x-handlebars-template">
+                <ul class="breadcrumbs">
+                    <li class="forum">
+                        <a href="#">Forum</a>
+                    </li>
+                    <li class="topic">
+                        <a href="#">{{topicName}}</a>
+                    </li>
+                    <li class="discussion active">
+                        {{name}}
+                    </li>
+                </ul>
+                <h2>{{title}}</h2>
+
+                <div class="discussionDetails commonDiscussionWrapper mediaComment" data-id="[{{topicId}}]">
+                    <div class="innerCommentWrapper">
+                        <!-- currently logged in user information -->
+                        <img alt="FirstName LastName" class="avatar" src="../../skins/default/img/avatar-blank-288.png">
+
+                        <div class="indent">
+                            <div class="userInfo">
+                                <span class="author">
+                                    <a class="profile-popover" href="#" data-participant-ids="[{{author.id}}]">FirstName LastName</a>
+                                </span>
+                            </div>
+                            <div class="text">
+                                {{{text}}}
+                            </div>
+                        </div><!-- /.indent -->
+                    </div><!-- /.innerCommentWrapper -->
+                </div>
+
+                <div class="form-actions pullBottomUp">
+                    <a href="#" class="submit btn btn-primary">Submit</a>
+                    <a class="editButton btn">Edit</a>
+                </div>
+            </script>
+
+            <div class="cancelFormSubmit" style="display:none">
+                <p>
+                    <i class="icon-question-sign"></i>
+                    <b>Are you sure?</b>
+                </p>
+                <p>
+                    All changes will be lost.
+                </p>
+                <p class="tc">
+                    <a class="btn btn-small confirmBtn">Yes</a>
+                    <a class="btn btn-small cancelBtn closeTip">No</a>
+                </p>
+            </div><!-- /.cancelFormSubmit -->
+        </div>
+    </div><!-- /end .row -->
+</div><!-- /end #forumPageDiscussionsView -->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function() {
+        //attach the view to an existing DOM element
+        G5.props.URL_JSON_FORUM_CHECK_TITLE = G5.props.URL_ROOT+'ajax/forumsDuplicateTitle.json';
+        window.forumPageView = new ForumPageView({
+            el: $('#forumPageDiscussionView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'javascript:history.go(-1);'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : "Forum",
+
+        });
+
+
+
+});
+
+</script>

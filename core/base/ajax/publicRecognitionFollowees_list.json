@@ -1,0 +1,51 @@
+<?php sleep(2); ?>
+{
+	"messages":[],
+	"participants":[
+		{
+			"id":"304",
+			"lastName":"Smith",
+			"firstName":"Paula",
+			"avatarUrl":"img/_samples/x-profile-pic1.jpg",
+			"orgName":"Organization X",
+			"departmentName":"Sales",
+			"jobName":"Legal Council",
+			"countryName":"China",
+			"countryCode":"cn"
+		},
+		{
+			"id":"10203",
+			"lastName":"Feist",
+			"firstName":"Jane",
+			"avatarUrl":"img/_samples/x-profile-pic2.jpg",
+			"orgName":"Organization Y",
+			"departmentName":"Auto",
+			"jobName":"Mechanic",
+			"countryName":"Germany",
+			"countryCode":"de"
+		},
+		{
+			"id":"4056",
+			"lastName":"Delorum",
+			"firstName":"Gertrude",
+			"avatarUrl":"img/_samples/x-profile-pic3.jpg",
+			"orgName":"Organization D",
+			"departmentName":"Accounting",
+			"jobName":"Number Cruncher",
+			"countryName":"United States",
+			"countryCode":"us"
+		},
+		{
+			"id":"90870",
+			"lastName":"Dupont",
+			"firstName":"Aaron",
+			"avatarUrl":"img/_samples/x-profile-pic1.jpg",
+			"orgName":"Organization F",
+			"departmentName":"HR",
+			"jobName":"Cube Filler",
+			"countryName":"Canada",
+			"countryCode":"ca"
+		}
+	]
+
+}

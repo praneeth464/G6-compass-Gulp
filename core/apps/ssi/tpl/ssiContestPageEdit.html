@@ -1,0 +1,1695 @@
+<!-- ======== CONTEST EDIT PAGE ======== -->
+
+<!--
+    Create and Edit Contests.
+    - JSON used due to the complex nature of the quiz
+    - JAVA, please discuss any alterations needed for information exchange with FE (Aaron)
+-->
+
+<div id="ssiContestPageEditView" class="contestPage ssiContestPageEdit page-content"><div class="row">
+
+    <!-- DIV.ROW up next to wrapping div.page-content for IE7 -->
+        <div class="span12">
+
+            <!-- JAVA NOTE: in the rare event that the server has an error (FE should catch all errors) -->
+            <!--div class="alert alert-block alert-error">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <div class="error">
+                    <h4>The following errors occurred:</h4>
+                    <ul>
+                        <li>Owner must be selected</li>
+                        <li>Date for recipient send is not a date. Date must follow the format MM/DD/YYYY.</li>
+                    </ul>
+                </div>
+            </div-->
+
+            <!-- **************************************************************
+                WizardTabsView
+             ***************************************************************** -->
+            <ul class="wizardTabsView" data-content=".wizardTabsContent" style="visibility:hidden">
+                <!-- generated using json+tpl by WizardTabsView -->
+            </ul><!-- /.wizardTabsView -->
+
+
+
+
+
+            <!-- **************************************************************
+                WIZARD TABS CONTENT
+             ***************************************************************** -->
+            <div class="wizardTabsContent">
+
+
+<!--
+
+8888888           .d888
+  888            d88P"
+  888            888
+  888   88888b.  888888 .d88b.
+  888   888 "88b 888   d88""88b
+  888   888  888 888   888  888
+  888   888  888 888   Y88..88P
+8888888 888  888 888    "Y88P"
+
+-->
+                <div id="ssiContestEditTabInfoView" class="stepInfoContent stepContent" style="display:none">
+
+
+
+
+                    <!--
+                            8b  8    db    8b   d8 8888    88888 888b.    db    8b  8 .d88b.
+                            8Ybm8   dPYb   8YbmdP8 8www      8   8  .8   dPYb   8Ybm8 YPwww.
+                            8  "8  dPwwYb  8  "  8 8         8   8wwK'  dPwwYb  8  "8     d8
+                            8   8 dP    Yb 8     8 8888      8   8  Yb dP    Yb 8   8 `Y88P'
+                    -->
+                    <div class="control-group validateme"
+                        data-validate-flags="nonempty"
+                        data-validate-fail-msgs='{"nonempty" : "Please enter a contest name"}'>
+                        <label class="control-label" for="name">
+                            Contest Name
+                        </label>
+                        <div class="controls defLangNameTrans">
+                            <input type="text" id="name" class="contestNameInput input-xlarge" data-model-key="name" maxlength="50">
+                            <span class="contestNameCheckingSpinnner" style="display:none"></span>
+                            <i class="contestNameInvalid contestNameValidDispItem icon-remove-sign" style="display:none"></i>
+                            <span class="contestNameInvalidMsg contestNameValidDispItem" style="display:none">&nbsp;</span>
+                            <i class="contestNameValid contestNameValidDispItem icon-ok-sign" style="display:none"></i>
+                        </div>
+                        <div class="awardThemNowOnly defTransContNameDispOnly" style="display: none;">
+                            <b><!-- dyn --></b>
+                        </div>
+                    </div>
+
+
+                    <div class="translationsWrapper nameTranslationsWrapper" style="display:none">
+                        <div class="translationsSummary nameTranslationsSummary">
+                            <div class="translationsCountMsg" style="display:none">
+                                <b></b> Translations Added
+                            </div>
+                            <a href="#" class="addTranslationsBtn" style="display:none">Add Translation</a>
+                            <a href="#" class="showTranslationsBtn" style="display:none">Show Translations</a>
+                        </div>
+                        <div class="spinWrap" style="display:none">
+                            <span class="ajaxSpinner"></span>
+                            loading translations...
+                        </div>
+                        <div class="translationsEditor nameTranslationsEditor well container-splitter" style="display:none">
+                            <a href="#" class="hideTranslationsBtn">Hide Translations</a>
+                            <table class="translationsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Language</th>
+                                        <th>Contest Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- dynamic -->
+                                    <script id="nameItemsTpl" type="text/x-handlebars-template">
+                                        {{#names}}
+                                        <tr>
+                                            <td>
+                                            {{#if _isNew}}
+                                                <select>
+                                                {{#each langs}}
+                                                    <option value="{{id}}" {{#isSelected}}selected{{/isSelected}} >
+                                                        {{name}}
+                                                    </option>
+                                                {{/each}}
+                                                </select>
+                                            {{else}}
+                                                {{langName}}
+                                            {{/if}}
+                                            </td>
+                                            <td>
+                                                <input class="nameInput" type="text" value="{{text}}" data-index="{{index}}" data-name-lang="{{language}}"/>
+                                                <span class="contestNameCheckingSpinnner" style="display:none"></span>
+                                                <i class="contestNameInvalid contestNameValidDispItem icon-remove-sign" style="display:none"></i>
+                                                <span class="contestNameInvalidMsg contestNameValidDispItem" style="display:none">&nbsp;</span>
+                                                <i class="contestNameValid contestNameValidDispItem icon-ok-sign" style="display:none"></i>
+                                            </td>
+                                        </tr>
+                                        {{/names}}
+                                    </script><!-- /#nameItemsTpl -->
+                                </tbody>
+                            </table>
+                            <a href="#" class="addAnotherTranslationBtn">Add Another Translation</a>
+                        </div>
+                    </div><!-- /.translationsWrapper nameTranslationsWrapper -->
+
+
+
+
+
+
+
+
+
+                    <!--
+                            888b.    db    88888 8888 .d88b.
+                            8   8   dPYb     8   8www YPwww.
+                            8   8  dPwwYb    8   8        d8
+                            888P' dP    Yb   8   8888 `Y88P'
+                    -->
+                    <div class="form-inline">
+
+                        <div class="control-group validateme startDateWrapper"
+                            data-validate-flags="nonempty"
+                            data-validate-fail-msgs='{"nonempty" : "Please enter a start date"}'>
+                            <label class="control-label" for="startDate">Contest Start Date</label>
+                            <div class="controls">
+                                <!-- JAVA NOTE: set data-date-* attrs -->
+                                <span class="input-append datepickerTrigger startDateTrigger"
+                                        data-date-format="mm/dd/yyyy"
+                                        data-date-language="en_US"
+                                        data-date-todaydate="<?php echo date('m/d/Y')?>"
+                                        data-date-autoclose="true">
+                                    <input type="text" id="startDate" data-model-key="startDate" readonly="readonly" class="date startDateInput">
+                                    <button class="btn" type="button"><i class="icon-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="control-group awardThemNowOnly startDateDispOnly" style="display:none">
+                            <label class="control-label">Contest Start Date</label>
+                            <div class="controls"><b><!-- dyn --></b></div>
+                        </div>
+
+                        <div class="control-group validateme"
+                            data-validate-flags="nonempty"
+                            data-validate-fail-msgs='{"nonempty" : "Please enter an end date"}'>
+                            <label class="control-label" for="endDate">Contest End Date</label>
+                            <div class="controls">
+                                <!-- JAVA NOTE: set data-date-* attrs -->
+                                <span class="input-append datepickerTrigger endDateTrigger"
+                                        data-date-format="mm/dd/yyyy"
+                                        data-date-language="en_US"
+                                        data-date-todaydate="<?php echo date('m/d/Y')?>"
+                                        data-date-autoclose="true">
+                                    <input type="text" id="endDate" data-model-key="endDate" readonly="readonly" class="date endDateInput">
+                                    <button class="btn" type="button"><i class="icon-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-inline tileDispStartDateWrapper">
+                        <div class="control-group validateme"
+                            data-validate-flags="nonempty"
+                            data-validate-fail-msgs='{"nonempty" : "Please enter a tile display start date"}'>
+                            <label class="control-label" for="tileStartDate">Tile Display Start Date</label>
+                            <i class="icon-info-sign pageView_help"
+                                data-help-content="[explanation of what 'tile display start date' is]"></i>
+                            <div class="controls">
+                                <!-- JAVA NOTE: set data-date-* attrs -->
+                                <span class="input-append datepickerTrigger tileStartDateTrigger"
+                                        data-date-format="mm/dd/yyyy"
+                                        data-date-language="en_US"
+                                        data-date-todaydate="07/23/2014"
+                                        data-date-autoclose="true">
+                                    <input type="text" id="tileStartDate" data-model-key="tileStartDate" readonly="readonly" class="date tileStartDateInput">
+                                    <button class="btn" type="button"><i class="icon-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <!--
+                            888b. 8888 .d88b. .d88b    88888 888b.    db    8b  8 .d88b.
+                            8   8 8www YPwww. 8P         8   8  .8   dPYb   8Ybm8 YPwww.
+                            8   8 8        d8 8b         8   8wwK'  dPwwYb  8  "8     d8
+                            888P' 8888 `Y88P' `Y88P      8   8  Yb dP    Yb 8   8 `Y88P'
+                    -->
+                    <div class="control-group contestDescription validateme"
+                            data-validate-flags="maxlength,nonempty"
+                            data-validate-fail-msgs='{"maxlength" : "Maximum number of characters exceeded. Please edit.","nonempty":"Please enter description text."}'
+                            data-validate-max-length="1000">
+                        <label class="control-label">
+                            Contest Description
+                            <i class="icon-info-sign pageView_help"
+                                data-help-content="Provide contest participants an overview description about this contest."></i>
+                        </label>
+                        <div class="charCount input-xxlarge tr" data-chars-from="textarea.defaultDescriptionInput">
+                            rem chars
+                            <b>--</b>
+                        </div>
+                        <div class="controls">
+                            <textarea rows="5" data-max-chars="1000" class="defaultDescriptionInput input-xxlarge"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="translationsWrapper descriptionTranslationsWrapper" style="display:none">
+                        <div class="translationsSummary descriptionTranslationsSummary">
+                            <div class="translationsCountMsg" style="display:none">
+                                <b></b> Translations Added
+                            </div>
+                            <a href="#" class="addTranslationsBtn" style="display:none">Add Translation</a>
+                            <a href="#" class="showTranslationsBtn" style="display:none">Show Translations</a>
+                        </div>
+                        <div class="spinWrap" style="display:none">
+                            <span class="ajaxSpinner"></span>
+                            loading translations...
+                        </div>
+                        <div class="translationsEditor descriptionTranslationsEditor well container-splitter" style="display:none">
+                            <a href="#" class="hideTranslationsBtn">Hide Translations</a>
+                            <table class="translationsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Language</th>
+                                        <th>Contest Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- dynamic -->
+                                    <script id="descriptionItemsTpl" type="text/x-handlebars-template">
+                                        {{#descriptions}}
+                                        <tr>
+                                            <td>
+                                                {{#if _isNew}}
+                                                <select>
+                                                {{#each langs}}
+                                                    <option value="{{id}}" {{#isSelected}}selected{{/isSelected}} >
+                                                        {{name}}
+                                                    </option>
+                                                {{/each}}
+                                                </select>
+                                                {{else}}
+                                                    {{langName}}
+                                                {{/if}}
+                                            </td>
+                                            <td class="descriptionInputWrapper" data-desc-lang="{{language}}">
+                                                <textarea rows="5" data-max-chars="1000" class="descriptionInput input-xxlarge">{{text}}</textarea>
+                                            </td>
+                                        </tr>
+                                        {{/descriptions}}
+                                    </script><!-- /#descriptionItemsTpl -->
+                                </tbody>
+                            </table>
+                            <a href="#" class="addAnotherTranslationBtn">Add Another Translation</a>
+                        </div>
+                    </div><!-- /.translationsWrapper descriptionTranslationsWrapper -->
+
+                    <hr class="section">
+
+                    <div class="documentsWrapper">
+                        <strong>
+                            Attach Document
+                            <span class="optional">(optional)</span>
+                        </strong>
+                        <br>
+                        <small>You can select pdf, doc, docx</small>
+                        <div class="fileInputWrapper">
+                            <input type="file" name="documentFile" class="documentFileInput uploaderFileInput">
+                            <button class="btn btn-primary btn-small uploadDocBtn">
+                                <i class="icon-upload"></i>
+                                <span class="noDocMsg docBtnMsg">Browse</span>
+                            </button>
+                            <span class="label label-important uploadError" style="display:none">
+                                upload error: <span><!-- js dyn error text --></span>
+                            </span>
+                            <span class="docOrigName" style="display:none"><!-- dyn --></span>
+                            <i class="remDocBtn icon-remove" title="remove document"></i>
+                        </div>
+
+                        <div class="uploadingIndicator" style="display:none">
+                            <div class="uploadingSpinner"></div>
+                            Uploading
+                            <!--
+                            <div class="progress progress-striped active" style="display:none">
+                                <div class="bar" style="width:0%"></div>
+                            </div>
+                            -->
+                        </div>
+
+                        <div class="control-group docDisplayName" style="display:none">
+                            <label class="control-label" for="docDispNameInput">
+                                Document Display Name
+                            </label>
+                            <div class="controls">
+                                <input type="text" id="docDispNameInput" class="docDispNameInput" maxlength="50">
+                            </div>
+                        </div>
+
+                        <div class="docRemoveDialog" style="display:none">
+                            <p>
+                                <i class="icon-question-sign"></i>
+                                <b>Remove Document?</b>
+                            </p>
+                            <p>
+                                Document will be deleted.
+                            </p>
+                            <p class="tc">
+                                <a class="btn btn-small confirmBtn closeTip">Yes</a>
+                                <a class="btn btn-small cancelBtn closeTip">No</a>
+                            </p>
+                        </div><!-- /.docRemoveDialog -->
+
+                    </div><!-- /.documentsWrapper -->
+
+                    <div class="translationsWrapper documentsTranslationsWrapper" style="display:none">
+                        <div class="translationsSummary documentsTranslationsSummary">
+                            <div class="translationsCountMsg" style="display:none">
+                                <b></b> Translations Added
+                            </div>
+                            <a href="#" class="addTranslationsBtn" style="display:none">Add Translation</a>
+                            <a href="#" class="showTranslationsBtn" style="display:none">Show Translations</a>
+                        </div>
+                        <div class="spinWrap" style="display:none">
+                            <span class="ajaxSpinner"></span>
+                            loading translations...
+                        </div>
+                        <div class="translationsEditor documentsTranslationsEditor well container-splitter" style="display:none">
+                            <a href="#" class="hideTranslationsBtn">Hide Translations</a>
+                            <table class="translationsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Language</th>
+                                        <th>Attach Document</th>
+                                        <th>Display Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- dynamic -->
+                                    <script id="documentItemsTpl" type="text/x-handlebars-template">
+                                        {{#docs}}
+                                        <tr>
+                                            <td>
+                                                {{#if _isNew}}
+                                                <select>
+                                                {{#each langs}}
+                                                    <option value="{{id}}" {{#isSelected}}selected{{/isSelected}} >
+                                                        {{name}}
+                                                    </option>
+                                                {{/each}}
+                                                </select>
+                                                {{else}}
+                                                    {{langName}}
+                                                {{/if}}
+                                            </td>
+                                            <td class="fileInputCell">
+                                                <div class="fileInputWrapper" data-doc-lang="{{language}}" data-doc-is-new="{{_isNew}}">
+                                                    <input type="file" name="documentFile" class="documentFileInput uploaderFileInput">
+                                                    <button class="btn btn-primary btn-small uploadDocBtn">
+                                                        <i class="icon-upload"></i>
+                                                        <span class="hasDocMsg docBtnMsg" {{#unless url}}style="display:none"{{/unless}}>Change</span>
+                                                        <span class="noDocMsg docBtnMsg" {{#url}}style="display:none"{{/url}}>Upload</span>
+                                                    </button>
+                                                    <span class="label label-important uploadError" style="display:none">
+                                                        upload error: <span><!-- js dyn error text --></span>
+                                                    </span>
+                                                    {{#originalFilename}}
+                                                        <span class="docOrigName">{{this}}</span>
+                                                    {{/originalFilename}}
+                                                </div>
+
+                                                <div class="uploadingIndicator" style="display:none">
+                                                    <div class="uploadingSpinner"></div>
+                                                    Uploading
+                                                    <!--
+                                                    <div class="progress progress-striped active" style="display:none">
+                                                        <div class="bar" style="width:0%"></div>
+                                                    </div>
+                                                    -->
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input class="documentInput" type="text" value="{{name}}" data-index="{{index}}"/>
+                                            </td>
+                                        </tr>
+                                        {{/docs}}
+                                    </script><!-- /#documentItemsTpl -->
+                                </tbody>
+                            </table>
+                            <a href="#" class="addAnotherTranslationBtn">Add Another Translation</a>
+                        </div>
+                    </div><!-- /.translationsWrapper documentsTranslationsWrapper -->
+
+                    <hr class="section">
+
+
+
+
+                    <!--
+                               db    88888 8b  8
+                              dPYb     8   8Ybm8
+                             dPwwYb    8   8  "8
+                            dP    Yb   8   8   8
+
+
+                            8d8b.d8b. .d88b .d88 d88b 8   8 8d8b .d88b
+                            8P Y8P Y8 8.dP' 8  8 `Yb. 8b d8 8P   8.dP'
+                            8   8   8 `Y88P `Y88 Y88P `Y8P8 8    `Y88P
+
+                                                          w
+                            88b. .d88 Yb  dP .d8b. 8   8 w8ww
+                            8  8 8  8  YbdP  8' .8 8b d8  8
+                            88P' `Y88   dP   `Y8P' `Y8P8  Y8P
+                            8          dP
+                            8            8
+                            88b. .d88 .d88 .d88 .d88b
+                            8  8 8  8 8  8 8  8 8.dP'
+                            88P' `Y88 `Y88 `Y88 `Y88P
+                                           wwdP
+                    -->
+                    <div class="displayForAwardThemNow" style="display:none">
+
+                        <h5>Measure Activity In</h5>
+                        <div class="control-group validateme measureActivityContGroup"
+                            data-validate-flags="nonempty"
+                            data-validate-fail-msgs="{&quot;nonempty&quot; : &quot;Please make a choice&quot;}">
+                            <label class="radio" for="measureActivityCurrency_infoStep">
+                                <input type="radio" class="measureTypeRadio autoBind" id="measureActivityCurrency_infoStep" name="measureType" value="currency" data-model-key="measureType">
+                                Currency
+                            </label>
+                            <div class="currencyTypeWrapper" style="display:none">
+                                <div>Currency Type</div>
+                                <select name="currencyTypeSelect" class="autoBind" id="currencyTypeSelect" data-model-key="currencyTypeId">
+
+                                    <script id="currencyTypeOptionsTpl" type="text/x-handlebars-template">
+                                        {{#currencyTypes}}
+                                            <option value="{{id}}">{{name}}</option>
+                                        {{/currencyTypes}}
+                                    </script><!-- #currencyTypeSelectTpl -->
+
+                                </select>
+                            </div>
+                            <label class="radio" for="measureActivityUnits_infoStep">
+                                <input type="radio" class="measureTypeRadio autoBind" id="measureActivityUnits_infoStep" name="measureType" value="units" data-model-key="measureType">
+                                Units/Number
+                            </label>
+                        </div>
+                        <div class="awardThemNowOnly measureTypeDispOnly" style="display: none">
+                            <span class="dispTxt"><!-- dyn --></span>
+                        </div>
+
+                        <hr class="section">
+
+                        <h5>Payout Type</h5>
+                        <div class="control-group validateme payoutContGroup"
+                            data-validate-flags="nonempty"
+                            data-validate-fail-msgs="{&quot;nonempty&quot; : &quot;Please make a choice&quot;}">
+                            <label class="radio" for="payoutTypePoints_infoStep">
+                                <input type="radio" class="payoutTypeRadio autoBind" id="payoutTypePoints_infoStep" name="payoutType" value="points" data-model-key="payoutType">
+                                Points
+                            </label>
+                            <label class="radio" for="payoutTypeOther_infoStep">
+                                <input type="radio" class="payoutTypeRadio autoBind" id="payoutTypeOther_infoStep" name="payoutType" value="other" data-model-key="payoutType">
+                                Other
+                                <i class="icon-info-sign pageView_help"
+                                data-help-content="[explanation of what 'other' is]"></i>
+                            </label>
+                            <div class="otherPayoutTypeWrapper" style="display:none">
+                                <div>Value of Award In</div>
+                                <select name="otherPayoutTypeSelect" class="autoBind" id="otherPayoutTypeSelect" data-model-key="otherPayoutTypeId">
+                                    <!-- dyn using subTpl.currencyTypeOptions -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="awardThemNowOnly payoutTypeDispOnly" style="display: none">
+                            <span class="dispTxt"><!-- dyn --></span>
+                        </div>
+
+                        <div class="billToRoot"></div>
+
+                        <div class="badgesOuterWrapper control-group" style="display:none">
+
+                            <hr class="section">
+
+                            <h5>Badge</h5>
+                            <div class="badgesSelectorView" data-msg-no-badge="No Badge"><!-- dyn --></div>
+                        </div>
+
+                        <hr class="section">
+                    </div><!-- .displayForAwardThemNow -->
+
+
+
+
+
+
+
+                    <!--
+                            8b   d8 8888 .d88b. .d88b.    db    .d88b  8888
+                            8YbmdP8 8www YPwww. YPwww.   dPYb   8P www 8www
+                            8  "  8 8        d8     d8  dPwwYb  8b  d8 8
+                            8     8 8888 `Y88P' `Y88P' dP    Yb `Y88P' 8888
+                    -->
+                    <div class="personalMessageWrapper">
+                        <div class="control-group">
+                            <label class="checkbox">
+                                <input type="checkbox" class="showMessageText autoBind" data-model-key="includeMessage"  checked>
+                                <strong>
+                                    Include personal message
+                                    <i class="icon-info-sign pageView_help"
+                                data-help-content="[explanation of what 'personal message' is]"></i>
+                                    <span class="optional">(optional)</span>
+                                </strong>
+
+                            </label>
+                            <div class="messageTextGuts validateme"
+                                    data-validate-flags="maxlength,nonempty"
+                                    data-validate-fail-msgs='{"maxlength" : "Maximum number of characters exceeded. Please edit.","nonempty":"Please enter message text."}'
+                                    data-validate-max-length="140">
+                                <label class="control-label" for="">
+                                    Message
+                                </label>
+                                <div class="controls">
+                                    <textarea rows="5" data-max-chars="140" class="richtext defaultMessageInput"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="translationsWrapper messageTranslationsWrapper" style="display:none">
+                            <div class="translationsSummary messageTranslationsSummary">
+                                <div class="translationsCountMsg" style="display:none">
+                                    <b></b> Translations Added
+                                </div>
+                                <a href="#" class="addTranslationsBtn" style="display:none">Add Translation</a>
+                                <a href="#" class="showTranslationsBtn" style="display:none">Show Translations</a>
+                            </div>
+                            <div class="spinWrap" style="display:none">
+                                <span class="ajaxSpinner"></span>
+                                loading translations...
+                            </div>
+                            <div class="translationsEditor messageTranslationsEditor well container-splitter" style="display:none">
+                                <a href="#" class="hideTranslationsBtn">Hide Translations</a>
+                                <table class="translationsTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Language</th>
+                                            <th>Contest Message</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- dynamic -->
+                                        <script id="messageItemsTpl" type="text/x-handlebars-template">
+                                            {{#messages}}
+                                            <tr>
+                                                <td>
+                                                    {{#if _isNew}}
+                                                    <select>
+                                                    {{#each langs}}
+                                                        <option value="{{id}}" {{#isSelected}}selected{{/isSelected}} >
+                                                            {{name}}
+                                                        </option>
+                                                    {{/each}}
+                                                    </select>
+                                                    {{else}}
+                                                        {{langName}}
+                                                    {{/if}}
+                                                </td>
+                                                <td class="messageInputWrapper" data-mess-lang="{{language}}">
+                                                    <textarea rows="5" data-max-chars="1000" placeholder="" class="richtext messageInput">{{text}}</textarea>
+                                                </td>
+                                            </tr>
+                                            {{/messages}}
+                                        </script><!-- /#messageItemsTpl -->
+                                    </tbody>
+                                </table>
+                                <a href="#" class="addAnotherTranslationBtn">Add Another Translation</a>
+                            </div>
+                        </div><!-- /.translationsWrapper messageTranslationsWrapper -->
+
+                        <hr class="section">
+
+                    </div><!-- /.personalMessageWrapper -->
+
+
+
+
+
+
+                    <!--
+                               db    888b. 888b. 888b. .d88b. Yb    dP 8888 888b. .d88b.
+                              dPYb   8  .8 8  .8 8  .8 8P  Y8  Yb  dP  8www 8  .8 YPwww.
+                             dPwwYb  8wwP' 8wwP' 8wwK' 8b  d8   YbdP   8    8wwK'     d8
+                            dP    Yb 8     8     8  Yb `Y88P'    YP    8888 8  Yb `Y88P'
+                    -->
+                    <!-- to be shown if there are approvers -->
+                    <div class="approversAjaxSpinner" style="display:none">
+                        <span class="ajaxSpinner"></span>
+                        loading approvers...
+                    </div>
+                    <div class="approversWrapper" style="display:none">
+                        <strong>
+                            Select Contest Approver(s)
+                            <span class="optional">you can select multiple approvers</span>
+                        </strong>
+                        <div class="contestApproversLists control-group">
+                            <!-- generated content -->
+                        </div>
+                    </div>
+
+                    <!-- approvers levels client side template -->
+                    <script id="approversTpl" type="text/x-handlebars-template">
+                        {{#contestApprovers}}
+                            <label class="levelLabel control-label" for="contestApproversLevel{{id}}">{{name}}</label>
+                            <div class="controls">
+                                <select id="contestApproversLevel{{id}}" data-level-id="{{id}}" multiple="multiple" size="5">
+                                {{#approvers}}
+                                    <option value="{{id}}" {{#selected}}selected{{/selected}}>
+                                        {{lastName}}, {{firstName}}
+                                    </option>
+                                {{/approvers}}
+                                </select>
+                            </div>
+                        {{/contestApprovers}}
+                    </script><!-- /#approversTpl -->
+
+                    <hr class="section">
+
+
+                    <div class="stepContentControls form-actions pullBottomUp">
+                        <button class="btn fr saveDraftBtn" style="display:none;">
+                            Save Draft
+                        </button>
+                        <button class="btn btn-primary fr cancelAtnBtn" style="display:none;">
+                            Cancel
+                        </button>
+                        <span></span>
+                        <button class="btn btn-primary nextBtn">
+                            Next &raquo;
+                        </button>
+                        <button class="btn btn-primary saveAtnBtn" style="display: none">
+                            Save
+                        </button>
+                    </div><!-- /.stepContentControls -->
+
+                </div><!-- /.stepInfoContent -->
+
+
+
+
+<!--
+
+8888888b.                  888    d8b          d8b                            888
+888   Y88b                 888    Y8P          Y8P                            888
+888    888                 888                                                888
+888   d88P 8888b.  888d888 888888 888  .d8888b 888 88888b.   8888b.  88888b.  888888 .d8888b
+8888888P"     "88b 888P"   888    888 d88P"    888 888 "88b     "88b 888 "88b 888    88K
+888       .d888888 888     888    888 888      888 888  888 .d888888 888  888 888    "Y8888b.
+888       888  888 888     Y88b.  888 Y88b.    888 888 d88P 888  888 888  888 Y88b.       X88
+888       "Y888888 888      "Y888 888  "Y8888P 888 88888P"  "Y888888 888  888  "Y888  88888P'
+                                                   888
+                                                   888
+                                                   888
+ .d8888b.           888b     d888
+d88P  "88b          8888b   d8888
+Y88b. d88P          88888b.d88888
+ "Y8888P"           888Y88888P888  8888b.  88888b.   8888b.   .d88b.   .d88b.  888d888 .d8888b
+.d88P88K.d88P       888 Y888P 888     "88b 888 "88b     "88b d88P"88b d8P  Y8b 888P"   88K
+888"  Y888P"        888  Y8P  888 .d888888 888  888 .d888888 888  888 88888888 888     "Y8888b.
+Y88b .d8888b        888   "   888 888  888 888  888 888  888 Y88b 888 Y8b.     888          X88
+ "Y8888P" Y88b      888       888 "Y888888 888  888 "Y888888  "Y88888  "Y8888  888      88888P'
+                                                                  888
+                                                             Y8b d88P
+                                                              "Y88P"
+-->
+                <div id="contestEditTabParticipantsManagersView" class="stepParticipantsManagersContent stepContent" style="display:none">
+
+                    <h5 class="defaultName"><!-- dynamic --></h5>
+
+                    <div class="paxManLoadSpinnerWrapper" style="display:none">
+                        <span class="paxManLoadSpinner"></span>
+                        Loading...
+                    </div>
+
+                    <div class="participantsWrapper" style="display:none">
+                        <div class="paxSelectWrap paxSelectWrapForParticipants">
+                            <h4>Participants</h4>
+                            <p class="hideOnAwardThemNow">Add eligible participants to the contest. Based on the participants selected, you can add their managers below.</p>
+                            <p class="showOnAwardThemNow" style="display:none">Add eligible participants to the contest.</p>
+                            <!--
+                                Participant search view Element
+                                - data-search-types: defines the dropdowns and autocompletes
+                                - data-search-params: defines extra static parameters to send with autocomp and participant requests
+                                - data-search-url: override search json provider (usually needed)
+                                ...
+                            -->
+                            <div class="paxSearchView"
+                                data-search-types='[{"id":"lastName","name":"Last Name"},{"id":"firstName","name":"First Name"},{"id":"location","name":"Location"},{"id":"jobTitle","name":"Job Title"},{"id":"department","name":"Department"},{"id":"country","name":"Country"}]'
+                                data-autocomp-delay="500"
+                                data-autocomp-min-chars="2"
+                                data-autocomp-url="ajax/participantSearch_autocomp_firstName.json"
+                                data-search-url="ajax/participantSearchResults_ssi.json"
+                                data-select-mode="multiple"
+                                data-msg-select-txt="add"
+                                data-msg-selected-txt="<i class='icon icon-ok'></i>"
+                                data-msg-validation="You must add a participant."
+                                data-visibility-controls="showAndHide"
+                                data-default-filter-creation-btn-label="Search by Individual">
+                                <!-- added by view -->
+                            </div>
+
+                            <script id="participantSearchTableRowTpl" type="text/x-handlebars-template">
+                                <tr class="participantSearchResultRow{{#if isSelected}} selected{{/if}}{{#if isLocked}} locked{{/if}}"><!--
+                                    --><td class="selectCell{{#if isSelected}} selected{{/if}}" data-participant-id="{{id}}">
+
+                                        {{#if isLocked}}
+                                            <i class='icon-lock'></i>
+                                        {{else}}
+
+                                            {{#if _selectTxt}}
+                                                <a href="#"
+                                                    data-participant-id="{{id}}"
+                                                    class="participantSelectControl select-txt"
+                                                >{{{_selectTxt}}}</a>
+                                                <span class="deselTxt selected-txt">{{{_selectedTxt}}}</span>
+                                            {{else}}
+                                                <input name="partSelCheck{{id}}"
+                                                    type="checkbox"
+                                                    data-participant-id="{{id}}"
+                                                    class="participantSelectControl"
+                                                    {{#if isSelected}} checked="checked"{{/if}} />
+                                            {{/if}}
+
+                                        {{/if}}
+                                    </td><!--
+                                    --><td class="participantSearchNameCol">
+                                        {{firstName}} {{lastName}}
+                                    </td><!--
+                                    --><td class="participantSearchOrgCol">
+                                        {{! this is just the first node in the node array }}
+                                        {{nodes.0.name}}
+                                    </td><!--
+                                    --><td class="participantSearchCountryCol">
+                                        {{#if countryCode}}<img class="countryFlag" src="img/flags/{{countryCode}}.png" alt="{{countryCode}}" title="{{countryName}}" />{{/if}}
+                                    </td><!--
+                                    --><td class="participantSearchDepartmentCol">{{departmentName}}</td><!--
+                                    --><td class="participantSearchJobCol">{{jobName}}</td><!--
+                                --></tr>
+                            </script><!-- /#participantSearchTableRowTpl -->
+
+                            <div id="ssiParticipants">
+                                <!-- ParticipantPaginatedView -->
+                            </div><!-- /#ssiParticipants -->
+
+                            <script id="ssiParticipantsPaginatedViewTpl" type="text/x-handlebars-template">
+                                <div class="spincover" style="display:none;"><div class="spin"></div></div>
+                                <div class="paginationConts pagination pagination-right"></div>
+                                <div class="emptyMsg alert" style="display:none">You have not added anyone.</div>
+                                <div class="hasPax well container-splitter participantCollectionViewWrapper" style="display:none">
+                                    <h4>Selected <span class="paxMode">Participants</span><span class="manMode">Managers</span></h4>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th class="participant sortHeader">
+                                                    <span class="paxMode">Participant <i data-sort="lastName" class="sortControl icon-sort"></i></span>
+                                                    <span class="manMode">Manager <i data-sort="lastName" class="sortControl icon-sort"></i></span>
+
+                                                </th>
+                                                <th class="remove">Remove</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="paginationConts pagination pagination-right"></div>
+
+                                <!--subTpl.paxRow=
+                                    <tr class="participant-item" data-participant-id="{{id}}">
+                                        <td class="participant">
+                                            <a class="participant-popover" href="#" data-participant-ids="[{{userId}}]">
+                                                {{lastName}}, {{firstName}}
+                                                <img src="img/flags/{{countryCode}}.png" alt="{{countryCode}}" class="countryFlag" title="{{countryName}}" />
+                                            </a>
+                                            <span class="singleRecipNode">{{orgName}}</span>
+                                            <div class="org">
+                                                {{#if departmentName}}{{#if orgName}}&bull;{{/if}} {{departmentName}}{{/if}} {{#if jobName}}{{#if departmentName}}&bull;{{else}}{{#if orgName}}&bull;{{/if}}{{/if}} {{jobName}}{{/if}}
+                                            <div>
+                                        </td>
+                                        <td class="remove">
+                                            <a class="remParticipantControl" title="remove this participant" data-participant-id="{{id}}"><i class="icon-remove"></i></a>
+                                        </td>
+                                    </tr>
+                                subTpl-->
+                            </script><!-- /.ssiParticipantsPaginatedViewTpl -->
+
+                        </div><!-- /.paxSelectWrap -->
+
+
+                        <hr class="section hideOnAwardThemNow">
+
+
+                        <div class="paxSelectWrap hideOnAwardThemNow">
+                            <h4>Managers</h4>
+                            <p>Select managers from the prefilled list based on the contest participants. These managers will receive updates on their team’s activities.</p>
+                            <p class="showIfHasMan">
+                                <strong>
+                                    <span class="manCountBind">#</span> selected
+                                </strong>
+                            </p>
+                            <a class="btn btn-primary doSelectManagers">
+                                <span class="hideIfHasMan">Select Managers</span>
+                                <span class="showIfHasMan">Add More Managers</span>
+                            </a>
+                            <span class="paxManSearchSpinnerWrapper" style="display:none">
+                                <div class="paxManSearchSpinner"></div>
+                                Loading...
+                            </span>
+                        </div><!-- /.paxSelectWrap -->
+
+                    </div><!-- /.participantsWrapper -->
+
+                    <div class="managersWrapper" style="display:none">
+                        <div class="paxSelectWrap">
+                            <h4>Participants</h4>
+                            <p>Add eligible participants to the contest. Based on the participants selected, you can add their managers below.</p>
+                            <p class="showIfHasPax">
+                                <strong>
+                                    <span class="paxCountBind">#</span> selected
+                                </strong>
+                            </p>
+                            <a class="btn btn-primary doSelectParticipants">
+                                <span class="hideIfHasPax">Select Participants</span>
+                                <span class="showIfHasPax">Add More Participants</span>
+                            </a>
+                        </div><!-- /.paxSelectWrap -->
+
+                        <hr class="section">
+
+                        <div class="paxSelectWrap">
+                            <h4>Select Managers</h4>
+                            <p>Select managers from the prefilled list based on the contest participants. These managers will receive updates on their team’s activities.</p>
+                            <div class="managerSearchTableWrapper">
+                                <div class="scrollTable">
+                                    <table class="table table-striped table-bordered table-condensed"
+                    data-msg-no-results="No managers found.">
+                                        <thead>
+                                            <tr>
+                                                <th class="selectHeader">
+                                                    <span class="msgSelect" style="display:none">Select</span>
+                                                    <button class="btn btn-mini selectAllBtn">Add All</button>
+                                                </th>
+                                                <th class="sortHeader nameHeader">
+                                                    Manager Name
+                                                    <i data-sort="lastName" class="sortControl icon-sort"></i>
+                                                </th>
+                                                <th class="sortHeader orgHeader">
+                                                    Org Name
+                                                    <i data-sort="orgName" class="sortControl icon-sort"></i>
+                                                </th>
+                                                <th class="sortHeader orgTypeHeader">
+                                                    Org Type
+                                                    <i data-sort="orgType" class="sortControl icon-sort"></i>
+                                                </th>
+                                                <th class="sortHeader departmentHeader">
+                                                    Department
+                                                    <i data-sort="departmentName" class="sortControl icon-sort"></i>
+                                                </th>
+                                                <th class="sortHeader jobHeader">
+                                                    Job Title
+                                                    <i data-sort="jobName" class="sortControl icon-sort"></i>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- dyn -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <script id="manSearchRowsTpl" type="text/x-handlebars-template">
+                                    {{#managers}}
+                                    <tr><!--
+                                        --><td id="manSearchSelCell{{id}}" class="manSearchSelCell">
+                                            <a href="#" data-participant-id="{{id}}"
+                                                    class="participantSelectControl select-txt"
+                                                    {{#if _isChecked}} style="display:none" {{/if}}>
+                                                add
+                                            </a>
+                                            <span class="deselTxt selected-txt"
+                                                    {{#unless _isChecked}} style="display:none" {{/unless}}>
+                                                <i class="icon icon-ok"></i>
+                                            </span>
+                                        </td><!--
+                                        --><td>
+                                            {{firstName}} {{lastName}}
+                                        </td><!--
+                                        --><td>{{orgName}}</td><!--
+                                        --><td>{{orgType}}</td><!--
+                                        --><td>{{departmentName}}</td><!--
+                                        --><td>{{jobName}}</td><!--
+                                    --></tr>
+                                    {{/managers}}
+                                </script>
+                            </div><!-- /.managerSearchTableWrapper -->
+
+
+                            <div id="ssiManagers">
+                                <!-- ParticipantPaginatedView - using #ssiParticipantsPaginatedViewTpl (above) -->
+                            </div><!-- /#ssiManagers -->
+
+                        </div><!-- /.paxSelectWrap -->
+                    </div><!-- /.managersWrapper -->
+
+
+                    <div class="stepContentControls form-actions pullBottomUp">
+                        <button class="btn fr saveDraftBtn">
+                            Save Draft
+                        </button>
+                        <button class="btn btn-primary fr cancelAtnBtn" style="display:none;">
+                            Cancel
+                        </button>
+                        <span></span>
+                        <button class="btn backBtn">
+                            &laquo; Back
+                        </button>
+                        <button class="btn btn-primary nextBtn">
+                            Next &raquo;
+                        </button>
+                    </div><!-- /.stepContentControls -->
+
+                </div><!-- /.stepParticipantsManagersContent -->
+
+<!--
+
+8888888b.                                     888
+888   Y88b                                    888
+888    888                                    888
+888   d88P 8888b.  888  888  .d88b.  888  888 888888 .d8888b
+8888888P"     "88b 888  888 d88""88b 888  888 888    88K
+888       .d888888 888  888 888  888 888  888 888    "Y8888b.
+888       888  888 Y88b 888 Y88..88P Y88b 888 Y88b.       X88
+888       "Y888888  "Y88888  "Y88P"   "Y88888  "Y888  88888P'
+                        888
+                   Y8b d88P
+                    "Y88P"
+ -->
+                <div id="contestEditTabPayoutsView" class="stepPayoutsContent stepContent" style="display:none">
+
+                    <div class="contestSpecificView"><!-- dyn --></div>
+
+                    <div class="stepContentControls form-actions pullBottomUp">
+                        <button class="btn fr saveDraftBtn">
+                            Save Draft
+                        </button>
+                        <button class="btn btn-primary fr cancelAtnBtn" style="display:none;">
+                            Cancel
+                        </button>
+                        <span></span>
+                        <button class="btn backBtn">
+                            &laquo; Back
+                        </button>
+                        <button class="btn btn-primary nextBtn">
+                            Next &raquo;
+                        </button>
+                    </div><!-- /.stepContentControls -->
+
+                </div><!-- /.stepPayoutsContent -->
+
+
+
+
+
+
+                <!--
+                        888b. 888 8    8       88888 .d88b.
+                        8wwwP  8  8    8         8   8P  Y8
+                        8   b  8  8    8         8   8b  d8
+                        888P' 888 8888 8888      8   `Y88P'
+
+
+                        This template is used in payout steps (3) for all contest types
+                        and also in the info step (1) for ATN
+                -->
+                <script id="billToTpl" type="text/x-handlebars-template">
+
+                <div class="control-group validateme billToWrapper"
+                    {{#if _initVisible}}style="display:none"{{/if}}
+                    data-validate-flags="nonempty"
+                    data-validate-fail-msgs="{&quot;nonempty&quot; : &quot;Please make a choice&quot;}" style="display:none">
+
+                    <hr class="section">
+
+                    <h5>Charge Contest To
+                        <i class="icon-info-sign pageView_help"
+                            data-help-content="[explanation of what 'charge contest to' is]"></i>
+                    </h5>
+
+                    <label class="radio" for="billToCreator">
+                        <input type="radio" class="billToRadio autoBind" id="billToCreator" name="billTo" value="creator" data-model-key="billTo">
+                        Me
+                    </label>
+
+                    <label class="radio" for="billToParticipant">
+                        <input type="radio" class="billToRadio autoBind" id="billToParticipant" name="billTo" value="participant" data-model-key="billTo">
+                        Participant
+                    </label>
+
+                    <label class="radio" for="billToOther">
+                        <input type="radio" class="billToRadio autoBind" id="billToOther" name="billTo" value="other" data-model-key="billTo">
+                        Other
+                    </label>
+
+                    <div class="otherBillToCodesWrapper form-inline" style="display:none">
+                        <div class="otherBillToCode1Wrapper control-group">
+                            <label class="control-label" for="billToCode1">
+                                Bill Code 1
+                            </label>
+                            <input class="autoBind input-small" name="billToCode1" id="billToCode1" data-model-key="billToCode1" type="text" maxlength="8"/>
+                        </div>
+
+                        <div class="otherBillToCode2Wrapper control-group">
+                            <label class="control-label" for="billToCode2">
+                                Bill Code 2
+                            </label>
+                            <input class="autoBind input-small" name="billToCode2" id="billToCode2" data-model-key="billToCode2" type="text" maxlength="8"/>
+                        </div>
+                    </div><!-- /.otherBillToCodesWrapper -->
+
+
+                    <div class="awardThemNowOnly billToDispOnly" style="display: none">
+                        <span class="dispTxt"><!-- dyn --></span>
+                    </div>
+
+                </div><!-- /.billToTypesWrapper -->
+                </script>
+
+
+<!--
+
+8888888b.           888
+888  "Y88b          888
+888    888          888
+888    888  8888b.  888888  8888b.
+888    888     "88b 888        "88b
+888    888 .d888888 888    .d888888
+888  .d88P 888  888 Y88b.  888  888
+8888888P"  "Y888888  "Y888 "Y888888
+ -->
+                <div id="contestEditTabDataCollectionView" class="stepDataCollectionContent stepContent" style="display:none">
+
+                    <div class="ssiContestDataCollectionWrap"><!-- dynamic from ssiContestEditTabDataCollectionView.html --></div>
+
+                    <div class="stepContentControls form-actions pullBottomUp">
+                        <button class="btn fr saveDraftBtn">
+                            Save Draft
+                        </button>
+                        <span></span>
+                        <button class="btn backBtn">
+                            &laquo; Back
+                        </button>
+                        <button class="btn btn-primary nextBtn">
+                            Next &raquo;
+                        </button>
+                    </div><!-- /.stepContentControls -->
+
+                </div><!-- /.stepDataCollectionContent -->
+
+<!--
+
+8888888b.                           d8b
+888   Y88b                          Y8P
+888    888
+888   d88P 888d888 .d88b.  888  888 888  .d88b.  888  888  888
+8888888P"  888P"  d8P  Y8b 888  888 888 d8P  Y8b 888  888  888
+888        888    88888888 Y88  88P 888 88888888 888  888  888
+888        888    Y8b.      Y8bd8P  888 Y8b.     Y88b 888 d88P
+888        888     "Y8888    Y88P   888  "Y8888   "Y8888888P"
+ -->
+                <div id="contestEditTabPreviewView" class="stepPreviewContent stepContent" style="display:none">
+
+                    <div class="ssiContestPreviewWrap"><!-- dynamic from ssiContestEditTabPreviewView.html --></div>
+
+                    <div class="showOnAwardThemNow" style="display:none">
+                        Email notification of this contest will be sent to the participant and the participant's manager.
+                    </div>
+
+                    <div class="stepContentControls form-actions pullBottomUp">
+                        <button class="btn btn-primary fr cancelAtnBtn" style="display:none;">
+                            Cancel
+                        </button>
+                        <button class="btn backBtn">
+                            &laquo; Back
+                        </button>
+                        <a href="#" class="btn btn-primary submitBtn">
+                            Create Contest
+                        </a>
+                        <!-- for after the contest has been created (edit mode) -->
+                        <!-- JAVA NOTE: set the HREF -->
+                        <a href="layout.html" class="btn btn-primary saveBtn" style="display:none;">
+                            Save
+                        </a>
+                        <a href="#" class="btn btn-primary issueAwardsBtn" style="display:none;">
+                            Issue Awards
+                        </a>
+                    </div><!-- /.stepContentControls -->
+
+                </div><!-- /.stepPreviewContent -->
+
+
+
+
+
+<!--
+
+88888b.d88b.  .d8888b   .d88b.  .d8888b
+888 "888 "88b 88K      d88P"88b 88K
+888  888  888 "Y8888b. 888  888 "Y8888b.
+888  888  888      X88 Y88b 888      X88
+888  888  888  88888P'  "Y88888  88888P'
+                            888
+                       Y8b d88P
+                        "Y88P"
+-->
+                <!-- VALIDATION MSGS - informational tooltip for validation -->
+                <div class="errorTipWrapper" style="display:none">
+                    <div class="errorTip">
+
+                        <!-- display for validateme generic errors -->
+                        <div class="errorMsg msgGenericError">
+                            <i class="icon-exclamation-sign"></i>
+                            Please correct the error(s).
+                        </div>
+
+                        <!-- save draft - name not set -->
+                        <div class="errorMsg msgSaveDraftNameIssue">
+                            <i class="icon-exclamation-sign"></i>
+                            Please make sure there is a unique contest name.
+                        </div>
+
+                        <!-- Info errors -->
+                        <div class="errorMsg msgContestNameNotUnique">
+                            <i class="icon-exclamation-sign"></i>
+                            Please enter a unique contest name.
+                        </div>
+                        <div class="errorMsg msgStartDateTooEarly">
+                            <i class="icon-exclamation-sign"></i>
+                            Start date must be today or later.
+                        </div>
+                        <div class="errorMsg msgStartDateTooLate">
+                            <i class="icon-exclamation-sign"></i>
+                            Start date must be today or earlier.
+                        </div>
+                        <div class="errorMsg msgEndDateTooEarly">
+                            <i class="icon-exclamation-sign"></i>
+                            End date must be later than start date.
+                        </div>
+                        <div class="errorMsg msgTileStartDateTooLate">
+                            <i class="icon-exclamation-sign"></i>
+                            Tile tile start date must be before or on contest start date.
+                        </div>
+                        <div class="errorMsg msgTileEndDateTooEarly">
+                            <i class="icon-exclamation-sign"></i>
+                            Tile end date must be later than tile start date and earlier than the contest end date.
+                        </div>
+                        <div class="errorMsg msgDocMustHaveDispName">
+                            <i class="icon-exclamation-sign"></i>
+                            Please make sure all documents have display names.
+                        </div>
+                        <div class="errorMsg msgUnsupportedFileType">
+                            <i class="icon-exclamation-sign"></i>
+                            Please make sure you are uploading a pdf, doc or docx file.
+                        </div>
+                        <div class="errorMsg msgApproversReq">
+                            <i class="icon-exclamation-sign"></i>
+                            Please make sure at least one approver per level has been selected.
+                        </div>
+                        <div class="errorMsg msgBillToDataReq">
+                            <i class="icon-exclamation-sign"></i>
+                            Please make a selection for "Charge Contest To".
+                        </div>
+                        <div class="errorMsg msgBillToCodeReq">
+                            <i class="icon-exclamation-sign"></i>
+                            Please enter a bill code.
+                        </div>
+                        <div class="errorMsg msgContestGoalReq">
+                            <i class="icon-exclamation-sign"></i>
+                            Enter whole numbers or/and decimals for a Contest Goal.
+                        </div>
+                        <div class="errorMsg msgBadgeReq">
+                            <i class="icon-exclamation-sign"></i>
+                            Please select a badge.
+                        </div>
+
+
+                        <!-- payouts - DTGT -->
+                        <div class="errorMsg msgActivityTypeReq">
+                            <i class="icon-exclamation-sign"></i>
+                            Please select an Activity Type.
+                        </div>
+                        <div class="errorMsg msgPayoutTypeReq">
+                            <i class="icon-exclamation-sign"></i>
+                            Please select a Payout Type.
+                        </div>
+                        <div class="errorMsg msgDTGTActivityReq">
+                            <i class="icon-exclamation-sign"></i>
+                            Please add at least one activity.
+                        </div>
+                        <div class="errorMsg msgDTGTActivityMissingValDesc">
+                            <i class="icon-exclamation-sign"></i>
+                            Please edit your activities, making sure "value of award" is entered.
+                        </div>
+
+                        <!-- payouts - SIU -->
+                        <div class="errorMsg msgSIUActivityDescReq">
+                            <i class="icon-exclamation-sign"></i>
+                            Please enter an Activty Description.
+                        </div>
+                        <div class="errorMsg msgSIULevelReq">
+                            <i class="icon-exclamation-sign"></i>
+                            Please add at least 2 levels.
+                        </div>
+                        <div class="errorMsg msgSIULevelMissingDesc">
+                            <i class="icon-exclamation-sign"></i>
+                            Please edit your levels, making sure "payout description" is entered.
+                        </div>
+                        <div class="errorMsg msgSIULevelMissingAmount">
+                            <i class="icon-exclamation-sign"></i>
+                            Please edit your levels, making sure amount is entered.
+                        </div>
+                        <div class="errorMsg msgSIUBonusFieldsReq">
+                            <i class="icon-exclamation-sign"></i>
+                            Please enter bonus numbers.
+                        </div>
+                        <div class="errorMsg msgSIUBonusFieldsReq_dec_2">
+                            <i class="icon-exclamation-sign"></i>
+                            Please enter numbers with up to 2 decimal places in "for every" field of bonus.
+                        </div>
+                        <div class="errorMsg msgSIUBonusFieldsReq_dec_4">
+                            <i class="icon-exclamation-sign"></i>
+                            Please enter numbers with up to 4 decimal places in "for every" field of bonus.
+                        </div>
+                        <div class="errorMsg msgSIUBonusFieldsReq_nat">
+                            <i class="icon-exclamation-sign"></i>
+                            Please enter whole numbers in "will earn" and "individual bonus cap" fields of bonus.
+                        </div>
+                        <div class="errorMsg msgSIUBonusFieldsTooLarge">
+                            <i class="icon-exclamation-sign"></i>
+                            Please enter numbers less than 10000000000 for bonus information.
+                        </div>
+
+                        <div class="errorMsg msgBonusCapTooSmall">
+                            <i class="icon-exclamation-sign"></i>
+                            Bonus cap should be greater than bonus.
+                        </div>
+                        <div class="errorMsg msgBonusCapMultiple">
+                            <i class="icon-exclamation-sign"></i>
+                            Bonus cap should be a multiple of bonus.
+                        </div>
+
+                        <!-- payouts - SR -->
+                        <div class="errorMsg msgSRMinQualReq">
+                            <i class="icon-exclamation-sign"></i>
+                            Please select include minimum qualifier choice.
+                        </div>
+                        <div class="errorMsg msgSRMinQualNumReq">
+                            <i class="icon-exclamation-sign"></i>
+                            Please enter a minimum qualifier. This may be a decimal with 2 or 4 places.
+                        </div>
+                        <div class="errorMsg msgSROrderReq">
+                            <i class="icon-exclamation-sign"></i>
+                            Please select a sort order.
+                        </div>
+                        <div class="errorMsg msgSRRankReq">
+                            <i class="icon-exclamation-sign"></i>
+                            Please add a rank.
+                        </div>
+                        <div class="errorMsg msgSRRankDataReq">
+                            <i class="icon-exclamation-sign"></i>
+                            Please make sure all information for each rank has been entered.
+                        </div>
+                        <div class="errorMsg msgSRRankPayoutAmountIssue">
+                            <i class="icon-exclamation-sign"></i>
+                            Please make sure all values/amounts are numeric and less than 10000000000.
+                        </div>
+
+                        <!-- data collection -->
+                        <div class="errorMsg msgDCApproverRequired">
+                            <i class="icon-exclamation-sign"></i>
+                            Please add an approver or select "no" for "Is claim approval required".
+                        </div>
+
+                    </div><!-- /.errorTip -->
+                </div><!-- /.errorTipWrapper -->
+
+
+
+                <!-- modal to catch errors from server on submit OR save draft -->
+                <div class="modal hide fade contestErrorsModal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+                        <h3>
+                            <i class="icon-exclamation-sign"></i>
+                            Error(s) encountered
+                        </h3>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="errorsList">
+                            <!-- dynamic -->
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn" data-dismiss="modal">Close</a>
+                    </div>
+                </div><!-- /.contestErrorsModal -->
+
+
+            </div><!-- /.wizardTabsContent -->
+
+
+
+        </div><!-- /.span12 -->
+    </div><!-- /.row -->
+
+</div><!-- /#ssiContestPageEditView -->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+/* jshint ignore:start */
+    $(document).ready(function() {
+        var contestJson = null,
+            tabsJson = null,
+            contestTypeJson = null,
+            _ct;
+
+        // JAVA NOTE: bootstrapped JSON
+        contestJson = {
+            allowSpreadsheet: true,
+            // bootstrapped data
+            status: 'draft', // draft|pending|live
+            nextUrl: 'ajax/ssiContestEditSave.json',
+            saveAsDraftForwardUrl: 'layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiManagerPage.html#index', // all steps save as draft
+            ssiContestClientState: "state0", // BE requirement
+            id: 123,
+            contestType: "doThisGetThat",
+            currentStep: 1,
+            defaultLanguage: "en_US",
+            languages: [
+                {
+                    "id": "en_US",
+                    "name": "U.S. English"
+                },
+                {
+                    "id": "sp",
+                    "name": "Spanish"
+                },
+                {
+                    "id": "zh",
+                    "name": "Chinese"
+                },
+                {
+                    "id": "de",
+                    "name": "German"
+                }
+            ],
+
+            // STEP 1
+            namesTranslationCount: 3,
+            names: [
+                // pre-populated with default name
+                {
+                    "language": "en_US",
+                    "text": "This is the en_US name."
+                }
+            ], // ajax for full list
+
+            startDate: "<?php echo date('m/d/Y')?>",
+            endDate: "<?php echo (new DateTime('tomorrow'))->format('m/d/Y')?>",
+            tileStartDate: "<?php echo date('m/d/Y')?>",
+
+            descriptionsTranslationCount: 2,
+            descriptions: [
+                {
+                    "language": "en_US",
+                    "text": "This is the default description. It is bootsrapped."
+                }
+            ], // ajax (bootstrap default)
+
+            documentsTranslationCount: 3,
+            documents: [
+
+            ], // ajax (start with default?)
+
+            includeMessage: false,
+            messagesTranslationCount: 2,
+            messages: [
+                {
+                    "language": "en_US",
+                    "text": "This is the default message. It is bootstrapped."
+                }
+            ],
+
+            contestApprovalRequired: true, // if true load via ajax
+            contestApprovers: [],
+
+
+
+            // AWARD THEM NOW
+            // create|edit (edit for edit info and issue awards)
+            awardThemNowStatus: "create",
+            currencyTypes: [
+                { "id": "usd", "symbol": "$", "name": "US Dollar (USD)" },
+                { "id": "eur", "symbol": "€", "name": "Euro (EUR)" },
+                { "id": "cny", "symbol": "¥", "name": "Chinese Yuan (CNY)"}
+            ],
+            measureType: "currency",
+            currencyTypeId: "cny",
+            payoutType: "other",
+            otherPayoutTypeId: "eur",
+            billCodeRequired: true, // if true show controls
+            billTo: "other", // participant|creator|other|null
+            billToCode1: 123,
+            billToCode2: 456,
+            optionShowBadges: true,
+            badgeId: 24,
+            badges: [
+                {
+                    "id":                   "23",
+                    "type":                 "progress",
+                    "name":                 "Earned Progress Badge Name 1 2a",
+                    "howToEarnText":        "1 How to earn badge",
+                    "img":                  "img/badges/above_beyond_sm.png"
+                },
+                {
+                    "id":                   "24",
+                    "type":                 "progress",
+                    "name":                 "Earned Progress Badge Name 2 2a",
+                    "howToEarnText":        "2 How to earn badge",
+                    "img":                  "img/badges/birthday_sm.png"
+                },
+                {
+                    "id":                   "25",
+                    "type":                 "progress",
+                    "name":                 "Progress Badge Name 3 2b",
+                    "howToEarnText":        "3 How to earn badge",
+                    "img":                  "img/badges/bronze_sm.png"
+                }
+            ]
+        };
+
+        // bare minimum
+        xcontestJson = {
+            ssiContestClientState: "state0", // BE requirement
+            currentStep: 1,
+            defaultLanguage: "en_US",
+            languages: [
+                {
+                    "id": "en_US",
+                    "name": "U.S. English"
+                },
+                {
+                    "id": "sp",
+                    "name": "Spanish"
+                },
+                {
+                    "id": "zh",
+                    "name": "Chinese"
+                },
+                {
+                    "id": "de",
+                    "name": "German"
+                }
+            ],
+        };
+
+        // JAVA NOTE: you should only have to i18n the "wtName" field in
+        //            this set, no need to create a class for this or anything
+        // json for WizardTabs -- easier to read/maintain than HTML setup
+        tabsJson = [
+            {
+                "id" : 1,
+                "name" : "stepInfo",
+                "isActive" : false,
+                "state" : "unlocked",
+                "contentSel" : ".wizardTabsContent .stepInfoContent",
+                "wtNumber" : "",
+                "wtName" : "General Info",
+                "hideDeedle" : false
+            },
+            {
+                "id" : 2,
+                "name" : "stepParticipantsManagers",
+                "isActive" : false,
+                "state" : "locked",
+                "contentSel" : ".wizardTabsContent .stepParticipantsManagersContent",
+                "wtNumber" : "",
+                "wtName" : "Participants and Managers",
+                "hideDeedle" : false
+            },
+            {
+                "id" : 3,
+                "name" : "stepPayouts",
+                "isActive" : false,
+                "state" : "locked",
+                "contentSel" : ".wizardTabsContent .stepPayoutsContent",
+                "wtNumber" : "",
+                "wtName" : "Objectives and Payouts",
+                "hideDeedle" : false
+            },
+            {
+                "id" : 4,
+                "name" : "stepDataCollection",
+                "isActive" : false,
+                "state" : "locked",
+                "contentSel" : ".wizardTabsContent .stepDataCollectionContent",
+                "wtNumber" : "",
+                "wtName" : "Data Collection",
+                "hideDeedle" : false
+            },
+            {
+                "id" : 5,
+                "name" : "stepPreview",
+                "isActive" : false,
+                "state" : "locked",
+                "contentSel" : ".wizardTabsContent .stepPreviewContent",
+                "wtNumber" : "",
+                "wtName" : "Preview",
+                "hideDeedle" : false
+            }
+        ];
+
+        contestTypeJson = {
+            // to be used to change display names for specific contests/steps
+            tabNamesByContestType: {
+                "stackRank" : { "stepPayouts": "Ranks and Payouts" },
+                "stepItUp" : { "stepPayouts": "Levels and Payouts" },
+                "doThisGetThat" : { "stepPayouts": "Activities and Payouts" },
+                "awardThemNow" : {
+                    "stepParticipantsManagers" : "Participants",
+                    "stepPayouts" : "Payouts"
+                }
+            },
+
+            // used to decide which tabs active by contest type
+            activeTabsByContestType: {
+                "stepItUp" : contestJson.allowSpreadsheet ? [1,2,3,4,5] : [1,2,3,5],
+                "stackRank" : contestJson.allowSpreadsheet ? [1,2,3,4,5] : [1,2,3,5],
+                "doThisGetThat" : contestJson.allowSpreadsheet ? [1,2,3,4,5] : [1,2,3,5],
+                "objectives" : contestJson.allowSpreadsheet ? [1,2,3,4,5] : [1,2,3,5],
+                "awardThemNow" : [1,2,3,5]
+            }
+        };
+
+        // JAVA NOTE: set this to doc upload url
+        G5.props.URL_JSON_CONTEST_DOCUMENT_UPLOAD = G5.props.URL_ROOT+'ajax/ssiContestDocumentUpload.json';
+
+        // JAVA NOTE: set this to the URL to check if a contest name is unique/valid
+        G5.props.URL_JSON_CONTEST_CHECK_NAME = G5.props.URL_ROOT+'ajax/ssiContestCheckName.json';
+
+        // JAVA NOTE: set this to url for getting approvers
+        G5.props.URL_JSON_CONTEST_APPROVERS = G5.props.URL_ROOT+'ajax/ssiContestApprovers.json';
+
+        // JAVA NOTE: set this to the url to get paginated saved pax
+        G5.props.URL_JSON_CONTEST_PARTICIPANTS = G5.props.URL_ROOT+'ajax/ssiContestParticipants.json';
+
+        // JAVA NOTE: set these to the urls for adding and removing participants
+        G5.props.URL_JSON_CONTEST_PARTICIPANT_ADD = G5.props.URL_ROOT+'ajax/ssiContestParticipantAdd.json';
+        G5.props.URL_JSON_CONTEST_PARTICIPANT_REM = G5.props.URL_ROOT+'ajax/ssiContestParticipantRem.json';
+
+        // JAVA NOTE: set this to the url to get the list of team search filters
+        G5.props.URL_JSON_CONTEST_TEAM_SEARCH_FILTERS = G5.props.URL_ROOT+'ajax/ssiContestTeamSearchFilters.json';
+
+        // JAVA NOTE: set this to the url to get managers for paxes
+        G5.props.URL_JSON_CONTEST_MANAGERS_SEARCH = G5.props.URL_ROOT+'ajax/ssiContestManagersSearch.json';
+
+        // JAVA NOTE: set this to the url to get saved managers
+        G5.props.URL_JSON_CONTEST_MANAGERS = G5.props.URL_ROOT+'ajax/ssiContestManagers.json';
+
+        // JAVA NOTE: set these to the urls for adding and removing managers
+        G5.props.URL_JSON_CONTEST_MANAGER_ADD = G5.props.URL_ROOT+'ajax/ssiContestManagerAdd.json';
+        G5.props.URL_JSON_CONTEST_MANAGER_REM = G5.props.URL_ROOT+'ajax/ssiContestManagerRem.json';
+
+        // JAVA NOTE: this url provides basic information for objectives - payout step
+        G5.props.URL_JSON_CONTEST_PAYOUT_DATA_OBJECTIVES = G5.props.URL_ROOT+'ajax/ssiContestPayoutDataObjectives.json';// JAVA NOTE: this url provides basic information for award them now - payout step
+
+        // JAVA NOTE: this url provides basic information for award them now - payout step
+        G5.props.URL_JSON_CONTEST_PAYOUT_DATA_ATN = G5.props.URL_ROOT+'ajax/ssiContestPayoutDataATN.json';
+
+        // JAVA NOTE: this url provides data for DTGT (basic info + activities collection) - payout step
+        G5.props.URL_JSON_CONTEST_PAYOUT_DATA_DTGT = G5.props.URL_ROOT+'ajax/ssiContestPayoutDataDTGT.json';
+
+        // JAVA NOTE: this url provides CRUD for Activities
+        G5.props.URL_JSON_CONTEST_PAYOUT_DTGT_ACTIVITY = G5.props.URL_ROOT+'ajax/ssiContestPayoutDtgtActivity.json';
+
+        // JAVA NOTE: this url provides data for SIU (basic info + activities collection) - payout step
+        G5.props.URL_JSON_CONTEST_PAYOUT_DATA_SIU = G5.props.URL_ROOT+'ajax/ssiContestPayoutDataSIU.json';
+        // JAVA NOTE: this url provides CRUD for Levels
+        G5.props.URL_JSON_CONTEST_PAYOUT_SIU_LEVEL = G5.props.URL_ROOT+'ajax/ssiContestPayoutSiuLevel.json';
+
+        // JAVA NOTE: set this to doc upload url
+        G5.props.URL_JSON_CONTEST_OBJECTIVE_UPLOAD = G5.props.URL_ROOT+'ajax/ssiContestDocumentUpload.json';
+
+        // JAVA NOTE: this url provides basic data for stack rank - payout step
+        G5.props.URL_JSON_CONTEST_PAYOUT_DATA_SR = G5.props.URL_ROOT+'ajax/ssiContestPayoutDataSR.json';
+
+        // JAVA NOTE: set these to the proper URL for translation retrieval
+        G5.props.URL_JSON_CONTEST_TRANS_NAMES = G5.props.URL_ROOT+'ajax/ssiContestTranslations_names.json';
+        G5.props.URL_JSON_CONTEST_TRANS_DOCUMENTS = G5.props.URL_ROOT+'ajax/ssiContestTranslations_documents.json';
+        G5.props.URL_JSON_CONTEST_TRANS_DESCRIPTIONS = G5.props.URL_ROOT+'ajax/ssiContestTranslations_descriptions.json';
+        G5.props.URL_JSON_CONTEST_TRANS_MESSAGES = G5.props.URL_ROOT+'ajax/ssiContestTranslations_messages.json';
+
+        // JAVA NOTE: this url provides data for  data collection step
+        G5.props.URL_JSON_SSI_CONTEST_TAB_DATA_COLLECTION = G5.props.URL_ROOT+'ajax/ssiContestDataCollectionData.json';
+        // JAVA NOTE: don't forget to set the PAX SEARCH URLs in the markup above.
+        // Find the following, and set appropriate URLS:
+        // data-autocomp-url
+        // data-search-url
+
+        // FE-DEV ONLY: feature to change the contestType !!!!!!!!!!!!!!!!!!!!!!!!
+        _ct = window.location.search.match(/contestType=([a-zA-Z]+)/);
+        if(_ct&&_ct.length == 2) {
+            contestJson.contestType = _ct[1];
+        }
+        _ct = window.location.search.match(/currentStep=([0-9])/);
+        if(_ct&&_ct.length == 2) {
+            contestJson.currentStep = parseInt(_ct[1],10);
+        }
+        _ct = window.location.search.match(/awardThemNowStatus=([a-zA-Z]+)/);
+        if(_ct&&_ct.length == 2) {
+            contestJson.awardThemNowStatus = _ct[1];
+        }
+        _ct = window.location.search.match(/status=([a-zA-Z]+)/);
+        if(_ct&&_ct.length == 2) {
+            contestJson.status = _ct[1];
+        }
+        // END FE-DEV ONLY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+        //attach the view to an existing DOM element
+        window.ssiContestPageEditView = new SSIContestPageEditView({
+            el:$('#ssiContestPageEditView'),
+            contestJson: contestJson, // contest json to populate model
+            contestTypeJson: contestTypeJson, // tab variations etc per contestType
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'moduleSandbox.html'
+                }
+            },
+            pageTitle : 'Create/Edit a Contest', // JAVA NOTE: 'Create a Contest' OR 'Edit a Contest'
+            tabsJson : tabsJson
+        });
+
+    });
+/* jshint ignore:start */
+</script>

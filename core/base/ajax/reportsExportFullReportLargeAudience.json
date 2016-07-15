@@ -1,0 +1,11 @@
+<?php sleep(2); ?>
+{
+    "messages":[
+        {
+            "type":"serverCommand",
+            "command":"modal",
+            "name":"Data Export",
+            "text":"Your data export request has been received and is being processed yadda yadda yadda..."
+        }
+    ]
+}

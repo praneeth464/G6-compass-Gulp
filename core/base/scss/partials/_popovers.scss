@@ -1,0 +1,23 @@
+// Partial-specific variables
+// =========================
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+// pulled over from the core Bootstrap files. Dominic C had made a custom edit on 25 Jan 2013 but we want the core files to remain unchanged if at all possible
+.popover {
+    width: auto;
+    min-width: 236px;
+    max-width: 550px;
+    word-wrap: break-word;
+}
+.popover-content {
+    p {
+        max-height: 730px;
+        overflow-y: hidden;
+    }
+}
+// end pull

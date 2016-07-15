@@ -1,0 +1,272 @@
+// App-specific variables
+// =========================
+$tdPromoInfoPadding: 10px !default;
+$tdPromoSelectWidth: 308px !default;
+$tdPromoSelectHeight: 46px !default;
+$tdPromoSelectTextLineHeight: $baseFontSize * 1.1429 !default; // ~16px
+$throwdownPromoSelect_textColor: $white !default;
+
+$throwdownPromotionSelector_countdownBackgroundColor: $throwdownCountdown_backgroundColor !default;
+$throwdownPromotionSelector_countdownDigitColor: $throwdownCountdown_digitColor !default;
+$throwdownPromotionSelector_countdownLabelColor: $throwdownCountdown_labelColor !default;
+
+$throwdownPromotionSelector_bgGradColor: $throwdown_secondaryAccentColor !default;
+$throwdownPromotionSelector_bgGradStops: scale-color($throwdownPromotionSelector_bgGradColor, $lightness: 30.9%, $saturation: -47.5%), $throwdownPromotionSelector_bgGradColor !default;
+
+$throwdownViewMatches_titleColor: $throwdown_secondaryAccentColor !default;
+$throwdownViewMatches_titleFontWeight: $throwdown_secondaryFontWeight !default;
+$throwdownViewMatches_titleFontFamily: $throwdown_primaryFontFamily !default;
+$throwdownViewMatches_imgUrlPath: $appImagesPath !default;
+$throwdownViewMatches_imgUrl2x1: "throwdown/bannerViewMatches_2x1.jpg" !default;
+
+$throwdownCustomSelect_gradColor: #4a4a4a !default;
+$throwdownCustomSelect_gradStops: $throwdownCustomSelect_gradColor, $black !default;
+$throwdownCustomSelect_arrowColor: $throwdown_secondaryAccentColor !default;
+$throwdownCustomSelectArrow_gradStops: lighten($throwdownCustomSelect_gradColor, 13%), $black;
+$throwdownCustomSelectArrow_leftColor: rgba(255, 255, 255, .45) !default;
+$throwdownPromoSelectListBgColor: $gray !default;
+
+// Global variables (overridden for this app only)
+// ==================================================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+
+/* ----- MODULE STYLES ----- */
+.module.throwdownPromoSelectModule {
+    overflow: visible;
+
+    .module-liner {
+        overflow: visible;
+        background: transparent;
+        filter: none;
+
+        .td-view-matches {
+            display: block;
+            height: 148px;
+            margin-top: 12px;
+            position: relative;
+            width: 308px;
+            z-index: 2;
+        }
+
+        .title-icon-view {
+            @include safeImgUrls($throwdownViewMatches_imgUrl2x1, $throwdownViewMatches_imgUrlPath, $property: 'background-image');
+            background-repeat: no-repeat;
+            height: 148px;
+            position: absolute;
+            top: 0px;
+            width: 100%;
+            z-index: 1;
+
+            h3 {
+                color: $throwdownViewMatches_titleColor;
+                font: $throwdownViewMatches_titleFontWeight 39px $throwdownViewMatches_titleFontFamily;
+                line-height: 1;
+                padding: 0 3% 0 46%;
+                text-align: center;
+                top: 35px;
+                word-spacing: 150px;
+            }
+        }
+
+    }
+
+    &.grid-dimension-2x2 {
+        .title-icon-view {
+
+        }
+        .td-promo-info {
+             @include module_moduleLinerBackground(
+                $bgColor: $throwdownPromotionSelector_bgGradColor,
+                $gradType: $throwdown_gradTypeLinear,
+                $gradMeta: $throwdown_gradMetaTop,
+                $gradStops: $throwdownPromotionSelector_bgGradStops
+            );
+            // height: (148px - ($tdPromoInfoPadding * 2));
+            // padding: $tdPromoInfoPadding;
+            height: 148px;
+
+            .td-promo-select-container,
+            .td-promo-select-list {
+                cursor: pointer;
+            }
+
+            .td-promo-select-container {
+
+                .td-promo-select-selected {
+                    @include module_moduleLinerBackground(
+                        $bgColor: $throwdownCustomSelect_gradColor,
+                        $gradType: $throwdown_gradTypeLinear,
+                        $gradMeta: $throwdown_gradMetaTop,
+                        $gradStops: $throwdownCustomSelect_gradStops
+                    );
+                    display: table;
+                    border-right: 1px solid lighten($black, 7%);
+                    color: $throwdownPromoSelect_textColor;
+                    float: left;
+                    font-size: ($baseFontSize - 1);
+                    line-height: $tdPromoSelectTextLineHeight;
+                    height: $tdPromoSelectHeight;
+                    padding-left: $tdPromoInfoPadding;
+                    position: relative;
+                    vertical-align: middle;
+                    width: 257px;
+                    z-index: 2;
+                    overflow: hidden;
+
+                    .outer {
+                        display: table-cell;
+                        vertical-align: middle;
+
+                        div { // this is the div that wraps the text
+                            max-height: $tdPromoSelectTextLineHeight * 2;
+                            max-width: 250px;
+                            overflow: hidden;
+                            @include text-shadow( $black 0 -1px 0);
+                            word-wrap: break-word;
+                        }
+                    }
+                }
+
+                .down-arrow-container {
+                    @include module_moduleLinerBackground(
+                        $bgColor: $throwdownCustomSelect_gradColor,
+                        $gradType: $throwdown_gradTypeLinear,
+                        $gradMeta: $throwdown_gradMetaTop,
+                        $gradStops: $throwdownCustomSelectArrow_gradStops
+                    );
+                    box-shadow: inset 2px 0px 4px -2px $throwdownCustomSelectArrow_leftColor;
+                    display: table-cell;
+                    height: $tdPromoSelectHeight;
+                    position: relative;
+                    width: 40px;
+
+                    &.active {
+                        background: $throwdownPromoSelectListBgColor;
+
+                        .down-arrow {
+                            @include rotate(180deg);
+                        }
+                    }
+
+                    .down-arrow {
+                        border-left: 8px solid transparent;
+                        border-right: 8px solid transparent;
+                        border-top: 8px solid $throwdownCustomSelect_arrowColor;
+                        height: 0;
+                        position: absolute;
+                        right: 12px;
+                        top: 20px;
+                        width: 0;
+                        z-index: 2;
+                        @include transition-property(all);
+                        @include transition-duration(0.250s);
+                    }
+                }
+            }
+
+            .td-promo-select-list {
+                display: none;
+                position: absolute;
+                top: 46px;
+                margin: 0;
+                overflow: hidden;
+                width: $tdPromoSelectWidth;
+                list-style-type: none;
+                z-index: 3;
+                background-color: $throwdownPromoSelectListBgColor;
+                @include box-shadow( rgba(0, 0, 0, 0.6) 0 8px 8px );
+            }
+
+            .td-promo-select-item {
+                color: $throwdownPromoSelect_textColor;
+                font-size: $baseFontSize - 2;
+                line-height: 1.2;
+                padding: 10px;
+
+                &:hover,
+                &:active {
+                    background-color: $throwdownCustomSelect_arrowColor;
+                }
+            }
+
+            .td-promo-countdown {
+                margin: 0 auto;
+                text-align: center;
+
+                h4 {
+                    float: left;
+                    color: $throwdownPromotionSelector_countdownLabelColor;
+                    font: bold ($baseFontSize + 1) $throwdown_primaryFontFamily;
+                    line-height: 1;
+                    margin: 14px 0 0 15px;
+                    text-align: left;
+                    text-transform: uppercase;
+                    white-space: nowrap;
+                    width: 190px;
+                }
+
+                .td-promo-info-link {
+                    color: $throwdownPromotionSelector_countdownLabelColor;
+                    float: right;
+                    margin: 14px 15px 0 0 ;
+                    font-family: $throwdown_primaryFontFamily;
+                    font-size: ($baseFontSize + 1); //~12px
+                    line-height: 1;
+                    cursor: pointer;
+                }
+
+                ul {
+                    @include promotionCountdown($throwdownPromotionSelector_countdownBackgroundColor, $throwdownPromotionSelector_countdownDigitColor, $throwdownPromotionSelector_countdownLabelColor);
+                    @include inline-block;
+                    list-style-type: none;
+                    margin: 4px auto 0 auto;
+                    clear: left;
+                }
+            }
+
+        }
+    }
+
+} /* /.module.throwDown */
+
+/* ----- PAGE STYLES ----- */
+
+/*---- IE Styles---- */
+.lt-ie8 .module.throwdownPromoSelect.grid-dimension-2x2 {
+    .td-promo-info {
+        .td-promo-countdown {
+            h4 {
+                float: left;
+            }
+            ul li hr {
+                width: 35px;
+            }
+        }
+    }
+
+    .td-promo-select-selected {
+        // float: left;
+        .outer {
+            margin-top: 6px;
+        }
+    }
+    // .td-promo-select-list { left: 11px; }
+    // .down-arrow-container { float: left; }
+    .td-promo-countdown {
+        hr {
+            display: none;
+        }
+     }
+
+     .module-liner .title-icon-view h3 {
+
+        .firstLine {
+            line-height: $baseLineHeight * 3;
+        }
+    }
+}

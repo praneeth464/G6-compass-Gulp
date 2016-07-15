@@ -1,0 +1,2415 @@
+// App-specific variables
+// =========================
+$engagement_bgColor: $g5ModuleBgColor !default;
+$engagement_gradType: $g5ModuleGradType !default;
+$engagement_gradMeta: $g5ModuleGradMeta !default;
+$engagement_gradStops: $g5ModuleGradStops !default;
+
+$engagement_iconColor: $g5ModuleIconColor !default;
+$engagement_titleColor: $g5ModuleTitleColor !default;
+$engagement_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$engagement_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$engagement_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$engagement_moduleTopper_bgColor: $gray !default;
+$engagement_moduleTopper_gradType: linear !default;
+$engagement_moduleTopper_gradMeta: top !default;
+$engagement_moduleTopper_gradStops: lighten($engagement_moduleTopper_bgColor, 25%), $engagement_moduleTopper_bgColor !default;
+
+$engagement_moduleTopper_textColor: $white !default;
+$engagement_moduleTopper_visitAppBtnColor: $white !default;
+$engagement_moduleTopper_fontFullString: $titleFontWeightNormal 24px $titleFont !default; // font-style font-variant font-weight font-size[req]/line-height font-family[req]
+
+$engagement_summary_bgColor: $engagement_bgColor !default;
+$engagement_summary_bgColor_score: false !default;
+$engagement_summary_bgColor_recSent: false !default;
+$engagement_summary_bgColor_recRecv: false !default;
+$engagement_summary_bgColor_paxRecTo: false !default;
+$engagement_summary_bgColor_paxRecBy: false !default;
+$engagement_summary_bgColor_visits: false !default;
+
+$engagement_summary_tabsInactive_bgColorModule: scale-color($engagement_bgColor, $lightness: -33%) !default;
+$engagement_summary_tabsInactive_bgColorPage: false !default;
+$engagement_summary_tabsInactive_borderColorModule: $gray !default;
+$engagement_summary_tabsInactive_borderColorPage: false !default;
+$engagement_summary_tabsInactive_iconColorModule: $grayLight !default;
+$engagement_summary_tabsInactive_iconColorPage: false !default;
+$engagement_summary_tabsInactive_iconColorHoverModule: $white !default;
+$engagement_summary_tabsInactive_iconColorHoverPage: false !default;
+
+$engagement_summary_textColor: $engagement_titleColor !default;
+$engagement_summary_textColor_score: false !default;
+$engagement_summary_textColor_recSent: false !default;
+$engagement_summary_textColor_recRecv: false !default;
+$engagement_summary_textColor_paxRecTo: false !default;
+$engagement_summary_textColor_paxRecBy: false !default;
+$engagement_summary_textColor_visits: false !default;
+
+$engagement_summary_textColorFaded:          mix($engagement_summary_textColor, $engagement_summary_bgColor, 75%) !default;
+$engagement_summary_textColorFaded_score:    mix($engagement_summary_textColor_score or $engagement_summary_textColor,    $engagement_summary_bgColor_score or $engagement_summary_bgColor, 75%) !default;
+$engagement_summary_textColorFaded_recSent:  mix($engagement_summary_textColor_recSent or $engagement_summary_textColor,  $engagement_summary_bgColor_recSent or $engagement_summary_bgColor, 75%) !default;
+$engagement_summary_textColorFaded_recRecv:  mix($engagement_summary_textColor_recRecv or $engagement_summary_textColor,  $engagement_summary_bgColor_recRecv or $engagement_summary_bgColor, 75%) !default;
+$engagement_summary_textColorFaded_paxRecTo: mix($engagement_summary_textColor_paxRecTo or $engagement_summary_textColor, $engagement_summary_bgColor_paxRecTo or $engagement_summary_bgColor, 75%) !default;
+$engagement_summary_textColorFaded_paxRecBy: mix($engagement_summary_textColor_paxRecBy or $engagement_summary_textColor, $engagement_summary_bgColor_paxRecBy or $engagement_summary_bgColor, 75%) !default;
+$engagement_summary_textColorFaded_visits:   mix($engagement_summary_textColor_visits or $engagement_summary_textColor,   $engagement_summary_bgColor_visits or $engagement_summary_bgColor, 75%) !default;
+
+$engagement_summary_titleFontFullString: $titleFontWeightNormal 30px $titleFont !default; // font-style font-variant font-weight font-size[req]/line-height font-family[req]
+$engagement_summary_titleFontLineHeight: 36px !default; // used for sizing calculations
+
+$engagement_summary_actualFont: $titleFont !default;
+$engagement_summary_actualFontWeight: $titleFontWeightBold !default;
+$engagement_summary_actualFontStyle: normal !default;
+
+$engagement_detail_tableFontFullString: $titleFontWeightNormal 24px $titleFont !default; // font-style font-variant font-weight font-size[req]/line-height font-family[req]
+$engagement_detail_aheadTextColor: $green !default;
+$engagement_detail_ontrackTextColor: false !default;
+$engagement_detail_behindTextColor: $red !default;
+$engagement_detail_subheadFontFullString: $titleFontWeightNormal 24px $titleFont !default; // font-style font-variant font-weight font-size[req]/line-height font-family[req]
+$engagement_detail_countTextColor: $grayLight !default;
+$engagement_detail_countFontFullString: $titleFontWeightNormal 20px $titleFont !default; // font-style font-variant font-weight font-size[req]/line-height font-family[req]
+$engagement_detail_detailUrlArrowColor: $grayLight !default;
+$engagement_detail_detailUrlCircleColor: $grayLight !default;
+
+$engagement_detail_scoreTable_iconColor: $gray !default;
+
+$engagement_detail_treeBg_paxRecTo: transparentize($engagement_summary_bgColor_paxRecTo or $engagement_summary_bgColor, 0.75) !default;
+$engagement_detail_treeBg_paxRecBy: transparentize($engagement_summary_bgColor_paxRecBy or $engagement_summary_bgColor, 0.75) !default;
+$engagement_detail_treeRootFontColor_paxRecTo: scale-color($engagement_summary_bgColor_paxRecTo or $engagement_summary_bgColor, $lightness: -50%) !default;
+$engagement_detail_treeRootFontColor_paxRecBy: scale-color($engagement_summary_bgColor_paxRecBy or $engagement_summary_bgColor, $lightness: -50%) !default;
+$engagement_detail_treeBranchLineColor_paxRecTo: scale-color($engagement_summary_bgColor_paxRecTo or $engagement_summary_bgColor, $lightness: -25%) !default;
+$engagement_detail_treeBranchLineColor_paxRecBy: scale-color($engagement_summary_bgColor_paxRecBy or $engagement_summary_bgColor, $lightness: -25%) !default;
+$engagement_detail_treeBranchBg_paxRecTo: $engagement_summary_bgColor_paxRecTo or $engagement_summary_bgColor !default;
+$engagement_detail_treeBranchBg_paxRecBy: $engagement_summary_bgColor_paxRecBy or $engagement_summary_bgColor !default;
+$engagement_detail_treeBranchFontColor_paxRecTo: $engagement_summary_textColor_paxRecTo or $engagement_summary_textColor !default;
+$engagement_detail_treeBranchFontColor_paxRecBy: $engagement_summary_textColor_paxRecBy or $engagement_summary_textColor !default;
+$engagement_detail_treeCountBg_paxRecTo: rgba(0,0,0,0.5) !default;
+$engagement_detail_treeCountBg_paxRecBy: rgba(0,0,0,0.5) !default;
+$engagement_detail_treeCountFontColor_paxRecTo: $white !default;
+$engagement_detail_treeCountFontColor_paxRecBy: $white !default;
+$engagement_detail_treeShowMoreFontColor_paxRecTo: $engagement_detail_treeBranchLineColor_paxRecTo !default;
+$engagement_detail_treeShowMoreFontColor_paxRecBy: $engagement_detail_treeBranchLineColor_paxRecBy !default;
+
+$engagement_detail_treeBranchLineWidth: 2px !default;
+$engagement_detail_treeBranchFontFullString: $titleFontWeightNormal 20px $titleFont !default; // font-style font-variant font-weight font-size[req]/line-height font-family[req]
+
+$engagement_teamMembers_topBorder: 1px solid $grayLight !default;
+$engagement_teamMembers_dividerBorder: 1px dashed $grayLight !default;
+$engagement_pubRec_topBorder: 1px solid $grayLight !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+// tweaking some of the color variables because IE8 doesn't seem to like to draw the graphs using pure white/black and it reads certain colors as keywords instead of hex or rgb values
+// once we drop support for IE8 we can get rid of this tweakage as IE9 and above read color values properly
+$engagement_summary_bgColor            : adjust-color($engagement_summary_bgColor,                                             $red: 1, $green: -1, $blue: 1);
+$engagement_summary_bgColor_score      : adjust-color($engagement_summary_bgColor_score      or $engagement_summary_bgColor,   $red: 1, $green: -1, $blue: 1);
+$engagement_summary_bgColor_recSent    : adjust-color($engagement_summary_bgColor_recSent    or $engagement_summary_bgColor,   $red: 1, $green: -1, $blue: 1);
+$engagement_summary_bgColor_recRecv    : adjust-color($engagement_summary_bgColor_recRecv    or $engagement_summary_bgColor,   $red: 1, $green: -1, $blue: 1);
+$engagement_summary_bgColor_paxRecTo   : adjust-color($engagement_summary_bgColor_paxRecTo   or $engagement_summary_bgColor,   $red: 1, $green: -1, $blue: 1);
+$engagement_summary_bgColor_paxRecBy   : adjust-color($engagement_summary_bgColor_paxRecBy   or $engagement_summary_bgColor,   $red: 1, $green: -1, $blue: 1);
+$engagement_summary_bgColor_visits     : adjust-color($engagement_summary_bgColor_visits     or $engagement_summary_bgColor,   $red: 1, $green: -1, $blue: 1);
+
+$engagement_summary_textColor          : adjust-color($engagement_summary_textColor,                                           $red: 1, $green: -1, $blue: 1);
+$engagement_summary_textColor_score    : adjust-color($engagement_summary_textColor_score    or $engagement_summary_textColor, $red: 1, $green: -1, $blue: 1);
+$engagement_summary_textColor_recSent  : adjust-color($engagement_summary_textColor_recSent  or $engagement_summary_textColor, $red: 1, $green: -1, $blue: 1);
+$engagement_summary_textColor_recRecv  : adjust-color($engagement_summary_textColor_recRecv  or $engagement_summary_textColor, $red: 1, $green: -1, $blue: 1);
+$engagement_summary_textColor_paxRecTo : adjust-color($engagement_summary_textColor_paxRecTo or $engagement_summary_textColor, $red: 1, $green: -1, $blue: 1);
+$engagement_summary_textColor_paxRecBy : adjust-color($engagement_summary_textColor_paxRecBy or $engagement_summary_textColor, $red: 1, $green: -1, $blue: 1);
+$engagement_summary_textColor_visits   : adjust-color($engagement_summary_textColor_visits   or $engagement_summary_textColor, $red: 1, $green: -1, $blue: 1);
+
+
+/* ----- GLOBAL APP STYLES ----- */
+/***
+ *     .d8888b.  888      .d88888b.  888888b.         d8888 888
+ *    d88P  Y88b 888     d88P" "Y88b 888  "88b       d88888 888
+ *    888    888 888     888     888 888  .88P      d88P888 888
+ *    888        888     888     888 8888888K.     d88P 888 888
+ *    888  88888 888     888     888 888  "Y88b   d88P  888 888
+ *    888    888 888     888     888 888    888  d88P   888 888
+ *    Y88b  d88P 888     Y88b. .d88P 888   d88P d8888888888 888
+ *     "Y8888P88 88888888 "Y88888P"  8888888P" d88P     888 88888888
+ *
+ *
+ *
+ */
+
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.engagement {
+    .timeframe {
+        margin-bottom: $baseLineHeight;
+
+        .controls {
+            display: inline-block;
+            margin-right: $baseLineHeight;
+            margin-bottom: 0;
+            line-height: $baseLineHeight * 1.5; // make this the same height as the buttons to the right
+        }
+
+        @media (max-width: 767px) {
+            text-align: center;
+
+            .controls {
+                display: block;
+                margin-right: 0;
+            }
+            .timeframeToggle {
+                .btn {
+                    display: inline-block;
+                    width: auto;
+                    padding: 4px 12px; // lifted from bootstrap/_buttons.scss
+
+                    & + .btn {
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    #nodeSelect {
+        width: auto;
+    }
+
+    .breadcrumbs {
+        font-size: 1.5em;
+        line-height: $baseLineHeight * 2; // copied from bootstrap/_type.scss/h2
+
+        .active {
+            font-weight: bold;
+        }
+    }
+
+    .export-tools {
+        margin-bottom: $baseLineHeight / 2; // copied from bootstrap/_type.scss
+        line-height: $baseLineHeight * 2; // copied from bootstrap/_type.scss/h2
+
+        .print {
+            font-size: 1.5em;
+
+            a {
+                color: inherit;
+            }
+        }
+    }
+
+    &.engagementPageUserDashboard {
+        h2.title {
+            display: none;
+        }
+    }
+
+    // shared styles for the EngagementSummaryCollectionView
+    .engagementSummaryCollectionView {
+        // outline: 2px solid orange;
+        height: 264px;
+        overflow: hidden;
+
+        .tabbable {
+
+        }
+        .tab-tab {
+            display: inline;
+            float: left;
+            margin: 0;
+            padding: 0;
+            width: 52px; // magic number
+            list-style: none;
+
+            @include module_moduleLinerBackground(
+                $bgColor: $engagement_summary_tabsInactive_bgColorModule,
+                $gradType: linear,
+                $gradMeta: left,
+                $gradStops: ($engagement_summary_tabsInactive_bgColorModule 75%, scale-color($engagement_summary_tabsInactive_bgColorModule, $lightness: -33%)),
+                $force: true
+            );
+        }
+        .tab {
+            height: 43px; // magic number to make 6 tabs fit perfectly (or close anyway)
+            color: $engagement_summary_tabsInactive_iconColorModule;
+            background: transparent !important;
+
+            & ~ .tab {
+                border-top: 1px solid $engagement_summary_tabsInactive_borderColorModule;
+
+                &.active {
+                    padding-top: 1px;
+                }
+            }
+
+            a {
+                display: block;
+                color: $engagement_summary_tabsInactive_iconColorModule;
+                text-align: center;
+                vertical-align: middle;
+                font-size: 30px; // magic number to make icons fit nicely
+                line-height: 43px; // match height
+                cursor: pointer;
+
+                &:hover {
+                    color: $engagement_summary_tabsInactive_iconColorHoverModule;
+                }
+            }
+
+            &.active {
+                color: $engagement_summary_textColor;
+                border-top: 0;
+                background: $engagement_summary_bgColor !important;
+
+                a {
+                    color: inherit;
+                }
+
+                & + .tab {
+                    border-top: 0;
+                    padding-top: 1px;
+                }
+            }
+
+            .title {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+        }
+
+        .tooltip.in {
+            opacity: 1;
+        }
+
+        &.scoreInactive {
+            .tab {
+                height: 52px; // magic number to make 5 tabs fit perfectly (or close anyway)
+
+                a {
+                    line-height: 52px; // match height
+                }
+            }
+        }
+
+        .tab-content {
+            overflow: auto !important; // fix for the profile page
+        }
+        .tab-pane {
+            position: relative;
+            overflow: hidden;
+            color: $engagement_summary_textColorFaded;
+            background: $engagement_summary_bgColor;
+
+            .title {
+                display: inline-block;
+                margin: 0;
+                font: $engagement_summary_titleFontFullString;
+                z-index: 200;
+
+                span {
+                    position: relative;
+                }
+                a {
+                    cursor: default;
+                    text-decoration: none;
+                    color: inherit;
+                }
+            }
+            .meta {
+                margin: 0 0 ($baseLineHeight / 2) 0;
+                font-size: 83.33%; // 10px
+                line-height: 14px; // magic number
+            }
+            .timeframe,
+            .asof {
+                display: block;
+                margin: 0;
+            }
+            .sep {
+                display: none;
+            }
+            .showDescription {
+                position: absolute;
+                font-size: 50%;
+                color: inherit;
+                cursor: pointer !important;
+            }
+            .description {
+                display: none;
+            }
+
+            .summary {
+                position: relative;
+                text-align: center;
+            }
+            .decorator {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin: -90px 0 0 -90px;
+                height: 180px;
+                width: 180px;
+                font-size: 180px;
+                line-height: 180px;
+                @include opacity(0.25);
+            }
+            .target {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                text-align: left;
+
+                .icon-g5-engagement {
+                    float: left;
+                    margin-left: -1 * $baseLineHeight / 2;
+                    margin-right: 4px;
+                    margin-bottom: $baseLineHeight;
+                    width: $baseLineHeight;
+                    height: $baseLineHeight;
+                    font-size: $baseLineHeight * 1.25;
+                    vertical-align: middle;
+                    // color: $engagement_summary_textColor;
+
+                    // if icon mode is 'image', we need to override and use the font-based icon for the graph
+                    @if $g5fonticonsModulesMode == 'image' {
+                        background: none;
+
+                        &:before {
+                            content: '\f02d';
+                        }
+                    }
+                }
+                strong {
+                    display: inline-block;
+                    float: left;
+                    margin-right: 4px;
+                    margin-bottom: $baseLineHeight;
+                }
+            }
+            .actual {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+
+                sup {
+                    font-size: 50%;
+                    top: -0.75em;
+                    margin-right: -1ex;
+                }
+                strong {
+                    position: relative;
+                    z-index: 1;
+                    display: block;
+                    font-family: $engagement_summary_actualFont;
+                    font-weight: $engagement_summary_actualFontWeight;
+                    font-style: $engagement_summary_actualFontStyle;
+                }
+                span {
+                    position: relative;
+                    z-index: 1;
+                    display: block;
+                }
+                .meter {
+                    position: absolute;
+                    z-index: 0;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    // arc width
+                    font-size: 6px !important;
+                    // background arc color
+                    border-color: mix($engagement_summary_bgColor, $engagement_summary_textColorFaded);
+                    // foreground arc color
+                    outline-color: $engagement_summary_textColorFaded;
+                    // over 100% color
+                    color: $engagement_summary_textColor;
+
+                    svg {
+                        top: 0 !important;
+                        left: 0 !important;
+                    }
+                }
+                a {
+                    cursor: default;
+                    text-decoration: none;
+                    color: inherit;
+                }
+                .meterAch {
+                    @include opacity(0);
+                }
+            }
+            .achieved {
+                color: $engagement_summary_bgColor;
+                @include transition(color 1s);
+
+                strong {
+                    color: inherit;
+                }
+
+                .meterAch {
+                    @include opacity(1);
+                    @include transition(opacity 1s);
+                }
+            }
+
+            // &.tab,
+            .title,
+            strong,
+            .showDescription,
+            .report,
+            .target .icon-g5-engagement,
+            .actual .meter,
+            .rate span {
+                color: $engagement_summary_textColor;
+            }
+        }
+
+        .score {
+            @if $engagement_summary_textColorFaded_score and $engagement_summary_textColorFaded_score != $engagement_summary_textColorFaded {
+                color: $engagement_summary_textColorFaded_score;
+
+                .achieved {
+                    color: $engagement_summary_bgColor_score;
+                }
+                .actual .meter {
+                    border-color: mix($engagement_summary_bgColor_score or $engagement_summary_bgColor, $engagement_summary_textColorFaded_score);
+                    outline-color: $engagement_summary_textColorFaded_score;
+                }
+            }
+            @if $engagement_summary_bgColor_score and $engagement_summary_bgColor_score != $engagement_summary_bgColor {
+                background: $engagement_summary_bgColor_score;
+
+                &.active { // .tab.active
+                    background: $engagement_summary_bgColor_score !important;
+                }
+            }
+            @if $engagement_summary_textColor_score and $engagement_summary_textColor_score != $engagement_summary_textColor {
+                &.active, // .tab.active
+                .title,
+                strong,
+                .showDescription,
+                .report,
+                .target .icon-g5-engagement,
+                .actual .meter,
+                .rate span {
+                    color: $engagement_summary_textColor_score;
+                }
+            }
+        }
+        .recSent {
+            @if $engagement_summary_textColorFaded_recSent and $engagement_summary_textColorFaded_recSent != $engagement_summary_textColorFaded {
+                color: $engagement_summary_textColorFaded_recSent;
+
+                .achieved {
+                    color: $engagement_summary_bgColor_recSent;
+                }
+                .actual .meter {
+                    border-color: mix($engagement_summary_bgColor_recSent or $engagement_summary_bgColor, $engagement_summary_textColorFaded_recSent);
+                    outline-color: $engagement_summary_textColorFaded_recSent;
+                }
+            }
+            @if $engagement_summary_bgColor_recSent and $engagement_summary_bgColor_recSent != $engagement_summary_bgColor {
+                background: $engagement_summary_bgColor_recSent;
+
+                &.active { // .tab.active
+                    background: $engagement_summary_bgColor_recSent !important;
+                }
+            }
+            @if $engagement_summary_textColor_recSent and $engagement_summary_textColor_recSent != $engagement_summary_textColor {
+                &.active, // .tab.active
+                .title,
+                strong,
+                .showDescription,
+                .report,
+                .target .icon-g5-engagement,
+                .actual .meter,
+                .rate span {
+                    color: $engagement_summary_textColor_recSent;
+                }
+            }
+        }
+        .recRecv {
+            @if $engagement_summary_textColorFaded_recRecv and $engagement_summary_textColorFaded_recRecv != $engagement_summary_textColorFaded {
+                color: $engagement_summary_textColorFaded_recRecv;
+
+                .achieved {
+                    color: $engagement_summary_bgColor_recRecv;
+                }
+                .actual .meter {
+                    border-color: mix($engagement_summary_bgColor_recRecv or $engagement_summary_bgColor, $engagement_summary_textColorFaded_recRecv);
+                    outline-color: $engagement_summary_textColorFaded_recRecv;
+                }
+            }
+            @if $engagement_summary_bgColor_recRecv and $engagement_summary_bgColor_recRecv != $engagement_summary_bgColor {
+                background: $engagement_summary_bgColor_recRecv;
+
+                &.active { // .tab.active
+                    background: $engagement_summary_bgColor_recRecv !important;
+                }
+            }
+            @if $engagement_summary_textColor_recRecv and $engagement_summary_textColor_recRecv != $engagement_summary_textColor {
+                &.active, // .tab.active
+                .title,
+                strong,
+                .showDescription,
+                .report,
+                .target .icon-g5-engagement,
+                .actual .meter,
+                .rate span {
+                    color: $engagement_summary_textColor_recRecv;
+                }
+            }
+        }
+        .paxRecTo {
+            @if $engagement_summary_textColorFaded_paxRecTo and $engagement_summary_textColorFaded_paxRecTo != $engagement_summary_textColorFaded {
+                color: $engagement_summary_textColorFaded_paxRecTo;
+
+                .achieved {
+                    color: $engagement_summary_bgColor_paxRecTo;
+                }
+                .actual .meter {
+                    border-color: mix($engagement_summary_bgColor_paxRecTo or $engagement_summary_bgColor, $engagement_summary_textColorFaded_paxRecTo);
+                    outline-color: $engagement_summary_textColorFaded_paxRecTo;
+                }
+            }
+            @if $engagement_summary_bgColor_paxRecTo and $engagement_summary_bgColor_paxRecTo != $engagement_summary_bgColor {
+                background: $engagement_summary_bgColor_paxRecTo;
+
+                &.active { // .tab.active
+                    background: $engagement_summary_bgColor_paxRecTo !important;
+                }
+            }
+            @if $engagement_summary_textColor_paxRecTo and $engagement_summary_textColor_paxRecTo != $engagement_summary_textColor {
+                &.active, // .tab.active
+                .title,
+                strong,
+                .showDescription,
+                .report,
+                .target .icon-g5-engagement,
+                .actual .meter,
+                .rate span {
+                    color: $engagement_summary_textColor_paxRecTo;
+                }
+            }
+        }
+        .paxRecBy {
+            @if $engagement_summary_textColorFaded_paxRecBy and $engagement_summary_textColorFaded_paxRecBy != $engagement_summary_textColorFaded {
+                color: $engagement_summary_textColorFaded_paxRecBy;
+
+                .achieved {
+                    color: $engagement_summary_bgColor_paxRecBy;
+                }
+                .actual .meter {
+                    border-color: mix($engagement_summary_bgColor_paxRecBy or $engagement_summary_bgColor, $engagement_summary_textColorFaded_paxRecBy);
+                    outline-color: $engagement_summary_textColorFaded_paxRecBy;
+                }
+            }
+            @if $engagement_summary_bgColor_paxRecBy and $engagement_summary_bgColor_paxRecBy != $engagement_summary_bgColor {
+                background: $engagement_summary_bgColor_paxRecBy;
+
+                &.active { // .tab.active
+                    background: $engagement_summary_bgColor_paxRecBy !important;
+                }
+            }
+            @if $engagement_summary_textColor_paxRecBy and $engagement_summary_textColor_paxRecBy != $engagement_summary_textColor {
+                &.active, // .tab.active
+                .title,
+                strong,
+                .showDescription,
+                .report,
+                .target .icon-g5-engagement,
+                .actual .meter,
+                .rate span {
+                    color: $engagement_summary_textColor_paxRecBy;
+                }
+            }
+        }
+        .visits {
+            @if $engagement_summary_textColorFaded_visits and $engagement_summary_textColorFaded_visits != $engagement_summary_textColorFaded {
+                color: $engagement_summary_textColorFaded_visits;
+
+                .achieved {
+                    color: $engagement_summary_bgColor_visits;
+                }
+                .actual .meter {
+                    border-color: mix($engagement_summary_bgColor_visits or $engagement_summary_bgColor, $engagement_summary_textColorFaded_visits);
+                    outline-color: $engagement_summary_textColorFaded_visits;
+                }
+            }
+            @if $engagement_summary_bgColor_visits and $engagement_summary_bgColor_visits != $engagement_summary_bgColor {
+                background: $engagement_summary_bgColor_visits;
+
+                &.active { // .tab.active
+                    background: $engagement_summary_bgColor_visits !important;
+                }
+            }
+            @if $engagement_summary_textColor_visits and $engagement_summary_textColor_visits != $engagement_summary_textColor {
+                &.active, // .tab.active
+                .title,
+                strong,
+                .showDescription,
+                .report,
+                .target .icon-g5-engagement,
+                .actual .meter,
+                .rate span {
+                    color: $engagement_summary_textColor_visits;
+                }
+            }
+        }
+    }
+
+    // shared styles for the EngagementDetailView
+    .engagementDetailView {
+        .chartContainer {
+            height: 320px;
+        }
+
+        .subhead {
+            margin-top: 0;
+            font: $engagement_detail_subheadFontFullString;
+
+            &.withHelp {
+                text-align: right;
+
+                span {
+                    float: left;
+                }
+            }
+
+            .byPromoHelp {
+                display: inline-block;
+                cursor: pointer;
+                font-family: $bodyFont;
+                font-size: $baseFontSize;
+            }
+        }
+
+        .table {
+            font: $engagement_detail_tableFontFullString;
+            border: 0;
+
+            thead th {
+                color: $engagement_summary_textColor;
+                background: $engagement_summary_bgColor;
+                @include fontSmoothing($engagement_summary_textColor, $engagement_summary_bgColor);
+            }
+
+            .title i {
+                display: none;
+            }
+        }
+
+        // score
+        &.type-score {
+            .table {
+                thead th {
+                    color: $engagement_summary_textColor_score or $engagement_summary_textColor;
+                    background: $engagement_summary_bgColor_score or $engagement_summary_bgColor;
+                    @include fontSmoothing($engagement_summary_textColor_score or $engagement_summary_textColor, $engagement_summary_bgColor_score or $engagement_summary_bgColor);
+                }
+                .title {
+                    width: 50%;
+                    border-left: 0;
+
+                    i {
+                        color: $engagement_detail_scoreTable_iconColor;
+                        display: block;
+                        float: left;
+                        width: 52px - 2px; // magic number that matches the tab width above (adjusted 2px to look right)
+                        margin-left: -1 * (52px - 2px); // magic number (adjusted 2px to look right)
+                        text-align: center;
+                    }
+
+                    .helpText {
+                        display: block;
+                        margin-top: 2px;
+                        margin-bottom: -4px; // half the typical cell padding
+                        font-size: 75%;
+                        color: #999;
+                    }
+                }
+                th.title {
+                    background: desaturate($engagement_summary_bgColor_score or $engagement_summary_bgColor, 100%);
+                }
+                td.title {
+                    padding-left: 52px - 2px; // magic number that matches the tab width above (adjusted 2px to look right)
+                }
+            }
+
+            @if $engagement_detail_aheadTextColor {
+                .ahead .actual,
+                .ahead .diff {
+                    color: $engagement_detail_aheadTextColor;
+                }
+            }
+            @if $engagement_detail_ontrackTextColor {
+                .ontrack .actual,
+                .ontrack .diff {
+                    color: $engagement_detail_ontrackTextColor;
+                }
+            }
+            @if $engagement_detail_behindTextColor {
+                .behind .actual,
+                .behind .diff {
+                    color: $engagement_detail_behindTextColor;
+                }
+            }
+        }
+
+        // recognitions
+        .byPromo {}
+        .byPromo ~ .byBehavior {
+            .wrapper {
+                height: 320px;
+            }
+        }
+        .byBehavior {
+            .wrapper {
+                max-height: 320px;
+                overflow-y: auto;
+
+                @media (max-width: 767px) {
+                    height: auto;
+                }
+            }
+            .behavior {
+                padding-left: 60px;
+                padding-right: 60px;
+            }
+            .name {
+                font-size: $baseFontSize;
+                line-height: $baseLineHeight;
+                margin: 0 0 (48px - $baseLineHeight - $baseLineHeight)/2 0;
+            }
+            .icon {
+                display: inline;
+                float: left;
+                margin-left: -60px;
+                width: 48px;
+                height: 48px;
+            }
+            .progress {
+                background: none;
+                @include box-shadow(none);
+                overflow: visible;
+            }
+            .bar {
+                position: relative;
+                // overriding a couple text futzing rules in _progress-bars.scss
+                margin-left: 0;
+                padding-right: 0;
+                filter: none;
+            }
+            .count {
+                position: absolute;
+                left: 100%;
+                top: 0;
+                font: $engagement_detail_countFontFullString;
+                color: $engagement_detail_countTextColor;
+            }
+        }
+        &.type-recSent {
+            .bar {
+                background: $engagement_summary_bgColor_recSent or $engagement_summary_bgColor;
+            }
+        }
+        &.type-recRecv {
+            .bar {
+                background: $engagement_summary_bgColor_recRecv or $engagement_summary_bgColor;
+            }
+        }
+
+        // team
+        .topper {
+            position: relative;
+            padding-right: 36px; // magic number to give enough room for the arrow icon
+
+            .detailUrl {
+                position: absolute;
+                right: 0;
+                top: 0;
+
+                i {
+                    @include circledAwesomeIcon(
+                        $fontSize: 19px,
+                        $lineHeight: 21px,
+                        $color: $engagement_detail_detailUrlArrowColor,
+                        $borderColor: $engagement_detail_detailUrlCircleColor
+                    );
+                }
+            }
+        }
+
+        // visits
+        &.type-visits {
+            .table {
+                thead th {
+                    color: $engagement_summary_textColor_visits or $engagement_summary_textColor;
+                    background: $engagement_summary_bgColor_visits or $engagement_summary_bgColor;
+                    @include fontSmoothing($engagement_summary_textColor_visits or $engagement_summary_textColor, $engagement_summary_bgColor_visits or $engagement_summary_bgColor);
+                }
+                .d {
+                    border-left: 0;
+                }
+                th.d {
+                    background: desaturate($engagement_summary_bgColor_visits or $engagement_summary_bgColor, 100%);
+                }
+            }
+        }
+    }
+
+    // shared styles for the EngagementTeamMembersCollectionView
+    .engagementTeamMembersView {
+        margin-top: $baseLineHeight;
+        border-top: $engagement_teamMembers_topBorder;
+
+        .actual,
+        .target,
+        .diff {
+            width: 20%;
+            display: none;
+        }
+        &.type-score .score,
+        &.type-recSent .recSent,
+        &.type-recRecv .recRecv,
+        &.type-paxRecTo .paxRecTo,
+        &.type-paxRecBy .paxRecBy,
+        &.type-visits .visits {
+            display: table-cell;
+        }
+
+        @if $engagement_summary_bgColor_score {
+            th.score {
+                background: $engagement_summary_bgColor_score;
+                @if $engagement_summary_textColor_score {
+                    color: $engagement_summary_textColor_score;
+                }
+
+                a {
+                    color: inherit;
+                    background: none;
+                }
+            }
+        }
+        @if $engagement_summary_bgColor_recSent {
+            th.recSent {
+                background: $engagement_summary_bgColor_recSent;
+                @if $engagement_summary_textColor_recSent {
+                    color: $engagement_summary_textColor_recSent;
+                }
+
+                a {
+                    color: inherit;
+                    background: none;
+                }
+            }
+        }
+        @if $engagement_summary_bgColor_recRecv {
+            th.recRecv {
+                background: $engagement_summary_bgColor_recRecv;
+                @if $engagement_summary_textColor_recRecv {
+                    color: $engagement_summary_textColor_recRecv;
+                }
+
+                a {
+                    color: inherit;
+                    background: none;
+                }
+            }
+        }
+        @if $engagement_summary_bgColor_paxRecTo {
+            th.paxRecTo {
+                background: $engagement_summary_bgColor_paxRecTo;
+                @if $engagement_summary_textColor_paxRecTo {
+                    color: $engagement_summary_textColor_paxRecTo;
+                }
+
+                a {
+                    color: inherit;
+                    background: none;
+                }
+            }
+        }
+        @if $engagement_summary_bgColor_paxRecBy {
+            th.paxRecBy {
+                background: $engagement_summary_bgColor_paxRecBy;
+                @if $engagement_summary_textColor_paxRecBy {
+                    color: $engagement_summary_textColor_paxRecBy;
+                }
+
+                a {
+                    color: inherit;
+                    background: none;
+                }
+            }
+        }
+        @if $engagement_summary_bgColor_visits {
+            th.visits {
+                background: $engagement_summary_bgColor_visits;
+                @if $engagement_summary_textColor_visits {
+                    color: $engagement_summary_textColor_visits;
+                }
+
+                a {
+                    color: inherit;
+                    background: none;
+                }
+            }
+        }
+
+        .asc .icon-sort-down,
+        .desc .icon-sort-up {
+            display: none;
+        }
+
+        td.member {
+            vertical-align: middle;
+            position: relative;
+            padding-left: 64px;
+            height: 48px;
+        }
+        .user-model td.member {
+            padding-left: 85px;
+        }
+
+        .icon-caret-right {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            margin: 0 8px;
+            line-height: 48px;
+        }
+        .avatar {
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            margin-right: 8px;
+            width: 48px;
+            height: 48px;
+        }
+        .icon-caret-right ~ .avatar {
+            left: 29px;
+        }
+
+        td.number {
+            vertical-align: middle;
+        }
+
+        .nodeName {
+            font-weight: bold;
+        }
+        .nodeAndOwner {
+            display: inline-block;
+            vertical-align: middle;
+
+            .nodeName,
+            .owner {
+                display: block;
+            }
+        }
+
+        .ahead { color: $engagement_detail_aheadTextColor; }
+        .ontrack { color: $engagement_detail_ontrackTextColor; }
+        .behind { color: $engagement_detail_behindTextColor; }
+
+        .score.actual {
+            position: relative;
+            width: 48px;
+            text-align: center;
+            white-space: nowrap;
+
+            strong {
+                line-height: 48px;
+                color: $grayLight;
+            }
+        }
+        .meter {
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            display: block;
+            margin: -30px -30px 0 0;
+            width: 60px;
+            height: 60px;
+            // bgArcColor
+            border-color: transparentize($engagement_summary_bgColor_score or $engagement_summary_bgColor, 0.67);
+            // fgArcColor
+            outline-color: transparentize($engagement_summary_bgColor_score or $engagement_summary_bgColor, 0.50);
+            // ovArcColor
+            color: $engagement_summary_bgColor_score or $engagement_summary_bgColor;
+        }
+        .meterAch {
+            @include opacity(0);
+
+            .lt-ie9 & {
+                display: none;
+            }
+        }
+        .achieved {
+            strong {
+                @include transition(color 1s);
+                color: $engagement_summary_textColor_score or $engagement_summary_textColor !important;
+                position: relative;
+                z-index: 1;
+            }
+
+            .meterAch {
+                @include opacity(1);
+                @include transition(opacity 1s);
+
+                .lt-ie9 & {
+                    display: block;
+                }
+            }
+        }
+
+        .engagementTeamMembersCollectionView {
+            margin-top: $baseLineHeight;
+        }
+
+        .engagementTeamMembersCollectionView ~ .engagementTeamMembersCollectionView {
+            padding-top: $baseLineHeight / 2;
+            border-top: $engagement_teamMembers_dividerBorder;
+        }
+    }
+
+    // shared styles for the PublicRecognitionsView
+    .engagementRecognitionsView {
+        margin-top: $baseLineHeight;
+        padding-top: $baseLineHeight;
+        border-top: $engagement_pubRec_topBorder;
+
+        .publicRecognitionItems {
+            padding-left: 0 !important;
+        }
+    }
+
+    // shared styles for the EngagementRecognizedModelView
+    &.engagementPageRecognized {
+        .subhead {
+            font: $engagement_detail_subheadFontFullString;
+        }
+    }
+    .engagementRecognizedModelView {
+        $avatarWH: 72px;
+
+        padding: $g5PageContentPaddingHoriz / 2;
+        @include safeBkgs($engagement_detail_treeBg_paxRecTo);
+        @include clearfix();
+
+        .tree {
+            position: relative;
+            padding-left: $avatarWH + ($engagement_detail_treeBranchLineWidth * 2) + $g5PageContentPaddingHoriz;
+        }
+
+        .root {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding-right: $g5PageContentPaddingHoriz; // makes the border stick out to the right of the avatar
+            width: $avatarWH + ($engagement_detail_treeBranchLineWidth * 2);
+            text-align: center;
+            color: $engagement_detail_treeRootFontColor_paxRecTo;
+            @include fontSmoothing($engagement_detail_treeRootFontColor_paxRecTo, $engagement_detail_treeBg_paxRecTo);
+            border-top: $engagement_detail_treeBranchLineWidth solid $engagement_detail_treeBranchLineColor_paxRecTo;
+
+            .avatar {
+                position: relative;
+                top: -1 * $avatarWH / 2; // pulls the avatar up over the border
+                margin-bottom: -1 * $avatarWH / 2; // pulls the name up to the bottom of the avatar
+                width: $avatarWH;
+                height: $avatarWH;
+                border: $engagement_detail_treeBranchLineWidth solid $engagement_detail_treeBranchLineColor_paxRecTo;
+            }
+
+            .name {
+                // background: $engagement_detail_treeBranchLineColor_paxRecTo;
+            }
+
+            i {
+                display: none;
+                font-size: 2em;
+                color: $engagement_detail_treeBranchLineColor_paxRecTo;
+            }
+        }
+
+        .nodes {
+            position: relative;
+            margin-top: $avatarWH / 2; // pushes the border down to the halfway point of the avatar
+            margin-bottom: 0;
+            padding-bottom: $engagement_detail_treeBranchLineWidth;
+            padding-left: $g5PageContentPaddingHoriz;
+            border-left: $engagement_detail_treeBranchLineWidth solid $engagement_detail_treeBranchLineColor_paxRecTo;
+        }
+        .node {
+            margin-bottom: $avatarWH / 4;
+            margin-left: -1 * $g5PageContentPaddingHoriz;
+            padding-left: $g5PageContentPaddingHoriz;
+            border-top: $engagement_detail_treeBranchLineWidth solid $engagement_detail_treeBranchLineColor_paxRecTo;
+
+            &.last {
+                display: inline;
+                float: left;
+                margin-bottom: -1 * ($avatarWH / 2);
+                width: 100%;
+            }
+        }
+        .nodewrap {
+            position: relative;
+            top: -1 * $avatarWH / 2;
+            padding: ($g5PageContentPaddingHoriz / 4) ($g5PageContentPaddingHoriz / 4) 0 ($g5PageContentPaddingHoriz / 4);
+            background: $engagement_detail_treeBranchBg_paxRecTo;
+            color: $engagement_detail_treeBranchFontColor_paxRecTo;
+            @include fontSmoothing($engagement_detail_treeBranchFontColor_paxRecTo, $engagement_detail_treeBranchBg_paxRecTo);
+            border-top: 0px solid $engagement_detail_treeBranchLineColor_paxRecTo;
+            border-left: $engagement_detail_treeBranchLineWidth solid $engagement_detail_treeBranchLineColor_paxRecTo;
+
+            > .name {
+                margin: 0;
+                padding: 0 0 ($g5PageContentPaddingHoriz / 4) ($g5PageContentPaddingHoriz / 4);
+                font: $engagement_detail_treeBranchFontFullString;
+            }
+        }
+
+        .members {
+            overflow: visible;
+            clear: both;
+            @include clearfix();
+        }
+        .member {
+            position: relative;
+            display: inline;
+            float: left;
+            margin: 0 ($g5PageContentPaddingHoriz / 4) ($g5PageContentPaddingHoriz / 2);
+            width: $avatarWH * 3 / 4;
+            text-align: center;
+
+            a {
+                color: inherit;
+            }
+
+            .name {
+                font-size: $baseFontSize * 3 / 4;
+                line-height: $baseLineHeight;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .avatar {
+                width: $avatarWH * 3 / 4;
+            }
+
+            .count {
+                position: absolute;
+                bottom: $baseLineHeight + 4px;
+                left: 4px;
+                right: 4px;
+                padding: 0 4px;
+                min-width: $baseLineHeight - 8px; // right/left padding
+                text-decoration: none;
+                @include border-radius($baseLineHeight / 2);
+                text-align: center;
+                font-weight: bold;
+                color: $engagement_detail_treeCountFontColor_paxRecTo;
+                @include safeBkgs($engagement_detail_treeCountBg_paxRecTo);
+                @include fontSmoothing($engagement_detail_treeCountFontColor_paxRecTo, $engagement_detail_treeCountBg_paxRecTo);
+            }
+        }
+
+        .name {
+            display: block;
+        }
+
+        .hasMore {
+            position: absolute;
+            top: 100%;
+            right: 100%;
+            padding-top: $baseLineHeight * 4;
+            padding-right: $avatarWH + $g5PageContentPaddingHoriz;
+            border-right: $engagement_detail_treeBranchLineWidth dashed $engagement_detail_treeBranchLineColor_paxRecTo;
+
+            .showMore {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                margin-right: -1 * $g5PageContentPaddingHoriz / 2;
+                text-align: right;
+                color: $engagement_detail_treeShowMoreFontColor_paxRecTo;
+            }
+        }
+
+        .spin.showMore {
+            clear: both;
+            margin-bottom: -1 * $baseLineHeight;
+            padding-top: $baseLineHeight;
+        }
+
+        &.type_paxRecBy {
+            @include safeBkgs($engagement_detail_treeBg_paxRecBy);
+
+            .tree {
+                padding-left: 0;
+                padding-right: $avatarWH + ($engagement_detail_treeBranchLineWidth * 2) + $g5PageContentPaddingHoriz;
+            }
+
+            .root {
+                left: auto;
+                right: 0;
+                padding-right: 0;
+                padding-left: $g5PageContentPaddingHoriz; // makes the border stick out to the left of the avatar
+                color: $engagement_detail_treeRootFontColor_paxRecBy;
+                @include fontSmoothing($engagement_detail_treeRootFontColor_paxRecBy, $engagement_detail_treeBg_paxRecBy);
+                border-color: $engagement_detail_treeBranchLineColor_paxRecBy;
+
+                .avatar {
+                    border-color: $engagement_detail_treeBranchLineColor_paxRecBy;
+                }
+
+                i {
+                    color: $engagement_detail_treeBranchLineColor_paxRecBy;
+                }
+            }
+            .nodes {
+                padding-left: 0;
+                padding-right: $g5PageContentPaddingHoriz;
+                border-left: 0;
+                border-right: $engagement_detail_treeBranchLineWidth solid $engagement_detail_treeBranchLineColor_paxRecBy;
+            }
+            .node {
+                margin-left: 0;
+                margin-right: -1 * $g5PageContentPaddingHoriz;
+                padding-left: 0;
+                padding-right: $g5PageContentPaddingHoriz;
+                border-color: $engagement_detail_treeBranchLineColor_paxRecBy;
+            }
+            .nodewrap {
+                background: $engagement_detail_treeBranchBg_paxRecBy;
+                color: $engagement_detail_treeBranchFontColor_paxRecBy;
+                @include fontSmoothing($engagement_detail_treeBranchFontColor_paxRecBy, $engagement_detail_treeBranchBg_paxRecBy);
+                border-top-color: $engagement_detail_treeBranchLineColor_paxRecBy;
+                border-left: 0;
+                border-right: $engagement_detail_treeBranchLineWidth solid $engagement_detail_treeBranchLineColor_paxRecBy;
+            }
+            .count {
+                color: $engagement_detail_treeCountFontColor_paxRecBy;
+                background: $engagement_detail_treeCountBg_paxRecBy;
+                @include fontSmoothing($engagement_detail_treeCountFontColor_paxRecBy, $engagement_detail_treeCountBg_paxRecBy);
+            }
+            .hasMore {
+                right: auto;
+                left: 100%;
+                padding-right: 0;
+                padding-left: $avatarWH + $g5PageContentPaddingHoriz;
+                border-right: 0;
+                border-left: $engagement_detail_treeBranchLineWidth dashed $engagement_detail_treeBranchLineColor_paxRecBy;
+
+                .showMore {
+                    margin-right: 0;
+                    margin-left: -1 * $g5PageContentPaddingHoriz / 2;
+                    text-align: left;
+                    color: $engagement_detail_treeShowMoreFontColor_paxRecBy;
+                }
+            }
+        }
+
+        @media (min-width: 1200px) {
+            padding: $g5PageContentPaddingHoriz1200 / 2;
+
+            .tree {
+                padding-left: $avatarWH + ($engagement_detail_treeBranchLineWidth * 2) + $g5PageContentPaddingHoriz1200;
+            }
+            .root {
+                padding-right: $g5PageContentPaddingHoriz1200;
+            }
+            .nodes {
+                padding-left: $g5PageContentPaddingHoriz1200;
+            }
+            .node {
+                margin-left: -1 * $g5PageContentPaddingHoriz1200;
+                padding-left: $g5PageContentPaddingHoriz1200;
+            }
+            .nodewrap {
+                padding: ($g5PageContentPaddingHoriz1200 / 4) ($g5PageContentPaddingHoriz1200 / 4) 0 ($g5PageContentPaddingHoriz1200 / 4);
+
+                > .name {
+                    margin: 0;
+                    padding: 0 0 ($g5PageContentPaddingHoriz1200 / 4) ($g5PageContentPaddingHoriz1200 / 4);
+                }
+            }
+            .member {
+                margin: 0 ($g5PageContentPaddingHoriz1200 / 4) ($g5PageContentPaddingHoriz1200 / 2);
+            }
+            .hasMore {
+                padding-right: $avatarWH + $g5PageContentPaddingHoriz1200;
+
+                .showMore {
+                    margin-right: -1 * $g5PageContentPaddingHoriz1200 / 2;
+                }
+            }
+
+            &.type_paxRecBy {
+                .tree {
+                    padding-right: $avatarWH + ($engagement_detail_treeBranchLineWidth * 2) + $g5PageContentPaddingHoriz1200;
+                }
+
+                .root {
+                    padding-left: $g5PageContentPaddingHoriz1200;
+                }
+                .nodes {
+                    padding-right: $g5PageContentPaddingHoriz1200;
+                }
+                .node {
+                    margin-right: -1 * $g5PageContentPaddingHoriz1200;
+                    padding-right: $g5PageContentPaddingHoriz1200;
+                }
+                .hasMore {
+                    // padding-right: 0;
+                    padding-left: $avatarWH + $g5PageContentPaddingHoriz1200;
+
+                    .showMore {
+                        // margin-right: 0;
+                        margin-left: -1 * $g5PageContentPaddingHoriz1200 / 2;
+                    }
+                }
+            }
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+            padding: $g5PageContentPaddingHoriz768 / 2;
+
+            .tree {
+                padding-left: $avatarWH + ($engagement_detail_treeBranchLineWidth * 2) + $g5PageContentPaddingHoriz768;
+            }
+            .root {
+                padding-right: $g5PageContentPaddingHoriz768;
+            }
+            .nodes {
+                padding-left: $g5PageContentPaddingHoriz768;
+            }
+            .node {
+                margin-left: -1 * $g5PageContentPaddingHoriz768;
+                padding-left: $g5PageContentPaddingHoriz768;
+            }
+            .nodewrap {
+                padding: ($g5PageContentPaddingHoriz768 / 4) ($g5PageContentPaddingHoriz768 / 4) 0 ($g5PageContentPaddingHoriz768 / 4);
+
+                > .name {
+                    margin: 0;
+                    padding: 0 0 ($g5PageContentPaddingHoriz768 / 4) ($g5PageContentPaddingHoriz768 / 4);
+                }
+            }
+            .member {
+                margin: 0 ($g5PageContentPaddingHoriz768 / 4) ($g5PageContentPaddingHoriz768 / 2);
+            }
+            .hasMore {
+                padding-right: $avatarWH + $g5PageContentPaddingHoriz768;
+
+                .showMore {
+                    margin-right: -1 * $g5PageContentPaddingHoriz768 / 2;
+                }
+            }
+
+            &.type_paxRecBy {
+                .tree {
+                    padding-right: $avatarWH + ($engagement_detail_treeBranchLineWidth * 2) + $g5PageContentPaddingHoriz768;
+                }
+
+                .root {
+                    padding-left: $g5PageContentPaddingHoriz768;
+                }
+                .nodes {
+                    padding-right: $g5PageContentPaddingHoriz768;
+                }
+                .node {
+                    margin-right: -1 * $g5PageContentPaddingHoriz768;
+                    padding-right: $g5PageContentPaddingHoriz768;
+                }
+                .hasMore {
+                    // padding-right: 0;
+                    padding-left: $avatarWH + $g5PageContentPaddingHoriz768;
+
+                    .showMore {
+                        // margin-right: 0;
+                        margin-left: -1 * $g5PageContentPaddingHoriz768 / 2;
+                    }
+                }
+            }
+        }
+        @media (max-width: 767px) {
+            padding: $g5PageContentPaddingHorizMobile;
+
+            .tree {
+                padding-left: 0;
+                padding-right: 0 !important;
+            }
+            .root {
+                position: static;
+                padding-right: 0;
+                padding-left: 0 !important;
+                margin: 0 auto $g5PageContentPaddingHorizMobile;
+                border: none !important;
+
+                .avatar {
+                    top: 0;
+                    margin-bottom: 0;
+                }
+
+                i.paxRecTo {
+                    display: inline-block;
+                }
+            }
+            .nodes {
+                padding-left: 0;
+                padding-right: 0 !important;
+                margin-top: 0;
+                border: none !important;
+            }
+            .node {
+                margin-left: 0 !important;
+                margin-bottom: $g5PageContentPaddingHorizMobile !important;
+                margin-right: 0 !important;
+                padding-left: 0;
+                padding-right: 0 !important;
+                border: none !important;
+
+                &.last {
+                    float: none;
+                    display: block;
+                    margin-bottom: 0 !important;
+                }
+            }
+            .nodewrap {
+                top: 0;
+                padding: ($g5PageContentPaddingHorizMobile / 2) ($g5PageContentPaddingHorizMobile / 2) 0 ($g5PageContentPaddingHorizMobile / 2) !important;
+                border-width: 0 !important;
+                border-top-width: 2px !important;
+
+                > .name {
+                    margin: 0 !important;
+                    padding: 0 0 ($g5PageContentPaddingHorizMobile / 2) ($g5PageContentPaddingHorizMobile / 2) !important;
+                }
+            }
+            .member {
+                margin: 0 ($g5PageContentPaddingHorizMobile / 2) $g5PageContentPaddingHorizMobile !important;
+            }
+
+            .hasMore {
+                position: static;
+                margin-top: $baseLineHeight;
+                padding: 0 !important;
+                text-align: center;
+                border: 0 !important;
+                border-top: $engagement_detail_treeBranchLineWidth dashed $engagement_detail_treeBranchLineColor_paxRecTo !important;
+
+                .showMore {
+                    position: static;
+                    margin: 0;
+                }
+            }
+
+            &.type_paxRecBy {
+                .root {
+                    i.paxRecTo {
+                        display: none;
+                    }
+                    i.paxRecBy {
+                        display: inline-block;
+                    }
+                }
+                .hasMore {
+                    border-top-color: $engagement_detail_treeBranchLineColor_paxRecBy !important;
+                }
+            }
+        }
+    }
+} /* /.engagement */
+
+/* ----- MODULE STYLES ----- */
+/***
+ *    888b     d888  .d88888b.  8888888b.  888     888 888      8888888888
+ *    8888b   d8888 d88P" "Y88b 888  "Y88b 888     888 888      888
+ *    88888b.d88888 888     888 888    888 888     888 888      888
+ *    888Y88888P888 888     888 888    888 888     888 888      8888888
+ *    888 Y888P 888 888     888 888    888 888     888 888      888
+ *    888  Y8P  888 888     888 888    888 888     888 888      888
+ *    888   "   888 Y88b. .d88P 888  .d88P Y88b. .d88P 888      888
+ *    888       888  "Y88888P"  8888888P"   "Y88888P"  88888888 8888888888
+ *
+ *
+ *
+ */
+.module.engagement {
+
+    // never show the dataLoading spinner on the icon versions of this module
+    &.grid-dimension-1x1.dataLoading,
+    &.grid-dimension-2x1.dataLoading {
+        .spin {
+            display: none;
+        }
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        .title-icon-view {
+            display: none;
+        }
+
+        // hide the big version of this module when we're loading data and show a faded version of the title-icon-view
+        @include module_fadeOnDataLoading();
+
+        // after the data for the tabs has been loaded, we set the module-liner background to transparent to let the page background show through the gaps in the tabs
+        &.dataLoaded {
+            .module-liner {
+                background: transparent;
+
+                .lt-ie9 & {
+                    filter: none;
+                }
+            }
+        }
+    }
+
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $engagement_bgColor,
+            $gradType: $engagement_gradType,
+            $gradMeta: $engagement_gradMeta,
+            $gradStops: $engagement_gradStops
+        );
+    }
+
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $engagement_iconColor,
+            $titleColor: $engagement_titleColor,
+            $titleFontFamily: $engagement_titleFontFamily
+        );
+    }
+
+    @include module_titleIconViewFontSizesWeights($engagement_titleFontSizes, $engagement_titleFontWeights);
+
+    .wide-view {
+        .module-topper {
+            margin: (-1 * $g5ModulePadding) (-1 * $g5ModulePadding) 0 (-1 * $g5ModulePadding);
+            padding: 0 $g5ModulePadding;
+
+            @include module_moduleLinerBackground(
+                $bgColor: $engagement_moduleTopper_bgColor,
+                $gradType: $engagement_moduleTopper_gradType,
+                $gradMeta: $engagement_moduleTopper_gradMeta,
+                $gradStops: $engagement_moduleTopper_gradStops
+            );
+
+            h3 {
+                margin: 0;
+                color: $engagement_moduleTopper_textColor;
+                font: $engagement_moduleTopper_fontFullString;// font-style font-variant font-weight font-size[req]/line-height font-family[req]
+                line-height: 46px; // magic number to match height of pubRec tabs
+            }
+        }
+
+        .engagementSummaryCollectionView {
+            margin: 0 (-1 * $g5ModulePadding) (-1 * $g5ModulePadding);
+
+            .tab-tab {
+                margin-top: -1px; // because 6 tabs don't fit perfectly any more
+            }
+
+            .tab-pane {
+                padding: $g5ModulePadding / 2;
+                height: 244px; // magic number
+                text-align: center;
+
+                .summary {
+                    // .tab-pane height - line height of title text - 16px line height of meta - bottom margin of meta
+                    height: 244px - $engagement_summary_titleFontLineHeight - 16px * 2 - $baseLineHeight / 2;
+                }
+                .title {
+                    a {
+                        cursor: pointer;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+                .target {
+                    margin-top: -75px - $baseLineHeight/2;
+                }
+                .actual {
+                    margin: (-75px + $baseLineHeight/2) 0 0 -75px;
+                    width: 150px; // magic number
+                    height: 150px; // magic number
+
+                    strong {
+                        font-size: 54px;
+                        line-height: 54px;
+                        margin-top: (150px - 54px - $baseLineHeight * 1.25) / 2;
+                    }
+                    span {
+                        font-size: $baseFontSize * 1.125;
+                        line-height: $baseLineHeight * 1.125;
+                    }
+                    a {
+                        cursor: pointer;
+
+                        // &:hover{
+                        //     text-decoration: underline;
+                        // }
+                    }
+                }
+                .showDescription {
+                    bottom: 1em;
+                    right: -20px;
+                }
+
+                .extended {
+                    display: none;
+                }
+            }
+
+            &.scoreInactive,
+            &.targetsHidden {
+                .tab-pane {
+                    .actual {
+                        margin-top: -80px;
+
+                        strong {
+                            font-size: 84px;
+                            line-height: 84px;
+                            margin-top: (160px - 84px - $baseLineHeight) / 2;
+                        }
+                    }
+                }
+            }
+            &.targetsHidden {
+                .tab-pane {
+                    .target {
+                        left: 10%;
+                        right: 10%;
+                        text-align: center;
+                        margin-top: 80px;
+
+                        strong {
+                            float: none;
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        .visitAppBtn {
+            // display: none;
+        }
+        .wide-view {
+        }
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2 {
+    }
+
+    &.grid-dimension-2x2 {
+
+        .engagementSummaryCollectionView {
+            .tab-pane {
+                .title {
+                    span {
+                        display: inline-block;
+                    }
+
+                    .titleLink {
+                        display: inline-block;
+                        padding-right: 1px; // IE9 is having issues with strings that don't have descenders (g,p,q,etc) shrinking unexpectedly
+                        max-width: 200px;
+                        width: 100% !important; //is dumb but the textshrink is forcing a width in IE causing issues.
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+                }
+                .target {
+                    font-size: 83.33%;
+                }
+            }
+        }
+    }
+
+    &.grid-dimension-4x2 {
+        .engagementSummaryCollectionView {
+            .tab-pane {
+                .title,
+                .meta {
+                    position: absolute;
+                    left: 50%;
+                    text-align: left;
+                }
+                .title {
+                    bottom: 50%;
+
+                    // .titleLink {
+                    //     max-width: 240px;
+                    //     overflow: hidden;
+                    //     max-height: 40px;
+                    //     display: block;
+                    // }
+
+
+                    // span {
+                    //     font-size: 1.33em; // scale the font size set on .title without having to do a variable
+                    // }
+                }
+                .meta {
+                    top: 50%;
+                    font-size: 100%; // 83.33% by default
+                    line-height: 16px;
+                }
+                .summary {
+                    height: 100%;
+                }
+                .target,
+                .actual,
+                .decorator {
+                    left: 25%;
+                }
+                .target {
+                    margin-top: -100px - $baseLineHeight/2 * 1.5;
+                    // font-size: 150%;
+                    line-height: $baseLineHeight * 1.5;
+
+                    .icon-g5-engagement {
+                        margin-left: -1 * $baseLineHeight * .75;
+                        margin-right: 6px;
+                        margin-bottom: $baseLineHeight * 1.5;
+                        width: $baseLineHeight * 1.5;
+                        height: $baseLineHeight * 1.5;
+                        font-size: $baseLineHeight * 1.25 * 1.5;
+                    }
+                    strong {
+                        margin-right: 6px;
+                        margin-bottom: $baseLineHeight * 1.5;
+                    }
+                }
+                .actual {
+                    margin: (-100px + $baseLineHeight/2) 0 0 -100px;
+                    width: 200px; // magic number
+                    height: 200px; // magic number
+
+                    strong {
+                        font-size: 84px;
+                        line-height: 84px;
+                        margin-top: (200px - 84px - $baseLineHeight * 1.33) / 2;
+                    }
+                    span {
+                        font-size: $baseFontSize * 1.33;
+                        line-height: $baseLineHeight * 1.33;
+                    }
+                    .meter {
+                        // arc width
+                        font-size: 8px !important;
+                    }
+                }
+            }
+
+            &.scoreInactive,
+            &.targetsHidden {
+                .tab-pane {
+                    .actual {
+                        margin-top: -100px;
+
+                        strong {
+                            font-size: 96px;
+                            line-height: 96px;
+                            margin-top: (200px - 96px - $baseLineHeight * 1.33) / 2;
+                        }
+                    }
+                }
+            }
+            &.targetsHidden {
+                .tab-pane {
+                    .target {
+                        margin-top: 100px;
+
+                        strong {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.grid-dimension-4x4 {
+        // overrides of styles way up in the generic section
+        .engagementSummaryCollectionView {
+            height: 582px;
+
+            .tab-tab {
+                width: 104px; // magic number
+            }
+            .tab {
+                height: 95px; // magic number to make 6 tabs fit perfectly (or close anyway)
+
+                & ~ .tab {
+                    border-top-width: 2px;
+
+                    &.active {
+                        padding-top: 2px;
+                    }
+                }
+
+                &.active {
+                    & + .tab {
+                        padding-top: 2px;
+                    }
+                }
+
+                &.score {
+                    padding-top: 1px; // magic number to make the first tab slightly taller so everything fits
+                    padding-bottom: 2px; // magic number to make the first tab slightly taller so everything fits
+                }
+
+                a {
+                    font-size: 60px; // magic number to make icons fit nicely
+                    line-height: 95px; // match height
+                }
+            }
+
+            &.scoreInactive {
+                .tab {
+                    height: 115px; // magic number to make 5 tabs fit perfectly (or close anyway)
+
+                    a {
+                        line-height: 115px; // match height
+                    }
+                }
+            }
+
+            .tab-pane {
+                .title {
+                    span {
+                        display: inline-block;
+                    }
+
+                    .titleLink {
+                        display: inline-block;
+                        max-width: 430px;
+                        width: 100% !important; //is dumb but the textshrink is forcing a width in IE causing issues.
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        // max-height: 70px;
+                        font-size: 200%;
+                        line-height: initial;
+                    }
+
+                    .showDescription {
+                        font-size: 100%;
+                        right: -40px;
+                    }
+                }
+                .meta {
+                    font-size: 83.33% * 2;
+                    line-height: 32px; // magic number
+                }
+                .decorator {
+                    margin: -180px 0 0 -180px;
+                    height: 360px;
+                    width: 360px;
+                    font-size: 360px;
+                    line-height: 360px;
+                }
+                .target {
+                    .icon-g5-engagement {
+                        margin-left: -1 * $baseLineHeight;
+                        margin-right: 8px;
+                        margin-bottom: $baseLineHeight * 2;
+                        width: $baseLineHeight * 2;
+                        height: $baseLineHeight * 2;
+                        font-size: $baseLineHeight * 1.25 * 2;
+                    }
+                    strong {
+                        margin-right: 8px;
+                        margin-bottom: $baseLineHeight * 2;
+                    }
+                }
+            }
+        }
+
+        // overrides of styles in the module section
+        .engagementSummaryCollectionView {
+            .tab-pane {
+                padding: $g5ModulePadding;
+                height: 546px; // magic number
+
+                .summary {
+                    // .tab-pane height - line height of title text - 16px line height of meta - bottom margin of meta
+                    height: 546px - $engagement_summary_titleFontLineHeight * 2 - 32px * 2 - $baseLineHeight / 2;
+                }
+                .target {
+                    margin-top: -160px - $baseLineHeight * 0.8333;
+                    // font-size: 200%;
+                    font-size: 83.33% * 2;
+                    line-height: $baseLineHeight * 0.8333 * 2;
+                }
+                .actual {
+                    margin: (-160px + $baseLineHeight) 0 0 -160px;
+                    width: 320px; // magic number
+                    height: 320px; // magic number
+
+                    strong {
+                        font-size: 120px;
+                        line-height: 120px;
+                        margin-top: (320px - 120px - $baseLineHeight * 2.5) / 2;
+                    }
+                    span {
+                        font-size: $baseFontSize * 2.5;
+                        line-height: $baseLineHeight * 2.5;
+                    }
+                    .meter {
+                        // arc width
+                        font-size: 12px !important;
+                    }
+                }
+            }
+
+            &.scoreInactive,
+            &.targetsHidden {
+                .tab-pane {
+                    .actual {
+                        margin-top: -160px;
+
+                        strong {
+                            font-size: 168px;
+                            line-height: 168px;
+                            margin-top: (320px - 168px - $baseLineHeight * 2.5) / 2;
+                        }
+                    }
+                }
+            }
+            &.targetsHidden {
+                .tab-pane {
+                    .target {
+                        margin-top: 160px;
+
+                        strong {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+} /* /.module.engagement */
+
+/* ----- PAGE STYLES ----- */
+/***
+ *    8888888b.     d8888  .d8888b.  8888888888
+ *    888   Y88b   d88888 d88P  Y88b 888
+ *    888    888  d88P888 888    888 888
+ *    888   d88P d88P 888 888        8888888
+ *    8888888P" d88P  888 888  88888 888
+ *    888      d88P   888 888    888 888
+ *    888     d8888888888 Y88b  d88P 888
+ *    888    d88P     888  "Y8888P88 8888888888
+ *
+ *
+ *
+ */
+.page.engagement {
+    .spin {
+        display: block;
+        margin: 0 auto;
+        width: $spinner_widthHeight;
+        height: $spinner_widthHeight;
+    }
+    .spincover {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 10000;
+        @include safeBkgs(rgba(255, 255, 255, .5));
+    }
+
+    .engagementSummaryCollectionView {
+        $summaryCollectionHeight: 293px;
+
+        margin-bottom: $baseLineHeight;
+        height: $summaryCollectionHeight;
+        clear: both;
+
+        @if $engagement_summary_tabsInactive_bgColorPage and $engagement_summary_tabsInactive_bgColorPage != $engagement_summary_tabsInactive_bgColorModule {
+            .tab-tab {
+                @include module_moduleLinerBackground(
+                    $bgColor: $engagement_summary_tabsInactive_bgColorPage,
+                    $gradType: linear,
+                    $gradMeta: left,
+                    $gradStops: ($engagement_summary_tabsInactive_bgColorPage 75%, scale-color($engagement_summary_tabsInactive_bgColorPage, $lightness: -33%)),
+                    $force: true
+                );
+            }
+        }
+
+        .tab {
+            height: 48px; // magic number to make 6 tabs fit perfectly
+
+            @if $engagement_summary_tabsInactive_borderColorPage and $engagement_summary_tabsInactive_borderColorPage != $engagement_summary_tabsInactive_borderColorModule {
+                & ~ .tab {
+                    border-color: $engagement_summary_tabsInactive_borderColorPage;
+                }
+            }
+
+            a {
+                line-height: 48px; // match height
+
+                @if $engagement_summary_tabsInactive_iconColorPage and $engagement_summary_tabsInactive_iconColorPage != $engagement_summary_tabsInactive_iconColorModule {
+                    color: $engagement_summary_tabsInactive_iconColorPage;
+                }
+                @if $engagement_summary_tabsInactive_iconColorHoverPage and $engagement_summary_tabsInactive_iconColorHoverPage != $engagement_summary_tabsInactive_iconColorHoverModule {
+                    &:hover {
+                        color: $engagement_summary_tabsInactive_iconColorHoverPage;
+                    }
+                }
+            }
+
+            @if $engagement_summary_tabsInactive_iconColorPage and $engagement_summary_tabsInactive_iconColorPage != $engagement_summary_tabsInactive_iconColorModule {
+                &.active {
+                    a {
+                        color: inherit;
+                    }
+                }
+            }
+        }
+
+        &.scoreInactive {
+            .tab {
+                height: 58px; // magic number to make 5 tabs fit perfectly
+
+                a {
+                    line-height: 58px; // match height
+                }
+            }
+        }
+
+        &.scoreInactive,
+        &.targetsHidden {
+            .tab-pane {
+                .actual {
+                    margin-top: -100px;
+
+                    strong {
+                        font-size: 96px;
+                        line-height: 96px;
+                        margin-top: ($summaryCollectionHeight - 96px - $baseLineHeight * 1.5) / 2;
+                    }
+                    span {
+                        font-size: $baseFontSize * 1.5;
+                        line-height: $baseLineHeight * 1.5;
+                    }
+                }
+            }
+        }
+        &.targetsHidden {
+            .tab-pane {
+                .target {
+                    margin-top: 100px;
+
+                    strong {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+
+        @media (max-width: 767px) {
+            height: auto;
+            overflow: visible;
+        }
+
+        // top tabs only when narrower than 480px
+        @media (max-width: 479px) {
+            .tab-tab {
+                display: block;
+                float: none;
+                width: auto;
+                @include clearfix();
+
+                @include module_moduleLinerBackground(
+                    $bgColor: $engagement_summary_tabsInactive_bgColorPage or $engagement_summary_tabsInactive_bgColorModule,
+                    $gradType: linear,
+                    $gradMeta: top,
+                    $gradStops: ($engagement_summary_tabsInactive_bgColorPage or $engagement_summary_tabsInactive_bgColorModule 75%, scale-color($engagement_summary_tabsInactive_bgColorPage or $engagement_summary_tabsInactive_bgColorModule, $lightness: -33%)),
+                    $force: true
+                );
+            }
+            .tab {
+                display: inline;
+                float: left;
+                margin-bottom: 0 !important;
+                width: 42px; // magic number to match tab height
+
+                & ~ .tab {
+                    border-top: 0;
+                    border-left: 1px solid $engagement_summary_tabsInactive_borderColorPage or $engagement_summary_tabsInactive_borderColorModule;
+
+                    &.active {
+                        padding-top: 0;
+                        padding-left: 1px;
+                    }
+                }
+
+                &.active {
+                    border-left: 0;
+
+                    & + .tab {
+                        border-left: 0;
+                        padding-top: 0;
+                        padding-left: 1px;
+                    }
+                }
+            }
+
+            &.scoreInactive,
+            &.targetsHidden {
+                .tab {
+                    height: 42px; // magic number to control tab height whether score is active or not
+
+                    a {
+                        line-height: 42px; // match height
+                    }
+                }
+            }
+        }
+
+        .tab-pane {
+            padding: $g5PageContentPaddingHoriz / 2;
+            height: $summaryCollectionHeight - $g5PageContentPaddingHoriz;
+
+            @media (min-width: 1200px) {
+                padding: $g5PageContentPaddingHoriz1200 / 2;
+                height: $summaryCollectionHeight - $g5PageContentPaddingHoriz1200;
+            }
+            @media (min-width: 768px) and (max-width: 979px) {
+                padding: $g5PageContentPaddingHoriz768 / 2;
+                height: $summaryCollectionHeight - $g5PageContentPaddingHoriz768;
+            }
+            @media (max-width: 767px) {
+                padding: $g5PageContentPaddingHorizMobile;
+                height: auto;
+            }
+
+            .title,
+            .meta,
+            .extended {
+                margin-left: 50%;
+
+                @media (max-width: 767px) {
+                    margin-left: 0;
+                }
+            }
+
+            .title {
+                span {
+                    font-size: 150%;
+                    line-height: $engagement_summary_titleFontLineHeight * 1.50;
+
+                    @media (max-width: 479px) {
+                        font-size: 100%;
+                    }
+                }
+            }
+            .meta {
+                font-size: 1;
+                line-height: $baseLineHeight;
+            }
+            .timeframe,
+            .sep {
+                display: none;
+            }
+
+            .summary {
+                position: absolute;
+                top: $g5PageContentPaddingHoriz / 2;
+                bottom: $g5PageContentPaddingHoriz / 2;
+                left: $g5PageContentPaddingHoriz / 2;
+                width: 45%;
+                // height: 100%;
+                @include safeBkgs( transparentize($engagement_summary_textColor, 0.75) );
+
+                @media (min-width: 1200px) {
+                    top: $g5PageContentPaddingHoriz1200 / 2;
+                    bottom: $g5PageContentPaddingHoriz1200 / 2;
+                    left: $g5PageContentPaddingHoriz1200 / 2;
+                }
+                @media (min-width: 768px) and (max-width: 979px) {
+                    top: $g5PageContentPaddingHoriz768 / 2;
+                    bottom: $g5PageContentPaddingHoriz768 / 2;
+                    left: $g5PageContentPaddingHoriz768 / 2;
+                }
+                @media (max-width: 767px) {
+                    position: relative;
+                    top: auto;
+                    bottom: auto;
+                    left: auto;
+                    width: auto;
+                    margin: ($baseLineHeight / 2) 0;
+                    height: $summaryCollectionHeight - $g5PageContentPaddingHoriz;
+                }
+            }
+            .target {
+                margin-top: -100px - $baseLineHeight/2;
+            }
+            .actual {
+                margin: (-100px + $baseLineHeight/2) 0 0 -100px;
+                width: 200px; // magic number
+                height: 200px; // magic number
+
+                strong {
+                    font-size: 84px;
+                    line-height: 84px;
+                    margin-top: (200px - 84px - $baseLineHeight) / 2;
+                }
+                span {
+                    font-size: $baseFontSize * 1.33;
+                    line-height: $baseLineHeight * 1.33;
+                }
+            }
+            .showDescription {
+                right: -30px;
+                bottom: 0.5em;
+            }
+
+            .extended {
+                margin-top: $baseLineHeight / 2;
+                font-size: 125%;
+                line-height: $baseLineHeight * 1.25;
+
+                .avgTeamMem {
+                    margin-bottom: 0;
+                }
+                .report {
+                    margin-bottom: 0;
+
+                    a {
+                        display: inline-block;
+                        padding-right: $baseLineHeight;
+                        color: inherit;
+
+                        .spinner {
+                            left: 100% !important;
+                            margin-left: $baseLineHeight / 2;
+                        }
+                    }
+                }
+            }
+        }
+
+        .score {
+            .extended {
+                .avgTeamMem {
+                    display: none;
+                }
+            }
+            @if $engagement_summary_textColor_score and $engagement_summary_textColor_score != $engagement_summary_textColor {
+                .summary {
+                    @include safeBkgs( transparentize($engagement_summary_textColor_score or $engagement_summary_textColor, 0.75) );
+                }
+            }
+        }
+        .recSent {
+            @if $engagement_summary_textColor_recSent and $engagement_summary_textColor_recSent != $engagement_summary_textColor {
+                .summary {
+                    @include safeBkgs( transparentize($engagement_summary_textColor_recSent or $engagement_summary_textColor, 0.75) );
+                }
+            }
+        }
+        .recRecv {
+            @if $engagement_summary_textColor_recRecv and $engagement_summary_textColor_recRecv != $engagement_summary_textColor {
+                .summary {
+                    @include safeBkgs( transparentize($engagement_summary_textColor_recRecv or $engagement_summary_textColor, 0.75) );
+                }
+            }
+        }
+        .paxRecTo {
+            @if $engagement_summary_textColor_paxRecTo and $engagement_summary_textColor_paxRecTo != $engagement_summary_textColor {
+                .summary {
+                    @include safeBkgs( transparentize($engagement_summary_textColor_paxRecTo or $engagement_summary_textColor, 0.75) );
+                }
+            }
+        }
+        .paxRecBy {
+            @if $engagement_summary_textColor_paxRecBy and $engagement_summary_textColor_paxRecBy != $engagement_summary_textColor {
+                .summary {
+                    @include safeBkgs( transparentize($engagement_summary_textColor_paxRecBy or $engagement_summary_textColor, 0.75) );
+                }
+            }
+        }
+        .visits {
+            @if $engagement_summary_textColor_visits and $engagement_summary_textColor_visits != $engagement_summary_textColor {
+                .summary {
+                    @include safeBkgs( transparentize($engagement_summary_textColor_visits or $engagement_summary_textColor, 0.75) );
+                }
+            }
+        }
+
+        &.scoreInactive,
+        &.targetsHidden {
+            .tab-pane {
+                .actual {
+                    margin-top: -100px;
+
+                    strong {
+                        font-size: 96px;
+                        line-height: 96px;
+                        margin-top: (200px - 96px - $baseLineHeight) / 2;
+                    }
+                }
+            }
+        }
+        &.targetsHidden {
+            .tab-pane {
+                .target {
+                    left: 10%;
+                    right: 10%;
+                    text-align: center;
+                    margin-top: 100px;
+
+                    strong {
+                        float: none;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* ----- ORPHANED ELEMENT STYLES ----- */
+/***
+ *     .d88888b.  8888888b.  8888888b.  888    888        d8888 888b    888  .d8888b.
+ *    d88P" "Y88b 888   Y88b 888   Y88b 888    888       d88888 8888b   888 d88P  Y88b
+ *    888     888 888    888 888    888 888    888      d88P888 88888b  888 Y88b.
+ *    888     888 888   d88P 888   d88P 8888888888     d88P 888 888Y88b 888  "Y888b.
+ *    888     888 8888888P"  8888888P"  888    888    d88P  888 888 Y88b888     "Y88b.
+ *    888     888 888 T88b   888        888    888   d88P   888 888  Y88888       "888
+ *    Y88b. .d88P 888  T88b  888        888    888  d8888888888 888   Y8888 Y88b  d88P
+ *     "Y88888P"  888   T88b 888        888    888 d88P     888 888    Y888  "Y8888P"
+ *
+ *
+ *
+ */
+
+.engagementByPromoHelpTip {
+    dl {
+        margin: 0;
+    }
+}

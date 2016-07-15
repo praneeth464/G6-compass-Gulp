@@ -1,0 +1,34 @@
+<!-- ======== RULES PAGE ======== -->
+
+<!-- Page Header  -->
+<div id="rulesPageView" class="page-content rules">
+
+    <!-- Page Body -->
+        <div id="rulesPage" class="row">
+            <!-- <p id="rulesEmpty" style="display: none">Here is text in case no rules exist.</p> -->
+        </div>
+</div>
+<!-- /#rulesPageView -->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function() {
+        window.rpv = new RulesPageView({
+            el:$('#rulesPageView'),
+            promoId:1234,
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Promotion Rules',
+            footerLinksTarget: "page"
+        });
+    });
+
+</script>

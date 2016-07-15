@@ -1,0 +1,654 @@
+<!-- ======== MATCH PAGE ======== -->
+
+<div id="matchPageView" class="page-content throwdownMatch" data-smack-talk-id="1234">
+
+    <div class="page-topper">
+        <div class="row">
+            <div class="span6 match-page-topper-liner">
+
+                <form class="form-inline form-labels-inline" action="">
+                    <div class="control-group" id="controlMatchSelect">
+
+                        <div class="controls">
+                            <select id="promoSelect" data-no-rankings="There are no promotions for this Match Filter.">
+                                <option>Promotion 1</option>
+                                <option>Promotion 2</option>
+                            </select>
+                        </div>
+
+                    </div><!-- /.control-group -->
+                </form>
+
+            </div>
+            <div class="span6">
+                <a href="#" class="btn btn-primary rulesBtn">View Rules</a>
+            </div>
+        </div>
+    </div><!-- /.page-topper -->
+
+    <!-- Page Body -->
+    <div class="row">
+        <div class="span12">
+            <div class="promotionInfo">
+                <h4>PROMOTION NAME OF LONG OF DOOM THINGS</h4>
+                <span><strong>Start Date:</strong> 09/11/2013</span>
+                <span><strong>End Date:</strong> 11/23/2013</span>
+            </div>
+
+            <div class="td-promo-countdown" >
+                <h4>TIME REMAINING</h4>
+                <ul>
+                    <li class="d"><span class="cd-digit">00</span><hr/><hr/><span class="cd-label">days</span></li>
+                    <li class="h"><span class="cd-digit">00</span><hr/><hr/><span class="cd-label">hours</span></li>
+                    <li class="m"><span class="cd-digit">00</span><hr/><hr/><span class="cd-label">minutes</span></li>
+                    <li class="s"><span class="cd-digit">00</span><hr/><hr/><span class="cd-label">seconds</span></li>
+                </ul>
+            </div>
+
+            <div class="round-start-end-message" style="display: none;">
+                <p>Round ended 02/01/2013</p>
+            </div>
+        </div>
+    </div><!-- /.row -->
+
+    <div class="td-match-detail-container">
+        <div class="row">
+            <div class="span12">
+                <div class="matchModel">
+
+                </div>
+            </div>
+        </div>
+    </div><!-- /.td-match-detail-container -->
+
+    <div class="td-match-smack-talk smackTalk">
+        <div class="row">
+            <div class="span12">
+                <div class="app-row" >
+                    <h4>SMACK TALK THIS MATCH</h4>
+                    <form class="form-inline smackTalkCommentForm" action="ajax/smackTalkSaveComment.json">
+                        <!-- data-smack-talk-id will be passed to JSON url along with any other data-* attrs -->
+                        <textarea name="comment" class="comment-input commentInputTxt" placeholder="Add Smack Talk" maxlength="300"></textarea>
+                    </form>
+
+                    <div class="page-liner smackTalkItemsCont" >
+
+                        <div class="smackTalkItems">
+
+                        </div><!-- smackTalkItems -->
+
+                        <!-- shown when there are more smack talk itesm -->
+                        <div class="app-row">
+                            <p>
+                                <a href="#" class="viewAllSmackTalks"  style="display: none">
+                                    View More
+                                </a>
+                            </p>
+                        </div>
+
+                    </div><!-- smackTalkItemsCont -->
+
+                </div>
+            </div>
+        </div><!-- /.row -->
+    </div> <!-- /.td-match-smack-talk -->
+
+
+
+</div><!-- /#matchPageView -->
+
+<!--
+NOTE TO JAVA: the contents of the following sub template is found in matchDetailsInclude.jsp
+-->
+<script type="text/template" id="throwdownMatchDetailsTpl">
+    <div class="td-match-details-wide">
+
+        <div class="row">
+
+            <div class="td-match-primary-team">
+                <div class="td-match-profile-pic">
+                    <div class="avatarContainer">
+                        <div class="avatarContainerBorder {{#if promotionEnded}}{{#if primaryTeam.isWinner}}winner{{/if}}{{/if}}">
+                            <a href="{{primaryTeam.profileUrl}}"><img src="{{ primaryTeam.avatarUrl }}" alt="" class="avatar"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="td-match-stats-info">
+                    <p class="td-match-rank">
+                        <a href="layout.html?tplPath=apps/throwdown/tpl/&tpl=throwdownRankingsPage.html">
+                            RANK
+                            <span>
+                            {{#if primaryTeam.rank}}
+                                {{ primaryTeam.rank }}
+                            {{else}}
+                                <i class="icon-ban-circle"></i>
+                            {{/if}}
+                            </span>
+                        </a>
+                    </p>
+                    <ul class="td-match-wl-count">
+                        <li>W<span>{{ primaryTeam.stats.wins }}</span></li>
+                        <li>L<span>{{ primaryTeam.stats.losses }}</span></li>
+                        <li>D<span>{{ primaryTeam.stats.ties }}</span></li>
+                    </ul>
+                    {{#if primaryTeam.badgeInfos.0.badges}}
+                    <ul class="td-match-badge-list">
+                        {{#each primaryTeam.badgeInfos.0.badges}}
+                        <li><img src="{{ img }}" alt="{{ name }}"><span>{{ displayCount earnCount }}</span></li>
+                        {{/each}}
+                    </ul>
+                    {{/if}}
+                </div>
+            </div>
+
+            <div class="td-match-vs">vs <span class="reflect">vs </span></div>
+
+            <div class="td-match-secondary-team">
+                <div class="td-match-stats-info">
+                    <p class="td-match-rank">
+                        <a href="layout.html?tplPath=apps/throwdown/tpl/&tpl=throwdownRankingsPage.html">
+                            RANK
+                            <span>
+                                {{#if secondaryTeam.rank}}
+                                {{ secondaryTeam.rank }}
+                            {{else}}
+                                <i class="icon-ban-circle"></i>
+                            {{/if}}
+                            </span>
+                        </a>
+                    </p>
+                    <ul class="td-match-wl-count">
+                        <li>W<span>{{ secondaryTeam.stats.wins }}</span></li>
+                        <li>L<span>{{ secondaryTeam.stats.losses }}</span></li>
+                        <li>D<span>{{ secondaryTeam.stats.ties }}</span></li>
+                    </ul>
+                    {{#if secondaryTeam.badgeInfos.0.badges}}
+                    <ul class="td-match-badge-list">
+                        {{#each secondaryTeam.badgeInfos.0.badges}}
+                        <li><img src="{{ img }}" alt="{{ name }}"><span>{{ displayCount earnCount }}</span></li>
+                        {{/each}}
+                    </ul>
+                    {{/if}}
+                </div>
+                <div class="td-match-profile-pic">
+                    <div class="avatarContainer">
+                        <div class="avatarContainerBorder {{#if promotionEnded}}{{#if secondaryTeam.isWinner}}winner{{/if}}{{/if}}">
+                            <a href="{{secondaryTeam.profileUrl}}"><img src="{{ secondaryTeam.avatarUrl }}" alt="" class="avatar"></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+
+                <div class="td-match-primary-units">
+                    <p class="td-match-participant-name">{{ primaryTeam.firstName }} {{ primaryTeam.lastName }}</p>
+                    <p class="td-match-participant-units">
+                        {{#if primaryTeam.isMyTeam}}
+                        {{comma primaryTeam.currentProgress}}
+                        {{else}}
+                        {{#if displayProgress}}
+                        {{comma primaryTeam.currentProgress}}
+                        {{else}}
+                        {{primaryTeam.currentProgressText}}
+                        {{/if}}
+                        {{/if}}
+                    </p>
+                    {{#if promotionEnded}}
+                        {{#if primaryTeam.isWinner}}
+                            <p class="td-match-winner">WINNER!</p>
+                        {{/if}}
+                    {{else}}
+                    {{#unless displayProgress}}
+                        {{#if primaryTeam.isMyTeam}}
+                            <span class="td-progress-text">{{primaryTeam.currentProgressText}}</span>
+                        {{/if}}
+                    {{/unless}}
+                    {{/if}}
+                </div>
+
+                <div class="td-match-round-info">
+                    <p>ROUND <span class="td-match-round-current">{{ roundNumber }}</span> OF <span>{{ numberOfRounds }}</span></p>
+                    <a href="{{ matchUrl }}" class="btn td-match-button">{{matchButton}}</a>
+                </div>
+
+                <div class="td-match-secondary-units">
+                    <p class="td-match-participant-name">{{ secondaryTeam.firstName }} {{ secondaryTeam.lastName }}</p>
+                    <p class="td-match-participant-units">
+                        {{#if displayProgress}}
+                        {{comma secondaryTeam.currentProgress}}
+                        {{else}}
+                        {{secondaryTeam.currentProgressText}}
+                        {{/if}}
+                    </p>
+                    {{#if promotionEnded}}
+                        {{#if secondaryTeam.isWinner}}
+                            <p class="td-match-winner">WINNER!</p>
+                        {{/if}}
+                    {{/if}}
+                </div>
+
+            </div>
+
+            <p class="td-fine-print">{{promotionOverview}} From {{startDate}} to {{progressEndDate}}</p>
+    </div>
+
+    <div class="td-match-details-condensed">
+
+        <div class="td-match-primary-team">
+            <div class="td-match-profile-pic">
+                <div class="avatarContainer">
+                    <div class="avatarContainerBorder {{#if promotionEnded}}{{#if primaryTeam.isWinner}}winner{{/if}}{{/if}}">
+                        <img src="{{ primaryTeam.avatarUrl }}" alt="" class="avatar">
+                    </div>
+                </div>
+            </div>
+            <div class="td-match-stats-info">
+                <p class="td-match-participant-name">{{ primaryTeam.firstName }} {{ primaryTeam.lastName }}</p>
+                <p class="td-match-rank">
+                    <a href="layout.html?tplPath=apps/throwdown/tpl/&tpl=throwdownRankingsPage.html">
+                        RANK
+                        <span>
+                        {{#if primaryTeam.rank}}
+                            {{ primaryTeam.rank }}
+                        {{else}}
+                            <i class="icon-ban-circle"></i>
+                        {{/if}}
+                        </span>
+                    </a>
+                </p>
+                <p class="td-match-participant-units">
+                    {{#if primaryTeam.isMyTeam}}
+                    {{comma primaryTeam.currentProgress}}
+                    {{else}}
+                    {{#if displayProgress}}
+                    {{comma primaryTeam.currentProgress}}
+                    {{else}}
+                    {{primaryTeam.currentProgressText}}
+                    {{/if}}
+                    {{/if}}
+                </p>
+                {{#if promotionEnded}}
+                    {{#if primaryTeam.isWinner}}
+                        <p class="td-match-winner">WINNER!</p>
+                    {{/if}}
+                {{else}}
+                {{#unless displayProgress}}
+                    {{#if primaryTeam.isMyTeam}}
+                        <span class="td-progress-text">{{primaryTeam.currentProgressText}}</span>
+                    {{/if}}
+                {{/unless}}
+                {{/if}}
+            </div>
+        </div>
+
+        <div class="td-match-vs">vs</div>
+
+        <div class="td-match-secondary-team">
+            <div class="td-match-profile-pic">
+                <div class="avatarContainer">
+                    <div class="avatarContainerBorder {{#if promotionEnded}}{{#if secondaryTeam.isWinner}}winner{{/if}}{{/if}}">
+                        <img src="{{ secondaryTeam.avatarUrl }}" alt="" class="avatar">
+                    </div>
+                </div>
+
+            </div>
+            <div class="td-match-stats-info">
+                <p class="td-match-participant-name">{{ secondaryTeam.firstName }} {{ secondaryTeam.lastName }}</p>
+                <p class="td-match-rank">
+                    <a href="layout.html?tplPath=apps/throwdown/tpl/&tpl=throwdownRankingsPage.html">
+                        RANK
+                        <span>
+                            {{#if secondaryTeam.rank}}
+                            {{ secondaryTeam.rank }}
+                        {{else}}
+                            <i class="icon-ban-circle"></i>
+                        {{/if}}
+                        </span>
+                    </a>
+                </p>
+                <p class="td-match-participant-units">
+                    {{#if displayProgress}}
+                    {{comma secondaryTeam.currentProgress}}
+                    {{else}}
+                    {{secondaryTeam.currentProgressText}}
+                    {{/if}}
+                </p>
+                {{#if promotionEnded}}
+                    {{#if secondaryTeam.isWinner}}
+                        <p class="td-match-winner">WINNER!</p>
+                    {{/if}}
+                {{/if}}
+            </div>
+
+        </div>
+
+        <div class="td-match-round-info">
+            <p>ROUND <span class="td-match-round-current">{{ roundNumber }}</span> OF <span>{{ numberOfRounds }}</span></p>
+            <a href="#" class="btn td-match-button">MATCH DETAILS</a>
+        </div>
+    </div>
+</script>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+
+$(document).ready(function() {
+    var matchDetailsJson = {
+        "primaryTeam": {
+            "stats": {
+                "none": 0,
+                "wins": 10,
+                "losses": 5,
+                "ties": 1,
+                "byes": 0,
+                "forfeits": 0,
+                "disqualifications": 0
+            },
+            "isWinner": false,
+
+            "currentProgress": 2322,
+            "avatarUrl": "http://www.placebear.com/140/140",
+            "firstName": "Lucille",
+            "lastName": "Jones",
+            "currentProgressForDisplay": "2,322 CHUCKLES",
+            "currentProgressText": "",
+            "badgeInfos": [
+                {
+                    "noBadgesCompleteText": "well, this is the string for no badges..orsomething",
+                    "headerTitle": "my badge header",
+                    "badges": [
+                        {
+                            "imgLarge": "/url/to/image/LARGE",
+                            "img": "img/throwdown/badges/gold_glove_sm.png",
+                            "earned": true,
+                            "dateEarned": "10/10/1974",
+                            "progressNumerator": 5,
+                            "progressDenominator": 5,
+                            "progressVisible": false,
+                            "id": -111,
+                            "type": "earned",
+                            "name": "Gold Badge!",
+                            "howToEarnText": "This is how you can become awesome and earn this badge!",
+                            "earnCount": 1
+                        },
+                        {
+                            "imgLarge": "/url/to/image/LARGE",
+                            "img": "img/throwdown/badges/silver_glove_sm.png",
+                            "earned": true,
+                            "dateEarned": "10/10/1974",
+                            "progressNumerator": 5,
+                            "progressDenominator": 5,
+                            "progressVisible": false,
+                            "id": -111,
+                            "type": "earned",
+                            "name": "Silver Badge!",
+                            "howToEarnText": "This is how you can become awesome and earn this badge!",
+                            "earnCount": 2
+                        }
+                    ]
+                }
+            ],
+            "isShadowPlayer": false,
+            "isMyTeam": true
+        },
+        "secondaryTeam": {
+            "stats": {
+                "none": 0,
+                "wins": 13,
+                "losses": 3,
+                "ties": 1,
+                "byes": 0,
+                "forfeits": 0,
+                "disqualifications": 0
+            },
+            "isWinner": false,
+            "rank": 29,
+            "currentProgress": 132,
+            "avatarUrl": "http://www.fillmurray.com/g/140/140",
+            "firstName": "Jessica",
+            "lastName": "Jones",
+            "currentProgressForDisplay": "132 CHUCKLES",
+            "currentProgressText": "Ahead",
+            "badgeInfos": [
+                {
+                    "noBadgesCompleteText": "well, this is the string for no badges..orsomething",
+                    "headerTitle": "my badge header",
+                    "badges": [
+                        {
+                            "imgLarge": "/url/to/image/LARGE",
+                            "img": "img/throwdown/badges/gold_glove_sm.png",
+                            "earned": true,
+                            "dateEarned": "10/10/1974",
+                            "progressNumerator": 5,
+                            "progressDenominator": 5,
+                            "progressVisible": false,
+                            "id": -111,
+                            "type": "earned",
+                            "name": "Gold Badge!",
+                            "howToEarnText": "This is how you can become awesome and earn this badge!",
+                            "earnCount": 3
+                        },
+                        {
+                            "imgLarge": "/url/to/image/LARGE",
+                            "img": "img/throwdown/badges/silver_glove_sm.png",
+                            "earned": true,
+                            "dateEarned": "10/10/1974",
+                            "progressNumerator": 5,
+                            "progressDenominator": 5,
+                            "progressVisible": false,
+                            "id": -111,
+                            "type": "earned",
+                            "name": "Silver Badge!",
+                            "howToEarnText": "This is how you can become awesome and earn this badge!",
+                            "earnCount": 1
+                        },
+                        {
+                            "imgLarge": "/url/to/image/LARGE",
+                            "img": "img/throwdown/badges/bronze_glove_sm.png",
+                            "earned": true,
+                            "dateEarned": "10/10/1974",
+                            "progressNumerator": 5,
+                            "progressDenominator": 5,
+                            "progressVisible": false,
+                            "id": -111,
+                            "type": "earned",
+                            "name": "Silver Badge!",
+                            "howToEarnText": "This is how you can become awesome and earn this badge!",
+                            "earnCount": 4
+                        }
+                    ]
+                }
+            ],
+            "isShadowPlayer": false,
+            "isMyTeam": false
+        },
+        "rulesUrl": "/urlToRules.do",
+        "matchUrl": "layout.html?tpl=throwdownMatchPage&amp;tplPath=apps/throwdown/tpl/",
+        "allMatchesUrl": "urlToAllMatches.do",
+        "promotionId": 2530,
+        "promotionName": "Promotion 1",
+        "promotionOverview": "Match ranking based on units per thousand sold to people between the ages of 7 and 12.",
+        "promotionEnded": false,
+        "endDate": 1388556000000,
+        "startDate":"05/12/14",
+        "progressEndDate": "05/25/14",
+        "roundNumber": 1,
+        "matchId": 2987,
+        "matchButton": "View All Matches",
+        "numberOfRounds": 3,
+        "displayProgress": false
+    },
+
+    smackTalkJson = [
+        {
+            "id":1234,
+            "isDetail": true,
+            "isMyMatch": true,
+            "player1": {
+                "id":45,
+                "firstName":"Ron",
+                "lastName":"Smith",
+                "avatarUrl":"img/_samples/x-profile-pic2.jpg",
+                "orgName":"Sales",
+                "title":"Director",
+                "viewCertificateUrl":"#",
+                "countryCode":"us",
+                "countryName":"United States"
+            },
+            "player2": {
+                "id":457,
+                "firstName":"Jason",
+                "lastName":"Billings",
+                "avatarUrl":"img/_samples/x-profile-pic3.jpg",
+                "orgName":"Accounting",
+                "title":"Head Accountant",
+                "countryCode":"us",
+                "countryName":"United States"
+            },
+            "commenterMain": {
+                "id":102,
+                "firstName":"Jane",
+                "lastName":"Anderson",
+                "avatarUrl":"img/_samples/x-profile-pic1.jpg",
+                "orgName":"TSG",
+                "title":"Director",
+                "countryCode":"us",
+                "countryName":"United States"
+            },
+            "comment":"Great work, keep it up! Thanks for the extra work. Culpa brooklyn cardigan, delectus quis eu nulla. Viral bespoke semiotics single-origin coffee nesciunt echo park. This is precisely 179 characters long. Portland Sed banh mi chillwave iphone. Culpa brooklyn cardigan, delectus quis eu nulla. Viral bespoke semiotics single-origin coffee nesciunt echo park.",
+            "promotionName":"Core Values",
+            "date":"01/01/2013",
+            "numLikers": 2,
+            "isLiked": false,
+            "isMine": true,
+            "isHidden": false,
+            "time": "2 days ago",
+            "countryRatio": 1.0,
+            "comments":[
+                {
+                    "id":23,
+                    "commenter":{
+                        "id":12,
+                        "firstName":"Willford",
+                        "lastName":"Brinkely",
+                        "avatarUrl":"img/_samples/x-profile-pic1.jpg"
+                    },
+                    "comment":"You make it so fun to come to work."
+                },
+                {
+                    "id":833,
+                    "commenter":{
+                        "id":15,
+                        "firstName":"Jonathan",
+                        "lastName":"Cole",
+                        "avatarUrl":"img/_samples/x-profile-pic2.jpg"
+                    },
+                    "comment":"Thank you for doing the RFP. Couldn't have made the sale without you."
+                }
+            ]
+        },
+
+        {
+            "id":2345,
+            "isDetail": true,
+            "isMyMatch": true,
+            "player1":{
+                "id":45,
+                "firstName":"Jeffrey",
+                "lastName":"Lebowski",
+                "avatarUrl":"img/_samples/x-profile-pic2.jpg",
+                "orgName":"Sales",
+                "title":"Director",
+                "viewCertificateUrl":"#",
+                "countryCode":"us",
+                "countryName":"United States"
+            },
+            "player2": {
+                "id":457,
+                "firstName":"Walter",
+                "lastName":"Sobchak",
+                "avatarUrl":"img/_samples/x-profile-pic3.jpg",
+                "orgName":"Accounting",
+                "title":"Head Accountant",
+                "countryCode":"us",
+                "countryName":"United States"
+            },
+            "commenterMain":{
+                "id":102,
+                "firstName":"Donny",
+                "lastName":"Kerabatsos",
+                "avatarUrl":"img/_samples/x-profile-pic1.jpg",
+                "orgName":"TSG",
+                "title":"Director",
+                "countryCode":"us",
+                "countryName":"United States"
+            },
+            "comment":"Great work, keep it up! Thanks for the extra work. Culpa brooklyn cardigan, delectus quis eu nulla. Viral bespoke semiotics single-origin coffee nesciunt echo park. This is precisely 179 characters long. Portland Sed banh mi chillwave iphone. Culpa brooklyn cardigan, delectus quis eu nulla. Viral bespoke semiotics single-origin coffee nesciunt echo park.",
+            "promotionName":"Core Values",
+            "date":"01/01/2013",
+            "numLikers":1,
+            "isLiked":false,
+            "isMine":true,
+            "isHidden":false,
+            "time": "2 days ago",
+            "countryRatio":1.0,
+            "comments":[
+                {
+                    "id":23,
+                    "commenter":{
+                        "id":12,
+                        "firstName":"Willford",
+                        "lastName":"Brinkely",
+                        "avatarUrl":"img/_samples/x-profile-pic1.jpg"
+                    },
+                    "comment":"You make it so fun to come to work."
+                },
+                {
+                    "id":833,
+                    "commenter":{
+                        "id":13,
+                        "firstName":"Jonathan",
+                        "lastName":"Cole",
+                        "avatarUrl":"img/_samples/x-profile-pic2.jpg"
+                    },
+                    "comment":"Thank you for doing the RFP. Couldn't have made the sale without you."
+                },
+                                {
+                    "id":789,
+                    "isMine": true,
+                    "commenter":{
+                        "id":46,
+                        "firstName":"Some",
+                        "lastName":"Guy",
+                        "avatarUrl":"img/_samples/x-profile-pic3.jpg"
+                    },
+                    "comment":"Blah blah blah blah blah blah Throdown blah blah smack talk."
+                }
+            ]
+        }
+    ];
+
+
+    //attach the view to an existing DOM element
+    G5.views.throwdownMatchPageView = new ThrowdownMatchPageView({
+        el: $('#matchPageView'),
+        userRole: 'manager', // 'manager' or 'participant'
+        pageNav: {
+            back: {
+                text: 'Back',
+                url: 'layout.html'
+            },
+            home: {
+                text: 'Home',
+                url: 'layout.html'
+            }
+        },
+        pageTitle: 'Throwdown Detail',
+        matchDetailsJson: matchDetailsJson,
+        smackTalkJson: smackTalkJson
+    });
+
+});
+</script>

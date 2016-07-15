@@ -1,0 +1,54 @@
+{
+	"messages":[],
+	"featuredDestinations":[
+		{
+			"destination":[
+				{
+					"destinationId": 1001,
+					"destinationName": "Whale Watching",
+					"destinationCountry": "Antarctica", 
+					"destinationContent": "<p>This is escaped HTML for the paragraph description that sits on the 4x4 tile of the page. It is a longer block of text.</p>",
+					"destinationContentShort": "<p>Escaped HTML short content for this module when it is displayed in a 4x2 box.</p>",
+					"destinationImageUrl": "http://lorempixel.com/g/648/648/",
+					"destinationUrl": "this points to the specific thumbnail to load initially."			
+				},
+				{
+					"destinationId": 1002,
+					"destinationName": "Staring at the sun",
+					"destinationCountry": "Atlantis", 
+					"destinationContent": "<p>Here in Atlantis you'll find that there's nothing more relaxing than pulling up a beach chair and staring at the sun for hours on end. Sunglasses? Nah, who needs them? Filler text and some more text just to make this longer.</p><p>I'm really trying to see how much text is appropriate to fit inside this box, so I'll write a lot of text to find out. This is quite a lot of text to read, I hope it is replaced with something more interesting someday.",
+					"destinationContentShort": "<p>Here in Atlantis you'll find that there's nothing more relaxing than pulling up a beach chair...</p>",
+					"destinationImageUrl": "http://lorempixel.com/g/648/648/",
+					"destinationUrl": "this points to the specific thumbnail to load initially."			
+				},
+				{
+					"destinationId": 1003,
+					"destinationName": "Group High-Fiving",
+					"destinationCountry": "Argentina", 
+					"destinationContent": "<p>Do your friends leave you hanging when you try to celebrate getting that prime parking space? Worry no more on this exotic trip to Argentina where you can high-five with your new best buds from sun up to sun down.</p><p>Note that we are not responsible for any high-fiving related injuries, bro.",
+					"destinationContentShort": "<p>Escaped HTML short content for this module when it is displayed in a 4x2 box.</p>",
+					"destinationImageUrl": "http://lorempixel.com/g/648/648/",
+					"destinationUrl": "this points to the specific thumbnail to load initially."			
+				},
+				{
+					"destinationId": 1004,
+					"destinationName": "Generic Destination Name 1",
+					"destinationCountry": "USA", 
+					"destinationContent": "<p>You want some filler text? I got some for you right here. Here's as much as you can handle, I'm the best text placeholder you've ever laid eyes upon.</p><p>Don't believe me? Well fine, that's ok I guess. Sorry.",
+					"destinationContentShort": "<p>Words words words words...</p>",
+					"destinationImageUrl": "http://lorempixel.com/g/648/648/",
+					"destinationUrl": "this points to the specific thumbnail to load initially."			
+				},
+				{
+					"destinationId": 1005,
+					"destinationName": "Nachos and sharks",
+					"destinationCountry": "Brazil", 
+					"destinationContent": "<p>Nachos. Sharks. Nachos and sharks. Together at last.</p><p>Here is some more filler text just to stretch this guy out a bit. sa;dfjas;dkfjasl;dkfalskdhfl;asdkhf asjdlfjdasl;jf;asld slak;djfal;sdfjsadfsdaytqouitowpiuj,.vzxb .",
+					"destinationContentShort": "<p>Ground control to Major Tom...</p>",
+					"destinationImageUrl": "http://lorempixel.com/g/648/648/",
+					"destinationUrl": "this points to the specific thumbnail to load initially."			
+				}
+			]
+		}
+	]
+}

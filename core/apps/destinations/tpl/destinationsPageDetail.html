@@ -1,0 +1,37 @@
+<!-- ======== DESTINATIONS PAGE DETAIL ======== -->
+
+<div id="destinationsPageDetailView" class="desinationsPageDetail-liner page-content">
+    <div class="row">
+        <div class="span12">
+            <h3><span class="blue">Destination:</span> Long Destination Name, Mexico</h3>
+            <img alt="" src="img/destinations_slideshow-placeholder3.png">
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et pellentesque massa. Integer tempus  placerat eros, ac porta sem imperdiet non. Nunc vel urna turpis. Sed sit  amet tincidunt turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac tortor sit amet quam placerat vestibulum et ac metus. Curabitur fermentum nisi eu nisl interdum bibendum. Maecenas varius erat eget eros cursus vulputate malesuada turpis condimentum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque tortor nulla, iaculis consequat malesuada non, suscipit nec felis. Sed elementum scelerisque tincidunt. Nulla eu enim libero.</p>
+            <a class="btn btn-primary" href="#">Plan A Trip</a>
+        </div>
+    </div>
+</div>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+
+    //attach the view to an existing DOM element
+    var dpv = new DestinationsPageView({
+        el:$('#destinationsPageDetailView'),
+        pageNav : {
+            back : {
+                text : 'Back',
+                url : 'layout.html?tpl=destinationsPage&tplPath=apps/destinations/tpl/'
+            },
+            home : {
+                text : 'Home',
+                url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+            }
+        },
+        pageTitle : 'Destinations'
+    });
+
+</script>

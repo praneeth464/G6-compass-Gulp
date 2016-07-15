@@ -1,0 +1,318 @@
+<?php
+    $include = [
+        "doThisGetThat" => false
+    ];
+?>
+
+<?php
+if($include['doThisGetThat']) { ?>
+{
+    "id": 12314,
+    "contestType": "doThisGetThat",
+    "measureActivityIn": "currency",
+    "activities": [
+        {
+            "id": 123,
+            "name": "activity1"
+        },
+        {
+            "id": 1234,
+            "name": "activity2"
+        },
+        {
+            "id": 2345,
+            "name": "activity3"
+        }
+    ],
+    "_comment": "type can be date, text, number, select, file, email or textarea",
+    "fields": [
+        {
+            "id": 234,
+            "sequenceNumber": 0,
+            "label": "Activity Date",
+            "name": "activityDate",
+            "type": "date",
+            "isRequired": false
+        },
+        {
+            "id": 345,
+            "sequenceNumber": 1,
+            "label": "Customer Name",
+            "name": "customerName",
+            "type": "text",
+            "isRequired": false
+        },
+        {
+            "id": 7000,
+            "sequenceNumber": 2,
+            "label": "Country",
+            "name": "country",
+            "type": "select",
+            "fieldGroup": "address",
+            "subType": "country",
+            "isRequired": true,
+            "selectList": [
+                {
+                    "name": "United States",
+                    "id": "us"
+                },
+                {
+                    "name": "Canada",
+                    "id": "ca"
+                },
+                {
+                    "name": "United Kingdom",
+                    "id": "gb"
+                },
+                {
+                    "name": "Mexico",
+                    "id": "mx"
+                }
+            ]
+        },
+        {
+            "id": 7000,
+            "sequenceNumber": 2,
+            "label": "Address 1",
+            "name": "address1",
+            "type": "text",
+            "fieldGroup": "address",
+            "subType": "address1",
+            "isRequired": true
+        },
+        {
+            "id": 7000,
+            "sequenceNumber": 2,
+            "label": "Address 2",
+            "name": "address2",
+            "type": "text",
+            "fieldGroup": "address",
+            "subType": "address2",
+            "isRequired": false
+        },
+        {
+            "id": 7000,
+            "sequenceNumber": 2,
+            "label": "Address 3",
+            "name": "address3",
+            "type": "text",
+            "fieldGroup": "address",
+            "subType": "address3",
+            "isRequired": false
+        },
+        {
+            "id": 7000,
+            "sequenceNumber": 2,
+            "label": "City",
+            "name": "city",
+            "type": "text",
+            "fieldGroup": "address",
+            "subType": "city",
+            "isRequired": true
+        },
+        {
+            "id": 7000,
+            "sequenceNumber": 2,
+            "label": "State/Providence",
+            "name": "state",
+            "type": "select",
+            "fieldGroup": "address",
+            "subType": "state",
+            "isRequired": true,
+            "selectList": [
+                {
+                    "name": "Alabama",
+                    "id": "AL",
+                    "countryCode": "us"
+                },
+                {
+                    "name": "Alaska",
+                    "id": "AK",
+                    "countryCode": "us"
+                },
+                {
+                    "name": "Arizona",
+                    "id": "AZ",
+                    "countryCode": "us"
+                },
+                {
+                    "name": "British Columbia",
+                    "id": "BC",
+                    "countryCode": "ca"
+                },
+                {
+                    "name": "Onterio",
+                    "id": "ON",
+                    "countryCode": "ca"
+                },
+                {
+                    "name": "Sonora",
+                    "id": "SO",
+                    "countryCode": "mx"
+                }
+            ]
+        },
+        {
+            "id": 7000,
+            "sequenceNumber": 2,
+            "label": "Zip Code/Postal Code",
+            "name": "postalCode",
+            "type": "text",
+            "fieldGroup": "address",
+            "subType": "postalCode",
+            "isRequired": true
+        },
+        {
+            "id": 56789,
+            "sequenceNumber": 4,
+            "label": "Attach Supporting Document",
+            "name": "attachDocument",
+            "type": "file",
+            "maxFileSize": "3MB",
+            "supportedFileTypes": ".jpg, .gif, .png, .pdf",
+            "isRequired": false
+        },
+        {
+            "id": 45678,
+            "sequenceNumber": 3,
+            "label":"Email address",
+            "name": "emailAddress",
+            "type": "email",
+            "isRequired": false
+        },
+        {
+            "id": 67890,
+            "sequenceNumber": 5,
+            "label":"Notes",
+            "name": "notes",
+            "type": "textarea",
+            "isRequired": false
+        }
+    ]
+}<?php }
+else { ?>
+{
+    "id": 12314,
+    "contestType": "objectives",
+    "measureActivityIn": "currency",
+    "activity": "widgets",
+    "fields": [
+        {
+            "id": 123,
+            "index": 0,
+            "label": "Amount (in USD)",
+            "name": "Amount",
+            "type": "number",
+            "isRequired": true
+        },
+        {
+            "id": 234,
+            "index": 1,
+            "label": "Activity Date",
+            "name": "activityDate",
+            "type": "date",
+            "isRequired": false
+        },
+        {
+            "id": 345,
+            "index": 2,
+            "label": "Customer Name",
+            "name": "customerName",
+            "type": "text",
+            "isRequired": false
+        },
+        {
+            "id": 456,
+            "index": 3,
+            "label": "Country",
+            "name": "country",
+            "type": "select",
+            "isRequired": true,
+            "selectList": [
+                {
+                    "name": "United States",
+                    "id": "us"
+                },
+                {
+                    "name": "Canada",
+                    "id": "ca"
+                },
+                {
+                    "name": "United Kingdom",
+                    "id": "gb"
+                },
+                {
+                    "name": "Mexico",
+                    "id": "mx"
+                }
+            ]
+        },
+        {
+            "id": 567,
+            "index": 3,
+            "label": "Zip Code",
+            "name":" zipCode",
+            "type": "number",
+            "fieldGroup": "address",
+            "isRequired": false
+        },
+        {
+            "id": 678,
+            "index": 4,
+            "label": "State/Providence",
+            "name": "state",
+            "type": "select",
+            "fieldGroup": "address",
+            "isRequired": true,
+            "selectList": [
+                {
+                    "name": "Alabama",
+                    "id": "AL",
+                    "countryCode": "us"
+                },
+                {
+                    "name": "Alaska",
+                    "id": "AK",
+                    "countryCode": "us"
+                },
+                {
+                    "name": "Arizona",
+                    "id": "AZ",
+                    "countryCode": "us"
+                },
+                {
+                    "name": "British Columbia",
+                    "id": "BC",
+                    "countryCode": "ca"
+                },
+                {
+                    "name": "Onterio",
+                    "id": "ON",
+                    "countryCode": "ca"
+                },
+                {
+                    "name": "Sonora",
+                    "id": "SO",
+                    "countryCode": "mx"
+                }
+            ]
+        },
+        {
+            "id": 789,
+            "index": 5,
+            "label": "Attach Supporting Document",
+            "name": "attachDocument",
+            "type": "file",
+            "isRequired": false
+        },
+        {
+            "id": 901,
+            "index": 6,
+            "label":"Notes",
+            "name": "notes",
+            "type": "textarea",
+            "isRequired": false
+        }
+    ]
+}<?php }
+        ?>

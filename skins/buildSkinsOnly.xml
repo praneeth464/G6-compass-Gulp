@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project name="G5FrontEndSkinsOnly" default="fe.skinsO" basedir="."><!-- This puts basedir in skins -->
+    <tstamp>
+        <format property="fe.build.time"
+                pattern="MMMM d, yyyy hh:mm:ss"
+                locale="en,US" />
+    </tstamp>
+
+    <description>Front-End G5 skins only build file</description>
+
+    <target name="-fe.skinsO.ant.contrib">
+        <!-- (adds useful logic tasks like <if>) -->
+        <taskdef resource="net/sf/antcontrib/antlib.xml" onerror="report">
+            <classpath>
+                <pathelement location="${basedir}/../skins/ant-contrib-1.0b3.jar"/>
+            </classpath>
+        </taskdef>
+
+    </target>
+
+    <target name="-fe.skinsO.load.properties"
+            depends="-fe.skinsO.ant.contrib">
+
+        <basename property="fe.buildSkinsOnly.properties.file.basename" file="${basedir}/../skins/buildSkinsOnly.properties"/>
+
+        <!-- ant-contrib-1.0b3.jar should be available and already loaded with -fe.skinsO.ant.contrib -->
+        <echo>Testing if ant-contrib-1.0b3.jar loaded properly...</echo>
+        <if><!-- If not loaded properly, this will show as Problem: failed to create task or type if -->
+            <available file="${basedir}/../skins/ant-contrib-1.0b3.jar" />
+            <then>
+                <echo>...OK</echo>
+            </then>
+        </if>
+
+        <!-- fail if build properties file doesn't exist -->
+        <if>
+            <not>
+                <available file="${basedir}/../skins/buildSkinsOnly.properties" />
+            </not>
+            <then>
+                <fail message="${basedir}/../skins/buildSkinsOnly.properties DOES NOT EXIST" />
+            </then>
+        </if>
+
+        <!-- load build properties not already overridden -->
+        <echo>Reading ${fe.buildSkinsOnly.properties.file.basename}</echo>
+        <loadproperties srcfile="${basedir}/../skins/buildSkinsOnly.properties" />
+    </target>
+
+    <target name="-fe.skinsO.list.props"
+            depends="-fe.skinsO.load.properties">
+        <if>
+            <istrue value="${fe.show.properties}" />
+            <then>
+                <echo>**************************************************************</echo>
+                <echo></echo>
+                <echo>fe.show.properties  </echo>
+                <echo></echo>
+                <echo>**************************************************************</echo>
+                <echo>fe.build.time=${fe.build.time}</echo>
+                <echo>ant.home=${ant.home}</echo>
+                <echo>java.home=${java.home}</echo>
+                <echo>user.home=${user.home}</echo>
+                <echo>user.name=${user.name}</echo>
+                <echo>ant.file=${ant.file}</echo>
+                <echo>ant.project.name=${ant.project.name}</echo>
+                <echo>ant.version=${ant.version}</echo>
+                <echo></echo>
+                <echo>ant.java.version=${ant.java.version}</echo>
+                <echo>os.name=${os.name}</echo>
+                <echo>file.separator=${file.separator}</echo>
+        <!-- 
+                <echo>java.class.path=${java.class.path}</echo>
+        -->
+                <echo>java.version=${java.version}</echo>
+                <echo>line.separator=${line.separator}</echo>
+                <echo>path.separator=${path.separator}</echo>
+                <echo>user.dir=${user.dir}</echo>
+                <echo></echo>
+                <echo>basedir=${basedir}</echo>
+                <echo></echo>
+                <echo>user.name=${user.name}</echo>
+                <echo>(not used) user.home=${user.home}</echo>
+                <echo></echo>
+                <echo>fe.show.properties=${fe.show.properties}</echo>
+                <echo>fe.buildSkinsOnly.properties.file.basename=${fe.buildSkinsOnly.properties.file.basename}</echo>
+                <echo>fe.skin.list=${fe.skin.list}</echo>
+                <echo>os.name=${os.name}</echo>
+                <echo>fe.skin.ALL.with.common.config.rb=${fe.skin.ALL.with.common.config.rb}</echo>
+                <echo>fe.no.line.comments.css=${fe.no.line.comments.css}</echo>
+                <echo></echo>
+                <echo>**************************************************************</echo>
+                <echo></echo>
+                <echo></echo>
+                <echo>**************************************************************</echo>
+            </then>
+            <else>
+                <echo>skipping, fe.show.properties=${fe.show.properties}</echo>
+            </else>
+        </if>
+    </target>
+
+    <target name="-fe.skinsO.assert.setup"
+            depends="-fe.skinsO.list.props, -fe.skinsO.load.properties">
+        <!-- Assertions -->
+        <if>
+            <and>
+                <not><equals arg1="${os.name}" arg2="Windows 7" /></not>
+            	<not><equals arg1="${os.name}" arg2="Windows Server 2008 R2" /></not>
+                <not><equals arg1="${os.name}" arg2="Mac OS X" /></not>
+            </and>
+            <then>
+                <fail message="${os.name} NOT SUPPORTED" />
+            </then>
+        </if>
+        <echo>OK</echo>
+    </target>
+
+    <target name="-fe.skinsO.help"
+            depends="-fe.skinsO.assert.setup">
+        <echo>Ant build commands:</echo>
+        <echo></echo>
+        <echo>ant -f skins/fe.buildSkinsOnly.xml</echo>
+        <echo></echo>
+    </target>
+
+    <target name="fe.skinsO"
+            depends="-fe.skinsO.help">
+        <if>
+            <isset property="fe.skin.list" />
+            <then>
+                <for list="${fe.skin.list}" param="theSkin" trim="true">
+                    <sequential>
+                        <var name="fe.skin.config.rb" unset="true" />
+                        <if>
+                            <or>
+                                <not><available file="${basedir}/../skins/@{theSkin}/config.rb" /></not>
+                                <istrue value="${fe.skin.ALL.with.common.config.rb}" />
+                            </or>
+                            <then>
+                                <if>
+                                    <available file="${basedir}/../skins/config.rb" />
+                                    <then>
+                                        <property name="fe.skin.config.rb" value="${basedir}/../skins/config.rb" />
+                                    </then>
+                                    <else>
+                                        <property name="fe.skin.config.rb" value="${basedir}/../core/base/config.rb" />
+                                    </else>
+                                </if>
+                            </then>
+                            <else>
+                                <property name="fe.skin.config.rb" value="${basedir}/../skins/@{theSkin}/config.rb" />
+                            </else>
+                        </if>
+                        <if>
+                            <available file="${basedir}/../skins/@{theSkin}/scss/@{theSkin}.scss" />
+                            <then>
+                                <delete dir="${basedir}/../skins/@{theSkin}/.sass-cache" />
+                                <delete dir="${basedir}/../skins/@{theSkin}/css" />
+                                <feCompileSCSS 
+                                        config="${fe.skin.config.rb}"
+                                        wherefrom="${basedir}/../skins/@{theSkin}"/>
+                                <echo>COMPILED:  skins/@{theSkin}/scss/@{theSkin}.scss</echo>
+                            </then>
+                            <else>
+                                <echo>NOT AVAILABLE:  ${basedir}/@{theSkin}/scss/@{theSkin}.scss</echo>
+                            </else>
+                        </if>
+                    </sequential>
+                </for>
+            </then>
+            <else>
+                <dirset id="fe.skin.subdirs"
+                        dir="${basedir}/../skins"
+                        includes="*"/>
+                <for param="theDir">
+                    <path>
+                        <dirset refid="fe.skin.subdirs"/>
+                    </path>
+                    <sequential>
+                        <var name="fe.skin.config.rb" unset="true" />
+                        <var name="fe.skin.dir.basename" unset="true" />
+                        <basename property="fe.skin.dir.basename" file="@{theDir}"/>
+                        <if>
+                            <or>
+                                <not><available file="@{theDir}/config.rb" /></not>
+                                <istrue value="${fe.skin.ALL.with.common.config.rb}" />
+                            </or>
+                            <then>
+                                <if>
+                                    <available file="${basedir}/../skins/config.rb" />
+                                    <then>
+                                        <property name="fe.skin.config.rb" value="${basedir}/../skins/config.rb" />
+                                    </then>
+                                    <else>
+                                        <property name="fe.skin.config.rb" value="${basedir}/../core/base/config.rb" />
+                                    </else>
+                                </if>
+                            </then>
+                            <else>
+                                <property name="fe.skin.config.rb" value="@{theDir}/config.rb" />
+                            </else>
+                        </if>
+                        <if>
+                            <available file="@{theDir}/scss/${fe.skin.dir.basename}.scss" />
+                            <then>
+                                <delete dir="@{theDir}/.sass-cache" />
+                                <delete dir="@{theDir}/css" />
+                                <feCompileSCSS 
+                                        config="${fe.skin.config.rb}"
+                                        wherefrom="@{theDir}/"/>
+                                <echo>COMPILED:  skins/${fe.skin.dir.basename}/scss/${fe.skin.dir.basename}.scss</echo>
+                            </then>
+                            <else>
+                                <echo>NOT AVAILABLE:  @{theDir}/scss/${fe.skin.dir.basename}.scss</echo>
+                            </else>
+                        </if>
+                    </sequential>
+                </for>
+            </else>
+        </if>
+        <echo>done with fe.skinsO</echo>
+    </target>
+
+    <macrodef name="feCompileSCSS">
+        <attribute name="config"/>
+        <attribute name="wherefrom"/>
+        <sequential>
+            <if>
+                <istrue value="${fe.no.line.comments.css}" />
+                <then>
+                    <exec executable="cmd" os="Windows 7" failonerror="true" dir="@{wherefrom}">
+                        <arg value="/c" />
+                        <arg value="compass" />
+                        <arg value="compile" />
+                        <arg value="--config" />
+                        <arg value="@{config}" />
+                        <arg value="--css-dir" />
+                        <arg value="css" />
+                        <arg value="--sass-dir" />
+                        <arg value="scss" />
+                        <arg value="--images-dir" />
+                        <arg value="img" />
+                        <arg value="--javascripts-dir" />
+                        <arg value="js" />
+                        <arg value="--no-line-comments" />
+                        <arg value="--trace" />
+                    </exec>
+                    <exec executable="compass" os="Mac OS X" failonerror="true" dir="@{wherefrom}">
+                        <arg value="compile" />
+                        <arg value="--config" />
+                        <arg value="@{config}" />
+                        <arg value="--css-dir" />
+                        <arg value="css" />
+                        <arg value="--sass-dir" />
+                        <arg value="scss" />
+                        <arg value="--images-dir" />
+                        <arg value="img" />
+                        <arg value="--javascripts-dir" />
+                        <arg value="js" />
+                        <arg value="--no-line-comments" />
+                        <arg value="--trace" />
+                    </exec>
+                </then>
+                <else>
+                    <exec executable="cmd" os="Windows 7" failonerror="true" dir="@{wherefrom}">
+                        <arg value="/c" />
+                        <arg value="compass" />
+                        <arg value="compile" />
+                        <arg value="--config" />
+                        <arg value="@{config}" />
+                        <arg value="--css-dir" />
+                        <arg value="css" />
+                        <arg value="--sass-dir" />
+                        <arg value="scss" />
+                        <arg value="--images-dir" />
+                        <arg value="img" />
+                        <arg value="--javascripts-dir" />
+                        <arg value="js" />
+                        <arg value="--trace" />
+                    </exec>
+
+                    <exec executable="compass" os="Mac OS X" failonerror="true" dir="@{wherefrom}">
+                        <arg value="compile" />
+                        <arg value="--config" />
+                        <arg value="@{config}" />
+                        <arg value="--css-dir" />
+                        <arg value="css" />
+                        <arg value="--sass-dir" />
+                        <arg value="scss" />
+                        <arg value="--images-dir" />
+                        <arg value="img" />
+                        <arg value="--javascripts-dir" />
+                        <arg value="js" />
+                        <arg value="--trace" />
+                    </exec>
+                </else>
+            </if>
+        </sequential>
+    </macrodef>
+
+</project>

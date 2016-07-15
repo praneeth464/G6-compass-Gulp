@@ -1,0 +1,7 @@
+<?php usleep(1000000); ?>
+{
+    "messages":[],
+    "activity": {
+        "id": <?php echo rand(); ?>
+    }
+}

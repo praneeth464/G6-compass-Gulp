@@ -1,0 +1,35 @@
+{{#if percentComplete}}
+<div class="row">
+    <div class="span12">        
+    Course Material {{activeSlide}} of {{numberOfSlides}}
+    </div>    
+</div>
+{{/if}}
+<div class="row">
+    <div class="span12">
+        <h4>{{slideTitle}}</h4>
+    </div>
+</div>
+{{#each slideContent}}
+<div class="row">
+    {{#if contentMedia.length}}
+    <div class="span4">
+        {{{contentMedia}}}
+    </div>
+    <div class="span8">
+    {{else}}
+    <div class="span12">
+    {{/if}}
+        {{{contentText}}}
+    </div>
+</div>
+{{/each}}
+<div class="row">
+    <div class="span12">
+        {{#each buttons}}
+            {{#if buttonDisplay}}
+            <button class="btn {{#if buttonClass}}{{buttonClass}}{{/if}}" id="{{buttonType}}" type="button">{{buttonText}}</button>
+            {{/if}}
+        {{/each}}
+    </div>
+</div>

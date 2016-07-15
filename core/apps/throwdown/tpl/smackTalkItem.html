@@ -1,0 +1,169 @@
+
+<!-- DETAILS FOR MODULE and RECOGNITIONS PAGE (not DETAIL) -->
+<div class="app-row detail-row">
+    {{#unless isDetail}}
+    <div class="st-title-row">
+        <a href="{{smackTalkPageDetailUrl}}">
+            {{player1.firstName}} {{player1.lastName}} vs {{player2.firstName}} {{player2.lastName}}
+        </a>
+    </div>
+    {{/unless}}
+    <div class="app-col">
+        {{#if isDetail}}
+        <a class="profile-popover" data-participant-ids="[{{commenterMain.id}}]">
+            <img alt="{{commenterMain.firstName}} {{commenterMain.lastName}}" class="avatar" src="{{commenterMain.avatarUrl}}" height="60" width="60" />
+        </a>
+        {{else}}
+        <div>
+            <a class="profile-popover" data-participant-ids="{{player1.id}}" href="#">
+               <img alt="{{player1.firstName}} {{player1.lastName}}" src="{{player1.avatarUrl}}" class="avatar player1" height="60" width="60" /></a>
+            <span class="st-vs">VS</span>
+            <a class="profile-popover" data-participant-ids="{{player2.id}}" href="#">
+               <img alt="{{player2.firstName}} {{player2.lastName}}" src="{{player2.avatarUrl}}" class="avatar player2" height="60" width="60" />
+            </a>
+        </div>
+        {{/if}}
+    </div>
+
+    <div class="app-col smack-talk-block">
+        <div>
+            <a class="profile-popover" href="#" data-participant-ids="[{{commenterMain.id}}]">
+                {{commenterMain.firstName}} {{commenterMain.lastName}}
+            </a>
+            <span>says:</span>
+            {{#if comment}}
+            <div class="smack-talk-comment readMore"
+                data-read-more-num-lines="2" data-msg-read-more="more">
+                {{{comment}}}
+            </div>
+            {{/if}}
+        </div>
+
+        <ul class="smack-talk-props">
+
+            {{#if isMyMatch}}
+                {{#unless isLiked}}
+                <li><a href="#" class="likeSmackTalkBtn" data-msg-liked="Liked">Like</a> &bull; </li>
+                {{/unless}}
+                <li>
+                    {{#if isHidden}}
+                        Hidden
+                    {{else}}
+                        <a href="#" class="hideSmackTalkLnk">Hide</a>
+                        <span class="smackTalkHiddenLinkText" style="display:none;">
+                            Hidden
+                        </span>
+                    {{/if}}
+                    &bull;
+                </li>
+
+            {{else}}
+
+                <li><a href="#" class="showCommentFormBtn">Comment</a> &bull; </li>
+
+            {{/if}}
+
+            <li>{{time}}</li>
+        </ul>
+    </div><!-- /.smack-talk-block -->
+
+    {{#unless isDetail}}
+    <div class="app-col chevron">
+        <a href="{{smackTalkPageDetailUrl}}"><i class="icon-chevron-right"></i></a>
+    </div>
+    {{/unless}}
+
+    <div class="hideSmackTalkQTip" style="display:none">
+        <p>This will permanently remove this comment from public view. Are you sure you want to hide this comment?</p>
+        <p class="tc">
+            <button type="submit" class="btn btn-primary smackTalkHideRecognitionConfirm">Yes</button>
+            <button type="submit" class="btn btn-danger smackTalkHideRecognitionCancel">No</button>
+        </p>
+    </div>
+
+
+</div><!-- /.detail-row -->
+
+
+
+<!-- START isPublicClaim -->
+
+
+    <!-- COMMENTS -->
+    <div class="app-row comment-block">
+        <div class="app-col likeInfoWrapper">
+
+            <!-- possible sentences - details filled in by JS -->
+            <div class="likeSentence youOnly" style="display:none">
+                You like this.
+            </div>
+            <div class="likeSentence youAndOne" style="display:none">
+                You and {link}1 other{/link} like this.
+            </div>
+            <div class="likeSentence youAndMult" style="display:none">
+                You and {link}{0} others{/link} like this.
+            </div>
+            <div class="likeSentence oneOtherOnly" style="display:none">
+                {link}1 person likes this.{/link}
+            </div>
+            <div class="likeSentence multOtherOnly" style="display:none">
+                {link}{0} people like this.{/link}
+            </div>
+
+            <!--
+                Please see SmackTalkModelView.initLikeInfo() for current
+                details and markup injected into the sentences.
+            -->
+
+        </div>
+    </div><!-- /.comment-block -->
+
+    <div class="st-meta-separator app-row"></div>
+
+    <!-- view all comments control -->
+    {{#if comments.length}}
+        {{#if isHideComments}}
+            {{#isSingle comments}}
+            {{else}}
+                <div class="app-row comment-block viewAllCommentsWrapper">
+                    <div class="app-col">
+                        View all <a href="#" class="viewAllCommentsBtn">
+                        <span class="commentCount">{{comments.length}}</span>
+                         comments</a>
+                    </div>
+                </div>
+            {{/isSingle}}
+        {{/if}}
+    {{/if}}
+
+   <!-- list of comments -->
+    <div class="smackTalkComments">
+        <!-- dynamic - populated by view -->
+    </div><!-- /.smackTalkComments -->
+
+    <!-- add comment form -->
+    <div class="app-row comment-block">
+        <div class="app-col  commentInputWrapper" style="display:none">
+            <!-- DEVELOPER NOTE: the form action attr below will be used as the URL to get JSON
+                - make sure the class 'smackTalkCommentForm' stays on the form element
+            -->
+            <form class="form-inline smackTalkCommentForm" action="ajax/smackTalkSaveComment.json">
+
+                <!-- hidden inputs -->
+                <input type="hidden" name="smackTalkId" value="{{id}}" />
+                <input type="hidden" name="matchId" value="{{matchId}}" />
+
+                <!-- data-smack-talk-id will be passed to JSON url along with any other data-* attrs -->
+                <textarea name="comment" class="comment-input commentInputTxt" placeholder="Leave A Comment" maxlength="300"></textarea>
+
+            </form>
+        </div><!-- /.commentInputWrapper -->
+    </div><!-- /.comment-block -->
+    <!-- EOF COMMENTS -->
+
+
+<!-- EOF IS PUBLIC CLAIM -->
+
+
+
+<!-- /smackTalkItem TPL -->

@@ -1,0 +1,47 @@
+// App-specific variables
+// =========================
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* TODO: from JS 7/19: this page appears to have a lot of magic number layout corrects. Fix.
+
+/* ----- PAGE STYLES ----- */
+.page.contactForm { 
+	textarea{
+		width: 100%;
+	}
+
+	
+	@media (max-width: 479px) {
+		textarea{
+			width: 70%;
+		}
+	}
+}
+
+/* ----- SHEET STYLES ----- */
+.modal-body{
+	.page.contactForm {
+		margin-left: -15px;
+		margin-right: -15px;
+		padding-bottom: 0;
+
+		textarea{
+			width: 60%;
+			max-width: 680px;
+			min-width: 60%;
+		}
+		.form-actions{
+			margin: 0 !important;
+			padding-left: 0;
+			padding-right: 0;
+			background: none;
+			border: 0;
+		}
+
+	}
+}

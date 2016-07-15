@@ -1,0 +1,57 @@
+<!-- ======== APPROVALS: APPROVALS INDEX ======== -->
+
+<div id="approvalsPageIndexView" class="approvalSearchWrapper page-content">
+	<div id="approvalsTableWrapper">
+	    <div class="row">
+	    	<div class="span12">
+				<table id="approvalIndexTable" class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Promotion(s)</th>
+							<th></th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script id="claimIndex-Template" type="text/x-handlebars-template">
+	<tr>
+		<td>{{name}}</td>
+		<td>{{alertMessage}}</td>
+		<td>
+			<a class="btn btn-primary approvalsReviewBtn" href="{{url}}">Review Approvals</a>
+		</td>
+	</tr>
+</script>
+
+<script id="claimIndex-NoAlertsTemplate" type="text/x-handlebars-template">
+	<tr>
+		<td>You do not have any approvals to review</td>
+	</tr>
+</script>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+	$(document).ready(function(){
+	    //attach the view to an existing DOM element
+	    var aimlp = new ApprovalsIndexModelView({
+	    	el:$('#approvalsPageIndexView'),
+	        pageNav : {
+	            back : {
+	                text : 'Back',
+	                url : 'layout.html'
+	            },
+	            home : {
+	                text : 'Home',
+	                url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+	            }
+	        },
+	        pageTitle : 'Approvals'
+	    });
+	});
+
+</script>

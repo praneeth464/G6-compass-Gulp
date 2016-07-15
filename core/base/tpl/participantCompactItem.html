@@ -1,0 +1,12 @@
+<div class="participant-item compact"
+    data-participant-cid="{{cid}}"
+    data-participant-id="{{id}}">
+    <a class="remParticipantControl" title="remove this participant"><i class="icon-remove"></i></a>
+    {{#if avatarUrl}}<img class="participant-avatar avatar" src="{{avatarUrl}}" />{{/if}}
+    {{firstName}} {{lastName}}
+    <br>
+    {{orgName}}
+    <br>
+    <!-- modified by build -->
+    <img src="img/flags/{{countryCode}}.png" />
+</div>

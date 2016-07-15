@@ -1,0 +1,73 @@
+// App-specific variables
+// =========================
+$nominations_bgColor: $g5ModuleBgColor !default;
+$nominations_gradType: $g5ModuleGradType !default;
+$nominations_gradMeta: $g5ModuleGradMeta !default;
+$nominations_gradStops: $g5ModuleGradStops !default;
+
+$nominations_iconColor: $g5ModuleIconColor !default;
+$nominations_titleColor: $g5ModuleTitleColor !default;
+$nominations_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$nominations_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$nominations_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$nominations_textColor: false !default;
+$nominations_h3FontFamily: false !default;
+$nominations_pFontFamily: false !default;
+$nominations_visitAppBtnColor: false !default;
+$nominations_visitAppBtnBorderColor: false !default;
+$nominations_imgUrlPath: false !default;
+$nominations_imgUrl2x2: false !default;
+$nominations_imgUrl4x2: false !default;
+$nominations_imgUrl4x4: false !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- MODULE STYLES ----- */
+.module.clickThru {
+
+    &.nominations {
+
+        .module-liner {
+            @include module_moduleLinerBackground(
+                $bgColor: $nominations_bgColor,
+                $gradType: $nominations_gradType,
+                $gradMeta: $nominations_gradMeta,
+                $gradStops: $nominations_gradStops
+            );
+        }
+
+        @include module_renderAsIconViews(
+            $sizes: "&.grid-dimension-2x2, &.grid-dimension-4x2, &.grid-dimension-4x4"
+        );
+
+        @include clickThruSkinBkgViews(
+            $textColor: $nominations_textColor,
+            $h3FontFamily: $nominations_h3FontFamily,
+            $pFontFamily: $nominations_pFontFamily,
+            $visitAppBtnColor: $nominations_visitAppBtnColor,
+            $visitAppBtnBorderColor: $nominations_visitAppBtnBorderColor,
+            $imgUrlPath: $nominations_imgUrlPath,
+            $imgUrl2x2: $nominations_imgUrl2x2,
+            $imgUrl4x2: $nominations_imgUrl4x2,
+            $imgUrl4x4: $nominations_imgUrl4x4
+        );
+
+        .title-icon-view {
+            @include module_titleIconView(
+                $iconColor: $nominations_iconColor,
+                $titleColor: $nominations_titleColor,
+                $titleFontFamily: $nominations_titleFontFamily
+            );
+        }
+
+        @include module_titleIconViewFontSizesWeights($nominations_titleFontSizes, $nominations_titleFontWeights);
+
+    } /* /.nominations */
+
+} /* /.module.clickThru */
+

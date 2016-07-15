@@ -1,0 +1,513 @@
+<div id="purlPageView" class="page-content purlPage"><!--
+
+
+    --><div class="row contributeToPurlSection" style="display:none">
+        <div class="span12">
+            <div class="well container-splitter page-topper">
+                <h4 class="contribIntroHead">Welcome <span class="contributor_firstName">&nbsp;</span>,</h4>
+                <p class="contribIntro">
+                    You have been invited to contribute to the Recognition PURL for [First] [Last]. Please share your comments, photos and videos acknowledging [First] on this special occasion.
+                </p>
+                <div class="contribTopControls">
+                    <button class="btn btn-primary fr inviteContributorsBtn">Invite Others</button>
+                    <i class="contribUntil">You can contribute until [MM/DD/YYYY]</i>
+                </div>
+                <div class="contribCommentWrapper">
+                    <div class="mask" style="display:none"></div>
+
+                    <!-- JAVA NOTE: populate with default avatar URL -->
+                    <img class="contribAvatar contributor_avatarUrl avatar" src="../../skins/default/img/avatar-blank-72.png">
+
+                    <div class="indent">
+                        <div class="contribName">
+                            <span class="contributor_firstName">&nbsp;</span>
+                            <span class="contributor_lastName">&nbsp;</span>
+                        </div>
+
+                        <div class="commentTools">
+                            Remaining Characters: <span class="remChars">&nbsp;</span>
+                            <span class="spellchecker dropdown">
+                                <button class="checkSpellingDdBtn btn dropdown-toggle"
+                                    title="check spelling"
+                                    data-toggle="dropdown">
+                                    <i class="icon-check"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="check"><b>Check spelling</b></a></li>
+                                </ul>
+                            </span>
+                        </div>
+                        <textarea class="contribCommentInp" rows="4" maxlength="1000" placeholder="add a comment"></textarea>
+                        <div class="contribCommentBadWords"></div>
+
+                        <div class="attachmentSection">
+                            <div class="attachTools">
+                                <a class="attachPhotoBtn" data-attach-mode="photo" href="#"><i class="icon-camera"></i> Photo</a>
+                                <a class="attachVideoBtn" data-attach-mode="video" href="#"><i class="icon-facetime-video"></i> Video</a>
+                            </div>
+
+                            <div class="attachPhotoWrapper" style="display:none">
+                                <i class="icon-remove fr closeAttModeBtn"></i>
+                                <div>Attach Photo</div>
+                                <span class="upSpin" style="display:none">&nbsp;</span>
+                                <input type="file" name="purlUploadFiles" class="attachImageFileInput">
+                                <p class="muted">File size limit 10mb. Supports Jpeg, PNG and GIF</p>
+                            </div>
+
+                            <div class="attachVideoWrapper form-inline" style="display:none">
+                                <i class="icon-remove fr closeAttModeBtn"></i>
+                                <span>Enter the URL of your video:</span><br>
+                                <input class="attachVideoInput input-xxlarge" type='text'>
+                                <button type="button" class="btn btn-primary attachVideoUrlBtn">Attach</button>
+                                <p class="muted">Example: "http://www.youtube.com/watch?v=2Vk9Jd3ilh4"</p>
+                            </div>
+
+                            <div class="attachedMediaDisplayWrapper" style="display:none">
+                                <div class="attachedMediaContent">
+                                    <!-- dyn -->
+                                </div>
+                            </div>
+                        </div><!-- /.attachmentSection -->
+
+                        <div class="contribBottomControls">
+                            <button class="btn btn-primary submitContribCommentBtn">
+                                Submit
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row purlDetailsSection">
+        <div class="span12">
+            <div class="well container-splitter page-topper">
+                <!-- JAVA NOTE: populate recipient info -->
+                <h2>Congratulations, [firstName] [lastName]</h2>
+                <h4>In recognition of your 20th Anniversary</h4>
+                <div class="purlDetailsWrapper row">
+                    <div class="purlVideoWrapper span5">
+                        <!-- JAVA NOTE: output proper video urls for each format -->
+                        <video id="purlDetailVideo" class="video-js vjs-default-skin" controls preload="auto" data-setup="{}" poster="url/to/image.jpg">
+                            <source type="video/mp4" src="http://video-js.zencoder.com/oceans-clip.mp4">
+                            <source type="video/webm" src="http://video-js.zencoder.com/oceans-clip.webm">
+                        </video>
+                        <!-- if there is an image instead of a video, use this code in place of the video tag above -->
+                        <!-- <img src="http://placehold.it/400x300" alt="foo" class="purlMainImage" /> -->
+                    </div>
+                    <div class="purlTextWrapper span7">
+
+                        <div class="purlDetailText">
+                            <!-- comes from CM formatted as HTML with <p> tags -->
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Nam vehicula lorem nec risus venenatis convallis. Sed
+                            vestibulum, mi a faucibus ultrices, nisi massa auctor massa,
+                            fermentum placerat quam orci et purus.</p>
+                        </div>
+
+                        <!-- JAVA NOTE: for recipient only -->
+                        <div class="purlDetailsRecipientControls" style="display:none">
+
+                            <!-- JAVA NOTE: populate date -->
+                            <p class="expirationNote muted">Your Recognition PURL website will be active until [dd/mm/yyyy]</p>
+
+                            <ul class="share-print fr">
+                                <li>Share</li>
+                                <!-- JAVA NOTE: for each share link -->
+                                <li>
+                                    <a target="_blank"
+                                        class="social-icon chatter icon-size-16"
+                                        href="http://www.salesforce.com/chatter"></a>
+                                </li>
+                                <li>
+                                    <a target="_blank"
+                                        class="social-icon facebook icon-size-16"
+                                        href="http://www.facebook.com"></a>
+                                </li>
+                                <li>
+                                    <a target="_blank"
+                                        class="social-icon linkedin icon-size-16"
+                                        href="http://www.linkedin.com"></a>
+                                </li>
+                                <li>
+                                    <a target="_blank"
+                                        class="social-icon twitter icon-size-16"
+                                        href="http://www.twitter.com"></a>
+                                </li>
+                            </ul>
+                            <!-- JAVA NOTE: populate href to redeem award -->
+                            <a href="path/to/redemption/page" class="btn redeemAwardBtn btn-primary">Redeem Award</a href="path/to/redemption/page">
+                            <button class="btn thankEveryoneBtn btn-primary">Thank Everyone</button>
+
+                            <button class="translateTextBtn btn btn-primary">Translate Comments</button>
+
+
+                        </div>
+                        <div class="purlDetailsViewerControls" style="display:none">
+
+                            <button class="translateTextBtn btn btn-primary">Translate Comments</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.container-splitter -->
+        </div>
+    </div>
+
+    <div class="purlCommentsSection">
+        <div class="commentsListWrapper">
+            <!-- dyn -->
+        </div>
+    </div>
+    <script id="commentItemTpl" type="text/x-handlebars-template">
+        {{#if _isEmpty}}
+        <div class="row commentItemWrapper isEmptyMessage">
+            <div class="span12">
+                <div class="alert alert-info">No contributions yet. You could be first!</div>
+            </div>
+        </div>
+        {{else}}
+        <div class="row commentItemWrapper activity{{activityId}}" data-id="{{activityId}}">
+            <div class="span12 commentItem">
+                <div class="innerCommentWrapper">
+                    <img class="avatarImg avatar" src="{{userInfo.0.profilePhoto}}">
+
+                    <div class="indent">
+                        <div class="userInfo" data-id="{{userInfo.0.contributorID}}">
+                            {{userInfo.0.userName}}
+                        </div>
+                        {{#if commentText}}
+                        <div class="text">
+                            {{commentText}}
+                        </div>
+                        {{/if}}
+
+                        {{#or videoHtml media}}
+                        <div class="media">
+                            {{#if videoHtml}}
+                                <div class="videoWrapper">
+                                    <div class="responsiveVideoContainer">
+                                        {{{videoHtml}}}
+                                    </div>
+                                </div>
+                            {{else}}
+                                {{#if videoWebLink}}
+                                    <a class="mediaLink" href="{{videoWebLink}}" target="_blank">{{videoWebLink}}</a>
+                                    <i class="icon-external-link"></i>
+                                {{/if}}
+                            {{/if}}
+
+                            {{#if media}}
+                                {{#if media.0.video}}
+                                <div class="videoWrapper">
+                                    <div class="responsiveVideoContainer">
+                                        <video id="purlContribVideo{{activityId}}" class="video-js vjs-default-skin" controls preload="auto" data-setup="{}">
+                                            {{#each media.0.video}}
+                                                <source src="{{src}}" type="video/{{fileType}}">
+                                            {{/each}}
+                                        </video>
+                                    </div>
+                                </div>
+                                {{/if}}
+
+                                {{#if media.0.photo.0.src}}
+                                <img src="{{media.0.photo.0.src}}">
+                                {{/if}}
+                            {{/if}}
+                        </div>
+                        {{/or}}
+                    </div><!-- /.indent -->
+                </div><!-- /.innerCommentWrapper -->
+            </div>
+        </div>
+        {{/if}}
+    </script>
+
+
+
+
+
+
+
+    <!-- ============= -->
+    <!-- initial modal -->
+    <!-- ============= -->
+    <div id="purlInitialModal" class="modal hide fade" data-backdrop="static">
+        <div class="modal-header">
+            <!-- JAVA NOTE: set first and last name of recip. -->
+            <h3>Welcome to [Firstname] [Lastname]'s Recognition PURL!</h3>
+        </div>
+        <div class="modal-body form-horizontal">
+            <p>Please confirm your personal information.</p>
+
+            <div class="control-group validateme"
+                data-validate-flags="nonempty"
+                data-validate-fail-msgs='{"nonempty" : "Please enter your first name"}'>
+                <label for="modalFirstName" class="control-label">First Name</label>
+                <div class="controls">
+                    <!-- dynamic value below (js populated) -->
+                    <input type="text" id="modalFirstName" name="modalFirstName" class="contribInp" data-key="firstName">
+                </div>
+            </div>
+
+            <div class="control-group validateme"
+                data-validate-flags="nonempty"
+                data-validate-fail-msgs='{"nonempty" : "Please enter your last name"}'>
+                <label for="modalLastName" class="control-label">Last Name</label>
+                <div class="controls">
+                    <!-- dynamic value below (js populated) -->
+                    <input type="text" id="modalLastName" name="modalLastName" class="contribInp" data-key="lastName">
+                </div>
+            </div>
+
+            <div class="control-group validateme"
+                data-validate-flags="nonempty,email"
+                data-validate-fail-msgs='{"nonempty" : "Please enter your email address", "email" : "Your email address is invalid"}'>
+                <label for="modalEmailAddress" class="control-label">Email</label>
+                <div class="controls">
+                    <!-- dynamic value below (js populated) -->
+                    <input type="text" id="modalEmailAddress" name="modalEmailAddress" class="contribInp" data-key="email">
+                </div>
+            </div>
+
+            <div class="control-group" id="modalProfilePhotoContainer">
+                <label for="modalProfilePhoto" class="control-label">Your Photo</label>
+                <div class="controls">
+
+                    <div class="avatarUploadWrapper">
+                        <div class="imgWrap">
+                            <!-- dyn -->
+                            <!-- JAVA NOTE: default avatar URL -->
+                            <img src="../../skins/default/img/avatar-blank-288.png" class="avatar" width="72" alt="">
+                        </div>
+                        <input type="file" id="modalAvatarInput" name="modalAvatarInput" class="imageFileInput uploaderFileInput">
+                        <span class="upSpin" style="display:none">&nbsp;</span>
+                        <p class="muted">File size limit 10mb. Supports Jpeg, PNG and GIF</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <p><em>The Recognition PURL will expire on 01/01/2012</em></p>
+
+        </div>
+        <div class="modal-footer tl">
+            <a class="btn btn-primary submitContributorBtn">
+                Contribute
+            </a>
+        </div>
+    </div><!-- /#purlInitialModal -->
+
+
+
+
+    <!-- ============= -->
+    <!-- invite qtip   -->
+    <!-- ============= -->
+    <div id="inviteContribsTip" style="display:none">
+        <a href="#" class="close closeInviteContribsTip fr"><i class="icon-remove"></i></a>
+
+        <div class="inviteMode">
+            <h4>Invite Contributors</h4>
+            <p>
+                Enter multiple email addresses separated by a semi-colon.
+            </p>
+
+            <textarea class="inviteContribsEmailsInp" spellcheck="false"
+                placeholder="example: emailaddress@company.com; Lastname, Firstname <emailaddress@company.com>; Firstname Lastname <emailaddress@company.com>"></textarea>
+
+            <div class="parseEmailsControls">
+                <button type="button" class="btn btn-primary btn-small addEmailsToInviteListBtn">
+                    <i class="icon-plus"></i> Add
+                </button>
+
+                <!-- email parse error messaging -->
+                <div class="alert alert-danger parseEmailsFeedback" style="display:none">
+                    <div class="msg errorEmailsFound">
+                        <b>Error(s) with the following email(s):</b><br>
+                        <div class="errorEmailsList">
+                            <!-- dyn -->
+                        </div>
+                    </div>
+                    <div class="msg noEmailsFound">
+                        No email addresses found.
+                    </div>
+                </div>
+            </div>
+
+            <div class="pendingContribsWrapper">
+                <!-- dyn -->
+            </div>
+
+            <div class="pendingContribsControls" style="display:none">
+                <button class="btn btn-primary btn-small inviteContribsBtn">Invite</button>
+                <button class="btn btn-small cancelInviteContribsBtn">Cancel</button>
+            </div>
+        </div><!-- /.inviteMode -->
+
+        <div class="inviteResultsMode" style="display:none">
+            <!-- dyn -->
+        </div>
+
+        <div class="addedContribsWrapper">
+            <!-- dyn -->
+        </div>
+
+    </div><!-- /#inviteContribsTip -->
+
+    <script id="pendingContribsTpl" type="text/x-handlebars-template">
+        {{#pendingInvitees}}
+        <div class="pendingContribItem">
+            <span class="remBtn" data-email="{{email}}"><i class="icon-remove-circle"></i></span>
+            <span class="emailAndNameWrapper">
+                <span class="email">{{email}}</span>
+                {{#if firstName}}
+                    <span class="name">
+                        (<span class="first">{{firstName}}</span>
+                        {{#if lastName}} <span class="last">{{lastName}}{{/if}}</span>)
+                    </span>
+                {{/if}}
+            </span>
+        </div>
+        {{/pendingInvitees}}
+    </script><!-- /#pendingContribsTpl -->
+
+    <script id="addedContribsTpl" type="text/x-handlebars-template">
+        {{#if namedInvitees}}
+        <div class="addedContribsTitle">
+            Already Invited:
+        </div>
+        <p class="addedContribs">
+            {{#namedInvitees}}
+            <span class="addedInviteeItem label">{{fNameLInitial}}</span>
+            {{/namedInvitees}}
+        </p>
+        {{/if}}
+        {{#if namelessInvitees.length}}
+        {{! NOTE: different formulation of the message below to avoid multiple sentences involving plurals etc.
+            wireframe uses a diff. pattern that will create great headaches for such a simple little thing
+            do not acquiesce! oh brave programmer. }}
+          Number of people for whom names were not provided: <b>{{namelessInvitees.length}}</b>
+        {{/if}}
+    </script><!-- /#addedContribsTpl -->
+
+    <script id="inviteResultsTpl" type="text/x-handlebars-template">
+        <h4>Your invitations have been sent</h4>
+        {{#invitees}}
+            <div class="{{status}}Status inviteeResultItem">
+            {{#eq status "success"}}<i class="icon-ok goodRes"></i>{{/eq}}
+            {{#eq status "exists"}}<i class="icon-ok neutralRes"></i>{{/eq}}
+            {{#eq status "fail"}}<i class="icon-remove badRes"></i>{{/eq}}
+            {{emailAddress}}
+            {{#if firstName}}
+                ({{firstName}} {{lastName}})
+            {{/if}}
+            </div>
+        {{/invitees}}
+        <br>
+        <button class="btn btn-small inviteeResultsCloseBtn">close</button>
+        &nbsp;&nbsp;&nbsp;
+        <i class="icon-ok goodRes"></i> added &nbsp;&nbsp;
+        <i class="icon-ok neutralRes"></i> exists &nbsp;&nbsp;
+        <i class="icon-remove badRes"></i> invite failed, please try again
+    </script><!-- /#inviteResultsTpl -->
+
+
+
+
+
+    <!-- ==================== -->
+    <!-- thank everyone modal -->
+    <!-- ==================== -->
+    <div id="purlThankEveryoneModal" class="modal hide fade">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></button>
+            <h3>Thank Everyone</h3>
+        </div>
+        <div class="modal-body">
+            <div class="thankyouData">
+                <p>Lorem ipsum onsectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+                <textarea class="thankyouTextInp input-block-level" rows="5" maxlength="1000"></textarea>
+            </div>
+            <div class="spinner" style="display:none">&nbsp;</div>
+            <div class="thankyouResults alert" style="display:none">
+                <b>You're thankyou message was sent.</b>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a class="btn btn-primary submitThankEveryoneBtn">Submit</a>
+            <button type="button" class="btn closeThankEveryoneModalBtn" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /#purlThankEveryoneModal -->
+
+
+
+</div><!-- /#purlPageView -->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+$(document).ready(function(){
+    var json;
+
+    // bootstrap json
+    json = {
+        // show welcome modal to collect info?
+        collectContributorInformation: false,
+        // show contribute section (if true, isRecipient should be false)
+        allowContribution: true,
+        // is this the recipient (if true, allow contribution should be false)
+        isRecipient: false,
+        // show for viewer when contribution is closed (if true, allow contribution and isRecipient should be false)
+        awardProcessed: false,
+        // useful image URL helpers
+        stagerPrefixURL : '',
+        finalPrefixURL : '',
+        // contributor information
+        // 1) from a logged in G5 user
+        // 2) from associated PURL link user email
+        contributor: {
+            id: 1234,
+            firstName: "Cornelius",
+            lastName: "Contributor",
+            avatarUrl: "../../skins/default/img/avatar-blank-72.png",
+            email: "cornelius.contributor@eternalove.com"
+        },
+        recipient: {
+            id: 4321
+        },
+        // idividuals previously invited (ID SHOULD BE THE SAME AS EMAIL - or already invited list will get funky)
+        invitees: [
+            {firstName: "Claudia",lastName:"Cat",email:"c@c.com",id:"c@c.com"},
+            {firstName: "Raza",lastName:"Dog",email:"d@d.com",id:"d@d.com"},
+            {firstName: "Marc",lastName:"Aardvark",email:"a@a.com",id:"a@a.com"},
+            {firstName: "Joel",lastName:"Bat",email:"b@b.com",id:"b@b.com"},
+            {firstName: null, lastName: null, email:"nameless@nameless.com",id:"nameless@nameless.com"},
+            {firstName:'',lastName:'',email:"x@x.com",id:"x@x.com"},
+            {firstName: "Susan",lastName:"Elephant",email:"e@e.com",id:"e@e.com"}
+        ]
+    };
+
+
+    //attach the view to an existing DOM element
+    ppv = G5.views.purlPageView = new PurlPageView({
+        el : $('#purlPageView'),
+        userRole : 'manager', // 'manager' or 'participant'
+        //showLeaderboard : 1234,
+        pageNav : {
+            back : {
+                text : 'Back',
+                url : 'layout.html'
+            },
+            home : {
+                text : 'Home',
+                url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+            }
+        },
+        pageTitle : 'Recognition PURL',
+        json: json
+    });
+
+});
+</script>

@@ -1,0 +1,670 @@
+// App-specific variables
+// =========================
+$approvals_bgColor: $g5ModuleBgColor !default;
+$approvals_gradType: $g5ModuleGradType !default;
+$approvals_gradMeta: $g5ModuleGradMeta !default;
+$approvals_gradStops: $g5ModuleGradStops !default;
+
+$approvals_iconColor: $g5ModuleIconColor !default;
+$approvals_titleColor: $g5ModuleTitleColor !default;
+$approvals_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$approvals_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$approvals_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$approvals_exportImgUrlPath: false !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.approvals {
+
+    .claimReasonNomDetails.hidden{
+        display: none;
+    }
+
+    .approverActions{
+        .recogDetail-Group{
+            .controls{
+                margin-left: 0;
+                label{
+                    display: inline;
+                    margin-right: 2px;
+                }
+            }
+        }
+
+        .recogDetail-Group.validateme{
+            margin-left: 46px;
+        }
+    }
+
+    .translateLinkDisabled {
+        color: #999999;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+} /* /.approvals */
+
+/* ----- MODULE STYLES ----- */
+.module.approvals {
+
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $approvals_bgColor,
+            $gradType: $approvals_gradType,
+            $gradMeta: $approvals_gradMeta,
+            $gradStops: $approvals_gradStops
+        );
+    }
+
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $approvals_iconColor,
+            $titleColor: $approvals_titleColor,
+            $titleFontFamily: $approvals_titleFontFamily
+        );
+
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            @include g5HomeAppIconBoxReflect(-50px);
+        }
+    }
+
+    @include module_titleIconViewFontSizesWeights($approvals_titleFontSizes, $approvals_titleFontWeights);
+
+    @include module_renderAsIconViews(
+        $sizes: "&.grid-dimension-2x2, &.grid-dimension-4x2, &.grid-dimension-4x4"
+    );
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2 {
+        .title-icon-view {
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                @include g5HomeAppIconBoxReflect(-131px);
+            }
+        }
+    }
+    &.grid-dimension-4x4 {
+        .title-icon-view {
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                @include g5HomeAppIconBoxReflect(-252px);
+            }
+        }
+    }
+
+} /* /.module.approvals */
+
+/* ----- PAGE STYLES ----- */
+.page.approvals {
+    #claimDetails {
+        .dl-horizontal {
+            @media (min-width: 768px){
+                dt {
+                    margin-bottom: 10px;
+                    width: 20%;
+                    white-space: normal;
+                }
+                dd {
+                    float: left;
+                    margin: 0 0 10px 10px;
+                    width: 20%;
+                }
+            }
+
+            @media (max-width: 767px) {
+                dt {
+                    width: auto;
+                }
+                dd {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+
+    .claimTableWrapper {
+        overflow: auto;
+    }
+
+    #approvalsNominationDetailWrapper {
+        form {
+            margin: 0;
+        }
+
+        .claimgroup {
+            overflow: auto;
+            clear: both;
+            margin-top: $baseLineHeight / 2;
+            margin-bottom: $baseLineHeight / 2;
+            padding-top: $baseLineHeight / 2;
+            padding-bottom: $baseLineHeight / 2;
+            border-top: 1px solid $grayLighter;
+            border-bottom: 1px solid $grayLighter;
+
+            & ~ .claimgroup {
+                border-top: 0;
+                margin-top: 0;
+                padding-top: 0;
+            }
+        }
+    }
+} /* /.page.approvals */
+
+// ApprovalsPageClaims
+#approvalsPageClaims {
+    .spincover {
+        position: absolute;
+    }
+    .spin {
+        display: block;
+        margin: 0 auto;
+        width: $spinner_widthHeight;
+        height: $spinner_widthHeight;
+    }
+
+    .page-topper {
+        h3 {
+            margin-top: 0;
+        }
+        fieldset {
+            margin-bottom: $baseLineHeight / 2;
+        }
+        .control-group {
+            display: inline;
+            float: left;
+        }
+        .controls {
+            @include inline-block();
+        }
+        .buttons {
+            margin-top: $baseLineHeight;
+        }
+    }
+    .promoName {
+        line-height: $baseLineHeight * 1.5;
+        margin-bottom: 0;
+    }
+
+    #timestamp {
+        margin-top: -1 * $baseLineHeight / 2;
+    }
+
+    .stats {
+        // overflow: hidden;
+        text-align: center;
+        margin-bottom: $baseLineHeight;
+
+        .stat {
+            @include inline-block();
+            width: 16%;
+            vertical-align: top;
+
+            .count,
+            .name {
+                display: block;
+            }
+            .count {
+                font-size: $baseFontSize * 4;
+                line-height: $baseLineHeight * 4;
+            }
+
+            @media (max-width: 767px) {
+                // width: 24%;
+                width: 32%;
+
+                // &.claims {
+                //     width: 48%;
+                // }
+
+                .count {
+                    font-size: $baseFontSize * 2;
+                    line-height: $baseLineHeight * 2;
+                }
+            }
+            @media (max-width: 479px) {
+                display: block;
+                width: auto !important;
+
+                .count,
+                .name {
+                    display: inline-block;
+                    @include inline-block();
+                }
+                .count {
+                    padding-right: 6px;
+                    font-size: $baseFontSize * 1.5;
+                }
+            }
+        }
+    }
+
+    .noClaimsFound {
+        clear: both;
+    }
+
+    #claimsTableWrapper {
+        position: relative;
+        clear: both;
+        margin-top: $baseLineHeight;
+
+        .approver,
+        .products,
+        .status {
+            .text {
+                display: block;
+                white-space: nowrap;
+
+                & ~ .text {
+                    margin-top: $baseLineHeight / 2 + 1;
+                }
+                & ~ .selects {
+                    margin-top: $baseLineHeight / 4 + 1;
+                }
+            }
+        }
+        .status {
+            .selects {
+                display: block;
+                white-space: nowrap;
+                margin-top: -1 * $baseLineHeight / 4;
+                margin-bottom: -1 * $baseLineHeight / 4;
+
+                & ~ .selects {
+                    margin-top: $baseLineHeight / 4 + 1;
+                }
+                & ~ .text {
+                    margin-top: $baseLineHeight / 2 + 1;
+                }
+            }
+        }
+
+        .status,
+        .statusReason {
+            width: auto;
+        }
+    }
+
+    #claimSubmissionForm {
+        position: relative;
+
+        .spincover {
+            @include gridCoreInnerFullSplit($leftRightPad: $g5PageContentPaddingHoriz, $leftRightBorder: $g5PageContentLeftRightBorderWidth);
+
+            @media (min-width: 1200px) {
+                @include gridCoreInnerFullSplit($leftRightPad: $g5PageContentPaddingHoriz1200, $leftRightBorder: $g5PageContentLeftRightBorderWidth1200);
+            }
+            @media (min-width: 768px) and (max-width: 979px) {
+                @include gridCoreInnerFullSplit($leftRightPad: $g5PageContentPaddingHoriz768, $leftRightBorder: $g5PageContentLeftRightBorderWidth768);
+            }
+            @media (max-width: 767px) {
+                @include gridCoreInnerFullSplit($leftRightPad: $g5PageContentPaddingHorizMobile);
+            }
+
+            .spin {
+                top: $spinner_widthHeight;
+                margin-left: -1 * $spinner_widthHeight / 2;
+            }
+        }
+
+        .parameters {
+            display: inline;
+            float: left;
+            // pagination is $baseLineHeight * 1.5 tall, while this paragraph is $baseLineHeight tall
+            padding-top: $baseLineHeight * 0.25;
+            padding-bottom: $baseLineHeight * 0.25;
+            margin-bottom: $baseLineHeight;
+        }
+        #exportCurrentView + .pagination {
+            margin: 0;
+
+            ul {
+                display: inline;
+                float: right;
+                clear: right;
+            }
+        }
+    }
+}
+
+// ApprovalsPageClaimsDetail
+#approvalsPageClaimsDetail {
+    .statusReason {
+        display: none;
+    }
+
+    .approvalStatusType,
+    .denyReason,
+    .heldReason {
+        width: auto;
+    }
+
+    .approvalsToolTip {
+        cursor: pointer;
+    }
+}
+
+//page spinners
+#approvalsNominationDetailWrapper,
+#approvalsNominationDetailView,
+#approvalsPagePendingNominations,
+#approvalsCalcGiverForm {
+    .spincover{
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        @include safeBkgs( rgba( 255, 255, 255, .5 ) );
+
+        .spin{
+            position: absolute;
+            height: 100px;
+            width: 100px;
+            left: 50%;
+            top: 50%;
+            margin-left: -50px;
+            margin-top: -50px;
+        }
+    }
+}
+
+.approvalsExportIconsWrapper{
+    float: right;
+    margin: 15px 0px 10px 0;
+
+    &.pushDown{
+        margin: 70px 0px 10px 0;
+    }
+
+    span{
+        margin: 0;
+        height: 16px;
+        width: 0;
+        padding: 10px 18px;
+        display: inline-block;
+    }
+
+    span.excelExportIcon {
+        @include safeImgUrls('reports/reports_exportXls.png', $approvals_exportImgUrlPath);
+        background-repeat: no-repeat;
+    }
+
+    span.pdfExportIcon {
+        @include safeImgUrls('reports/reports_exportPdf.png', $approvals_exportImgUrlPath);
+        background-repeat: no-repeat;
+    }
+}
+
+.approvalSearchWrapper{
+
+    h3{
+        margin-top: 0;
+    }
+
+    #approvalsSearchForm{
+        margin-bottom: 50px;
+
+        .lt-ie9 & #promotionSelected {
+            width: auto;
+        }
+    }
+
+    .recognitionDetails,
+    .nominationDetails {
+        dt{
+            clear: none;
+            margin-right: 10px;
+        }
+    }
+
+    .ecard-span{
+        width: 250px;
+        height: 260px;
+        img{
+            max-width: 250px;
+            max-height: 250px;
+        }
+    }
+
+    .comment-text {
+        p {
+            margin-bottom: 0;
+        }
+        a {
+            display: block;
+            margin-bottom: 10px;
+        }
+    }
+
+    .pagination {
+        margin: 0;
+    }
+
+    .table-striped.table-bordered th a{
+        text-decoration: underline;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+
+    .table-striped.table-bordered th span.noWrap{
+        white-space: nowrap;
+        @media (max-width: 979px) {
+            white-space: normal;
+        }
+    }
+
+    .approvalBudgetTable{
+        width: 300px;
+
+        td:nth-child(2){
+            text-align: right;
+        }
+    }
+
+    th.nowrap{
+        min-width: 145px;
+        padding-right: 0;
+    }
+
+    table .date{
+        width: 90px;
+        margin-left: 5px;
+        @media (max-width: 979px){
+            width: auto;
+        }
+    }
+
+    table .characteristics .char {
+        display: block;
+    }
+
+    .approverComments,
+    .adminComments {
+        min-width: 60%;
+    }
+
+    .notificationDate {
+        white-space: nowrap;
+        min-width: 180px; // 90px .date + 40px .btn + 40px .btn + some padding
+
+        .input-append {
+            margin-bottom: 0;
+        }
+        .date {
+            margin-left: 0;
+        }
+        .clearDate {
+            margin-left: -1px;
+        }
+    }
+}
+
+.managerToolkitCurrentBudgetTable{
+    table{
+        margin-left: 0;
+        width: 330px;
+    }
+}
+
+.nominationsTableWrapper{
+
+    input[type="text"]{
+        width: 168px;
+    }
+}
+
+//RECOGNITION/APPROVALS CALCULATOR
+.approvalCalcTipWrapper {
+    .ui-tooltip-tip{
+        left: 275px !important;
+    }
+}
+
+.approvalsCalcPayoutTableLink{
+    float: right;
+    text-decoration: underline;
+}
+//END RECOGNITION/APPROVALS CALCULATOR
+
+
+// Override styles for tablet sizes and below
+@media (max-width: 979px) and (min-width: 769px){
+
+    .approvals .approverActions .recogDetail-Group.validateme{
+        margin-left: 0;
+    }
+
+    .approvalSearchWrapper .statusGroup,
+    .approvalSearchWrapper .promotionGroup {
+      margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .approvalSearchWrapper form select{
+        display: block;
+    }
+}
+
+@media (max-width: 767px) {
+    .approvalSearchWrapper{
+
+        select.claimAction{
+            display: block;
+            width: 100%;
+        }
+
+        form{
+
+            span{
+                margin-right: 0px;
+            }
+            .cancelBtn{
+                margin-left: 0px;
+            }
+
+            .statusGroup{
+                margin-left: 0px;
+            }
+
+            .promotionGroup{
+                margin-left: 0px;
+            }
+
+            .showActivityBtn{
+                margin-left: 0px;
+            }
+        }
+
+        table{
+            .approvalsActionColumn{
+                width: auto;
+            }
+
+            .claimAction{
+                min-width: 120px;
+            }
+
+        }
+
+        .claimReason{
+            width: 100%;
+            display: none;
+        }
+
+        .claimReasonActive{
+            display: block;
+        }
+
+        .approvalBudgetTable{
+                width: 100%;
+        }
+
+        .nominationDetails{
+            dt{
+                width: 100%;
+            }
+
+            dd{
+                margin-left: 0px;
+            }
+        }
+
+        .recognitionDetails{
+            dt{
+                width: 100%;
+            }
+        }
+
+        .approverActions{
+
+            input, select{
+                margin-left: 0px;
+            }
+
+            .awardPointsInput{
+                width: 100%;
+            }
+
+            .approvalNominationStatus{
+                width: 100%;
+            }
+
+            .claimReasonNomDetails{
+                width: 100%;
+                margin-left: 0px;
+            }
+
+            .recogDetail-Group.validateme{
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+@media (max-width: 479px) {
+    .approvalSearchWrapper{
+            .btn {
+                display: block;
+                width: 100%;
+                padding-left: 0;
+                padding-right: 0;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+        }
+}
+
+.approvalsNotificationDateToolTip a:hover {
+    cursor: pointer;
+}

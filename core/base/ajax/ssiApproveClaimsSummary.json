@@ -1,0 +1,82 @@
+<?php sleep(1); ?>
+
+{
+    "messages": [],
+    "currentPage": 1,
+    "recordsPerPage": 5,
+    "recordsTotal": 350,
+    "claimsSubmittedCount": 253,
+    "claimsPendingCount": 12,
+    "claimsApprovedCount": 236,
+    "claimsDeniedCount": 3,
+    "claims": [
+        {
+            "id": 123, <?php /* for ssiApproveClaimsPage */ ?>
+            "claimNumber": 123456789,
+            "dateSubmitted": "06/09/15",
+            "submittedBy": "John Doe",
+            "approvedBy": "",
+            "activities": [
+                "An activity description",
+                "Another activity description that is longer"
+            ],
+            "statusDescription": "Approved",
+            "status": "approved" <?php /* for ssiApproveClaimsPage */ ?>
+        },
+        {
+            "id": 223, <?php /* for ssiApproveClaimsPage */ ?>
+            "claimNumber": 123456789,
+            "dateSubmitted": "03/09/15",
+            "submittedBy": "John Doe",
+            "approvedBy": "",
+            "activities": [
+                "An activity description",
+                "Another activity description that is longer"
+            ],
+            "statusDescription": "Waiting for Approval",
+            "status": "waiting_for_approval", <?php /* for ssiApproveClaimsPage */ ?>
+            "canApprove": true <?php /* for ssiApproveClaimsPage */ ?>
+        },
+        {
+            "id": 323, <?php /* for ssiApproveClaimsPage */ ?>
+            "claimNumber": 123456789,
+            "dateSubmitted": "01/06/15",
+            "submittedBy": "John Doe",
+            "approvedBy": "Jane Smith",
+            "activities": [
+                "An activity description",
+                "Another activity description that is longer"
+            ],
+            "statusDescription": "Denied",
+            "status": "denied" <?php /* for ssiApproveClaimsPage */ ?>
+        },
+        {
+            <?php /* for ssiApproveClaimsPage - this id is an example of the encrypted version BE sends*/ ?>
+            "id": "7o%2BzXgS3bhcsRh07Nh%2BhejfAPkFMBPLFdyNKZr7200%2FzIiOnROkL1l0YQqajkb6T2bxRW02I09Pu%0AajiDqU1spEr8cEaBQpQnbGL7V7vqlTDpZ0nGlhPTD9ADwF7Tg5EghuougjsFofeh2zTHFnjoyiwA%0AToQrISBDzH7Dm0EvI9PH%2Fq8Acll44ZAvYUOhZxWYTwUkrDizp%2FGDWnJ7zISKsTLVSUwuGG7CDoPx%0AZy5p71wuFnkcA%2BCNtt75A3MDzSk9WGbyNsohrXudgrtQzvyDh%2BIuMEVzOnLEfDWp8OxfTYoGzQmX%0A1CCrH3ErERly0c%2FYLKb0xF4CFGDhvA3QuG18IeOxQUAb9ipJrPEpsf%2FlEmqnnrBztjC9roXLVXZt%0A3cdhK%2FHqH3KPfb4ZJQLhoeo64%2FiOkKpNSQjakdAC4vSxTJ4NQWrNoiU3FUyts%2F8ieD7GaWicdw%3D%3D",
+            "claimNumber": 123456789,
+            "dateSubmitted": "02/09/15",
+            "submittedBy": "John Doe",
+            "approvedBy": "Joe Manager",
+            "activities": [
+                "An activity description",
+                "Another activity description that is longer"
+            ],
+            "statusDescription": "Waiting for Approval",
+            "status": "waiting_for_approval", <?php /* for ssiApproveClaimsPage */ ?>
+            "canApprove": false <?php /* for ssiApproveClaimsPage */ ?>
+        },
+        {
+            "id": 523, <?php /* for ssiApproveClaimsPage */ ?>
+            "claimNumber": 123456789,
+            "dateSubmitted": "01/07/15",
+            "submittedBy": "John Doe",
+            "approvedBy": "Jane Smith",
+            "activities": [
+                "An activity description",
+                "Another activity description that is longer"
+            ],
+            "statusDescription": "Denied",
+            "status": "denied" <?php /* for ssiApproveClaimsPage */ ?>
+        }
+    ]
+}

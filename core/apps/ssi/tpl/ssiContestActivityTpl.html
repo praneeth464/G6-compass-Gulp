@@ -1,0 +1,170 @@
+{{! NOTE: These variables are set via JavaScript: }}
+{{!       showStatus, showAdminLinks, showDeleteLink, showCopyLink, showEditLink, showContestLink, isCreator }}
+
+
+{{#if contests}}
+<div class="row">
+    <div class="span12">
+        <table id="" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th class="sortHeader">
+                        Contest Name
+                        <i data-sort="name" class="sortControl icon-sort"></i>
+                    </th>
+                    {{#if showRole}}
+                    <th class="sortHeader">
+                        Role
+                        <i data-sort="role" class="sortControl icon-sort"></i>
+                    </th>
+                    {{/if}}
+                    {{#if showStatus}}
+                    <th class="sortHeader">
+                        Status
+                        <i data-sort="status" class="sortControl icon-sort"></i>
+                    </th>
+                    {{/if}}
+                    <th class="sortHeader">
+                        Start Date
+                        <i data-sort="startDate" class="sortControl icon-sort"></i>
+                    </th>
+                    <th class="sortHeader">
+                        End Date
+                        <i data-sort="endDate" class="sortControl icon-sort"></i>
+                    </th>
+                    {{#if showAdminLinks}}
+                    <th>
+                        Edit
+                    </th>
+                    <th>
+                        Copy
+                    </th>
+                    <th>
+                        Delete
+                    </th>
+                    {{/if}}
+                </tr>
+            </thead>
+
+            <tbody>
+                {{#each contests}}
+                <tr>
+                    <!-- <td class="crud-content nowrap">
+                    </td> -->
+                    <td>
+                        {{#if showContestLink}}
+                            <a href="{{detailPageUrl}}" title="">{{name}}</a>
+                        {{else}}
+                            {{name}}
+                        {{/if}}
+                    </td>
+                    {{#if ../showRole}}
+                    <td>
+                        {{roleLabel}}
+                        {{#if delegate}}
+                            <br>
+                            Delegate: {{delegate.firstName}} {{delegate.lastName}}
+                        {{/if}}
+                    </td>
+                    {{/if}}
+                    {{#if ../showStatus}}
+                    <td>
+                        {{statusLabel}}
+                    </td>
+                    {{/if}}
+                    <td>
+                        {{startDate}}
+                    </td>
+                    <td>
+                        {{endDate}}
+                    </td>
+                    {{#if ../showAdminLinks}}
+                    <td class="iconCol">
+                        {{#if showEditLink}}
+                            {{#eq status "draft"}}
+                                <a href="#/URL_TO_EDIT_PAGE?CONTEST_ID_GET_PARAM={{id}}" title=""><i class="icon-edit"></i></a>
+                            {{else}}
+                                <a href="#/URL_TO_SUMMARY_PAGE?CONTEST_ID_GET_PARAM={{id}}" title=""><i class="icon-edit"></i></a>
+                            {{/eq}}
+                        {{/if}}
+                        {{#if showViewLink}}
+                        <a href="#/URL_TO_VIEW_PAGE?CONTEST_ID_GET_PARAM={{id}}" title=""><i class="icon-eye-open"></i></a>
+                        {{/if}}
+                    </td>
+                    <td class="iconCol">
+                        {{#if showCopyLink}}
+                        <!-- <a href="#/URL_TO_COPY_PAGE?CONTEST_ID_GET_PARAM={{id}}" title="" class="promptAction">copy</a> -->
+
+                        <button type="button" class="btn btn-link btn-small promptAction"><i class="icon-copy"></i></button>
+                        <div class="prompt promptCopy" data-prompt="copy">
+                            <button type="button" class="promptClose close">
+                                <i class="icon-remove-sign"></i>
+                            </button>
+                            <form class="copyContest" action="#URL_TO_CREATE_CONTEST" method="post">
+                                <fieldset>
+                                    <legend>Copy Contest</legend>
+                                    <label for="contestName">New Contest Name</label>
+                                    <input type="text" class="contestName" name="contest_name" value="" placeholder="" data-validate-fail-msgs='{"nonempty":"You must enter a contest name."}' maxlength="50">
+                                    <input type="hidden" class="contestId" name="contest_id" value="{{id}}">
+                                    <div class="contestStatus contestNameStatus">
+                                        <span class="pending"></span>
+                                        <i class="valid icon-ok-sign"></i>
+                                        <i class="invalid icon-remove-sign"></i>
+                                        <p class="msg"></p>
+                                    </div>
+                                    <div class="submitWrap clearfix">
+                                        <button type="submit" class="submitCopy">Next</button>
+                                        <div class="contestStatus contestCopyStatus">
+                                            <span class="pending"></span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                        {{/if}}
+                    </td>
+                    <td class="iconCol">
+                        {{#if showDeleteLink}}
+                        <button type="button" class="btn btn-link btn-small promptAction"><i class="icon-remove-circle"></i></button>
+                        <div class="prompt promptDelete" data-prompt="delete">
+                             <p>
+                                <strong> Are you sure you want to delete this contest? This action can not be undone.</strong>
+                            </p>
+                            <p class="tc">
+                                <button type="button" class="btn promptClose" >Cancel</button>
+                                <a href="#/URL_TO_DELETE_PAGE?CONTEST_ID_GET_PARAM={{id}}" title="" class="btn btn-danger deleteContest" data-id="{{id}}">Delete</a>
+                            </p>
+                            <div class="contestStatus contestDeleteStatus">
+                                <span class="pending"></span>
+                            </div>
+                        </div>
+                        {{/if}}
+                    </td>
+                    {{/if}}
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="activityModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Error</h3>
+    </div>
+    <div class="modal-body">
+        <p>{{! dynamic error message }}</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal">Close</button>
+        <!-- <button class="btn btn-primary">Save changes</button> -->
+    </div>
+</div>
+{{else}}
+<div class="row ssiEmptyTableMsg">
+    <div class="span12">
+        <h3>You have no active contests</h3>
+    </div>
+</div>
+{{/if}}

@@ -1,0 +1,190 @@
+
+<div class="row">
+    <div class="span12 contestData ssiManager">
+        <div class="row">
+            <div class="span12 dataSection activityProgress">
+                <h5><span>Activity:</span> {{progress}} </h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{#ueq status "finalize_results"}}
+    {{#if payouts}}
+    <div class="row payoutsWrap payoutsShowLess" data-classtoggle="payoutsShowLess payoutsShowMore">
+        <div class="span12 payoutsRow">
+            <div class="row">
+                <div class="span12">
+                    <h4>Contest Payout</h4>
+                </div>
+            </div>
+            <div class="row">
+            {{#each payouts}}
+                <div class="span3 payout">
+                    <span class="payoutRank">{{rank}}</span>
+                    <div class="payoutInfo">
+                        {{#if badge.img}}
+                            <img src="{{badge.img}}" alt="{{badge.name}}" class="payoutBadge" />
+                        {{/if}}
+                        {{#if payout}}
+                            <span class="payoutAmount{{#unless badge.img}} no-badge{{/unless}}">
+                            {{payout}}
+                                {{#eq ../../payoutType "points"}}
+                                    points
+                                {{/eq}}
+                            </span>
+                        {{else}}
+                            <span class="badgeName">{{badge.name}}</span>
+                        {{/if}}
+                    </div>
+                </div>
+            {{/each}}
+            </div>
+            {{#if payouts.[3]}}
+            <div class="row bottomPayoutInfo">
+                <div class="span12 text-right">
+                    <a href="#" class="payoutsToggle showMore">View All Payouts</a>
+                    <a href="#" class="payoutsToggle showLess">View Less</a>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+    {{/if}}
+{{/ueq}}
+
+{{#unless isProgressLoaded}}
+<div class="row">
+    <div class="span12">
+        <p>Waiting for data. Stack rank will display as soon as data is loaded.</p>
+    </div>
+</div>
+{{/unless}}
+
+<div class="row">
+    <div class="span12">
+        <ul class="nav nav-tabs paginationTabs">
+            <li class="active">
+                <a href="#all" class="tabFilter" data-toggle="tab" data-filter="all">
+                    All
+                </a>
+            </li>
+            <li>
+                <a href="#myTeam" class="tabFilter" data-toggle="tab" data-filter="team">
+                    My Team
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="row activityInfo">
+    <div class="span6">
+        <p class="sectionTitle">{{activityDescription}}</p>
+        {{#if isProgressLoaded}}<p class="activityAsOfDate">as of {{updatedOnDate}}</p>{{/if}}
+    </div>
+    <div class="span6 text-right">
+        {{#if includeMinimumQualifier}}<span class="minimumQualifier">Minimum Qualifier: <strong>{{minQualifier}}</strong></span>{{/if}}
+    </div>
+</div>
+<div class="row">
+    <div class="span12 text-right">
+        {{#if isProgressLoaded}}
+        <div class="pullRightBtns">
+            <a href="#LINK_TO_EXPORT" class="exportCsvButton">
+                <span class="contestDetailsExport"></span>
+            </a>
+        </div>
+        {{/if}}
+    </div>
+</div>
+
+{{#ueq daysToEnd "0"}}
+    <div class="row">
+        <div class="span12">
+            <div class="stackRankBoard jsStackRankBoard"
+                data-stackrank-offset=""
+                data-stackrank-limit=""
+                data-stackrank-rowcount=""
+                data-stackrank-paginate="true">
+                {{! subTpl.leaderTpl}}
+            </div>
+            <div class="pagination pagination-right paginationControls"></div>
+        </div>
+    </div>
+{{else}}
+    <div class="row">
+        <div class="span12">
+            <h4>Final Payout</h4>
+        </div>
+    </div>
+    <div class="managerStackRankWrap">
+        <div class="row">
+            <div class="span12">
+                <div class="stackRankBoard">
+                <!-- <div class="payoutBoard"> -->
+                    <div class="splitColWrap{{#classes}} {{this}}{{/classes}}" id="leaderboard{{id}}" data-id="{{id}}">
+                        <!-- Account info and ranking -->
+                        <div class="clearfix">
+                            <!-- <ol class="leaders-col leaders-col-a leadersColA"> -->
+                            <ol>
+                                <!-- dynamic -->
+                                {{#each stackRankParticipants}}
+                                <li value="{{rank}}" {{#if classes.length}}class="{{#classes}}{{this}} {{/classes}}"{{/if}}>
+                                    <b>{{rank}}.</b>
+                                    {{#if avatarUrl}}<img alt="{{firstName}} {{lastName}}" class="avatar" src="{{avatarUrl}}" height="20" width="20" >{{/if}}
+                                    {{#if contestUrl}}
+                                    <a href="{{contestUrl}}" class="leaderName">{{firstName}} {{lastName}}</a>
+                                    {{else}}
+                                    <span class="leaderName">{{firstName}} {{lastName}}</span>
+                                    {{/if}}
+                                    <span class="score">{{score}}</span>
+                                    {{#if payout}}{{#with payout}}
+                                        {{#if badge.img}}
+                                            <img alt="{{badge.name}}" class="payoutBadge" src="{{badge.img}}" height="20" width="20" >
+                                        {{/if}}
+                                        {{#if payout}}
+                                            {{#eq ../../payoutType "points"}}
+                                               <span class="payoutAmount {{#if badge.img}}payoutWithBadge{{/if}}">{{payout}} points</span>
+                                            {{/eq}}
+                                            {{#eq ../../payoutType "other"}}
+                                                <span class="payoutAmount {{#if badge.img}}payoutWithBadge{{/if}}">{{payout}}</span>
+                                            {{/eq}}
+                                        {{else}}
+                                            <span class="badgeName">{{badge.name}}</span>
+                                    {{/if}}
+                                    {{/with}}{{/if}}
+                                </li>
+                                {{/each}}
+                            </ol>
+                        </div>
+                    </div>
+                </div> {{! .payoutBoard}}
+            </div>
+        </div>
+        <br>
+        {{#if viewOrHideAllSr}}
+        <div class="stackRankAllWrap stackRankShowLess" data-classtoggle="stackRankShowAll stackRankShowLess">
+            <div class="row allToggle">
+                <div class="span6 creatorDetailsBtns">
+                    <button type="button" class="btn stackRankParticipantsToggle showLess">Hide Participants</button>
+                    <button type="button" class="btn stackRankParticipantsToggle showMore">Show All Participants</button>
+                </div>
+            </div>
+            <div class="row showMore">
+                <div class="span12">
+                    <div class="stackRankBoard jsStackRankBoard"
+                        data-stackrank-offset="{{payoutCount}}"
+                        data-stackrank-limit=""
+                        data-stackrank-rowcount=""
+                        data-stackrank-paginate="true"
+                        data-stackrank-deferred="true">
+                        {{! subTpl.leaderTpl}}
+                    </div>
+                    <div class="pagination pagination-right paginationControls"></div>
+                </div>
+            </div>
+        </div><!-- .stackRankAllWrap -->
+        {{/if}}
+    </div><!-- .managerStackRankWrap -->
+{{/ueq}}

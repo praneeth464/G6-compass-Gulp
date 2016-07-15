@@ -1,0 +1,117 @@
+{
+    "messages":[],
+    "quizPageActiveQuiz":[
+        {
+            "id" : 1000,
+            "promotionName":"Promotion Name: Let's take a quiz!",
+            "canPrint": false,
+            "quickSteps": [
+                {
+                    "stepName":         "View Quiz Details",
+                    "tabType":          "quizDetail",
+                    "stepStatus":       "active",
+                    "canNavigate":      true,
+                    "isComplete":       false,
+                    "numberOfSlides":   1,
+                    "currentSlide":     0,
+                    "buttonList": [
+                        {
+                            "buttonType":   "previousSlide",
+                            "buttonText":   "Previous"
+                        },
+                        {
+                            "buttonType":   "nextSlide",
+                            "buttonText":   "Next"
+                        },
+                        {
+                            "buttonType":   "nextTab",
+                            "buttonText":   "Continue to Course Materials",
+                            "buttonClass":  "btn-primary"
+                        }
+                    ]
+                },
+                {
+                    "stepName":         "View Course Materials",
+                    "tabType":          "courseMaterials",
+                    "stepStatus":       "locked",
+                    "canNavigate":      false,
+                    "isComplete":       false,
+                    "numberOfSlides":   4,
+                    "currentSlide":     0,
+                    "buttonList": [
+                        {
+                            "buttonType":   "previousSlide",
+                            "buttonText":   "Previous"
+                        },
+                        {
+                            "buttonType":   "previousTab",
+                            "buttonText":   "Go back to Quiz Details"
+                        },
+                        {
+                            "buttonType":   "nextSlide",
+                            "buttonText":   "Next"
+                        },
+                        {
+                            "buttonType":   "nextTab",
+                            "buttonText":   "Start Test",
+                            "buttonClass":  "btn-primary"
+                        }
+                    ]
+                },
+                {
+                    "stepName":         "Take the Quiz",
+                    "tabType":          "takeQuiz",
+                    "stepStatus":       "locked",
+                    "canNavigate":      false,
+                    "canSeeAnswers":    true,
+                    "isComplete":       false,
+                    "numberOfSlides":   5,
+                    "currentSlide":     0,
+                    "buttonList": [
+                        {
+                            "buttonType":   "submitAnswer",
+                            "buttonText":   "Submit"
+                        },
+                        {
+                            "buttonType":   "nextQuestion",
+                            "buttonText":   "Next Question",
+                            "buttonClass":  "btn-primary"
+                        },
+                        {
+                            "buttonType": "saveQuiz",
+                            "buttonText": "Save for later",
+                            "buttonClass":"btn saveQuiz"
+                        },
+                        {
+                            "buttonType":   "viewResults",
+                            "buttonText":   "View Results",
+                            "buttonClass":  "btn-primary"
+                        }
+                    ]
+                },
+                {
+                    "stepName":         "View Results",
+                    "tabType":          "results",
+                    "stepStatus":       "locked",
+                    "canNavigate":      false,
+                    "numberOfSlides":   1,
+                    "currentSlide":     0,
+                    "buttonList": [
+                        {
+                            "buttonType":   "retakeTest",
+                            "buttonText":   "Take Quiz Again",
+                            "buttonClass":  "btn-success",
+                            "buttonUrl":    "layout.html?tpl=quizPage&amp;tplPath=apps/quiz/tpl/"
+                        },
+                        {
+                            "buttonType":   "exit",
+                            "buttonText":   "Done",
+                            "buttonClass":  "btn-primary",
+                            "buttonUrl":    "layout.html"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

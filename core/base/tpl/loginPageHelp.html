@@ -1,0 +1,73 @@
+<!-- ======== LOGIN PAGE HELP ======== -->
+
+<script type="text/javascript">
+    $('body').addClass('loginHelpPage');
+    $('body').removeClass('loginPage');
+</script>
+
+<!-- Page Body -->
+
+<div class="page-content" id="loginHelpPage">
+
+    <div class="page-topper">
+        <div class="row">
+            <div class="span12">
+                <form class="form-inline form-labels-inline">
+
+                    <div class="control-group">
+                        <label class="control-label" for="whichHelp">I need help with:</label>
+
+                        <div class="controls">
+                            <select name="whichHelp" id="whichHelp">
+                                <option value=""></option>
+                                <!-- <option value="login">General Login Information</option> -->
+                                <option value="forgotid">Forgot Login ID</option>
+                                <option value="forgotpass">Forgot Password</option>
+                                <option value="registration">Self Registration</option>
+                                <option value="contactus">Contact Us</option>
+                            </select>
+                        </div>
+                    </div> <!-- control-group -->
+                    
+                </form>
+            </div><!-- /.span12 -->
+        </div><!-- /.row -->
+    </div><!-- /.page-topper -->
+
+    <div class="row">
+        <div class="span12 tab-content" id="loginPageHelp">
+            <div class="whichhelp hide helpwith_login" data-template="loginPageHelpLogin">
+                login help
+            </div><!-- /.helpwith_login -->
+
+            <div class="whichhelp hide helpwith_forgotid helpwith_contactus" data-template="loginPageFormContact">
+            </div><!-- /.helpwith_forgotid.helpwith_contactus -->
+
+            <div class="whichhelp hide helpwith_forgotpass" data-template="loginPageFormForgotPass">
+            </div><!-- /.helpwith_forgotpass -->
+
+            <div class="whichhelp hide helpwith_registration">
+                registratino help
+            </div><!-- /.helpwith_registration -->        
+        </div><!-- /#loginPageFormForgotLoginId.span12 -->
+    </div><!-- /.row -->
+
+</div><!-- /#loginPage.page-content -->
+
+<script>
+    $(document).ready(function() {
+        //attach the view to an existing DOM element
+        lpv = new LoginPageView({
+            el : $('#loginHelpPage'),
+            mode : 'help',
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'javascript:history.go(-1);'
+                }
+            },
+            pageTitle : 'Login Help',
+            loggedIn : false // to prevent the profile view from executing
+        });
+    });
+</script>

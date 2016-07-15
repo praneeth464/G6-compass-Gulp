@@ -1,0 +1,148 @@
+<?php 
+sleep(2);
+$winNumber = 0;
+$lossNumber = 1;
+
+$pageid = $_GET['currentPage'];
+if (isset($pageid)) {
+} else {$pageid = 1;}
+
+$increment = 0;
+?>
+        {
+            "tabularData": {
+                "meta": {
+                    "columns": [
+                        {
+                            "id": "1",
+                            "name": "Player",
+                            "description": "Players Names",
+                            "type": "string",
+                            "alignment": "",
+                            "colSpan": 2,
+                            "nameId": "",
+                            "sortable":true,
+                            "sortUrl":"ajax/displayLoginActivityByPaxReport.do?method=displaySummaryReport&sortedOn=1&sortedBy=asc"
+                        },
+                        {
+                            "id": "2",
+                            "name": "Win",
+                            "description": "Players Records",
+                            "type": "string",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable":true,
+                            "sortUrl":"ajax/displayLoginActivityByPaxReport.do?method=displaySummaryReport&sortedOn=1&sortedBy=asc"
+                        },
+                        {
+                            "id": "3",
+                            "name": "Loss",
+                            "description": "Players Scores",
+                            "type": "string",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable":true,
+                            "sortUrl":"ajax/displayLoginActivityByPaxReport.do?method=displaySummaryReport&sortedOn=1&sortedBy=asc"
+                        },
+                        {
+                            "id": "4",
+                            "name": "Ties",
+                            "description": "Match detials button",
+                            "type": "string",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable":true,
+                            "sortUrl":"ajax/displayLoginActivityByPaxReport.do?method=displaySummaryReport&sortedOn=1&sortedBy=asc"
+                            
+                        }
+                    ],
+                    "roundStartDate" : "4/10/2013",
+                    "roundEndDate" : "4/26/2013"
+                },
+                "results": [
+                    {
+						"id" : "100",
+                        "avatarUrl": "http://www.placebear.com/30/30",
+                        "name": "FirstName LastName  <?php echo ++$increment*$pageid ?>",
+                        "win": <?php echo ++$winNumber ?>,
+                        "loss": <?php echo ++$lossNumber ?>,
+                        "tie": "0"
+                    },
+                    {
+						"id" : "101",
+                        "avatarUrl": "http://www.placebear.com/30/30",
+                        "name": "FirstName LastName <?php echo ++$increment*$pageid ?>",
+                        "win": <?php echo ++$winNumber ?>,
+                        "loss": <?php echo ++$lossNumber ?>,
+                        "tie": "0"
+                    },
+                    {
+						"id" : "102",
+                        "avatarUrl": "http://www.placebear.com/30/30",
+                        "name": "FirstName LastName <?php echo ++$increment*$pageid ?>",
+                        "win": <?php echo ++$winNumber ?>,
+                        "loss": <?php echo ++$lossNumber ?>,
+                        "tie": "0"
+                    },
+                    {
+						"id" : "103",
+                        "avatarUrl": "http://www.placebear.com/30/30",
+                        "name": "FirstName LastName <?php echo ++$increment*$pageid ?>",
+                        "win": <?php echo ++$winNumber ?>,
+                        "loss": <?php echo ++$lossNumber ?>,
+                        "tie": "0"
+                    },
+                    {
+						"id" : "104",
+                       "avatarUrl": "http://www.placebear.com/30/30",
+                        "name": "FirstName LastName <?php echo ++$increment*$pageid ?>",
+                        "win": <?php echo ++$winNumber ?>,
+                        "loss": <?php echo ++$lossNumber ?>,
+                        "tie": "0"
+                    },
+                    {
+						"id" : "105",
+                        "avatarUrl": "http://www.placebear.com/30/30",
+                        "name": "FirstName LastName <?php echo ++$increment*$pageid ?>",
+                        "win": <?php echo ++$winNumber ?>,
+                        "loss": <?php echo ++$lossNumber ?>,
+                        "tie": "0"
+                    },
+                    {
+						"id" : "106",
+                        "avatarUrl": "http://www.placebear.com/30/30",
+                        "name": "FirstName LastName <?php echo ++$increment*$pageid ?>",
+                        "win": <?php echo ++$winNumber ?>,
+                        "loss": <?php echo ++$lossNumber ?>,
+                        "tie": "0"
+                    },
+                    {
+						"id" : "107",
+                        "avatarUrl": "http://www.placebear.com/30/30",
+                        "name": "FirstName LastName <?php echo ++$increment*$pageid ?>",
+                        "win": <?php echo ++$winNumber ?>,
+                        "loss": <?php echo ++$lossNumber ?>,
+                        "tie": "0"
+                    },
+                    {
+						"id" : "108",
+                        "avatarUrl": "http://www.placebear.com/30/30",
+                        "name": "FirstName LastName <?php echo ++$increment*$pageid ?>",
+                        "win": <?php echo ++$winNumber ?>,
+                        "loss": <?php echo ++$lossNumber ?>,
+                        "tie": "0"
+                    },
+                    {
+						"id" : "109",
+                        "avatarUrl": "http://www.placebear.com/30/30",
+                        "name": "FirstName LastName <?php echo ++$increment*$pageid ?>",
+                        "win": <?php echo ++$winNumber ?>,
+                        "loss": <?php echo ++$lossNumber ?>,
+                        "tie": "0"
+                    }
+                ]
+            },
+            "totalStandings": 100,
+            "standingsPerPage": 15,
+            "currentPage": <?php echo $pageid ?>
+        }

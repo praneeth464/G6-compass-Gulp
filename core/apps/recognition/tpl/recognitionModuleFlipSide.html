@@ -1,0 +1,185 @@
+{{debug}}
+<div class="module-liner ezRecLiner">
+
+    <!--
+    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs="{&quot;nonempty&quot; : &quot;Please enter your password&quot;}">
+        <label class="control-label" for="inputPassword" > New Password</label>
+        <div class="controls">
+            <input type="password" id="inputPassword" name="inputPassword">
+        </div>
+    </div>
+    <div class="control-group validateme" data-validate-flags="nonempty,match" data-validate-match="inputPassword" data-validate-fail-msgs="{&quot;nonempty&quot; : &quot;Please confirm password&quot;,&quot;match&quot; : &quot;Passwords do not match&quot;}">
+        <label class="control-label" for="inputPasswordConfirm"> Confirm New Password</label>
+        <div class="controls">
+            <input type="password" id="inputPasswordConfirm" name="inputPasswordConfirm">
+        </div>
+    </div>
+    -->
+
+
+    <button type="button" id="ezRecModalCloseBtn" style="display:none" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></button>
+
+    <div class="wide-view">
+
+        <div class="app-row">
+
+            <a class="profile-popover" selector="popover6" href="#" rel="popover"><img alt="" src="{{profilePicURL}}" class="ezRecProfilePic"></a>
+
+            <div id="ezRecognitionRecipInfo" class="ezRecognitionRecipInfo" recipientID="{{recipientId}}">
+                <div>
+                    <p class="ezRecRecipName">
+                        {{firstName}} {{lastName}}
+                    </p>
+                    <a class="info-popover" rel="popover" data-trigger="click" data-placement="right" data-title="{{countryName}}" href="#">
+                        <img src="img/flags/{{countryCode}}.png">
+                    </a>
+                </div>
+                <span class="ezRecOrgName">
+                    {{orgName}}
+                </span>
+                <p class="ezRecSubTitle ">{{title}}</p>
+                <span class="ezRecSubTitle-dot">•</span>
+                <p class="ezRecSubTitle">{{department}}</p>
+                <!-- <ul>
+                    <li><a href="#" id="ezRecChangeRecipLink"><i class="icon-minus-sign"></i>Change Recipient</a></li>
+                </ul> -->
+            </div>
+        </div>
+
+        <div class="app-row">
+
+            <form name="ezRecogntionForm" id="ezRecogntionForm" class="form-horizontal">
+            {{#if hasPromotions}}
+                <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please select a promotion"}'>
+                    <label class="control-label" for="ezRecognitionPromotionSelect">Promotion:</label>
+                    <div class="controls">
+
+                    {{#if hasOnePromotion}}
+                        <span class="naked-input">{{promotions.0.name}}</span>
+                    {{/if}}
+                        <select id='ezRecognitionPromotionSelect' name='promotionId' {{#if hasOnePromotion}}style="display:none"{{/if}}>
+                            <option value="">Select Promotion</option>
+                            {{#promotions}}
+                                <option value="{{id}}"
+                                    data-isEasy="{{#if attributes.isEasy}}true{{else}}false{{/if}}"
+                                    data-hasECard="{{#if attributes.ecardsActive}}true{{else}}false{{/if}}"
+                                    data-hasComments="{{#if attributes.commentsActive}}true{{else}}false{{/if}}">
+                                    {{name}}
+                                </option>
+                            {{/promotions}}
+                        </select>
+
+                    </div>
+                </div>
+
+                {{#if hasOrgUnits}}
+                <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please select an Org Unit"}'>
+                    <label  class="control-label" for="ezRecognitionOrgUnitSelect">Org Unit:</label>
+                    <div class="controls">
+
+                        <select id='ezRecognitionOrgUnitSelect' name='nodeId'>
+                            <option value="">Select Org Unit</option>
+                            {{#orgUnits}}
+                                <option value="{{id}}">{{name}}</option>
+                            {{/orgUnits}}
+                        </select>
+
+                    </div>
+                </div>
+                {{/if}}
+
+                <div id="ezRecognitionCommentBox">
+                    <label class="comment-label" for="comments">Comments</label>
+
+                    <div id="EZModuleCommentCheckSpell" class="btn-group EZModuleCommentCheckSpell">
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Check Spelling">
+                            <i class="icon-check"></i>
+                            <!-- <span class="caret"></span> -->
+                        </a>
+                        <ul class="dropdown-menu langs">
+                            <!-- dropdown menu links -->
+                            <li class="check">Check Spelling</li>
+                            {{#spellChecker}}
+                            <li class="lang {{lang}}" data-lang="{{lang}}"><a>{{langTitle}}</a></li>
+                            {{/spellChecker}}
+                        </ul>
+                    </div>
+                    <div id="ezRecharCountWrapper" class="ezRecharCountError">
+                        Remaining Characters:
+                        <span id="ezRecharCount">1000</span>
+                    </div>
+
+                    <div class="control-group validateme"
+                        data-validate-fail-msgs='{"nonempty":"You must enter a comment.","maxlength":"Character limit of 1000 exceeded"}'
+                        data-validate-flags='nonempty,maxlength'
+                        data-validate-max-length="1000" >
+                        <textarea name="comments" id="comments"
+                            class="recognition-comment"
+                            maxlength="1000"
+                            data-max-chars="1000"
+                            rows="2"></textarea>
+                    </div>
+
+                    <!-- <textarea rows="2" name="comments" class="recognition-comment" data-max-chars="1000"></textarea> -->
+                </div>
+
+                <div class="ezRecFormBtnsWrapper">
+
+                    <button type="button" id="ezRecognitionSendBtn" class="btn btn-primary ezRecButton" data-loading-text="Sending...">Send</button>
+
+                    <button type="button" id="ezRecognitionCardBtn" class="btn btn-primary ezRecButton">Advanced</button>
+
+                    <button type="button" id="ezRecognitionContinueBtn" class="btn btn-primary ezRecButton">Continue</button>
+
+                    <button type="button" id="ezRecognitionCancelBtn" class="btn ezRecButton">Cancel</button>
+
+                </div>
+
+            {{else}}
+
+                <div class="EZRecNoPromotionsWrapper">
+                    <p>There are no promotions in common with this participant</p>
+                </div>
+                <div class="ezRecFormBtnsWrapper empty">
+                    <button type="button" id="ezRecognitionCancelBtn" class="btn ezRecButton">Cancel</button>
+                </div>
+
+            {{/if}}
+
+                {{#unless hasOrgunits}}
+                <input type="hidden" name="nodeId" value="{{orgUnits.0.id}}">
+                {{/unless}}
+                <input type="hidden" name="claimRecipientFormBeans[0].nodeId" value="{{recipientNodeId}}" />
+                <input type="hidden" name="claimRecipientFormBeans[0].userId" value="{{recipientId}}" />
+                <input type='hidden' name='claimRecipientFormBeans[0].nodes' value='{{recipNodesObj}}' />
+
+            </form>
+
+            <form action="layout.html?tplPath=apps/recognition/tpl/&tpl=recognitionPageSend.html" method="post" id="complexRecognition" style="display:none">
+                <fieldset>
+                    {{#unless hasOrgunits}}
+                    <input type="hidden" name="nodeId" value="{{orgUnits.0.id}}">
+                    {{/unless}}
+                    <input type="hidden" name="claimRecipientFormBeans[0].nodeId" value="{{recipientNodeId}}" />
+                    <input type="hidden" name="claimRecipientFormBeans[0].userId" value="{{recipientId}}" />
+                    <input type='hidden' name='claimRecipientFormBeans[0].nodes' value='{{recipNodesObj}}' />
+                    <input type="hidden" name="hasECard" />
+                </fieldset>
+            </form>
+
+        </div>
+
+    </div> <!-- ./wide-view -->
+
+</div> <!-- ./module-liner -->
+
+<div class="modal hide fade autoModal recognitionResponseModal" id="ezRecSendSuccessModal">
+</div>
+
+<script id="ezRecNoOrgErrorTemplate" type="text/x-handlebars-template">
+    <span>Select an Org Unit</span>
+</script>
+
+<script id="ezRecNoPromoErrorTemplate" type="text/x-handlebars-template">
+    <span>Select a Promotion</span>
+</script>

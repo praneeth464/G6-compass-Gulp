@@ -1,0 +1,46 @@
+// Partial-specific variables (uncomment to use)
+// =========================
+// $homeApp_filterNavHeight: ;
+
+// $homeApp_filterTextSize: ; // Note that these are calculated values that use $homeApp_filterNavHeight as the base. Override with caution.
+// $homeApp_filterFontFamily: ;
+// $homeApp_filterFontColor: ;
+// $homeApp_filterFontStyle: ;
+// $homeApp_filterFontWeight: ;
+// $homeApp_filterTextTransform: ;
+
+// $homeApp_filterTextSizeSelected: ; // Note that these are calculated values that use $homeApp_filterNavHeight as the base. Override with caution.
+// $homeApp_filterFontColorSelected: ;
+// $homeApp_filterFontStyleSelected: ;
+// $homeApp_filterFontWeightSelected: ;
+// $homeApp_filterTextTransformSelected: ;
+
+// $homeApp_mobileBtnBg: ; // pass 'none' for a completely transparent button background
+// $homeApp_mobileBtnBgHighlight: ;
+// $homeApp_mobileBtnFontColor: ;
+
+// when #pageNav is given a background color, the homeApp will automatically place the filters on top of it to give the illusion of a navigation bar. Set this to false to prevent that bar from displaying on the homeApp page.
+// $homeApp_emulatePageNav: ;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "partials/homeApp";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// Partial-specific code for this skin
+// ==================================================
+
+
+
+// TODO 5.4: add a check of the homeApp text color against the body background color to run the font smoothing mixin
+// #homeAppPageView #homeAppTopNav {
+//     -webkit-font-smoothing: antialiased; // makes light-on-dark text look a bit better
+// }

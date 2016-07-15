@@ -1,0 +1,121 @@
+
+    <div class="pagination pagination-right paginationControls"></div>
+
+    <table id="ssiUpdateResultsActivityTable" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th class="participant sortable string {{#eq sortedOn "lastName"}} sorted {{sortedBy}}{{else}}asc{{/eq}}" data-sort-on="lastName" data-sort-by="{{#eq sortedOn "lastName"}}{{#eq sortedBy "asc"}}desc{{else}}asc{{/eq}}{{else}}asc{{/eq}}" {{#eq contestType "doThisGetThat"}}rowspan="2"{{/eq}}>
+                    <a href="#">
+                        Participant
+                        <i class="icon-sort-up"></i><i class="icon-sort-down"></i>
+                    </a>
+                </th>
+                {{#eq contestType "doThisGetThat"}}
+                    {{#each activitiesTableData}}
+                    <th class="activity number">
+                        {{activityName}}
+                    </th>
+                    {{/each}}
+                {{else}}
+                <th class="activity sortable string {{#eq sortedOn "activity"}} sorted {{sortedBy}}{{else}}asc{{/eq}}" data-sort-on="activity" data-sort-by="{{#eq sortedOn "activity"}}{{#eq sortedBy "asc"}}desc{{else}}asc{{/eq}}{{else}}asc{{/eq}}">
+                    <a href="#">
+                        Activity
+                        <i class="icon-sort-up"></i><i class="icon-sort-down"></i>
+                    </a>
+                </th>
+
+                <th class="totalActivity number">
+                    Total Activity <i class="icon icon-info-sign"></i>
+                </th>
+                {{/eq}}
+            </tr>
+            {{#eq contestType "doThisGetThat"}}
+            <tr>
+                {{#each activitiesTableData}}
+
+                <th class="totalActivity number">
+                    Total Activity <i class="icon icon-info-sign"></i>
+                </th>
+                {{/each}}
+            </tr>
+            {{/eq}}
+        </thead>
+
+        <!-- <tfoot>
+            <tr>
+                {{#eq contestType "doThisGetThat"}}
+                <td>Total</td>
+
+                {{#each activitiesTableData}}
+                <td class="number">{{activityTotal}}</td>
+                {{/each}}
+
+                {{else}}
+
+                <td colspan="2">Total</td>
+                <td class="number">{{activityTotal}}</td>
+
+                {{/eq}}
+            </tr>
+        </tfoot> -->
+
+        {{#if results}}
+        <tbody>
+            {{#each results}}
+            <tr>
+                <td>
+                    <a class="profile-popover" data-participant-ids="[{{id}}]">
+                        {{participantName}}
+                    </a>
+                </td>
+
+                {{#eq ../contestType "doThisGetThat"}}
+
+                    {{#each activities}}
+
+                    <td class="number">
+                        <input type="hidden" name="participant[{{../index}}].activity[{{activityNumber}}].id" value="{{id}}" />
+                        <input type="text" class="ssiTotalActivityText" name="participant[{{../index}}].activity[{{activityNumber}}].totalActivity"  value="{{activity}}" />
+                    </td>
+                    {{/each}}
+
+                {{else}}
+                <td>{{activityName}}</td>
+
+                <td class="number">
+                    <input type="text" class="ssiTotalActivityText" name="participant[{{index}}].totalActivity"  value="{{activity}}" />
+                </td>
+                {{/eq}}
+                <input type="hidden" name="participant[{{index}}].id" value="{{id}}" />
+            </tr>
+            {{/each}}
+        </tbody>
+        {{/if}}
+    </table>
+
+<div class="pagination pagination-right paginationControls"></div>
+
+<div class="ssiSavePagePaginationPopover" style="display:none">
+    <p>
+        <b>Performing this action will require you to save your current progress. Do you wish to save and proceed?</b>
+    </p>
+    <p class="tc">
+        <button type="button" class="btn btn-primary ssiSavePaginationProgress">Save</button>
+        <button type="button" class="btn ssiCancelProgress" data-url="layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiCreatorPage.html">Cancel</button>
+    </p>
+</div>
+
+<div class="ssiSavePageSortPopover" style="display:none">
+    <p>
+        <b>Performing this action will require you to save your current progress. Do you wish to save and proceed?</b>
+    </p>
+    <p class="tc">
+        <button type="button" class="btn btn-primary ssiSaveSortProgress">Save</button>
+        <button type="button" class="btn ssiCancelProgress" data-url="layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiCreatorPage.html#contest/1">Cancel</button>
+    </p>
+</div>
+
+<div class="ssiTotalActivityInfoPopover" style="display: none">
+    <p>Total Activity Info</p>
+</div>
+

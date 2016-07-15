@@ -1,0 +1,35 @@
+<li class="discussionComment commonDiscussionWrapper mediaComment" data-id="{{id}}">
+    <div class="innerCommentWrapper">
+        {{#if commenter.avatarUrl}}<img alt="{{commenter.firstName}} {{commenter.lastName}}" class="avatar" src="{{commenter.avatarUrl}}">{{/if}}
+
+        <div class="indent">
+            <div class="userInfo" data-id="{{commenter.id}}">
+                <span class="author">
+                    <a class="profile-popover" href="#" data-participant-ids="[{{commenter.id}}]">{{commenter.firstName}} {{commenter.lastName}}</a>
+                </span>
+                <span class="timeStamp">
+                    {{date}} {{time}}
+                </span>
+            </div>
+            <div class="text">
+                {{{comment}}}
+            </div>
+            <div class="likes">
+                <p>{{#unless commenter.isCurrentUser}}{{#eq status "noLikes" }} <a href="#" data-id="{{id}}" class="{{buttonClass}}">Like</a> {{/eq}}
+                    {{#eq status "onlyYouLike" }}You like this{{/eq}}
+                    {{#eq status "youAndOtherLike" }}You and <a href="#" data-participant-ids="[{{likedIds}}]" class="liked profile-popover"> {{numberOfOtherLikes}} other</a> like this{{/eq}}
+
+                    {{#eq status "youAndOthersLike" }}You and <a href="#" data-participant-ids="[{{likedIds}}]" class="liked profile-popover"> {{numberOfOtherLikes}} others</a> like this{{/eq}}
+                    {{/unless}}
+
+                    {{#eq status "oneLike" }}{{#unless commenter.isCurrentUser}}<a href="#" data-id="{{id}}" class="{{buttonClass}}" data-participant-ids="[{{likedIds}}]">Like</a> &#8226;{{/unless}} <a href="#" class="liked profile-popover" data-participant-ids="[{{likedIds}}]">  {{numberOfLikes}} person</a> likes this{{/eq}}
+
+                    {{#eq status "moreLike" }}{{#unless commenter.isCurrentUser}}<a href="#" data-id="{{id}}" class="{{buttonClass}}">Like</a> &#8226;{{/unless}} <a href="#" class="liked profile-popover" data-participant-ids="[{{likedIds}}]"> {{numberOfLikes}} people</a> like this{{/eq}}
+                        <!-- Conditional JSP for admin replace path with actual path -->
+                    - <a href="#" class="removeCommentButton liked" data-path="ajax/forumDelete.Json">Delete</a>
+                        <!-- /Conditional JSP -->
+                </p>
+            </div>
+        </div><!-- /.indent -->
+    </div><!-- /.innerCommentWrapper -->
+</li>

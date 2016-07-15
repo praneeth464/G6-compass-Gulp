@@ -1,0 +1,151 @@
+<!-- ======== WORK HAPPIER MODULE ======== -->
+<div class="module-liner">
+
+    <a class="visitAppBtn whModalTrigger">
+        <i class="icon-arrow-right"></i>
+    </a>
+
+    <div class="wide-view">
+        <h2>How Happy Are You at Work?</h2>
+
+        <img src="img/workHappier/smilyFace.png" alt="smily face" class="static-smily-face">
+    </div>
+
+    <div class="title-icon-view">
+        <h3>Work Happier</h3>
+    </div>
+
+    <div class="modal hide fade" id="whModal" data-backdrop="static">
+        <div class="happiness--container">
+            <div id="happiness--beta_tag">
+                <div class="content">
+                </div>
+            </div>
+
+            <div class="happiness--wrapper">
+                <a href="#" class="whModalClose">X</a>
+                <h1 id="happiness--module_header" class="break">How Happy Are You at Work?</h1>
+
+                <div id="happiness--slider_container">
+                    <h2 id="happiness--result_header"><span id="happiness--result_header_feeling"></span></h2>
+                    <h3 id="happiness--result_subheader"><span>For free personalized advice on how to work happier, take 3 minutes to answer a few questions.</span></h3>
+
+                    <div id="happiness--analyze_smile_cta" class="happiness--button_container">
+                        <a href="#" class="btn btn-primary">Analyze My Smile</a>
+                    </div>
+
+                    <div id="happiness--work_happier_cta" class="happiness--button_container">
+                        <a href="http://google.com" class="btn btn-primary">Get Your Full Profile</a>
+                    </div>
+
+                    <!-- <div id="happiness--confidential_feedback">
+                        <p>Tell us what you think of the slider with our <a href="#" id="whFeedbackModalTrigger">Feedback Form.</a></p>
+                    </div> -->
+
+                    <div id="happiness--privacy_statement">
+                        <p>Of course, your results are confidential. <a href="layout.html?tplPath=base/tpl/&amp;tpl=privacyPolicyPage.html" id="whPrivacyModalTrigger" data-page-id="privacyPageView">Privacy Policy</a>.</p>
+                    </div>
+                </div>
+
+                <div class="happiness--past_results"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal hide fade" id="whFeedbackModal" tabindex="-1" role="dialog" aria-labelledby="whFeedbackModalLabel">
+        <div class="modal-header">
+            <button type="button" class="close whFeedbackClose" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></button>
+            <h3 id="myModalLabel">Confidential Feedback</h3>
+        </div>
+        <div class="modal-body">
+            <p>Please provide feedback on your experience using the Happiness Slider.</p>
+
+            <form action="layout.html?tplPath=base/tpl/&tpl=modulesPage.html#filter/home" method="post">
+                <div class="control-group validateme"
+                    data-validate-fail-msgs='{"nonempty":"You must enter a message."}'
+                    data-validate-flags='nonempty'>
+                    <textarea name="message" cols="50" rows="5"></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="submit" id="whFeedbackSubmit">Submit</button>
+            <button class="btn whFeedbackClose" data-dismiss="modal">Close</button>
+        </div>
+    </div><!--/#whFeedbackModal-->
+</div>
+
+<!--subTpl.whPastResultsTpl=
+<h3>How I've been feeling lately</h3>
+
+{{#if this}}
+<ul class="past_results_list">
+    {{#each this}}
+        <li>
+            <img src="{{imgUrl}}" alt="{{mood}} face" class="happiness--past_results_smily" />
+            <div>
+                <span class="happiness--past_results_date">{{date}}</span>
+                <span class="happiness--past_results_mood">{{mood}}</span>
+            </div>
+        </li>
+    {{/each}}
+</ul>
+{{else}}
+<div class="past_results_list">
+    <span class="no_results">No Past Responses</span>
+</div>
+{{/if}}
+subTpl-->
+
+
+<!-- Instantiate new BIWHappinessSlider with options -->
+<script>
+
+$(document).ready(function(){
+    window.happinessSliderOpts =
+        {
+            resultZonesData: [
+                {
+                    headline: 'Take a deep breath',
+                    feeling: 'You might be thinking: Yikes',
+                    min: 0,
+                    thoughts: [
+                        'This is not what the brochure advertised',
+                        'Huston we have a problem',
+                        'Wake me when its over'
+                    ]
+                },
+                {
+                    headline: 'Find a way forward',
+                    feeling: 'You might be thinking: Could be better',
+                    min: 37,
+                    thoughts: [
+                      'Meh',
+                      'I grin and bear it. Well, I bear it',
+                      'Its got to be 5 oclock somewhere'
+                    ]
+                },
+                {
+                    headline: 'Build on whats working',
+                    feeling: 'Youre probably feeling: Pretty Good',
+                    min: 59,
+                    thoughts: [
+                        'Okay...not bad',
+                        'Im in like with this job',
+                        'Its a good start'
+                    ]
+                },
+                {
+                    headline: 'Youve figured out the big stuff',
+                    feeling: 'Youre probably feeling: Awesome',
+                    min: 80,
+                    thoughts: [
+                      'We have lift off',
+                      'Is it work if it makes me this happy?',
+                      'Ive got that Happy song stuck in my head'
+                    ]
+                }
+            ]
+        };
+});
+</script>

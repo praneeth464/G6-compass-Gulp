@@ -1,0 +1,277 @@
+// App-specific variables
+// =========================
+
+// _throwdown.scss
+// -------------------------
+// $throwdown_iconColor: ;
+// $throwdown_titleColor: ;
+// $throwdown_titleFontFamily: ;
+// $throwdown_titleFontSizes: ;
+// $throwdown_titleFontWeights: ;
+$throwdown_tileIconColor: #454545;
+
+// $throwdown_primaryFontFamily: ;
+// $throwdown_primaryFontWeight: ;
+$throwdown_primaryAccentColor: #68a617;
+// $throwdown_secondaryFontFamily: ;
+// $throwdown_secondaryFontWeight: ;
+$throwdown_secondaryAccentColor: #39beeb;
+// $throwdown_tertiaryFontWeight: ;
+$throwdown_tertiaryAccentColor: #f28020;
+
+// $throwdown_textColor: ;
+// $throwdown_textDark: ;
+// $throwdown_textNormal: ;
+// $throwdown_textLight: ;
+// $throwdown_numberColor: ;
+
+// $throwdown_gradTypeLinear: ;
+// $throwdown_gradMetaTop: ;
+// $throwdown_tableYouText: ;
+$throwdown_tableOdd: #1e92ba;
+// $throwdown_tableEven: ;
+// $throwdown_tableBorderColor: ;
+// $throwdown_winnerColor: ;
+
+// $throwdown_rulesButtonGradColor: ;
+// $throwdown_rulesButtonGradStops: ;
+// $throwdown_rulesButtonTextColor: ;
+
+// $throwdownCountdown_backgroundColor: ;
+// $throwdownCountdown_digitColor: ;
+// $throwdownCountdown_labelColor: ;
+
+// $throwdown_fancyAvatar_avatarDimension: ;
+// $throwdown_fancyAvatar_avatarPadding: ;
+// $throwdown_fancyAvatar_avatarDimensionBig: ;
+// $throwdown_fancyAvatar_avatarPaddingBig: ;
+// $throwdown_fancyAvatar_avatarDimensionMed: ;
+// $throwdown_fancyAvatar_avatarDimensionSmall: ;
+// $throwdown_fancyAvatar_avatarPaddingSmall: ;
+// $throwdown_fancyAvatar_border: ;
+
+
+// _allMatchesManager.scss
+// -------------------------
+// $throwdownAllMatches_headerBgColor: ;
+// $throwdownAllMatches_tabsNavBgColor: ;
+// $throwdownAllMatches_tabsIconColor: ;
+// $throwdownAllMatches_tabsIconShadow: ;
+// $throwdownAllMatches_tabsIconColorHover: ;
+// $throwdownAllMatches_tabsIconShadowHover: ;
+// $throwdownAllMatches_tabsTabBgHover: ;
+// $throwdownAllMatches_tabsTabBoxShadowClick: ;
+// $throwdownAllMatches_tabsIconColorActive: ;
+// $throwdownAllMatches_tabsIconShadowActive: ;
+// $throwdownAllMatches_tabsTabBgActive: ;
+
+
+// _bannerModules.scss
+// -------------------------
+// $tdBanner_bgColor: ;
+
+// $throwdownNews_imgUrlPath: ; // uses $appImagesPath by default. change to "false" or some other path to use the skin img folder
+// $throwdownNews_imgUrl2x1: ;
+
+// $throwdownTrainingCamp_imgUrlPath: ; // uses $appImagesPath by default. change to "false" or some other path to use the skin img folder
+// $throwdownTrainingCamp_imgUrl2x1: ;
+
+// $throwdownStandings_imgUrlPath: ; // uses $appImagesPath by default. change to "false" or some other path to use the skin img folder
+// $throwdownStandings_imgUrl2x1: ;
+
+// $throwdownRankings_imgUrlPath: ; // uses $appImagesPath by default. change to "false" or some other path to use the skin img folder
+// $throwdownRankings_imgUrl2x1: ;
+
+// $throwdownSmackTalk_imgUrlPath: ; // uses $appImagesPath by default. change to "false" or some other path to use the skin img folder
+// $throwdownSmackTalk_imgUrl2x1: ;
+
+
+// _matchDetail.scss
+// -------------------------
+// $throwdownMatchModuleBadgeWidth: ;
+// $throwdownMatchModuleBadgeHeight: ;
+
+$throwdownMatchModule_bgGradColor: #0481ac;
+// $throwdownMatchModule_bgGradStops: ;
+$throwdownMatchModule_buttonGradColor: #6aa91b;
+// $throwdownMatchModule_buttonGradStops: ;
+
+// $throwdown_MatchFontSize: ;
+// $throwdown_MatchLineHeight: ;
+
+// $throwdownMatchModule_letterColor: ;
+// $throwdownMatchModule_numberColor: ;
+// $throwdownMatchModule_winnerColor: ;
+// $throwdownMatchModule_buttonTextColor: ;
+// $throwdownMatch_aheadColor: ;
+
+// $throwdownMatchModule_countdownBackgroundColor: ;
+// $throwdownMatchModule_countdownDigitColor: ;
+// $throwdownMatchModule_countdownLabelColor: ;
+
+// $throwdown_matchDetail_containerBgColor: ;
+// $throwdown_matchDetail_commentBgColor: ;
+
+
+// _news.scss
+// -------------------------
+// $throwdownNewsPage_bgColor: ;
+// $throwdownNewsPage_gradType: ;
+// $throwdownNewsPage_gradMeta: ;
+// $throwdownNewsPage_gradStops: ;
+// $throwdownNewsPage_titleColor: ;
+// $throwdownNewsPage_pageTimeStampColor: ;
+
+// $throwdownNewsPage_storyBoxBkg: ;
+// $throwdownNewsPage_storyBoxBkgSafe: ;
+// $throwdownNewsPage_storyBoxTextSize: ;
+// $throwdownNewsPage_storyBoxTitleSize: ;
+// $throwdownNewsPage_storyBoxTextColor: ;
+// $throwdownNewsPage_storyBoxTitleColor: ;
+// $throwdownNewsPage_storyBoxLinkColor: ;
+// $throwdownNewsPage_storyBoxLinkHoverColor: ;
+
+
+// _profilePlayerStats.scss
+// -------------------------
+// $throwdownPlayerStats_fancyAvatar_avatarPageDimension: ;
+// $throwdownPlayerStats_buttonGradColor: ;
+// $throwdownPlayerStats_buttonGradStops: ;
+// $throwdownPlayerStats_buttonTextColor: ;
+
+
+// _promoSelect.scss
+// -------------------------
+// $tdPromoInfoPadding: ;
+// $tdPromoSelectWidth: ;
+// $tdPromoSelectHeight: ;
+// $tdPromoSelectTextLineHeight: ;
+// $throwdownPromoSelect_textColor: ;
+
+// $throwdownPromotionSelector_countdownBackgroundColor: ;
+// $throwdownPromotionSelector_countdownDigitColor: ;
+// $throwdownPromotionSelector_countdownLabelColor: ;
+
+$throwdownPromotionSelector_bgGradColor: #0481ac;
+// $throwdownPromotionSelector_bgGradStops: ;
+
+// $throwdownViewMatches_titleColor: ;
+// $throwdownViewMatches_titleFontWeight: ;
+// $throwdownViewMatches_titleFontFamily: ;
+// $throwdownViewMatches_imgUrlPath: ; // uses $appImagesPath by default. change to "false" or some other path to use the skin img folder
+// $throwdownViewMatches_imgUrl2x1: ;
+
+// $throwdownCustomSelect_gradColor: ;
+// $throwdownCustomSelect_gradStops: ;
+// $throwdownCustomSelect_arrowColor: ;
+// $throwdownCustomSelectArrow_gradStops: ;
+// $throwdownCustomSelectArrow_leftColor: ;
+// $throwdownPromoSelectListBgColor: ;
+
+
+// _rankings.scss
+// -------------------------
+// $throwdownRankings_bgColor: ;
+// $throwdownRankings_gradStops: ;
+// $throwdownRankings_titleColor: ;
+// $throwdownRankings_headerBgColor: ;
+// $throwdownRankings_tabsNavBgColor: ;
+// $throwdownRankings_topRankedBgColor: ;
+// $throwdownRankings_topRankedTextColor: ;
+// $throwdownRankings_badgeFirstPlaceColor: ;
+// $throwdownRankings_badgeSecondPlaceColor: ;
+// $throwdownRankings_badgeThirdPlaceColor: ;
+// $throwdownRankings_badgeTextShadowColor: ;
+// $throwdownRankings_tableTextColor: ;
+// $throwdownRankings_tableBorderColor: ;
+// $throwdownRankings_numberColor: ;
+
+$throwdownRankings_leaderBgModuleOdd: $white;
+$throwdownRankings_leaderBgModuleEven: scale-color($throwdownRankings_leaderBgModuleOdd, $lightness: -15.7%);
+// $throwdownRankings_moduleBackgroundColor: ;
+
+// $throwdownRankings_fancyAvatar_avatarPageDimension: ;
+// $throwdownRankings_fancyAvatar_avatarModuleDimension: ;
+// $throwdownRankings_fancyAvatar_avatarPadding: ;
+// $throwdownRankings_fancyAvatar_border: ;
+
+
+// _smackTalk.scss
+// -------------------------
+// $smackTalk_bgColor: ;
+// $smackTalk_gradType: ;
+// $smackTalk_gradMeta: ;
+// $smackTalk_gradStops: ;
+
+// $smackTalk_iconColor: ;
+// $smackTalk_titleColor: ;
+// $smackTalk_titleFontFamily: ;
+// $smackTalk_titleFontSizes: ;
+// $smackTalk_titleFontWeights: ;
+
+// $smackTalk_tabsNavBgColor: ;
+// $smackTalk_tabsNavBorderWidth: ;
+// $smackTalk_tabsNavBorderColor: ;
+
+// $smackTalk_tabsIconColor: ;
+// $smackTalk_tabsIconShadow: ;
+// $smackTalk_tabsTabBgColor: ;
+
+// $smackTalk_tabsIconColorHover: ;
+// $smackTalk_tabsIconShadowHover: ;
+// $smackTalk_tabsTabBgHover: ;
+// $smackTalk_tabsTabBoxShadowClick: ;
+
+// $smackTalk_tabsIconColorActive: ;
+// $smackTalk_tabsIconShadowActive: ;
+// $smackTalk_tabsTabBgActive: ;
+
+// $smackTalk_containerLinkColor: ;
+// $smackTalk_containerChevronColor: ;
+// $smackTalk_containerBgColor: ;
+// $smackTalk_containerBorderWidth: ;
+// $smackTalk_containerBorderColor: ;
+// $smackTalk_commentBgColor: ;
+
+// $smackTalk_VS_textColor: ;
+
+
+// _standings.scss
+// -------------------------
+// $throwdownStandingsPage_bgColor: ;
+// $throwdownStandingsPage_gradType: ;
+// $throwdownStandingsPage_gradMeta: ;
+// $throwdownStandingsPage_gradStops: ;
+
+// $throwdownStandingsPage_titleColor: ;
+$throwdownStandingsPage_promoInfoBgColor: #f6f6f6;
+// $throwdownStandingsPage_tableHeaderColor: ;
+// $throwdownStandingsPage_buttonGradColor: ;
+// $throwdownStandingsPage_buttonGradStops: ;
+// $throwdownStandingsPage_buttonTextColor: ;
+
+
+// _trainingCamp.scss
+// -------------------------
+// $throwdownTrainingCamp_bgColor: ;
+// $throwdownTrainingCamp_gradType: ;
+// $throwdownTrainingCamp_gradMeta: ;
+// $throwdownTrainingCamp_gradStops: ;
+
+// $throwdownTrainingCamp_titleColor: ;
+// $throwdownTrainingCamp_linkColor: ;
+// $throwdownTrainingCamp_linkHoverColor: ;
+
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "throwdown/scss/throwdown";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

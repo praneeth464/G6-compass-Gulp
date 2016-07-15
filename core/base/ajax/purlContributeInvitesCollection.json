@@ -1,0 +1,43 @@
+<?php sleep(2) ?>
+{
+	"messages": [],
+
+	"invites": [
+		{
+			"emailAddress": "Dominic.Cocchairella@gmail.com",
+			"firstName": "Dominic",
+			"lastName": "Cocchiarella",
+			"status": "success"
+		},
+				{
+			"emailAddress": "Anita.Bath@gmail.com",
+			"firstName": "Anita",
+			"lastName": "Bath",
+			"status": "success"
+		},
+		{
+			"emailAddress": "SomePerson@gmail.com",
+			"firstName": "Some",
+			"lastName": "Person",
+			"status": "exists"
+		},
+		{
+			"emailAddress": "SomeOtherPerson@gmail.com",
+			"firstName": "SomeOther",
+			"lastName": "Person",
+			"status": "fail"
+		},
+		{
+			"emailAddress": "EmptyStringNames@gmail.com",
+			"firstName": "",
+			"lastName": "",
+			"status": "success"
+		},
+		{
+			"emailAddress": "NullNames@gmail.com",
+			"firstName": null,
+			"lastName": null,
+			"status": "success"
+		}
+	]
+}

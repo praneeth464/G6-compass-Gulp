@@ -1,0 +1,278 @@
+// App-specific variables
+// =========================
+$celebrationManagerMessage_bgColor: $g5ModuleBgColor !default;
+$celebrationManagerMessage_gradType: $g5ModuleGradType !default;
+$celebrationManagerMessage_gradMeta: $g5ModuleGradMeta !default;
+$celebrationManagerMessage_gradStops: $g5ModuleGradStops !default;
+$celebrationManagerMessage_bgNoGrad: true !default;
+
+$celebrationManagerMessage_linkColor: $linkColor !default;
+$celebrationManagerMessage_linkHoverColor: $linkColorHover !default;
+$celebrationManagerMessage_commentTitleLargeColor: $black !default;
+$celebrationManagerMessage_commentTitleSmallColor: $black !default;
+$celebrationManagerMessage_commentTextColor: $black !default;
+$celebrationManagerMessage_commenterMetaColor: $black !default;
+
+$celebrationManagerMessage_cycleDotColor: $white !default;
+$celebrationManagerMessage_cycleDotSelectedColor: $grayLight !default;
+$celebrationManagerMessage_cycleDotTextColor: $black !default;
+$celebrationManagerMessage_cycleDotSelectedTextColor: $celebrationManagerMessage_cycleDotTextColor !default;
+
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.celebrationManagerMessage {
+
+} /* /.celebrationManagerMessage */
+
+/* ----- MODULE STYLES ----- */
+.module.celebrationManagerMessage {
+
+    @if $celebrationManagerMessage_bgNoGrad {
+        .module-liner {
+            background: transparent;
+        }
+    }
+    @else {
+        @include module_moduleLinerBackground(
+            $bgColor: $celebrationManagerMessage_bgColor,
+            $gradType: $celebrationManagerMessage_gradType,
+            $gradMeta: $celebrationManagerMessage_gradMeta,
+            $gradStops: $celebrationManagerMessage_gradStops
+        );
+    }
+
+    .wide-view {
+        padding: 0;
+    }
+
+    .carousel {
+
+        .item {
+            height: 320px;
+        }
+
+        .item-wrap {
+            padding-left: 60px;
+            height: 320px;
+
+            .comment {
+                bottom: 113px;
+                color: $celebrationManagerMessage_commentTitleLargeColor;
+                font: $baseFontSize * 3.428 $celebration_tertiaryFontFamily;
+                letter-spacing: -1px;
+                line-height: .9;
+                margin: ($baseLineHeight / 2) 15px ($baseLineHeight / 2) 0;
+                padding-right: 20px;
+                position: absolute;
+                max-height: 158px;
+                max-width: 545px;
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+
+            .commenter {
+                bottom: 20px;
+                position: absolute;
+                right: $g5ModulePadding;
+
+                .commenter-avatar {
+                    height: 60px;
+                    float: right;
+                    width: 60px;
+                }
+
+                .commenter-avatar[src=""]{
+                    display:none;
+                }
+
+                .commenter-meta {
+                    color: $celebrationManagerMessage_commenterMetaColor;
+                    padding: 28.8px 10px 0 0;
+                    float: right;
+                    text-align: right;
+
+                    p {
+                        margin: 0;
+                    }
+                }
+
+                .commenter-name {
+                    font-size: $baseFontSize * 1.14;
+                    font-weight: bold;
+                    line-height: 1.2;
+                }
+
+                .commenter-title {
+                    font-size: $baseFontSize * .857;
+                    line-height: 1;
+                }
+            }
+        }
+    }
+
+    .cycleLegend {
+        left: $g5ModulePadding !important;
+        bottom: 20px;
+
+        .cycleDot {
+            @include border-radius(20px);
+            background-color: $celebrationManagerMessage_cycleDotColor;
+            border: none;
+            color: $celebrationManagerMessage_cycleDotTextColor;
+            height: 20px;
+            margin: 0 10px 0 0;
+            text-align: center;
+            width: 20px;
+
+            &.selected {
+                @if $celebrationManagerMessage_cycleDotSelectedTextColor != $celebrationManagerMessage_cycleDotTextColor {
+                    color: $celebrationManagerMessage_cycleDotSelectedTextColor;
+                }
+                background-color: $celebrationManagerMessage_cycleDotSelectedColor;
+            }
+
+            &:hover {
+                border: none;
+            }
+        }
+    }
+
+    &.grid-dimension-2x2 {
+        .carousel {
+            .item-wrap {
+                padding-left: 15px;
+            }
+            .commenter {
+                bottom: 30px;
+            }
+        }
+
+        .cycleLegend {
+            bottom: 10px;
+            left: 10px !important;
+        }
+    }
+} /* /.module.celebrationManagerMessage   */
+
+/* ----- PAGE STYLES ----- */
+.page.celebration {
+    &#celebrationManagerMessagePageView {
+        .celebrationRecipientMeta div {
+            float: left;
+
+            span {
+                font-size: 12px;
+                line-height: 15px;
+
+                &.recipientName,
+                &.recipientOrg {
+                    display: block;
+                }
+
+                &.recipientTitle {
+                    float: left;
+                }
+            }
+        }
+
+        img.avatar {
+            height: 40px;
+            margin-right: 10px;
+            width: 40px;
+        }
+
+        .celebrationMessageContainer {
+            @include clearfix();
+            margin-top: 30px;
+            margin-bottom: 15px;
+            position: relative;
+            width: 50%;
+
+            .mask {
+                @include opacity(.5);
+                background: black;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                position: absolute;
+                top: 0;
+                z-index: 100;
+            }
+            .spin {
+                left: 50%;
+                margin: (-1 * $spinner_widthHeight / 2) 0 0 (-1 * $spinner_widthHeight / 2);
+                position: absolute;
+                top: 50%;
+            }
+
+            label {
+                float: left;
+            }
+
+            .commentTools {
+                font-size: .9em;
+                text-align: right;
+
+                .lt-ie8 & { // ie7
+                    width: 95%;
+                }
+                .remChars {
+                    font-weight: bold;
+                }
+                .checkSpellingDdBtn {
+                    display: inline-block;
+                    line-height: 16px;
+                    margin-bottom: 2px;
+                    padding: 0 2px;
+                    width: auto;
+                }
+            }
+            .managerMessageInp {
+                @include input-block-level();
+                margin-bottom: 2px;
+                font: $baseFontSize $celebration_tertiaryFontFamily;
+
+                .lt-ie8 & { // ie7
+                    width: 95%;
+                }
+            }
+            .dropdown-menu {
+                color: black;
+                left: auto;
+                right: 0;
+                text-align: left;
+
+                & a {
+                    color: black;
+                }
+                & .check:hover {
+                    background: inherit;
+                    color: black;
+                }
+            }
+            @media (max-width: 480px) {
+
+                .commentTools {
+                    clear: both;
+                    padding-top: 10px;
+                }
+            }
+        }
+
+        .celebrationManagerMeta div {
+            float: left;
+
+            .managerName {
+                font-size: 12px;
+            }
+        }
+    }
+
+} /* /.page.celebrationManagerMessage   */

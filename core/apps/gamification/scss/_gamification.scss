@@ -1,0 +1,339 @@
+// App-specific variables
+// =========================
+$gamification_bgColor: $g5ModuleBgColor !default;
+$gamification_gradType: $g5ModuleGradType !default;
+$gamification_gradMeta: $g5ModuleGradMeta !default;
+$gamification_gradStops: $g5ModuleGradStops !default;
+
+$gamification_iconColor: $g5ModuleIconColor !default;
+$gamification_titleColor: $g5ModuleTitleColor !default;
+$gamification_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$gamification_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$gamification_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$gamification_bgColorBig: $grayDark !default;
+$gamification_gradTypeBig: radial !default;
+$gamification_gradMetaBig: center center, circle !default;
+$gamification_gradStopsBig: $gamification_bgColorBig, lighten($gamification_bgColorBig, 17%) !default;
+
+$gamification_textColor: $white !default;
+$gamification_textColorEarned: #9a9a9a !default;
+$gamification_progressBackColor: $grayDarker !default; // progress bar background color
+$gamification_progressBarColor: false !default;  // progress bar foreground color
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.gamification {
+
+} /* /.gamification */
+
+/* ----- MODULE STYLES ----- */
+.module.gamification {
+
+    // never show the dataLoading spinner on the icon versions of this module
+    &.grid-dimension-1x1.dataLoading,
+    &.grid-dimension-2x1.dataLoading {
+        .spin {
+            display: none;
+        }
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4, {
+        .module-liner {
+            // define the backgrounds of the big version first so we can bring back the small version when .dataLoading
+            @include module_moduleLinerBackground(
+                $bgColor: $gamification_bgColorBig,
+                $gradType: $gamification_gradTypeBig,
+                $gradMeta: $gamification_gradMetaBig,
+                $gradStops: $gamification_gradStopsBig
+            );
+
+            .title-icon-view {
+                display: none;
+            }
+        }
+
+        // hide the big version of this module when we're loading data and show a faded version of the title-icon-view
+        @include module_fadeOnDataLoading();
+    }
+
+    // define the backgrounds of the general version second so we can override the big color when .dataLoading
+    &.dataLoading .module-liner,
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $gamification_bgColor,
+            $gradType: $gamification_gradType,
+            $gradMeta: $gamification_gradMeta,
+            $gradStops: $gamification_gradStops
+        );
+    }
+
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $gamification_iconColor,
+            $titleColor: $gamification_titleColor,
+            $titleFontFamily: $gamification_titleFontFamily
+        );
+
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            @include g5HomeAppIconBoxReflect(-50px);
+        }
+    }
+
+    @include module_titleIconViewFontSizesWeights($gamification_titleFontSizes, $gamification_titleFontWeights);
+
+    color: $gamification_textColor;
+
+    .wide-view {
+        padding: 0 36px;
+
+        h3 {
+            font-family: $gamification_titleFontFamily;
+            font-weight: normal;
+        }
+    }
+
+    a {
+        &:link,
+        &:visited {
+            color: $gamification_textColor;
+            text-decoration: none;
+        }
+        &:hover {
+            color: $gamification_textColor;
+            text-decoration: none;
+        }
+    }
+
+    .badges {
+        ul {
+            margin-right: 18px;
+            margin-left: -9px;
+            margin-bottom: 0;
+            padding-top: 18px;
+
+            & ~ ul {
+                margin-left: 0;
+                margin-right: -18px;
+            }
+        }
+
+        li {
+            height: 90px;
+            // margin-bottom: 24px;
+            line-height: 16px;
+            // overflow: auto;
+        }
+
+        .badge-item {
+            overflow: visible;
+
+            a {
+                display: block;
+                // margin-right: 18px;
+
+                img {
+                    margin-top: -6px;
+                    margin-right: 12px;
+                    // margin-bottom: 1px;
+                    // margin-left: -6px;
+                    width: 72px;
+                    float: left;
+                }
+            }
+
+            &.featured {
+                margin-bottom: 18px;
+                height: 252px;
+                // text-align: center;
+                // overflow: visible;
+
+                a {
+                    display: inline-block;
+                    // margin-right: 0;
+
+                    div {
+                        text-align: left;
+                    }
+
+                    img {
+                        margin: -12px -24px 0 -24px; // 24 = (192 - 144) / 2
+                        width: 192px;
+                        max-width: none;
+                        float: none;
+                    }
+                }
+            }
+
+            &.earned-false img {
+                @include opacity(.2);
+            }
+        }
+
+        .badge-name {
+            font-weight: bold;
+            font-size: 13px;
+            padding-top: 2px;
+            max-height: 32px;
+            overflow: hidden;
+            padding-top: 11px;
+        }
+        .hasDateEarned{
+            padding-top:11px;
+        }
+        .hasProgressBar{
+            padding-top: 0px;
+        }
+
+        .badge-how-to-earn {
+            font-size: 12px;
+        }
+        .badge-date-earned {
+            font-size: 12px;
+            color: $gamification_textColorEarned;
+        }
+
+        .progress {
+            position: relative;
+            margin: 3px 0 0 0;
+            @if $gamification_progressBackColor {
+                background: $gamification_progressBackColor;
+                filter: none;
+            }
+
+            span {
+                position: absolute;
+                left: 0%;
+                width: 100%;
+                text-align: center;
+                font-size: 12px;
+                line-height: 20px;
+            }
+
+            .bar {
+                @if $gamification_progressBarColor {
+                    background: $gamification_progressBarColor;
+                }
+                line-height: 20px; // height of .progress from bootstrap
+            }
+        }
+    }
+
+    /* ----- ELEMENTS FOR THE 2X2 GRID ----- */
+    &.grid-dimension-2x2 {
+        .wide-view {
+            padding: 0 30px;
+
+            .badges {
+                ul {
+                    margin-left: 0px;
+                    margin-right: 0;
+                    padding-top: 5px;
+                }
+                .badge-item {
+                    list-style: none;
+                    clear: left;
+                    img {
+                        float: left;
+                    }
+                }
+
+                li {
+                    height: 80px;
+                }
+            }
+
+            h3 {
+                font-size: 28px;
+            }
+        }
+    }
+
+    /* ----- ELEMENTS FOR THE 4X2 GRID ----- */
+    &.grid-dimension-4x2 {
+        .wide-view {
+            .badges {
+                ul {
+                    width: 50%;
+                    float: left;
+                    list-style: none;
+                    padding-top: 8px;
+                    // margin-left: 0;
+
+                    .badge-item {
+                        margin-left: 18px;
+                        list-style: none;
+                        clear: left;
+
+                        &.featured {
+                            height: 225px;
+                        }
+                    }
+                    & ~ ul {
+                        .badge-item {
+                            margin-left: 0;
+                            margin-right: 18px;
+                        }
+                    }
+                }
+
+                li {
+                    height: 80px;
+                }
+            }
+
+            h3 {
+                font-size: 30px;
+            }
+        }
+    }
+
+    /* ----- ELEMENTS FOR THE 4X4 GRID ----- */
+    &.grid-dimension-4x4 {
+        .wide-view {
+
+            .badges {
+                ul {
+                    width: 50%;
+                    float: left;
+                    list-style: none;
+                    // margin-left: 0;
+
+                    .badge-item {
+                        list-style: none;
+                        clear: left;
+
+                        &.featured {
+                            margin-left: 18px;
+                        }
+                    }
+
+                    &:first-child{
+                        li.badge-item:first-child {
+                            // height: 240px;
+                        }
+                    }
+                }
+            }
+
+            h3 {
+                font-size: 32px;
+            }
+        }
+    }
+} /* /.module.gamification */
+
+/* ----- PAGE STYLES ----- */
+.page.gamification {
+
+} /* /.page.gamification */
+

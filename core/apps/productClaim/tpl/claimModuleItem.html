@@ -1,0 +1,17 @@
+<li class="claimItem {{eo}}">
+    <p class="title">
+        <a href="#/link/to/submit/a/claim/page/with/this/title/selected" class="promotion">{{promotionName}}</a>
+        <a href="${pageContext.request.contextPath}/claim/startClaimSubmission.do?method=showClaim&claimId={{claimId}}" class="btn btn-inverse history">History</a>
+    </p>
+    {{#if promotionEndDate}}<p class="ends">
+        ends {{promotionEndDate}} 
+    </p>{{/if}}
+    <div class="row-fluid">
+        <p class="span6 emphasized">
+            Submitted: <span class="highlight">{{numberSubmitted}}</span>
+        </p>
+        <p class="span6 emphasized">
+            Approved: <span class="highlight">{{numberOfApprovals}}</span>
+        </p>
+    </div>
+</li>

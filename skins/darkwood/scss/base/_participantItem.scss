@@ -1,0 +1,23 @@
+// Partial-specific variables (uncomment to use)
+// =========================
+$participantItem_backgroundFlash: scale-color($pages_splitterBgColor, $lightness: -25%);
+$participantItem_rowHoverBgColor: scale-color($pages_splitterBgColor, $lightness: 25%);
+// $participantItem_editRemoveLinkColor: ;
+$participantItem_editRemoveIconColor: $white;
+$participantItem_editRemoveBorderColor: $white;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "partials/participantItem";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// Partial-specific code for this skin
+// ==================================================

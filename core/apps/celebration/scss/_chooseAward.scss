@@ -1,0 +1,108 @@
+// App-specific variables
+// =========================
+$celebrationChooseAward_bgColor: $g5ModuleBgColor !default;
+$celebrationChooseAward_gradType: $g5ModuleGradType !default;
+$celebrationChooseAward_gradMeta: $g5ModuleGradMeta !default;
+$celebrationChooseAward_gradStops: $g5ModuleGradStops !default;
+$celebrationChooseAward_ImgUrlPath: $appImagesPath !default;
+$celebrationChooseAward_ImgUrl2x2: "celebration/bg-choose-award-module.jpg" !default;
+
+$celebrationChooseAward_fontColor: #666666 !default;
+$celebrationChooseAward_numberColor: $white !default;
+
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.celebrationChooseAward {
+
+} /* /.celebrationChooseAward  */
+
+/* ----- MODULE STYLES ----- */
+.module.celebrationChooseAward {
+
+    &.grid-dimension-2x2 {
+        .module-liner {
+            @if $celebrationChooseAward_ImgUrl2x2 {
+                @include safeImgUrls($celebrationChooseAward_ImgUrl2x2, $celebrationChooseAward_ImgUrlPath, $property: 'background-image');
+                background-repeat: no-repeat;
+                filter: none;
+            }
+
+            @else {
+                @include module_moduleLinerBackground(
+                    $bgColor: $celebrationChooseAward_bgColor,
+                    $gradType: $celebrationChooseAward_gradType,
+                    $gradMeta: $celebrationChooseAward_gradMeta,
+                    $gradStops: $celebrationChooseAward_gradStops
+                );
+            }
+        }
+    }
+
+    h2 {
+        color: $celebrationChooseAward_fontColor;
+        font-size: $baseFontSize * 2.28;
+        line-height: 1.1;
+        margin: 0 0 14px 0;
+
+        span {
+            display: block;
+            font-size: $baseFontSize * 1.92;
+        }
+    }
+
+    .celebrationCountdownContainer {
+        bottom: 20px;
+        color: $celebrationChooseAward_numberColor;
+        position: absolute;
+        text-align: right;
+        width: 280px;
+
+        p {
+            font: $fontWeightLight $baseFontSize * 1.42 $celebration_secondaryFontFamily;
+            margin-bottom: 4px;
+        }
+
+        .icon-me-time {
+            float: left;
+            font-size: $baseFontSize * 2.5;
+        }
+
+        #redeemCountdown {
+            font: normal $baseFontSize * 2.5 $celebration_primaryFontFamily;
+        }
+    }
+
+    .link-cover {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .celebrationPointsContainer p {
+        bottom: 20px;
+        color: $celebrationChooseAward_numberColor;
+        font: normal $baseFontSize * 1.57 $celebration_primaryFontFamily;
+        position: absolute;
+    }
+
+     @media (max-width: 479px) {
+        .btn {
+            width: 50%;
+        }
+    }
+
+} /* /.module.celebrationChooseAward  */
+
+/* ----- PAGE STYLES ----- */
+.page.celebrationChooseAward {
+
+} /* /.page.celebrationChooseAward  */

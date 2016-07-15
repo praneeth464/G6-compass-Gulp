@@ -1,0 +1,116 @@
+.throwdownRankings,
+.throwdownStandings,
+.throwdownNews,
+.throwdownTrainingCamp,
+.throwdownMatch,
+.smack-talk-page-detail,
+#smackTalkPageView,
+.smackTalkCommentForm,
+.throwdownAllMatchesModule,
+#profilePagePlayerStatsTab
+ {
+    h2 {
+        color: $throwdown_textColor;
+    }
+
+    .startdate,
+    .endDate {
+        color: $throwdown_textLight;
+
+		strong {
+			color: $throwdown_textNormal;
+		}
+    }
+
+    .rulesBtn,
+    .tdBlueBtn {
+            @include module_moduleLinerBackground(
+                $bgColor: $throwdown_rulesButtonGradColor,
+                $gradType: $throwdown_gradTypeLinear,
+                $gradMeta: $throwdown_gradMetaTop,
+                $gradStops: $throwdown_rulesButtonGradStops
+            );
+            @include box-shadow( rgba(0,0,0,.5) 0 0 7px);
+            @include inline-block;
+            border-bottom-color: scale-color($throwdown_rulesButtonGradColor, $lightness: -25%);
+            border-top-color: scale-color($throwdown_rulesButtonGradColor, $lightness: 50%);
+            border-left: none;
+            border-right: none;
+            color: $throwdown_rulesButtonTextColor;
+            float: right;
+            padding-left: 1em;
+            padding-right: 1em;
+            text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+
+            @media (max-width: 767px){
+                float: none;
+                margin-top: 10px;
+            }
+        }
+
+    .table-striped tbody > tr:nth-child(odd) > td,
+    .table-striped tbody > tr:nth-child(odd) > th,
+    .table-hover tbody tr:hover > td,
+    .table-hover tbody tr:hover > th {
+		background-color: $throwdown_tableOdd;
+    }
+
+    tbody {
+        td {
+            background-color: $throwdown_tableEven;//$throwdownStandings_leaderBgPageOdd;
+			border-top: none;
+			border-color: $throwdown_tableBorderColor;
+
+            span {
+                color: $throwdown_textColor;
+            }
+            p, p a, a {
+                color: $white;
+                vertical-align: top;
+            }
+			a {
+				font-weight: $throwdown_secondaryFontWeight;
+			}
+            .btn {
+                font-family: $throwdown_primaryFontFamily;
+				box-shadow: 0 0 6px 0 #bebebe;
+                color: $throwdown_textLight;
+				display: block;
+				margin: auto;
+				text-transform: uppercase;
+            }
+        }
+    }
+
+    .spincover {
+		background: rgba(255, 255, 255, .5);
+		height: 100%;
+		left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 10000;
+
+       .spin {
+            display: block;
+			height: $spinner_widthHeight;
+            margin: ($spinner_widthHeight / 2) auto (-1 * $spinner_widthHeight / 2) auto;
+            width: $spinner_widthHeight;
+
+            .spinner {
+				left: 50% !important;
+                top: 50% !important;
+            }
+        }
+    }
+}
+
+.lt-ie9 {
+	.throwdownStandings,
+	#profilePagePlayerStatsTab {
+
+		 .table-striped tbody tr.stripe td {
+			background-color: $throwdown_tableOdd;
+		}
+	}
+}

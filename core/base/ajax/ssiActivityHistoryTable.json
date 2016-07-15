@@ -1,0 +1,158 @@
+<?php
+
+$c = $_POST['contestType'];
+
+?>
+
+{
+    "tabularData": {
+        "meta":
+            <?php
+                if( $c == 'objectives') { ?>
+            {
+            "columns": [
+                {
+                    "id": "1",
+                    "name": "claimNumber",
+                    "displayName": "Claim Number",
+                    "sortable": true,
+                    "footerDisplayText": "Total"
+                },
+                {
+                    "id": "2",
+                    "name": "dateSubmitted",
+                    "displayName": "Date Submitted",
+                    "sortable": true,
+                    "footerDisplayText": null
+                },
+                {
+                    "id": "3",
+                    "name": "status",
+                    "displayName": "Status",
+                    "sortable": true,
+                    "footerDisplayText": null
+                },
+                {
+                    "id": "4",
+                    "name": "amount",
+                    "displayName": "Amount",
+                    "sortable": true,
+                    "footerDisplayText": "$1,126"
+                }
+            ],
+            "footerActive": true
+        },
+        "results": [
+            {
+                "claimNumber": 12343,
+                "claimDetailUrl": "layout.html?tplPath=apps/ssi/tpl/&tpl=ssiSubmitClaimDetail.html",
+                "date": "06/15/14",
+                "status": "pending",
+                "amount":"$1,000"
+            },
+            {
+                "claimNumber": 23433,
+                "claimDetailUrl": "layout.html?tplPath=apps/ssi/tpl/&tpl=ssiSubmitClaimDetail.html",
+                "date": "06/25/14",
+                "status": "approved",
+                "amount": "$100"
+            },
+            {
+                "claimNumber": 333224,
+                "claimDetailUrl": "layout.html?tplPath=apps/ssi/tpl/&tpl=ssiSubmitClaimDetail.html",
+                "date": "07/15/14",
+                "status": "denied",
+                "amount": "$10"
+            },
+            {
+                "claimNumber": 878765,
+                "claimDetailUrl": "layout.html?tplPath=apps/ssi/tpl/&tpl=ssiSubmitClaimDetail.html",
+                "date": "07/25/14",
+                "status": "pending",
+                "amount": "$1"
+            }
+        ]
+    }, <?php }
+        else { ?>
+        {
+        "columns": [
+                {
+                    "id": "1",
+                    "name": "claimNumber",
+                    "displayName": "Claim Number",
+                    "sortable": true,
+                    "footerDisplayText": "Total"
+                },
+                {
+                    "id": "2",
+                    "name": "dateSubmitted",
+                    "displayName": "Date Submitted",
+                    "sortable": true,
+                    "footerDisplayText": null
+                },
+                {
+                    "id": "3",
+                    "name": "activity",
+                    "displayName": "Activity",
+                    "sortable": true,
+                    "footerDisplayText": null
+                },
+                {
+                    "id": "4",
+                    "name": "status",
+                    "displayName": "Status",
+                    "sortable": true,
+                    "footerDisplayText": null
+                },
+                {
+                    "id": "5",
+                    "name": "amount",
+                    "displayName": "Amount",
+                    "sortable": true,
+                    "footerDisplayText": "$1,126"
+                }
+            ],
+            "footerActive": true
+        },
+        "results": [
+            {
+                "claimNumber": 12343,
+                "claimDetailUrl": "layout.html?tplPath=apps/ssi/tpl/&tpl=ssiSubmitClaimDetail.html",
+                "date": "06/15/14",
+                "status": "pending",
+                "activity": "Activity1",
+                "amount":"$1,000"
+            },
+            {
+                "claimNumber": 23433,
+                "claimDetailUrl": "layout.html?tplPath=apps/ssi/tpl/&tpl=ssiSubmitClaimDetail.html",
+                "date": "06/25/14",
+                "status": "approved",
+                "activity": "Activity2",
+                "amount": "$100"
+            },
+            {
+                "claimNumber": 333224,
+                "claimDetailUrl": "layout.html?tplPath=apps/ssi/tpl/&tpl=ssiSubmitClaimDetail.html",
+                "date": "07/15/14",
+                "status": "denied",
+                "activity": "Activity3",
+                "amount": "$10"
+            },
+            {
+                "claimNumber": 878765,
+                "claimDetailUrl": "layout.html?tplPath=apps/ssi/tpl/&tpl=ssiSubmitClaimDetail.html",
+                "date": "07/25/14",
+                "status": "pending",
+                "activity": "Activity4",
+                "amount": "$1"
+            }
+        ]
+    },<?php }
+        ?>
+    "sortedOn": "claimNumber",
+    "sortedBy": "desc",
+    "total": 15,
+    "perPage": 10,
+    "current": 2
+}

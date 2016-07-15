@@ -1,0 +1,467 @@
+<?php sleep(2); ?>
+{
+    "messages":[],
+
+
+    "__COMMENT__":"use all promos/goals to test MULTIPLE MODULE style",
+    "__COMMENT__":"delete (or set dev_selectSingle = true in JS) all but one promo/goal for each promo/goal to test SINGLE MODULE styles",
+    "promotions":[
+
+        {
+            "id": 123,
+            "name": "Promotion Name 1a.0 (Open, No GoalLevel, !canChange)",
+            "startDate": "5/12/2013",
+            "status": "open",
+            "goals":[
+                {
+                    "id":771,
+                    "isPartner": false,
+                    "canChange": false,
+                    "progressValue": null,
+                    "showProgress": false,
+                    "percentageExceeds": false,
+                    "progressDate": null,
+                    "isAchieved": false,
+                    "participant": {
+                        "id":1234,
+                        "firstName": "Godfried",
+                        "lastName": "Goalowner"
+                    },
+                    "goalLevel": null,
+                    "rulesLink":"path/to/rules",
+                    "selectGoalLink":"path/to/selectGoal",
+                    "progressLink":"path/to/progress",
+                    "resultsLink":"path/to/results"
+                },
+
+                {
+                    "id":7710,
+                    "isPartner": true,
+                    "canChange": false,
+                    "progressValue": null,
+                    "showProgress": false,
+                    "percentageExceeds": false,
+                    "progressDate": null,
+                    "isAchieved": false,
+                    "participant": {
+                        "id":1234,
+                        "firstName": "Grezelda",
+                        "lastName": "Goalowner"
+                    },
+                    "goalLevel": null,
+                    "rulesLink":"path/to/rules",
+                    "selectGoalLink":"path/to/selectGoal",
+                    "progressLink":"path/to/progress",
+                    "resultsLink":"path/to/results"
+                }
+            ]
+        },
+
+        {
+            "id": 123333,
+            "name": "Promotion Name 1a.1 (Open, No GoalLevel, canChange)",
+            "startDate": "5/12/2013",
+            "status": "open",
+            "goals":[
+                {
+                    "id":771,
+                    "isPartner": false,
+                    "canChange": true,
+                    "progressValue": null,
+                    "showProgress": false,
+                    "percentageExceeds": false,
+                    "progressDate": null,
+                    "isAchieved": false,
+                    "participant": {
+                        "id":1234,
+                        "firstName": "Godfried",
+                        "lastName": "Goalowner"
+                    },
+                    "goalLevel": null,
+                    "rulesLink":"path/to/rules",
+                    "selectGoalLink":"path/to/selectGoal",
+                    "progressLink":"path/to/progress",
+                    "resultsLink":"path/to/results"
+                },
+
+                {
+                    "id":7710,
+                    "isPartner": true,
+                    "canChange": true,
+                    "progressValue": null,
+                    "showProgress": false,
+                    "percentageExceeds": false,
+                    "progressDate": null,
+                    "isAchieved": false,
+                    "participant": {
+                        "id":1234,
+                        "firstName": "Grezelda",
+                        "lastName": "Goalowner"
+                    },
+                    "goalLevel": null,
+                    "rulesLink":"path/to/rules",
+                    "selectGoalLink":"path/to/selectGoal",
+                    "progressLink":"path/to/progress",
+                    "resultsLink":"path/to/results"
+                }
+            ]
+        },
+
+        {
+            "id": 234,
+            "name": "Promotion Name 1b (Open, GoalLevel, canChange)",
+            "startDate": "5/12/2013",
+            "status": "open",
+            "goals":[
+                {
+                    "id":772,
+                    "isPartner": false,
+                    "canChange": true,
+                    "progressValue": null,
+                    "showProgress": false,
+                    "percentageExceeds": false,
+                    "progressDate": null,
+                    "isAchieved": false,
+                    "participant": {
+                        "id":1234,
+                        "firstName": "Godfried",
+                        "lastName": "Goalowner"
+                    },
+                    "goalLevel": {
+                        "name": "Level 3",
+                        "description": "108% of your adjusted Q3 sales results"
+                    },
+                    "rulesLink":"path/to/rules",
+                    "selectGoalLink":"path/to/selectGoal",
+                    "progressLink":"path/to/progress",
+                    "resultsLink":"path/to/results"
+                }
+            ]
+        },
+
+        {
+            "id": 345,
+            "name": "Promotion Name 1c (Open, GoalLevel, !canChange)",
+            "startDate": "5/12/2013",
+            "status": "open",
+            "goals":[
+                {
+                    "id":773,
+                    "isPartner": false,
+                    "canChange": false,
+                    "progressValue": null,
+                    "showProgress": false,
+                    "percentageExceeds": false,
+                    "progressDate": null,
+                    "isAchieved": false,
+                    "participant": {
+                        "id":1234,
+                        "firstName": "Godfried",
+                        "lastName": "Goalowner"
+                    },
+                    "goalLevel": {
+                        "name": "Level 3",
+                        "description": "108% of your adjusted Q3 sales results"
+                    },
+                    "rulesLink":"path/to/rules",
+                    "selectGoalLink":"path/to/selectGoal",
+                    "progressLink":"path/to/progress",
+                    "resultsLink":"path/to/results"
+                },
+
+                {
+                    "id":7730,
+                    "isPartner": true,
+                    "canChange": false,
+                    "progressValue": null,
+                    "showProgress": false,
+                    "percentageExceeds": false,
+                    "progressDate": null,
+                    "isAchieved": false,
+                    "participant": {
+                        "id":1234,
+                        "firstName": "Grezelda",
+                        "lastName": "Goalowner"
+                    },
+                    "goalLevel": {
+                        "name": "Level 3",
+                        "description": "108% of your adjusted Q3 sales results"
+                    },
+                    "rulesLink":"path/to/rules",
+                    "selectGoalLink":"path/to/selectGoal",
+                    "progressLink":"path/to/progress",
+                    "resultsLink":"path/to/results"
+                }
+            ]
+        },
+
+        {
+            "id": 456,
+            "name": "Promotion Name 1d (Started, GoalLevel, !canChange)",
+            "startDate": "5/12/2013",
+            "status": "started",
+            "goals":[
+                {
+                    "id":774,
+                    "isPartner": false,
+                    "canChange": false,
+                    "progressValue": 1,
+                    "showProgress": true,
+                    "percentageExceeds": false,
+                    "progressDate": "5/5/2013",
+                    "isAchieved": false,
+                    "participant": {
+                        "id":1234,
+                        "firstName": "Godfried",
+                        "lastName": "Goalowner"
+                    },
+                    "goalLevel": {
+                        "name": "Level 3",
+                        "description": "108% of your adjusted Q3 sales results"
+                    },
+                    "rulesLink":"path/to/rules",
+                    "selectGoalLink":"path/to/selectGoal",
+                    "progressLink":"path/to/progress",
+                    "resultsLink":"path/to/results"
+                },
+
+                {
+                    "id":775,
+                    "isPartner": true,
+                    "canChange": false,
+                    "progressValue": 10,
+                    "showProgress": true,
+                    "percentageExceeds": false,
+                    "progressDate": "5/5/2013",
+                    "isAchieved": false,
+                    "participant": {
+                        "id":2234,
+                        "firstName": "Grezelda",
+                        "lastName": "Goalowner"
+                    },
+                    "goalLevel": {
+                        "name": "Level 3",
+                        "description": "108% of your adjusted Q3 sales results"
+                    },
+                    "rulesLink":"path/to/rules",
+                    "selectGoalLink":"path/to/selectGoal",
+                    "progressLink":"path/to/progress",
+                    "resultsLink":"path/to/results"
+                }
+            ]
+        },
+
+        {
+            "id": 567,
+            "name": "Promotion Name 1e (Started, NO GoalLevel, !canChange)",
+            "startDate": "5/12/2013",
+            "status": "started",
+            "goals":[
+                {
+                    "id":776,
+                    "isPartner": false,
+                    "canChange": false,
+                    "progressValue": null,
+                    "showProgress": false,
+                    "percentageExceeds": false,
+                    "progressDate": null,
+                    "isAchieved": false,
+                    "participant": {
+                        "id":1234,
+                        "firstName": "Godfried",
+                        "lastName": "Goalowner"
+                    },
+                    "goalLevel": null,
+                    "rulesLink":"path/to/rules",
+                    "selectGoalLink":"path/to/selectGoal",
+                    "progressLink":"path/to/progress",
+                    "resultsLink":"path/to/results"
+                },
+
+                {
+                    "id":7760,
+                    "isPartner": true,
+                    "canChange": false,
+                    "progressValue": null,
+                    "showProgress": false,
+                    "percentageExceeds": false,
+                    "progressDate": null,
+                    "isAchieved": false,
+                    "participant": {
+                        "id":1234,
+                        "firstName": "Grezelda",
+                        "lastName": "Goalowner"
+                    },
+                    "goalLevel": null,
+                    "rulesLink":"path/to/rules",
+                    "selectGoalLink":"path/to/selectGoal",
+                    "progressLink":"path/to/progress",
+                    "resultsLink":"path/to/results"
+                }
+            ]
+        },
+
+        {
+            "id": 678,
+            "name": "Promotion Name 1f (Ended, GoalLevel, Fail)",
+            "startDate": "5/12/2013",
+            "status": "ended",
+            "goals":[
+                {
+                    "id":777,
+                    "isPartner": false,
+                    "canChange": false,
+                    "progressValue": 40,
+                    "showProgress": true,
+                    "percentageExceeds": false,
+                    "progressDate": "5/30/2013",
+                    "isAchieved": false,
+                    "participant": {
+                        "id":1234,
+                        "firstName": "Godfried",
+                        "lastName": "Goalowner"
+                    },
+                    "goalLevel": {
+                        "name": "Level 3",
+                        "description": "108% of your adjusted Q3 sales results"
+                    },
+                    "rulesLink":"path/to/rules",
+                    "selectGoalLink":"path/to/selectGoal",
+                    "progressLink":"path/to/progress",
+                    "resultsLink":"path/to/results"
+                },
+
+                {
+                    "id":778,
+                    "isPartner": true,
+                    "canChange": false,
+                    "progressValue": 92,
+                    "showProgress": true,
+                    "percentageExceeds": false,
+                    "progressDate": "5/30/2013",
+                    "isAchieved": false,
+                    "participant": {
+                        "id":2234,
+                        "firstName": "Grizelda",
+                        "lastName": "Goalowner"
+                    },
+                    "goalLevel": {
+                        "name": "Level 3",
+                        "description": "108% of your adjusted Q3 sales results"
+                    },
+                    "rulesLink":"path/to/rules",
+                    "selectGoalLink":"path/to/selectGoal",
+                    "progressLink":"path/to/progress",
+                    "resultsLink":"path/to/results"
+                }
+            ]
+        },
+
+        {
+            "id": 789,
+            "name": "Promotion Name 1g (Ended, GoalLevel, Win)",
+            "startDate": "5/12/2013",
+            "status": "ended",
+            "goals":[
+                {
+                    "id":779,
+                    "isPartner": false,
+                    "canChange": false,
+                    "progressValue": 100,
+                    "showProgress": true,
+                    "percentageExceeds": false,
+                    "progressDate": "5/30/2013",
+                    "isAchieved": true,
+                    "participant": {
+                        "id":1234,
+                        "firstName": "Godfried",
+                        "lastName": "Goalowner"
+                    },
+                    "goalLevel": {
+                        "name": "Level 3",
+                        "description": "108% of your adjusted Q3 sales results"
+                    },
+                    "rulesLink":"path/to/rules",
+                    "selectGoalLink":"path/to/selectGoal",
+                    "progressLink":"path/to/progress",
+                    "resultsLink":"path/to/results"
+                },
+
+                {
+                    "id":710,
+                    "isPartner": true,
+                    "canChange": false,
+                    "progressValue": 1000,
+                    "showProgress": true,
+                    "percentageExceeds": true,
+                    "progressDate": "5/30/2013",
+                    "isAchieved": true,
+                    "participant": {
+                        "id":2234,
+                        "firstName": "Grizelda",
+                        "lastName": "Goalowner"
+                    },
+                    "goalLevel": {
+                        "name": "Level 3",
+                        "description": "108% of your adjusted Q3 sales results"
+                    },
+                    "rulesLink":"path/to/rules",
+                    "selectGoalLink":"path/to/selectGoal",
+                    "progressLink":"path/to/progress",
+                    "resultsLink":"path/to/results"
+                }
+            ]
+        },
+
+        {
+            "id":"2510",
+            "name": "Promotion Name 1h (Ended, No GoalLevel)",
+            "startDate":"07/29/2013",
+            "status":"ended",
+            "goals":[
+                {
+                    "id":123412341234,
+                    "isPartner":false,
+                    "canChange":false,
+                    "progressValue": null,
+                    "showProgress": false,
+                    "percentageExceeds": false,
+                    "progressDate":null,
+                    "isAchieved":false,
+                    "goalLevel":null,
+                    "participant":{
+                        "id":"60066",
+                        "firstName":"Charles",
+                        "lastName":"Jones"
+                    },
+                    "rulesLink":"path/to/rules",
+                    "selectGoalLink":"path/to/selectGoal",
+                    "progressLink":"path/to/progress",
+                    "resultsLink":"path/to/results"
+                },
+
+                {
+                    "id":123412341235,
+                    "isPartner":true,
+                    "canChange":false,
+                    "progressValue": null,
+                    "showProgress": false,
+                    "percentageExceeds": false,
+                    "progressDate":null,
+                    "isAchieved":false,
+                    "goalLevel":null,
+                    "participant":{
+                        "id":"60066",
+                        "firstName":"Grezelda",
+                        "lastName":"Goalowner"
+                    },
+                    "rulesLink":"path/to/rules",
+                    "selectGoalLink":"path/to/selectGoal",
+                    "progressLink":"path/to/progress",
+                    "resultsLink":"path/to/results"
+                }
+            ]
+        }
+
+    ]
+}

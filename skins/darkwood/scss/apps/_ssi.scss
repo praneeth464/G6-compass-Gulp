@@ -1,0 +1,188 @@
+// App-specific variables (uncomment to use)
+// =========================
+
+/* * * * *
+* Global Styles
+* * * * */
+// $ssi_objectives_bgColor: ;
+// $ssiModule_objectives_gradType: ;
+// $ssiModule_objectives_gradMeta: ;
+// $ssiModule_objectives_gradStops: ;
+
+// $ssi_DTGT_bgColor: ;
+// $ssiModule_DTGT_gradType: ;
+// $ssiModule_DTGT_gradMeta: ;
+// $ssiModule_DTGT_gradStops: ;
+
+// $ssi_SIU_bgColor: ;
+// $ssiModule_SIU_gradType: ;
+// $ssiModule_SIU_gradMeta: ;
+// $ssiModule_SIU_gradStops: ;
+
+// $ssi_stackRank_bgColor: ;
+// $ssiModule_stackRank_gradType: ;
+// $ssiModule_stackRank_gradMeta: ;
+// $ssiModule_stackRank_gradStops: ;
+
+// $ssi_ATN_bgColor: ;
+
+// $ssi_primaryFontFamily: ;
+// $ssi_secondaryFontFamily: ;
+// $ssi_primaryTextColor: ;
+
+$ssi_giftIcon_circleBgColor: #424242;
+// $ssi_giftIcon_circleBgGradType: ;
+// $ssi_giftIcon_circleBgGradMeta: ;
+// $ssi_giftIcon_circleBgGradStops: ;
+// $ssi_giftIconComplete_circleBgColor: ;
+// $ssi_giftIconComplete_circleBgGradStops: ;
+// $ssi_giftIcon_circleTextColor: ;
+$ssi_giftIconCompleteColor: #424242;
+
+// $qtipDefaultWidth: ;
+// $qtipBackgroundColor: ;
+// $qtipPrimaryTextColor: ;
+$qtipTabInactiveColor: #b2afaf;
+$ssi_exportImgUrlPath: $appImagesPath;
+
+
+/* * * * *
+* Chart Styles
+* * * * */
+// $ssi_SIU_barChart_moduleBarColor: ;
+// $ssi_SIU_barChart_moduleCompleteBarColor: ;
+// $ssi_SIU_barChart_barValueColor: ;
+// $ssi_SIU_barChart_axisBgColor: ;
+// $ssi_SIU_barChart_axisTextColor: ;
+
+$ssi_objectives_circleChart_bgArcColor: #424242;
+// $ssi_objectives_circleChart_fgArcColor: ;
+
+// $ssi_SIU_circleChart_bgArcColor: ;
+$ssi_SIU_circleChart_fgArcColor: #424242;
+
+$ssi_chartPercentCompleteColor: #424242;
+
+// $ssiDetails_chartGoalTextColor: ;
+// $ssiDetails_chartProgressTextColor: ;
+
+
+/* * * * *
+* Module Styles
+* * * * */
+$ssiModule_objectives_percentColor: #fff;
+$ssiModule_objectives_progressTextColor: #fff;
+$ssiModule_objectives_goalTextColor: #fff;
+$ssiModule_objectives_completeTextColor: #424242;
+$ssiModule_objectiveMetaColor: #fff; // color for objective achieved pax tile text
+$ssiModule_multiGoalToGo: #fff; // color for objectives To Go text
+$ssiModule_objectives_multiGoalAchieved: #fff; // color for objectives achieved text
+
+$ssiModule_dtgt_dataCompleteColor: #424242; // color for completed do this get that goal and activity text
+
+// $ssiModule_siu_progressTextColor: ;
+// $ssiModule_siu_goalTextColor: ;
+$ssiModule_siu_dataCompleteColor: #424242; // color for completed step it up goal and activity text
+
+$ssiModule_stackRank_activityProgressCompleteColor: #424242; // color for complteed stack rank activity progress text
+
+// $ssiModule_asOf_daysRemaining_textColor: ; // color for .moduleHeader p as of and days remaining text
+
+$ssiModule_rankCompleteColor: #424242; // color for completed rank info text on pax tile
+
+$ssiModule_activityDescription: #fff;
+
+$ssiModule_defaultBorder: 1px solid #424242;
+
+// $ssiModule_contestList_asOfColor: ;
+
+// $ssiModule_managerList_bgColor: ;
+// $ssiModule_managerList_bgGradType: ;
+// $ssiModule_managerList_bgGradMeta: ;
+// $ssiModule_managerList_bgGradStops: ;
+
+// $ssiModule_createContest_bgColor: ;
+// $ssiModule_createContest_bgGradType: ;
+// $ssiModule_createContest_bgGradMeta: ;
+// $ssiModule_createContest_bgGradStops: ;
+
+// $ssiModule_contestComplete_footerBgColor: ;
+// $ssiModule_contestComplete_footerTextColor: ;
+// $ssiModule_contestComplete_borderColor: ;
+
+// $ssiModule_createContest_qTipLink: ;
+
+
+/* * * * *
+* Detail Page Styles
+* * * * */
+// $ssiDetails_statusBannerBgColor: ;
+// $ssiDetails_statusBannerTextColor: ;
+
+// $ssiDetails_stackRank_maxPayoutTextColor: ;
+
+// $ssiDetails_DTGT_contestInfoBgColor: ;
+// $ssiDetails_DTGT_goalPercentTextColor: ;
+// $ssiDetails_DTGT_payoutTextColor: ;
+// $ssiDetails_DTGT_progressTextColor: ;
+
+$ssiDetails_sectionTitleColor: $black;
+
+/* * * * *
+* Create/Edit Page Styles
+* * * * */
+// $ssiContest_pageEdit_translations_bgColor: ;
+// $ssiContest_pageEdit_translations_textColor: ;
+
+// $ssiContest_pageEdit_paxSelectWrapBorderWidth: ;
+// $ssiContest_pageEdit_paxSelectWrapBorderColor: ;
+
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "ssi/scss/ssi";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================
+
+//gross but there's an important somewhere else causing this to not work.
+.btn.btn-inverse {
+    color: $white !important;
+}
+
+.module.ssi.SSICreator.stackRank .complete .splitCol,
+.module.ssi.SSICreator.stackRank .complete .splitColWrap .splitCol a.leaderName,
+.module.ssi.SSIParticipant.stackRank .complete .splitCol,
+.module.ssi.SSIParticipant.stackRank .complete .splitColWrap .splitCol a.leaderName,
+.module.ssi.SSIManager.stackRank .complete .splitCol,
+.module.ssi.SSIManager.stackRank .complete .splitColWrap .splitCol a.leaderName {
+    color: #fff;
+}
+
+.module.ssi.SSIParticipant.grid-dimension-2x2.stepItUp .complete .levelTitle {
+    color: #424242;
+}
+
+.page.ssi .levelChartWrapper .levelCompleted,
+.module.ssi .levelChartWrapper .levelCompleted {
+    background: #424242;
+}
+
+.page.ssi .levelChartWrapper .levelNotCompleted,
+.module.ssi .levelChartWrapper .levelNotCompleted {
+    background: #fff;
+}
+
+.page.ssi .levelChartWrapper .backgroundLinkBar,
+.module.ssi .levelChartWrapper .backgroundLinkBar {
+    background: #424242;
+}

@@ -1,0 +1,33 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $resourceCenter_bgColor: ;
+// $resourceCenter_gradType: ;
+// $resourceCenter_gradMeta: ;
+// $resourceCenter_gradStops: ;
+
+// $resourceCenter_iconColor: ;
+// $resourceCenter_titleColor: ;
+// $resourceCenter_titleFontFamily: ;
+// $resourceCenter_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $resourceCenter_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+// $resourceCenter_linkColor: ;
+// $resourceCenter_linkHoverColor: ;
+// $resourceCenter_headlineColor: ;
+// $resourceCenter_headlineFontFullString: ; // font-style font-variant font-weight font-size[req]/line-height font-family[req]
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "resourceCenter/scss/resourceCenter";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

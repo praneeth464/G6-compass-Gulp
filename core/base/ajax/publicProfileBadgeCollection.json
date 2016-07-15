@@ -1,0 +1,170 @@
+<?php sleep(2); ?>
+{
+    "messages":[],
+    "badgeGroups":[
+        {
+            "headerTitle": "Promotion A, Promotion B, Promotion D",
+            "badges":[
+                {
+                    "id":                   "23",
+                    "type":                 "progress",
+                    "name":                 "Earned Progress Badge Name 1 2a",
+                    "howToEarnText":        "1 How to earn badge",
+                    "img":                  "img/gamification_badge_placeholder1.jpg",
+                    "earned":               true,
+                    "dateEarned":           "2012-06-06"
+                },
+                {
+                    "id":                   "24",
+                    "type":                 "progress",
+                    "name":                 "Earned Progress Badge Name 2 2a",
+                    "howToEarnText":        "2 How to earn badge",
+                    "img":                  "img/gamification_badge_placeholder1.jpg",
+                    "earned":               true,
+                    "dateEarned":           "2012-05-01"
+                },
+                {
+                    "id":                   "25",
+                    "type":                 "progress",
+                    "name":                 "Progress Badge Name 3 2b",
+                    "howToEarnText":        "3 How to earn badge",
+                    "img":                  "img/gamification_badge_placeholder1.jpg",
+                    "earned":               true,
+                    "dateEarned":           "2012-05-01"
+                },
+                {
+                    "id":                   "26",
+                    "type":                 "progress",
+                    "name":                 "Progress Badge Name 4 2c",
+                    "howToEarnText":        "4 How to earn badge",
+                    "img":                  "img/gamification_badge_placeholder1.jpg",
+                    "earned":               true,
+                    "dateEarned":           "2012-05-01"
+                },
+                {
+                    "id":                   "27",
+                    "type":                 "behavior",
+                    "name":                 "Earned Behavior Badge Name 5 2d",
+                    "howToEarnText":        "5 How to earn badge",
+                    "img":                  "img/gamification_badge_placeholder1.jpg",
+                    "earned":               true,
+                    "dateEarned":           "2012-05-15"
+                },
+                {
+                    "id":                   "28",
+                    "type":                 "behavior",
+                    "name":                 "Earned Behavior Badge Name 6 2d",
+                    "howToEarnText":        "6 How to earn badge",
+                    "img":                  "img/gamification_badge_placeholder1.jpg",
+                    "earned":               true,
+                    "dateEarned":           "2012-04-15"
+                },
+                {
+                    "id":                   "29",
+                    "type":                 "behavior",
+                    "name":                 "Earned Behavior Badge Name 7 2e",
+                    "howToEarnText":        "7 How to earn badge",
+                    "img":                  "img/gamification_badge_placeholder1.jpg",
+                    "earned":               true,
+                    "dateEarned":           "2012-05-01"
+                },
+                {
+                    "id":                   "30",
+                    "type":                 "behavior",
+                    "name":                 "Earned Behavior Badge Name 8 2e",
+                    "howToEarnText":        "8 How to earn badge",
+                    "img":                  "img/gamification_badge_placeholder1.jpg",
+                    "earned":               true,
+                    "dateEarned":           "2012-05-01"
+                },
+                {
+                    "id":                   "31",
+                    "type":                 "behavior",
+                    "name":                 "File Load Earned Badge Name 9 2f",
+                    "howToEarnText":        "9 How to earn badge",
+                    "img":                  "img/gamification_badge_placeholder1.jpg",
+                    "earned":               true,
+                    "dateEarned":           "2012-04-03"
+                }
+            ]
+        },
+        {
+            "headerTitle": "Promotion C",
+            "badges":[
+                {
+                "id":                       "33",
+                    "type":                 "progress",
+                    "name":                 "Earned Progress Badge Name 11",
+                    "howToEarnText":        "11 How to earn badge",
+                    "img":                  "img/gamification_badge_placeholder1.jpg",
+                    "earned":               true,
+                    "dateEarned":           "2012-06-06"
+                },
+                {
+                    "id":                   "34",
+                    "type":                 "progress",
+                    "name":                 "Earned Progress Badge Name 12",
+                    "howToEarnText":        "12 How to earn badge",
+                    "img":                  "img/gamification_badge_placeholder1.jpg",
+                    "earned":               true,
+                    "dateEarned":           "2012-05-01"
+                }
+            ]
+        },
+        {
+            "headerTitle": "Other Badges",
+            "badges":[
+                {
+                    "id":                   "43",
+                    "type":                 "behavior",
+                    "name":                 "File Load Earned Badge Name 21",
+                    "howToEarnText":        "21 How to earn badge",
+                    "img":                  "img/gamification_badge_placeholder1.jpg",
+                    "earned":               true,
+                    "dateEarned":           "2012-06-06"
+                },
+                {
+                    "id":                   "44",
+                    "type":                 "behavior",
+                    "name":                 "File Load Earned Badge Name 22",
+                    "howToEarnText":        "22 How to earn badge",
+                    "img":                  "img/gamification_badge_placeholder1.jpg",
+                    "earned":               true,
+                    "dateEarned":           "2012-05-15"
+                }
+            ]
+        },
+        {
+            "headerTitle": "History",
+            "badges":[
+                {
+                    "id":                   "53",
+                    "type":                 "behavior",
+                    "name":                 "Behavior Earned Badge Name 31",
+                    "howToEarnText":        "31 How to earn badge",
+                    "img":                  "img/gamification_badge_placeholder1.jpg",
+                    "earned":               true,
+                    "dateEarned":           "2012-01-06"
+                },
+                {
+                    "id":                   "54",
+                    "type":                 "progress",
+                    "name":                 "Progress Earned Badge Name 32",
+                    "howToEarnText":        "32 How to earn badge",
+                    "img":                  "img/gamification_badge_placeholder1.jpg",
+                    "earned":               true,
+                    "dateEarned":           "2012-01-15"
+                },
+                {
+                    "id":                   "55",
+                    "type":                 "behavior",
+                    "name":                 "File Load Earned Badge Name 33",
+                    "howToEarnText":        "33 How to earn badge",
+                    "img":                  "img/gamification_badge_placeholder1.jpg",
+                    "earned":               true,
+                    "dateEarned":           "2012-02-06"
+                }
+            ]
+        }
+    ]
+}

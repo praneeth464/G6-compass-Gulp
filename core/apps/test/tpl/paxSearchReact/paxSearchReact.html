@@ -1,0 +1,127 @@
+
+
+<div id="testPageView" class="page-content">
+
+    <div class="row sectionWizardTabs">
+        <div class="span12"><h3>ReactJS/Reflux/Intl - PaxSearch</h3></div>
+        <div class="span12">
+            <h4>PaxSearch - multiple</h4>
+            <div id="paxSearchRootA"></div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+<!-- this is for ie8, polyfill for es5 support (for React) -->
+<script src="../apps/test/tpl/paxSearchReact/es5-shim.min.js"></script>
+<script src="../apps/test/tpl/paxSearchReact/es5-sham.min.js"></script>
+
+<!-- this is for ie9, polyfill for react-intl support -->
+<script src="../apps/test/tpl/paxSearchReact/Intl.min.js"></script>
+
+<!-- React and friends -->
+<script src="../apps/test/tpl/paxSearchReact/react-with-addons-0.13.3.js"></script>
+<script src="../apps/test/tpl/paxSearchReact/JSXTransformer-0.13.3.js"></script>
+
+<!-- Reflux - elegant Flux implementation -->
+<script src="../apps/test/tpl/paxSearchReact/reflux.js"></script>
+
+
+
+<!-- i18n language strings + date/time/currency formatting -->
+<script src="../apps/test/tpl/paxSearchReact/react-intl.min.js"></script>
+
+<!-- paxSearch - port of ParticipantSearchView to React -->
+<script type="text/jsx;harmony=true" src="../apps/test/tpl/paxSearchReact/paxSearch.js"></script>
+
+<script type="text/jsx;harmony=true">
+
+    $(document).ready(function(){
+
+        // generic PageView
+        window.testPageView = new PageView({
+            el: $('#testPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'PaxSearch (ReactJS)'
+        });
+
+
+
+
+
+        // PAX SEARCH
+        var paxSearchSetup = {
+            searchTypes : [ // REQUIRED
+                {"id":"lastName","name":"Last Name"},
+                {"id":"firstName","name":"First Name"},
+                {"id":"location","name":"Location"},
+                {"id":"jobTitle","name":"Job Title"},
+                {"id":"department","name":"Department"},
+                {"id":"country","name":"Country"}
+            ],
+            presetSearchFilters: {
+                name: "Select by Team",
+                instruction: "Select Team",
+                filters:[
+                    {type: "orgUnit", typeName: "Team", id: 1234, name: "Org Unit with SOOooooooOOOooper Long Name"},
+                    {type: "orgUnit", typeName: "Team", id: 2345, name: "Org Unit 51"},
+                    {type: "orgUnit", typeName: "Team", id: 3456, name: "Yet another Org/Node"},
+                    {type: "orgUnit", typeName: "Team", id: 4576, name: "Last Org/Node"}
+                ]
+            },
+            autoComplete: {
+                delay: 500,
+                minChars: 2,
+                url: "ajax/participantSearch_autocomp_firstName.json", // REQUIRED
+            },
+            searchUrl: "ajax/participantSearchResults_ssi.json", // REQUIRED
+            selectMode: "multiple", // multiple|single
+            sortBy: "lastName",
+
+            intlData: {
+                "locales": ['en-US'],
+                "messages": {
+                    "paxSearch": {
+                        "freeSearch": "Search by Individual",
+                        "noResults": "No participants found, please refine search.",
+                        "results": "{num, plural, one{Result} other{Results}}",
+                        "filteredBy": "Filtered by:",
+                        "autoComp": {
+                            "startTyping": "Start typing please.",
+                            "placeholder": "{type} here."
+                        },
+                        "table": {
+                            "selectText": "add", // checkbox OR arbitrary text
+                            "addAll": "Add All",
+                            "name": "Name",
+                            "org": "Org Name",
+                            "country": "Country",
+                            "department": "Department",
+                            "job": "Job Title"
+                        }
+                    }
+                }
+            }
+        };
+        // CREATE A PAX SEARCH with above data
+        window.paxSearchInstance = window.paxSearch.create($('#paxSearchRootA')[0], paxSearchSetup);
+
+
+    });
+</script>
+

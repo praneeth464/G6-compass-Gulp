@@ -1,0 +1,50 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $instantPoll_bgColor: ;
+// $instantPoll_gradType: ;
+// $instantPoll_gradMeta: ; // list the gradient non-color properties such as position, shape, etc.
+// $instantPoll_gradStops: ; // list the stops as one would a series of raw gradient stops
+
+// $instantPoll_iconColor: ;
+// $instantPoll_titleColor: ;
+// $instantPoll_titleFontFamily: ;
+// $instantPoll_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $instantPoll_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+// $instantPoll_cycleDotWidth: ;
+// $instantPoll_cycleDotBkg: ;
+// $instantPoll_cycleDotBorder: ;
+// $instantPoll_cycleDotBkgHover: ;
+// $instantPoll_cycleDotBorderHover: ;
+// $instantPoll_cycleDotBkgActive: ;
+// $instantPoll_cycleDotBorderActive: ;
+// $instantPoll_cycleDotBorderRadius: ;
+
+// $instantPoll_textColor: ;
+// $instantPoll_endsTextColor: ;
+
+// $instantPoll_progressBarTextColor: ; // same as .progress .bar in bootstrap/_progress-bars.scss.
+// $instantPoll_progressBarBgColor: ; // same as the $progressBars_barBgColor variable in _progress-bars.scss.
+// $instantPoll_progressBarGradMeta: ; // same as the $progressBars_barGradMeta variable in _progress-bars.scss.
+// $instantPoll_progressBarGradStops: ; // same as the $progressBars_barGradStops variable in _progress-bars.scss.
+
+// $instantPoll_progressBarTextColorMyVote: ; // same as .progress .bar in bootstrap/_progress-bars.scss.
+// $instantPoll_progressBarBgColorMyVote: ; // same as the $progressBars_barInfoBgColor variable in _progress-bars.scss.
+// $instantPoll_progressBarGradMetaMyVote: ; // same as the $progressBars_barInfoGradMeta variable in _progress-bars.scss.
+// $instantPoll_progressBarGradStopsMyVote: ; // same as the $progressBars_barInfoGradStops variable in _progress-bars.scss.
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "instantPoll/scss/instantPoll";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

@@ -1,0 +1,85 @@
+{
+  "messages": [],
+  "chart": {},
+  "categories": [
+    {
+      "category": [
+        {
+          "label": "Canada"
+        },
+        {
+          "label": "Central"
+        },
+        {
+          "label": "East"
+        },
+        {
+          "label": "Midwest"
+        },
+        {
+          "label": "Shanghai"
+        },
+        {
+          "label": "South"
+        },
+        {
+          "label": "UK"
+        }
+      ]
+    }
+  ],
+  "dataset": [
+    {
+      "seriesname": "% Received Award",
+      "data": [
+        {
+          "value": "33"
+        },
+        {
+          "value": "76"
+        },
+        {
+          "value": "74"
+        },
+        {
+          "value": "0"
+        },
+        {
+          "value": "100"
+        },
+        {
+          "value": "100"
+        },
+        {
+          "value": "78"
+        }
+      ]
+    },
+    {
+      "seriesname": "% Have Not Received Award",
+      "data": [
+        {
+          "value": "66"
+        },
+        {
+          "value": "24"
+        },
+        {
+          "value": "26"
+        },
+        {
+          "value": "100"
+        },
+        {
+          "value": "0"
+        },
+        {
+          "value": "0"
+        },
+        {
+          "value": "22"
+        }
+      ]
+    }
+  ]
+}

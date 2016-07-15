@@ -1,0 +1,50 @@
+{{! NOTE: these variables are set via javascript: }}
+{{!       isCreator, isManager }}
+
+<div class="row">
+	<div class="span6 contestSelectWrap">
+		<select class="contestSelect">
+			{{#if isCreator}}
+			<option value="index">All Active, Pending, and Incomplete Contests</option>
+			{{else}}
+			<option value="index">All Active</option>
+			{{/if}}
+			<option value="archived">All Archived Contests</option>
+			{{#if isCreator}}
+			<option value="denied">All Denied Contests</option>
+			{{/if}}
+			<option disabled>&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;</option>
+			<optgroup label="Active Promotions">
+				{{#each contests}}
+					{{#eq contestType "awardThemNow"}}
+					<option value="{{../../awardThemNowURL}}&amp;id={{id}}" data-redirect="true">{{name}}</option>
+					{{else}}
+					<option data-contestid="{{contestId}}" value="contest/{{id}}">{{name}}</option>
+					{{/eq}}
+				{{/each}}
+			</optgroup>
+		</select>
+		<span class="spinner"></span>
+	</div>
+
+	{{#if isCreator}}
+		<div class="span6 text-right">
+			<div class="formWrap">
+				<span class="contestCreateSpinner"></span>
+				<button class="createNewContest btn btn-link"><i class="icon-plus-sign"></i>create new contest</button>
+				<form class="contestCreate" action="#POST_DATA_URL" method="post" accept-charset="utf-8" novalidate>
+						<input type="hidden" name="locale" value="en_US">
+						<select class="contestType hiddenContestType" name="contestType" required>
+							{{#each contestTypes}}
+								<option value="{{contestType}}"></option>
+							{{/each}}
+						</select>
+				</form>
+			</div>
+			<div class="editWrap">
+				{{! Since this button is updated - not replaced - when changing contests, we use variable style text replace for the id }}
+				<a data-href="layout.html?tplPath=../apps/ssi/tpl/&amp;tpl=ssiContestPageEdit.html&amp;contestType=objectives&amp;currentStep=5&amp;contestId={0}" title="" class="editLink"><i class="icon-pencil"></i>Edit Contest</a>
+			</div>
+		</div>
+	{{/if}}
+</div>

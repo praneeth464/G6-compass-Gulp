@@ -1,0 +1,110 @@
+// App-specific variables
+// =========================
+$celebrationCompanyTimeline_bgColor: $g5ModuleBgColor !default;
+$celebrationCompanyTimeline_gradType: $g5ModuleGradType !default;
+$celebrationCompanyTimeline_gradMeta: $g5ModuleGradMeta !default;
+$celebrationCompanyTimeline_gradStops: $g5ModuleGradStops !default;
+
+$celebrationCompanyTimeline_linkColor: $linkColor !default;
+$celebrationCompanyTimeline_linkHoverColor: $linkColor !default;
+
+$celebrationCompanyTimeline_captionBgColor: rgba(0, 0, 0, 0.75) !default;
+$celebrationCompanyTimeline_captionTextColor: $white !default;
+$celebrationCompanyTimeline_yearBgColor: $white !default;
+$celebrationCompanyTimeline_yearTextColor: $black !default;
+$celebrationCompanyTimeline_yearFontFamily: $celebration_secondaryFontFamily !default;
+
+$celebrationCompanyTimeline_arrowColor: $white !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.celebrationCompanyTimeline {
+
+} /* /.celebrationCompanyTimeline  */
+
+/* ----- MODULE STYLES ----- */
+.module.celebrationCompanyTimeline {
+
+    .wide-view {
+        height: 100%;
+        padding: 0;
+        width: 100%;
+    }
+
+    .carousel {
+
+        .carousel-caption {
+            background: $celebrationCompanyTimeline_captionBgColor;
+            bottom: 40px;
+            font-family: $celebration_secondaryFontFamily;
+            height: 60px;
+            left: 0;
+            padding: 10px 0;
+            position: absolute;
+            width: 100%;
+
+            .year {
+                background-color: $celebrationCompanyTimeline_yearBgColor;
+                border-radius: 30px;
+                color: $celebrationCompanyTimeline_yearTextColor;
+                float: left;
+                font: $baseFontSize * 1.85 $celebrationCompanyTimeline_yearFontFamily;
+                line-height: $baseLineHeight * 2.9;
+                margin-left: 40px;
+                text-align: center;
+                width: 60px;
+            }
+
+            .year-desc {
+                float: left;
+                margin: 8px 0 0 16px;
+                max-width: 176px;
+
+                h4 {
+                    color: $celebrationCompanyTimeline_captionTextColor;
+                    font-size: $baseFontSize * 1.857;
+                    font-weight: normal;
+                    line-height: $baseLineHeight * 1.3;
+                    margin: 0 0 3px 0;
+                }
+
+                p {
+                    color: $celebrationCompanyTimeline_captionTextColor;
+                    font-size: $baseFontSize * 1.14;
+                    font-weight: 300;
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        .carousel-control {
+            color: $celebrationCompanyTimeline_arrowColor;
+            font-size: 36px;
+            height: 40px;
+            position: absolute;
+            text-align: center;
+            top: 220px;
+            width: 34px;
+            z-index: 6;
+
+            &.left {
+                left: 0;
+            }
+
+            &.right {
+                right: 0;
+            }
+        }
+    }
+} /* /.module.celebrationCompanyTimeline  */
+
+/* ----- PAGE STYLES ----- */
+.page.celebrationCompanyTimeline {
+
+} /* /.page.celebrationCompanyTimeline  */

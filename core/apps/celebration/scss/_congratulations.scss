@@ -1,0 +1,86 @@
+// App-specific variables
+// =========================
+$celebrationCongrats_bgColor: $g5ModuleBgColor !default;
+$celebrationCongrats_gradType: $g5ModuleGradType !default;
+$celebrationCongrats_gradMeta: $g5ModuleGradMeta !default;
+$celebrationCongrats_gradStops: $g5ModuleGradStops !default;
+$celebrationCongrats_ImgUrlPath: $appImagesPath !default;
+$celebrationCongrats_ImgUrl4x2: "celebration/congratsBg.png" !default;
+
+$celebrationCongrats_fontColor: $black !default;
+$celebrationCongrats_nameFontColor: $black !default;
+
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.celebrationCongrats {
+
+} /* /.celebration */
+
+/* ----- MODULE STYLES ----- */
+.module.celebrationCongrats {
+
+    .module-liner {
+        @if $celebrationCongrats_ImgUrl4x2 {
+            @include safeImgUrls($celebrationCongrats_ImgUrl4x2, $celebrationCongrats_ImgUrlPath, $property: 'background-image');
+                    background-repeat: no-repeat;
+                    filter: none;
+            }
+        @else {
+            @include module_moduleLinerBackground(
+                $bgColor: $celebrationCongrats_bgColor,
+                $gradType: $celebrationCongrats_gradType,
+                $gradMeta: $celebrationCongrats_gradMeta,
+                $gradStops: $celebrationCongrats_gradStops
+            );
+        }
+    }
+
+    &.grid-dimension-2x2 {
+        .module-liner {
+            height: 640px;
+            width: 320px;
+        }
+    }
+
+    .celebrationCongratsInfo {
+        margin: 32px 0 0 12px;
+        width: 260px;
+
+        span {
+            display: block;
+        }
+
+        .congrats-intro {
+            color: $celebrationCongrats_fontColor;
+            font: $fontWeightLight $baseFontSize * 2.85 $celebration_secondaryFontFamily;
+            line-height: 1.2;
+        }
+
+        .congrats-name {
+            color: $celebrationCongrats_nameFontColor;
+            font: $baseFontSize * 5.42 $celebration_secondaryFontBold;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        .congrats-msg {
+            color: $celebrationCongrats_fontColor;
+            font-size: $baseFontSize * 1.57;
+            line-height: 1.2;
+            white-space: normal;
+            width: 250px;
+        }
+    }
+} /* /.module.celebrationCongrats */
+
+/* ----- PAGE STYLES ----- */
+.page.celebrationCongrats {
+
+} /* /.page.celebrationCongrats */

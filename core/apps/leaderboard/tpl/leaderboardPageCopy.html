@@ -1,0 +1,291 @@
+<!-- ======== LEADERBOARD PAGE COPY ======== -->
+
+<div class="page-content" id="leaderboardPageView">
+
+    <div class="row">
+        <div class="span12">
+
+            <form id="leaderboardFormCreate" class="form-horizontal" action="formHandler.php" method="POST">
+
+                <!-- NOTE: this fieldset is used on the create and edit promo info form pages -->
+                <fieldset id="leaderboardFieldsetPromoInfo">
+
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter a promotion name"}'>
+                        <label class="control-label" for="name">Promotion Name</label>
+                        <div class="controls">
+                            <input type="text" id="name" name="name" placeholder="" value="Copied Promotion Name">
+                        </div>
+                    </div>
+
+
+                    <div class="form-inline">
+                        <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter a start date"}'>
+                            <label class="control-label" for="startDate">Promotion Start Date</label>
+                            <div class="controls">
+                                <span class="input-append">
+                                    <input type="text" id="startDate" name="startDate" placeholder="" readonly="readonly" class="date datepicker"
+                                        data-date-format="mm/dd/yyyy"
+                                        data-date-language="en_US"
+                                        data-date-startdate="09/24/2012"
+                                        data-date-autoclose="true"><button class="btn" type="button"><i class="icon-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="endDate">Promotion End Date</label>
+                            <div class="controls">
+                                <span class="input-append">
+                                    <input type="text" id="endDate" name="endDate" placeholder="" readonly="readonly" class="date datepicker"
+                                        data-date-format="mm/dd/yyyy"
+                                        data-date-language="en_US"
+                                        data-date-startdate="09/24/2012"
+                                        data-date-autoclose="true"><button class="btn" type="button"><i class="icon-calendar"></i></button>
+                                </span>
+                                <span class="optional">(optional)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="displayEndDate">Leaderboard Display End Date</label>
+                        <div class="controls">
+                            <span class="input-append">
+                                <input type="text" id="displayEndDate" name="displayEndDate" placeholder="" readonly="readonly" class="date datepicker"
+                                    data-date-format="mm/dd/yyyy"
+                                    data-date-language="en_US"
+                                    data-date-startdate="09/24/2012"
+                                    data-date-autoclose="true"><button class="btn" type="button"><i class="icon-calendar"></i></button>
+                            </span>
+                            <span class="optional">(optional)</span>
+                        </div>
+                    </div>
+
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter an activity title"}'>
+                        <label class="control-label" for="activityTitle">Activity Title</label>
+                        <div class="controls">
+                            <input type="text" id="activityTitle" name="activityTitle" placeholder="" value="Copied Activity Title">
+                        </div>
+                    </div>
+
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please select the sort order"}'>
+                        <label class="control-label" for="activitySortOrder">Sort Order</label>
+                        <div class="controls">
+                            <select id="activitySortOrder" name="activitySortOrder">
+                                <option value="DSC">Highest First</option>
+                                <option value="ASC" selected="selected">Lowest First</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter promotion rules"}'>
+                        <label class="control-label" for="rules">Promotion Rules</label>
+                        <div class="controls">
+                            <textarea rows="5" data-max-chars="2000" id="rules" name="rules" class="richtext">Copied promotion rules go here</textarea>
+                        </div>
+                    </div>
+
+                </fieldset><!-- /#leaderboardFieldsetPromoInfo -->
+
+
+                <!-- NOTE: this fieldset is used on the create and edit activity form pages -->
+                <fieldset id="leaderboardFieldsetActivity">
+
+                    <div class="control-group">
+                        <label class="control-label" for="activityDate">Activity Date</label>
+                        <div class="controls">
+                            <span class="input-append">
+                                <input type="text" id="activityDate" name="activityDate" placeholder="" readonly="readonly" class="date datepicker"
+                                    data-date-format="mm/dd/yyyy"
+                                    data-date-language="en_US"
+                                    data-date-startdate="09/24/2012"
+                                    data-date-autoclose="true"><button class="btn" type="button"><i class="icon-calendar"></i></button>
+                            </span>
+                            <span class="optional">(optional)</span>
+                        </div>
+                    </div>
+
+                    <h2>Add Activity</h2>
+
+                    <p>Your team members have been added to the leaderboard and are listed below. Please remove anyone who should not be included on the leaderboard.</p>
+
+
+                    <!-- Participant search view Element -->
+                    <div class="" id="participantSearchView" style="display:none"
+                        data-search-types='[{"id":"lastName","name":"Last Name"},{"id":"firstName","name":"First Name"},{"id":"location","name":"Location"},{"id":"jobTitle","name":"Job Title"},{"id":"department","name":"Department"}]'
+                        data-search-params='{"extraKey":"extraValue","anotherKey":"some value"}'
+                        data-autocomp-delay="500"
+                        data-autocomp-min-chars="2"
+                        data-autocomp-url="ajax/participantSearch_autocomp_firstName.json"
+                        data-search-url="ajax/participantSearchResults_follow.json"
+                        data-select-mode="multiple"
+                        data-msg-select-txt="add"
+                        data-msg-selected-txt="<i class='icon icon-ok'></i>"
+                        data-visibility-controls="showAndHide"
+                        data-msg-show-single="Add participant"
+                        data-msg-show="Add Participants"
+                        data-msg-hide="Done Adding">
+                        <!-- added by view -->
+                    </div>
+
+                    <div class="well container-splitter participantCollectionViewWrapper">
+
+                        <script id="particpantLeaderboardRowTpl" type="text/x-handlebars-template">
+                            <tr class="participant-item"
+                                    data-participant-cid="{{cid}}"
+                                    data-participant-id="{{id}}">
+
+                                <td class="participant">
+                                    <input type="hidden" name="pax[{{autoIndex}}].userId" value="{{id}}" />
+
+                                    <a class="participant-popover" href="#" data-participant-ids="[{{id}}]">
+                                        {{lastName}}, {{firstName}}
+                                    </a>
+                                </td>
+
+                                <td class="score number">
+                                    <input type="hidden" name="pax[{{autoIndex}}].score" value="{{#if score}}{{score}}{{else}}0{{/if}}" />
+
+                                    {{#if score}}{{score}}{{else}}0{{/if}}
+                                </td>
+
+                                <td class="newScore number">
+                                    <input type="text" name="pax[{{autoIndex}}].newScore" value="{{#if newScore}}{{newScore}}{{else}}0{{/if}}" class="number" data-number-type="decimal" />
+                                </td>
+
+                                <td class="remove">
+                                    <a class="remParticipantControl" title="remove this participant"><i class="icon-remove"></i></a>
+                                </td>
+
+                            </tr><!-- /.participant-item -->
+                        </script>
+
+                        <h3>Selected Participants</h3>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="participant">Participant</th>
+                                    <th class="score">Activity as of [today's date]</th>
+                                    <th class="newScore">Total Current Activity</th>
+                                    <th class="remove">Remove</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="participantsView"
+                                class="participantCollectionView"
+                                data-msg-empty="You have not added anyone."
+                                data-hide-on-empty="false">
+                            </tbody>
+                        </table>
+                        <!--
+                            used to keep track of the number of participants, req. a 'participantCount' class
+                            name is flexible
+                         -->
+                        <input type="hidden" name="paxCount" value="0" class="participantCount" />
+                    </div><!-- /.well.container-splitter.participantCollectionViewWrapper -->
+
+                </fieldset><!-- /#leaderboardFieldsetActivity -->
+
+
+                <!-- NOTE: this fieldset is used on all leaderboard form pages -->
+                <fieldset id="leaderboardFieldsetNotify">
+
+                    <div class="control-group">
+                        <div class="controls">
+                            <label class="checkbox">
+                                <input type="checkbox" id="notifyParticipants" name="notifyParticipants"> Notify Participants
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="control-group hide">
+                        <label class="control-label" for="notifyMessage">Message</label>
+                        <div class="controls">
+                            <textarea rows="5" data-max-chars="2000" id="notifyMessage" name="notifyMessage" class="richtext"></textarea>
+                        </div>
+                    </div>
+
+                </fieldset><!-- /#leaderboardFieldsetNotify -->
+
+
+                <!-- NOTE:  -->
+                <fieldset id="leaderboardFieldsetActions" class="form-actions">
+
+                    <button type="submit" id="leaderboardButtonPreviewLeaderboard" name="button" value="leaderboardButtonPreviewLeaderboard" formaction="ajax/leaderboardCreateResponse_preview.json" class="btn btn-primary">Preview Leaderboard</button>
+                    <button type="submit" id="leaderboardButtonSaveDraft" name="button" value="leaderboardButtonSaveDraft" formaction="ajax/leaderboardCreateResponse_savedraft.json" class="btn btn-primary">Save Draft</button>
+                    <button type="submit" id="leaderboardButtonCancel" name="button" value="leaderboardButtonCancel" formaction="ajax/leaderboardCreateResponse_cancel.json" class="btn">Cancel</button>
+
+                </fieldset><!-- /#leaderboardFieldsetActions -->
+
+            </form><!-- /#leaderboardFormCreate -->
+
+        </div><!-- /.span12 -->
+    </div><!-- /.row -->
+
+</div><!-- /.page-content -->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function() {
+
+        // declare our variables for later use
+        var prefilledLeaders, lbpcec;
+
+        // if there are leaders that need to be prefilled into the leaderboard (either the creator's team members for a new board or the existing leaders on an edited board), build the object here.
+        prefilledLeaders = [
+            {
+                "id":"456",
+                "lastName":"Corwin",
+                "firstName":"Aaron",
+                "avatarUrl":"img/_samples/x-profile-pic3.jpg",
+                "orgName":"Organization D",
+                "departmentName":"Accounting",
+                "jobName":"Number Cruncher",
+                "countryName":"United States",
+                "countryCode":"us"
+            },
+            {
+                "id":"457",
+                "lastName":"Gates",
+                "firstName":"Aaron",
+                "avatarUrl":"img/_samples/x-profile-pic3.jpg",
+                "orgName":"Organization D",
+                "departmentName":"Accounting",
+                "jobName":"Number Cruncher",
+                "countryName":"United States",
+                "countryCode":"us"
+            },
+            {
+                "id":"458",
+                "lastName":"Williams",
+                "firstName":"Aaron",
+                "avatarUrl":"img/_samples/x-profile-pic3.jpg",
+                "orgName":"Organization D",
+                "departmentName":"Accounting",
+                "jobName":"Number Cruncher",
+                "countryName":"United States",
+                "countryCode":"us"
+            }
+        ];
+
+        //attach the view to an existing DOM element
+        lbpcec = new LeaderboardPageCreateEditCopyView({
+            el : $('#leaderboardPageView'),
+            mode : 'copy',
+            leaders : prefilledLeaders,
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html?tpl=leaderboardPage&tplPath=apps/leaderboard/tpl/'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Create A Leaderboard'
+        });
+
+    });
+</script>

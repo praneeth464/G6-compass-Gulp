@@ -1,0 +1,363 @@
+<!-- ======== APPROVALS: APPROVALS RECOGNITION DETAIL ======== -->
+
+<div id="approvalsNominationDetailView" class="approvalSearchWrapper page-content">
+
+    <div class="row">
+        <div class="span12">
+            <div id="approvalErrorBlock" class="alert alert-block alert-error" style="display:none;">
+                <h4>The following errors occurred:</h4>
+                <ul>
+                    <li>This is an error</li>
+                    <li>This is another error</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="approvalsNominationDetailWrapper">
+        <div class="row">
+            <div class="span6">
+                <h3>RecognitionName</h3>
+            </div>
+            <div class="span6">
+                <ul class="export-tools fr">
+                    <div>
+                        <a id="recogCalcPayoutTableLink" href="#" style=""><strong>View Payout Grid</strong></a>
+                    </div>
+                    <li><a href="#">Print</a></li>
+                    <li><a href="#"><i class="icon-print"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <form class="form-horizontal">
+            <div class="row">
+                <!-- NOTE: nominationDetails should be filled by BE later, but for now I added this palce holder -->
+                <div id="ecardImage" class="ecard-span span4">
+                    <img src="http://pentagqa.performnet.com/pentag-cm/cm3dam/ecard/60072_1360146295213_userUploadEcard.gif" alt="image" width="250" height="250" border="0" style="margin: 0 0 10px 0;">
+                </div>
+                <div id="nominationDetails" class="recognitionDetails span8">
+
+                    <div class="row">
+                        <div class="span3">
+                            <p><strong>Nominee</strong></p>
+                        </div>
+                        <div class="span5">
+                            <p>LastName, FirstName | OrgName</p>
+                            <p>LastName, FirstName | OrgName</p>
+                            <p>LastName, FirstName | OrgName</p>
+                            <p>LastName, FirstName | OrgName</p>
+                            <p>LastName, FirstName | OrgName</p>
+                            <p>LastName, FirstName | OrgName</p>
+                            <p>LastName, FirstName | OrgName</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="span3">
+                            <p><strong>Award</strong></p>
+                        </div>
+                        <div class="span5">
+                            <p>
+                                <a class="calcLink">50 Points</a>
+                                <input type="hidden" name="approvalsRecognitionForm.awardAmount" value="50">
+                                <input type="hidden" name="claimRecipientFormBeans[0].calculatorResultBeans[0].criteriaId" value="12347 ">
+                                <input type="hidden" name="claimRecipientFormBeans[0].calculatorResultBeans[0].ratingId" value="1 ">
+                                <input type="hidden" name="claimRecipientFormBeans[0].calculatorResultBeans[0].criteriaRating" value="25">
+                                <input type="hidden" name="claimRecipientFormBeans[0].calculatorResultBeans[1].criteriaId" value="12346 ">
+                                <input type="hidden" name="claimRecipientFormBeans[0].calculatorResultBeans[1].ratingId" value="5 ">
+                                <input type="hidden" name="claimRecipientFormBeans[0].calculatorResultBeans[1].criteriaRating" value="50">
+                                <input type="hidden" name="claimRecipientFormBeans[0].calculatorResultBeans[2].criteriaId" value="12345 ">
+                                <input type="hidden" name="claimRecipientFormBeans[0].calculatorResultBeans[2].ratingId" value="9 ">
+                                <input type="hidden" name="claimRecipientFormBeans[0].calculatorResultBeans[2].criteriaRating" value="100">
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="span3">
+                            <p><strong>Score</strong></p>
+                        </div>
+                        <div class="span5">
+                            <p id="awardElm">5</p>
+                            <input type="hidden" name="calculatorScore" value="50">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="span3">
+                            <p><strong>Nominator</strong></p>
+                        </div>
+                        <div class="span5">
+                            <p>TeamName, FirsttName | OrgName</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="span3">
+                            <p><strong>Comments</strong></p>
+                        </div>
+                        <div class="span5 comment-wraper">
+                            <div class="comment-text">Comments go here. Test for a longer comment that spans multiple lines.</div>
+                            <a href="#" class="translateTextLink">Translate</a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="span3">
+                            <p><strong>Behavior</strong></p>
+                        </div>
+                        <div class="span5">
+                            <p>Reason for Nomination goes here.</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="span3">
+                            <p><strong>Nominator</strong></p>
+                        </div>
+                        <div class="span5">
+                            <p>No</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="span3">
+                            <p><strong>Nominator's Manager</strong></p>
+                        </div>
+                        <div class="span5">
+                            <p>LastName, FirstName | OrgName<p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="span3">
+                            <p><strong>Date Submitted</strong></p>
+                        </div>
+                        <div class="span5">
+                            <p>5/26/2012</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="span8">
+                            <!-- NOTE: The budget table only appears if promotion has a budget. Must be done in the JSP -->
+                            <table id="budgetTable" class="table table-bordered table-striped approvalBudgetTable approvalsNoBudgetTable">
+                                <tbody>
+                                    <tr>
+                                        <td>Available Budget</td>
+                                        <td id="availableBudget">2000</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Calculated Budget Deduction</td>
+                                        <td id="budgetDeductionElm"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Remaining Budget</td>
+                                        <td id="remainingBudgetElm"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div><!-- /.span8 -->
+            </div><!-- /.row -->
+
+            <div class="row">
+                <div class="span12">
+
+
+                    <div id="approverActions" class="approverActions">
+                        <legend>Approver Action</legend>
+                        <div class="control-group recogDetail-Group">
+                            <div class="controls">
+                                <label>Status:</label>
+                                <select name="approvalStatus" class="approvalNominationStatus">
+                                    <option value="approv">Approved</option>
+                                    <option value="deny">Denied</option>
+                                    <option value="pend">Pending</option>
+                                    <option value="hold">On Hold</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="control-group recogDetail-Group validateme" data-validate-flags="nonempty" data-validate-fail-msgs="{&quot;nonempty&quot; : &quot;You must select reason to deny recognition&quot;}">
+                            <div class="controls">
+                                <select name="claimReason" class="claimReasonNomDetails" disabled="disabled" id="Denied_Reason">
+                                    <option value="">Select Reason</option>
+                                    <option value="Reason1">DeniedReason1</option>
+                                    <option value="Reason2">DeniedReason2</option>
+                                    <option value="Reason3">DeniedReason3</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="control-group recogDetail-Group validateme" data-validate-flags="nonempty" data-validate-fail-msgs="{&quot;nonempty&quot; : &quot;You must select reason to deny recognition&quot;}" style="display: none">
+                                <select name="claimReason" class="holdReasonNomDetails" disabled="disabled" id="Hold_Reason">
+                                    <option value="">Select Reason</option>
+                                    <option value="Reason1">DeniedReason1</option>
+                                    <option value="Reason2">DeniedReason2</option>
+                                    <option value="Reason3">DeniedReason3</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-actions pullBottomUp">
+                            <input type="submit" name="submitButton" id="submitButton" value="Save" disabled="disabled" class="btn btn-primary"/>
+                            <input type="submit" name="cancelButton" value="Cancel" class="btn cancelBtn"/>
+                        </div>
+                    <input id="participantId" type="hidden" value="987656">
+                    <input id="promotionId" type="hidden" value="123456">
+                    <input type="hidden" id="serverReturnedErrored" value="true">
+                    <input type="hidden" id="hasAward" value="false">
+                    <input type="hidden" id="scoredByApprover" value="false">
+                </div><!-- /.span12 -->
+            </div><!-- /.row -->
+        </form>
+    </div>
+</div>
+
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+$(document).ready(function() {
+    var thePreLoadedCalculator = {
+        "attributes":
+            {
+                "hasWeight": true,
+                "hasScore": true,
+                "showPayTable": true,
+                "weightLabel": "theWeightLabel",
+                "scoreLabel": "theScoreLabel",
+                "awardType": "fixed"
+            },
+        "awardLevel": {
+            "id": 252,
+            "name": "Level 3",
+            "value": 39900
+        },
+
+        "criteria":[
+            {
+                "id": 12345,
+                "label": "Calculator category1",
+                "ratings":[
+                    {
+                        "value": 100,
+                        "label": "HighRating1",
+                        "id": 9
+                    },
+                    {
+                        "value": 50,
+                        "label":"MiddleRating1",
+                        "id": 8
+                    },
+                    {
+                        "value": 25,
+                        "label":"LowRating1",
+                        "id": 7
+                    }
+                ]
+            },
+            {
+                "id": 12346,
+                "label": "Calculator category2",
+                "ratings":[
+                    {
+                        "value": 100,
+                        "label": "HighRating2",
+                        "id": 6
+                    },
+                    {
+                        "value": 50,
+                        "label":"MiddleRating2",
+                        "id": 5
+                    },
+                    {
+                        "value": 25,
+                        "label":"LowRating2",
+                        "id": 4
+                    }
+                ]
+            },
+            {
+                "id": 12347,
+                "label": "Calculator category3",
+                "ratings":[
+                    {
+                        "value": 100,
+                        "label": "HighRating3",
+                        "id": 3
+                    },
+                    {
+                        "value": 50,
+                        "label":"MiddleRating3",
+                        "id": 2
+                    },
+                    {
+                        "value": 25,
+                        "label":"LowRating3",
+                        "id": 1
+                    }
+                ]
+            }
+        ],
+
+        "payTable":{
+            "rows":[
+                {
+                    "score": "0-4",
+                    "payout":"1-50"
+                },
+                {
+                    "score": "5-9",
+                    "payout":"1-75"
+                },
+                {
+                    "score": "10-15",
+                    "payout":"1-100"
+                }
+            ]
+        }
+    },
+    //attach the view to an existing DOM element
+    aimlp = new ApprovalsNominationDetailModelView({
+            el:$('#approvalsNominationDetailView'),
+            preLoadedCalculator: thePreLoadedCalculator,
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html?tpl=approvalsPagePendingNominations&tplPath=apps/approvals/tpl/'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Recognition Detail'
+        });
+    });
+</script>
+
+<script id="table-template" type="text/x-handlebars-template">
+    <tbody>
+        <tr>
+            <td>Available Budget</td>
+            <td>{{availableBudget}}</td>
+        </tr>
+
+        <tr>
+            <td>Calculated Budget Deduction</td>
+            <td>{{calculatedBudgetDeduction}}</td>
+        </tr>
+
+        <tr>
+            <td>Remaining Budget</td>
+            <td>{{remainingBudget}}</td>
+        </tr>
+    </tbody>
+</script>

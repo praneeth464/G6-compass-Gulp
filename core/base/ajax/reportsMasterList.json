@@ -1,0 +1,26 @@
+{
+  "messages":[],
+  "reports":[
+    {
+      "displayName": "Participant Login Activity",
+      "url": "http://www.whatever.com?data=1",
+      "id": 1,
+      "category": "Login Activity",
+      "desc": "Short description of Participant Login Activity Report here."
+    },
+    {
+      "displayName": "Budget Issuance",
+      "url": "http://www.whatever.com?data=2",
+      "id": 2,
+      "category": "Budget",
+      "desc": "Short description of Budget Issuance here."
+    },
+    {
+      "displayName": "Budget Status",
+      "url": "http://www.whatever.com?data=3",
+      "id": 3,
+      "category": "Budget",
+      "desc": "Short description of Budget Status here."
+    }
+  ]
+}

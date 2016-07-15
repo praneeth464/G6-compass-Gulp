@@ -1,0 +1,124 @@
+
+
+<div id="homeAppPageView">
+    <div id="homeAppTopNav" class="container">
+        <div class="subnav">
+
+            <ul class="nav nav-pills">
+                <li class="homeFilter">
+                    <a href="#filter/home">Home</a>
+                </li>
+                <li class="activitiesFilter">
+                    <a href="#filter/activities">Activities</a>
+                </li>
+                <li class="socialFilter">
+                    <a href="#filter/social">Social</a>
+                </li>
+                <li class="shopFilter">
+                    <a href="#filter/shop">Shop</a>
+                </li>
+                <li class="reportsFilter">
+                    <a href="#filter/reports">Reports</a>
+                </li>
+                <li class="allFilter">
+                    <a href="#filter/all">All</a>
+                </li>
+            </ul>
+
+        </div>
+    </div><!-- /#homeAppTopNav -->
+
+
+    <div class="moduleContainerViewElement">
+
+        <!-- dynamic content -->
+        
+    </div> <!-- /.moduleContainerViewElement -->
+</div><!-- /#homeAppPageView -->
+
+
+<!-- MODULES SETUP -->
+<script>
+
+    //Main Home Application Setup Function
+    $(document).ready(function(){
+        var isSubset = typeof G5.props.urlParams.moduleSubset != 'undefined',
+            allModules,moduleSubset;
+
+        //instantiate HomeApp
+        window.hapv = new HomeAppPageView({
+            el : $('#homeAppPageView'),
+            pageNav : {},
+            pageTitle : '',
+            isFooterSheets : false
+        });
+
+        G5.gq = {};
+
+        G5.gq.modObj = {   
+                name:'goalquestModule',
+                appName: 'goalquest',//name of the app
+                viewName: 'goalquestModule',
+                templateName: 'goalquestModule',
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            };
+
+
+        $.ajax({
+            dataType: 'g5json',
+            url: G5.props.URL_JSON_GOALQUEST_COLLECTION,
+            data: {},
+            success: function(serverResp) {
+                console.log("[INFO] goalquestModulesPage: loadPromototions call successfully returned this JSON object: ", serverResp.data);
+
+                G5.props.preLoadedGoalquestPromotions = serverResp.data.promotions;
+
+                processData();
+
+                hapv.homeApp.moduleCollection.reset(G5.gq.modCollection);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log("[ERROR] goalquestModuleCollection: loadPromototions call failed: ", jqXHR, textStatus, errorThrown);
+
+                self.$el.append('AJAX ERROR: '+textStatus+' ('+errorThrown.type+')<br>URL:'+this.gqListJsonUrl);
+            }
+        });
+
+        function processData() {
+            var modDataArray = [];
+
+            G5.gq.modCollection = [];
+
+            _.each(G5.props.preLoadedGoalquestPromotions, function(promo) {
+                if( promo.goals.length == 1 ) {
+                    modDataArray.push(promo);
+                }
+                else {
+                    _.each(promo.goals, function(goal) {
+                        var p = _.clone(promo);
+                        p.goals = [goal];
+                        modDataArray.push(p);
+                    });
+                }
+            });
+
+            _.each(modDataArray, function(a, i) {
+                var m = _.clone(G5.gq.modObj);
+                m.name = m.name + i;
+                m.json = a;
+
+                G5.gq.modCollection.push(m);
+            });
+        }
+
+    });
+
+</script>

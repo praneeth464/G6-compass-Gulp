@@ -1,0 +1,430 @@
+// App-specific variables
+// =========================
+$throwdownStandingsPage_bgColor: $g5ModuleBgColor !default;
+$throwdownStandingsPage_gradType: $g5ModuleGradType !default;
+$throwdownStandingsPage_gradMeta: $g5ModuleGradMeta !default;
+$throwdownStandingsPage_gradStops: $g5ModuleGradStops !default;
+
+$throwdownStandingsPage_titleColor: $throwdown_primaryAccentColor !default;
+$throwdownStandingsPage_promoInfoBgColor: $grayLighter !default;
+$throwdownStandingsPage_tableHeaderColor: $black !default;
+$throwdownStandingsPage_buttonGradColor: $gray !default;
+$throwdownStandingsPage_buttonGradStops: scale-color($throwdownStandingsPage_buttonGradColor, $lightness: 29.7%, $saturation: -28.8%), $throwdownStandingsPage_buttonGradColor !default;
+$throwdownStandingsPage_buttonTextColor: $white !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.throwdownStandings {
+    .clearBoth {
+        clear: both;
+    }
+} /* /.throwdownStandings */
+
+/* ----- MODULE STYLES ----- */
+.module.throwdownStandings  {
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $throwdownStandingsPage_bgColor,
+            $gradType: $throwdownStandingsPage_gradType,
+            $gradMeta: $throwdownStandingsPage_gradMeta,
+            $gradStops: $throwdownStandingsPage_gradStops
+        );
+    }
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $throwdown_iconColor,
+            $titleColor: $throwdownStandingsPage_titleColor,
+            $titleFontFamily: $throwdown_primaryFontFamily
+        );
+        h3 {
+            font-size: $baseFontSize * 2.2; //~31px
+            font-weight: $throwdown_secondaryFontWeight;
+            max-height: 50px;
+            text-transform: uppercase;
+            padding: 0 0 0 56%;
+            margin-right: 4%;
+        }
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            @include g5HomeAppIconBoxReflect(-56px);
+        }
+    }
+    &.grid-dimension-1x1,
+    &.grid-dimension-2x1 {
+
+        .wide-view {
+            display: none;
+        }
+
+        .title-icon-view h3 {
+            position: absolute;
+            top: 44%;
+        }
+    }
+    &.grid-dimension-1x1 {
+        .title-icon-view h3 {
+            bottom: 0;
+            font-size: $baseFontSize * 1.15;
+            padding: 0;
+            top: inherit;
+        }
+    }
+} /* /.module.standingsPage */
+
+/* ----- PAGE STYLES ----- */
+.page.throwdownStandings {
+    .page-topper {
+        // @include throwdown_customSelectBox($throwdownCustomSelect_gradColor, $throwdownCustomSelect_gradStops, $throwdownCustomSelect_arrowColor);
+        margin-bottom: 0;
+
+        .control-group {
+            margin-right: 0;
+            width: 100%;
+
+            .controls {
+                width: 100%;
+                select {
+                    width: auto;
+                    min-width: 220px;
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+    .standingsPromoInfo {
+        background-color: $throwdownStandingsPage_promoInfoBgColor;
+        padding-top: 10px;
+
+        h2 {
+            font-family: $throwdown_primaryFontFamily;
+            margin: 0;
+        }
+        .startdate {
+            float: left;
+        }
+        .startdate,
+        .endDate {
+            margin-bottom: 0;
+
+            span {
+                margin-right: 10px;
+            }
+        }
+
+        form {
+            margin-bottom: 10px;
+        }
+    }
+    .nav-tabs {
+        a {
+            color: $throwdown_textLight;
+        }
+        .active a {
+            color: $throwdown_textColor;
+        }
+    }
+    #standingsMatchesTabs .nav-tabs {
+        margin-bottom: 0;
+
+        li {
+            a {
+                cursor: pointer;
+            }
+        }
+    }
+    .td-fine-print {
+        color: $throwdown_textLight;
+        display: block;
+        margin-top: 10px;
+    }
+    .roundPagination {
+        margin-bottom: 0;
+
+        ul {
+            display: block;
+            float: none;
+            height: 48px;
+            margin: auto;
+            max-width: 330px;
+
+            li {
+                float: left;
+                font-family: $throwdown_primaryFontFamily;
+                width: auto;
+                display: inline;
+
+                p {
+                    font-size: $baseFontSize * 2.5;
+                    font-weight: $throwdown_secondaryFontWeight;
+                    text-transform: uppercase;
+
+                    .your-round,
+                    .round-total {
+                        color: $throwdown_secondaryAccentColor;
+                    }
+                }
+                .round-dates {
+                    color: $throwdown_textLight;
+                    font: $throwdown_primaryFontWeight $baseFontSize $throwdown_secondaryFontFamily;
+                    margin: auto;
+                    text-align: center;
+                }
+                a {
+                    border: none;
+                    color: $throwdown_textLight;
+                    font-size: 110px;
+
+                    &:hover {
+                        background-color: transparent;
+                    }
+                }
+            }
+
+            .prev,
+            .next {
+                height: 40px;
+                width: auto;
+
+                a {
+                    cursor: pointer;
+                }
+            }
+            .prev.disabled a,
+            .next.disabled a {
+                cursor: default;
+            }
+
+            @media (max-width: 480px){
+                text-align: center;
+
+                li {
+                    @include inline-block();
+                    float: none;
+                    p {
+                        font-size: $baseFontSize * 1.857; // ~26px
+                        margin-bottom: 0;
+                    }
+                    .round-dates {
+                        font-size: $baseFontSize * 0.8;
+                    }
+                    a {
+                        border: none;
+                        color: $throwdown_textLight;
+                        font-size: 70px;
+
+                        &:hover {
+                            background-color: transparent;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .table {
+        td {
+            padding: 7px 12px;
+            vertical-align: middle;
+            text-align: center;
+
+            p {
+                float: left;
+                margin: 5px 0;
+
+                &:first-child {
+                    margin-bottom: 20px;
+                }
+            }
+            br {
+                clear: left;
+            }
+            .btn {
+                padding: 9px 0;
+                margin: 0 auto;
+                font-size: $baseFontSize * 1.142857; /* ~16px */
+            }
+        }
+        thead th {
+            background-color: $throwdownStandingsPage_tableHeaderColor;
+
+            a {
+                background-color: transparent;
+            }
+        }
+        img {
+            float: left;
+            margin-right: 20px;
+            width: 30px;
+
+            &:first-child {
+                margin-bottom: 12px;
+            }
+        }
+    }
+
+    #standingsTable.table img:first-child,
+    #standingsTable.table p:first-child {
+        margin-bottom: 0;
+    }
+
+    .standingsTable .roundDates {
+        color: $throwdown_textLight;
+        margin-bottom: 10px;
+    }
+
+    .standingsPagination {
+        margin: 20px 0 10px;
+    }
+
+    .allMatchesPagination {
+        margin: 10px 0;
+    }
+
+    #allMatchesTable.table {
+        p {
+            color: $throwdown_textColor;
+
+            span {
+                color: $throwdown_numberColor;
+            }
+        }
+        .td-current-progress p {
+            color: $throwdown_numberColor;
+
+            span {
+                color: $throwdown_winnerColor;
+                display: inline-block;
+                font-weight: $throwdown_secondaryFontWeight;
+                padding-left: 3px;
+                text-shadow: 1px 1px 2px rgba(0,0,0,.3);
+            }
+        }
+        .throwdown-match-detail-btn {
+            @include module_moduleLinerBackground(
+                $bgColor: $throwdownStandingsPage_buttonGradColor,
+                $gradType: $throwdown_gradTypeLinear,
+                $gradMeta: $throwdown_gradMetaTop,
+                $gradStops: $throwdownStandingsPage_buttonGradStops
+            );
+            @include box-shadow( rgba(0,0,0,.5) 0 0 7px);
+            @include inline-block;
+            border-bottom-color: scale-color($throwdownStandingsPage_buttonGradColor, $lightness: -25%);
+            border-top-color: scale-color($throwdownStandingsPage_buttonGradColor, $lightness: 50%);
+            border-left: none;
+            border-right: none;
+            color: $throwdownStandingsPage_buttonTextColor;
+            padding-left: 1em;
+            padding-right: 1em;
+            text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+        }
+        .app-col.chevron {
+            display: none;
+        }
+    }
+} /* /.page.throwdownStandings */
+
+//IE specific styling
+.lt-ie8 .module.throwdownStandings .title-icon-view h3 { margin-top: 50px; }
+
+.lt-ie8 .page.throwdownStandings {
+    padding-top: 0;
+
+    .page-topper {
+        top: 0;
+    }
+    .roundPagination ul {
+        .prev a,
+        .next a {
+            background: transparent;
+            line-height: 100px;
+            position: relative;
+            top: -49px;
+        }
+    }
+    .table td .btn { margin-top: 1.5%; }
+}
+
+//Media Queries
+@media (max-width: 767px){
+    .page.throwdownStandings .standingsPromoInfo .span8 {
+        margin-bottom: 20px;
+    }
+}
+@media (max-width: 570px){
+    .page.throwdownStandings {
+        .table {
+            td {
+                padding: 8px;
+
+                p {
+                    margin-top: 3px;
+
+                    &:first-child {
+                        margin-bottom: 14px;
+                    }
+                }
+            }
+            img {
+                margin-right: 10px;
+                width: 25px;
+            }
+        }
+    }
+}
+@media (max-width: 500px){
+    .page.throwdownStandings {
+        .table {
+            p {
+                font-size: $baseFontSize * .85; //~12px
+                margin-top: 5px;
+
+                &:first-child {
+                    margin-bottom: 5px;
+                }
+            }
+            img {
+                display: none;
+            }
+            .btn {
+                font-size: $baseFontSize * .85;
+                margin-top: 8.5%;
+            }
+        }
+    }
+}
+@media (max-width: 410px){
+    .page.throwdownStandings {
+        .table {
+            p,
+            .td-current-progress p {
+                height: 40px;
+            }
+            td .btn {
+                margin-top: 25.5%;
+            }
+        }
+        #allMatchesTable.table {
+            .throwdown-match-detail-btn {
+                display: none;
+            }
+            .app-col.chevron {
+                display: block;
+            }
+        }
+    }
+}
+@media (max-width: 360px){
+    .page.throwdownStandings {
+        .table .btn {
+            margin-top: 35.5%;
+        }
+        .standingsPromoInfo .endDate {
+            clear: left;
+        }
+    }
+}

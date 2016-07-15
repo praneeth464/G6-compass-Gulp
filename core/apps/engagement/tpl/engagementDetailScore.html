@@ -1,0 +1,31 @@
+<?php //sleep(1); ?>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="title">Score Details {{#eq timeframeType "month"}}(1 month){{/eq}}{{#eq timeframeType "quarter"}}(3 months){{/eq}}{{#eq timeframeType "year"}}(12 months){{/eq}}</th>
+            <th class="actual number">Actual</th>
+            {{#if areTargetsShown}}
+            <th class="target number">Target</th>
+            <th class="diff number">Difference</th>
+            {{/if}}
+        </tr>
+    </thead>
+
+    <tbody>
+        {{#each details}}
+        <tr class="{{#if ../areTargetsShown}}{{ontrack}}{{/if}}">
+            <td class="title">
+                <i class="icon-g5-engagement-{{type}}"></i>
+                {{title}}
+                {{#if helpText}}<small class="helpText">{{helpText}}</small>{{/if}}
+            </td>
+            <td class="actual number">{{actual}}</td>
+            {{#if ../areTargetsShown}}
+            <td class="target number">{{target}}</td>
+            <td class="diff number">{{diff}}</td>
+            {{/if}}
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

@@ -1,0 +1,103 @@
+
+<div class="">
+
+    <div id="activeActivityMask" class="mask" style="display:none"></div>
+
+    <div class="activities well container-splitter">
+
+        <div class="lockUI" style="display:none"></div>
+
+        <div class="activityItem noActivities text-error" style="display:none">
+            <i class="icon-exclamation-sign"></i>
+            No activities added.
+        </div>
+
+        <div class="activityItem headerDescriptions" style="display: none">
+            <div class="activityHeader activityDesc">
+                <span>Description</span>
+            </div>
+            <div class="activityHeader activityForEvery">
+                <span>For Every</span>
+            </div>
+            <div class="activityHeader activityEarn">
+                <span>Earn</span>
+            </div>
+            <div class="activityHeader activityMinQual">
+                <span>Minimum Qualifier</span>
+            </div>
+            <div class="activityHeader activityIndPayCap">
+                <span>Individual Payout Cap</span>
+            </div>
+            <div class="activityHeader activityMaxActPay">
+                <span>Maximum Activity Payout</span>
+            </div>
+            <div class="activityHeader activityActGoal">
+                <span>Activity Goal</span>
+            </div>
+            <div class="activityHeader activityMaxActPot">
+                <span>Maximum Activity Potential</span>
+            </div>
+            <div class="activityHeader activityEdit">
+                <span>Edit</span>
+            </div>
+            <div class="activityHeader activityRemove">
+                <span>Remove</span>
+            </div>
+        </div><!-- /.activityItem.headerDescriptions -->
+
+        <div class="activityList">
+            <!-- activities rendered here -->
+        </div><!-- /.activityList -->
+
+        <div class="newActivity">
+            <!-- single new activity rendered here -->
+        </div><!-- /.newActivity -->
+
+
+        <div class="activityItem footer" style="display: none">
+            <div class="activityDesc">
+                <span>Total</span>
+            </div>
+            <div class="activityForEvery">&nbsp;</div>
+            <div class="activityEarn">&nbsp;</div>
+            <div class="activityMinQual">&nbsp;</div>
+            <div class="activityIndPayCap">&nbsp;</div>
+            <div class="activityMaxActPay">
+                <span class="currSymb pay">
+                </span><span class="totMaxActPay"></span>
+                <!--span class="currDisp pay"></span-->
+            </div>
+            <div class="activityActGoal">&nbsp;</div>
+            <div class="activityMaxActPot">&nbsp;</div>
+            <div class="activityEdit">&nbsp;</div>
+            <div class="activityRemove">&nbsp;</div>
+        </div><!-- /.activityItem.footer -->
+
+
+        <div class="bottomControls">
+            <button class="btn btn-primary addActivityBtn">
+                <i class="icon-plus-sign"></i> Add activity
+            </button>
+        </div><!-- /.bottomControls -->
+
+
+        <div class="activityRemoveDialog" style="display:none">
+            <p>
+                <i class="icon-question-sign"></i>
+                <b>Remove Activity?</b>
+            </p>
+            <p>
+                All activity data will be lost.
+            </p>
+            <p class="tc">
+                <a class="btn btn-small confirmBtn closeTip">Yes</a>
+                <a class="btn btn-small cancelBtn closeTip">No</a>
+            </p>
+        </div><!-- /.activityRemoveDialog -->
+
+
+    </div><!-- /.activities -->
+
+
+
+</div>

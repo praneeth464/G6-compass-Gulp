@@ -1,0 +1,138 @@
+<!-- ======== LEADERBOARD PAGE PREVIEW ======== -->
+
+<div class="page-content leaderBoardPreviewPage" id="leaderboardPageView">
+
+    <div class="row">
+        <div class="span12">
+            <dl class="dl-horizontal leaderboard-details">
+                <!-- &nbsp; below to keep the DDs from collapsing when empty -->
+                <dt>Promotion Name</dt>
+                <dd>Name&nbsp;</dd>
+
+                <dt>Promotion Start Date</dt>
+                <dd>04/04/2012</dd>
+
+                <dt>Promotion End Date</dt>
+                <dd>&nbsp;</dd>
+
+                <dt>Leaderboard Display End Date</dt>
+                <dd>05/15/2012&nbsp;</dd>
+
+                <dt>Activity Title</dt>
+                <dd>Title&nbsp;</dd>
+
+                <dt>Sort Order</dt>
+                <dd>high to low&nbsp;</dd>
+
+                <dt>Date of Activity</dt>
+                <dd>06/06/2012&nbsp;</dd>
+
+            </dl><!-- /.dl-horizontal -->
+
+
+            <div class="leaderboard-rules">
+                <legend>Rules</legend>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique tellus est, quis imperdiet purus. Integer quis tellus enim. Sed tempor mattis ante, et scelerisque sem malesuada a. In eget sem justo. Curabitur eget vestibulum quam. Nam ut pharetra dui. Donec ac sem magna, vitae tincidunt urna.</p>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique tellus est, quis imperdiet purus. Integer quis tellus enim. Sed tempor mattis ante, et scelerisque sem malesuada a. In eget sem justo. Curabitur eget vestibulum quam. Nam ut pharetra dui. Donec ac sem magna, vitae tincidunt urna.</p>
+            </div>
+
+
+            <legend>Participants</legend>
+            <table class="table table-striped">
+
+                <thead>
+                    <tr>
+                        <th class="participant">Participants</th>
+                        <!-- <th>Org Name</th>
+                        <th>Department</th>
+                        <th>Job Title</th>
+                        <th>Country</th> -->
+                        <th class="newScore number">Current Activity Total</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td class="participant"><a class="participant-popover" href="#" data-participant-ids="[100]">Lastname, Firstname</a></td>
+                        <!-- <td>Org Name</td>
+                        <td>department</td>
+                        <td>job title</td>
+                        <td><img src="http://cocchiar-dv.biperf.com/core/base/img/flags/zw.png"></td> -->
+                        <td class="newScore number">30</td>
+                    </tr>
+
+                    <tr>
+                        <td class="participant"><a class="participant-popover" href="#" data-participant-ids="[101]">Lastname, Firstname</a></td>
+                        <!-- <td>Org Name</td>
+                        <td>department</td>
+                        <td>job title</td>
+                        <td><img src="http://cocchiar-dv.biperf.com/core/base/img/flags/zw.png"></td> -->
+                        <td class="newScore number">30</td>
+                    </tr>
+
+                    <tr>
+                        <td class="participant"><a class="participant-popover" href="#" data-participant-ids="[102]">Lastname, Firstname</a></td>
+                        <!-- <td>Org Name</td>
+                        <td>department</td>
+                        <td>job title</td>
+                        <td><img src="http://cocchiar-dv.biperf.com/core/base/img/flags/zw.png"></td> -->
+                        <td class="newScore number">30</td>
+                    </tr>
+
+                    <tr>
+                        <td class="participant"><a class="participant-popover" href="#" data-participant-ids="[103]">Lastname, Firstname</a></td>
+                        <!-- <td>Org Name</td>
+                        <td>department</td>
+                        <td>job title</td>
+                        <td><img src="http://cocchiar-dv.biperf.com/core/base/img/flags/zw.png"></td> -->
+                        <td class="newScore number">30</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+            <div class="leaderboard-notify">
+                <legend>Message to Participants</legend>
+                <p>The leaderboard has been updated. Lorem ipsum onsectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+            </div>
+
+            <form id="leaderboardFormPreview" class="" action="" method="POST">
+
+                <fieldset id="leaderboardFieldsetActions" class="form-actions">
+
+                    <button id="leaderboardButtonSubmit" name="button" value="leaderboardButtonSubmit" formaction="layout.html?tpl=leaderboardPage&amp;tplPath=apps/leaderboard/tpl/" class="btn btn-primary">Submit</button>
+                    <button id="leaderboardButtonEdit" name="button" value="leaderboardButtonEdit" formaction="layout.html?tpl=leaderboardPageCreate&amp;tplPath=apps/leaderboard/tpl/" class="btn">Edit</button>
+
+                </fieldset><!-- /#leaderboardFieldsetActions -->
+
+            </form><!-- /#leaderboardFormPreview -->
+
+        </div><!-- /.span12 -->
+    </div><!-- /.row -->
+
+</div><!-- /.page-content -->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function() {
+
+        //attach the view to an existing DOM element
+        var lbp = new LeaderboardPageCreateEditCopyView({
+            el : $('#leaderboardPageView'),
+            mode : 'preview',
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html?tpl=leaderboardPageCreate&tplPath=apps/leaderboard/tpl/'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Create A Leaderboard'
+        });
+
+    });
+</script>

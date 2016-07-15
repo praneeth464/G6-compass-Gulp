@@ -1,0 +1,104 @@
+<!-- ======== PUBLIC RECOGNITION PAGE ======== -->
+
+<div id="publicRecognitionPageView" class="page-content">
+
+    <div class="page-topper">
+        <!-- Public Recognition Tabs  -->
+        <div class="row">
+            <div class="span12">
+                <ul class="nav nav-tabs page-top-tabs pubRecTabs">
+
+                    <!-- dynamic - pub rec set tabs here -->
+
+                </ul>
+            </div>
+        </div>
+    </div><!-- /.page-topper -->
+
+    <!-- View and Edit links only appear on follow tab if user does not have anyone in their follow list. -->
+    <ul class="recognition-controls follow-list-links" style="display: none;">
+
+        <li>
+            <a href="layout.html?tpl=publicRecognitionPageFollowList&tplPath=apps/publicRecognition/tpl/"><i class="icon-edit"></i></i>View/Edit Follow List</a>
+        </li>
+
+        <!--li><a href="#">Edit Follow List</a></li-->
+
+    </ul>
+
+    <!-- Recognitions -->
+    <div class="page-liner pubRecItemsCont" data-msg-empty="No recognitions found">
+
+        <div class="publicRecognitionItems">
+            <!-- dynamic - pubRecItems -->
+        </div>
+
+        <!-- shown when there are more recognitions -->
+        <div class="app-row">
+            <p>
+                <a href="#" class="viewAllRecognitions"  style="display: none">
+                    View More
+                </a>
+            </p>
+        </div>
+
+    </div>
+
+
+
+
+    <!-- If the user doesn't have anyone in their follow list, display a message to add followers and button that links to the follow list page. -->
+    <div class="app-slider createFollowListWrapper"  style="display:none">
+        <div class="app-row">
+
+            <h2>
+                <i class="icon-g5-following"></i>
+                Your follow list
+            </h2>
+            <p>Want to follow members of your group, or friends at work? This is where to do it</p>
+
+            <a href="layout.html?tpl=publicRecognitionPageFollowList&tplPath=apps/publicRecognition/tpl/" class="btn btn-primary" data-toggle="button createFollowListBtn">Create My Follow List</a>
+
+        </div>
+    </div>
+
+    <!-- If the user has followees in their follow list but there are no recognitions that are public from those followees to display, then display a message to explain why they don't see anything. -->
+    <div class="app-slider noRecognitionsFollowListWrapper"  style="display:none">
+        <div class="app-row">
+
+            <p>None of your contributors have any recognitions.</p>
+
+        </div>
+    </div>
+
+
+</div><!-- /#publicRecognitionPageView -->
+
+
+
+
+
+
+
+
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function(){
+        //attach the view to an existing DOM element
+        var prp = new PublicRecognitionPageView({
+            el:$('#publicRecognitionPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Public Recognition'
+        });
+    });
+</script>

@@ -1,0 +1,305 @@
+<div class="row">
+    <div class="span12 clearfix">
+        <h3>
+            {{name}} Results
+        </h3>
+        {{#unless includeSubmitClaim}}
+        <a href="#URL_TO_UPDATE_RESULTS" class="btn btn-small btn-primary updateResultsBtn"><i class="icon-pencil"></i> Update Activity</a>
+        {{/unless}}
+    </div>
+    <div class="span12">
+        {{#if hasQualifiedPayouts}}
+            <p>These are your contest’s final results. If you have additional contest activity, you may update the activity now. Once the payouts are issued you cannot edit the participants’ results.</p>
+
+        {{else}}
+            {{#if includeSubmitClaim}}
+                <p>No participants qualified for payouts. You may either approve more claims or close the contest without issuing payouts.</p>
+            {{else}}
+                <p>No participants qualified for payouts. You may either update activity or close the contest without issuing payouts.</p>
+            {{/if}}
+        {{/if}}
+    </div>
+</div>
+{{#if hasTie}}
+<div class="row">
+    <div class="span12 issuePayoutsTieText">
+        <p>
+            <i class="icon-exclamation-sign"></i> You have participants who finished the contest with the same rank and payout. They will receive the same payout unless you choose to edit their payouts.
+        </p>
+    </div>
+</div>
+{{/if}}
+
+{{#if hasQualifiedPayouts}}
+<div class="row">
+    <div class="span12">
+        <div class="paginationConts paginationControls pagination pagination-right"></div>
+        <div class="emptyMsg alert" style="display:none">You have not added anyone.</div>
+
+            <table class="table table-striped table-bordered stackRank accentLast3Cols">
+                <thead>
+                    <tr class="headerContent">
+                        <th class="sortHeader rank">
+                            Rank
+                            <i data-sort="rank" class="icon-sort sortControl"></i>
+                        </th>
+                        <th class="sortHeader">
+                            Participants
+                            <i data-sort="lastName" class="icon-sort sortControl"></i>
+                        </th>
+                        <th class="sortHeader number">
+                            Activity
+                            <i data-sort="activityAmount" class="icon-sort sortControl"></i>
+                        </th>
+
+                        {{#eq payoutType "points"}}
+                            <th class="sortHeader columnEmphasis number">
+                                Payout
+                                <i data-sort="totalPayout" class="icon-sort sortControl"></i>
+                            </th>
+                        {{/eq}}
+
+                        {{#eq payoutType "other"}}
+                            <th class="sortHeader columnEmphasis">
+                                Payout Description
+                                <i data-sort="payoutDescription" class="icon-sort sortControl"></i>
+                            </th>
+                            <th class="sortHeader columnEmphasis number">
+                                Payout Value
+                                <i data-sort="payoutValue" class="icon-sort sortControl"></i>
+                            </th>
+                        {{/eq}}
+
+                        <th class="badgeHeader columnEmphasis">
+                            Badge
+                        </th>
+
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr class="footerContent">
+                        <td class="totalDisp" colspan="2">
+                            Totals
+                        </td>
+                        <td class="totalDisp number">
+                            {{totalActivity}}
+                        </td>
+                        {{#eq payoutType "points"}}
+                            <td class="totalDisp columnEmphasis number">
+                                <span data-tplval="totalPayout">{{totalPayout}}</span>
+                            </td>
+                        {{/eq}}
+
+                        {{#eq payoutType "other"}}
+                            <td class="columnEmphasis"></td>
+                            <td class="totalDisp columnEmphasis number">
+                                {{currencySymbol}}<span data-tplval="totalPayoutValue">{{totalPayoutValue}}</span>
+                            </td>
+                        {{/eq}}
+
+                        <td class="columnEmphasis"></td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                </tbody>
+            </table>
+
+        <div class="paginationConts paginationControls pagination pagination-right"></div>
+    </div>
+</div>
+{{/if}}
+
+{{#if hasTie}}
+<div class="row">
+    <div class="span12">
+        {{#eq payoutType "points"}}
+            Budgeted Payout: <b>{{payoutCap}} points</b>
+        {{/eq}}
+
+        {{#eq payoutType "other"}}
+            Budgeted Payout: <b>{{payoutCap}}</b>
+        {{/eq}}
+    </div>
+    <div class="span12">
+        <a href="#" class="ssiViewContestDetails showDetails">View Details</a>
+        <a href="#" class="ssiViewContestDetails hideDetails" style="display:none">Hide Details</a>
+    </div>
+</div>
+
+<div class="row payoutsWrap" style="display: none">
+    <div class="span12 payoutsRow">
+        <div class="row">
+            <div class="span12">
+                <h4>Budgeted Payout</h4>
+            </div>
+        </div>
+
+        <div class="row">
+        {{#each payouts}}
+            <div class="span3 payout">
+                <span class="payoutRank">{{rank}}</span>
+                <div class="payoutInfo">
+                    {{#if badge.img}}
+                        <img src="{{badge.img}}" alt="{{badge.name}}" class="payoutBadge" />
+                    {{/if}}
+                    {{#if payout}}
+                        <span class="payoutAmount{{#unless badge.img}} no-badge{{/unless}}">
+                        {{payout}}
+                            {{#eq ../../payoutType "points"}}
+                                points
+                            {{/eq}}
+                        </span>
+                    {{else}}
+                        <span class="badgeName">{{badge.name}}</span>
+                    {{/if}}
+                </div>
+            </div>
+        {{/each}}
+        </div>
+    </div>
+</div>
+{{/if}}
+
+<div class="row">
+    <div class="span12">
+        <div class="form-actions pullBottomUp">
+            <!-- JAVA NOTE: add url to previous page -->
+            <a href="layout.html?tplPath=apps/ssi/tpl/&tpl=ssiCreatorPage.html#contest/{{id}}" class="btn">&laquo; Back</a>
+            {{#if hasQualifiedPayouts}}
+            <button type="button" class="btn btn-primary promptBtn">Issue Payout</button>
+            {{else}}
+            <button type="button" class="btn btn-primary promptBtnCloseContest">Close Contest</button>
+            {{/if}}
+        </div>
+    </div>
+</div>
+
+{{! NOTE: read-only contests use recordRow templates }}
+
+<!--subTpl.recordRow=
+
+    <tr class="record-item" data-participant-id="{{id}}">
+
+        <td class="rank">
+            {{rank}}
+        </td>
+        <td>
+            <a class="profile-popover" data-participant-ids="[{{id}}]">
+                {{lastName}}, {{firstName}}
+            </a>
+        </td>
+        <td class="number">
+            {{progress}}
+        </td>
+
+        {{#eq extraJSON.payoutType "points"}}
+            <td class="number columnEmphasis">
+                {{#if payout}}
+                    {{payout}}
+                {{else}}
+                    --
+                {{/if}}
+            </td>
+        {{/eq}}
+
+        {{#eq extraJSON.payoutType "other"}}
+            <td class="columnEmphasis">
+                {{payoutDescription}}
+            </td>
+            <td class="number columnEmphasis">
+                {{#if payoutValue}}
+                    {{payoutValue}}
+                {{else}}
+                    --
+                {{/if}}
+            </td>
+        {{/eq}}
+
+        <td class="badgeCell columnEmphasis">
+            {{#if badge.img}}
+                <img src="{{badge.img}}" alt="{{badge.name}}" /> {{badge.name}}
+            {{else}}
+                --
+            {{/if}}
+        </td>
+    </tr>
+
+subTpl-->
+
+{{! NOTE: edittable contests use paxRow templates }}
+
+<!--subTpl.paxRow=
+
+    <tr class="record-item" data-participant-id="{{id}}">
+
+        <td class="rank">
+            {{rank}}
+        </td>
+        <td>
+            <a class="profile-popover" data-participant-ids="[{{id}}]">
+                {{lastName}}, {{firstName}}
+            </a>
+        </td>
+        <td class="number">
+            {{progress}}
+        </td>
+
+        {{#eq extraJson.payoutType "points"}}
+            <td class="textInputCell columnEmphasis number">
+                <input type="text"
+                    class="paxDatTextInput paxDatActivityVal"
+                    value="{{payout}}"
+                    data-model-key="payout"
+                    data-validation="number"
+                    data-model-id="{{id}}" >
+            </td>
+        {{/eq}}
+
+        {{#eq extraJson.payoutType "other"}}
+            <td class="textInputCell columnEmphasis">
+                <input type="text"
+                    class="paxDatTextInput paxDatActivityDesc"
+                    value="{{payoutDescription}}"
+                    data-model-key="payoutDescription"
+                    data-model-id="{{id}}" >
+            </td>
+            <td class="textInputCell columnEmphasis number">
+                <input type="text"
+                    class="paxDatTextInput paxDatActivityVal"
+                    value="{{payoutValue}}"
+                    data-model-key="payoutValue"
+                    data-validation="number"
+                    data-model-id="{{id}}" >
+            </td>
+        {{/eq}}
+
+        <td class="badgeCell columnEmphasis">
+            {{#if badge.img}}
+                <img src="{{badge.img}}" alt="{{badge.name}}" /> {{badge.name}}
+            {{else}}
+                --
+            {{/if}}
+        </td>
+    </tr>
+
+subTpl-->
+
+<!-- VALIDATION MSGS - informational tooltip for validation -->
+<div class="participantPaginatedViewErrorTipWrapper" style="display:none">
+    <div class="errorTip">
+
+        <div class="errorMsg msgNumeric msg_whole" style="display:none" >
+            This field must be a number.
+        </div>
+        <div class="errorMsg msgRequired" style="display:none" >
+            One or more required <br>
+            fields are missing.
+        </div>
+
+    </div><!-- /.errorTip -->
+</div><!-- /.participantPaginatedViewErrorTipWrapper -->
+
+<div id="sameForAllTipTpl" class="sameForAllTip" style="display:none">
+    <a href="#">same for all<br>participants</a>
+</div><!-- /#sameForAllTipTpl -->
+

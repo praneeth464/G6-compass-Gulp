@@ -1,0 +1,33 @@
+<?php
+header('Content-Type: application/json');
+sleep(1);
+require_once('paxGenerator/paxGenerator.php');
+
+/*
+ * DO THIS GET THAT
+ */
+
+$payoutTypeIsOther = false;
+
+if (isset($_POST['id']) && strpos($_POST['id'], "other")) {
+    $payoutTypeIsOther = true;
+}
+
+if ($payoutTypeIsOther) {
+    $ed = array(
+        'progress' => "37.1000",
+        'qualifiedActivity' => "32.0110",
+        'payoutIncrements' => "3",
+        'payoutDescription' => "lipsum",
+        'payoutValue' => "100"
+    );
+} else {
+    $ed = array(
+        'progress' => "37.0100",
+        'qualifiedActivity' => "32.0110",
+        'payoutIncrements' => "3",
+        'totalPayout' => "100"
+    );
+}
+
+generatePaxesPaginatedJson(6,500,$ed);

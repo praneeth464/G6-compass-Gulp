@@ -1,0 +1,63 @@
+{
+    "messages":[],
+    "proxies":[
+        {
+            "id":"34",
+            "lastName":"Abrahmson",
+            "firstName":"Aaron",
+            "avatarUrl":"img/_samples/x-profile-pic1.jpg",
+            "orgName":"Organization X",
+            "departmentName":"Sales",
+            "jobName":"Legal Council",
+            "countryName":"United States",
+            "countryCode":"us",
+            "isSelected":false,
+            "urlEdit":"profilePageProxiesTabEditForm.html",
+            "coreAccess":[
+                "Roster Managment",
+                "Something Else"
+            ],
+            "module":[
+                {
+                    "title":"Recognition",
+                    "promotions":[
+                        "Years of Service",
+                        "Manager to Employee",
+                        "Plateau Awards",
+                        "Manager Discretionary",
+                        "Recognition Calculator",
+                        "Employee to Employee"
+                    ]
+                },
+                {
+                    "title":"Nomination",
+                    "promotions":[
+                        "Signature Service Nomination"
+                    ]
+                }
+            ]
+        },
+        {
+            "id":"1203",
+            "lastName":"Billings",
+            "firstName":"Aaron",
+            "avatarUrl":"img/_samples/x-profile-pic2.jpg",
+            "orgName":"Organization Y",
+            "departmentName":"Auto",
+            "jobName":"Mechanic",
+            "countryName":"Germany",
+            "countryCode":"de",
+            "isSelected":true,
+            "urlEdit":"profilePageProxiesTabEditForm.html",
+            "coreAccess":[],
+            "module":[
+                {
+                    "title":"< all modules >",
+                    "promotions":[
+                        "< all promotions >"
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,749 @@
+// App-specific variables
+// =========================
+$leaderboard_bgColor: $g5ModuleBgColor !default;
+$leaderboard_gradType: $g5ModuleGradType !default;
+$leaderboard_gradMeta: $g5ModuleGradMeta !default;
+$leaderboard_gradStops: $g5ModuleGradStops !default;
+
+$leaderboard_iconColor: $g5ModuleIconColor !default;
+$leaderboard_titleColor: $g5ModuleTitleColor !default;
+$leaderboard_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$leaderboard_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$leaderboard_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$leaderboard_cycleDotWidth: false !default;
+$leaderboard_cycleDotBkg: false !default;
+$leaderboard_cycleDotBorder: false !default;
+$leaderboard_cycleDotBkgHover: false !default;
+$leaderboard_cycleDotBorderHover: false !default;
+$leaderboard_cycleDotBkgActive: false !default;
+$leaderboard_cycleDotBorderActive: false !default;
+$leaderboard_cycleDotBorderRadius: false !default;
+
+$leaderboard_bgColorBig: $grayDark !default;
+$leaderboard_gradTypeBig: $g5ModuleGradType !default;
+$leaderboard_gradMetaBig: left !default;
+$leaderboard_gradStopsBig: $leaderboard_bgColorBig, lighten($leaderboard_bgColorBig, 17%), $leaderboard_bgColorBig !default;
+
+$leaderboard_textColor: $white !default;
+$leaderboard_textAsOfColorModule: $grayLight !default;
+$leaderboard_textAsOfColorPage: $grayDark !default;
+$leaderboard_textLargeRankColorModule: false !default;
+$leaderboard_textLargeRankColorPage: false !default;
+
+$leaderboard_leaderLinkColorModule: $linkColor !default;
+$leaderboard_leaderLinkColorHoverModule: $linkColorHover !default;
+$leaderboard_leaderLinkColorPage: $linkColor !default;
+$leaderboard_leaderLinkColorHoverPage: $linkColorHover !default;
+
+$leaderboard_leaderBgModuleOdd: scale-color($leaderboard_bgColorBig, $lightness: -50%) !default;
+$leaderboard_leaderBgModuleEven: scale-color($leaderboard_bgColorBig, $lightness: -12.5%) !default;
+$leaderboard_leaderBgModuleYou: mix($leaderboard_leaderBgModuleOdd, $leaderboard_leaderLinkColorModule, $weight: 50%) !default;
+$leaderboard_leaderBgPageOdd: $grayLighter !default;
+$leaderboard_leaderBgPageEven: $white !default;
+$leaderboard_leaderBgPageYou: mix($leaderboard_leaderBgPageEven, $leaderboard_leaderLinkColorPage, $weight: 67%) !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.leaderboard {
+    .background-flash {
+        background-color:#FFFFA3;
+    }
+    .tied {
+        list-style: none;
+        b {
+            visibility: hidden;
+        }
+    }
+
+    .rulestoview {
+        display: none;
+    }
+
+    .highlightedUser {
+        img {
+            width: 60px;
+            height: 60px;
+            max-width: 60px;
+            min-width: 60px;
+            margin-right: 12px;
+        }
+        .rank,
+        .progress-text,
+        .activitydate {
+            display: block;
+        }
+        .rank {
+            margin-top: -4px;
+        }
+        .pre-rank {
+            font-size: 18px;
+        }
+        .large-rank-text {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .progress-text {
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .activitydate {
+            line-height: 14px;
+
+            span, strong {
+                font-size: 12px;
+                font-weight: normal;
+            }
+        }
+    }
+
+    .leaders-col {
+        // remove the gap between two OLs (used for responsive columns)
+        margin: 0;
+        float: left;
+        list-style: none;
+
+        li {
+            font-size: 13px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        // rank
+        li b {
+            display: inline-block;
+            @include ie7-inline-block();
+            float: left;
+            width: 24px;
+            text-align: right;
+            font-weight: normal;
+        }
+
+        // avatar
+        li img {
+            display: inline;
+            float: left;
+            margin: 5px 6px 5px 0;
+            width: 20px;
+            height: 20px;
+        }
+
+        // score
+        li span {
+            display: block;
+            float: right;
+            margin-right: 40px;
+        }
+
+        // name
+        li .leaderName {
+            font-weight: bold;
+            vertical-align: top;
+        }
+    }// /.leaders-col
+
+    &.leaderBoardEditPromo-liner {
+        #leaderboardFieldsetNotify .control-label.checkbox{
+            padding-left: 50px;
+            width: 120px;
+
+            @media (max-width: 479px){
+                padding-left: 20px;
+            }
+        }
+    }
+}
+
+
+#leaderboardPageView{
+    .leaderboard-details {
+        margin-top: 0;
+    }
+
+    #leaderboardFieldsetNotify {
+        label{
+            text-align: left;
+            font-size: 14px;
+        }
+    }
+
+    #leaderboardFieldsetPromoInfo,
+    #leaderboardFieldsetActivity {
+        i.icon-question-sign{
+            font-size: 15px;
+            margin-left: 5px;
+        }
+        i.icon-question-sign:hover {
+            cursor: pointer;
+            color: #666;
+        }
+    }
+}
+
+/* /.leaderboard */
+
+/* ----- MODULE STYLES ----- */
+.module.leaderboard {
+
+    // never show the dataLoading spinner on the icon versions of this module
+    &.grid-dimension-1x1.dataLoading,
+    &.grid-dimension-2x1.dataLoading {
+        .spin {
+            display: none;
+        }
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        .module-liner {
+            // define the backgrounds of the big version first so we can bring back the small version when .dataLoading
+            @include module_moduleLinerBackground(
+                $bgColor: $leaderboard_bgColorBig,
+                $gradType: $leaderboard_gradTypeBig,
+                $gradMeta: $leaderboard_gradMetaBig,
+                $gradStops: $leaderboard_gradStopsBig
+            );
+
+            .title-icon-view {
+                display: none;
+            }
+        }
+
+        // hide the big version of this module when we're loading data and show a faded version of the title-icon-view
+        @include module_fadeOnDataLoading();
+    }
+
+    // define the backgrounds of the general version second so we can override the big color when .dataLoading
+    &.dataLoading .module-liner,
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $leaderboard_bgColor,
+            $gradType: $leaderboard_gradType,
+            $gradMeta: $leaderboard_gradMeta,
+            $gradStops: $leaderboard_gradStops
+        );
+    }
+
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $leaderboard_iconColor,
+            $titleColor: $leaderboard_titleColor,
+            $titleFontFamily: $leaderboard_titleFontFamily
+        );
+
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            @include g5HomeAppIconBoxReflect(-54px);
+        }
+    }
+
+    @include module_titleIconViewFontSizesWeights($leaderboard_titleFontSizes, $leaderboard_titleFontWeights);
+
+    @include module_cycleDots(
+        $cycleDotWidth: $leaderboard_cycleDotWidth,
+        $cycleDotBkg: $leaderboard_cycleDotBkg,
+        $cycleDotBorder: $leaderboard_cycleDotBorder,
+        $cycleDotBkgHover: $leaderboard_cycleDotBkgHover,
+        $cycleDotBorderHover: $leaderboard_cycleDotBorderHover,
+        $cycleDotBkgActive: $leaderboard_cycleDotBkgActive,
+        $cycleDotBorderActive: $leaderboard_cycleDotBorderActive,
+        $cycleDotBorderRadius: $leaderboard_cycleDotBorderRadius
+    );
+
+    color: $leaderboard_textColor;
+
+    .wide-view {
+        padding: 0;
+    }
+
+    /* header style for all sizes */
+    .leaderboardMetaData {
+        padding: $g5ModulePadding $g5ModulePadding ($g5ModulePadding / 2) $g5ModulePadding;
+
+        .actions, .startdate, .enddate, .rulestoview {
+            display: none;
+        }
+
+        // leaderboard title
+        h2 {
+            margin: 0;
+            padding-right: 20px;
+            font-family: $titleFont;
+            font-size: 24px;
+            line-height: 1.2;
+            font-weight: normal;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+
+    .highlightedUser {
+        padding: ($g5ModulePadding / 2) $g5ModulePadding;
+
+        .activitydate {
+            span, strong {
+                color: $leaderboard_textAsOfColorModule;
+            }
+        }
+        .large-rank-text {
+            @if $leaderboard_textLargeRankColorModule {
+                color: $leaderboard_textLargeRankColorModule;
+            }
+        }
+    }
+
+    .leaders-col {
+        .odd, &.leadersColB .oddB { @include safeBkgs($leaderboard_leaderBgModuleOdd); }
+        .even, &.leadersColB .evenB { @include safeBkgs($leaderboard_leaderBgModuleEven); }
+        .you { background: $leaderboard_leaderBgModuleYou !important; }
+
+        li {
+            line-height: 36px;
+
+            // rank
+            b {
+                padding: 0 ($g5ModulePadding / 2) 0 0;
+                width: $g5ModulePadding * 1.5;
+            }
+            // avatar
+            img {
+                margin: 8px 6px 8px 0;
+            }
+            // name
+            .leaderName {
+                @if $leaderboard_leaderLinkColorModule != $linkColor {
+                    color: $leaderboard_leaderLinkColorModule;
+
+                    &:hover {
+                        color: $leaderboard_leaderLinkColorHoverModule;
+                    }
+                }
+            }
+            // score
+            span {
+                margin-right: $g5ModulePadding;
+            }
+        }
+    }
+
+    &.grid-dimension-2x2 {
+        .cycle,
+        .cycle .item {
+            overflow-y: auto;
+            overflow-x: hidden;
+            // use module_moduleLiner with third 'borderWidth' argument
+            @include module_moduleLiner(2, 2, 0);
+        }
+        // the lastname in the highlightedUser is hidden on the 2x2 due to space constraints
+        .highlightedUser .lastname {
+            display: none;
+        }
+        // col is full-width for 2x2
+        .leaders-col {
+            float: none;
+        }
+        // col b is hidden for 2x2 (short)
+        .leaders-col-b {
+            display: none;
+        }
+    }
+
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        .leaderboardMetaData {
+            padding: $g5ModulePadding ($g5ModulePadding * 2) ($g5ModulePadding / 2) ($g5ModulePadding * 2);
+        }
+        .highlightedUser {
+            padding: ($g5ModulePadding / 2) ($g5ModulePadding * 2);
+        }
+        .leaders-col {
+            width: (($g5ModuleUnit * 2) - $g5ModuleGutter) - 1;
+
+            &.leaders-col-b-empty{
+                width: 100%;
+            }
+        }
+        .leaders-col-b {
+            float: right;
+        }
+    }
+
+    &.grid-dimension-4x2 {
+        // set cycle cont and slides w&h
+        .cycle,
+        .cycle .item {
+            // use module_moduleLiner with third 'borderWidth' argument
+            @include module_moduleLiner(4, 2, 0);
+        }
+    }
+
+    &.grid-dimension-4x4 {
+        .cycle,
+        .cycle .item {
+            // use module_moduleLiner with third 'borderWidth' argument
+            @include module_moduleLiner(4, 4, 0);
+        }
+
+        .leaderboardMetaData {
+            h2 {
+                font-size: 32px;
+            }
+        }
+
+        .highlightedUser {
+            padding-bottom: $g5ModulePadding;
+        }
+    }
+}
+
+// .lt-ie9 .module.leaderboard {
+//     &.grid-dimension-2x2,
+//     &.grid-dimension-4x2,
+//     &.grid-dimension-4x4 {
+//         .cycleLegend{
+//             bottom: 8px;
+//         }
+//     }
+// }
+
+
+
+/* /.module.leaderboard */
+
+/* ----- PAGE STYLES ----- */
+.page.leaderboard {
+
+    a [class^="icon-"],
+    a [class*=" icon-"] {
+        margin-right: 2px;
+    }
+
+    // leaderboardPagePreview.html
+    // --------------------
+    .leaderboard-details {
+        dt { width:220px; }
+        dd { margin-left: 230px; }
+        @media (max-width: 767px) {
+            dt { width: auto;}
+            dd { margin-left: 0;}
+        }
+    }
+
+    // leaderboardPage.html
+    // --------------------
+    .leaderboard-topper-liner {
+        position: relative;
+
+        .control-group-createnew {
+            position: absolute;
+            top:0;
+            right:0;
+            line-height:30px;
+            margin-right:0;
+        }
+        .createnew {
+            color: #fff;
+            font-weight: bold;
+        }
+    }
+    #controlLeaderboardSetSelect,
+    #controlLeaderboardSelect {
+        label {
+            display: none;
+        }
+    }
+    .leaderboardModel {
+        .spin {
+            display: block;
+            margin: 0 auto;
+            width: $spinner_widthHeight;
+            height: $spinner_widthHeight;
+        }
+        .startdate,
+        .enddate {
+            margin: 0;
+            color: $gray;
+
+            strong {
+                font-weight: normal;
+            }
+        }
+        h2 {
+            clear: right;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        .actions {
+            li {
+                display: block;
+                // float: left;
+            }
+            a {
+                color: $black;
+                font-weight:bold;
+            }
+            &.upper {
+                display: block;
+                float: right;
+                margin: 0;
+
+                li {
+                    margin-left: 12px;
+                    float: left;
+                }
+            }
+            &.lower {
+                display: inline-block;
+                margin: 0;
+                margin-left: 20px;
+                @include clearfix();
+
+                li {
+                    margin: 0 0 12px;
+                }
+            }
+        }
+        .highlightedUser {
+            display: inline-block;
+            margin: 16px 0 16px;
+
+            .activitydate {
+                span,strong {
+                    color: $leaderboard_textAsOfColorPage;
+                }
+            }
+            .large-rank-text {
+                @if $leaderboard_textLargeRankColorPage {
+                    color: $leaderboard_textLargeRankColorPage;
+                }
+            }
+        }
+
+        .leaders-col {
+            width: ($gridColumnWidth * 6  +  $gridGutterWidth * 5.5 - $g5PageContentLeftRightBorderWidth) - 1;
+
+            &.leaders-col-a {
+                margin-left: -($g5PageContentPaddingHoriz) + $g5PageContentLeftRightBorderWidth;
+            }
+            &.leaders-col-b {
+                float: right;
+                margin-right: -($g5PageContentPaddingHoriz) + $g5PageContentLeftRightBorderWidth;
+            }
+            .odd, &.leadersColB .oddB { background: $leaderboard_leaderBgPageOdd; }
+            .even, &.leadersColB .evenB { background: $leaderboard_leaderBgPageEven; }
+            .you { background: $leaderboard_leaderBgPageYou !important; }
+            li {
+                line-height: 30px;
+                // rank
+                b {
+                    padding-right: 6px;
+                    width: $g5PageContentPaddingHoriz - $g5PageContentLeftRightBorderWidth - 6px;
+                }
+                // name
+                .leaderName {
+                    @if $leaderboard_leaderLinkColorPage != $linkColor {
+                        color: $leaderboard_leaderLinkColorPage;
+
+                        &:hover {
+                            color: $leaderboard_leaderLinkColorHoverPage;
+                        }
+                    }
+                }
+                // score
+                span {
+                    margin-right: $g5PageContentPaddingHoriz - $g5PageContentLeftRightBorderWidth;
+                }
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .leaders-col {
+                width: ($gridColumnWidth1200 * 6  +  $gridGutterWidth1200 * 5.5 - $g5PageContentLeftRightBorderWidth1200) - 1;
+
+                &.leaders-col-a {
+                    margin-left: -($g5PageContentPaddingHoriz1200) + $g5PageContentLeftRightBorderWidth1200;
+                }
+                &.leaders-col-b {
+                    margin-right: -($g5PageContentPaddingHoriz1200) + $g5PageContentLeftRightBorderWidth1200;
+                }
+                li {
+                    b {
+                        padding-right: 8px;
+                        width: $g5PageContentPaddingHoriz1200 - $g5PageContentLeftRightBorderWidth1200 - 8px;
+                    }
+                    span {
+                        margin-right: $g5PageContentPaddingHoriz1200 - $g5PageContentLeftRightBorderWidth1200;
+                    }
+                }
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 979px) {
+            .leaders-col {
+                width: ($gridColumnWidth768 * 6  +  $gridGutterWidth768 * 5.5 - $g5PageContentLeftRightBorderWidth768) - 1;
+
+                &.leaders-col-a {
+                    margin-left: -($g5PageContentPaddingHoriz768) + $g5PageContentLeftRightBorderWidth768;
+                }
+                &.leaders-col-b {
+                    margin-right: -($g5PageContentPaddingHoriz768) + $g5PageContentLeftRightBorderWidth768;
+                }
+                li {
+                    b {
+                        padding-right: 2px;
+                        width: $g5PageContentPaddingHoriz768 - $g5PageContentLeftRightBorderWidth768 - 2px;
+                    }
+                    span {
+                        margin-right: $g5PageContentPaddingHoriz768 - $g5PageContentLeftRightBorderWidth768;
+                    }
+                }
+            }
+        }
+
+        @media (max-width: 767px) {
+            #controlLeaderboardSetSelect{
+                margin-bottom: 4px;
+            }
+
+            .control-group-createnew {
+                position: relative !important;
+            }
+
+            .leaders-col {
+                width: 100%;
+                &.leaders-col-a,
+                &.leaders-col-b {
+                    float: none;
+                    margin-left: 0;
+                    margin-right: 0;
+                }
+                li b {
+                    padding-right: $g5PageContentPaddingHorizMobile / 2;
+                    width: $g5PageContentPaddingHorizMobile * 1.5;
+                }
+                li span {
+                    margin-right: $g5PageContentPaddingHorizMobile;
+                }
+            }
+            .actions {
+                &.upper {
+                    display: block;
+                    margin-bottom: 10px;
+                    float: none;
+                    li {
+                        display: block;
+                        margin-left: 0px;
+                        float: none;
+                    }
+                }
+            }
+        }
+    }
+    // ordinary participants cannot switch between sets or create a new leaderboard
+    &.participant {
+        #controlLeaderboardSetSelect,
+        .createnew {
+            display: none;
+        }
+    }
+    // leaderboard display
+    .leaders-col {
+        // width: 47%;
+        li span { // this is the score/rank element
+            // margin-right:100px;
+        }
+    }
+
+    // leaderboardPageCreate.html (and *Copy.html, *EditActivity.html)
+    // --------------------
+    #leaderboardFieldsetActivity {
+        h2 {
+            margin-top: $g5PageContentSpacingVertical;
+        }
+    }
+    #addMoreParticipantsSearch {
+        margin-bottom: 8px;
+    }
+    #participantsView {
+        td.score { text-align: center; }
+        td.newScore {
+            text-align: center;
+            input { text-align: right;}
+        }
+    }
+    .participantCollectionViewWrapper table .participant .org {
+        color: #ccc;
+        display: block;
+    }
+    .jHtmlArea .ToolBar {
+        // margin-bottom: 5px;
+    }
+    #leaderboardCancelDialogConfirm {
+        margin-right:12px;
+    }
+
+
+} /* /.page.leaderboard */
+
+// IE7 specific garbage
+.lt-ie8 .page.leaderboard .row {
+    position: relative;
+}
+.lt-ie8 .page.leaderboard .form-horizontal .form-actions {
+    position: relative;
+    margin-right: 0px;
+    margin-left: 0px;
+    right: 35px;
+    bottom: -35px;
+    width: 876px;
+}
+.lt-ie8 .large-rank-text {
+    line-height: 27px !important;
+}
+
+#leaderboardPageView{
+    legend{
+        font-size: 26px;
+        margin-bottom: 15px;
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 980px){
+    .participantCollectionViewWrapper{
+        // margin-top: 32px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+    .page.leaderboard .leaders-col {
+        width: 45%;
+        li span { // this is the score/rank element
+            margin-right:40px;
+        }
+    }
+}
+@media (max-width: 767px) {
+    .page.leaderboard .leaders-col {
+        width: 96%;
+        li span { // this is the score/rank element
+            margin-right:100px;
+        }
+    }
+}
+@media (max-width: 480px) {
+    .page.leaderboard .leaders-col li span { // this is the score/rank element
+        margin-right:20px;
+    }
+}
+
+/* ----- SHARED ELEMENTS ACROSS ALL MODULES AND PAGES ----- */

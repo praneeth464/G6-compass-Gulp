@@ -1,0 +1,86 @@
+// Partial-specific variables
+// =========================
+$global_header_logoHeight: 72px !default;
+$global_header_logoHeight1200: false !default;
+$global_header_logoHeight768: 60px !default;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+#globalHeaderView {
+    display: inline;
+    float: left;
+    min-height: $global_header_logoHeight;
+    width: 50%;
+
+    .logo, .proglogo {
+        display: inline;
+        float: left;
+        margin: 0;
+        padding: 0;
+        height: $global_header_logoHeight;
+
+        img {
+            height: 100%;
+            max-width: none;
+        }
+
+        &.logo {
+            margin-right: 24px;
+
+            a {
+                height: 100%;
+                color: $black;
+                text-decoration: none;
+            }
+
+        }
+    }
+}
+
+// Media Queries
+// big desktop sizes
+@media (min-width: 1200px) {
+    #globalHeaderView {
+        @if $global_header_logoHeight1200 {
+            min-height: $global_header_logoHeight1200;
+        }
+        .logo, .proglogo {
+            @if $global_header_logoHeight1200 {
+                height: $global_header_logoHeight1200;
+            }
+        }
+    }
+}
+// typical desktop sizes
+@media (min-width: 768px) and (max-width: 979px) {
+    #globalHeaderView {
+        @if $global_header_logoHeight768 {
+            min-height: $global_header_logoHeight768;
+        }
+        .logo, .proglogo {
+            @if $global_header_logoHeight768 {
+                height: $global_header_logoHeight768;
+            }
+        }
+    }
+}
+// styles for tablet sizes and below
+@media (max-width: 767px) {
+    #globalHeaderView {
+        display: none;
+
+        .logo, .proglogo {
+            height: auto;
+            max-height: $global_header_logoHeight;
+
+            img {
+                height: auto;
+                max-height: $global_header_logoHeight;
+            }
+        }
+    }
+}

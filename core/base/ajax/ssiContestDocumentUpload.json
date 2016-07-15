@@ -1,0 +1,11 @@
+<?php /* THIS WILL BREAK IE UPLOAD php header('Content-type: application/json');*/ ?>
+{
+    "messages":[],
+    "properties":{
+        "isSuccess": true,
+        "originalFilename": "FilenameFromClient.ext",
+        "fileUrl": "http://lorempixel.com/432/432/people/1/Uploaded-Image",
+        "errorText": null
+    },
+    "php_ignore":
+"<?php sleep(2); echo 'inject PHP'.chr(34).','; $n = $_FILES['documentFile']['name']; $tn = $_FILES['documentFile']['tmp_name']; $t = $_FILES['documentFile']['type']; $x = explode('.',$n); $ext = end($x); $tfn = 'deleteMe_uploadedImageFromPhp.'.$ext; move_uploaded_file($tn,'../'.$tfn); echo ''.chr(34).'properties'.chr(34).':{'; echo ''.chr(34).'isSuccess'.chr(34).': true,'; echo ''.chr(34).'originalFilename'.chr(34).': '.chr(34).$n.chr(34).','; echo ''.chr(34).'fileUrl'.chr(34).': '.chr(34).$tfn.'?'.rand().chr(34).''; echo '},'; echo ''.chr(34).'php_ignore'.chr(34).':'.chr(34).'end inject PHP'; ?>"}

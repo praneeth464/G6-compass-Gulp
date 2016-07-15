@@ -1,0 +1,132 @@
+<?php sleep(1); ?>
+{
+    "messages" : [],
+
+    "kpm" : {
+        "_comment" : "mode can be team/user",
+        "mode" : "team",
+
+        "_comment" : "Send the userId regardless of mode.",
+        "_comment" : "It can be either the userId of the current user (team mode or my profile page) or the userId of a subordinate (KPM drill-down page)",
+        "userId" : 1234,
+
+        "_comment" : "The nodes hierarchy can nest as deeply as necessary",
+        "nodes" : [
+            {
+                "id" : 1234,
+                "name" : "Node A",
+
+                "_comment" : "children should be in an array called nodes that is structured exactly like this one",
+                "nodes" : [
+                    {
+                        "id" : 12345,
+                        "name" : "Node A1"
+                    }
+                ]
+            },
+            {
+                "id" : 1235,
+                "name" : "Node B"
+            }
+        ],
+
+        "_comment" : "The timeframeType can be month/quarter/year",
+        "timeframeType" : "month",
+
+        "_comment" : "The timeframeId would be the month ID from 1-12 for type month, the month ID from 1-12 of the first of three months for type quarter, and the year for type year",
+        "timeframeId" : 3,
+
+        "_comment" : "The as of date gets special display treatment, but this string will be shown as sent",
+        "asof" : "02/15/2014",
+
+        "_comment" : "The total number of team members used for calculating scores/summaries",
+        "teamMemCount" : 7,
+
+        "summary" : [
+            {
+                "type" : "score",
+                "title" : "Participation Score",
+                "description" : "Lorem ipsum dolor 1",
+                "target" : 75,
+                "actual" : 72,
+
+                "_comment" : "properties from here on down only show on the detail screen, but can be sent to the module if it simpler to do so",
+                "avgTeamMem" : 7,
+                "avgCompany" : 12,
+                "teamMemMetTarget" : 1,
+                "reportUrl" : "layout.html",
+                "reportTitle" : "Report Detail Extract"
+            },
+            {
+                "type" : "recSent",
+                "title" : "Recognitions Sent",
+                "description" : "Lorem ipsum dolor 2",
+                "target" : 70,
+                "actual" : 57,
+
+                "_comment" : "properties from here on down only show on the detail screen, but can be sent to the module if it simpler to do so",
+                "avgTeamMem" : 8,
+                "avgCompany" : 13,
+                "teamMemMetTarget" : 2,
+                "reportUrl" : "layout.html",
+                "reportTitle" : "View Report"
+            },
+            {
+                "type" : "recRecv",
+                "title" : "Recognitions Received",
+                "description" : "Lorem ipsum dolor 3",
+                "target" : 50,
+                "actual" : 48,
+
+                "_comment" : "properties from here on down only show on the detail screen, but can be sent to the module if it simpler to do so",
+                "avgTeamMem" : 9,
+                "avgCompany" : 14,
+                "teamMemMetTarget" : 3,
+                "reportUrl" : "layout.html",
+                "reportTitle" : "View Report"
+            },
+            {
+                "type" : "teamRec",
+                "title" : "Team Recognized",
+                "description" : "Lorem ipsum dolor 4",
+                "target" : 80,
+                "actual" : 85,
+
+                "_comment" : "properties from here on down only show on the detail screen, but can be sent to the module if it simpler to do so",
+                "avgTeamMem" : 10,
+                "avgCompany" : 15,
+                "teamMemMetTarget" : 4,
+                "reportUrl" : "layout.html",
+                "reportTitle" : "View Report"
+            },
+            {
+                "type" : "teamRecBy",
+                "title" : "Team Recognized By",
+                "description" : "Lorem ipsum dolor 5",
+                "target" : 100,
+                "actual" : 121,
+
+                "_comment" : "properties from here on down only show on the detail screen, but can be sent to the module if it simpler to do so",
+                "avgTeamMem" : 11,
+                "avgCompany" : 16,
+                "teamMemMetTarget" : 5,
+                "reportUrl" : "layout.html",
+                "reportTitle" : "View Report"
+            },
+            {
+                "type" : "visits",
+                "title" : "Site Visits",
+                "description" : "Lorem ipsum dolor 6",
+                "target" : 80,
+                "actual" : 75,
+
+                "_comment" : "properties from here on down only show on the detail screen, but can be sent to the module if it simpler to do so",
+                "avgTeamMem" : 12,
+                "avgCompany" : 17,
+                "teamMemMetTarget" : 6,
+                "reportUrl" : "layout.html",
+                "reportTitle" : "View Report"
+            }
+        ]
+    }
+}

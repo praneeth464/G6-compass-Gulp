@@ -1,0 +1,77 @@
+{
+    "messages": [],
+    "activeContestsList": [
+        {
+            "id": "1",
+            "name": "Step It Up Example",
+            "managerDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiManagerPage.html"
+        <?php /*,
+            "status": "live",
+            "statusLabel": "Active",
+            "startDate": "08/16/2013",
+            "endDate": "09/16/2014",
+            "role": "creator",
+            "roleLabel": "Creator" */ ?>
+        },
+        {
+            "id": "6",
+            "name": "XYZ Contest",
+            "managerDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiManagerPage.html"
+        <?php /*,
+            "status": "live",
+            "statusLabel": "Active",
+            "startDate": "08/16/2013",
+            "endDate": "09/16/2014",
+            "role": "participant",
+            "roleLabel": "Participant"*/ ?>
+        },
+        {
+            "id": "2",
+            "name": "Do This Get That Example",
+            "managerDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiManagerPage.html"
+        <?php /*,
+            "status": "live",
+            "statusLabel": "Active",
+            "startDate": "08/16/2013",
+            "endDate": "09/16/2014",
+            "role": "manager",
+            "roleLabel": "Manager"*/ ?>
+        },
+        {
+            "id": "3",
+            "name": "Objective Example",
+            "managerDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiManagerPage.html"
+        <?php /*,
+            "status": "live",
+            "statusLabel": "Active",
+            "startDate": "01/01/2014",
+            "endDate": "02/01/2014",
+            "role": "manager",
+            "roleLabel": "Manager"*/ ?>
+        },
+        {
+            "id": "3c",
+            "name": "Objective Completed Example",
+            "managerDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiManagerPage.html"
+        <?php /*,
+            "status": "live",
+            "statusLabel": "Complete",
+            "startDate": "01/01/2014",
+            "endDate": "02/01/2014",
+            "role": "manager",
+            "roleLabel": "Manager"*/ ?>
+        },
+        {
+            "id": "4",
+            "name": "Stack Rank Example",
+            "managerDetailPageUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiManagerPage.html"
+        <?php /*,
+            "status": "draft",
+            "statusLabel": "Incomplete",
+            "startDate": "01/01/2014",
+            "endDate": "02/01/2014",
+            "role": "manager",
+            "roleLabel": "Manager"*/ ?>
+        }
+    ]
+}

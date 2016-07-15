@@ -1,0 +1,355 @@
+{
+  "messages": [],
+  "report": {
+    "id": "1",
+    "reportDisplayName": "Participant Login Activity",
+    "parameterGroups": [
+      {
+        "name": "Time Frame",
+        "fields": [
+          {
+            "type": "datePicker",
+            "label": "Start",
+            "id": "dateRangeStart",
+            "name": "dateRangeStart",
+            "value": "01/02/2003"
+          },
+          {
+            "type": "datePicker",
+            "label": "End",
+            "id": "dateRangeEnd",
+            "name": "dateRangeEnd",
+            "value": "07/13/2012"
+          }
+        ]
+      },
+      {
+        "name": "Participants",
+        "fields": [
+          {
+            "type": "select",
+            "label": "Departments",
+            "id": "departments",
+            "name": "departments",
+            "selected": "show all",
+            "options": [
+              {
+                "value": "",
+                "display": "show all"
+              },
+              {
+                "value": "accounting",
+                "display": "Accounting"
+              },
+              {
+                "value": "hr",
+                "display": "Human Resources"
+              },
+              {
+                "value": "office",
+                "display": "Office"
+              },
+              {
+                "value": "sales",
+                "display": "Sales"
+              },
+              {
+                "value": "service",
+                "display": "Service"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "label": "Job Title",
+            "id": "job",
+            "name": "job",
+            "selected": "show all",
+            "options": [
+              {
+                "value": "",
+                "display": "show all"
+              },
+              {
+                "value": "dir",
+                "display": "Director"
+              },
+              {
+                "value": "employee",
+                "display": "Employee"
+              },
+              {
+                "value": "mgr",
+                "display": "Manager"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "label": "Status",
+            "id": "status",
+            "name": "status",
+            "selected": "active",
+            "options": [
+              {
+                "value": "show all",
+                "display": "show all"
+              },
+              {
+                "value": "active",
+                "display": "Active"
+              },
+              {
+                "value": "inactive",
+                "display": "Inactive"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "tabularData": [
+      {
+        "meta": {
+          "columns": [
+            {
+              "id": "1",
+              "name": "Organization",
+              "description": "Here is a description of what the Organization column is all about, and to be clear, the Hokey Pokey is not what it's all about.",
+              "type": "string",
+              "alignment": "",
+              "class": "",
+              "sortable": true,
+              "sortUrl": "http://www.whatever.com?report=1&sortOnColumn=1",
+              "summary": "Total Unique Logins"
+            },
+            {
+              "id": "2",
+              "name": "Country",
+              "description": "Here is a description of what the Country column is all about, and nostrud 8-bit bicycle rights eu, pork belly chillwave sustainable assumenda. Wolf portland umami aute chillwave, cillum quis laborum cred cliche. Kogi freegan dolor, ullamco ut brunch PBR chambray odio pop-up sint. Occaecat 8-bit cillum brunch cliche, cred aliquip dreamcatcher magna leggings vinyl. Shoreditch quinoa skateboard helvetica. Typewriter nostrud american apparel, nulla PBR proident hella aesthetic master cleanse. Polaroid farm-to-table four loko 8-bit, sapiente synth occaecat leggings etsy dreamcatcher. Terry richardson letterpress eiusmod, helvetica anim cardigan pickled aesthetic thundercats aliqua fixie.",
+              "type": "string",
+              "alignment": "",
+              "class": "",
+              "sortable": false,
+              "sortUrl": "",
+              "summary": ""
+            },
+            {
+              "id": "3",
+              "name": "Department",
+              "description": "Here is a description of what the Department column is all about, and delectus godard cillum aesthetic banh mi. Yr authentic voluptate, irony keytar ad semiotics. Raw denim voluptate salvia etsy enim wayfarers fugiat brooklyn, banksy authentic wolf chambray sartorial qui. Vegan assumenda dolor cillum. Exercitation pour-over marfa salvia nulla accusamus shoreditch sriracha.",
+              "type": "string",
+              "alignment": "",
+              "class": "",
+              "sortable": true,
+              "sortUrl": "http://www.whatever.com?report=1&sortOnColumn=3",
+              "summary": ""
+            },
+            {
+              "id": "4",
+              "name": "Title",
+              "description": "Here is a description of what the Title column is all about, and future godard gastropub dolore biodiesel, mlkshk +1 duis ad in. Synth consequat messenger bag, artisan semiotics mixtape laboris officia master cleanse +1 sapiente. Forage id direct trade, farm-to-table dreamcatcher street art laboris 3 wolf moon. Elit locavore occaecat before they sold out, raw denim brunch fugiat nisi placeat iphone in scenester butcher ea. Minim food truck qui photo booth esse.",
+              "type": "string",
+              "alignment": "",
+              "class": "",
+              "sortable": true,
+              "sortUrl": "http://www.whatever.com?report=1&sortOnColumn=4",
+              "summary": ""
+            },
+            {
+              "id": "5",
+              "name": "Participant",
+              "description": "Here is a description of what the Participant column is all about, and Terry richardson williamsburg polaroid, hella bicycle rights excepteur ea yr est et fixie occupy.",
+              "type": "string",
+              "alignment": "",
+              "class": "participant",
+              "sortable": true,
+              "sortUrl": "http://www.whatever.com?report=1&sortOnColumn=5",
+              "summary": ""
+            },
+            {
+              "id": "6",
+              "name": "participant drill-down URL (the name doesn't matter because columns of type URL are never displayed for the user)",
+              "description": "",
+              "type": "URL",
+              "alignment": "",
+              "class": "",
+              "sortable": false,
+              "sortUrl": "",
+              "summary": ""
+            },
+            {
+              "id": "7",
+              "name": "Last Logged In",
+              "description": "Here is a description of what the Last Logged In column is all about, and mumblecore voluptate labore, aesthetic iphone banh mi adipisicing cupidatat hella semiotics fanny pack biodiesel PBR banksy. Mixtape eiusmod keffiyeh excepteur aliquip ethnic. Nesciunt lomo craft beer, cliche tumblr mlkshk tofu tempor.",
+              "type": "date",
+              "alignment": "",
+              "class": "",
+              "sortable": true,
+              "sortUrl": "http://www.whatever.com?report=1&sortOnColumn=7",
+              "summary": ""
+            },
+            {
+              "id": "8",
+              "name": "Total Visits",
+              "description": "Here is a description of what the Total Visits column is all about, and Nihil brunch banh mi, reprehenderit twee put a bird on it fanny pack PBR leggings gluten-free aliquip. Authentic delectus dolor eu consequat, fap gluten-free elit 8-bit keffiyeh aliqua tumblr.",
+              "type": "number",
+              "alignment": "",
+              "class": "",
+              "sortable": true,
+              "sortUrl": "http://www.whatever.com?report=1&sortOnColumn=8",
+              "summary": 44
+            }
+          ],
+          "sortedOn": "Organization",
+          "sortedBy": "asc",
+          "maxRows": 6
+        },
+        "results": [
+          {
+            "organization": "Client Services",
+            "country": "US",
+            "department": "Channel Group",
+            "title": "Designer",
+            "participant": "Troy Burmeister",
+            "url": "http://www.whatever.com?report=123&pid=234",
+            "lastLoggedIn": "02/11/2011",
+            "totalVisits": 9
+          },
+          {
+            "organization": "Sales",
+            "country": "US",
+            "department": "Dallas",
+            "title": "BDD",
+            "participant": "Steve Collins",
+            "url": "http://www.whatever.com?report=234&pid=345",
+            "lastLoggedIn": "04/22/2011",
+            "totalVisits": 20
+          },
+          {
+            "organization": "Sales",
+            "country": "US",
+            "department": "New Jersey",
+            "title": "BDD",
+            "participant": "Bob Allison",
+            "url": "http://www.whatever.com?report=345&pid=456",
+            "lastLoggedIn": "12/01/2010",
+            "totalVisits": 5
+          },
+          {
+            "organization": "TSG",
+            "country": "US",
+            "department": "Development",
+            "title": "Director",
+            "participant": "Amy Adams",
+            "url": "http://www.whatever.com?report=456&pid=567",
+            "lastLoggedIn": "01/04/2011",
+            "totalVisits": 7
+          },
+          {
+            "organization": "Sales",
+            "country": "Canada",
+            "department": "Toronto",
+            "title": "BDD",
+            "participant": "Sue Bannister",
+            "url": "http://www.whatever.com?report=567&pid=678",
+            "lastLoggedIn": "06/12/2011",
+            "totalVisits": 3
+          },
+          {
+            "organization": "Accounting",
+            "country": "China",
+            "department": "Credit",
+            "title": "Coordinator",
+            "participant": "Rod Anglang",
+            "url": "http://www.whatever.com?report=678&pid=789",
+            "lastLoggedIn": "",
+            "totalVisits": 0
+          }
+        ]
+      }
+    ],
+    "chartSet": [
+      {
+        "displayName": "Monthly Login Activity For Organization, Monthly",
+        "category": "Login Activity",
+        "chartType": "Column3D",
+        "dataUrl": "ajax/chartTotalLoginsByMonth02.json",
+        "fusionChartsParameters": {
+          "caption": "Monthly Login Activity",
+          "subcaption": "For Organization, Monthly",
+          "xAxisName": "Month",
+          "yAxisName": "Logins"
+        },
+        "pdfUrl": "http://www.whatever.com?chart=1&pdf=1"
+      },
+      {
+        "displayName": "Unique Login Activity For Organization, Monthly",
+        "category": "Login Activity",
+        "chartType": "Column3D",
+        "dataUrl": "ajax/chartUniqueLoginActivity02.json",
+        "fusionChartsParameters": {
+          "caption": "Unique Login Activity",
+          "subcaption": "For Organization, Monthly",
+          "xAxisName": "Month",
+          "yAxisName": "Logins"
+        },
+        "pdfUrl": "http://www.whatever.com?chart=2&pdf=1"
+      },
+      {
+        "displayName": "Logged In vs Not Logged In For Organization",
+        "category": "Login Activity",
+        "chartType": "Pie3D",
+        "dataUrl": "ajax/chartLoggedInVsNotLoggedIn02.json",
+        "fusionChartsParameters": {
+          "caption": "Logged In vs Not Logged In",
+          "subcaption": "For Organization",
+          "showlabels": "0",
+          "showlegend": "1"
+        },
+        "pdfUrl": "http://www.whatever.com?chart=3&pdf=1"
+      },
+      {
+        "displayName": "Login Activity by Organization",
+        "category": "Login Activity",
+        "chartType": "Column3D",
+        "dataUrl": "ajax/chartLoginActivityByOrganization02.json",
+        "fusionChartsParameters": {
+          "caption": "Login Activity by Organization",
+          "subcaption": "For Organization",
+          "xAxisName": "Organization",
+          "yAxisName": "Logins"
+        },
+        "pdfUrl": "http://www.whatever.com?chart=4&pdf=1"
+      },
+      {
+        "displayName": "Login Activity by Organization",
+        "category": "Login Activity",
+        "chartType": "StackedColumn3D",
+        "dataUrl": "ajax/chartLoggedInVsNotLoggedInByOrganization02.json",
+        "fusionChartsParameters": {
+          "caption": "Login Activity by Organization",
+          "subcaption": "For Organization",
+          "xAxisName": "Organization",
+          "yAxisName": "Logins",
+          "showlegend": "1"
+        },
+        "pdfUrl": "http://www.whatever.com?chart=5&pdf=1"
+      },
+      {
+        "displayName": "Total % Who Have Received vs Not Received Awards",
+        "category": "Awards",
+        "chartType": "MSColumn3D",
+        "dataUrl": "ajax/chartTotalPercentWhoHaveReceivedVsNotReceivedAwardsByOrganization02.json",
+        "fusionChartsParameters": {
+          "caption": "Total % Who Have Received vs Not Received Awards",
+          "subcaption": "by Organization",
+          "xAxisName": "Organization",
+          "yAxisName": "Logins",
+          "showlegend": "1"
+        },
+        "pdfUrl": "http://www.whatever.com?chart=6&pdf=1"
+      }
+    ]
+  }
+}

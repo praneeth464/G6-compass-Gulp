@@ -1,0 +1,277 @@
+
+<!-- JAVA: i18n these -->
+<div id="_msgPoints" style="display:none">points</div>
+<div id="_msgUnits" style="display:none"></div>
+<div id="_msgLockPageBottom" style="display:none">
+    Please select an Activity<br>
+    and Payout type first.
+</div>
+
+<h4 class="defaultName"></h4>
+
+
+<h5>Measure Activity in</h5>
+<div class="control-group validateme"
+    data-validate-flags="nonempty"
+    data-validate-fail-msgs="{&quot;nonempty&quot; : &quot;Please make a choice&quot;}">
+    <label class="radio" for="measureActivityCurrency">
+        <input type="radio" class="measureTypeRadio autoBind" id="measureActivityCurrency" name="measureType" value="currency" data-model-key="measureType">
+        Currency
+    </label>
+    <div class="currencyTypeWrapper" style="display:none">
+        <div>Currency Type</div>
+        <select name="currencyTypeSelect" class="autoBind" id="currencyTypeSelect" data-model-key="currencyTypeId">
+            <!--subTpl.currencyTypeOptions=
+            {{#currencyTypes}}
+                <option value="{{id}}">{{name}}</option>
+            {{/currencyTypes}}
+            subTpl-->
+        </select>
+    </div>
+    <label class="radio" for="measureActivityUnits">
+        <input type="radio" class="measureTypeRadio autoBind" id="measureActivityUnits" name="measureType" value="units" data-model-key="measureType">
+        Units/Number
+    </label>
+</div>
+
+<hr class="section">
+
+<h5>Payout Type</h5>
+<div class="control-group validateme"
+    data-validate-flags="nonempty"
+    data-validate-fail-msgs="{&quot;nonempty&quot; : &quot;Please make a choice&quot;}">
+    <label class="radio" for="payoutTypePoints">
+        <input type="radio" class="payoutTypeRadio autoBind" id="payoutTypePoints" name="payoutType" value="points" data-model-key="payoutType">
+        Points
+    </label>
+    <label class="radio" for="payoutTypeOther">
+        <input type="radio" class="payoutTypeRadio autoBind" id="payoutTypeOther" name="payoutType" value="other" data-model-key="payoutType">
+        Other
+        <i class="icon-info-sign pageView_help"
+        data-help-content="[explanation of what 'other' is]"></i>
+    </label>
+    <div class="otherPayoutTypeWrapper" style="display:none">
+        <div>Value of Award In</div>
+        <select name="otherPayoutTypeSelect" class="autoBind" id="otherPayoutTypeSelect" data-model-key="otherPayoutTypeId">
+            <!-- dyn using subTpl.currencyTypeOptions -->
+        </select>
+    </div>
+</div>
+
+<div class="billToRoot"></div>
+
+<hr class="section">
+
+<div class="badgesOuterWrapper control-group" style="display:none">
+    <h5>Badge</h5>
+    <div class="badgesSelectorView" data-msg-no-badge="No Badge"><!-- dyn --></div>
+</div>
+
+<hr class="section">
+
+<div class="control-group includeBonusWrapper">
+    <label class="checkbox" for="includeBonus">
+        <input type="checkbox" class="includeBonusInput autoBind" id="includeBonus" name="includeBonus" data-model-key="includeBonus">
+        <strong>Include Bonus</strong>
+        <i class="icon-info-sign pageView_help"
+            data-help-content="[explanation of what 'include bonus' is]"></i>
+    </label>
+
+    <hr class="section">
+</div>
+
+
+<h5>
+    Do all participants have the same objective description?
+    <i class="icon-info-sign pageView_help"
+        data-help-content="[explanation of what this is]"></i>
+</h5>
+<div class="control-group validateme"
+    data-validate-flags="nonempty"
+    data-validate-fail-msgs="{&quot;nonempty&quot; : &quot;Please make a choice&quot;}">
+    <label class="radio" for="sameActivityDescriptionForAllYes">
+        <input type="radio" class="sameActivityDescriptionForAllRadio autoBind" id="sameActivityDescriptionForAllYes" name="sameActivityDescriptionForAll" value="true" data-model-key="sameActivityDescriptionForAll">
+        Yes
+    </label>
+    <label class="radio" for="sameActivityDescriptionForAllOther">
+        <input type="radio" class="sameActivityDescriptionForAllRadio autoBind" id="sameActivityDescriptionForAllOther" name="sameActivityDescriptionForAll" value="false" data-model-key="sameActivityDescriptionForAll">
+        No
+    </label>
+</div>
+
+
+
+
+<div class="control-group activityDescriptionWrapper validateme"
+    data-validate-flags="nonempty"
+    data-validate-fail-msgs="{&quot;nonempty&quot; : &quot;Please enter a description&quot;}"
+    style="display:none">
+    <hr class="section">
+
+    <label class="control-label" for="activityDescriptionInput">
+        <strong>Activity Description</strong>
+    <i class="icon-info-sign pageView_help"
+        data-help-content="[explanation of what this is]"></i>
+    </label>
+    <div class="controls">
+        <input type="text" class="activityDescriptionInput autoBind input-xlarge" data-model-key="activityDescription" maxlength="50">
+    </div>
+</div>
+
+
+
+
+
+<div class="includeStackRankingWrapper">
+    <hr class="section">
+    <div class="control-group">
+        <label class="checkbox" for="includeStackRanking">
+            <input type="checkbox" class="includeStackRankingInput autoBind" id="includeStackRanking" name="includeStackRanking" data-model-key="includeStackRanking">
+            <strong>Include Stack Ranking</strong>
+            <i class="icon-info-sign pageView_help"
+                data-help-content="[explanation of what 'include stack ranking' is]"></i>
+        </label>
+    </div>
+    <div class="control-group stackRankingOrderWrapper">
+        <label>
+            Sort Order
+            <i class="icon-info-sign pageView_help"
+                data-help-content="[explanation of what this is]"></i>
+        </label>
+        <label class="radio" for="stackRankingOrderDesc">
+            <input type="radio" class="stackRankingOrderRadio autoBind" id="stackRankingOrderDesc" name="stackRankingOrder" value="desc" data-model-key="stackRankingOrder">
+            high to low
+        </label>
+        <label class="radio" for="stackRankingOrderAsc">
+            <input type="radio" class="stackRankingOrderRadio autoBind" id="stackRankingOrderAsc" name="stackRankingOrder" value="asc" data-model-key="stackRankingOrder">
+            low to high
+        </label>
+    </div>
+</div>
+
+<hr class="section">
+
+<h5 class="paxTableTitle ifBonusShow">Participant Objectives, Payouts and Bonuses</h5>
+<h5 class="paxTableTitle ifBonusHide" style="display:none">Participant Objectives and Payouts</h5>
+
+<!-- hiding the objectiveUpload as it was removed but may come back -->
+<div class="objectiveUploadWrapper" style="display:none">
+    Objectives Document
+    <div class="fileInputWrapper">
+        <input type="file" name="documentFile" class="objectiveFileInput uploaderFileInput">
+        <button class="btn btn-primary btn-small uploadDocBtn">
+            <i class="icon-upload"></i>
+            <span class="noDocMsg docBtnMsg" style="display:none">Upload</span>
+            <span class="hasDocMsg docBtnMsg" style="display:none">Change</span>
+        </button>
+        <span class="label label-important uploadError" style="display:none">
+            upload error: <span><!-- js dyn error text --></span>
+        </span>
+        <span class="docOrigName" style="display:none"><!-- dyn --></span>
+        <a href="#" class="removeUpload" style="display:none"><i class="icon-remove-circle"></i></a>
+    </div>
+
+    <div class="uploadingIndicator" style="display:none">
+        <div class="uploadingSpinner"></div>
+        Uploading
+        <!--
+        <div class="progress progress-striped active" style="display:none">
+            <div class="bar" style="width:0%"></div>
+        </div>
+        -->
+    </div>
+</div><!-- /.objectiveUploadWrapper -->
+
+
+<div id="ssiParticipants_objectives">
+    <!-- ParticipantPaginatedView -->
+</div><!-- /#ssiParticipants_objectives -->
+
+
+<!-- REMOVED 5/15 div>
+    <h6>
+        <a href="#" class="calculateTotalsBtn" data-msg-loading="calculating...">Calculate Totals</a>
+        to view maximum amounts.
+    </h6>
+
+    <div class="maxPayoutSection">
+        <div class="maxPayoutWrapper">
+            Maximum Payout:
+            <span class="currSymb pay">
+            </span><span class="calcTotalsAutoBind currLabel" data-model-key="maxPayout">--</span>
+            <span class="currDisp pay"></span>
+        </div>
+        <div class="maxPayoutWithBonusWrapper">
+            with Bonus:
+            <span class="currSymb pay">
+            </span><span class="calcTotalsAutoBind currLabel" data-model-key="maxPayoutWithBonus">--</span>
+            <span class="currDisp pay"></span>
+        </div>
+    </div>
+    <div>
+        <div>
+            Maximum Contest Potential:
+            <span class="currSymb act">
+            </span><span class="calcTotalsAutoBind currLabel" data-model-key="maxPotential">--</span>
+            <span class="currDisp act"></span>
+        </div>
+    </div>
+</div -->
+
+<div>
+
+    <div class="contestEstimatorWrapper clearfix">
+        <div class="contestEstimator">
+            <h5>Contest Goal</h5>
+            <p>Enter your contest's goal. Type an amount or use the slider to help estimate your goal amount for your contest's final results.</p>
+            <div class="maxPayoutSection">
+                <div class="contestGoalWrapper ib">
+                    <label class="control-label ib" for="contestGoal">
+                        Your Contest Goal <div class="goalPercent"></div>
+                        <i class="icon-info-sign pageView_help"
+                            data-help-content="[explanation of what 'contest goal' is]"></i>
+                    </label>
+                    &nbsp;
+                    <div class="ib">
+                        <div class="controls">
+                            <span class="currSymb act"></span>
+                            <input type="text" id="contestGoal" class="contestGoalInput" data-model-key="contestGoal" maxlength="10">
+                            <span class="currDisp act"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="maxPayoutWrapper ib">
+                    Estimated Payout:
+                    <span class="currSymb pay">
+                    </span><span class="calcTotalsAutoBind currLabel" data-model-key="estMaxPayout">--</span>
+                    <span class="currDisp pay"></span>
+                </div>
+                <div class="maxPayoutWithBonusWrapper ib">
+                    with Bonus:
+                    <span class="currSymb pay">
+                    </span><span class="calcTotalsAutoBind currLabel" data-model-key="estBonusPayout">--</span>
+                    <span class="currDisp pay"></span>
+                </div>
+            </div>
+
+            <!-- REMOVED 5/15 div>
+                <div>
+                    Estimated Contest Potential:
+                    <span class="currSymb act">
+                    </span><span class="calcTotalsAutoBind currLabel" data-model-key="estMaxPotential">--</span>
+                    <span class="currDisp act"></span>
+                </div>
+            </div -->
+
+            <div>Estimated Participant Achievement</div>
+            <div class="sliderContainer">
+                <span class="sliderMin">0%</span>
+                <input id="estimateSlider" type="text" />
+                <span class="sliderMax">100%</span>
+            </div>
+
+        </div><!-- /.contestEstimator -->
+    </div><!-- /.contestEstimatorWrapper -->
+
+
+</div>

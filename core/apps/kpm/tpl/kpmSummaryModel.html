@@ -1,0 +1,26 @@
+<?php sleep(1); ?>
+<h3>{{title}}</h3>
+<p class="meta"><span class="timeframe">for this month</span> <span class="asof">as of {{asof}}</span></p>
+
+<div class="summary">
+    <p>
+    {{#eq type "score"}}
+        Company Goal: {{target}}
+        Score: {{actual}}
+    {{else}}
+        Target: {{target}}
+        Total: {{actual}}
+    {{/eq}}
+    </p>
+
+    <a href="#" class="showDescription"><i class="icon-info-sign"></i></a>
+    <p class="description">{{description}}</p>
+</div><!-- /.summary -->
+
+<div class="extended">
+    <p>Team Member Average: {{avgTeamMem}}</p>
+    <p>Company Average: {{avgCompany}}</p>
+    <p>{{teamMemMetTarget}} of {{teamMemCount}} team members have achieved the target</p>
+
+    <p class="report"><a href="{{reportUrl}}">{{reportTitle}}</a></p>
+</div><!-- /.extended -->

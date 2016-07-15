@@ -1,0 +1,140 @@
+<!--
+    GQ, CP MODULES and LIST PAGES
+    * be sure to test changes in LIST PAGE and MODULES!
+-->
+
+<div class="promotionItem {{promotionItemClass}} {{status}}" data-promotion-id="{{id}}">
+
+    <h3 class="promotionTitle ellipsis multiline">{{name}}</h3>
+
+    {{#goals}}
+
+        <div class="goalItem {{#if noGoal}}gqNoLevel{{/if}}" data-goal-id="{{id}}">
+
+            {{#if isPartner}}
+            <p class="subTitle partner">
+                Partnered with
+                <span class="partnerName">
+                {{participant.firstName}} {{participant.lastName}}
+                </span>
+            </p>
+            {{/if}}
+
+            {{#if goalLevel}}
+            <p class="subTitle">
+                <span class="levelChooseVisual">
+                    <i class="levelChosen visualItem icon-ok-sign"></i>
+                </span>
+                <span class="levelLabelName ellipsis multiline">
+                    {{#if isPartner}}
+                    <span class="levelLabel">Goal:</span>
+                    {{else}}
+                    <span class="levelLabel">Your Goal:</span>
+                    {{/if}}
+                    <span class="levelName">{{goalLevel.name}} </span>
+                </span>
+                <span class="levelDesc">{{goalLevel.description}}</span>
+            </p>
+            {{/if}}
+
+            <span class="btnWrap">
+                {{#if showBtn_Rules}}
+                <a href="{{../rulesLink}}" class="gqBtn btn btn-primary">
+                    Read Rules
+                </a>
+                {{/if}}
+
+                {{#if showBtn_Select}}
+                <a href="{{../selectGoalLink}}" class="gqBtn btn btn-primary">
+                    Select Goal
+                </a>
+                {{/if}}
+
+                {{#if showBtn_Change}}
+                <a href="{{../selectGoalLink}}" class="gqBtn btn btn-primary">
+                    Change Goal
+                </a>
+                {{/if}}
+
+                {{#if showBtn_Progress}}
+                <a href="{{../progressLink}}" class="gqBtn btn btn-primary">
+                    View Progress
+                </a>
+                {{/if}}
+
+                {{#if showBtn_View}}
+                <a href="{{../resultsLink}}" class="gqBtn btn btn-primary">
+                    View Results
+                </a>
+                {{/if}}
+
+                {{! this is used for 2x2 for btn element - href and text filled by JS}}
+                <a class="gqBtn2x2"></a>
+            </span>
+
+
+            <div class="statusTxt">
+
+                {{#if goalOpen}}
+                {{#if noGoal}}
+                {{#if canChange}}
+                <span>
+                    Select your goal by
+                    {{../../../../startDate}}
+                </span>
+                {{/if}}
+                {{/if}}
+                {{/if}}
+
+                {{#if showNoGoal}}
+                <span class="levelChooseVisual">
+                    <i class="levelOpen visualItem icon-remove-sign"></i>
+                </span>
+                <span class="sorryTxt">
+                    We're sorry. You did not select a goal.
+                </span>
+                {{/if}}
+
+                {{#if goalFail}}
+                <span>
+                    <i class="visualItem icon-info-sign"></i>
+                    {{#if isPartner}}
+                    The goal was not achieved
+                    {{else}}
+                    You did not achieve your goal
+                    {{/if}}
+                </span>
+                {{/if}}
+
+                {{#if goalWin}}
+                <span>
+                    <i class="visualItem icon-thumbs-up"></i>
+                    {{#if isPartner}}
+                    Congrats! The goal was achieved.
+                    {{else}}
+                    Congrats! You achieved your goal!
+                    {{/if}}
+                </span>
+                {{/if}}
+
+            </div>
+
+            {{#or goalStarted goalEnded}}
+            {{#if showProgress}}
+            <div class="progressUnit">
+                <p class="asOf">Progress as of {{progressDate}}:</p>
+                <div class="progress{{#if goalWin}} progress-success{{/if}}{{#if goalFail}} progress-danger{{/if}}" class="goalQuestProgessBarWrapper">
+                    {{#if percentageExceeds}}
+                    <div class="bar" style="width: 100%;">{{progressValue}}%</div>
+                    {{else}}
+                    <div class="bar" style="width: {{progressValue}}%;">{{progressValue}}%</div>
+                    {{/if}}
+                </div>
+            </div>
+            {{/if}}
+            {{/or}}
+
+        </div><!-- /.goalItem -->
+
+    {{/goals}}
+</div>

@@ -1,0 +1,209 @@
+// Partial-specific variables
+// =========================
+// NOTE: there is no !default on the end of these three variables. The lists aren't overridable (for now)
+$g5fonticons_fontFamily: 'G5Fonticons';
+$g5fonticons_modules_list : $g5fonticons_modules;
+$g5fonticons_utility_list : $g5fonticons_utility;
+
+$g5fonticons_extended_fontFamily: false !default;
+$g5fonticons_modules_extended: false !default;
+$g5fonticons_utility_extended: false !default;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+/*  G5 Fonticons
+    the custom icon font designed just for G5
+    -------------------------------------------------------
+    Completely borrowed from FontAwesome:
+      http://fortawesome.github.com/Font-Awesome/
+    Technique for building a custom icon font found here:
+      http://www.webdesignerdepot.com/2012/01/how-to-make-your-own-icon-g5-webfont/
+
+    Court Cromwell-Carl (cromcarl@biworldwide.com) built the first version of this font with Type Tool
+    Joel Schou (schou@biworldwide.com) iterated additional versions and implemented it into G5
+
+    License
+    -------------------------------------------------------
+    Copyright BI WORLDWIDE. All Rights Reserved.
+*/
+
+// the @font-face declaration can be found in fonts.scss in the root of the scss folder
+
+// ==================================================
+// Do not edit anything in this file!
+// ==================================================
+
+
+/*  Assign the font to all icon-g5-* classes
+    ------------------------------------------------------- */
+[class^="icon-g5-"],
+[class*=" icon-g5-"] {
+    font-family: $g5fonticons_fontFamily;
+    font-style: normal;
+    font-weight: normal;
+}
+
+@if $g5fonticons_modules_extended or $g5fonticons_utility_extended {
+    // extract selectors and assign the font family
+    $selectors: '';
+    @if $g5fonticons_modules_extended and $g5fonticons_utility_extended {
+        $selectors: join(#{g5fonticons_getSelectorsFromList($g5fonticons_modules_extended)}, #{g5fonticons_getSelectorsFromList($g5fonticons_utility_extended)}, $separator:'comma');
+    }
+    @else {
+        $selectors: g5fonticons_getSelectorsFromList($g5fonticons_modules_extended or $g5fonticons_utility_extended);
+    }
+
+    #{$selectors} {
+        font-family: ($g5fonticons_extended_fontFamily or $g5fonticons_fontFamily);
+    }
+
+    // join the extended lists with the default lists
+    @if $g5fonticons_modules_extended {
+        // check to see if our $list is longer than 1 item and the second item in the list has no length (meaning it's a string)
+        // if this is true, our $list has only a single font item in it and we need to append instead of join
+        @if length($g5fonticons_modules_extended) > 1 and length(nth($g5fonticons_modules_extended,2)) < 2 {
+            $g5fonticons_modules_list: append($g5fonticons_modules_list, $g5fonticons_modules_extended);
+        }
+        @else {
+            $g5fonticons_modules_list: join($g5fonticons_modules_list, $g5fonticons_modules_extended);
+        }
+    }
+    @if $g5fonticons_utility_extended {
+        // check to see if our $list is longer than 1 item and the second item in the list has no length (meaning it's a string)
+        // if this is true, our $list has only a single font item in it and we need to append instead of join
+        @if length($g5fonticons_utility_extended) > 1 and length(nth($g5fonticons_utility_extended,2)) < 2 {
+            $g5fonticons_utility_list: append($g5fonticons_utility_list, $g5fonticons_utility_extended);
+        }
+        @else {
+            $g5fonticons_utility_list: join($g5fonticons_utility_list, $g5fonticons_utility_extended);
+        }
+    }
+}
+
+/*  Dynamically generate the glyphs for specific classes
+    ------------------------------------------------------- */
+/*  G5 Fonticons uses the Unicode Private Use Area (PUA) to ensure screen
+    readers do not read off random characters that represent icons */
+
+// in font mode, we just spit out the rules for the modules list and we're good
+@if $g5fonticonsModulesMode == 'font' {
+    @include g5fonticons(
+        $list: $g5fonticons_modules_list
+    );
+}
+
+// in image mode we have to spit out a bunch of different rules for the modules list
+@if $g5fonticonsModulesMode == 'image' {
+    .title-icon-view {
+        [class^="icon-g5-"]:before,
+        [class*=" icon-g5-"]:before {
+            display: none;
+        }
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            text-indent: -9999px !important;
+            overflow: hidden;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+        }
+    }
+
+    // 1x1, 2x1 modules
+    @include g5fonticons(
+        $list: $g5fonticons_modules_list,
+        $image: true
+    );
+
+    // 2x2, 4x2 modules
+    .grid-dimension-2x2,
+    .grid-dimension-4x2 {
+        @include g5fonticons(
+            $list: $g5fonticons_modules_list,
+            $image: true,
+            $imageScale: '2x'
+        );
+    }
+    // 4x4 modules
+    .grid-dimension-4x4 {
+        @include g5fonticons(
+            $list: $g5fonticons_modules_list,
+            $image: true,
+            $imageScale: '4x'
+        );
+    }
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2), 
+           only screen and (min-resolution: 192dpi) {
+        .title-icon-view {
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                background-size: 100%;
+            }
+        }
+        // 1x1, 2x1 modules
+        @include g5fonticons(
+            $list: $g5fonticons_modules_list,
+            $image: true,
+            $imageScale: '2x'
+        );
+        // 2x2, 4x2 modules
+        .grid-dimension-2x2,
+        .grid-dimension-4x2 {
+            @include g5fonticons(
+                $list: $g5fonticons_modules_list,
+                $image: true,
+                $imageScale: '4x'
+            );
+        }
+        // 4x4 modules
+        .grid-dimension-4x4 {
+            @include g5fonticons(
+                $list: $g5fonticons_modules_list,
+                $image: true,
+                $imageScale: '8x'
+            );
+        }
+    }
+
+/*
+    disabling for now.
+    it occurred to me that devices with high-res screens likely have browsers that support background size.
+    we need to save on file size and selector output
+    
+    .backgroundsize {
+        // 1x1, 2x1 modules
+        @include g5fonticons(
+            $list: $g5fonticons_modules_list,
+            $image: true,
+            $imageScale: '2x'
+        );
+        // 2x2, 4x2 modules
+        .grid-dimension-2x2,
+        .grid-dimension-4x2 {
+            @include g5fonticons(
+                $list: $g5fonticons_modules_list,
+                $image: true,
+                $imageScale: '4x'
+            );
+        }
+        // 4x4 modules
+        .grid-dimension-4x4 {
+            @include g5fonticons(
+                $list: $g5fonticons_modules_list,
+                $image: true,
+                $imageScale: '8x'
+            );
+        }
+    }
+*/
+}
+
+
+// the utilities list cannot be in image mode
+@include g5fonticons(
+    $list: $g5fonticons_utility_list
+);

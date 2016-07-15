@@ -1,0 +1,124 @@
+<?php sleep(2); ?>
+{
+    "messages":[],
+    "badgeInfo":{
+        "noBadgesCompleteText":"Simply diplayed text when no badges are complete.",
+        "badges":[
+            {
+                "id":               "23",
+                "type":             "progress",
+                "name":             "Earned Badge Name 1 2a",
+                "howToEarnText":    "1 How to earn badge",
+                "imgLarge":         "img/badges/above_beyond_lg.png",
+                "img":              "img/badges/above_beyond_sm.png",
+                "earned":           true,
+                "dateEarned":       "2012-09-01 (< 2 wks)",
+                "progressNumerator":  "",
+                "progressDenominator":  ""
+            },
+            {
+                "id":               "24",
+                "type":             "progress",
+                "name":             "Earned Badge Name 2 2a",
+                "howToEarnText":    "2 How to earn badge",
+                "imgLarge":         "img/badges/birthday_lg.png",
+                "img":              "img/badges/birthday_sm.png",
+                "earned":           true,
+                "dateEarned":       "2012-09-02 (< 2 wks)",
+                "progressNumerator":  "",
+                "progressDenominator":  ""
+            },
+            {
+                "id":               "25",
+                "type":             "progress",
+                "name":             "Earned Badge Name 3 2a",
+                "howToEarnText":    "3 How to earn badge",
+                "imgLarge":         "img/badges/bronze_lg.png",
+                "img":              "img/badges/bronze_sm.png",
+                "earned":           true,
+                "dateEarned":       "2012-09-03 (< 2 wks)",
+                "progressNumerator":  "",
+                "progressDenominator":  ""
+            },
+            {
+                "id":               "26",
+                "type":             "progress",
+                "name":             "In Progress Badge Name 4 2b",
+                "howToEarnText":    "4 How to earn badge",
+                "imgLarge":         "img/badges/cold_call_lg.png",
+                "img":              "img/badges/cold_call_sm.png",
+                "earned":           true,
+                "dateEarned":       null,
+                "progressNumerator":  "8",
+                "progressDenominator":  "10"
+            },
+            {
+                "id":               "27",
+                "type":             "progress",
+                "name":             "In Progress Badge Name 5 2b",
+                "howToEarnText":    "5 How to earn badge",
+                "img":              "img/badges/conquest_sale_sm.png",
+                "earned":           false,
+                "dateEarned":       null,
+                "progressNumerator":  "10",
+                "progressDenominator":  "20"
+            },
+            {
+                "id":               "28",
+                "type":             "behavior",
+                "name":             "Behavior Badge Name 6 2c",
+                "howToEarnText":    "6 How to earn badge",
+                "img":              "img/badges/contest_winner_sm.png",
+                "earned":           true,
+                "dateEarned":       "2012-07-30",
+                "progressNumerator":  "",
+                "progressDenominator":  ""
+            },
+            {
+                "id":               "29",
+                "type":             "behavior",
+                "name":             "Behavior Badge Name 7 2c",
+                "howToEarnText":    "7 How to earn badge",
+                "img":              "img/badges/creativity_sm.png",
+                "earned":           true,
+                "dateEarned":       "2012-07-20",
+                "progressNumerator":  "",
+                "progressDenominator":  ""
+            },
+            {
+                "id":               "30",
+                "type":             "behavior",
+                "name":             "Behavior Not Earned Badge Name 8 2d",
+                "howToEarnText":    "8 How to earn badge",
+                "img":              "img/badges/customer_service_sm.png",
+                "earned":           false,
+                "dateEarned":       null,
+                "progressNumerator":  "10",
+                "progressDenominator":  "20"
+            },
+            {
+                "id":               "31",
+                "type":             "behavior",
+                "name":             "Behavior Not Earned Badge Name 9 2d",
+                "howToEarnText":    "9 How to earn badge",
+                "img":              "img/badges/gold_sm.png",
+                "earned":           false,
+                "dateEarned":       null,
+                "progressNumerator":  "0",
+                "progressDenominator":  "10"
+            },
+            {
+                "id":               "32",
+                "type":             "contest",
+                "name":             "SSI Contest Winner Badge Name 10",
+                "howToEarnText":    null,
+                "contestName":      "Do This Get That Contest",
+                "img":              "img/badges/Level1_sm.png",
+                "earned":           true,
+                "dateEarned":       "2015-02-20",
+                "progressNumerator":  "0",
+                "progressDenominator":  "0"
+            }
+        ]
+    }
+}

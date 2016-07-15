@@ -1,0 +1,335 @@
+// App-specific variables
+// =========================
+$celebration_bgColor: $g5ModuleBgColor !default;
+$celebration_gradType: $g5ModuleGradType !default;
+$celebration_gradMeta: $g5ModuleGradMeta !default;
+$celebration_gradStops: $g5ModuleGradStops !default;
+
+$celebration_bgImg: false !default; // "celebration/celebrateBg.jpg"
+$celebration_bgImgUrlPath: $appImagesPath !default;
+$celebration_bgImgPosition: 0% 0% !default; // 50% 0
+$celebration_bgImgRepeat: repeat !default; // no-repeat
+$celebration_bgImgSize: auto !default;
+$celebration_bgImgAttachment: fixed !default; // scroll
+
+$celebration_iconColor: $g5ModuleIconColor !default;
+$celebration_tileColor: $g5ModuleBgColor !default;
+$celebration_tileGradType: $g5ModuleGradType !default;
+$celebration_tileGradMeta: $g5ModuleGradMeta !default;
+$celebration_tileGradStops: $g5ModuleGradStops !default;
+$celebration_titleFontSizes: $g5ModuleTitleFontSizes !default;
+
+$celebration_linkColor: $linkColor !default;
+$celebration_linkHoverColor: $linkColorHover !default;
+
+$celebration_primaryFontFamily: $bodyFont !default;
+$celebration_secondaryFontFamily: "akzidenz-condensed", $bodyFont !default;
+$celebration_secondaryFontBold: "akzidenz-super", $bodyFont !default;
+$celebration_tertiaryFontFamily: "neuton", $bodyFont !default;
+
+$celebrationMainTile_congratsMsgColor: $white !default;
+$celebrationMainTile_congratsNameColor: $white !default;
+$celebrationMainTile_largeMsgColor: $white !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+
+/* ----- MAIN CELEBRATION MODULE STYLES ----- */
+.module.celebrationMainTile.celebration {
+    font-family: $celebration_secondaryFontFamily;
+    font-weight: $fontWeightLight;
+
+    .module-liner {
+        margin: $g5ModuleGutter;
+
+        @include module_moduleLinerBackground(
+            $bgColor: $celebration_bgColor,
+            $gradType: $celebration_gradType,
+            $gradMeta: $celebration_gradMeta,
+            $gradStops: $celebration_gradStops
+        );
+
+        .visitAppBtn {
+            right: 9px;
+            top: 9px;
+        }
+    }
+
+    .celebrateContainer {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        zoom: 1;
+
+        .item {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .celebrationCongratsInfo {
+        float: left;
+        position: relative;
+
+        span {
+            display: block;
+            line-height: 1;
+        }
+
+        .congrats-intro,
+        .congrats-msg {
+            color: $celebrationMainTile_congratsMsgColor;
+        }
+
+        .congrats-name {
+            color: $celebrationMainTile_congratsNameColor;
+        }
+    }
+
+    .ecard {
+        float: right;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .bottom-util {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+
+        .celebrationViewDetails {
+            display: inline-block;
+            font-family: $celebration_primaryFontFamily;
+            font-weight: 400;
+            margin: 30px auto;
+        }
+    }
+
+    &.grid-dimension-4x4 {
+        .celebrationCongratsInfo {
+            padding: 45px 0 0 35px;
+            width: 300px;
+
+            .congrats-intro,
+            .congrats-msg {
+                font-size: $baseFontSize * 2.857;
+            }
+
+            .congrats-name {
+                font-size: $baseFontSize * 6.285;
+            }
+        }
+
+        .ecard {
+            height: 240px;
+            padding: 45px 35px 0 0;
+            width: 240px;
+        }
+
+        .celebrationViewDetails {
+            margin: 50px auto 70px;
+        }
+
+        .large-message {
+            color: $celebrationMainTile_largeMsgColor;
+            font-size: $baseFontSize * 2.428;
+            line-height: 1;
+            margin: 0 auto;
+            text-align: center;
+            width: 90%;
+        }
+    }
+
+    &.grid-dimension-4x2,
+    &.grid-dimension-2x2 {
+        .title-icon-view {
+            display: none;
+        }
+        .large-message {
+            display: none;
+        }
+    }
+
+    &.grid-dimension-4x2 {
+        .celebrationCongratsInfo {
+            padding: 25px 0 0 45px;
+            width: 340px;
+
+            .congrats-intro,
+            .congrats-msg {
+                font-size: $baseFontSize * 2.428;
+            }
+
+            .congrats-name {
+                font-size: 69px;
+            }
+        }
+
+        .ecard {
+            height: 160px;
+            padding: 25px 55px 0 0;
+            width: 160px;
+        }
+    }
+
+    &.grid-dimension-2x2 {
+        .celebrationCongratsInfo {
+            padding: 45px 0 0 20px;
+            width: 140px;
+
+            .congrats-intro,
+            .congrats-msg {
+                font-size: $baseFontSize * 1.64;
+            }
+
+            .congrats-name {
+                font-size: $baseFontSize * 3.285;
+            }
+        }
+        .ecard {
+            height: 125px;
+            padding: 45px 20px 0 0;
+            width: 125px;
+        }
+        .celebrationViewDetails {
+            width: 28%;
+        }
+    }
+
+    &.grid-dimension-2x1 {
+        .title-icon-view {
+            display: block;
+        }
+    }
+}
+
+/* ----- ALL CELEBRATION MODULE STYLES ----- */
+.module.celebration {
+
+    font-family: $celebration_primaryFontFamily;
+
+    h2 {
+        font-family: $celebration_secondaryFontFamily;
+        font-weight: $fontWeightLight;
+    }
+
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $celebration_tileColor,
+            $gradType: $celebration_tileGradType,
+            $gradMeta: $celebration_tileGradMeta,
+            $gradStops: $celebration_tileGradStops
+        );
+
+        margin: 0;
+
+        .visitAppBtn {
+            right: 18px;
+            top: 18px;
+        }
+    }
+
+    .title-icon-view {
+        display: none;
+    }
+
+    .module-content {
+        height: inherit;
+        width: inherit;
+        z-index: 2;
+    }
+} /* /.module.celebration */
+
+/* ----- PAGE MODULE STYLES ----- */
+body.celebrationPage {
+
+    @if $celebration_bgImg {
+        @include safeImgUrls($celebration_bgImg, $celebration_bgImgUrlPath, $property: 'background-image');
+        background-color: $celebration_bgColor;
+        background-position: $celebration_bgImgPosition;
+        background-repeat: $celebration_bgImgRepeat;
+        background-size: $celebration_bgImgSize;
+        background-attachment: $celebration_bgImgAttachment;
+    }
+
+    &.homeApp .container {
+        .shareIcons {
+            margin: 30px 0 0 0;
+            width: 100%;
+
+            ul.share-print {
+                margin-bottom: 0;
+            }
+        }
+        @media (min-width: 1301px) {
+            width: homeAppContainer(6);
+        }
+    }
+
+    .module.celebration {
+
+        &.grid-dimension-2x2 {
+            .module-liner {
+                height: 320px;
+                width: 320px;
+            }
+        }
+
+        &.grid-dimension-4x2 {
+            .module-liner {
+                height: 320px;
+                width: 640px;
+            }
+        }
+
+        .carousel,
+        .cycle,
+        .item  {
+            height: 320px;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            width: 100%;
+        }
+
+        [class^='icon-me-'],
+        [class*=' icon-me-'] {
+            font-family: 'MEfonticons';
+            font-style: normal;
+            font-weight: normal;
+        }
+
+        .icon-me-time:before {
+            content: '\f000';
+        }
+
+        // IE7 support
+        .icon-me-time {
+            *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf000;&nbsp;');
+        }
+    }
+}
+
+/* ----- IMPORTS ----- */
+@import "congratulations";
+@import "ecard";
+@import "chooseAward";
+@import "browseAwards";
+@import "managerMessage";
+@import "recognitionPurl";
+@import "anniversaryFacts";
+@import "companyTimeline";
+@import "corporateVideo";
+@import "imageFiller";

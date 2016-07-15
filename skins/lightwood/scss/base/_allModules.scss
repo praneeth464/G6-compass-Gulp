@@ -1,0 +1,34 @@
+// Partial-specific variables (uncomment to use)
+// =========================
+// $allModules_spinnerBkgColor: ;
+// $allModules_spinnerBkgBorderRadius: ;
+
+// $allModules_visitAppBtnColor: ;
+// $allModules_visitAppBtnBorderColor: ;
+// $allModules_visitAppBtnColorInvert: ;
+// $allModules_visitAppBtnBorderColorInvert: ;
+
+// $allModules_cycleDotWidth: ;
+$allModules_cycleDotBkg: $white;
+$allModules_cycleDotBorder: 1px solid $white;
+$allModules_cycleDotBkgHover: transparent;
+// $allModules_cycleDotBorderHover: ;
+$allModules_cycleDotBkgActive: #dd7200;
+$allModules_cycleDotBorderActive: 1px solid #dd7200;
+// $allModules_cycleDotBorderRadius: ;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "partials/allModules";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// Partial-specific code for this skin
+// ==================================================

@@ -1,0 +1,1222 @@
+// App-specific variables
+// =========================
+$reports_bgColor: $white !default;
+$reports_borderWidth: $g5ModPgBorderWidth !default;
+$reports_borderColor: $g5ModPgBorderColor !default;
+$reports_parametersColor: $grayLight !default;
+$reports_addReportTitleFontFamily: $titleFont !default;
+$reports_addReportTitleColor: $grayLight !default;
+$reports_titleIconViewTitleColor: $textColor !default;
+$reports_titleIconViewIconColor: $grayLight !default;
+
+$reports_all_bgColor: $g5ModuleBgColor !default;
+$reports_all_gradType: $g5ModuleGradType !default;
+$reports_all_gradMeta: $g5ModuleGradMeta !default;
+$reports_all_gradStops: $g5ModuleGradStops !default;
+
+$reports_all_iconColor: $g5ModuleIconColor !default;
+$reports_all_titleColor: $g5ModuleTitleColor !default;
+$reports_all_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$reports_all_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$reports_all_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$reports_fav_bgColor: $g5ModuleBgColor !default;
+$reports_fav_gradType: $g5ModuleGradType !default;
+$reports_fav_gradMeta: $g5ModuleGradMeta !default;
+$reports_fav_gradStops: $g5ModuleGradStops !default;
+
+$reports_fav_iconColor: $g5ModuleIconColor !default;
+$reports_fav_titleColor: $g5ModuleTitleColor !default;
+$reports_fav_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$reports_fav_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$reports_fav_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$reports_manageFavoritesPopoverBorderColor: $g5ModPgBorderColor !default;
+$reports_changeFiltersPopoverBorderColor: $g5ModPgBorderColor !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.reports {
+
+} /* /.reports */
+
+/* ----- MODULE STYLES ----- */
+.module.reports {
+    .module-liner.reportsModule { // extra .reportsModule class is so the allReports and favoriteReports modules don't get these styles
+        background: $reports_bgColor;
+        filter: none;
+        border: $reports_borderWidth solid $reports_borderColor;
+
+        .title-icon-view {
+            color: $reports_titleIconViewIconColor;
+
+            h3 {
+                color: $reports_titleIconViewTitleColor;
+            }
+        }
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        .module-liner.reportsModule { // extra .reportsModule class is so the allReports and favoriteReports modules don't get these styles
+
+            .title-icon-view {
+                display: none;
+            }
+        }
+
+        .wide-view {
+            padding: $g5ModulePadding - $reports_borderWidth;
+
+            .description {
+                height: ($baseLineHeight + 4) + ($baseLineHeight - 6) * 2;
+                margin-bottom: 2px;
+                overflow: hidden;
+
+                .displayName,
+                .parameters,
+                .controls {
+                    white-space: nowrap;
+                    margin: 0;
+                }
+
+                .displayName {
+                    padding-right: 24px; //magic number that gives enough room on the right to avoid the name running into the .visitAppBtn
+                    font-size: 16px;
+                    line-height: $baseLineHeight + 4;
+                    overflow-x: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                .parameters {
+                    font-size: 11px;
+                    line-height: $baseLineHeight - 6;
+                    height: ($baseLineHeight - 6) * 2;
+                    white-space: normal;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    color: $reports_parametersColor;
+                }
+            }
+
+            .chartContainer {
+                position: relative;
+                margin: ($g5ModulePadding - $reports_borderWidth) * -1;
+                margin-top: 0;
+                z-index: 1001;
+            }
+
+            &.addReport {
+                padding-top: 0;
+                padding-bottom: 0;
+                height: 100%;
+                text-align: center;
+                cursor: pointer;
+
+                .title {
+                    display: inline-block;
+                    @include ie7-inline-block();
+                    margin: 0;
+                    font-family: $reports_addReportTitleFontFamily;
+                    font-weight: normal;
+                    color: $reports_addReportTitleColor;
+                    vertical-align: middle;
+                    // gross ie7 hack
+                    *margin-top: expression(this.offsetHeight < this.parentNode.offsetHeight ? parseInt((this.parentNode.offsetHeight - this.offsetHeight) / 2) + "px" : "0");
+
+                    .subtitle {
+                        display: block;
+                        font-size: $baseFontSize * 1.25;
+                        line-height: $baseLineHeight * 1.25;
+                    }
+                }
+            }
+        }
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2 {
+        .wide-view {
+            .chartContainer {
+                // first two are the outer module height. Then subtract the border width, the top padding, and the height and bottom margin of the .description (from above)
+                height: ($g5ModuleUnit * 2) - ($g5ModuleGutter * 2) - ($reports_borderWidth * 2) - ($g5ModulePadding - $reports_borderWidth) - (($baseLineHeight + 4) + ($baseLineHeight - 6) * 2 + 2px);
+            }
+            &.addReport {
+                line-height: ($g5ModuleUnit * 2) - ($g5ModuleGutter * 2) - ($reports_borderWidth * 2);
+            }
+        }
+    }
+
+    &.grid-dimension-2x2 {
+        .module-liner.reportsModule { // extra .reportsModule class is so the allReports and favoriteReports modules don't get these styles
+            @include module_moduleLiner(2, 2, $reports_borderWidth);
+        }
+    }
+    &.grid-dimension-4x2 {
+        .module-liner.reportsModule { // extra .reportsModule class is so the allReports and favoriteReports modules don't get these styles
+            @include module_moduleLiner(4, 2, $reports_borderWidth);
+        }
+    }
+    &.grid-dimension-4x4 {
+        .module-liner.reportsModule { // extra .reportsModule class is so the allReports and favoriteReports modules don't get these styles
+            @include module_moduleLiner(4, 4, $reports_borderWidth);
+        }
+
+        .wide-view {
+            .chartContainer {
+                // first two are the outer module height. Then subtract the border width, the top padding, and the height and bottom margin of the .description (from above)
+                height: ($g5ModuleUnit * 4) - ($g5ModuleGutter * 2) - ($reports_borderWidth * 2) - ($g5ModulePadding - $reports_borderWidth) - (($baseLineHeight + 4) + ($baseLineHeight - 6) * 2 + 2px);
+            }
+            &.addReport {
+                line-height: ($g5ModuleUnit * 4) - ($g5ModuleGutter * 2) - ($reports_borderWidth * 2);
+            }
+        }
+    }
+
+    /* START special All/Favorite modules */
+    &.allReports,
+    &.favoriteReports {
+        cursor: pointer;
+
+        &.grid-dimension-1x1,
+        &.grid-dimension-2x1 {
+            .title-icon-view {
+                [class^="icon-g5-"],
+                [class*=" icon-g5-"] {
+                    @include g5HomeAppIconBoxReflect(-52px);
+                }
+            }
+        }
+        &.grid-dimension-2x2 {
+            .title-icon-view {
+                [class^="icon-g5-"],
+                [class*=" icon-g5-"] {
+                    @include g5HomeAppIconBoxReflect(-135px);
+                }
+            }
+        }
+    }
+
+    &.allReports {
+        .module-liner {
+            @include module_moduleLinerBackground(
+                $bgColor: $reports_all_bgColor,
+                $gradType: $reports_all_gradType,
+                $gradMeta: $reports_all_gradMeta,
+                $gradStops: $reports_all_gradStops
+            );
+        }
+
+        .title-icon-view {
+            @include module_titleIconView(
+                $iconColor: $reports_all_iconColor,
+                $titleColor: $reports_all_titleColor,
+                $titleFontFamily: $reports_all_titleFontFamily
+            );
+        }
+
+        @include module_titleIconViewFontSizesWeights($reports_all_titleFontSizes, $reports_all_titleFontWeights);
+    }
+
+    &.favoriteReports {
+        .module-liner {
+            @include module_moduleLinerBackground(
+                $bgColor: $reports_fav_bgColor,
+                $gradType: $reports_fav_gradType,
+                $gradMeta: $reports_fav_gradMeta,
+                $gradStops: $reports_fav_gradStops
+            );
+        }
+
+        .title-icon-view {
+            @include module_titleIconView(
+                $iconColor: $reports_fav_iconColor,
+                $titleColor: $reports_fav_titleColor,
+                $titleFontFamily: $reports_fav_titleFontFamily
+            );
+        }
+
+        @include module_titleIconViewFontSizesWeights($reports_fav_titleFontSizes, $reports_fav_titleFontWeights);
+    }
+    /* END special All/Favorite modules */
+} /* /.module.reports */
+
+/* ----- PAGE STYLES ----- */
+.page.reports {
+
+    // .offScreen {
+    //     position: absolute;
+    //     left: -9999px;
+    // }
+
+    // #reportsDetailSpinnerBox {
+    //     position: relative;
+    //     width: 150px;
+    //     height: 150px;
+    //     left: 50%;
+    //     margin-left: -75px;
+    //     margin-top: -32px;
+    //     margin-bottom: -47px;
+    // }
+
+    // .chartInFocusSpinnerBox {
+    //     position: relative;
+    //     width: 150px;
+    //     height: 150px;
+    //     left: 50%;
+    //     margin-left: -75px;
+    //     top: 50%;
+    //     margin-top: -75px;
+    // }
+
+    // #tabularResultsSpinnerBox {
+    //     position: relative;
+    //     width: 150px;
+    //     height: 150px;
+    //     left: 50%;
+    //     margin-left: -75px;
+    //     top: 177px;
+    //     margin-top: -150px;
+    //     z-index: 100000;
+    //     overflow: visible;
+    // }
+
+    #reportsPageAllView {
+
+        @media (max-width: 979px) {
+            .reportCategory {
+                .span1 {
+                    line-height: $baseLineHeight * 2 + ($baseLineHeight / 2) * 2; // h1, h2, h3 line-height + h* top/bottom-margin * 2
+                }
+            }
+        }
+        @media (max-width: 767px) {
+            .reportCategory {
+                .span1 {
+                    display: inline;
+                    float: left;
+                    margin: 0 12px 0 0;
+                    width: 36px;
+                }
+                .span11 h4 {
+                    margin-bottom: $baseLineHeight;
+                }
+            }
+        }
+
+    } /* /#reportsPageAllView */
+
+    #reportsPageDetailView {
+        // position: relative;
+
+        #reportDesc {
+            margin-top: -1 * ($baseLineHeight / 2);
+        }
+        #timeStamp {
+            color: $grayLight;
+        }
+
+        #chartRowContainer {
+            @include gridCoreInnerPadding(0, ($g5PageContentPaddingHoriz * 2 / 3), 0, $g5PageContentLeftRightBorderWidth);
+            background: $grayLighter;
+            border: 0;
+            @include border-radius(0);
+            @include box-shadow(none);
+
+            @media (min-width: 1200px) {
+                @include gridCoreInnerPadding(0, ($g5PageContentPaddingHoriz1200 * 2 / 3), 0, $g5PageContentLeftRightBorderWidth1200);
+            }
+            @media (min-width: 768px) and (max-width: 979px) {
+                @include gridCoreInnerPadding(0, ($g5PageContentPaddingHoriz768 * 2 / 3), 0, $g5PageContentLeftRightBorderWidth768);
+            }
+            @media (max-width: 767px) {
+                @include gridCoreInnerPadding(0, ($g5PageContentPaddingHorizMobile * 3 / 4));
+            }
+        }
+
+
+        #chartRow {
+
+            .span7 {
+                margin: 0 /*24px*/ 12px 0 0;
+                // width: 506px;
+                width: 518px;
+                @include clearfix();
+
+                @media (min-width: 1200px) {
+                    // margin-right: 36px;
+                    margin-right: 18px;
+                    // width: 674px;
+                    width: 704px;
+                }
+                @media (min-width: 768px) and (max-width: 979px) {
+                    width: 432px;
+                }
+                @media (max-width: 767px) {
+                    width: 100%;
+                    margin-bottom: 12px;
+                }
+                @media (max-width: 463px) {
+                    margin-right: 0;
+                    width: auto;
+                }
+            }
+
+            #chartInFocus {
+                display: inline;
+                float: left;
+                height: 432px - ($g5PageContentLeftRightBorderWidth * 2);
+                width: 432px - ($g5PageContentLeftRightBorderWidth * 2);
+                background-color: $white;
+                border: $g5PageContentLeftRightBorderWidth solid $gray;
+
+                .reportsChart-moveable-item {
+                    width: 100% !important;
+                    height: 100% !important;
+                    display: block !important;
+
+                    .individualChartBkgd {
+                        display: none;
+                        width: 100%;
+                        height: 100%;
+                        // @include opacity(.25);
+                    }
+                }
+
+                @media (min-width: 1200px) {
+                    height: 576px - ($g5PageContentLeftRightBorderWidth * 2);
+                    width: 576px - ($g5PageContentLeftRightBorderWidth * 2);
+                }
+                @media (max-width: 538px) {
+                    height: 288px - ($g5PageContentLeftRightBorderWidth * 2);
+                    width: 288px - ($g5PageContentLeftRightBorderWidth * 2);
+                }
+            }
+
+            .chartThumbs {
+                display: inline;
+                float: left;
+                list-style: none;
+                margin-left: 0px;
+                margin-right: 24px;
+
+                li {
+                    *display: inline;
+                    *float: left;
+                    *clear: left;
+                    position: relative;
+                    width: (432px - 12px * 5) / 6 - ($g5PageContentLeftRightBorderWidth * 2);
+                    height: (432px - 12px * 5) / 6 - ($g5PageContentLeftRightBorderWidth * 2);
+                    background: lighten($grayLighter, 3%);
+                    border: $g5PageContentLeftRightBorderWidth solid lighten($grayLight, 25%);
+                    // @include opacity(.25);
+
+                    & ~ li {
+                        margin-top: 12px;
+                    }
+
+                    img {
+                        @include opacity(0.33);
+                    }
+
+                    i {
+                        display: none;
+                        position: absolute;
+                        bottom: 50%;
+                        right: -12px;
+                        margin: 0 -12px -12px 0;
+                        width: 24px;
+                        height: 24px;
+                        font-size: 12px;
+                        line-height: 24px;
+                        text-align: center;
+                    }
+
+                    &.activeSlide {
+                        border-color: $gray;
+                        // @include opacity(1);
+
+                        a {
+                            cursor: default;
+                        }
+
+                        img {
+                            @include opacity(1);
+                        }
+
+                        i {
+                            font-size: 24px;
+                            color: $gray;
+                        }
+                        .icon-chevron-right {
+                            display: block;
+                        }
+                    }
+
+                    a {
+                        .individualChartThumb {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                }
+
+                @media (min-width: 1200px) {
+                    margin-right: 36px;
+
+                    li {
+                        width: (576px - 12px * 5) / 6 - ($g5PageContentLeftRightBorderWidth * 2);
+                        height: (576px - 12px * 5) / 6 - ($g5PageContentLeftRightBorderWidth * 2);
+
+                        i {
+                            right: -18px;
+                            margin: 0 -18px -18px 0;
+                            width: 36px;
+                            height: 36px;
+                            line-height: 36px;
+                        }
+
+                        &.activeSlide {
+                            i {
+                                font-size: 36px;
+                            }
+                        }
+                    }
+                }
+                @media (max-width: 979px) {
+                    margin-right: 0;
+                    margin-bottom: 24px;
+
+                    li {
+                        display: inline;
+                        float: left;
+                        // margin-top: 12px;
+                        // margin-left: 0;
+
+                        & ~ li {
+                            margin-top: 0;
+                            margin-left: 12px;
+                        }
+
+                        i {
+                            right: 50%;
+                            bottom: -12px;
+                        }
+
+                        &.activeSlide {
+                            .icon-chevron-right {
+                                display: none;
+                            }
+                            .icon-chevron-down {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+                @media (max-width: 538px) {
+                    margin-bottom: 18px;
+
+                    li {
+                        // margin-left: 6px;
+                        width: (288px - 6px * 5) / 6 - ($g5PageContentLeftRightBorderWidth * 2);
+                        height: (288px - 6px * 5) / 6 - ($g5PageContentLeftRightBorderWidth * 2);
+
+                        & ~ li {
+                            margin-left: 6px;
+                            // margin-top: 6px;
+                        }
+
+                        i {
+                            bottom: -9px;
+                            margin: 0 -9px -9px 0;
+                            width: 18px;
+                            height: 18px;
+                            line-height: 18px;
+                        }
+
+                        &.activeSlide {
+                            i {
+                                font-size: 18px;
+                            }
+                        }
+                    }
+                }
+                @media (max-width: 368px) {
+                    li {
+                        // display: inline;
+                        // float: left;
+                        // margin-top: 6px;
+                        // margin-left: 0;
+
+                        & ~ li {
+                            // margin-left: 6px;
+                        }
+                    }
+                }
+
+            }
+
+            .span5 {
+                float: none;
+                margin: 0;
+                width: auto;
+
+                #exportChartPdf {
+                    // temporarily hiding the PDF icon until FusionCharts gets us a version of their library that isn't broken
+                    //Enable pdf link for temporary testing purpose in pentagqa
+                    //display: none;
+
+                    float: right;
+                }
+
+                @media (min-width: 768px) and (max-width: 979px) {
+                    padding-top: (432px - 12px * 5) / 6 - ($g5PageContentLeftRightBorderWidth * 2) + 24px; // calculation to figure out thumnbnail size + 24px bottom margin on thumbnail container
+                }
+                @media (max-width: 767px) {
+                    clear: both;
+                }
+            }
+
+        }
+
+        #chartName {
+            color: $gray;
+        }
+        .reportsChangeFiltersPopoverTrigger {
+            margin-left: 4px;
+        }
+        #currentParametersSummary {
+            // margin-top: 13px;
+            // margin-bottom: 36px;
+
+            @media (min-width: 768px) and (max-width: 979px) {
+                strong {
+                    display: block;
+                }
+            }
+        }
+
+        .paginationControls {
+            position: relative;
+            // margin-top: -23px;
+        }
+
+        #tabularResultsContainer {
+            position: relative;
+
+            #resultsTableWrapper {
+                width: 100%;
+                overflow: visible;
+                font-size: $baseFontSize * .857; // converts 14px to 12px elegantly
+            }
+            .pagination ~ #resultsTableWrapper,
+            #resultsTableWrapper ~ .pagination {
+                margin-top: -1 * $baseLineHeight / 2;
+            }
+
+            thead th {
+                white-space : nowrap;
+            }
+
+            table {
+                .info.summaryRow {
+                    font-weight: bold;
+                }
+
+                .sortable {
+                    a {
+                        text-decoration: none;
+                    }
+                    i {
+                        vertical-align: top;
+                    }
+                    &.unsorted i {
+                        @include opacity(0.15);
+                    }
+                    &.unsorted:hover i {
+                        @include opacity(0.63);
+                    }
+                }
+                @media (max-width: 767px) {
+                    // borrowed from .table-condensed
+                    th,
+                    td {
+                        padding: 4px 5px;
+                    }
+                }
+            }
+        }
+
+        .columnDefinitionsPopover {
+            max-width: ($gridColumns / 2) * ($gridColumnWidth + $gridGutterWidth) - $gridGutterWidth;
+            width: auto  !important;
+            border-color: $grayLight;
+            @include box-shadow(2px 4px 24px rgba(0,0,0,.5));
+
+            .row {
+                margin: 0;
+            }
+
+            #columnDefinitions {
+                margin: 0;
+            }
+        }
+
+    } /* /#reportsPageDetailView */
+
+} /* /.page.reports */
+
+.parameters-popover-left {
+    float: left;
+    width: 125px;
+    margin: 0 0 0 30px;
+}
+
+.parameters-popover-right,
+.parameters-popover-right .nav-list {
+    float: left;
+    width: 125px;
+}
+
+#reportsPageView #reportsSelect {
+    position: relative;
+    width: auto;
+
+    @media (max-width: 538px) {
+        width: 100%;
+    }
+}
+
+.reports-table-width-fix {
+    width: 30px;
+}
+
+
+.reportsFavoritesPopover {
+    width: 432px - ($g5PageContentLeftRightBorderWidth * 2) + ($g5PageContentPaddingHoriz) !important;
+    border-width: $g5PageContentLeftRightBorderWidth; // color and style down below after the @media queries
+
+    #myFavoriteReportsWrapper {
+        @include gridCoreInnerPadding($leftRightPad: ($g5PageContentPaddingHoriz / 2), $leftRightBorder: $g5PageContentLeftRightBorderWidth);
+    }
+
+    .form-actions {
+        @include gridCoreInnerFullSplit($leftRightPad: ($g5PageContentPaddingHoriz / 2), $leftRightBorder: $g5PageContentLeftRightBorderWidth);
+    }
+    .myFavoriteReports {
+        @include gridCoreInnerNegMargin($leftRightPad: ($g5PageContentPaddingHoriz / 2), $leftRightBorder: $g5PageContentLeftRightBorderWidth);
+
+        .dragItem {
+            @include gridCoreInnerPadding($leftRightPad: ($g5PageContentPaddingHoriz / 2), $topBotPad: ($gridGutterWidth / 2), $leftRightBorder: $g5PageContentLeftRightBorderWidth);
+            padding-left: 72px + ($g5PageContentPaddingHoriz / 2) - $g5PageContentLeftRightBorderWidth;
+        }
+    }
+}
+@media (min-width: 1200px) {
+    .reportsFavoritesPopover {
+        width: 576px - ($g5PageContentLeftRightBorderWidth1200 * 2) + ($g5PageContentPaddingHoriz1200) !important;
+
+        #myFavoriteReportsWrapper {
+            @include gridCoreInnerPadding($leftRightPad: ($g5PageContentPaddingHoriz1200 / 2), $leftRightBorder: $g5PageContentLeftRightBorderWidth1200);
+        }
+        .form-actions {
+            @include gridCoreInnerFullSplit($leftRightPad: ($g5PageContentPaddingHoriz1200 / 2), $leftRightBorder: $g5PageContentLeftRightBorderWidth1200);
+        }
+        .myFavoriteReports {
+            @include gridCoreInnerNegMargin($leftRightPad: ($g5PageContentPaddingHoriz1200 / 2), $leftRightBorder: $g5PageContentLeftRightBorderWidth1200);
+
+            .dragItem {
+                @include gridCoreInnerPadding($leftRightPad: ($g5PageContentPaddingHoriz1200 / 2), $topBotPad: ($gridGutterWidth1200 / 2), $leftRightBorder: $g5PageContentLeftRightBorderWidth1200);
+                padding-left: 72px + ($g5PageContentPaddingHoriz1200 / 2) - $g5PageContentLeftRightBorderWidth1200;
+            }
+        }
+    }
+}
+// normally min-width 768px, but moving down a notch because of the narrow nature of this popover
+@media (min-width: 538px) and (max-width: 979px) {
+    .reportsFavoritesPopover {
+        width: 432px - ($g5PageContentLeftRightBorderWidth768 * 2) + ($g5PageContentPaddingHoriz768) !important;
+
+        #myFavoriteReportsWrapper {
+            @include gridCoreInnerPadding($leftRightPad: ($g5PageContentPaddingHoriz768 / 2), $leftRightBorder: $g5PageContentLeftRightBorderWidth768);
+        }
+        .form-actions {
+            @include gridCoreInnerFullSplit($leftRightPad: ($g5PageContentPaddingHoriz768 / 2), $leftRightBorder: $g5PageContentLeftRightBorderWidth768);
+        }
+        .myFavoriteReports {
+            @include gridCoreInnerNegMargin($leftRightPad: ($g5PageContentPaddingHoriz768 / 2), $leftRightBorder: $g5PageContentLeftRightBorderWidth768);
+
+            .dragItem {
+                @include gridCoreInnerPadding($leftRightPad: ($g5PageContentPaddingHoriz768 / 2), $topBotPad: ($gridGutterWidth768 / 2), $leftRightBorder: $g5PageContentLeftRightBorderWidth768);
+                padding-left: 72px + ($g5PageContentPaddingHoriz768 / 2) - $g5PageContentLeftRightBorderWidth768;
+            }
+        }
+    }
+}
+@media (max-width: 479px) {
+    .reportsFavoritesPopover {
+        width: 96% !important;
+        left: 2% !important;
+
+        #myFavoriteReportsWrapper {
+            @include gridCoreInnerPadding($leftRightPad: $g5PageContentPaddingHorizMobile);
+        }
+        .form-actions {
+            @include gridCoreInnerFullSplit($leftRightPad: $g5PageContentPaddingHorizMobile);
+        }
+        .myFavoriteReports {
+            @include gridCoreInnerNegMargin($leftRightPad: $g5PageContentPaddingHorizMobile);
+
+            .dragItem {
+                @include gridCoreInnerPadding($leftRightPad: $g5PageContentPaddingHorizMobile, $topBotPad: ($gridGutterWidth / 2));
+                padding-left: 66px + $g5PageContentPaddingHorizMobile;
+            }
+        }
+    }
+}
+.reportsFavoritesPopover {
+    max-width: none;
+    min-width: none;
+    font-size: $baseFontSize;
+    line-height: $baseLineHeight;
+    background: #fff;
+    border-color: $reports_manageFavoritesPopoverBorderColor; // width up above before the @media queries
+    border-style: solid;
+    @include box-shadow(2px 4px 24px rgba(0,0,0,.5));
+
+    .ui-tooltip-content {
+        padding: 0;
+    }
+
+    .close {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        line-height: 27px;
+
+        i {
+            margin-top: 0;
+            vertical-align: top;
+            @include circledAwesomeIcon($color: $gray);
+        }
+    }
+
+    h3 {
+        margin-bottom: 0;
+    }
+
+    #dragToChange {
+        color: $gray;
+    }
+
+    .form-actions {
+        margin-top: $gridGutterWidth;
+        margin-bottom: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: right;
+
+        .btn {
+            margin-right: 0;
+            padding-right: 0;
+            padding-left: 0;
+            font-weight: bold;
+            color: $black;
+
+            & i {
+                margin-right: 3px;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .myFavoriteReports {
+        background: $grayLight;
+
+        .dragItem {
+            margin: 0;
+            background: $white;
+            cursor: move;
+
+            & ~ .dragItem {
+                margin-top: 1px;
+            }
+
+            &.ui-sortable-helper {
+                @include opacity(.8);
+            }
+        }
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        // font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+
+    .dragItem {
+        .icon-resize-vertical,
+        .icon-remove {
+            display: inline;
+            float: left;
+            margin-top: 0;
+            margin-left: -78px;
+            height: 21px;
+            width: 24px;
+            display: block;
+            font-size: 21px;
+            line-height: 36px;
+            vertical-align: top;
+            color: lighten($grayLight, 25%);
+        }
+        .icon-remove,
+        .icon-trash {
+            float: right;
+            margin-left: 0;
+            color: $grayLight;
+            margin-top: -1px;
+            margin-left: 2px;
+            cursor: pointer;
+        }
+        .icon-remove {
+            @include circledAwesomeIcon($color: $grayLight, $borderColor: $grayLight, $fontSize: 12px, $circleWidth: 16px, $borderWidth: 2px);
+            height: 40px; // circleWidth + borderWidth * 2
+        }
+        .icon-trash {
+            margin-top: 10px;
+            height: 20px;
+            width: 20px;
+            text-align: center;
+        }
+    }
+
+    .onlyOneFavorite {
+        .icon-resize-vertical,
+        .icon-remove,
+        .icon-trash {
+            display: none;
+        }
+    }
+
+    .reportFavoriteIcon {
+        display: inline;
+        float: left;
+        margin: 0 0 0 -48px;
+        width: 36px;
+        height: 36px;
+        border: 1px solid $grayLight;
+    }
+    .reportFavoriteText {
+        p {
+            margin: 0;
+        }
+    }
+
+    .sortable {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    @media (max-width: 479px) {
+        font-size: $baseFontSize * .75;
+        line-height: $baseLineHeight * .75;
+
+        h3 {
+            font-size: $baseFontSize;
+        }
+
+        .dragItem {
+            .icon-resize-vertical,
+            .icon-remove {
+                margin-left: -66px;
+            }
+            .icon-remove {
+                margin: -6px 0 6px 10px;
+                height: 30px;
+            }
+        }
+        .reportFavoriteIcon {
+            margin: 0 0 0 -42px;
+            width: 30px;
+            height: 30px;
+        }
+    }
+}
+
+#reportParametersForm .control-label {
+    margin-right: 20px;
+}
+
+#reportParametersForm h3,
+#reportParametersForm h4 {
+    border-bottom: 1px solid #E5E5E5;
+    margin-bottom: 20px;
+    padding-bottom: 3px;
+}
+
+.reportsChangeFiltersPopover {
+    left: 50% !important;
+    margin-left: (($gridColumnWidth * $gridColumns) + ($gridGutterWidth * ($gridColumns - 1) - $g5PageContentPaddingHoriz - (2 * $g5PageContentLeftRightBorderWidth))) / -2;
+    width: ($gridColumnWidth * $gridColumns) + ($gridGutterWidth * ($gridColumns - 1) - $g5PageContentPaddingHoriz - (2 * $g5PageContentLeftRightBorderWidth)) !important;
+    border-width: $g5PageContentLeftRightBorderWidth; // color and style down below after the @media queries
+
+    @include gridCoreG5($gridColumnWidth, $gridGutterWidth, $g5PageContentPaddingHoriz);
+
+    .container-fluid {
+        margin: 0 0 0 (-1 * $gridGutterWidth);
+    }
+
+    .row {
+        margin: 0 ($g5PageContentPaddingHoriz / 2 - $g5PageContentLeftRightBorderWidth);
+
+        .row {
+            margin-right: 0;
+        }
+
+        .form-actions {
+            @include gridCoreInnerFullSplit($leftRightPad: ($g5PageContentPaddingHoriz / 2), $leftRightBorder: $g5PageContentLeftRightBorderWidth);
+        }
+    }
+}
+@media (min-width: 1200px) {
+    .reportsChangeFiltersPopover {
+        margin-left: (($gridColumnWidth1200 * $gridColumns) + ($gridGutterWidth1200 * ($gridColumns - 1) - $g5PageContentPaddingHoriz1200 - (2 * $g5PageContentLeftRightBorderWidth1200))) / -2;
+        width: ($gridColumnWidth1200 * $gridColumns) + ($gridGutterWidth1200 * ($gridColumns - 1) - $g5PageContentPaddingHoriz1200 - (2 * $g5PageContentLeftRightBorderWidth1200)) !important;
+
+        @include gridCoreG5($gridColumnWidth1200, $gridGutterWidth1200, $g5PageContentPaddingHoriz1200);
+
+        .container-fluid {
+            margin: 0 0 0 (-1 * $gridGutterWidth1200);
+        }
+
+        .row {
+            margin: 0 ($g5PageContentPaddingHoriz1200 / 2 - $g5PageContentLeftRightBorderWidth1200);
+
+            .form-actions {
+                @include gridCoreInnerFullSplit($leftRightPad: ($g5PageContentPaddingHoriz1200 / 2), $leftRightBorder: $g5PageContentLeftRightBorderWidth1200);
+            }
+        }
+    }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+    .reportsChangeFiltersPopover {
+        margin-left: (($gridColumnWidth768 * $gridColumns) + ($gridGutterWidth768 * ($gridColumns - 1) - $g5PageContentPaddingHoriz768 - (2 * $g5PageContentLeftRightBorderWidth768))) / -2;
+        width: ($gridColumnWidth768 * $gridColumns) + ($gridGutterWidth768 * ($gridColumns - 1) - $g5PageContentPaddingHoriz768 - (2 * $g5PageContentLeftRightBorderWidth768)) !important;
+
+        @include gridCoreG5($gridColumnWidth768, $gridGutterWidth768, $g5PageContentPaddingHoriz768);
+
+        .container-fluid {
+            margin: 0 0 0 (-1 * $gridGutterWidth768);
+        }
+
+        .row {
+            margin: 0 ($g5PageContentPaddingHoriz768 / 2 - $g5PageContentLeftRightBorderWidth768);
+
+            .span6 {
+                float: none;
+                width: auto;
+            }
+
+            .form-actions {
+                @include gridCoreInnerFullSplit($leftRightPad: ($g5PageContentPaddingHoriz768 / 2), $leftRightBorder: $g5PageContentLeftRightBorderWidth768);
+            }
+        }
+    }
+}
+@media (max-width: 767px) {
+    .reportsChangeFiltersPopover {
+        left: 2% !important;
+        width: 96% !important;
+        margin-left: 0;
+
+        @include gridCoreSpanMobile(12);
+
+        [class*="span"] {
+            float: none;
+            margin-left: 0;
+        }
+
+        .container-fluid {
+            margin: 0;
+
+            .row {
+                margin: 0 $g5PageContentPaddingHorizMobile;
+
+                .form-actions {
+                    @include gridCoreInnerFullSplit($leftRightPad: $g5PageContentPaddingHorizMobile);
+                }
+            }
+        }
+    }
+}
+
+.reportsChangeFiltersPopover {
+    max-width: none;
+    min-width: none;
+    font-size: $baseFontSize;
+    line-height: $baseLineHeight;
+    background: #fff;
+    border-color: $reports_changeFiltersPopoverBorderColor; // width up above before the @media queries
+    border-style: solid;
+    @include box-shadow(2px 4px 24px rgba(0,0,0,.5));
+
+    .spin {
+        display: block;
+        // float: left;
+        // margin: 15px -15px -15px 15px;
+        margin: ($spinner_widthHeight / 2) auto (-1 * $spinner_widthHeight / 2) auto;
+        width: $spinner_widthHeight;
+        height: $spinner_widthHeight;
+
+        .spinner {
+            top: 50% !important;
+            left: 50% !important;
+        }
+    }
+
+    .container-fluid {
+        padding: 0;
+    }
+
+    .row {
+        .form-actions {
+            margin-bottom: 0;
+        }
+    }
+
+    #reportParametersForm {
+        margin-bottom: 0;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        // font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+    label,
+    input,
+    button,
+    select,
+    textarea {
+        // font-weight: normal;
+    }
+    .span6 select {
+        width: 100%;
+        min-width: 220px;
+    }
+    .span12 select {
+        width: auto;
+        min-width: 244px;
+        max-width: 688px;
+
+        .lt-ie9 & {
+            min-width: 232px;
+            max-width: 676px;
+        }
+
+        @media (min-width: 1200px) {
+            min-width: 342px;
+            max-width: 894px;
+        }
+        @media (max-width: 979px) {
+            max-width: 100%;
+            width: 100%;
+        }
+
+        &.participantSearchSelect {
+            min-width: 220px;
+            width: auto;
+        }
+    }
+
+    .close {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        line-height: 27px;
+
+        i {
+            margin-top: 0;
+            vertical-align: top;
+            @include circledAwesomeIcon($color: $gray);
+        }
+    }
+
+    .container-splitter {
+        @include gridCoreInnerFullSplit(($g5PageContentPaddingHoriz / 2), null, $g5PageContentLeftRightBorderWidth);
+    }
+    @media (min-width: 1200px) {
+        .container-splitter {
+            @include gridCoreInnerFullSplit(($g5PageContentPaddingHoriz1200 / 2), null, $g5PageContentLeftRightBorderWidth);
+        }
+    }
+    @media (min-width: 768px) and (max-width: 979px) {
+        .container-splitter {
+            @include gridCoreInnerFullSplit(($g5PageContentPaddingHoriz768 / 2), null, $g5PageContentLeftRightBorderWidth);
+        }
+    }
+    @media (max-width: 767px) {
+        .container-splitter {
+            @include gridCoreInnerFullSplit($g5PageContentPaddingHorizMobile);
+        }
+    }
+
+}
+
+
+
+
+#reportsPageView .page-topper .spin {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+#reportsPageView .childview {
+    position: relative;
+}
+#reportsPageView .childview .spin {
+    display: block;
+    margin: 0 auto;
+    width: $spinner_widthHeight;
+    height: $spinner_widthHeight;
+}
+#reportsPageView .childview .spincover,
+.reportsChangeFiltersPopover .spincover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    width: 100%;
+    height: 100%;
+    background: $white;
+    background: rgba(255, 255, 255, .5);
+
+    .spin {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        margin: (-1 * $spinner_widthHeight / 2) 0 0 (-1 * $spinner_widthHeight / 2);
+    }
+}
+.reportsChangeFiltersPopover .spincover {
+    .spin {
+        top: 45%;
+    }
+}
+#reportsPageView #chartInFocus .spin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: (-1 * $spinner_widthHeight / 2) 0 0 (-1 * $spinner_widthHeight / 2);
+}

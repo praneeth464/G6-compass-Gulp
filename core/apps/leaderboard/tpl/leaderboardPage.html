@@ -1,0 +1,86 @@
+<!-- ======== LEADERBOARD PAGE ======== -->
+
+<div id="leaderboardPageView" class="page-content">
+
+    <div class="page-topper">
+        <div class="row">
+            <div class="span12 leaderboard-topper-liner">
+
+                <form class="form-inline form-labels-inline">
+
+                    <fieldset>
+
+                        <div class="control-group" id="controlLeaderboardSetSelect">
+
+                            <label class="control-label" for="leaderboardSetSelect">Leaderboard Sets</label>
+
+                            <div class="controls">
+                                <select id="leaderboardSetSelect">
+                                    <!-- dynamic -->
+                                </select>
+                            </div>
+
+                        </div><!-- /.control-group -->
+
+
+                        <div class="control-group" id="controlLeaderboardSelect">
+
+                            <label class="control-label" for="leaderboardSelect">Promotions</label>
+
+                            <div class="controls">
+                                <select id="leaderboardSelect" data-no-leaderboards="There are no promotions for this Leaderboard Set.">
+                                    <!-- dynamic -->
+                                </select>
+                            </div>
+
+                        </div><!-- /.control-group -->
+
+                        <div class="control-group control-group-createnew">
+
+                            <a href="layout.html?tpl=leaderboardPageCreate&amp;tplPath=apps/leaderboard/tpl/" class="createnew"><i class="icon-plus-sign"></i> Create a New Leaderboard</a>
+
+                        </div><!-- /.control-group -->
+
+                    </fieldset>
+
+                </form>
+
+            </div>
+        </div>
+    </div><!-- /.page-topper -->
+
+    <!-- Page Body -->
+    <div class="row">
+        <div class="span12">
+            <div class="leaderboardModel">
+                <!-- NOTE: dynamically loaded using template leaderboardSet.html -->
+            </div>
+        </div>
+    </div>
+
+</div><!-- /#leaderboardPageView -->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+$(document).ready(function(){
+
+    //attach the view to an existing DOM element
+    G5.views.leaderboardPageView = new LeaderboardPageView({
+        el : $('#leaderboardPageView'),
+        userRole : 'manager', // 'manager' or 'participant'
+        //showLeaderboard : 1234,
+        pageNav : {
+            back : {
+                text : 'Back',
+                url : 'layout.html'
+            },
+            home : {
+                text : 'Home',
+                url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+            }
+        },
+        pageTitle : 'Leaderboard'
+    });
+
+});
+</script>

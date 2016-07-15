@@ -1,0 +1,69 @@
+// Partial-specific variables (uncomment to use)
+// =========================
+// $pageNav_bgColor: ;
+// $pageNav_gradMeta: ; // top would be an ideal value // only applies when a background color has been set
+// $pageNav_gradStops: ;
+// $pageNav_borderTopWidth: ;
+// $pageNav_borderTopColor: ;
+// $pageNav_borderBottomWidth: ;
+// $pageNav_borderBottomColor: ;
+
+// this space below only applies when a background color has been set on the pageNav ($pageNav_bgColor)
+// there are solid defaults in the core files. Only adjust if absolutely necessary
+// $pageNav_spaceBelow: ;
+// $pageNav_spaceBelow1200: ;
+// $pageNav_spaceBelow768: ;
+// $pageNav_spaceBelowMobile: ;
+
+// $pageNav_pageTitleFontFamily: ;
+// $pageNav_pageTitleFontSize: ;
+// $pageNav_pageTitleLineHeight: ;
+// $pageNav_pageTitleFontWeight: ;
+// $pageNav_pageTitleFontStyle: ;
+$pageNav_pageTitleTextColor: #9f5c87;
+// $pageNav_pageTitleTextTransform: ;
+
+// $pageNav_pageHomeBackFontFamily: ;
+// $pageNav_pageHomeBackFontSize: ;
+// $pageNav_pageHomeBackLineHeight: ; // Note that these are calculated values that use fontSizes as the base. Override with caution.
+// $pageNav_pageHomeBackFontWeight: ;
+// $pageNav_pageHomeBackFontStyle: ;
+// $pageNav_pageHomeBackTextColor: #303030;
+// $pageNav_pageHomeBackTextTransform: ;
+
+$pageNav_pageBackIconColor: #303030;
+$pageNav_pageBackCircleColor: #303030;
+// $pageNav_pageHomeIconColor: ; // by default these match the above two rules. Overriding the first will affect both.
+// $pageNav_pageHomeCircleColor: ; // by default these match the above two rules. Overriding the first will affect both.
+
+// $pageNav_pageTitleFontSizeMobile: ; // Note that these are calculated values that use fontSizes as the base. Override with caution.
+// $pageNav_pageTitleLineHeightMobile: ; // Note that these are calculated values that use fontSizes as the base. Override with caution.
+// $pageNav_pageHomeBackFontSizeMobile: ;
+// $pageNav_pageHomeBackLineHeightMobile: ; // Note that these are calculated values that use fontSizes as the base. Override with caution.
+
+// $pageNav_pageHomeDividerWidth: ;
+$pageNav_pageHomeDividerColor: #303030;
+
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "partials/pageNav";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// Partial-specific code for this skin
+// ==================================================
+
+
+
+// TODO 5.4: add a check of the homeApp text color against the body background color to run the font smoothing mixin
+#pageNav {
+    -webkit-font-smoothing: antialiased; // makes light-on-dark text look a bit better
+}

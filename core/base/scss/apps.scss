@@ -1,0 +1,65 @@
+// CORE APPLICATION VARIABLES AND MEASUREMENTS
+@import "partials/variables";
+@import "partials/mixins";
+@import "compass/css3";
+
+// make use of SCSS files in style* without actually outputting those files here
+$base_variablesOnly: true;
+@import 'partials/pages';
+
+//module imports
+//(not sure how these will be included
+//   in build -- we'll import sass style for now)
+@import "../../apps/test/scss/testModule";
+
+// Let's keep these in alpha order
+// Files dependent upon another should be indented (e.g. clickThru)
+// Try to avoid dependencies
+@import "approvals";
+@import "bannerModule";
+@import "budgetTracker";
+@import "clickThru";
+    @import "nominations";
+    @import "shopDigitalDownloads"; // ADDED to product in 5.3
+    // @import "shopEnvoyTravel"; // REMOVED from product as of 5.2
+    @import "shopEvents";
+    // @import "shopExperience"; // REMOVED from product as of 5.2
+    @import "shopGreatDeals";
+    @import "shopIntlMerchandise";
+    @import "shopMerchandise";
+    // @import "shopPassportTravel"; // REMOVED from product as of 5.2
+    @import "shopRealDeal";
+    @import "shopTravel";
+    // @import "shopTravelGreatDeals"; // REMOVED from product as of 5.2
+@import "communications";
+// not ideal but there was a conflict with throwdown news. Will clean up later.
+@import "news/scss/news";
+@import "contactForm";
+// @import "destinations"; // ADDED to product in 5.X
+@import "drawTool";
+@import "engagement";
+@import "forum";
+@import "gamification";
+@import "goalquest";
+@import "instantPoll";
+@import "leaderboard";
+@import "managerToolkit";
+@import "onTheSpotCard";
+@import "plateauAwards";
+@import "productClaim";
+@import "profile";
+@import "publicProfile";
+@import "publicRecognition";
+@import "purlContribute";
+    @import "purlCelebrate";
+@import "quiz";
+@import "recognition";
+@import "reports";
+@import "resourceCenter";
+@import "survey";
+// @import "throwdown";
+@import "tip";
+@import "workHappier";
+
+// Test SCSS
+@import "../../apps/theDude/scss/theDude";

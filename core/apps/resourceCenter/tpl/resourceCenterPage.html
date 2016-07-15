@@ -1,0 +1,43 @@
+<!-- ======== QUIZ PAGE ======== -->
+
+<div id="resourceCenterPageView" class="resourceCenterPage-liner page-content">
+
+    <div class="row">
+        <div class="span12">
+            <h3>Resource Center</h3>
+
+            <ul>
+
+                <li><a href="https://asset1.basecamp.com/1829100/projects/503654-g5/attachments/16739975/G5%20recognition%20wireframes.pdf" target="_blank">Example PDF Link</a></li>
+
+                <li><a href="#">Top 10 Tips</a></li>
+
+                <li><a href="#">Best Practices</a></li>
+
+                <li><a href="#">Corporate Website</a></li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function(){
+        //attach the view to an existing DOM element
+        var rcpv = new ResourceCenterPageView({
+            el:$('#resourceCenterPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Resource Center'
+        });
+    });
+</script>

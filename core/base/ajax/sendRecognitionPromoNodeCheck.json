@@ -1,0 +1,106 @@
+{
+	"messages":[],
+	"node":{
+		"id":23456,
+		"name":"Node A",
+		"budgetId":12345,
+		"amount":9000,
+		"amountUsed":1000,
+		"isSoftCap":false
+	},
+	"recognitionCalculator":
+		{
+			"attributes": 
+				{
+					"hasWeight": true,
+					"hasScore": true,
+					"showPayTable": true,
+					"weightLabel": "theWeightLabel",
+					"scoreLabel": "theScoreLabel",
+					"awardType": "merchlevel"
+				},
+
+			"criteria":[
+				{	
+					"id": 12345,
+					"label": "Calculator category1",
+					"ratings":[
+						{
+							"id": 1,
+							"value": 100,
+							"label": "HighRating1"
+						},
+						{
+							"id": 2,
+							"value": 50,
+							"label":"MiddleRating1"
+						},
+						{	
+							"id": 3,
+							"value": 25,
+							"label":"LowRating1"
+						}
+					]
+				},
+				{	
+					"id": 12346,
+					"label": "Calculator category2",
+					"ratings":[
+						{	
+							"id": 4,
+							"value": 100,
+							"label": "HighRating2"
+						},
+						{
+							"id": 5,
+							"value": 50,
+							"label":"MiddleRating2"
+						},
+						{
+							"id": 6,
+							"value": 25,
+							"label":"LowRating2"
+						}
+					]
+				},
+				{	
+					"id": 12347,
+					"label": "Calculator category3",
+					"ratings":[
+						{
+							"id": 7,
+							"value": 100,
+							"label": "HighRating3"
+						},
+						{
+							"id": 8,
+							"value": 50,
+							"label":"MiddleRating3"
+						},
+						{
+							"id": 9,
+							"value": 25,
+							"label":"LowRating3"
+						}
+					]
+				}
+			],
+
+			"payTable":{
+				"rows":[
+					{
+						"score": "0-4",
+						"payout":"1-50"
+					},
+					{
+						"score": "5-9",
+						"payout":"1-75"
+					},
+					{
+						"score": "10-15",
+						"payout":"1-100"
+					}
+				]					
+			}
+	}
+}

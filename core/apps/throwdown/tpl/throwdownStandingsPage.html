@@ -1,0 +1,230 @@
+<!-- ======== THROWDOWN STANDINGS PAGE ======== -->
+<div id="throwdownStandingsPage" class="page-content">
+
+    <div class="page-topper">
+        <div class="row">
+            <div class="span6 standings-topper-liner">
+                <form class="form-inline form-labels-inline">
+
+                        <div class="control-group" id="controlMatchSelect">
+                            <div class="controls">
+                                <select id="promotionSelect" data-no-rankings="There are no promotions for this Match Filter.">
+                                    <option value="1234">Promotion 1</option>
+                                    <option value="1235">Promotion 2</option>
+                                </select>
+                            </div>
+                        </div><!-- /.control-group -->
+
+                </form>
+            </div>
+            <div class="span6">
+                <a href="#" class="btn btn-primary rulesBtn">View Rules</a>
+            </div>
+        </div>
+    </div><!-- /.page-topper -->
+
+    <div class="standingsPromoInfo">
+        <div class="row">
+            <div class="span8">
+                <h2>PromoName</h2>
+                <p class="startdate"><strong>Start Date:</strong> <span>04/04/2012</span></p>
+                <p class="endDate"><strong>End Date:</strong> <span>06/01/2012</span></p>
+
+            </div>
+
+            <div class="span4">
+                <p>Display Matches For:</p>
+                <form class="form-inline form-labels-inline">
+                    <fieldset>
+                        <div class="controls">
+                            <select id="matchesSelect" data-no-rankings="There are no promotions for this Match Filter.">
+                                <option>All</option>
+                                <option>Division</option>
+                            </select>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div><!-- /.row -->
+
+        <div class="row">
+            <div class="span12" id="standingsMatchesTabs">
+                <ul class="nav nav-tabs">
+                    <li class="tabMatches active"><a href="#Matches" data-toggle="tab">Matches</a></li>
+                    <li class="tabStandings"><a href="#Standings" data-toggle="tab">Standings</a></li>
+                </ul>
+            </div><!-- /#standingsMatchesTabs -->
+        </div><!-- /.row -->
+    </div><!-- /.standingsPromoInfo -->
+
+    <div class="tab-content">
+        <div class="tab-pane active" id="Matches">
+            <div class="row" id="matchesTab">
+                <div class="span12">
+                    <div class="roundPagination pagination pagination-center paginationControls first"></div>
+                    <!--subTpl.roundPaginationTpl=
+                        <ul>
+                            <li class="prev {{#eq currentRound "1"}} disabled {{/eq}}">
+                                <a>«</a>
+                            </li>
+                            <li>
+                                <p>Round <span class="your-round">{{currentRound}}</span> of <span class="round-total">{{totalRounds}}</span></p>
+                                <p class= "round-dates">
+                                {{#if roundStartDate}}
+                                    {{roundStartDate}} - {{roundEndDate}}
+                                {{/if}}
+                                </p>
+                            </li>
+                            <li class="next {{#eq totalRounds currentRound}} disabled {{/eq}}">
+                                <a>»</a>
+                            </li>
+                        </ul>
+
+                        <span class="td-fine-print">{{promotionOverview}}, {{#if isProgressLoaded}} From {{roundStartDate}} to {{progressEndDate}} {{else}}{{#if roundCompleted}}as of {{roundEndDate}} {{else}} No progress loaded  {{/if}} {{/if}}
+                    </span>
+
+                    subTpl-->
+
+
+                    <div class="allMatchesPagination pagination pagination-right paginationControls first"></div>
+
+                    <div class="allMatchesTable"></div>
+
+                    <script id="throwdownAllMatchesTableTpl" type="text/x-handlebars-template">
+
+                        {{#if roundScheduled}}
+
+                        <table id="allMatchesTable" class="table table-bordered table-striped">
+
+                        {{#if tabularData.meta.columns}}
+                        <thead>
+                        <tr>{{! NOTE: the Handlebars tags in this block are broken onto different lines in a strange way because of an IE whitespace bug}}
+                        {{#each tabularData.meta.columns}}<th class="{{type}}" data-sort-by-id="{{id}}" {{#if colSpan}} colspan="{{colSpan}}" {{/if}}> {{name}} </th>{{/each}}
+                        </tr>
+                        </thead>
+                        {{/if}}
+
+                        {{#if teams}}
+                        <tbody>
+                        {{#each teams}}
+                        <tr>{{! NOTE: the Handlebars tags in this block are broken onto different lines in a strange way because of an IE }}
+                        <td colspan="2"><img src="{{primaryTeam.smallAvatarUrl}}" alt="{{primaryTeam.name}}" /><p><a class="profile-popover" href="" data-participant-ids="[{{primaryTeam.id}}]">{{primaryTeam.name}}</a> </p> <br /> <img src="{{secondaryTeam.smallAvatarUrl}}" alt="{{secondaryTeam.name}}" /><p><a class="profile-popover" href="" data-participant-ids="[{{secondaryTeam.id}}]">{{secondaryTeam.name}}</a></p></td>
+                        <td><p>W: <span>{{primaryTeam.stats.wins}}</span> L: <span>{{primaryTeam.stats.losses}}</span> T: <span>{{primaryTeam.stats.ties}}</span></p><br /> <p>W: <span>{{secondaryTeam.stats.wins}}</span> L: <span>{{secondaryTeam.stats.losses}}</span> T: <span>{{secondaryTeam.stats.ties}}</span></p></td>
+                        <td class="td-current-progress"><p>{{#if displayProgress}} {{primaryTeam.currentProgress}} {{#if primaryTeam.isWinnerFinal}}<span>W</span> {{else}} {{#if primaryTeam.isTiedFinal}}<span>T</span> {{/if}} {{/if}} {{else}} {{primaryTeam.currentProgressText}} {{/if}}</p><br /> <p>{{#if displayProgress}} {{secondaryTeam.currentProgress}} {{#if secondaryTeam.isWinnerFinal}}<span>W</span> {{else}} {{#if secondaryTeam.isTiedFinal}}<span>T</span> {{/if}} {{/if}} {{else}} {{secondaryTeam.currentProgressText}} {{/if}}</p></td>
+                        <td><a href="{{matchUrl}}" class="btn throwdown-match-detail-btn">Match Details</a> <div class="app-col chevron"><a href="{{matchUrl}}"><i class="icon-chevron-right"></i></a></div></td>
+                        </tr>
+                        {{/each}}
+                        </tbody>
+                        {{/if}}
+                        </table>
+
+                        {{else}}
+                        <h4>Matches for this round are not scheduled. Please check back later.</h4>
+                        {{/if}}
+                    </script>
+
+                    <div class="allMatchesPagination pagination pagination-right paginationControls first"></div>
+
+                </div><!-- /.span12 -->
+            </div><!-- /.row -->
+        </div><!-- /#Matches.tab-pane -->
+
+        <div class="tab-pane" id="Standings">
+            <div class="row" id="standingsTab">
+                <div class="span12 standingsContent">
+
+
+                    <div class="standingsPagination pagination pagination-right paginationControls first"></div>
+
+                    <div class="standingsTable"></div>
+
+                    <script id="throwdownStandingsTableTpl" type="text/x-handlebars-template">
+
+                        <div class="roundDates">
+                            <span>From {{roundStartDate}} to {{progressEndDate}}</span>
+                        </div>
+                        <table id="standingsTable" class="table table-bordered table-striped">
+
+                        {{#if tabularData.meta.columns}}
+                        <thead>
+                        <tr>{{! NOTE: the Handlebars tags in this block are broken onto different lines in a strange way because of an IE whitespace bug}}
+                        {{#each tabularData.meta.columns}}<th class="{{type}}{{#if sortable}} sortable{{/if}}{{#if sortedOn}} sorted{{else}} unsorted{{/if}}{{#if sortedBy}} {{sortedBy}}{{/if}}" data-sort-by-id="{{id}}" data-sorted-on="{{sortedOn}}" data-sorted-by="{{sortedBy}}">{{#if
+                        sortable}}<a href="{{sortUrl}}">{{name}} {{#unless sortedByDesc}}<i class="icon-sort-up"></i>{{else}}<i class="icon-sort-down"></i>{{/unless}}</a>{{
+                        else}}{{name}}{{/if
+                        }}</th>{{/each}}
+                        </tr>
+                        </thead>
+                        {{/if}}
+
+                        {{#if tabularData.results}}
+                        <tbody>
+                        {{#each tabularData.results}}
+                        <tr>{{! NOTE: the Handlebars tags in this block are broken onto different lines in a strange way because of an IE }}
+                        <td><img src="{{avatarUrl}}" alt="{{name}}" /><p><a class="profile-popover" href="#" data-participant-ids="[{{id}}]"> {{name}}</a></p></td>
+                        <td><p>{{win}}</p></td>
+                        <td><p>{{loss}}</p></td>
+                        <td><p>{{tie}}</p></td>
+                        </tr>
+                        {{/each}}
+                        </tbody>
+                        {{/if}}
+                        </table>
+                    </script>
+
+                   <div class="standingsPagination pagination pagination-right paginationControls first"></div>
+                   <!--subTpl.matchesStandingsPaginationTpl=
+
+                        {{#if pagination}}
+                        {{#with pagination}}
+                        <ul>
+                            <li class="first{{#if first.state}} {{first.state}}{{/if}}" data-page="{{first.page}}">
+                                <a href="#"><i class="icon-double-angle-left"></i>&nbsp;</a>
+                            </li>
+                            <li class="prev{{#if prev.state}} {{prev.state}}{{/if}}" data-page="{{prev.page}}">
+                                <a href="#"><i class="icon-angle-left"></i> Previous</a>
+                            </li>
+                            {{#each pages}}
+                            <li {{#if state}}class="{{state}}"{{/if}} data-page="{{page}}">
+                                <a href="#">{{#if isgap}}&#8230;{{else}}{{page}}{{/if}}</a>
+                            </li>
+                            {{/each}}
+                            <li class="next{{#if next.state}} {{next.state}}{{/if}}" data-page="{{next.page}}">
+                                <a href="#">Next <i class="icon-angle-right"></i></a>
+                            </li>
+                            <li class="last{{#if last.state}} {{last.state}}{{/if}}" data-page="{{last.page}}">
+                                <a href="#">&nbsp;<i class="icon-double-angle-right"></i></a>
+                            </li>
+                        </ul>
+                        {{/with}}
+                        {{/if}}
+
+                    subTpl-->
+                </div><!-- /.standingsContent -->
+            </div><!-- /.standingsTab -->
+        </div><!-- /#Standings -->
+    </div><!-- /.tab-content -->
+</div><!-- /#throwdownStandingsPage.page-content -->
+
+<script>
+    $(document).ready(function(){
+        var $throwdownStandingsPage = $('#throwdownStandingsPage');
+        throwdownStandingsPageView = new ThrowdownStandingsPageView({
+            el: $throwdownStandingsPage,
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Matches and Standings',
+            standingsJson : '',
+            standingsJsonUrl: G5.props.URL_THROWDOWN_STANDINGS,
+            allMatchesJson : '',
+            allMatchesJsonUrl: G5.props.URL_THROWDOWN_ALL_MATCHES
+        });
+    });
+</script>

@@ -1,0 +1,75 @@
+/* TEST MODULE STYLE */
+
+ 
+
+.module .test-module-padding{
+	padding:20px;
+}
+
+.module .test-module-group{
+	display:inline-block;
+	padding:0 6px 0 0;
+	input{
+		height:14px;
+		padding:2px;
+		line-height:14px;
+		width:30px;
+		&.error{
+			background-color: lighten(#ff0000,35%);
+			border-color:#ff0000;
+		}
+	}
+
+}
+
+div[class*=grid-dimension-1x] .test-module-group{
+	display:block;
+	padding:4px 10px 0 0;
+	label{
+		width:45px;
+		text-align:right;
+	}
+}
+
+div[class*=grid-dimension-1x] .test-module-padding,
+.grid-dimension-2x1 .test-module-padding{
+	padding:5px;
+}
+
+div[class*=testModule] h3{
+	color:#ddd;
+	@include text-shadow(black 0px 0px 3px);
+}
+
+div[class*=testModule] label{
+	color:white;
+	//@include text-shadow(#fff 1px 1px 1px);
+}
+
+.testModuleStyle .module-liner{background:rgb(55,55,55);}
+.testModule01Style .module-liner{background:rgb(250,87,0);}
+.testModule02Style .module-liner{
+	background:rgb(130,22,0);
+	p{
+		color:white;
+	}
+}
+.testModule03Style .module-liner{background:rgb(0,163,222);}
+.testModule04Style .module-liner{background:rgb(148,0,222);}
+
+.testModuleStyle .module-liner,
+.testModule01Style .module-liner,
+.testModule02Style .module-liner,
+.testModule03Style .module-liner,
+.testModule04Style .module-liner{
+	//@include box-shadow(rgba(black, 0.9) 0 0 38px 1px inset);
+}
+
+
+div[class*=autoAdded] .module-liner{
+	@include background(linear-gradient(top , #000, #333));
+}
+
+.no-cssgradients div[class*=autoAdded] .module-liner{
+	background:#000;
+}

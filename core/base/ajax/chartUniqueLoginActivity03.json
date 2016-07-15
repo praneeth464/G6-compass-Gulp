@@ -1,0 +1,26 @@
+{
+  "messages": [],
+  "chart": {},
+  "data": [
+    {
+      "label": "Jan",
+      "value": "3"
+    },
+    {
+      "label": "Feb",
+      "value": "8"
+    },
+    {
+      "label": "Mar",
+      "value": "20"
+    },
+    {
+      "label": "April",
+      "value": "35"
+    },
+    {
+      "label": "May",
+      "value": "50"
+    }
+  ]
+}

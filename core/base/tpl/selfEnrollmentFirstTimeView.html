@@ -1,0 +1,412 @@
+<div id="firstTimeLoginPage" class="firstTimeLoginPage page-content">
+
+    <div class="row">
+        <div class="span12">
+
+        <!-- for errors
+        <div id="serverReturnedErrored" class="hide  errors span12">
+            <div data-error-field="lastName" class="alert alert-block alert-error">
+                That is not your last name!
+            </div>
+            <div data-error-field="asdf" class="alert alert-block alert-error">
+                Server side error example.
+            </div>
+        </div>-->
+
+
+            <form autocomplete="off" id="selfEnrollmentFirstTimeLoginPageForm" action="layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html" method="POST">
+                <fieldset id="termsAndConditions" class="firstTimeLoginFieldSet form" >
+                    <legend>Terms and Conditions</legend>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et ipsum dolor. Aliquam in diam id odio dictum congue sed non purus. Aenean velit odio, venenatis eu convallis quis, fringilla vel tortor.</p>
+                    <p>Ut vel justo nec nulla varius rhoncus. Donec tincidunt neque eget nunc posuere tempor laoreet velit ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec dignissim faucibus ligula id tristique.</p>
+                    <p>Integer at urna dui, eu venenatis justo. Duis luctus justo non dui pulvinar ut dictum dui posuere. Morbi ipsum lectus, convallis sed vestibulum eu, commodo a erat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed ut lectus odio. Aenean vehicula imperdiet turpis, a eleifend dui sollicitudin et. Sed pretium vehicula molestie. Pellentesque quis arcu at urna viverra suscipit.</p>
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-match="TermsAndConditionsRadio1" data-validate-fail-msgs='{"nonempty" : "You must accept the Terms and Conditions to continue", "match" : "You must accept the Terms and Conditions to continue"}'>
+                        <label class="control-label radio bold">
+                            <input type="radio" name="TermsAndConditionsRadios" id="TermsAndConditionsRadio1" value="accept"> Accept Terms and Conditions
+                        </label>
+                        <label class="control-label radio bold">Decline Terms and Conditions <input type="radio" name="TermsAndConditionsRadios" id="TermsAndConditionsRadio2" value="decline"></label>
+                        <div class= "controls"></div>
+                    </div>
+                    <button class="btn btn-primary nextandClearSectionBtn">Continue</button>
+                    <a href="link-to-appropreate-location"><button class='btn button'>Cancel</button></a>
+                </fieldset>
+                <fieldset id="userInformation" class="form-horizontal firstTimeLoginFieldSet" style="display:none">
+
+                    <div class="control-group">
+                        <label class="control-label">
+                            Org Unit
+                        </label>
+                        <div class="controls">
+                            <!-- Entered at JSP Level-->
+                            <span class="naked-input">Value</span>
+                        </div>
+                    </div>
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter First Name."}'>
+                        <label class="control-label" for="firstName">First Name</label>
+                        <div class="controls">
+                            <input type="text" name="firstName" id="firstName" placeholder="">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Middle Name</label>
+                        <div class="controls">
+                            <input type="text" name="middleName" placeholder="">
+                            <span class="optional">(optional)</span>
+                        </div>
+                    </div>
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter Last Name."}'>
+                        <label class="control-label" for="lastName">Last Name</label>
+                        <div class="controls">
+                            <input type="text" name="lastName" id="lastName" placeholder="">
+                        </div>
+                    </div>
+                    <div class="control-group validateme" data-validate-regex="(^\d{3}-?\d{2}-?\d{4}$|^\d{9}$)" data-validate-flags="nonempty,regex" data-validate-fail-msgs='{"nonempty" : "Please enter your SSN.", "regex" : "Please enter a valid, 9 digit SSN."}'>
+                        <label class="control-label" for="ssn">Social Security Number</label>
+                        <div class="controls">
+                            <input type="password" name="ssn" id="ssn" placeholder="xxx-xx-xxxx">
+                        </div>
+                    </div>
+                            <!-- Conditionally hide or show this depending on if the server needs a capthca -->
+                    <div class="capcha control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter the Capcha."}'>
+                        <div class="controls">
+                            <p>Type the characters you see below into the text box. NOTE: characters are case sensitive.</p>
+                            <div id="purlTermsCaptcha" class="captchaContainer">
+                                <!-- Place capcha image here -->
+                                <img src="http://placehold.it/350x150" id="captchaimg"></img>
+                            </div>
+                        </div>
+                        <label class="control-label checkId">Capcha</label>
+                        <div class="controls">
+                            <input type="text" name="captchaResponse" id="captchaResponse" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter a User ID."}'>
+                        <div class="form-inline">
+                            <div class="controls">
+                                <p class="help-block">Create your own Login ID or click Generate ID  for a system generated ID.</p>
+                            </div>
+                            <label class="control-label checkId">Login ID</label>
+                            <div class="controls">
+                                <div class="input-append">
+                                    <input id="userName" type="text" name="userName" placeholder="">
+                                    <button class="generateId btn" type="button">Generate ID</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <legend>Change Security Settings</legend>
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter your password"}'>
+                        <label class="control-label" for="inputPassword" > New Password</label>
+                        <div class="controls">
+                            <input type="password" id="inputPassword" name="inputPassword">
+                        </div>
+                    </div>
+                    <div class="control-group validateme" data-validate-flags="nonempty,match" data-validate-match="inputPassword" data-validate-fail-msgs='{"nonempty" : "Please confirm password","match" : "Passwords do not match"}'>
+                        <label class="control-label" for="inputPasswordConfirm"> Confirm New Password</label>
+                        <div class="controls">
+                            <input type="password" id="inputPasswordConfirm" name="inputPasswordConfirm">
+                        </div>
+                    </div>
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please confirm new password", "match" : "Passwords do not match"}'>
+                        <label class="control-label" for="securityQuestion"> Security Question</label>
+                        <div class="controls">
+                            <select id="securityQuestion" name="securityQuestion">
+                                <option value="" disabled="">Choose a question</option>
+                                <option value="What is the square root of everything?">What is the square root of everything?</option>
+                                <option value="Who do you think is the best persone ever?">Who do you think is the best persone ever?</option>
+                                <option value="Where did you last lose your keys?">Where did you last lose your keys?</option>
+                                <option value="Are you more than 13 feet tall?">Are you more than 13 feet tall?</option>
+                                <option value="How old will you be when the iPhone 8 is released?">How old will you be when the iPhone 8 is released?</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please answer the security question"}'>
+                        <label class="control-label" for="securityQuestionAnswer"> Answer</label>
+                        <div class="controls">
+                            <input type="text" id="securityQuestionAnswer" name="securityQuestionAnswer">
+                        </div>
+                    </div>
+
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please choose a value"}'>
+                        <label class="control-label" for="jobTitle">Job Title</label>
+                        <div class="controls">
+                            <select required="" name="jobTitle" id="jobTitle">
+                                <option selected="" value="">Select a topic</option>
+                                <option value="Admin">Level 3 Research Associate</option>
+                                <option value="DBA">DBA</option>
+                                <option value="Supervisor">Supervisor</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please choose a value"}'>
+                        <label class="control-label">Department</label>
+                        <div class="controls">
+                            <select name="department" id="department">
+                                <option value="">Select a topic</option>
+                                <option value="anonymous materials">Anonymous Materials</option>
+                                <option value="Seizures and acquisitions">Seizures and acquisitions</option>
+                                <option value="Shipping and Reciving">Shipping &amp; Reciving</option>
+                                <option value="Research &amp; Development">Research &amp; Development</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter Primary Address Type."}'>
+                        <label class="control-label">Primary Address Type</label>
+                        <div class="controls">
+                            <select name="addressType" id="addressType">
+                                <option selected="" value="">Select a topic</option>
+                                <option value="Business">Business (P.O. Box)</option>
+                                <option value="House">House</option>
+                                <option value="Appartment">Appartment</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter Country Code."}'>
+                        <label for="countryCode" class="control-label">Country</label>
+                        <div class="controls">
+                            <!-- disabled for edit mode: disabled="disabled" -->
+                            <select id="countryCode" name="countryCode">
+                                <option selected="" value="Select a country code">Select a Country Code</option>
+                                <option>United States</option>
+                                <option>Koria</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter Address."}'>
+                        <label class="control-label">Address 1</label>
+                        <div class="controls">
+                            <input type="text"  name="addr1" placeholder="">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Address 2</label>
+                        <div class="controls">
+                            <input type="text" name="addr2" placeholder="">
+                            <span class="optional">(optional)</span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Address 3</label>
+                        <div class="controls">
+                            <input type="text" name="addr3" placeholder="">
+                            <span class="optional">(optional)</span>
+                        </div>
+                    </div>
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter City."}'>
+                        <label class="control-label">City</label>
+                        <div class="controls">
+                            <input type="text" name="city" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="stateTypeCode" class="control-label">State/Location</label>
+                        <div class="controls">
+                            <select id="stateTypeCode" name="stateTypeCode">
+                                <!--
+                                    ajax by country
+                                    Ex: statesOrLocationsForCountry.json
+                                    Set: G5.props.URL_JSON_MANAGER_LOCATIONS
+                                -->
+                                <!-- EDIT mode will have pre populated -->
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option selected value="mn">Minnesota</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter Zip Code."}'>
+                        <label class="control-label">Zip/Postal Code</label>
+                        <div class="controls">
+                            <input type="text" name="postalCode" placeholder="">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Primary Email Address Type</label>
+                        <div class="controls">
+                            <select name="emailType" id="emailType">
+                                <option value = "">Select an email type</option>
+                                <option value="Work">Work</option>
+                                <option value="Personal">Personal</option>
+                            </select>
+                            <span class="optional">(optional)</span>
+                        </div>
+                    </div>
+                    <div class="control-group validateme" data-validate-flags="nonempty,email" data-validate-fail-msgs='{"nonempty" : "Please enter an email address.", "email" : "Please enter a valid email address."}'>
+                        <label class="control-label">Email Address</label>
+                        <div class="controls">
+                            <input type="text" id="emailAddress" disabled="" name="emailAddress" placeholder="">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Primary Telephone Type</label>
+                        <div class="controls">
+                            <select name="phoneType" id="phoneType">
+                                <option selected="" value="">Select a Phone Type</option>
+                                <option value="Work">Work</option>
+                                <option value="Personal">Personal</option>
+                            </select>
+                            <span class="optional">(optional)</span>
+                        </div>
+                    </div>
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please select a Country Code."}'>
+                        <label class="control-label">Country &amp; Country Code</label>
+                        <div class="controls">
+                            <select name="countryPhoneCode" id="countryPhoneCode">
+                                <option selected="" value="">Select a topic</option>
+                                <option value="1">United States +1</option>
+                                <option value="49">United Kingdom +49</option>
+                                <option value="61">Australia +61</option>
+                                <option value="86">China +86</option>
+                                <option value="56">Easter Island +56</option>
+                                <option value="30">Germany +30</option>
+                                <option value="91">India +91</option>
+                                <option value="81">Japan +81</option>
+                                <option value="379">Vatican City +379</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group validateme" data-validate-regex="(^\d{3}-?\d{3}-?\d{4}$|^\d{9}$)" data-validate-flags="nonempty,regex" data-validate-fail-msgs='{"regex":"Please enter a valid phonenumber.", "nonempty":"Please enter a valid phonenumber."}'>
+                        <label class="control-label">Telephone Number </label>
+                        <div class="controls">
+                            <input type="text" disabled="" placeholder="xxx-xxx-xxxx" id="phoneNumber" name="selfEnrollmentPaxRegistrationForm" placeholder="">
+                        </div>
+                    </div>
+                    <div class="control-group validateme" data-validate-regex="(^\d{4}$|^$)" data-validate-flags="regex" data-validate-fail-msgs='{"regex":"Please enter a valid extension."}'>
+                        <label class="control-label" for="extention">Extention </label>
+                        <div class="controls">
+                            <input type="text" name="extention" class="phoneExtension" id="phoneExtension" placeholder="xxxx">
+                            <span class="help-inline">(4 digit extension)</span>
+                            <span class="optional">(optional)</span>
+                        </div>
+                    </div>
+
+                    <!-- Start Conditionally added in JSP -->
+                    <h5>???self.enrollment.pax.registration.CHARACTERISTIC_HEADER???<h5>
+                    <!-- Start Boolean Example in JSP -->
+                    <div class="control-group">
+                    <label class="control-label">Boolean <!--replace with title> --></label>
+                    <div class="controls">
+                            <label for="true" class="radio">true
+                                <input type="radio" name="Boolean" placeholder="" value="true"></input>
+                            </label>
+                            <label class="radio" for="false">false
+                                <input type="radio" name="Boolean" placeholder="" value="false"></input>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- End Boolean Example in JSP -->
+                    <!-- Start Date Example in JSP -->
+                    <div class="control-group">
+                    <label class="control-label" for="<!--replace with title> -->">Date</label>
+                        <div class="controls datepickerTrigger"
+                                data-date-format="mm/dd/yyyy"
+                                data-date-language="en_US"
+                                data-date-startdate="11/14/2012"
+                                data-date-autoclose="true">
+                                <input type="text" id="enterIdHere" name="awardScheduleDate" readonly="readonly" value="1/1/2013">
+                                <button class="btn"><i class="icon-calendar"></i></button>
+                        </div>
+                    </div>
+                    <!-- End Date Example in JSP -->
+                    <!-- Start Decimal Input Example in JSP -->
+                    <div class="control-group">
+                    <label class="control-label" for="<!--replace with title> -->">Decimal</label>
+                        <div class="controls">
+                            <input class="decimal" type="text" name="<!--replace with title> -->" placeholder=""></input>
+                        </div>
+                    </div>
+
+                    <!-- End Decimal Input Example in JSP -->
+                    <!-- Start Integer Input Example in JSP -->
+                    <div class="control-group">
+                    <label class="control-label" for="<!--replace with title> -->">Integer</label>
+                        <div class="controls">
+                            <input class="integer" type="number" name="<!--replace with title> -->" placeholder=""></input>
+                        </div>
+                    </div>
+                    <!-- End Integer Input Example in JSP -->
+                    <!-- Start Multi Select Input Example in JSP -->
+                    <div class="control-group">
+                    <label class="control-label">Multi Select List</label>
+                        <div class="controls">
+                            <select name="<!--replace with title> -->" multiple="multiple" class="content-field">
+                                <option value="">Select one</option>
+                                <option value="<!--replace with value> -->"><!--replace with Title> --></option>
+                                <option value="<!--replace with value> -->"><!--replace with Title> --></option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- End Multi Select Input Example in JSP -->
+                    <!-- Start Single Select Input Example in JSP -->
+                    <div class="control-group">
+                    <label class="control-label" for="<!--replace with title> -->">Single Select List</label>
+                        <div class="controls">
+                            <select name="<!--replace with title> -->">
+                              <option value="replace with input value">one <!--replace with input value> --></option>
+                              <option value="replace with input value">two <!--replace with input value> --></option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- End Single Select Input Example in JSP -->
+                    <!-- Start Text Input Example in JSP -->
+                        <div class="control-group">
+                        <label class="control-label">Text Input</label>
+                            <div class="controls">
+                                <input type="text" name="<!--replace with title> -->" placeholder=""></input>
+                            </div>
+                        </div>
+                        <!-- End Text Input Example in JSP -->
+                    <!-- End Conditionally added in JSP -->
+                </fieldset>
+
+                <div class="form-actions pullBottomUp" style="display: none">
+                    <button class="btn btn-primary" type="submit" id="submitBtn">Submit</button>
+                    <a href="link-to-appropreate-location"><button class='btn button'>Cancel</button></a>
+                    <!-- <button class="btn btn-primary nextandClearSectionBtn">Continue</button> -->
+                </div>
+            </form>
+            <!-- prefix urls for uploaded images. stager for thumbnail, final for full image. -->
+            <input type="hidden" id="finalPrefixURL" value="http://cocchiar-dv.biperf.com/core/apps/purlContribute/img/">
+            <input type="hidden" id="stagerPrefixURL" value="http://cocchiar-dv.biperf.com/core/apps/purlContribute/img/">
+            <input type="hidden" id="serverReturnedErrored" value="false">
+            <input type="hidden" id="previousPhotoUrl" value="http://metaversemodsquad.files.wordpress.com/2011/06/hello-kitty-cat-clothing-011.jpg">
+
+            <div id="myPreferences" class="hidden"></div>
+        </div><!-- /.span12 -->
+    </div><!-- /.row -->
+
+</div><!-- /#firstTimeLoginPage -->
+
+<script>
+    $(document).ready(function(){
+        //attach the view to an existing DOM element
+            G5.props.URL_JSON_SELFENROLLMENT_GENERATE_USERID = G5.props.URL_ROOT+'ajax/selfEnrollmentGeneratedUserId.json';
+            G5.props.URL_JSON_SELFENROLLMENT_LOCATIONS = G5.props.URL_ROOT+'ajax/statesOrLocationsForCountry.json';
+            G5.props.URL_JSON_FORUM_CHECK_TITLE = G5.props.URL_ROOT+'ajax/selfEnrollmentduplicateUserId.json';
+        window.loginPageFirstTimeView = new LoginPageFirstTimeView({
+            el:$('#firstTimeLoginPage'),
+                        pageNav : {
+                back : {
+                    text : 'Back',
+                    //URL to portal
+                    url : 'layout.html?tpl=forumPageDiscussions&tplPath=base/tpl/loginPageFirstTime.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : ''
+        });
+    });
+</script>

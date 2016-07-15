@@ -1,0 +1,293 @@
+<?php usleep(.5*1000000); ?>
+<?php $chartId = explode('&', $_SERVER['HTTP_REFERER']);
+
+$chartId = isset($chartId[3]) ? explode('=', $chartId[3]) : null;
+$chartId = isset($chartId[1]) ? $chartId[1] : null; ?>
+{
+    "messages": [],
+    "reports": [
+        {
+            "displayName": "Login Activity - List of Participant",
+            "url": "ajax/reportsDisplayLoginActivityByPaxReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5000",
+            "id": "5000",
+            "category": "Core",
+            "categoryNameId": "core",
+            "desc": "Displays an overview of all program activity for all participants in your group.",
+            "forceParametersPopover": false,
+            "exportOnly": false
+        },
+        {
+            "displayName": "Login Activity - Participation by Organization",
+            "url": "ajax/reportsDisplayLoginActivityByPaxReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5001",
+            "id": "5001",
+            "category": "Core",
+            "categoryNameId": "core",
+            "desc": "Displays an overview of all programactivity at Organization level.",
+            "forceParametersPopover": false,
+            "exportOnly": false
+        },
+        {
+            "displayName": "Awards Received - Participation by Organization",
+            "url": "ajax/reportsDisplayLoginActivityByPaxReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5002",
+            "id": "5002",
+            "category": "Core",
+            "categoryNameId": "core",
+            "desc": "Displays the number of awards that have been received by organization.",
+            "forceParametersPopover": false,
+            "exportOnly": false,
+            "exportAndFilters": true
+        },
+        {
+            "displayName": "Awards Received - List of Recipients",
+            "url": "ajax/reportsDisplayAwardsReceived.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5003",
+            "id": "5003",
+            "category": "Core",
+            "categoryNameId": "core",
+            "desc": "Displays the number of awards that have been received by participants in your group.",
+            "forceParametersPopover": false,
+            "exportOnly": false
+        },
+        {
+            "displayName": "Claims Activity - Participation by Organization",
+            "url": "ajax/reportsDisplayClaimByOrgReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5004",
+            "id": "5004",
+            "category": "Claims",
+            "categoryNameId": "claim",
+            "desc": "Provides product claim summary and detail information for claims that have been submitted by your group.",
+            "forceParametersPopover": false,
+            "exportOnly": false
+        },
+        {
+            "displayName": "Claims Activity - List of Participants",
+            "url": "ajax/reportsDisplayLoginActivityByPaxReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5005",
+            "id": "5005",
+            "category": "Claims",
+            "categoryNameId": "claim",
+            "desc": "Provides product claim summary and detail information for claims that have been submitted by participants from your group.",
+            "forceParametersPopover": false,
+            "exportOnly": false
+        },
+        {
+            "displayName": "Budget Balance",
+            "url": "ajax/reportsDisplayLoginActivityByPaxReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5006",
+            "id": "5006",
+            "category": "Core",
+            "categoryNameId": "core",
+            "desc": "Provides summary and detail budget usage information.",
+            "forceParametersPopover": true,
+            "exportOnly": false
+        },
+        {
+            "displayName": "Enrollment Activity - By Organization",
+            "url": "ajax/reportsDisplayLoginActivityByPaxReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5007",
+            "id": "5007",
+            "category": "Core",
+            "categoryNameId": "core",
+            "desc": "Displays enrollment information for all participants in your group.",
+            "forceParametersPopover": false,
+            "exportOnly": false
+        },
+        {
+            "displayName": "Nomination Activity - List of Behaviors",
+            "url": "ajax/reportsDisplayLoginActivityByPaxReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5008",
+            "id": "5008",
+            "category": "Nominations",
+            "categoryNameId": "nomination",
+            "desc": "Summarizes the specific behaviors for which participants in your group have been nominated or have nominated others.",
+            "forceParametersPopover": true,
+            "exportOnly": false
+        },
+        {
+            "displayName": "Nomination Submissions - List of Nominees",
+            "url": "ajax/reportsDisplayLoginActivityByPaxReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5009",
+            "id": "5009",
+            "category": "Nominations",
+            "categoryNameId": "nomination",
+            "desc": "Provides summary and detail information list of nominees in your group.",
+            "forceParametersPopover": false,
+            "exportOnly": false
+        },
+        {
+            "displayName": "Nomination Submissions - List of Nominees by Organization",
+            "url": "ajax/reportsDisplayLoginActivityByPaxReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5010",
+            "id": "5010",
+            "category": "Nominations",
+            "categoryNameId": "nomination",
+            "desc": "Provides summary and detail information list of nominees in a organization.",
+            "forceParametersPopover": false,
+            "exportOnly": false
+        },
+        {
+            "displayName": "Nomination Submissions - List of Givers",
+            "url": "ajax/reportsDisplayLoginActivityByPaxReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5011",
+            "id": "5011",
+            "category": "Nominations",
+            "categoryNameId": "nomination",
+            "desc": "Provides summary and detail information for all nominations givers in your group.",
+            "forceParametersPopover": false,
+            "exportOnly": false
+        },
+        {
+            "displayName": "Nomination Submissions - Given By Organization",
+            "url": "ajax/reportsDisplayLoginActivityByPaxReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5012",
+            "id": "5012",
+            "category": "Nominations",
+            "categoryNameId": "nomination",
+            "desc": "Provides summary and detail information for all nominations in a organization.",
+            "forceParametersPopover": false,
+            "exportOnly": false
+        },
+        {
+            "displayName": "Recognition PURL Activity",
+            "url": "ajax/reportsDisplayLoginActivityByPaxReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5013",
+            "id": "5013",
+            "category": "Recognition",
+            "categoryNameId": "recognition",
+            "desc": "Provides summary and detail recipient and contribution information.",
+            "forceParametersPopover": false,
+            "exportOnly": false
+        },
+        {
+            "displayName": "Recognition Activity - List of Behaviors",
+            "url": "ajax/reportsDisplayLoginActivityByPaxReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5014",
+            "id": "5014",
+            "category": "Recognition",
+            "categoryNameId": "recognition",
+            "desc": "Summarizes the specific behaviors for which participants in your group have been recognized or given recognition.",
+            "forceParametersPopover": true,
+            "exportOnly": false
+        },
+        {
+            "displayName": "Recognition Given - Participation by Organization",
+            "url": "ajax/reportsDisplayLoginActivityByPaxReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5015",
+            "id": "5015",
+            "category": "Recognition",
+            "categoryNameId": "recognition",
+            "desc": "Provides summary and detail information for all recognition given by organization.",
+            "forceParametersPopover": false,
+            "exportOnly": false
+        },
+        {
+            "displayName": "Recognition Received - Participation by Organization",
+            "url": "ajax/reportsDisplayLoginActivityByPaxReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5016",
+            "id": "5016",
+            "category": "Recognition",
+            "categoryNameId": "recognition",
+            "desc": "Provides summary and detail information for all recognition received by organization.",
+            "forceParametersPopover": false,
+            "exportOnly": false
+        },
+        {
+            "displayName": "Recognition Given - List of Givers",
+            "url": "ajax/reportsDisplayLoginActivityByPaxReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5017",
+            "id": "5017",
+            "category": "Recognition",
+            "categoryNameId": "recognition",
+            "desc": "Provides summary and detail information for all recognition given by participants in your group.",
+            "forceParametersPopover": false,
+            "exportOnly": false
+        },
+        {
+            "displayName": "Recognition Received - List of Recipients",
+            "url": "ajax/reportsDisplayLoginActivityByPaxReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5018",
+            "id": "5018",
+            "category": "Recognition",
+            "categoryNameId": "recognition",
+            "desc": "Provides summary and detail information for all recognition received by participants in your group.",
+            "forceParametersPopover": false,
+            "exportOnly": false
+        },
+        {
+            "displayName": "Quiz Activity",
+            "url": "ajax/reportsDisplayLoginActivityByPaxReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5019",
+            "id": "5019",
+            "category": "Quiz",
+            "categoryNameId": "quizzes",
+            "desc": "Provides quiz activity summary and detail information for quizzes that have been completed by your group.",
+            "forceParametersPopover": false,
+            "exportOnly": false
+        },
+        {
+            "displayName": "Quiz Analysis",
+            "url": "ajax/reportsDisplayQuizAnalysisReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5020",
+            "id": "5020",
+            "category": "Quiz",
+            "categoryNameId": "quizzes",
+            "desc": "Provides question-by-question detailed analysis of the responses provided by your group.",
+            "forceParametersPopover": true,
+            "exportOnly": false
+        },
+        {
+            "displayName": "Hierarchy Export",
+            "url": "ajax/reportsDisplayLoginActivityByPaxReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5021",
+            "id": "5021",
+            "category": "Core",
+            "categoryNameId": "core",
+            "desc": "Export the current site's hierarchy information.",
+            "forceParametersPopover": false,
+            "exportOnly": true,
+            "exportText": "Your report extract has been submitted for processing. When the process is complete the file will open here in a new window. <u><strong>Please do not close the current session</strong></u>. Thank you for your request."
+        },
+        {
+            "displayName": "Participant Export",
+            "url": "ajax/reportsDisplayLoginActivityByPaxReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5022",
+            "id": "5022",
+            "category": "Core",
+            "categoryNameId": "core",
+            "desc": "Export the current site's participant information.",
+            "forceParametersPopover": false,
+            "exportOnly": true,
+            "exportText": "Your report extract has been submitted for processing. When the processing is complete, you will receive a spreadsheet of the data requested. Thank you for your request."
+        },
+        {
+            "displayName": "Individual Activity",
+            "url": "ajax/reportsDisplayIndividualActivityReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true",
+            "id": "5023",
+            "category": "Core",
+            "categoryNameId": "core",
+            "desc": "Displays an overview of all program activity for an individual participant.",
+            "forceParametersPopover": true,
+            "exportOnly": false
+        },
+        {
+            "displayName": "GoalQuest&reg; Progress",
+            "url": "ajax/reportsDisplayLoginActivityByPaxReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5024",
+            "id": "5024",
+            "category": "GoalQuest®",
+            "categoryNameId": "gq",
+            "desc": "Displays the participant progress to date in your program.  Report will not be available until progress data has been loaded.",
+            "forceParametersPopover": false,
+            "exportOnly": false
+        },
+        {
+            "displayName": "GoalQuest&reg; Selection",
+            "url": "ajax/reportsDisplayLoginActivityByPaxReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5025",
+            "id": "5025",
+            "category": "GoalQuest®",
+            "categoryNameId": "gq",
+            "desc": "Displays goal selection information for all participants in your group.",
+            "forceParametersPopover": false,
+            "exportOnly": false
+        },
+        {
+            "displayName": "GoalQuest&reg; Participant Achievement",
+            "url": "ajax/reportsDisplayLoginActivityByPaxReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5026",
+            "id": "5026",
+            "category": "GoalQuest®",
+            "categoryNameId": "gq",
+            "desc": "Displays participant achievement results for your program.  Report will not be available until the program is completed.",
+            "forceParametersPopover": false,
+            "exportOnly": false
+        },
+        {
+            "displayName": "GoalQuest&reg; Manager Achievement",
+            "url": "ajax/reportsDisplayLoginActivityByPaxReportDetail.json?method=displaySummaryReport&resultsPerPage=10&clearForm=true&reportId=5027",
+            "id": "5027",
+            "category": "GoalQuest®",
+            "categoryNameId": "gq",
+            "desc": "Displays manager achievement results for programs that include a manager override component.",
+            "forceParametersPopover": false,
+            "exportOnly": false
+        }
+    ]
+}

@@ -1,0 +1,74 @@
+{{#if _totalPages}}
+    <p class="lead">Course Material {{pageNumber}} of {{_totalPages}}</p>
+{{/if}}
+
+<!-- if there are files associated, it's one of type "image"/"pdf"/"video" -->
+{{#if files}}
+    <div class="files {{type}}">
+        <div class="attachments">
+
+            {{#eq type "image" }}
+            <img src="{{files.0.url}}" alt="{{files.0.name}}" class="courseMaterial">
+            {{/eq}}
+
+            {{#eq type "pdf" }}
+            <ul class="unstyled">
+                {{#each files}}
+                <li class="file"><a href="{{url}}" class="courseMaterial"><img src="img/reports/reports_exportPdf.png" alt="PDF"><span>{{name}}</span></a></li>
+            {{/each}}
+            </ul>
+            {{/eq}}
+
+            {{#eq type "video" }}
+                {{#eq _videoType "oembed"}}
+                <a href="{{files.0.url}}" class="courseMaterial">[video icon]</a>
+                {{/eq}}
+
+                {{#eq _videoType "html5"}}
+                <video id="courseMaterialVideo" class="video-js vjs-default-skin" controls preload="auto" data-setup="{}">
+                    {{#each files}}
+                        <source src="{{url}}" type="{{type}}">
+                    {{/each}}
+                </video>
+                {{/eq}}
+            {{/eq}}
+
+        </div><!-- /.attachments  -->
+        <div class="text">
+            {{{text}}}
+        </div>
+    </div><!-- /.files  -->
+
+<!-- otherwise, it's type "text" -->
+{{else}}
+    {{{text}}}
+{{/if}}
+
+
+<div class="stepContentControls form-actions pullBottomUp">
+    {{#if _isFirst}}
+    <button class="btn backBtn">
+        <i class="icon-chevron-left"></i> Go back to Quiz Details
+    </button>
+    {{else}}
+    <button class="btn backMaterialBtn">
+        <i class="icon-chevron-left"></i> Previous
+    </button>
+    {{/if}}
+
+    {{#if _isLast}}
+        {{#if _isCompleted}}
+        <button class="btn btn-primary resultsBtn">
+            View Results <i class="icon-chevron-right"></i>
+        </button>
+        {{else}}
+        <button class="btn btn-primary nextBtn">
+            Start Test <i class="icon-chevron-right"></i>
+        </button>
+        {{/if}}
+    {{else}}
+    <button class="btn btn-primary nextMaterialBtn">
+        Next <i class="icon-chevron-right"></i>
+    </button>
+    {{/if}}
+</div>

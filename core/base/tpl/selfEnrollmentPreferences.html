@@ -1,0 +1,174 @@
+<div id="firstTimeLoginPage" class="firstTimeLoginPage page-content">
+
+    <div class="row">
+        <div class="span12">
+
+            <div id="firstTimeLoginErrorBlock" class="alert alert-block alert-error" style="display:none;">
+                <h4>The following errors occurred:</h4>
+                <ul>
+                    <li>This is an error</li>
+                    <li>This is another error</li>
+                </ul>
+            </div>
+
+            <form id="firstTimeLoginPageForm" action="layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html" method="POST">
+                <fieldset id="personalInfo" class="firstTimeLoginFieldSet form-horizontal" style="display:none">
+                    <legend>My Info</legend>
+                    <div class="control-group">
+                        <label class="control-label">Avatar
+                            <span class="optional">(optional)</span>
+                        </label>
+                        <div class="controls">
+                            <img src="../../skins/default/img/avatar-blank-72.png" width="60px" height="60px" class="avatar" />
+                                <input id="profilePicUpload" type="file" >
+                                <p class="muted">File size limit 10mb. Supports Jpeg, PNG and GIF</p>
+                                <p class="alert alert-info hide no-fileinput">Sorry! Your device does not support file uploads. Please use a desktop browser to complete this upload.</p>
+                        </div>
+                    </div>
+
+                    <div id="aboutMeSection">
+                        <div class="control-group">
+                            <label class="control-label" for="aboutMeQuestion1">Question 1</label>
+                            <div class="controls">
+                                <input type="text" id="aboutMeQuestion1" name="aboutMeQuestion1">
+                                <span class="optional">(optional)</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="aboutMeQuestion2">Question 2</label>
+                            <div class="controls">
+                                <input type="text" id="aboutMeQuestion2" name="aboutMeQuestion2">
+                                <span class="optional">(optional)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary nextSectionBtn">Continue</button>
+                </fieldset>
+
+                <fieldset id="myPreferences" class="firstTimeLoginFieldSet form-horizontal" style="display:none">
+                    <legend>My Preferences</legend>
+                    <div class="control-group">
+                        <div class="control-label">Text Messages
+                            <span class="optional">(optional)</span></div>
+                        <div class="controls">
+                            <label class="checkbox selectToggle">
+                                <a href="#" class="selectTextAlerts selectAll">Select all</a> | <a href="#" class="selectTextAlerts deselectAll">Uncheck all</a>
+                            </label>
+
+                            <div id="allTextAlertsWrapper" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "No text alert types picked"}'>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="txtAlerts" value="txtAlerts">
+                                    Alerts
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="txtBudgetEnd" value="txtBudgetEnd">
+                                    Budget end Alerts
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="txtDepositNotifications" value="txtDepositNotifications">
+                                    Deposit notifications
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="txtGoalReminders" value="txtGoalReminders">
+                                    Goal reminders
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="txtNewPromotion" value="txtNewPromotion">
+                                    New promotion start
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="txtPromotionExpire" value="txtPromotionExpire">
+                                    Promotion about to expire
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="txtPomotionalMessages" value="txtPomotionalMessages">
+                                    Promotional messages
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="txtRecognitionReceived" value="txtRecognitionReceived">
+                                    Recognition received
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="controls"><strong>Send text messages to:</strong></div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="telephoneCountryCode">Country Code</label>
+                        <div class="controls">
+                            <select id="telephoneCountryCode" name="telephoneCountryCode">
+                                <option value="1">United States +1</option>
+                                <option value="49">United Kingdom +49</option>
+                                <option value="61">Australia +61</option>
+                                <option value="86">China +86</option>
+                                <option value="56">Easter Island +56</option>
+                                <option value="30">Germany +30</option>
+                                <option value="91">India +91</option>
+                                <option value="81">Japan +81</option>
+                                <option value="379">Vatican City +379</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "You must enter a phone number for text alerts"}'>
+                        <label class="control-label" for="phoneNumber">Phone Number</label>
+                        <div class="controls">
+                            <input type="text" id="phoneNumber" name="phoneNumber">
+                        </div>
+                    </div>
+
+                    <div class="control-group" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "To receive text alerts, you must accept the Terms and Conditions for Text Messages"}'>
+                        <div class="controls">
+                            <label class="checkbox">
+                                <input type="checkbox" name="txtAlertTerms" id="txtAlertTerms" value="accept">
+                                I accept the Terms and Conditions for Text Messages
+                            </label>
+
+                            <div class="txtTerms">
+                                <label>Terms and Conditions for Text Messages</label>
+                                <p>Mobile Phone number is required as you signed up for text message notices. Note that the frequency of notices is unlimited. Standard messaging charges apply. You must be the account owner or have authorization of the account holder to subscribe. To opt out, text STOP when replying to any text message. Text HELP or use Contact Us for additional information. Participating carriers include: Alltel®, AT&amp;T Mobility®, Boost®, Cellular One®, Cincinnati Bell®, Nextel®, Sprint®, T-Mobile®, US Cellular®, Verizon Wireless®, Virgin Mobile®.</p>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="form-actions pullBottomUp" style="display:none">
+                    <button class="btn btn-primary" type="submit" id="submitBtn">Submit</button>
+                </div>
+
+            </form>
+            <!-- prefix urls for uploaded images. stager for thumbnail, final for full image. -->
+            <input type="hidden" id="finalPrefixURL" value="http://cocchiar-dv.biperf.com/core/apps/purlContribute/img/">
+            <input type="hidden" id="stagerPrefixURL" value="http://cocchiar-dv.biperf.com/core/apps/purlContribute/img/">
+            <input type="hidden" id="serverReturnedErrored" value="false">
+            <input type="hidden" id="previousPhotoUrl" value="http://metaversemodsquad.files.wordpress.com/2011/06/hello-kitty-cat-clothing-011.jpg">
+
+        </div><!-- /.span12 -->
+    </div><!-- /.row -->
+
+</div><!-- /#firstTimeLoginPage -->
+
+<script>
+    $(document).ready(function(){
+        //attach the view to an existing DOM element
+            G5.props.URL_JSON_SELFENROLLMENT_GENERATE_USERID = G5.props.URL_ROOT+'ajax/selfEnrollmentGeneratedUserId.json';
+            G5.props.URL_JSON_SELFENROLLMENT_LOCATIONS = G5.props.URL_ROOT+'ajax/statesOrLocationsForCountry.json';
+            G5.props.URL_JSON_SELFENROLLMENT_CHECK_USERID = G5.props.URL_ROOT+'ajax/selfEnrollmentduplicateUserId.json';
+        window.lpftv = new LoginPageFirstTimeView({
+            el:$('#firstTimeLoginPage'),
+                        pageNav : {
+                back : {
+                    text : 'Back',
+                    //URL to portal
+                    url : 'layout.html?tpl=forumPageDiscussions&tplPath=base/tpl/loginPageFirstTime.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : ''
+        });
+    });
+</script>

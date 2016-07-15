@@ -1,0 +1,30 @@
+[
+    {
+        "id": "1c",
+        "name": "Completed Step It Up Example",
+        "startDate": "08/16/2013",
+        "deniedReason": "reason for denial",
+        "endDate": "09/16/2014"
+    },
+    {
+        "id": "2c",
+        "name": "Completed Do This Get That Example",
+        "startDate": "08/16/2013",
+        "deniedReason": "reason for denial",
+        "endDate": "09/16/2014"
+    },
+    {
+        "id": "3c",
+        "name": "Completed Objective Example",
+        "startDate": "01/01/2014",
+        "deniedReason": "reason for denial",
+        "endDate": "02/01/2014"
+    },
+    {
+        "id": "4c",
+        "name": "Completed Stack Rank Example",
+        "startDate": "01/01/2014",
+        "deniedReason": "reason for denial",
+        "endDate": "02/01/2014"
+    }
+]

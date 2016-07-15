@@ -1,0 +1,119 @@
+<?php usleep(50000); ?>
+{
+    "messages":[],
+    "contestJson": {
+        "nextUrl": "ajax/ssiContestEditSave.json",
+        "ssiContestClientState": "state0",
+        "id": 123,
+        "currencyTypes": [
+            { "id": "usd", "symbol": "$", "name": "US Dollar (USD)" },
+            { "id": "eur", "symbol": "€", "name": "Euro (EUR)" },
+            { "id": "cny", "symbol": "¥", "name": "Chinese Yuan (CNY)"}
+        ],
+        "participantCount": 5,
+        "optionShowPayoutTypeOther": true,
+        "optionShowPayoutTypePoints": true,
+<?php if(true) {  /*  below is editable stuff  */ ?>
+        "activityDescription": "Activity Description from JSON",
+        "measureType": "currency",
+        "currencyTypeId": "cny",
+        "payoutType": "other",
+        "otherPayoutTypeId": "cny",
+        "stackRankingOrder": "asc",
+        "includeMinimumQualifier": "yes",
+        "minimumQualifier": 123.45,
+        "contestGoal": 12345,
+        "ranks": [
+            {
+                "id": 123,
+                "payoutAmount": 1234,
+                "payoutDescription": "This a description",
+                "badgeId": 27
+            },
+            {
+                "id": 223,
+                "payoutAmount": 2234,
+                "payoutDescription": "This a description",
+                "badgeId": 28
+            },
+            {
+                "id": 323,
+                "payoutAmount": 3234,
+                "payoutDescription": "This a description",
+                "badgeId": 29
+            },
+            {
+                "id": 423,
+                "payoutAmount": 4234,
+                "payoutDescription": "This a description",
+                "badgeId": 30
+            }
+        ],
+<?php } ?>
+        "badges":[
+            {
+                "id":                   "23",
+                "type":                 "progress",
+                "name":                 "Earned Progress Badge Name 1 2a",
+                "howToEarnText":        "1 How to earn badge",
+                "img":                  "img/badges/above_beyond_sm.png"
+            },
+            {
+                "id":                   "24",
+                "type":                 "progress",
+                "name":                 "Earned Progress Badge Name 2 2a",
+                "howToEarnText":        "2 How to earn badge",
+                "img":                  "img/badges/birthday_sm.png"
+            },
+            {
+                "id":                   "25",
+                "type":                 "progress",
+                "name":                 "Progress Badge Name 3 2b",
+                "howToEarnText":        "3 How to earn badge",
+                "img":                  "img/badges/bronze_sm.png"
+            },
+            {
+                "id":                   "26",
+                "type":                 "progress",
+                "name":                 "Progress Badge Name 4 2c",
+                "howToEarnText":        "4 How to earn badge",
+                "img":                  "img/badges/cold_call_sm.png"
+            },
+            {
+                "id":                   "27",
+                "type":                 "behavior",
+                "name":                 "Earned Behavior Badge Name 5 2d",
+                "howToEarnText":        "5 How to earn badge",
+                "img":                  "img/badges/conquest_sale_sm.png"
+            },
+            {
+                "id":                   "28",
+                "type":                 "behavior",
+                "name":                 "Earned Behavior Badge Name 6 2d",
+                "howToEarnText":        "6 How to earn badge",
+                "img":                  "img/badges/contest_winner_sm.png"
+            },
+            {
+                "id":                   "29",
+                "type":                 "behavior",
+                "name":                 "Earned Behavior Badge Name 7 2e",
+                "howToEarnText":        "7 How to earn badge",
+                "img":                  "img/badges/creativity_sm.png"
+            },
+            {
+                "id":                   "30",
+                "type":                 "behavior",
+                "name":                 "Earned Behavior Badge Name 8 2e",
+                "howToEarnText":        "8 How to earn badge",
+                "img":                  "img/badges/customer_service_sm.png"
+            },
+            {
+                "id":                   "31",
+                "type":                 "behavior",
+                "name":                 "File Load Earned Badge Name 9 2f",
+                "howToEarnText":        "9 How to earn badge",
+                "img":                  "img/badges/gold_sm.png"
+            }
+        ]
+    }
+}

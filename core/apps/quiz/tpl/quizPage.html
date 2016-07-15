@@ -1,0 +1,76 @@
+<!-- ======== QUIZ PAGE ======== -->
+
+<div id="quizPageView" class="quizPage-liner page-content">
+
+    <div class="row">
+        <div class="span12">
+            <p><a href="layout.html?tplPath=apps/quiz/tpl/&tpl=quizPageManage.html">Manage Quizzes &#187;</a></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Quiz</th>
+                        <th>Status</th>
+                        <th>Number of Attempts</th>
+                        <th>Time Remaining</th>
+                        <th>Points Possible</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="layout.html?tplPath=apps/quiz/tpl/&amp;tpl=quizPageTake">Promotion Name</a></td>
+                        <td><a href="layout.html?tplPath=apps/quiz/tpl/&amp;tpl=quizPageTake">Not started</a></td>
+                        <td>3</td>
+                        <td>3 days</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td><a href="layout.html?tplPath=apps/quiz/tpl/&amp;tpl=quizPageTake">Promotion Name</a></td>
+                        <td>Incomplete -- <a href="#">Resume quiz</a></td>
+                        <td>1</td>
+                        <td>2 days</td>
+                        <td>250</td>
+                    </tr>
+                    <tr>
+                        <td><a href="layout.html?tplPath=apps/quiz/tpl/&amp;tpl=quizPageTake">Promotion Name</a></td>
+                        <td>Did not pass -- <a href="#">Take quiz again</a></td>
+                        <td>unlimited</td>
+                        <td>1 day</td>
+                        <td>30</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <p><a href="#">View Quiz History »</a></p>
+        </div>
+    </div>
+</div>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function() {
+
+        //attach the view to an existing DOM element
+        var prp = new QuizPageView({
+            el:$('#quizPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Take a Quiz'
+        });
+
+    });
+</script>

@@ -1,0 +1,38 @@
+<?php sleep(1); ?>
+{
+    "messages": [],
+    "chart": {
+        "yAxisName" : "# of people",
+        "chartType" : "Column3D"
+    },
+    "data": [
+        {
+            "label": "Advertising",
+            "value": "20"
+        },
+        {
+            "label": "Design",
+            "value": "30"
+        },
+        {
+            "label": "HR",
+            "value": "8"
+        },
+        {
+            "label": "Marketing",
+            "value": "10"
+        },
+        {
+            "label": "Sales",
+            "value": "24"
+        },
+        {
+            "label": "Technology",
+            "value": "22"
+        },
+        {
+            "label": "Warehouse",
+            "value": "2"
+        }
+    ]
+}

@@ -1,0 +1,2396 @@
+.module.ssi {
+    .spin {
+        background: none;
+    }
+
+    .currencySymbol {
+        color: inherit;
+        font-size: 85%;
+        vertical-align: top;
+    }
+
+    .narrowModule,
+    .shortAndWideModule,
+    .wideModule {
+        display: none;
+    }
+
+    .title-icon-view,
+    .wide-view {
+        .createcontest-icon-text {
+            text-align: center;
+            font-family: 'akzidenz-condensed', $ssi_primaryFontFamily;
+            font-weight: $fontWeightLight;
+            text-transform: uppercase;
+            color: $ssiModule_createContest_textColor;
+            font-size: 12px;
+        }
+    }//.title-icon-view, .wide-view
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        .title-icon-view {
+            display: none;
+        }
+    }
+
+    &.grid-dimension-2x2 {
+        .daysToEnd {
+            display: none;
+        }
+
+        .narrowModule {
+            display: block;
+        }
+    }
+
+    &.grid-dimension-4x2 {
+        .shortAndWideModule {
+            display: block;
+        }
+    }
+
+    &.grid-dimension-4x4 {
+        .wideModule {
+            display: block;
+        }
+    }
+
+    /* * * * * *
+    *
+    *    Create A Contest Tile
+    *
+    * * * * * */
+
+    &.SSICreatorContests {
+        font-family: $ssi_primaryFontFamily;
+
+        .module-liner {
+            @include module_moduleLinerBackground(
+                $bgColor: $ssiModule_createContest_bgColor,
+                $gradType: $ssiModule_createContest_bgGradType,
+                $gradMeta: $ssiModule_createContest_bgGradMeta,
+                $gradStops: $ssiModule_createContest_bgGradStops
+            );
+        }
+
+        .contestCreate {
+            padding: 15px;
+        }
+
+        .row-icon-wrap {
+            padding-top: 10px;
+        }
+
+        .icon-g5-createcontest {
+            display: inline-block;
+            color: $ssiModule_createContest_textColor;
+        }
+
+        .wide-view {
+            .icon-g5-createcontest {
+                width: 240px;
+                height: 220px;
+                font-size: 240px;
+                line-height: 240px;
+                color: $ssiModule_createContest_textColor;
+            }
+
+            .createcontest-icon-text {
+                position: relative;
+                display: block;
+                margin: 0px auto 0 auto;
+                font-size: 32px;
+            }
+
+            .button-wrap {
+                position: relative;
+            }
+        }//.wide-view
+
+        .submitForm,
+        .toggleModuleSlide {
+            padding: 2.5% 3%;
+        }
+
+        .module-flip-title h3 {
+            color: $ssiModule_createContest_textColor;
+            text-transform: uppercase;
+        }
+
+        .contestNameWrap label {
+            background-color: darken($ssiModule_createContest_bgColor, 14%);
+            color: $ssiModule_createContest_textColor;
+            margin-bottom: 0;
+            padding: 10px;
+        }
+
+        .contestStatus {
+            position: relative;
+
+            .iconWrap {
+                background-color: #ffffff;
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+            i {
+                font-size: $baseFontSize * 2.071;//29px
+                display: none;
+                position: relative;
+                text-align: center;
+            }
+
+            &.valid i.valid {
+                color: $green;
+                display: block;
+            }
+
+            &.invalid i.invalid {
+                color: $red;
+                display: block;
+            }
+
+            .msg {
+                color: $ssiModule_createContest_textColor;
+            }
+
+            .pending {
+                background-color: #ffffff;
+                padding: 0;
+                margin: 0;
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                vertical-align: middle;
+            }
+        }//.contestStatus
+
+        .contestName {
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            @include box-sizing(border-box);
+            color: $grayLight;
+            font-family: $ssi_primaryFontFamily;
+            height: 100%;
+            margin-bottom: 5px;
+            width: 100%;
+        }
+
+        .creatorBottomUtil {
+            bottom: 10px;
+            left: 0;
+            position: absolute;
+            right: 0;
+
+            .avatar {
+                height: 24px;
+                float: left;
+                margin: 10px 10px 0 15px;
+                width: 24px;
+            }
+
+            .myContestsLink {
+                color: $ssiModule_createContest_qTipLink;
+                float: left;
+                font: {
+                    size: $baseFontSize * 1.214;//17px
+                    weight: bold;
+                }
+                margin: 13px 0 0 15px;
+                text-decoration: underline;
+            }
+        }
+
+        .showContestQtip {
+            clear: left;
+            color: $ssiModule_createContest_qTipLink;
+            display: block;
+            float: left;
+            font-size: 18px;
+            margin: 8px 15px 0 0;
+            text-decoration: underline;
+
+            i {
+                font-size: $baseFontSize * 2.143;//30px
+                text-decoration: none;
+            }
+        }
+
+        .landingSlide,
+        .createContestSlide {
+            @include backface-visibility(hidden);
+            @include transition-duration(0.7s);
+            @include transition-property(transform);
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        .createContestSlide {
+            @include transform(rotateY(-180deg));
+        }
+
+        &.flipped {
+            .createContestSlide {
+                 @include transform(rotateY(0));
+            }
+
+            .landingSlide {
+                 @include transform(rotateY(-180deg));
+            }
+
+            .visitAppBtn {
+                display: none;
+            }
+
+            .cancelCreateContest {
+                color: $ssiModule_createContest_qTipLink;
+                font-size: 18px;
+                position: absolute;
+                right: 9px;
+                text-decoration: underline;
+                top: 9px;
+                z-index: 10;
+            }
+        }
+
+        &.grid-dimension-2x1,
+        &.grid-dimension-1x1 {
+            .createcontest-icon-text {
+                visibility: hidden;
+            }
+        }
+
+        &.grid-dimension-2x2 {
+            .createcontest-icon-text {
+                top: 20px;
+            }
+
+            .icon-g5-createcontest {
+                font-size: 180px;
+                height: 180px;
+                line-height: 200px;
+                width: 180px;
+            }
+
+            .contestNameWrap label {
+                font-size: $baseFontSize * 1.429;//20px
+
+                span {
+                    font-size: $baseFontSize * 1.071;//15px
+                }
+            }
+
+            .row-icon-wrap .span12 {
+                text-align: center;
+            }
+
+            .contestName {
+                font-size: $baseFontSize * 1.786;//25px
+                line-height: 29px;
+                padding: 3% 45px 3% 15px;
+            }
+
+            .contestType {
+                height: 42px;
+                line-height: $baseLineHeight * 2.1;//42px
+                width: 207px;
+            }
+
+            .contestStatus .msg {
+                font-size: $baseFontSize;
+            }
+
+            .contestStatus {
+                i {
+                    top: 17%;
+                }
+                .iconWrap {
+                    height: 46px;
+                    line-height: 46px;
+                    width: 42px;
+                }
+                .pending {
+                    height: 26px;
+                    margin-top: -13px;
+                    width: 26px;
+                }
+            }
+
+            .selectWrap {
+                float: left;
+            }
+
+            .submitWrap {
+                float: left;
+                margin-left: 10px;
+            }
+
+            .submitForm {
+                height: 42px;
+                width: 60px;
+            }
+
+            .submitForm,
+            .toggleModuleSlide {
+                font-size: 21px;
+            }
+
+            .module-flip-title h3 {
+                font-size: $baseFontSize * 2.214;//31px
+            }
+        }//&.grid-dimension-2x2
+
+        &.grid-dimension-4x2 {
+            .icon-g5-createcontest {
+                left: 60px;
+                position: relative;
+            }
+            .createcontest-icon-text {
+                font-size: 60px;
+                left: 110px;
+                top: 100px;
+            }
+
+            .contestName {
+                font-size: $baseFontSize * 2.5;//35px
+                line-height: $baseLineHeight * 1.75;//35px
+            }
+
+            .button-wrap {
+                left: 115px;
+                position: relative;
+                top: -110px;
+            }
+
+            .contestStatus {
+                i {
+                    font-size: 33px;
+                    top: 30%;
+                }
+                .iconWrap {
+                    height: 77px;
+                    line-height: 77px;
+                    width: 56px;
+                }
+                .pending {
+                    height: 38px;
+                    margin-top: -20px;
+                    width: 38px;
+                }
+            }
+        }//&.grid-dimension-4x2
+
+        &.grid-dimension-4x4 {
+             .icon-g5-createcontest {
+                margin-top: 70px;
+                width: 320px;
+                height: 340px;
+                font-size: 320px;
+                line-height: 360px;
+            }
+
+            .createcontest-icon-text {
+                top: 80px;
+                font-size: 60px;
+            }
+
+            .row-icon-wrap .span12 {
+                text-align: center;
+            }
+
+            .contestName {
+                font-size: $baseFontSize * 3.214;//45px
+                line-height: $baseLineHeight * 2.25;//45px
+            }
+
+            .contestStatus {
+                i {
+                    font-size: 45px;
+                    top: 26%;
+                }
+                .iconWrap {
+                    height: 88px;
+                    line-height: 88px;
+                    width: 64px;
+                }
+                .pending {
+                    height: 58px;
+                    margin-top: -32px;
+                    width: 58px;
+                }
+            }
+        }//&.grid-dimension-4x4
+
+        &.grid-dimension-4x2,
+        &.grid-dimension-4x4 {
+
+            .submitForm,
+            .toggleModuleSlide {
+                font-size: 26px;
+            }
+
+            .contestNameWrap label {
+                font-size: $baseFontSize * 1.786;//25px
+
+                span {
+                    font-size: $baseFontSize * 1.429;//20px
+                }
+            }
+
+            .contestName {
+                padding: 3% 66px 3% 15px;
+            }
+
+            .contestStatus .msg {
+                font-size: $baseFontSize * 1.214;//17px
+            }
+
+            .contestType {
+                height: 50px;
+                line-height: $baseLineHeight * 2.5;//50px
+                width: 400px;
+            }
+
+            .selectWrap {
+                float: left;
+                width: 70%;
+            }
+
+            .submitWrap {
+                float: left;
+                width: 30%;
+            }
+
+            .submitForm {
+                height: 50px;
+                width: 177px;
+            }
+
+            .module-flip-title h3 {
+                font-size: $baseFontSize * 2.9286;//41px
+            }
+        }
+    }//&.grid-dimension-4x2, &.grid-dimension-4x4
+
+    .no-csstransitions &.SSICreatorContests {
+        &.flipped .landingSlide {
+            display: none;
+        }
+    }
+
+    /* * * * * *
+    *
+    *    Creator, Manager and Participant Tiles
+    *
+    * * * * * */
+
+    &.SSICreator,
+    &.SSIParticipant,
+    &.SSIManager {
+        font-family: $ssi_primaryFontFamily;
+        color: $ssi_primaryTextColor;
+
+        h5 {
+            display: inline-block;
+        }
+
+        .wide-view {
+            padding: 8px 10px 18px;
+
+            .span12 {
+                float: left;
+            }
+        }
+
+        .moduleHeader {
+            position: relative;
+
+            h4 {
+                font-weight: 400;
+                margin-top: 0;
+            }
+
+            p {
+                font-family: $ssi_secondaryFontFamily;
+                color: $ssiModule_asOf_daysRemaining_textColor;
+            }
+        }
+
+        .moduleSubHeader {
+            border-top: $ssiModule_defaultBorder;
+            border-bottom: $ssiModule_defaultBorder;
+            height: 34px;
+            position: relative;
+        }
+
+        .module-topper.contestType {
+            h3 {
+                display: inline-block;
+                font: {
+                    family: $ssi_secondaryFontFamily;
+                    weight: 200;
+                }
+                margin: 5px 5px 0 5px;
+
+                i {
+                    padding-right: 10px;
+                    vertical-align: middle;
+                }
+            }
+        }
+
+        .daysToEnd {
+            bottom: 0;
+            font:{
+                size: 20px;
+                weight: 600;
+            }
+            position: absolute;
+            right: 0;
+
+            i {
+                margin-right: 5px;
+            }
+
+            p {
+                font-size: 15px;
+                margin-bottom: 3px;
+                line-height: 25px;
+            }
+        }
+
+        .daysRemaining {
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        .contestListItem {
+            font-family: $ssi_secondaryFontFamily;
+            margin: 0 5px;
+            padding: 10px;
+
+            & + .contestListItem {
+                border-top: $ssiModule_defaultBorder;
+            }
+
+            .contestInfo {
+                margin-bottom: 10px;
+            }
+
+            .contestName {
+                font-weight: 200;
+                margin-bottom: 3px;
+                word-wrap: break-word;
+            }
+
+            .contestAsOf {
+                color: $ssiModule_contestList_asOfColor;
+                display: block;
+                line-height: initial;
+            }
+
+            .activityAchieved {
+                padding-top: 5px;
+            }
+
+            .stackRankLeader {
+                margin: 10px 0 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+
+                b {
+                    display: inline-block;
+                    float: left;
+                    font-weight: 200;
+                }
+
+                .listTileAvatar {
+                    display: inline;
+                    float: left;
+                    margin: 5px 10px 5px 5px;
+                }
+
+                .leaderName {
+                    color: $black;
+                }
+
+                .score {
+                    float: right;
+                    font-weight: bold;
+                }
+            }
+        }//.contestListItem
+
+        .scrollArea {
+            border-top: $ssiModule_defaultBorder;
+            border-bottom: $ssiModule_defaultBorder;
+            overflow-y: auto;
+
+            &.contestListWrap {
+                border-bottom: none;
+            }
+        }
+
+        .activityDescription {
+            color: $ssiModule_activityDescription;
+            font: {
+                family: $ssi_secondaryFontFamily;
+                weight: 200;
+            }
+        }
+
+        .rankDescription {
+            font:{
+                family: $ssi_secondaryFontFamily;
+                weight: bold;
+            }
+            margin-bottom: 0;
+        }
+
+        .dataSection {
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .icon-gift {
+            margin-left: 1ex;
+        }
+
+        .contestModuleFooter .btn {
+            font-family: $ssi_secondaryFontFamily;
+            padding: 4px 16px;
+        }
+
+        .contestListItem .btn {
+            font-family: $ssi_secondaryFontFamily;
+            padding: 6px 13px;
+        }
+
+        .complete {
+            .contestModuleFooter {
+                background: $ssiModule_contestComplete_footerBgColor;
+                bottom: 0;
+                color: $ssiModule_contestComplete_footerTextColor;
+                left: 0;
+                position: absolute;
+
+                .resultsPending {
+                    display: block;
+                    text-transform: uppercase;
+                }
+
+                .payoutIssued,
+                .participantPayoutIssued {
+                    & > * {
+                        display: inline-block;
+                    }
+
+                    .payoutAmount {
+                        margin-right: 5px;
+                    }
+
+                    .payoutType {
+                        font-family: $ssi_secondaryFontFamily;
+                    }
+                }
+            }
+            .rankDescription {
+                color: $ssiModule_rankCompleteColor;
+            }
+        }//.complete
+
+        &.objectives {
+            .module-liner {
+                @include module_moduleLinerBackground(
+                    $bgColor: $ssi_objectives_bgColor,
+                    $gradType: $ssiModule_objectives_gradType,
+                    $gradMeta: $ssiModule_objectives_gradMeta,
+                    $gradStops: $ssiModule_objectives_gradStops
+                );
+            }
+
+            .chartPercentProgress {
+                position: absolute;
+                text-align: center;
+                top: 0;
+
+                strong {
+                    display: block;
+                }
+
+                sup {
+                    font-size: 40%;
+                    margin-right: -0.5ex;
+                    top: -1em;
+                }
+            }
+
+            .narrowModule {
+                height: 168px;
+            }
+
+            .wideModule {
+                height: 420px;
+            }
+
+            .shortAndWideModule {
+                height: 149px;
+            }
+
+            .contestListItem {
+                .narrowModule,
+                .wideModule {
+                    border: none;
+                    height: auto;
+                }
+            }
+
+            .narrowModule,
+            .shortAndWideModule,
+            .wideModule {
+                border-bottom: $ssiModule_defaultBorder;
+                position: relative;
+            }
+
+            .contestDataWrapper {
+                margin-top: 30px;
+
+                .span12 {
+                    margin: 0;
+                    text-align: center;
+
+                    span {
+                      padding: 0 10px 3px;
+                    }
+                }
+
+                .multiGoalAchieved {
+                    color: $ssiModule_objectives_multiGoalAchieved;
+                    font-family: $ssi_secondaryFontFamily;
+                    font-size: $baseFontSize;
+                    padding: 0;
+                    text-transform: capitalize;
+                }
+
+                .objectiveProgress {
+                    color: $ssiModule_objectives_progressTextColor;
+
+                    span {
+                        display: block;
+                        margin-bottom: 0;
+                        padding-bottom: 0;
+                    }
+                }
+
+                .objectiveGoal {
+                    color: $ssiModule_objectives_goalTextColor;
+
+                    span {
+                        border-top: $ssiModule_defaultBorder;
+                    }
+                }
+            }//.contestDataWrapper
+
+            .complete {
+                .objectiveProgress,
+                .objectiveGoal {
+                    color: $ssiModule_objectives_completeTextColor;
+                }
+
+                .narrowModule {
+                    height: 137px;
+                }
+            }//.complete
+        }//.objectives
+
+        &.doThisGetThat {
+            .module-liner {
+               @include module_moduleLinerBackground(
+                    $bgColor: $ssi_DTGT_bgColor,
+                    $gradType: $ssiModule_DTGT_gradType,
+                    $gradMeta: $ssiModule_DTGT_gradMeta,
+                    $gradStops: $ssiModule_DTGT_gradStops
+                );
+            }
+
+            .dtgtActivity + .dtgtActivity {
+                border-top: $ssiModule_defaultBorder;
+            }
+
+            .dtgtActivity {
+                .dataSection {
+                    h5 {
+                        margin-top: 0;
+                    }
+
+                    span {
+                        font-family: $ssi_secondaryFontFamily;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                    }
+                }
+            }//.dtgtActivity
+
+            .complete {
+                .dataSection {
+                    h5,
+                    span {
+                        color: $ssiModule_dtgt_dataCompleteColor;
+                    }
+                }
+            }//.complete
+        }//.doThisGetThat
+
+        &.stepItUp {
+            .module-liner {
+                @include module_moduleLinerBackground(
+                    $bgColor: $ssi_SIU_bgColor,
+                    $gradType: $ssiModule_SIU_gradType,
+                    $gradMeta: $ssiModule_SIU_gradMeta,
+                    $gradStops: $ssiModule_SIU_gradStops
+                );
+            }
+
+            .dataSection {
+                text-transform: uppercase;
+
+                span {
+                    font-weight: bold;
+                }
+            }
+
+            .shortAndWideModule {
+                border-bottom: $ssiModule_defaultBorder;
+                height: 135px;
+                margin-top: 10px;
+            }
+
+            .complete {
+                .shortAndWideModule {
+                    margin-top: 0;
+
+                    .objectiveData h5,
+                    .objectiveData span {
+                        color: $ssiModule_siu_dataCompleteColor;
+                    }
+                }
+            }
+        }//.stepItUp
+
+        &.stackRank {
+            .module-liner {
+                @include module_moduleLinerBackground(
+                    $bgColor: $ssi_stackRank_bgColor,
+                    $gradType: $ssiModule_stackRank_gradType,
+                    $gradMeta: $ssiModule_stackRank_gradMeta,
+                    $gradStops: $ssiModule_stackRank_gradStops
+                );
+            }
+
+            .activityProgress {
+                font-family: $ssi_secondaryFontFamily;
+                text-transform: uppercase;
+            }
+
+            .shortAndWideModule {
+                border-bottom: $ssiModule_defaultBorder;
+                height: 97px;
+
+                .stackRankBoard {
+                    margin-top: 10px;
+                }
+            }
+
+            .splitColWrap {
+                .splitCol {
+                    float: left;
+                    list-style: none;
+                    margin: 0;
+                    width: 50%;
+
+                    li {
+                        font-family: $ssi_secondaryFontFamily;
+                        padding: 3px 15px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+
+                        b {
+                            display: inline-block;
+                            float: left;
+                            width: 20px;
+                        }
+
+                        img {
+                            float: left;
+                            margin-right: 20px;
+                            width: 20px; // IE9 needs width specifically set
+                        }
+
+                        a.leaderName {
+                            color: $white;
+                            float: left;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            width: 55%;
+                        }
+
+                        span.score {
+                            float: right;
+                        }
+                    }
+
+                    li:nth-child(2n) {
+                        background-color: lighten($ssi_stackRank_bgColor, 20%);
+                    }
+
+                    li.you:nth-child(2n) {
+                        background-color: darken($ssi_stackRank_bgColor, 35%);
+                        color: $white;
+                        font-weight: bold;
+
+                        a {
+                            color: $white;
+                        }
+                    }
+                }//.splitCol
+
+                .splitColA {
+                    &.splitColBEmpty {
+                        width: 100%;
+
+                        li span.leaderName {
+                            float: none;
+                        }
+                    }
+                }
+            } //.splitColWrap
+
+            .complete {
+                .activityProgress {
+                    color: $ssiModule_stackRank_activityProgressCompleteColor;
+                }
+
+                .splitCol,
+                .splitColWrap .splitCol a.leaderName {
+                    color: $black;
+                }
+            }
+        }//.stackRank
+
+        &.grid-dimension-2x1 {
+            .title-icon-view {
+                .createcontest-icon-text {
+                    top: 50%;
+                    left: 25%;
+                }
+            }
+        }
+
+        &.grid-dimension-2x2 {
+            .moduleHeader h4 {
+                font-size: $baseFontSize * 1.71;//24px
+                margin-bottom: 5px;
+                height: 24px;
+                width: 257px;
+            }
+
+            .moduleSubHeader {
+                @include box-sizing(content-box);
+                height: 30px;
+
+                .activityDescription {
+                    display: inline-block;
+                    line-height: 1;
+                    height: 20px;
+                    width: 188px;
+                }
+            }
+
+            .daysRemaining {
+                display: none;
+            }
+
+            .module-topper.contestType {
+                h3 {
+                    font-size: $baseFontSize * 1.1429;//16px
+
+                    i {
+                        font-size: $baseFontSize * 2.857;//40px
+                    }
+                }
+            }
+
+            .icon-gift {
+                font-size: 40px;
+                margin-left: 1.2ex;
+            }
+
+            .payoutGift .giftCount {
+                padding: 2px;
+                width: 21px;
+            }
+
+            .activityDescription {
+                font-size: $baseFontSize * 1.14;//16px
+                height: 20px;
+                margin: 5px 0;
+                width: 270px;
+            }
+
+            .rankDescription {
+                font-size: $baseFontSize * 1.14;//16px
+                line-height: $baseLineHeight * 1.5;//30px
+            }
+
+            .dataSection {
+                h5 {
+                    font-size: $baseFontSize * 2.86;//40px
+                    line-height: $baseLineHeight * 1.5;//30px
+                }
+
+                span {
+                    font-size: $baseFontSize * .857;//12px
+                }
+            }
+
+            .scrollArea {
+                height: 199px;
+
+                &.contestListWrap {
+                    height: 260px;
+                }
+            }
+
+            .contestListItem {
+                .contestName {
+                    font-size: $baseFontSize * .9286;//13px
+                }
+
+                .contestAsOf {
+                    font-size: $baseFontSize * .6429;//9px
+                }
+
+                .btn {
+                    font-size: $baseFontSize * .857;//12px
+                }
+            }
+
+            .contestModuleFooter .btn {
+                font-size: 13px;
+                margin-top: 5px;
+            }
+
+            .complete {
+               .contestModuleFooter {
+                    .payoutIssued {
+                        margin-top: 6%;
+                        padding-right: 10px;
+
+                        & > * {
+                            width: 100%;
+                        }
+                    }
+
+                    .payoutAmount {
+                        font-size: $baseFontSize * 1.5;//21px
+                    }
+
+                    .payoutType {
+                        font-size: 15px;
+                    }
+
+                    .btn {
+                        margin: 20px 0 0 10px;
+                    }
+
+                    .resultsPending {
+                        font-size: $baseFontSize * 1.21;
+                        margin-top: 24px;
+                    }
+
+                    &.participantFooter {
+                        .participantPayoutIssued {
+                            margin-top: 8.5%;
+                            padding-left: 15px;
+                        }
+
+                        .btn {
+                            margin: 18% 15px 0 0;
+                        }
+                    }
+
+                    .span6 {
+                        float: left;
+                        width: 48%;
+                        margin-left: 0;
+                    }
+                }//.contestModuleFooter
+
+                .scrollArea {
+                    max-height: 167px;
+                }
+            }//.complete
+
+            &.objectives {
+                .chartHolder {
+                    height: 150px;
+                    width: 150px;
+                }
+
+                .chartPercentProgress {
+                    height: 150px;
+                    width: 150px;
+
+                    strong {
+                        font-size: 50px;
+                        //margin-top = (.chartHolder width - (font size / 2) ) / 2;
+                        margin-top: (160px - 25px) /2 ;
+                    }
+                }
+
+                .contestDataWrapper {
+                    margin-top: 30px;
+
+                    .span12 {
+                        font-size: 34px;
+
+                        span {
+                            display: inline-block;
+                            line-height: 37px;
+                            width: 110px;
+                        }
+                    }
+
+                    .multiGoalAchieved {
+                        font-family: $ssi_secondaryFontFamily;
+                        font-size: $baseFontSize * 1.3;//18px
+                    }
+                }
+
+                .objectiveProgress span {
+                    margin-bottom: 5px;
+                }
+
+                .objectiveGoal span {
+                    padding-top: 5px;
+                }
+
+                .complete {
+                    .chartHolder {
+                        height: 130px;
+                        width: 140px;
+                    }
+
+                    .contestDataWrapper {
+                        margin-top: 20px;
+                    }
+                }
+
+                .span6 {
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                }
+
+                @media (max-width: 767px){
+                    .span6 {
+                        float: left;
+                        width: 48.93617%;
+                    }
+                }
+            }//.objectives
+
+            &.doThisGetThat {
+                .dtgtActivity {
+                    min-height: 97px;
+
+                    .dataSection h5 {
+                        width: 125px;
+                    }
+                }
+
+                .span6 {
+                    float: left;
+                    margin-left: 8px;
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                }
+            }//.doThisGetThat
+
+            &.stepItUp {
+                .narrowModule {
+                    border-bottom: $ssiModule_defaultBorder;
+                    height: 152px;
+
+                    .objectiveData {
+                        margin-top: 15px;
+                        text-transform: uppercase;
+
+                        h5 {
+                            font-size: $baseFontSize * 1.43;//20px
+                        }
+
+                        span {
+                            font-size: $baseFontSize * 2.86;//40px
+                            display: inline-block;
+                            margin-top: 18px;
+                        }
+                    }
+
+                    .span4 {
+                        float: left;
+                        width: 90px;
+                        margin-left: 0;
+                    }
+
+                    .span8 {
+                        float: left;
+                        width: 190px;
+                        margin-left: 8px;
+
+                        &:first-child {
+                            margin-left: 0;
+                        }
+                    }
+                }//.narrowModule
+
+                .payoutIssued {
+                    width: 150px;
+                }
+
+                .contestListItem .btn {
+                    margin-top: 8%;
+                }
+
+                .complete {
+                    .narrowModule {
+                        height: 136px;
+
+                        .row-fluid {
+                            margin-top: 0;
+                        }
+                    }
+                }
+            }//.stepItUp
+
+            &.stackRank {
+                .activityProgress {
+                    font-size: $baseFontSize * .93;//13px
+                }
+
+                .narrowModule {
+                    border-bottom: $ssiModule_defaultBorder;
+                    height: 137px;
+                }
+
+                .complete {
+                    .narrowModule {
+                        height: 106px;
+                    }
+                }
+
+                .stackRankLeader {
+                     font-size: $baseFontSize * 1.1429;//16px
+                     line-height: 46px;
+
+                    .listTileAvatar {
+                        height: 36px;
+                        width: 36px;
+                    }
+                }
+            }//.stackRank
+
+            @media (max-width: 767px){
+                .contestModuleFooter {
+                    .span6 {
+                        float: left;
+                        width: 48%;
+                        margin-left: 0;
+                    }
+                }
+            }
+        }//.grid-dimension-2x2
+
+        &.grid-dimension-4x2 {
+            .module-topper.contestType {
+                h3 {
+                    font-size: $baseFontSize * 1.7857;//25px
+
+                    i {
+                        font-size: $baseFontSize * 5;//70px
+                    }
+                }
+            }
+
+            .scrollArea {
+                height: 183px;
+
+                &.contestListWrap {
+                    height: 232px;
+                }
+            }
+
+            .contestModuleFooter .btn {
+                margin-top: 8px;
+            }
+
+            .complete {
+                .scrollArea {
+                    max-height: 161px;
+                }
+
+                .contestModuleFooter {
+                    .payoutIssued {
+                        margin-top: 27px;
+                    }
+
+                    .btn {
+                        margin: 17px 0 0 15px;
+                    }
+                }
+            }
+
+            &.objectives {
+                .chartHolder {
+                    height: 130px;
+                    width: 140px;
+                }
+
+                .chartPercentProgress {
+                    height: 130px;
+                    width: 140px;
+
+                    strong {
+                        font-size: 47px;
+                        //margin-top = (.chartHolder width - (font size / 2) ) / 2;
+                        margin-top: (130px - 23px) /2;
+                    }
+                }
+
+                .contestDataWrapper {
+                    margin-top: 10px;
+
+                    .span12 {
+                        font: {
+                            size: $baseFontSize * 3;//42px
+                        }
+
+                        span {
+                            display: inline-block;
+                            line-height: $baseLineHeight * 2.625;//42px
+                            width: 139px;
+                        }
+                    }
+                }
+
+                .multiGoalAchieved {
+                    color: $ssiModule_objectives_multiGoalAchieved;
+                    font-family: $ssi_secondaryFontFamily;
+                    font-size: $baseFontSize * 1.571;//22px
+                    margin-top: 50px;
+                }
+
+                .multiGoalToGo  {
+                    font-family: $ssi_secondaryFontFamily;
+                    font-size: $baseFontSize * 1.214;//17px
+                    margin-top: 4%;
+
+                    strong {
+                        font-family: $ssi_primaryFontFamily;
+                        font-size: $baseFontSize * 2.57;//36px
+                    }
+                }
+            }//.objectives
+
+            &.stepItUp {
+                .moduleSubHeader {
+                    display: none;
+                }
+
+                .moduleHeader {
+                    border-bottom: $ssiModule_defaultBorder;
+                }
+
+                .shortAndWideModule {
+                    margin-top: 10px;
+                    padding-bottom: 23px;
+                }
+            }//.stepItUp
+
+            &.stackRank {
+                .progressNotLoaded {
+                    font-size: 16px;
+                    margin-top: 10px;
+                    padding-top: 25px;
+                    text-align: center;
+                }
+            }//.stackRank
+        }//.grid-dimension-4x2
+
+        &.grid-dimension-4x4 {
+            .module-topper.contestType {
+                h3 {
+                    font-size: $baseFontSize * 2.1429;//30px
+
+                    i {
+                        font-size: $baseFontSize * 5.7143;//80px
+                    }
+                }
+            }
+
+            .scrollArea {
+                height: 485px;
+
+                &.contestListWrap {
+                    height: 543px;
+                }
+            }
+
+            .chartHolder {
+                font-size: $baseFontSize * 1.43;//20px
+            }
+
+            .contestModuleFooter .btn {
+                margin-top: 15px;
+            }
+
+            .complete {
+                .scrollArea {
+                    max-height: 459px;
+                }
+
+                .contestModuleFooter {
+                    height: 80px;
+
+                    .payoutIssued {
+                        margin-top: 31px;
+                    }
+
+                    .btn {
+                        margin: 21px 0 0 15px;
+                    }
+                }
+            }//.complete
+
+            &.objectives {
+                .chartHolder {
+                    height: 340px;
+                    width: 340px;
+                }
+
+                .chartPercentProgress {
+                    height: 340px;
+                    width: 340px;
+
+                    strong {
+                        font-size: 108px;
+                        //margin-top = (.chartHolder width - (font size / 2) ) / 2;
+                        margin-top: (340px - 54px) /2;
+                    }
+                }
+
+                .activityAchieved {
+                    font: {
+                        size: $baseFontSize * 1.79;//25px
+                        weight: bold;
+                    }
+                    line-height: $baseLineHeight * 1.25;//25px
+                    margin: 4px 0;
+                }
+
+                .contestDataWrapper {
+                    margin-top: 50px;
+
+                    .span12 {
+                        font: {
+                            size: $baseFontSize * 4.29;//60px
+                        }
+
+                        span {
+                            line-height: $baseLineHeight * 3;//60px
+                        }
+                    }
+                }
+
+                .objectiveProgress span {
+                    margin-bottom: 10px;
+                }
+
+                .objectiveMeta {
+                    margin-top: 7%;
+                }
+
+                .multiGoalAchieved {
+                    font-family: $ssi_secondaryFontFamily;
+                    font-size: $baseFontSize * 2.14;//30px
+                    text-align: center;
+                    text-transform: capitalize;
+
+                    strong {
+                        font-size: $baseFontSize * 2.86;//40px
+                    }
+                }
+
+                .multiGoalToGo  {
+                    font-family: $ssi_secondaryFontFamily;
+                    font-size: $baseFontSize * 1.857;//26px
+                    padding: 0 10px;
+
+                    strong {
+                        font-family: $ssi_primaryFontFamily;
+                        font-size: $baseFontSize * 3.21;//45px
+                    }
+                }
+
+                .noStackRanking {
+                    .moduleSubHeader {
+                        display: none;
+                    }
+
+                    .moduleHeader {
+                        border-bottom: $ssiModule_defaultBorder;
+                    }
+
+                    .wideModule {
+                        height: 456px
+                    }
+                }
+            }//.objectives
+
+            &.doThisGetThat {
+                .dtgtActivity {
+                    .activityDescription {
+                        margin-top: 15px;
+                    }
+                }
+            }//.doThisGetThat
+
+            &.stepItUp {
+                .wideModule {
+                    border-bottom: $ssiModule_defaultBorder;
+                    height: 430px;
+
+                    .contestDataWrapper {
+                        border-bottom: $ssiModule_defaultBorder;
+                        height: 120px;
+                        margin-top: 20px;
+                    }
+
+                    .barChartContainer {
+                        margin-top: 30px;
+
+                        svg tspan {
+                            font-size: $baseFontSize * 1.21;//17px
+                        }
+
+                        .barChartWrapper {
+                            height: 160px;
+                            width: 568px;
+                        }
+                    }
+
+                    .activityDescription {
+                        display: none;
+                    }
+                }//.wide-module
+
+                .noStackRanking {
+                    .moduleSubHeader {
+                        display: none;
+                    }
+
+                    .moduleHeader {
+                        border-bottom: $ssiModule_defaultBorder;
+                    }
+
+                    .wideModule {
+                        .activityDescription {
+                            display: block;
+                        }
+                    }
+                }
+            }//.stepItUp
+
+            &.stackRank {
+                .wideModule {
+                    border-bottom: $ssiModule_defaultBorder;
+                    height: 400px;
+                }
+
+                .stackRankBoard {
+                    margin-top: 20px;
+                }
+
+                .splitColWrap {
+                    .splitCol {
+                        li {
+                            padding: 6px 15px;
+                        }
+                    }
+                }
+
+                .progressNotLoaded {
+                    font-size: 18px;
+                    padding-top: 160px;
+                    text-align: center;
+                }
+            }//.stackRank
+
+        }//.grid-dimension-4x4
+
+        &.grid-dimension-2x2,
+        &.grid-dimension-4x2 {
+            .complete {
+               .contestModuleFooter {
+                    height: 73px;
+                }
+            }
+
+            &.objectives {
+                .moduleSubHeader {
+                    display: none;
+                }
+
+                .moduleHeader {
+                    border-bottom: $ssiModule_defaultBorder;
+                }
+
+                .complete {
+                    .chartPercentProgress {
+                        height: 130px;
+                        width: 140px;
+
+                        strong {
+                            font-size: 40px;
+                            //margin-top = (.chartHolder width - (font size / 2) ) / 2;
+                            margin-top: (130px - 20px) /2;
+                        }
+                    }
+                }
+            }//.objectives
+        }//.grid-dimension-2x2, .grid-dimension-4x2
+
+        &.grid-dimension-4x2,
+        &.grid-dimension-4x4 {
+            .moduleHeader h4 {
+                font-size: $baseFontSize * 2.571;//36px
+                line-height: $baseLineHeight * 1.5;//30px
+                margin: 5px 0;
+                width: 557px;
+            }
+
+            .moduleHeader p {
+                margin-bottom: 5px;
+            }
+
+            .moduleSubHeader {
+                .activityDescription {
+                    height: 30px;
+                    width: 400px;
+                }
+            }
+
+            .activityDescription {
+                font-size: $baseFontSize * 1.43;//20px
+                margin: 6px 0;
+                width: 590px;
+            }
+
+            .rankDescription {
+                line-height: $baseLineHeight * 1.7;//34px
+            }
+
+            .icon-gift {
+                font-size: 60px;
+            }
+
+            .payoutGift .giftCount {
+                left: -11px;
+                top: -32px;
+            }
+
+            .complete {
+                .contestModuleFooter {
+                    .payoutIssued {
+                        padding-right: 15px;
+                    }
+
+                    .payoutAmount {
+                        display: inline;
+                        font-size: $baseFontSize * 2.071;//29px
+                    }
+
+                    .payoutType {
+                        display: inline;
+                        font-size: $baseFontSize * 1.643;//23px
+                    }
+
+                    .resultsPending {
+                        font-size: 22px;
+                        margin: 28px 0 0 15px;
+                    }
+
+                    .participantPayoutIssued {
+                        padding-left: 10px;
+                        margin-top: 4%;
+                    }
+
+                    &.participantFooter .btn {
+                        margin-right: 10px;
+                    }
+                }
+            }//.complete
+
+            .contestListItem {
+                .contestName {
+                    font-size: $baseFontSize * 1.43;//20px
+                }
+
+                .contestAsOf {
+                    font-size: $baseFontSize;//14px
+                }
+
+                .activityAchieved {
+                    font:{
+                        size: $baseFontSize * 1.43;//20px
+                        weight: normal;
+                    }
+                }
+
+                .btn {
+                    font-size: $baseFontSize * 1.214;//17px
+                }
+            }//.contestListItem
+
+            .contestModuleFooter .btn {
+                font-size: $baseFontSize * 1.214;
+                padding: 8px 16px;
+            }
+
+            &.objectives {
+                .multiGoalToGo  {
+                    color: $ssiModule_multiGoalToGo;
+                    display: block;
+                    font-family: $ssi_secondaryFontFamily;
+                    line-height: normal;
+                    text-align: center;
+
+                    strong {
+                        display: block;
+                        font-family: $ssi_primaryFontFamily;
+                    }
+                }
+            }//.objectives
+
+            &.doThisGetThat {
+                .dtgtActivity {
+                    min-height: 163px;
+                    text-align: center;
+
+                    .dataSection {
+                        display: inline-block;
+
+                        h5 {
+                            font-size: $baseFontSize * 4.286;//60px
+                            line-height: $baseLineHeight * 3;//60px
+                            margin: 10px 5px;
+                            width: 185px;
+                        }
+
+                        .payoutGift {
+                            margin: 13px auto;
+                            width: 185px;
+                        }
+
+                        span {
+                            font-size: $baseFontSize;
+                        }
+                    }
+
+                    .activityDescription {
+                        text-align: left;
+                    }
+                }
+            }//.doThisGetThat
+
+            &.stepItUp {
+                .dataSection {
+                    h5 {
+                        font-size: $baseFontSize * 3.57; //50px
+                        line-height: $baseLineHeight * 2.5;//50px
+                    }
+
+                    span {
+                        font-size: $baseFontSize * 1.79; //25px
+                    }
+                }
+
+                .contestListItem .btn {
+                    margin-top: 10px;
+                }
+            }//.stepItUp
+
+            &.stackRank {
+                .activityProgress {
+                    display: block;
+                    font-size: $baseFontSize * 1.29; //18px
+                    margin-top: 5px;
+                }
+
+                .stackRankLeader {
+                    font-size: $baseFontSize * 1.429;//20px
+                    line-height: $baseLineHeight * 3.5;//70px
+
+                    .listTileAvatar {
+                        height: 60px;
+                        width: 60px;
+                    }
+                }
+            }//.stackRank
+        }//.grid-dimension-4x2, .grid-dimension-4x4
+
+        &.grid-dimension-4x2 {
+            .activityDescription {
+                width: 474px;
+                max-width: 474px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }//.grid-dimension-4x2
+    }//.SSICreator, .SSIParticipant, .SSIManager
+
+    /* * * * * *
+    *
+    *    Creator Tiles
+    *
+    * * * * * */
+
+    &.SSICreator {
+        &.grid-dimension-2x2 {
+            &.doThisGetThat {
+                .dataSection {
+                    width: 130px;
+                }
+            }
+        }
+    }
+
+    /* * * * * *
+    *
+    *    Participant Tiles
+    *
+    * * * * * */
+
+    &.SSIParticipant {
+        .objectiveMeta {
+            span {
+                color: $ssiModule_objectiveMetaColor;
+                font: {
+                    size: $baseFontSize * 2.1429;//30px
+                }
+            }
+        }
+
+        &.stepItUp {
+            .chartHolder {
+                position: relative;
+                color: $ssi_SIU_circleChart_ovArcColor;
+                outline-color: $ssi_SIU_circleChart_fgArcColor;
+                border-top-color: $ssi_SIU_circleChart_bgArcColor;
+                z-index: 2;
+            }
+
+            .bonusLabel {
+                position: absolute;
+                left: 0;
+                width: 100%;
+                font-family: $ssi_secondaryFontFamily;
+                text-align: center;
+                @include box-sizing(border-box);
+            }
+        }//.stepItUp
+
+        &.grid-dimension-2x2 {
+            .objectiveMeta {
+                margin-top: 12%;
+            }
+
+            &.stepItUp {
+                .moduleSubHeader {
+                    display: none;
+                }
+
+                .moduleHeader {
+                    border-bottom: 1px solid $black;
+                }
+
+                .narrowModule {
+                    position: relative;
+                    height: 168px;
+                }
+
+                .chartData {
+                    height: 112px;
+                    left: 14.5%;
+                    width: 112px;
+                    top: 9%;
+                }
+
+                .chartHolder {
+                    height: 140px;
+                    width: 160px;
+                }
+
+                .levelProgress,
+                .levelGoal {
+                    margin: 0 auto;
+                    width: 70%;
+
+                    span {
+                        display: block;
+                        font:{
+                            size: $baseFontSize * 2.4286;//34px
+                            weight: bold;
+                        }
+                        line-height: $baseLineHeight * 1.55;//31px
+                        text-transform: uppercase;
+                    }
+                }
+
+                .levelProgress span {
+                    padding: 24% 0 10%;
+                }
+
+                .levelGoal span {
+                    padding-top: 9%;
+                }
+
+                .levelTitle {
+                    color: $black;
+                    font-family: $ssi_secondaryFontFamily;
+                    font-size: $baseFontSize * 1.214;//17px
+                    text-transform: uppercase;
+                }
+
+                .levelAchieved {
+                    font-size: $baseFontSize * 6.4286;//90px
+                    line-height: $baseLineHeight * 4.5;//90px
+                }
+
+                .levelTitle,
+                .levelAchieved {
+                    display: block;
+                    font-weight: bold;
+                    text-align: center;
+                }
+
+                .levelRemaining {
+                    span {
+                        font-family: $ssi_secondaryFontFamily;
+                        font-size: 11px;
+                    }
+                }
+
+                .complete {
+                    .levelAchieved {
+                        color: $ssiModule_siu_dataCompleteColor;
+                    }
+
+                    .levelProgress span {
+                        color: $ssiModule_siu_dataCompleteColor;
+                    }
+
+                    .narrowModule {
+                        height: 137px;
+                    }
+
+                }//.complete
+
+                .bonusLabel {
+                    bottom: 48px;
+                }
+            }//.stepItUp
+        }//.grid-dimension-2x2
+
+        &.grid-dimension-4x2 {
+            .objectiveMeta {
+                margin-top: 16%;
+
+                span {
+                    display: block;
+                    margin-bottom: 15px;
+                }
+            }
+
+            .dtgtActivity {
+                .activityRank h5 {
+                    margin-left: -1ex;
+                }
+            }
+
+            .circleData {
+                height: 50px;
+                width: 50px;
+            }
+
+            .levelCompleted i {
+                font-size: 25px;
+            }
+
+            .levelName {
+                font-size: $baseFontSize * .7143;//10px
+            }
+
+            .levelProgress span,
+            .levelGoal span {
+                font: {
+                    size: $baseFontSize * 1.7857;//25px
+                    weight: bold;
+                }
+            }
+
+            .levelProgress span {
+                padding: 10px 0 4px;
+            }
+
+            .levelGoal span {
+                padding-top: 2px;
+            }
+
+            &.objectives {
+                .shortAndWideModule {
+                    height: 149px;
+                }
+            }
+
+            &.stepItUp {
+                .shortAndWideModule {
+                    position: relative;
+                    height: 115px;
+                    padding-left: 50px;
+                }
+
+                .activityDescription {
+                    font-size: $baseFontSize * 1.071;//15px
+                    margin: 0;
+                }
+
+                .levelRemaining {
+                    display: none;
+                }
+
+                .levelProgress,
+                .levelGoal {
+                    padding: 0 6%;
+                }
+
+                .levelName {
+                    margin-left: -47px;
+                }
+
+                .levelChartWrapper {
+                    height: 100px;
+                }
+
+                .chartHolder {
+                    font-size: 8px;//width for bar circle
+                    height: 110px;
+                    left: -20px;
+                    top: -27px;
+                    width: 140px;
+                }
+
+                .chartData {
+                    height: 70px;
+                    left: 24.5%;
+                    top: 17%;
+                    width: 70px;
+                }
+
+                .backgroundLinkBar {
+                    top: 23px;
+                }
+
+                .bonusLabel {
+                    bottom: 60px;
+                }
+            }//.stepItUp
+        }//.grid-dimension-4x2
+
+        &.grid-dimension-4x4 {
+            .objectiveMeta {
+                margin-top: 20%;
+                text-align: center;
+
+                span {
+                    font-size: $baseFontSize * 2.143;//30px
+                }
+            }
+
+            .rankDescription {
+                font-size: $baseFontSize * 1.7857;//25px
+            }
+
+            .circleData {
+                height: 70px;
+                width: 70px;
+            }
+
+            .levelCompleted i {
+                font-size: 35px;
+            }
+
+            .levelProgress span,
+            .levelGoal span {
+                font: {
+                    size: $baseFontSize * 2.571;//36px
+                    weight: bold;
+                }
+            }
+
+            .levelGoal span {
+                line-height: normal;
+            }
+
+            .levelProgress span {
+                padding: 31px 0 11px;
+            }
+
+            .levelName {
+                display: block;
+                text-align: center;
+
+                span {
+                    display: block;
+                    font: {
+                        family: $ssi_primaryFontFamily;
+                        size: $baseFontSize * 2.857;//40px
+                        weight: bold;
+                    }
+                    margin-top: 20px;
+                }
+            }
+
+            &.objectives {
+                .objectiveMeta {
+                    margin-top: 14%;
+                }
+            }
+
+            &.stepItUp {
+                .wideModule {
+                    position: relative;
+                    height: 350px;
+                    margin-top: 70px;
+                }
+
+                .levelChartWrapper {
+                    height: 290px;
+                }
+
+                .levelRemaining {
+                    border-top: 1px solid $black;
+
+                    span {
+                        display: block;
+                        font-size: $baseFontSize * 2.143;//30px
+                        line-height: $baseLineHeight * 2;//40px
+                        margin-top: 10px;
+
+                        strong {
+                            font-size: $baseFontSize * 3.571;//50px
+                        }
+                    }
+                }//.levelRemaining
+
+                .levelProgress,
+                .levelGoal {
+                    padding: 0 4%;
+                }
+
+                .chartHolder {
+                    font-size: 8px;// width for chart bar
+                    height: 160px;
+                    left: -20px;
+                    top: -42px;
+                    width: 160px;
+                }
+
+                .chartData {
+                    height: 118px;
+                    left: 12%;
+                    top: 12.5%;
+                    width: 118px;
+                }
+
+                .backgroundLinkBar {
+                    top: 34px;
+                }
+
+                .bonusLabel {
+                    bottom: 140px;
+                    font-size: 20px;
+                }
+            }//.stepItUp
+        }//.grid-dimension-4x4
+
+        &.grid-dimension-4x2,
+        &.grid-dimension-4x4 {
+            .moduleHeader h4 {
+                margin-bottom: 5px;
+            }
+
+            &.stepItUp {
+                .chartData {
+                    z-index: 10;
+                }
+
+                .levelMeta {
+                    position: relative;
+                    top: -36px;
+                }
+
+                .levelChartWrapper {
+                    margin: 0 auto;
+                    position: relative;
+
+                    .levelCol {
+                        margin: 0;
+                        position: relative;
+                        width: 98px;
+
+                        .backgroundLinkBar {
+                            width: 107px;
+                        }
+
+                        &.currentLevelCol {
+                            width: 141px;
+
+                            .backgroundLinkBar {
+                                left: 15px;
+                                width: 156px;
+                            }
+                        }
+
+                        &:last-child {
+                            .backgroundLinkBar {
+                                display: none;
+                            }
+                        }
+                    }//.levelCol
+
+                    &.numLevels2 {
+                        width: 240px;
+                    }
+
+                    &.numLevels3 {
+                        width: 340px;
+                    }
+
+                    &.numLevels4 {
+                        width: 440px;
+                    }
+
+                    &.numLevels5 {
+                        width: 540px;
+                    }
+                }//.levelChartWrapper
+            }//.stepItUp
+        }//.grid-dimension-4x2, .grid-dimension-4x4
+
+    }//.SSIParticipant
+
+    /* * * * * *
+    *
+    *    Manager Tiles
+    *
+    * * * * * */
+
+    &.SSIManager {
+        .module-liner {
+            @include module_moduleLinerBackground(
+                $bgColor: $ssiModule_managerList_bgColor,
+                $gradType: $ssiModule_managerList_bgGradType,
+                $gradMeta: $ssiModule_managerList_bgGradMeta,
+                $gradStops: $ssiModule_managerList_bgGradStops
+            );
+        }
+
+        .module-topper.contestType h3 {
+            margin-left: 20px;
+        }
+
+        .contestListItem {
+            padding: 20px 10px;
+
+            .contestName {
+                padding-top: 7px;
+            }
+        }
+
+        &.grid-dimension-2x2 {
+            .module-topper.contestType h3 {
+                line-height: $baseLineHeight * 2.05;//41px
+            }
+
+            .scrollArea {
+                &.contestListWrap {
+                    height: 258px;
+                    margin: 0 4px 4px 4px;
+                }
+            }
+        }//.grid-dimension-2x2
+
+        &.grid-dimension-4x2 {
+            .module-topper.contestType h3 {
+                line-height: $baseLineHeight * 3.4;//68px
+            }
+
+            .scrollArea {
+                &.contestListWrap {
+                    height: 224px;
+                    margin: 0 10px;
+                }
+            }
+        }//.grid-dimension-4x2
+
+        &.grid-dimension-4x4 {
+            .module-topper.contestType h3 {
+                line-height: $baseLineHeight * 3.9;//78px
+            }
+
+            .scrollArea {
+                &.contestListWrap {
+                    height: 534px;
+                    margin: 0 10px;
+                }
+            }
+        }//.grid-dimension-4x4
+    }//.SSIManager
+
+    &.ssiQtipIsShownModule {
+        z-index: 1;
+        overflow: visible;
+
+        .module-liner {
+            overflow: visible;
+        }
+    }//.ssiQtipIsShownModule
+}//.module.ssi
+
+// add a low z-index to all modules when the qtip is shown to prevent overlap
+.ssiQtipIsShown .module {
+    z-index: 0;
+}

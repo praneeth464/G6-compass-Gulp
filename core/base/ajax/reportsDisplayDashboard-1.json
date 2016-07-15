@@ -1,0 +1,40 @@
+{
+    "messages": [],
+    "favorites": [
+        {
+            "id": "5013",
+            "favoriteParameters": "Dates 01/01/2012 - 12/31/2012",
+            "reportUrl": "http://tsgbuild-dv.biperf.com:7001/bonfire/reports/displayLoginActivityByPaxReport.do?method=displaySummaryReport&dashboardItemId=5013",
+            "displayName": "Unique Login Activity by Timeframe",
+            "category": "Login",
+            "chartType": "Pie3D",
+            "dataUrl": "ajax/reportsDisplayLoginActivityByPaxReport-1.json",
+            "parentId": "5000",
+            "fusionChartsParameters": {
+                "caption": "Unique Login Activity by Timeframe",
+                "subCaption": "For Organization, Monthly",
+                "xAxisName": "Logged In",
+                "yAxisName": "Not Logged In",
+                "showlabels": "true",
+                "showlegend": "true"
+            },
+            "chartConfigure":{
+                "_comment" : "Sets a custom message when chart is loading.",
+                "LoadingText" : "Loading Chart. Please Wait. - FROM CM",
+
+                "_comment" : "Sets a custom message when data is being parsed by chart.",
+                "ParsingDataText" : "Reading Data. Please Wait. - FROM CM",
+
+                "_comment" : "Sets a custom message when the chart has retrieved data which does not contain any data for chart to plot or the data does not conform to the data structure required by the chart type.",
+                "ChartNoDataText" : "No data to display. - FROM CM",
+
+                "_comment" : "Sets a custom message when the chart is being drawn.",
+                "RenderingChartText" : "Rendering Chart. Please Wait. - FROM CM",
+
+                "_comment" : "Sets a custom message when there is error in loading the chart data from the data URL provided as datasource.This may happen when the URL is invalid or inaccessible.",
+                "LoadDataErrorText" : "Error in loading data. - FROM CM"
+            },
+            "pdfUrl": "http://tsgbuild-dv.biperf.com:7001/bonfire/reports/displayLoginActivityByPaxReport.do?method=displayTimeFrameBarResults&dashboardItemId=5013&pdf=1"
+        }
+    ]
+}

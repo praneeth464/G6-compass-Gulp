@@ -1,0 +1,1951 @@
+// App-specific variables
+// =========================
+$recognition_bgColor: $g5ModuleBgColor !default;
+$recognition_gradType: $g5ModuleGradType !default;
+$recognition_gradMeta: $g5ModuleGradMeta !default;
+$recognition_gradStops: $g5ModuleGradStops !default;
+
+$recognition_iconColor: $g5ModuleIconColor !default;
+$recognition_titleColor: $g5ModuleTitleColor !default;
+$recognition_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$recognition_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$recognition_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$recognition_bgColorBig: $recognition_bgColor !default;
+$recognition_gradTypeBig: $recognition_gradType !default;
+$recognition_gradMetaBig: $recognition_gradMeta !default;
+$recognition_gradStopsBig: $recognition_gradStops !default;
+
+$purlRecognition_bgColor: $g5ModuleBgColor !default;
+$purlRecognition_gradType: $g5ModuleGradType !default;
+$purlRecognition_gradMeta: $g5ModuleGradMeta !default;
+$purlRecognition_gradStops: $g5ModuleGradStops !default;
+
+$purlRecognition_iconColor: $g5ModuleIconColor !default;
+$purlRecognition_titleColor: $g5ModuleTitleColor !default;
+$purlRecognition_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$purlRecognition_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$purlRecognition_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$recognition_textColor: $white !default;
+$recognition_textMutedColor: mix($recognition_bgColor, $recognition_textColor, 33%) !default;
+$recognition_linkColor: mix($recognition_bgColor, $white) !default;
+$recognition_linkHoverColor: $white !default;
+
+$recognition_placeholderColor: $grayLighter !default;
+$recognition_placeholderFontStyle: normal !default;
+
+$recognition_inputLabelFontFamily: $g5ModuleTitleFontFamily !default;
+$recognition_inputLabelFontStyle: $g5ModuleTitleFontStyle !default;
+$recognition_inputLabelFontWeight: nth($g5ModuleTitleFontWeights, 3) !default;
+$recognition_inputLabelFontSize2x2: 36px !default;
+$recognition_inputLabelFontSize4x2: $recognition_inputLabelFontSize2x2 !default;
+$recognition_inputLabelFontSize4x4: 60px !default;
+
+// these are largely reproduced in the On the Spot Card module and ideally should match for design consistency
+$recognition_inputColor: $gray !default; // default value is $gray as used in bootstrap/_forms.scss
+$recognition_inputBgColor: $inputBackground !default; // default value is $inputBackground as used in bootstrap/_forms.scss
+$recognition_inputBorderWidth: 0 !default;
+$recognition_inputBorderColor: transparent !default;
+$recognition_inputBorderRadius: 0 !default;
+$recognition_inputBoxShadow: none !default;
+$recognition_magnifyBgColor: $recognition_inputBgColor !default;
+$recognition_magnifyColor: $recognition_bgColor !default;
+$recognition_magnifyTextShadow: none !default;
+
+// Style rules for the search button that is appended to the Recognition input box
+@mixin recognition_searchBtn(
+    $padding: false,
+    $height: false,
+    $bgColor: false,
+    $varsOnly: false
+) {
+    @if $padding {
+        padding: $padding
+    }
+    @if $height {
+        height: $height;
+    }
+    @if $bgColor {
+        background: none;
+        background-color: $bgColor;
+    }
+    @if $varsOnly != true {
+        position: absolute;
+        top: $recognition_inputBorderWidth;
+        right: $recognition_inputBorderWidth;
+        padding-top: 0;
+        padding-bottom: 0;
+        border: none;
+        box-shadow: none;
+        margin: 0;
+        @include border-radius(0);
+    }
+}
+@mixin recognition_iconSearch(
+    $fontSize: false,
+    $lineHeight: false,
+    $color: false,
+    $textShadow: false,
+    $varsOnly: false
+) {
+    @if $fontSize {
+        font-size: $fontSize;
+    }
+    @if $lineHeight {
+        line-height: $lineHeight;
+    }
+    @if $color {
+        color: $color;
+    }
+    @if $textShadow {
+        @include text-shadow($textShadow);
+    }
+    @if $varsOnly != true {
+        width: auto;
+        height: auto;
+    }
+}
+@mixin recognition_placholderText($color, $style: normal) {
+    ::-webkit-input-placeholder {
+        color: $color;
+        font-style: $style;
+    }
+    :-moz-placeholder {
+        color: $color;
+        font-style: $style;
+    }
+    :-ms-input-placeholder {
+        color: $color;
+        font-style: $style;
+    }
+}
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.recognition {
+} /* /.recognition */
+
+/* ----- MODULE STYLES ----- */
+.module.recognition {
+
+    /* START special PURL Recognition module */
+    &.purlRecognition {
+        .module-liner {
+            @include module_moduleLinerBackground(
+                $bgColor: $purlRecognition_bgColor,
+                $gradType: $purlRecognition_gradType,
+                $gradMeta: $purlRecognition_gradMeta,
+                $gradStops: $purlRecognition_gradStops
+            );
+        }
+
+        .title-icon-view {
+            @include module_titleIconView(
+                $iconColor: $purlRecognition_iconColor,
+                $titleColor: $purlRecognition_titleColor,
+                $titleFontFamily: $purlRecognition_titleFontFamily
+            );
+
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                @include g5HomeAppIconBoxReflect(-47px);
+            }
+        }
+
+        @include module_titleIconViewFontSizesWeights($purlRecognition_titleFontSizes, $purlRecognition_titleFontWeights);
+
+        &.grid-dimension-2x2,
+        &.grid-dimension-4x2 {
+            .title-icon-view {
+                [class^="icon-g5-"],
+                [class*=" icon-g5-"] {
+                    @include g5HomeAppIconBoxReflect(-126px);
+                }
+            }
+        }
+        &.grid-dimension-4x4 {
+            .title-icon-view {
+                [class^="icon-g5-"],
+                [class*=" icon-g5-"] {
+                    @include g5HomeAppIconBoxReflect(-241px);
+                }
+            }
+        }
+    } /* /.purlRecognition */
+
+    /* END special PURL Recognition module */
+
+
+    /* START regular recognition module */
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $recognition_bgColor,
+            $gradType: $recognition_gradType,
+            $gradMeta: $recognition_gradMeta,
+            $gradStops: $recognition_gradStops
+        );
+    }
+
+    @if $recognition_bgColorBig != $recognition_bgColor or $recognition_gradTypeBig != $recognition_gradType or $recognition_gradMetaBig != $recognition_gradMeta or $recognition_gradStopsBig != $recognition_gradStops {
+        &.grid-dimension-2x2,
+        &.grid-dimension-4x2,
+        &.grid-dimension-4x4 {
+            .module-liner {
+                @include module_moduleLinerBackground(
+                    $bgColor: $recognition_bgColorBig,
+                    $gradType: $recognition_gradTypeBig,
+                    $gradMeta: $recognition_gradMetaBig,
+                    $gradStops: $recognition_gradStopsBig
+                );
+            }
+        }
+    } // /@if
+
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $recognition_iconColor,
+            $titleColor: $recognition_titleColor,
+            $titleFontFamily: $recognition_titleFontFamily
+        );
+
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            @include g5HomeAppIconBoxReflect(-65px);
+        }
+    }
+
+    @include module_titleIconViewFontSizesWeights($recognition_titleFontSizes, $recognition_titleFontWeights);
+
+    color: $recognition_textColor;
+
+    a {
+        &,
+        &:visited {
+            color: $recognition_linkColor;
+        }
+        &:hover {
+            color: $recognition_linkHoverColor;
+            text-decoration: none;
+        }
+    }
+
+    .btn {
+        margin-right: $gridGutterWidth / 4;
+    }
+    .btn + .btn {
+        margin-left: 0;
+    }
+
+    // standard "wide-view" state
+    .wide-view {
+        padding: $g5ModulePadding;
+
+        .recognition-module-wrapper {
+            margin: 0 auto;
+
+            form {
+                margin: 0;
+            }
+            label {
+                font-family: $recognition_inputLabelFontFamily;
+                @if $recognition_inputLabelFontStyle {
+                    font-style: $recognition_inputLabelFontStyle;
+                }
+                @if $recognition_inputLabelFontWeight {
+                    font-weight: $recognition_inputLabelFontWeight;
+                }
+                line-height: 1;
+                white-space: nowrap;
+            }
+            @if $recognition_placeholderColor or $recognition_placeholderFontStyle {
+                @include recognition_placholderText($recognition_placeholderColor, $recognition_placeholderFontStyle);
+            }
+            .input-append {
+                position: relative;
+
+                input {
+                    padding-top: 0;
+                    padding-bottom: 0;
+                    color: $recognition_inputColor;
+                    background: $recognition_inputBgColor;
+                    @if $recognition_inputBorderWidth {
+                        border: $recognition_inputBorderWidth solid $recognition_inputBorderColor;
+                    }
+                    @include borderRadiusSlim($recognition_inputBorderRadius, $override: true);
+                    @if $recognition_inputBoxShadow {
+                        @include box-shadow($recognition_inputBoxShadow);
+                    }
+                }
+                .btn {
+                    z-index: 3;
+                    @include recognition_searchBtn(
+                        $bgColor: $recognition_magnifyBgColor
+                    );
+                }
+            }
+            .icon-search {
+                @include recognition_iconSearch(
+                    $color: $recognition_magnifyColor,
+                    $textShadow: $recognition_magnifyTextShadow
+                );
+            }
+            .spinnerWrap {
+                display: none;
+                position: absolute;
+                z-index: 4;
+                top: 50%;
+                right: 0%;
+                margin: 0;
+                padding: 0;
+                vertical-align: top;
+                background-color: $recognition_inputBgColor;
+            }
+        }
+    } // /.wide-view
+
+    // "flipSide" state
+    // note, .ezRecLiner is a parent of .wide-view. We're leaving out the latter to reduce selector count
+    .ezRecLiner {
+        .app-row {
+            // clear: both;
+            @include clearfix();
+        }
+
+        form {
+            margin: 0;
+        }
+
+        .ezRecProfilePic {
+            display: inline;
+            float: left;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            width: 72px;
+            height: 72px;
+        }
+        .ezRecognitionRecipInfo {
+            // display: inline;
+            // float: left;
+            margin-left: 80px; // 8px + 72px
+            // display: inline-block;
+            // width: 69%;
+
+            .ezRecRecipName{
+                display: inline-block;
+                margin: 0;
+            }
+            .info-popover:hover {
+                text-decoration: none;
+                cursor: pointer;
+            }
+            .ezRecOrgName{
+                // margin-right: 2px;
+                // min-width: 100%;
+                display: block;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+            .ezRecSubTitle {
+                color: $recognition_textMutedColor;
+                display: inline;
+            }
+            .ezRecSubTitle-dot {
+                color: $recognition_textMutedColor;
+                margin: 0 4px;
+            }
+
+        }
+        .control-group {
+            clear: both;
+            margin-bottom: $baseLineHeight / 2;
+
+            label {
+                text-align: left;
+            }
+
+        }
+        #ezRecognitionCommentBox {
+            margin-top: $baseLineHeight / 2;
+
+            .comment-label {
+                float: left;
+                margin-top: 2px;
+                margin-bottom: 10px;
+            }
+        }
+        .EZModuleCommentCheckSpell {
+            float: right;
+            margin-right: 0px;
+            margin-bottom: 6px;
+            color: $grayDark;
+
+            .btn {
+                padding: 3px 1px 0 4px;
+                color: $grayDark;
+
+                .icon-check {
+                    font-size: 19px;
+                }
+            }
+
+            .dropdown-menu {
+                // left: -25px;
+                left: auto;
+                right: 0;
+                margin-top: 0;
+
+                .check {
+                    padding: 5px 20px;
+                    font-weight: bold;
+                }
+                a {
+                    color: $gray;
+                    cursor: pointer;
+                    line-height: $baseLineHeight / 2 + 4px; // in the _jHtmlArea.patchedG5.scss document, we're using a padding of 5px 20px on the list item and a line height of 10px. This .dropdown-menu uses the bootstrap rules of 3px 20px and a line-height of 20px. The 4px are necessary to make them both match. Gross, but effective
+
+                    &:hover {
+                        color: $white;
+                    }
+                }
+            }
+        }
+        .ezRecharCountError {
+            float: right;
+            margin-top: 2px;
+            margin-right: 6px;
+            font-size: 11px;
+            color: $recognition_textMutedColor;
+        }
+
+        .ezRecFormBtnsWrapper {
+            // float: right;
+            margin-top: $baseLineHeight / 2;
+        }
+
+        .badwordsContainer {
+            .badwordsWrapper {
+                position: absolute;
+
+                .spellcheck-badwords {
+                    display: block !important;
+                    position: static !important;
+                    margin: 0 !important;
+
+                    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 10px;
+                    box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 10px;
+                    -webkit-background-clip: padding-box;
+                    background-clip: padding-box;
+                }
+            }
+        }
+    } // /.ezRecLiner
+
+
+    .spin {
+        z-index: 100;
+    }
+
+    &.hasOverflow {
+        overflow: visible;
+        z-index: 100;
+
+        .module-liner {
+            overflow: visible;
+        }
+    }
+
+    &.grid-dimension-1x1,
+    &.grid-dimension-2x1 {
+        // special case when a user starts an EZ on the 2x2, 4x2, 4x4 module and then switches to a filter where this module goes down to a 1x1 or 2x1 size. The module would go blank because 1x1 and 2x1 have no provisions for the flipside state
+        .module-liner {
+            display: block !important;
+            left: 0 !important;
+
+            &.ezRecLiner {
+                left: 320px !important;
+            }
+        }
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        .title-icon-view {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 0;
+
+            h3 {
+                display: none;
+            }
+        }
+
+        // standard "wide-view" state
+        .wide-view {
+            position: relative;
+            z-index: 5;
+
+            .ez-popover {
+                cursor: pointer;
+            }
+        } // /.wide-view
+
+        // "flipSide" state
+        // note, .ezRecLiner is a parent of .wide-view. We're leaving out the latter to reduce selector count
+        .ezRecLiner {
+            .naked-input {
+                background: transparent;
+                color: $recognition_textColor;
+                @include box-shadow(none);
+            }
+        } // /.ezRecLiner
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2 {
+        // standard "wide-view" state
+        .wide-view {
+            .recognition-module-wrapper {
+                padding-top: 138px;
+
+                a {
+                    font-size: 14px;
+                }
+                label {
+                    font-size: $recognition_inputLabelFontSize2x2;
+                }
+            }
+        } // /.wide-view
+
+        // "flipSide" state
+        // note, .ezRecLiner is a parent of .wide-view. We're leaving out the latter to reduce selector count
+        .ezRecLiner {
+            .control-group {
+                margin-bottom: 0;
+
+                .control-label {
+                    font-size: 12px;
+                }
+
+                select {
+                    font-size: 12px;
+                    height: auto;
+                    line-height: 1;
+                }
+                select,
+                .naked-input {
+                    //giving set width to make sure they do not bump to the next line. also not using max-width to make them look consistent with each other.
+                    width: 250px;
+                }
+            }
+            .ezRecFormBtnsWrapper {
+                margin-top: $baseLineHeight / 4;
+            }
+        } // /.ezRecLiner
+
+        .title-icon-view {
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                top: 30%;
+                font-size: 196px;
+                // margin-top: -130px;
+                @include g5HomeAppIconBoxReflect(-119px);
+                // height: 170px;
+            }
+        }
+    }
+
+    &.grid-dimension-2x2 {
+        $linerWidth: ($g5ModuleUnit * 2) - ($g5ModuleGutter * 2) - ($g5ModulePadding * 2);
+        $formWidth: $linerWidth;
+
+        // standard "wide-view" state
+        .wide-view {
+            .recognition-module-wrapper {
+                width: $formWidth;
+
+                input {
+                    width: $formWidth - (6px * 2) - ($recognition_inputBorderWidth * 2); // 6px = input left/right padding from _forms.scss
+                    height: 40px;
+                    font-size: 16px;
+                    line-height: 40px;
+                }
+                .btn {
+                    @include recognition_searchBtn(
+                        $padding: 0 6px, // 6px = 1/2 Bootstrap's default button left/right padding
+                        $height: 40px,
+                        $varsOnly: true
+                    );
+                }
+                .icon-search {
+                    @include recognition_iconSearch(
+                        $fontSize: 30px,
+                        $lineHeight: 32px,
+                        $varsOnly: true
+                    );
+                }
+                .spinnerWrap {
+                    height: 40px;
+                    width: 40px;
+                    margin-top: -20px;
+                }
+
+                .icon-exclamation-sign {
+                    margin-top: 0px;
+                }
+            }
+        } // /.wide-view
+
+        // "flipSide" state
+        // note, .ezRecLiner is a parent of .wide-view. We're leaving out the latter to reduce selector count
+        .ezRecLiner {
+            .ezRecognitionRecipInfo {
+                .ezRecRecipName {
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    max-width: 180px;
+                    overflow-x: hidden;
+                }
+            }
+            .control-group {
+                .control-label {
+                    display: none;
+                }
+                .controls {
+                    display: inline-block;
+                    margin-left: 0;
+                }
+            }
+            #ezRecognitionCommentBox {
+                .comment-label {
+                    display: none;
+                }
+                textarea {
+                    width: $linerWidth - (2 * 1px) - (2 * 6px); // 1px = standard input border width, 6px = standard form element left/right padding (both from Bootstrap/_forms.scss)
+                }
+            }
+        } // /.ezRecLiner
+
+        .searchWrap .qtip {
+            left: 261px !important;
+        }
+    }
+
+    &.grid-dimension-4x2 {
+        $linerWidth: ($g5ModuleUnit * 4) - ($g5ModuleGutter * 2) - ($g5ModulePadding * 2);
+        $formWidth: ($g5ModuleUnit * 2.667) - ($g5ModuleGutter * 2) - ($g5ModulePadding * 2);
+
+        // standard "wide-view" state
+        .wide-view {
+            .recognition-module-wrapper {
+                width: $formWidth;
+
+                @if $recognition_inputLabelFontSize4x2 != $recognition_inputLabelFontSize2x2 {
+                    label {
+                        font-size: $recognition_inputLabelFontSize4x2;
+                    }
+                }
+                input {
+                    width: $formWidth - (6px * 2) - ($recognition_inputBorderWidth * 2); // 6px = input left/right padding from _forms.scss
+                    height: 54px;
+                    font-size: 22px;
+                    line-height: 54px;
+                    text-indent: 3px; // 3px = 9px from below - 6px input left/right padding from _forms.scss
+                }
+                .btn {
+                    @include recognition_searchBtn(
+                        $padding: 0 9px, // 9px = 3/4 Bootstrap's default button left/right padding
+                        $height: 54px,
+                        $varsOnly: true
+                    );
+                }
+                .icon-search {
+                    @include recognition_iconSearch(
+                        $fontSize: 38px,
+                        $lineHeight: 50px,
+                        $varsOnly: true
+                    );
+                }
+                .spinnerWrap {
+                    height: 54px;
+                    width: 54px;
+                    margin-top: -27px;
+                }
+            }
+        } // /.wide-view
+
+        // "flipSide" state
+        // note, .ezRecLiner is a parent of .wide-view. We're leaving out the latter to reduce selector count
+        .ezRecLiner {
+            #ezRecognitionCommentBox {
+                textarea {
+                    width: $linerWidth - (2 * 1px) - (2 * 6px); // 1px = standard input border width, 6px = standard form element left/right padding (both from Bootstrap/_forms.scss)
+                }
+            }
+        } // /.ezRecLiner
+
+        .searchWrap .qtip {
+            left: 373px !important;
+        }
+    }
+
+    &.grid-dimension-4x4 {
+        $linerWidth: ($g5ModuleUnit * 4) - ($g5ModuleGutter * 2) - ($g5ModulePadding * 2 * 2);
+        $formWidth: ($g5ModuleUnit * 3) - ($g5ModuleGutter * 2) - ($g5ModulePadding * 2 * 2);
+
+        // standard "wide-view" state
+        .wide-view {
+            padding: $g5ModulePadding * 2;
+
+            .recognition-module-wrapper {
+                padding-top: 312px;
+                width: $formWidth;
+
+                label {
+                    font-size: $recognition_inputLabelFontSize4x4;
+                }
+                input {
+                    width: $formWidth - (6px * 2) - ($recognition_inputBorderWidth * 2); // 6px = input left/right padding from _forms.scss
+                    height: 60px;
+                    font-size: 25px;
+                    line-height: 60px;
+                    text-indent: 6px; // 6px = 12px button left/right padding from _buttons.scss - 6px input left/right padding from _forms.scss
+                }
+                .btn {
+                    @include recognition_searchBtn(
+                        $height: 60px,
+                        $varsOnly: true
+                    );
+                }
+                .icon-search {
+                    @include recognition_iconSearch(
+                        $fontSize: 38px,
+                        $lineHeight: 56px,
+                        $varsOnly: true
+                    );
+                }
+                .spinnerWrap {
+                    height: 60px;
+                    width: 60px;
+                    margin-top: -30px;
+                }
+            }
+        } // /.wide-view
+
+        // "flipSide" state
+        // note, .ezRecLiner is a parent of .wide-view. We're leaving out the latter to reduce selector count
+        .ezRecLiner {
+            .ezRecProfilePic {
+                margin-right: 12px;
+                margin-bottom: 12px;
+                width: 108px;
+                height: 108px;
+            }
+            .ezRecognitionRecipInfo {
+                margin-left: 120px; // 12px + 108px
+
+                .ezRecRecipName {
+                    font-size: 24px;
+                    font-weight: bold;
+                    line-height: 1;
+                }
+            }
+            #ezRecognitionCommentBox {
+                textarea {
+                    width: $linerWidth - (2 * 1px) - (2 * 6px); // 1px = standard input border width, 6px = standard form element left/right padding (both from Bootstrap/_forms.scss)
+                    height: $g5ModuleUnit * 1.25;
+                }
+            }
+        } // /.ezRecLiner
+
+        .searchWrap .qtip {
+            left: 417px !important;
+        }
+
+        .title-icon-view {
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                margin-top: -283px;
+                // height: 285px;
+                @include g5HomeAppIconBoxReflect(-307px);
+            }
+        }
+    }
+
+    // When in 'largeAudience' mode, turn the big modules back into the icon-only version
+    .largeAudience {
+        @include module_visitAppBtnFullModule();
+
+        .wide-view {
+            display: none;
+        }
+        .title-icon-view {
+            h3 {
+                display: block;
+            }
+        }
+    }
+    &.grid-dimension-2x1 {
+        .largeAudience {
+            .title-icon-view {
+                h3 {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2 {
+        .largeAudience {
+            .title-icon-view {
+                [class^="icon-g5-"],
+                [class*=" icon-g5-"] {
+                    top: 37.5%; // from _allModules.scss
+                    font-size: 172px; // from _allModules.scss
+                    @include g5HomeAppIconBoxReflect($adjust: -96px); // from _allModules.scss
+                }
+            }
+        }
+    }
+    &.grid-dimension-4x4 {
+        .largeAudience {
+            .title-icon-view {
+                [class^="icon-g5-"],
+                [class*=" icon-g5-"] {
+                    margin-top: -216px; // from _allModules.scss
+                    @include g5HomeAppIconBoxReflect($adjust: -182px); // from _allModules.scss
+                }
+            }
+        }
+    }
+    // END largeAudience mode
+
+    // START modal version
+    &.modal {
+        $linerWidth: 560px; // lifted from bootstrap/_modals.scss
+
+        border: 0;
+
+        &.dataLoading {
+            overflow: visible;
+
+            .spin {
+                top: $spinner_widthHeight;
+                margin-top: 0;
+            }
+        }
+
+        #ezRecModalCloseBtn {
+            position: relative;
+            z-index: 10;
+            margin-top: 9px; // lifted from bootstrap/_modals.scss .modal-header padding
+            margin-right: 15px; // lifted from bootstrap/_modals.scss .modal-header padding
+
+            .icon-remove {
+                @include circledAwesomeIcon(
+                    $color: $recognition_textColor,
+                    $borderColor: $recognition_textColor
+                );
+            }
+        }
+
+        .module-liner {
+            margin: 0;
+            width: auto;
+            height: auto;
+        }
+
+        .ezRecLiner {
+            #ezRecognitionCommentBox {
+                textarea {
+                    width: $linerWidth - (2 * $g5ModulePadding * 2) - (2 * 1px) - (2 * 6px); // g5ModulePadding * 2 = 4x4 liner padding, 1px = standard input border width, 6px = standard form element left/right padding (both from Bootstrap/_forms.scss)
+                }
+            }
+        } // /.ezRecLiner
+
+        &.hasOverflow {
+            z-index: 1050;  // lifted from bootstrap/_modals.scss
+            z-index: 20000; // lifted from core/base/_modals.scss
+        }
+
+        @media (max-width: 767px) {
+            .ezRecLiner {
+                .ezRecProfilePic {
+                    margin-right: 8px;
+                    margin-bottom: 8px;
+                    width: 72px;
+                    height: 72px;
+                }
+                .ezRecognitionRecipInfo {
+                    .ezRecRecipName {
+                        font-size: $baseFontSize;
+                    }
+                }
+                #ezRecognitionCommentBox {
+                    textarea {
+                        width: 98%;
+                    }
+                }
+            } // /.ezRecLiner
+
+            .btn + .btn {
+                margin-left: 0;
+            }
+        }
+    }/* /.module.recognition.modal */
+    // END modal version
+
+    /* END regular recognition module */
+}
+
+// START EZ Recognition auto-complete list
+.ezRecRecipListPopUp {
+    width: 300px;
+    max-width: 300px;
+
+    .ui-tooltip-content {
+        padding: 0;
+    }
+
+    ul {
+        margin: 0;
+        list-style: none;
+
+        .ezModuleRecipWrapper,
+        .moduleRecipWrapper {
+            padding: 4px 8px;
+
+            h1 {
+                margin: 0;
+                margin-bottom: 2px;
+                font-size: $baseFontSize * 1.2;
+                line-height: $baseLineHeight;
+            }
+            h2,
+            h3 {
+                font-size: $baseFontSize;
+                line-height: 1.2;
+                font-weight: normal;
+                color: #666;
+                margin: 0;
+            }
+            h3 {
+                color: #999;
+                font-style: italic;
+            }
+
+            &:focus {
+                background: mix($linkColor, $white, 33%);
+                cursor: pointer;
+            }
+            &.selected,
+            &:hover {
+                color: $white;
+                background: $linkColor;
+                cursor: pointer;
+
+                h2, h3 {
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+// END EZ Recognition auto-complete list
+
+/* ----- PAGE STYLES ----- */
+.page.recognition {
+    // padding-top: 15px;
+    .formSection {
+        // margin-bottom: 25px;
+
+        &:last-child {
+            // margin-bottom: 0;
+        }
+    }
+    .ecard-span {
+        margin-bottom: 14px;
+        *padding-bottom: 14px; // ie7
+    }
+
+    .customSection {
+        textarea {
+            // these four base widths were copied from _jHtmlArea.patchedG5.scss so textareas are the same width as the rich text editors
+            // 12px = right/left padding, 2px = right/left border
+            width: 540px - 12px - 2px;
+
+            @media (min-width: 1200px) {
+                width: 702px - 12px - 2px;
+            }
+            @media (min-width: 538px) and (max-width: 979px) {
+                width: 360px - 12px - 2px;
+            }
+            @media (max-width: 767px) {
+                width: 240px - 12px - 2px;
+            }
+        }
+
+        // IE8 and below have a terrible time showing really long select elements. Namely, they cut off the options. IE9 fixes this.
+        .lt-ie9 & select,
+        // is it fair to assume that custom multiple select elements will often have super wide content? Probably...
+        select[multiple] {
+            width: auto;
+
+            @media (max-width: 767px) {
+                width: 100%;
+            }
+        }
+    }
+
+
+    &.recognitionPreview {
+        // style of titles/labels in preview
+        .row .span8 .row .span2 p {
+            // goes to stacking mode under 767, then we want less spacing after label
+            @media (max-width: 767px){
+                margin-bottom: 0;
+            }
+
+        }
+
+        &.page-content .span4.offset8 {
+            @media (max-width: 767px){
+                margin-left: 0;
+            }
+        }
+
+        table {
+            td {
+                vertical-align: top;
+
+                span{
+                    display: block;
+                }
+            }
+
+            // special sizing for certain table columns that should be the same width (roughly)
+            .score,
+            .deduction,
+            .level,
+            .award {
+                width: 16.6666667%;
+                text-align: right;
+            }
+            .level {
+                text-align: left;
+            }
+            .deductionLabel {
+                // text-align: right;
+            }
+        }
+
+        // budget table info text
+        .totalDeduction,
+        .deductionDisclaimer {
+            margin-top: -1 * $baseLineHeight / 2;
+            margin-bottom: $baseLineHeight;
+            text-align: right;
+        }
+
+        // budget table
+        .table-striped {
+            .budget {
+                text-align: right;
+            }
+        }
+    }
+} /* /.page.recognition */
+
+
+
+/* ----- SET ALIGNMENT FOR THE BROWSE AWARDS POPOVER ----- */
+
+.browse-awards-span.first-item {
+    margin: 0 0 0 -5px;
+}
+
+
+/* ----- MODEL FOR ECARDS ----- */
+
+.browse-awards-span,
+.browse-awards-span figure,
+.browse-awards-span img,
+.browse-awards-span figcaption {
+    float: left;
+    width: 60px;
+
+}
+
+.select-eCard {
+    figure {
+        float: left;
+    }
+}
+
+
+
+/* Manager invite contributors to PURL */
+#recognitionPageManagerInviteContributorsView {
+    #sendForm { margin: 0; }
+}
+
+
+
+/* SEND a REC Page View */
+#dataForm.recognitionDataForm { display:none; } //this is a data source only, everything is hidden
+
+#recognitionPageSendView,
+#recognitionPageAddPointsView {
+
+    .badgeBtnContent {
+        img {
+            height: 72px; // 36px looks better, but let's at least restrict in case the giant images get loaded
+        }
+    }
+
+    .badgeItem {
+        a {
+            padding-right: 56px; // bootstrap 20px default + 32px img width
+        }
+        img {
+            height: 36px;
+        }
+    }
+
+    // min-height:400px;
+    // padding-bottom: 0;
+
+    // @media (max-width: 479px){
+    //     form .validate-tooltip{
+    //         top: -30px !important;
+    //     }
+    // }
+
+    // NOTE: this is a bugfix for issue #3053. A better solution would be to redo the global page padding and content negative margin so that the tooltips are smart enough to stay on the screen without overriding sizing like this.
+    @media (max-width: 479px) {
+        .participantPopoverQtip,
+        .ui-tooltip-instruction {
+            left: 2% !important;
+            width: 96% !important;
+            max-width: none !important;
+        }
+    }
+
+    .ui-tooltip-instruction .ui-tooltip-content {
+        padding:12px;
+        font-size:12px;
+        line-height:16px;
+    }
+
+    .recognitionPromotionName, .recognitionNodeName, .recipientInfo {
+        margin-right: 8px;
+    }
+
+    .addRecipientsWrapper {
+        margin-bottom: $baseLineHeight // / 2; // borrowed from bootstrap/_forms.scss
+        // NOTE: this should actually preserve the "/ 2" from _forms.scss, but for whatever reason there is some extra spacing between the search widget and the recepticle that makes the full $baseLineHeight work better
+    }
+
+    .formSection {
+        margin-bottom: $g5PageContentSpacingVertical;
+
+        @media (max-width: 479px) {
+            margin-bottom:  $g5PageContentSpacingVertical/2;
+            h2 {margin:0;}
+        }
+
+        &.promotionSection {
+            position:relative;
+            .promoWrapper,.nodeWrapper {
+                position:relative;
+                overflow:visible;
+            }
+            .promoWrapper select{
+                margin-bottom: 0;
+                width: auto;// i18n (bootstrap defaults to 220px)
+                min-width: 220px; // i18n cont'd
+            }
+            .nodeWrapper h2 {
+                margin-top: $g5PageContentSpacingVertical;
+                @media (max-width: 479px) {
+                    margin-top:  $g5PageContentSpacingVertical/2;
+                }
+            }
+
+        }
+
+        &.participantSearchSection {
+            margin-bottom: 0;
+
+            #participantSearchView {
+                position: relative;
+                z-index: 10;
+
+                .participantSearchSelect{
+                    // margin-right: 15px;
+                }
+            }
+        }
+
+        &.behaviorSection {
+            select {
+                width: auto;
+                max-width: 100%;
+
+                @media (max-width: 479px) {
+                    width: 100%;
+                    // NOTE: setting selects to 100% width on small screens is something we should probably do globally
+                }
+            }
+            // "hidden" input
+            #selectedBehavior {
+                margin: 0;
+                padding: 0;
+                width: 0;
+                border: 0;
+            }
+        }
+
+        &.messageSection textarea {
+            min-width: 500px;
+            max-width: 100%;
+            min-height: 150px;
+            max-height: 150px;
+            overflow: hidden;
+        }
+
+        &.messageSection .jHtmlArea .ToolBar {
+            margin-bottom: 5px; //fix for FF
+        }
+
+        &.copiesSection .copyOthersWrapper {
+            label {
+                text-align: left;
+                width: 150px;
+
+            }
+
+            .controls {
+                margin-left: 0;
+            }
+        }
+
+        .form-actions{
+            margin-bottom: -24px;
+        }
+
+        &.anniversaryCelebrateSection {
+            .annivDateYears,
+            .annivDateDays {
+                display: none;
+            }
+        }
+
+        &.recipientsSection {
+            table {
+                width:100%;
+
+                .participant {
+                    text-align: left;
+                    .org {
+                        display: block;
+                        line-height: normal;
+                    }
+                }
+                .award {
+                    text-align: left;
+
+                    .awardPointsInp {
+                        text-align: right;
+                    }
+                }
+                .calcDeduction {text-align: center;}
+                .remove {text-align: center;}
+            }
+            .ui-tooltip a {
+                color: $linkColor;
+            }
+
+            .participantCollectionViewWrapper {
+                position:relative;
+                h2 {
+                    position:relative;
+                }
+
+                // node link button
+                .showRecipNodes span, .singleRecipNode {
+                    display: inline-block;
+                    @include ie7-inline-block;
+                    @include text-overflow;
+                    vertical-align: inherit;
+                    max-width: 200px;
+                    font-size:12px;
+                    line-height: 22px;
+                    *line-height: 16px; // ie7
+                    &:hover {
+                       text-decoration: inherit;
+                       cursor: inherit; // ie7
+                    }
+                    &.font-awesome {
+                        vertical-align: baseline\9; // ie8,7
+                    }
+                    // responsive
+                    @media (max-width: 320px){
+                        max-width: 100px;
+                    }
+                }
+                .showRecipNodes {
+                    vertical-align: inherit;
+                    &:hover {
+                        text-decoration: none;
+                    }
+                    .limitedWidth:hover {
+                        cursor: pointer;
+                        text-decoration: underline;
+                    }
+                }
+                // picker tip
+                .changeRecipNodeTip {
+                    min-width: 180px;
+
+                    ul {
+                        margin: 0;
+                        a {
+                            display:block;
+                            max-height: 20px\9; // ie8
+                            @include text-overflow;
+                            &.selected {
+                                font-weight: bold;
+                                &:hover {
+                                    text-decoration: none !important;
+                                }
+                                i {
+                                    color: black;
+                                    &:hover {
+                                        color: black;
+                                    }
+                                }
+                            }
+                            i {
+                                line-height: 12px;
+                            }
+                            &:hover i {
+                                color: black;
+                            }
+                        }
+                    }
+                }
+                .recipCount {
+                    position:absolute;
+                    right:0px;
+                    top:0px;
+                    margin: 4px;
+                    z-index:1;
+                    font-size:15px;
+                    color: #ccc;
+                }
+                .budgetDeduction {
+                    .progress {
+                        margin-top: 25px; // roughly the height of the budget meter tooltip
+                        margin-bottom: 0;
+                    }
+                    .totals {
+                        margin-bottom: $baseLineHeight;
+
+                        .budgetMin {
+                            float: left;
+                        }
+                        .budgetMax {
+                            float: right;
+                        }
+                    }
+                    .bar {
+                        //get rid of transitions
+                        @include transition-property(none);
+                        @include transition-duration(2s);
+                        @include transition-timing-function(ease-in);
+                    }
+                }
+                .remBudgTip .ui-tooltip-content {
+                    font-size:14px;
+                    font-weight:bold;
+                    text-align: center;
+                    word-wrap: normal;
+                }
+                .remBudgTip {
+                    z-index: auto !important;
+                }
+                .budgWarn .ui-tooltip-content {
+                    color: #992323;
+                    @include text-shadow(#fff 0 0 2px);
+                }
+            }//.participantCollectionViewWrapper
+        }//.recipientSection
+
+        &.deliverDatePurlSection {
+            .control-group {
+                margin-bottom: $baseLineHeight / 2;
+            }
+            .datepickerInp {
+                width: 110px; // magic number that's half the default 220px
+            }
+        }
+
+
+    }//.formSection
+
+    .formSection.pullBottomUp{
+        // borrowed from _pages.scss
+        margin-bottom: -1 * ($g5PageContentPaddingHoriz - $g5PageContentLeftRightBorderWidth);
+
+        @media (min-width: 1200px) {
+            margin-bottom: -1 * ($g5PageContentPaddingHoriz1200 - $g5PageContentLeftRightBorderWidth1200);
+        }
+        @media (min-width: 538px) and (max-width: 979px) {
+            margin-bottom: -1 * ($g5PageContentPaddingHoriz768 - $g5PageContentLeftRightBorderWidth768);
+        }
+        @media (max-width: 767px) {
+            margin-bottom: -1 * ($g5PageContentPaddingHorizMobile * 3 / 4);
+        }
+    }
+
+    .contributionsDate {
+        line-height:28px;
+        height:28px;
+        @include inline-block;
+    }
+
+}//#recognitionPageSendView
+.lt-ie8 #recognitionPageSendView {
+    .nodeWrap {
+        //for bg flash animation, ie7 cannot handle 'transparent' bg color
+        background-color:#fff;
+    }
+
+    .actionsSection {
+        display: block;
+        // so nasty, but negative right-margin don't work in IE7
+        width: 876px;
+        position: relative;
+        min-height:0;
+    }
+}
+
+// this also shares all of send a recognition's styles
+#recognitionPageAddPointsView {
+}
+
+//success modal
+.modal.recognitionResponseModal {
+}
+
+// Recognition Page View Recognition
+#recognitionViewRecognition {
+    .span12 {
+        text-align: center;
+    }
+    .intro {
+        text-align: center;
+        border-bottom: $g5PageContentLeftRightBorderWidth solid $grayLighter;
+    }
+    .ecard {
+        padding: 20px 0;
+        text-align: center;
+
+        img {
+            width: 432px;
+        }
+    }
+    .recognitionVideoWrapper {
+        margin: 20px auto;
+        width: 80%;
+    }
+    .comments {
+        margin: 0 auto;
+        max-width: 432px;
+        text-align: left;
+    }
+}
+
+/* PLATEAU AWARDS BROWSE - LEVEL MERCHANDISE - MODAL */
+#levelMerchModal {
+    z-index: 20000; // greater than default qtip
+}
+
+
+/* CONTRIBUTORS VIEW */
+
+.purlRecipientInfo {
+    // h4 {
+    //     margin: 0;
+    // }
+    // h5 {
+    //     margin: 0;
+    // }
+    // p {
+    //     margin: 0;
+    // }
+}
+
+.contributorsView {
+    .wizardTabsContent {
+        margin-bottom: 12px;
+    }
+
+    .sortHeader {
+        cursor: pointer;
+    }
+
+    // this should be addressed in the mixin
+    .contribEmailsInput {
+        @include box-sizing(border-box);
+        width: 100%;
+    }
+
+    .contribEmailsFeedback {
+        clear: both;
+        .msg { display: none; }
+    }
+
+    .participantCollectionViewWrapper {
+
+        // step classes for the pax collection
+        &.stepClass_stepCoworkers {
+            // h4 { color: red; } // example
+        }
+        &.stepClass_stepOthers {
+            // h4 { color: green; } // example
+        }
+        &.stepClass_stepPreview {
+            // h4 { color: blue; } // example
+            h4 {
+                display: none;
+            }
+            tbody {
+                tr:hover td {
+                    background: none;
+                }
+            }
+            .participant {
+                .countryFlag {
+                    margin-right: 4px;
+                }
+                .org,
+                .email {
+                    display: inline;
+                }
+                .name ~ .email {
+                    margin-left: 4px;
+                }
+            }
+            .alreadyInvited,
+            .invitationSent,
+            .remove {
+                display: none;
+            }
+            td.remove {
+                a {
+                    margin-top: 0;
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        .invitationSent {
+            text-align: center;
+        }
+    }
+
+
+}//.contributorsView
+
+// contributors invited confirmation
+.autoModalInviteContributors {
+    .invitees {
+        .countryFlag {
+            margin-right: 4px;
+        }
+        .org,
+        .email {
+            display: inline;
+        }
+        .name ~ .email {
+            margin-left: 4px;
+        }
+        .org,
+        .name ~ .email {
+            font-size: 71.4%;
+        }
+    }
+
+    hr {
+        margin: ($baseLineHeight / 2) 0;
+    }
+
+    .modal-body {
+        max-height: 400px;
+    }
+
+    .goodRes { color: $green; }
+    .neutralRes { color: $grayLight; }
+    .badRes { color: $red; }
+}
+
+//RECOGNITION CALCULATOR
+.container-splitter .calcLink,
+.container-splitter .calcLink:visited {
+    text-decoration: none;
+    margin-right: 3px;
+}
+.container-splitter a.calcLink:hover{
+    text-decoration: none;
+}
+
+.recogCalcPayoutTableLink {
+    float: left;
+    font-weight: bold;
+    margin: 10px 0 6px 1px;
+    font-size: 12px;
+
+    i.icon-th {
+        font-size: 15px;
+        margin-right: 5px;
+        text-decoration: none;
+    }
+}
+
+.recogCalcPayoutTableWrapper {
+    z-index: 16000 !important;
+    max-width: 270px; // allow wide for i18n
+
+    h1 { // must allow long titles for other languages
+        white-space: nowrap; //i18n
+        font-size: 14px;
+        margin: 0 0 12px 0;
+        padding-right: 20px;
+        line-height: 14px;
+        display: inline-block;
+    }
+
+    th {
+        padding-right: 30px;
+    }
+
+    .recogCalcPayoutCloseBtn {
+        position: absolute;
+        top: 6px;
+        right: 9px;
+        border: 2px solid black;
+        border-image: initial;
+        padding: 1px 2px;
+        border-radius: 15px;
+        font-weight: bold;
+        margin-right: -6px;
+        margin-top: -3px;
+        font-size: 18px;
+        line-height: 12px;
+        text-align: center;
+    }
+
+    .recogCalcPayoutCloseBtn:hover {
+        background-color: #DDD;
+        cursor: pointer;
+    }
+}
+
+.recogCalcTipWrapper {
+    max-width: 750px;
+    width: 750px;
+
+    h1 {
+        font-size: 20px;
+        min-width: 300px;
+        max-width: 710px;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    label {
+        display: inline-block;
+        min-width: 320px;
+        max-width: 320px;
+        vertical-align: middle;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        position: relative;
+        margin-bottom: 18px;
+
+        li {
+            display: inline;
+            font-weight: bold;
+            max-width: 120px;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+
+    .recogCalcRatingSelect {
+        width: 140px;
+    }
+
+    .recogCalcCloseBtn {
+        float: right;
+        border-image: initial;
+        padding: 0 4px;
+        border-radius: 15px;
+        font-weight: bold;
+        margin-right: -5px;
+        margin-top: -2px;
+        border: 2px solid black;
+    }
+
+    .recogCalcCloseBtn:hover {
+        background-color: #DDD;
+        cursor: pointer;
+    }
+
+    .input-error {
+        border-color: #B94A48;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        background-color: #FDD;
+    }
+
+    .range-error {
+        font-weight: bold;
+        color: #B94A48;
+        background: #FDD;
+        border-bottom-left-radius: 15px;
+        border-top-left-radius: 15px;
+        padding-left: 10px;
+    }
+
+    .recogCalcInnerWrapper {
+        border-top: 1px solid #888;
+        border-bottom: 1px solid #888;
+        padding: 10px;
+    }
+
+    .recogCalcRatingLabel {
+        margin-left: 332px;
+    }
+
+    .recogCalcWeightLabel {
+        position: absolute;
+        right: 145px;
+    }
+
+    .criteriaWeightElm {
+        margin-left: 100px;
+    }
+
+    .recogCalcScoreLabel {
+        position: absolute;
+        right: 20px;
+    }
+
+    .criteriaScoreElm {
+        margin-left: 110px;
+    }
+
+    .recogCalcFixedAward {
+        text-align: right;
+    }
+
+    .recogCalcScoreWrapper {
+        float: right;
+        margin-right: 15px;
+
+            button {
+                float: right;
+                padding: 1px 37px 1px 37px;
+            }
+
+            p {
+                input {
+                    margin: 0 0 0 10px;
+                    width: 125px;
+                }
+            }
+
+        .recogCalcTotalWrapper {
+            text-align: right;
+            margin: 10px 0 10px 0;
+        }
+    }
+
+    @media (max-width: 767px) {
+        max-width: 100%;
+        min-width: 100%;
+        left: 0 !important; //qtip, do as I say
+
+        select{
+            max-width: 130px;
+        }
+
+        label{
+            margin-right: 5px;
+            max-width: 155px;
+            min-width: 0;
+            word-wrap: break-word;
+            display: inline-block
+        }
+
+        .recogCalcScoreLabel{
+            right: 0;
+        }
+
+        .recogCalcWeightLabel{
+            right: 80px;
+            border-right: 1px solid #CCC;
+            padding-right: 3px;
+            margin-right: 3px;
+        }
+
+        .recogCalcRatingLabel{
+            float: right;
+            right: 57%;
+            position: absolute;
+        }
+
+        .criteriaWeightElm{
+            margin-left: 90%;
+        }
+
+        .criteriaScoreElm{
+            margin-left: 78%;
+        }
+
+        .ui-tooltip-tip{
+            display: none !important;
+        }
+    } // /max-width: 767px
+
+    @media (max-width: 479px) {
+        select{
+            max-width: 130px;
+        }
+
+        label{
+            margin-right: 0;
+            max-width: 80px;
+            word-wrap: break-word;
+            display: inline-block;
+            white-space: nowrap;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .recogCalcScoreLabel{
+            right: 0;
+        }
+
+        .recogCalcWeightLabel{
+            right: 80px;
+            border-right: 1px solid #CCC;
+            padding-right: 3px;
+            margin-right: 3px;
+        }
+
+        .recogCalcRatingLabel{
+            float: right;
+            right: 60%;
+            position: absolute;
+        }
+
+        .criteriaWeightElm{
+            margin-left: 90%;
+        }
+
+        .criteriaScoreElm{
+            margin-left: 70%;
+        }
+    } // /max-width: 479px
+
+}
+//END RECOGNITION CALCULATOR
+
+.approvalCalcTipWrapper{
+    @media (max-width: 767px) {
+        .ui-tooltip-tip{
+            left: 6%!important;
+            display: block !important;
+        }
+    }
+}
+
+
+
+.modal.recognition.ezModuleModalClone {
+    @media (max-width: 479px) {
+
+    }
+
+}
+
+//ie7 stuff
+
+.lt-ie8 .recognition {
+    .profile-popover {
+        *display: inline; //ie7 is the best
+        zoom: 1;
+        float: left;
+    }
+    .ezRecognitionRecipInfo {
+        *display: inline; //ie7 is the best
+        zoom: 1;
+        width: 67.5%;
+
+        .ezRecRecipName {
+            display: inline !important;
+        }
+    }
+
+    #ezRecogntionForm {
+        .control-label {
+            width: 120px;
+        }
+        .controls {
+            padding-left: 0;
+            // margin-left: 95px;
+        }
+    }
+
+    &.module.grid-dimension-2x2,
+    &.module.grid-dimension-4x2,
+    &.module.grid-dimension-4x4 {
+        .module-liner .wide-view .recognition-module-wrapper .input-append .btn {
+            margin-top: 1px;
+        }
+    }
+}
+
+.lt-ie8 .recognition.grid-dimension-4x2,
+.lt-ie8 .recognition.grid-dimension-4x4 {
+    #ezRecogntionForm {
+        .control-label {
+            // width: 120px;
+        }
+        .controls {
+            // margin-left: 120px;
+        }
+    }
+}

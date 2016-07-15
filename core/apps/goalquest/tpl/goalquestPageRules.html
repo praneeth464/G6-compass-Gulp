@@ -1,0 +1,119 @@
+<!-- ======== GOALQUEST PAGE ======== -->
+
+<!--
+    Rules Page for Participants, Partners and Managers
+    - JSP powered
+-->
+
+<div id="goalquestPageRulesView" class="goalquest page-content"><div class="row">
+        <div class="span6">
+            <h2>Promotion Name</h2>
+        </div>
+        <div class="span6">
+            <ul class="export-tools fr">
+                <li><a class="pageView_print" href="#">Print</a></li>
+                <li><i class="icon-print"></i></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span12">
+            <dl class="dl-horizontal dl-h1">
+                <dt>Goal:</dt>
+                <dd>Increase Sales of G-Plastic products in the 4th quarter</dd>
+                <dt>Program Period:</dt>
+                <dd>Month, DD, YYYY through Month, DD, YYYY</dd>
+            </dl>
+        </div>
+    </div>
+
+
+
+
+    <!-- NOTE: PDF VERSION -->
+    <div class="row">
+        <div class="span12">
+            <a class="fileLink pdfLink" href="path/to/rules.pdf">PDF lorem ipsum</a>
+        </div>
+    </div><!-- /NOTE: PDF VERSION -->
+
+
+
+
+    <!-- NOTE: CONTENT MANAGED VERSION -->
+    <div class="row">
+        <div class="span12">
+            <h4>How it Works</h4>
+            <ul>
+                <li>ABC Corporation will assign each Sales Representative a base objective (the "Base Objective") for eligible sales during the program period (June 1 through August 31, 2010).</li>
+                <li>Each Sales Representative will have the option to select one goal from among three different Goal Levels based on the Base Objective. Each Goal Level will have a different percent of sales objective attainment, and a different reward payout after attainment of the required level of sales.</li>
+                <li>Goal Level must be chosen and entered on or before midnight on Friday May 28, 2010.</li>
+                <li>No changes to individual goal selections can be made after May 28, 2010.</li>
+                <li>At program end Sales Representatives who attain the required percentage achievement over objective, based on the previously selected Goal Level, will earn Points® rewards based on that Goal Level. If a Sales Representative does not achieve the required sales based on the selected Goal Level, that Agent will not receive any payout.</li>
+                <li>If a Sales Representative achieves a higher level of sales than the Goal Level selected, awards will be paid only for the level selected, not the higher level achieved.</li>
+            </ul>
+            <h4>ABC Corporation's GoalQuest® Goal Level Grid</h4>
+            <p>The following grid represents the GoalQuest Goal Levels for Direct Sales Representatives in this program:</p>
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <td>Level</td>
+                        <td>Description</td>
+                        <td>Award</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>103% of your adjusted Q3 sales results</td>
+                        <td>250 Points</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>103% of your adjusted Q3 sales results</td>
+                        <td>250 Points</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>103% of your adjusted Q3 sales results</td>
+                        <td><a href="#">View Available Rewards</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>How to Earn Awards—An Example</h4>
+            <ul>
+                <li>If Sales Representative A selects Goal Level 1 from the grid above, he or she must achieve an adjusted Q3 2010 sales baseline plus 3% to qualify for any payout. If during the program period the Sales Representativeʼs total sales are at least 3% more than their adjusted Q3 2010 sales baseline the Sales Representative will be awarded 250 Points® at the conclusion of the program.</li>
+                <li>If Sales Representative A selects Goal Level 2 from the grid above, he or she must achieve an adjusted Q3 2010 sales baseline plus 5% to qualify for any payout. If the Sales Representativeʼs total sales are at least 5% more than their adjusted Q3 2010 baseline the Sales Representative will be awarded 750 Points® at the conclusion of the program.</li>
+            </ul>
+        </div>
+    </div><!-- /NOTE: CONTENT MANAGED VERSION -->
+
+
+
+</div><!-- /#goalquestPageRulesView -->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+
+    $(document).ready(function(){
+
+        //attach the view to an existing DOM element
+        window.pageView = new PageView({
+            el:$('#goalquestPageRulesView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'GoalQuest Rules'
+        });
+
+    });
+
+</script>

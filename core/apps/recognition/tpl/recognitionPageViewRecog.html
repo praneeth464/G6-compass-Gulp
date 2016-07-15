@@ -1,0 +1,51 @@
+<!-- ======== RECOGNITION VIEW RECOGNITION PAGE ======== -->
+<!-- NOTE: this is the super-stripped down recognition that the user sees when clicking the link in the email -->
+
+<div class="page-content" id="recognitionViewRecognition">
+    <div class="row">
+        <div class="span12">
+            <div class="intro">
+                <p class="muted"><em>The following eCard was sent to you on 01/10/2013 from Jonathan Supercalifragilisticexpialidocious.</em></p>
+            </div>
+
+            <!--JAVA NOTE: if image show eCard otherwise show the video-->
+            <div class="ecard">
+                <img alt="eCard Name" src="http://placehold.it/432x432">
+            </div>
+
+            <div class="recognitionVideoWrapper" style="display:none">
+                <video id="recognitionVideo" class="video-js vjs-default-skin" controls preload="auto" data-setup="{}">
+                    <source src="http://www.rickety.us/wp-content/uploads/2011/06/Tyrannosaurus_Rex.m4v" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="comments">
+                <!-- entirety of this DIV should be filled with CM content. Do NOT preserve the paragraph tags below. -->
+                <p>Congratulations on your something something blah blah blah this needs to wrap to a second line.</p>
+            </div>
+        </div><!-- /.span12 -->
+    </div><!-- /.row -->
+
+</div><!-- /#recognitionViewRecognition.page-content -->
+
+<!-- NOTE: As of 5.4 adding page view for videoJS -->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function(){
+        //attach the view to an existing DOM element
+        var rprv = new RecognitionPageRecogView({
+            el:$('#recognitionViewRecognition'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            }
+        });
+    });
+</script>

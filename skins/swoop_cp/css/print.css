@@ -1,0 +1,332 @@
+/* line 4, ../../../core/base/scss/print.scss */
+a[href]:after {
+  content: "";
+}
+
+/* line 10, ../../../core/base/scss/print.scss */
+body {
+  margin: 0px;
+  min-width: 1062px;
+  color: black;
+  background: none !important;
+  display: block;
+  font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+
+/* line 18, ../../../core/base/scss/print.scss */
+#pageNav {
+  padding: 12px;
+}
+/* line 21, ../../../core/base/scss/print.scss */
+#pageNav #pageTitle {
+  display: block;
+  float: none;
+  margin: 0;
+}
+
+/* line 27, ../../../core/base/scss/print.scss */
+#profilePageView .page-topper {
+  color: black;
+  background: none;
+}
+
+/* line 31, ../../../core/base/scss/print.scss */
+.page.profile .page-topper .span6 .span4 h4 {
+  font-family: "din-light-condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: black;
+}
+
+/* line 35, ../../../core/base/scss/print.scss */
+a:link,
+a:visited {
+  background: none;
+  color: black;
+  font-weight: bold;
+}
+
+/* line 41, ../../../core/base/scss/print.scss */
+h1, h2, h3 {
+  background: none;
+  color: black;
+  padding-bottom: 1px;
+  /*        width: 1062px;
+  */
+}
+
+/* line 47, ../../../core/base/scss/print.scss */
+.comment-block {
+  border-top: 1px solid gray;
+}
+
+/* line 51, ../../../core/base/scss/print.scss */
+#participantProfileView .profile-meta .profile-head {
+  font-family: din-light-condensed, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 20px;
+}
+
+/* line 55, ../../../core/base/scss/print.scss */
+#header,
+#participantProfileViewAlert,
+#pageNavLinks,
+#footer .nav a,
+#participantProfileMobileToggle,
+.share-print,
+.profile-foot,
+#profilePageShellUpperRightTabSet,
+.export-tools,
+#statementTabUpdateTransactionDetailsButton,
+.btn,
+.form-actions,
+#PURLContributeListViewWrapper h5,
+#PURLShareIcons,
+#PURLAttachLinksWrapper,
+#PURLActivityPanelCommentWrapper,
+.quizPageTake .wizardTabsView,
+.quizPageTake #printPage,
+textarea.span12,
+#approverActions,
+#approverActions .approverAction,
+#approvalsPageClaims #printPage {
+  display: none !important;
+}
+
+/* line 79, ../../../core/base/scss/print.scss */
+header#header {
+  background: none !important;
+}
+
+/* line 82, ../../../core/base/scss/print.scss */
+#footer .container {
+  padding: 0;
+}
+
+/* line 85, ../../../core/base/scss/print.scss */
+#globalFooterView {
+  border: 0;
+  padding: 12px;
+}
+/* line 89, ../../../core/base/scss/print.scss */
+#globalFooterView .nav {
+  margin: 0;
+}
+/* line 93, ../../../core/base/scss/print.scss */
+#globalFooterView .copyright {
+  float: none;
+  text-align: left;
+}
+
+/* line 98, ../../../core/base/scss/print.scss */
+#profilePageShellTabs li,
+#profilePageActivityHistoryTabSelectedTabs li {
+  display: none !important;
+}
+
+/* line 103, ../../../core/base/scss/print.scss */
+#profilePageShellTabs .active,
+#profilePageActivityHistoryTabSelectedTabs .active {
+  display: block !important;
+  color: black;
+  border-top-color: #DDD;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-bottom-color: transparent;
+}
+
+/* line 112, ../../../core/base/scss/print.scss */
+#recognitionsSent .progress-info {
+  border: 1px solid gray;
+}
+
+/* line 115, ../../../core/base/scss/print.scss */
+#recognitionsSent .progress-info .bar {
+  background-color: black;
+  border: 3px solid black;
+}
+
+/* line 119, ../../../core/base/scss/print.scss */
+.page-content {
+  border-left: 0;
+  border-right: 0;
+}
+
+/* line 125, ../../../core/base/scss/print.scss */
+.page-content .span1 {
+  width: 72px;
+}
+
+/* line 128, ../../../core/base/scss/print.scss */
+.page-content .span7 {
+  width: 612px;
+}
+
+/* line 131, ../../../core/base/scss/print.scss */
+.page-content .span12 {
+  width: 1062px;
+}
+
+/* line 134, ../../../core/base/scss/print.scss */
+#profilePageStatementTabSummary dt {
+  width: 180px;
+}
+
+/* line 137, ../../../core/base/scss/print.scss */
+.dl-horizontal dl {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* line 141, ../../../core/base/scss/print.scss */
+.dl-horizontal dt {
+  text-align: left !important;
+}
+
+/* line 144, ../../../core/base/scss/print.scss */
+.dl-horizontal dd {
+  width: 50%;
+}
+
+/* line 147, ../../../core/base/scss/print.scss */
+.page-content [class*="span"] {
+  float: left;
+  margin-left: 18px;
+}
+
+/* line 151, ../../../core/base/scss/print.scss */
+.page-content .row::before,
+.page-content .row::after {
+  display: table;
+  content: '';
+  line-height: 0;
+}
+
+/* line 157, ../../../core/base/scss/print.scss */
+.page-content .row {
+  margin-left: 29px;
+}
+
+/* line 160, ../../../core/base/scss/print.scss */
+.page-content .row::after {
+  clear: both;
+}
+
+/* line 163, ../../../core/base/scss/print.scss */
+.row {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 1080px;
+}
+
+/* line 168, ../../../core/base/scss/print.scss */
+.page-content .row .row {
+  float: left;
+  margin-left: -18px;
+}
+
+/* line 172, ../../../core/base/scss/print.scss */
+div {
+  display: block;
+}
+
+/* line 175, ../../../core/base/scss/print.scss */
+.page-content .span8 {
+  width: 702px;
+}
+
+/* line 178, ../../../core/base/scss/print.scss */
+.page-content .span4 {
+  width: 342px;
+}
+
+/* line 181, ../../../core/base/scss/print.scss */
+.page.publicRecognition .publicRecognitionItems .public-recognition-item {
+  margin-left: -47px;
+  margin-bottom: 32px;
+}
+
+/* line 185, ../../../core/base/scss/print.scss */
+.publicRecognition .public-recognition-item {
+  position: relative;
+}
+
+/* line 188, ../../../core/base/scss/print.scss */
+.page.publicRecognition .publicRecognitionItems,
+.page.publicRecognition .follow-list-links {
+  padding-left: 0px !important;
+}
+
+/* line 192, ../../../core/base/scss/print.scss */
+input.date {
+  background: none;
+  color: black;
+}
+
+/* line 196, ../../../core/base/scss/print.scss */
+#PURLContributeListTable .PURLContributeListTable th {
+  background: black;
+  color: white;
+}
+
+/* line 200, ../../../core/base/scss/print.scss */
+#PURLContributeListTable .PURLContributeListTable th:first-child {
+  display: none !important;
+}
+
+/* line 203, ../../../core/base/scss/print.scss */
+#PURLContributeListTable .PURLContributeListTable th:last-child {
+  display: none !important;
+}
+
+/* line 206, ../../../core/base/scss/print.scss */
+#PURLContributeListTable .PURLContributeListTable td:first-child {
+  display: none !important;
+}
+
+/* line 209, ../../../core/base/scss/print.scss */
+#PURLContributeListTable .PURLContributeListTable td:last-child {
+  display: none !important;
+}
+
+/* line 212, ../../../core/base/scss/print.scss */
+.container {
+  width: auto !important;
+}
+
+/* line 216, ../../../core/base/scss/print.scss */
+#PURLCongratsColumn {
+  display: inline-block;
+  border-bottom: 1px solid #CCC;
+  padding-bottom: 10px;
+  margin-top: 15px;
+}
+
+/* line 225, ../../../core/base/scss/print.scss */
+.modal-open #wrapper_outer,
+.modal-open .modal-backdrop,
+.modal-open .modal-header .close {
+  display: none;
+}
+/* line 231, ../../../core/base/scss/print.scss */
+.modal-open .modal, .modal-open .modal-stack {
+  position: relative;
+  top: auto !important;
+  left: auto !important;
+  margin: auto !important;
+  width: auto !important;
+  border: 0 !important;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+/* line 241, ../../../core/base/scss/print.scss */
+.modal-open .modal-header {
+  padding: 12px;
+  border: 0;
+}
+/* line 246, ../../../core/base/scss/print.scss */
+.modal-open .modal-body .page-content {
+  margin: -15px;
+}
+/* line 250, ../../../core/base/scss/print.scss */
+.modal-open .modal-footer {
+  display: none;
+}

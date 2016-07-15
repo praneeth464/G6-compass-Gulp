@@ -1,0 +1,872 @@
+// App-specific variables
+// =========================
+$communications_bgColor: $g5ModuleBgColor !default;
+$communications_gradType: $g5ModuleGradType !default;
+$communications_gradMeta: $g5ModuleGradMeta !default;
+$communications_gradStops: $g5ModuleGradStops !default;
+
+$communications_iconColor: $g5ModuleIconColor !default;
+$communications_titleColor: $g5ModuleTitleColor !default;
+$communications_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$communications_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$communications_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+// $communications_borderColor: $grayLighter !default;
+$communications_blockHeadlineFontFamily: false !default;
+$communications_blockHeadlineFontSize: $baseFontSize * 1.286 !default; // 18px
+$communications_blockHeadlineFontWeight: bold !default;
+$communications_blockHeadlineBgColor: $communications_bgColor !default;
+$communications_blockHeadlineColor: $communications_titleColor !default;
+
+$communications_blockHeadlineBtnBgColor: $btnPrimaryBackground !default;
+$communications_blockHeadlineBtnTextColor: $white !default;
+$communications_blockHeadlineBtnBgGradType: linear !default;
+$communications_blockHeadlineBtnBgGradMeta: top !default;
+$communications_blockHeadlineBtnBgGradStops: $btnPrimaryBackground, $btnPrimaryBackgroundHighlight !default;
+
+$communications_bannerHeadlineBgColor: false !default;
+$communications_bannerHeadlineColor: false !default;
+
+$communications_newsHeadlineBgColor: false !default;
+$communications_newsHeadlineColor: false !default;
+
+$communications_resoureceHeadlineBgColor: false !default;
+$communications_resoureceHeadlineColor: false !default;
+
+$communications_tipsHeadlineBgColor: false !default;
+$communications_tipsHeadlineColor: false !default;
+
+$communications_alertsHeadlineBgColor: false !default;
+$communications_alertsHeadlineColor: false !default;
+
+$communications_uploadPreviewImgBorderColor: $grayLight !default;
+$communications_uploadPreviewReplaceBgColor: #cccccc !default;
+$communications_uploadPreviewReplaceBorderColor: false !default;
+
+$communications_exportImgUrlPath: $appImagesPath !default;
+
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.communications {
+
+} /* /.communications */
+
+/* ----- MODULE STYLES ----- */
+.module.communications {
+
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $communications_bgColor,
+            $gradType: $communications_gradType,
+            $gradMeta: $communications_gradMeta,
+            $gradStops: $communications_gradStops
+        );
+    }
+
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $communications_iconColor,
+            $titleColor: $communications_titleColor,
+            $titleFontFamily: $communications_titleFontFamily
+        );
+
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            @include g5HomeAppIconBoxReflect(-50px);
+        }
+    }
+
+    @include module_titleIconViewFontSizesWeights($communications_titleFontSizes, $communications_titleFontWeights);
+
+} /* /.module.communications */
+
+/* ----- PAGE STYLES ----- */
+.page.communications {
+
+    //Manage Blocks
+    .communicationsBlock {
+        min-height: 270px;
+
+        .blockHeadline {
+            background: $communications_blockHeadlineBgColor;
+            @include fontSmoothing($communications_blockHeadlineColor, $communications_blockHeadlineBgColor);
+            @include clearfix();
+            font-size: round($communications_blockHeadlineFontSize);
+            line-height: normal;
+            padding: ($baseLineHeight / 4) ($baseLineHeight / 2) ($baseLineHeight / 4) ($baseLineHeight / 4);
+            text-align: right;
+
+            h3 {
+                color: $communications_blockHeadlineColor;
+                float: left;
+                font-size: inherit;
+                font-weight: $communications_blockHeadlineFontWeight;
+                line-height: inherit;
+                margin: 0;
+                padding-left: round($communications_blockHeadlineFontSize * 1.125 * 1.333);
+                @if $communications_blockHeadlineFontFamily {
+                    font-family: $communications_blockHeadlineFontFamily;
+                }
+                position: relative;
+
+                i {
+                    display: inline-block;
+                    position: absolute;
+                    left: round($communications_blockHeadlineFontSize * 1.125 * 1.1111) / 2;
+                    top: 50%;
+                    margin-top: (-1 * $baseLineHeight / 2);
+                    margin-left: -1 * round($communications_blockHeadlineFontSize * 1.125 * 1.1111) / 2;
+                    width: round($communications_blockHeadlineFontSize * 1.125 * 1.1111);
+                    height: $baseLineHeight;
+                    font-size: round($communications_blockHeadlineFontSize * 1.125);
+                    line-height: $baseLineHeight;
+                    text-align: center;
+                }
+                .icon-g5-news,
+                .icon-g5-resourcecenter,
+                .icon-g5-tips {
+                    margin-top: (-1 * $baseLineHeight / 2) + 2px; // + 2px at the end is for careful hand-alignment (e.g. magic number)
+                    font-size: round($communications_blockHeadlineFontSize * 1.125 * 1.333); // cheating to make the g5 module icons the same size as the others
+                }
+                // if icon mode is 'image', we need to override and use the font-based icon for the type headers
+                @if $g5fonticonsModulesMode == 'image' {
+                    i {
+                        background: none;
+                    }
+                    .icon-g5-news:before {
+                        content: '\f007';
+                    }
+                    .icon-g5-resourcecenter:before {
+                        content: '\f023';
+                    }
+                    .icon-g5-tips:before {
+                        content: '\f01c';
+                    }
+                }
+
+                span {
+                    position: relative;
+                }
+            }
+            a.btn {
+                @include module_moduleLinerBackground(
+                    $bgColor: $communications_blockHeadlineBtnBgColor,
+                    $gradType: $communications_blockHeadlineBtnBgGradType,
+                    $gradMeta: $communications_blockHeadlineBtnBgGradMeta,
+                    $gradStops: $communications_blockHeadlineBtnBgGradStops
+                );
+                border-color: darken($communications_blockHeadlineBtnBgColor, 20%);
+                color: $communications_blockHeadlineBtnTextColor;
+                padding: 0px 12px;
+                text-shadow: none;
+            }
+        }
+        .blockContent {
+            clear: both;
+            padding: $baseLineHeight / 2;
+            margin: 0 0 $baseLineHeight 0;
+
+            p {
+                font-size: $baseFontSize * 1.14;
+            }
+        }
+    }
+    .manageBannersBlock {
+        .blockHeadline {
+            @if $communications_bannerHeadlineBgColor and $communications_bannerHeadlineBgColor != $communications_blockHeadlineBgColor {
+                background-color: $communications_bannerHeadlineBgColor;
+            }
+
+            @if $communications_bannerHeadlineColor and $communications_bannerHeadlineColor != $communications_blockHeadlineColor {
+                @include fontSmoothing($communications_bannerHeadlineColor, $communications_bannerHeadlineBgColor or $communications_blockHeadlineBgColor);
+
+                h3 {
+                    color: $communications_bannerHeadlineColor;
+                }
+            }
+            // @if $communications_bannerHeadlineLinkColor and $communications_bannerHeadlineLinkColor != $communications_blockHeadlineLinkColor {
+            //     a {
+            //         color: $communications_bannerHeadlineLinkColor;
+            //     }
+            // }
+        }
+    }
+    .manageNewsBlock {
+        .blockHeadline {
+            @if $communications_newsHeadlineBgColor and $communications_newsHeadlineBgColor != $communications_blockHeadlineBgColor {
+                background-color: $communications_newsHeadlineBgColor;
+            }
+
+            @if $communications_newsHeadlineColor and $communications_newsHeadlineColor != $communications_blockHeadlineColor {
+                @include fontSmoothing($communications_newsHeadlineColor, $communications_newsHeadlineBgColor or $communications_blockHeadlineBgColor);
+
+                h3 {
+                    color: $communications_newsHeadlineColor;
+                }
+            }
+            // @if $communications_newsHeadlineLinkColor and $communications_newsHeadlineLinkColor != $communications_blockHeadlineLinkColor {
+            //     a {
+            //         color: $communications_newsHeadlineLinkColor;
+            //     }
+            // }
+        }
+    }
+    .manageResourceBlock {
+        .blockHeadline {
+            @if $communications_resoureceHeadlineBgColor and $communications_resoureceHeadlineBgColor != $communications_blockHeadlineBgColor {
+                background-color: $communications_resoureceHeadlineBgColor;
+            }
+
+            @if $communications_resoureceHeadlineColor and $communications_resoureceHeadlineColor != $communications_blockHeadlineColor {
+                @include fontSmoothing($communications_resoureceHeadlineColor, $communications_resoureceHeadlineBgColor or $communications_blockHeadlineBgColor);
+
+                h3 {
+                    color: $communications_resoureceHeadlineColor;
+                }
+            }
+            // @if $communications_resoureceHeadlineLinkColor and $communications_resoureceHeadlineLinkColor != $communications_blockHeadlineLinkColor {
+            //     a {
+            //         color: $communications_resoureceHeadlineLinkColor;
+            //     }
+            // }
+        }
+    }
+    .manageTipsBlock {
+        .blockHeadline {
+            @if $communications_tipsHeadlineBgColor and $communications_tipsHeadlineBgColor != $communications_blockHeadlineBgColor {
+                background-color: $communications_tipsHeadlineBgColor;
+            }
+
+            @if $communications_tipsHeadlineColor and $communications_tipsHeadlineColor != $communications_blockHeadlineColor {
+                @include fontSmoothing($communications_tipsHeadlineColor, $communications_tipsHeadlineBgColor or $communications_blockHeadlineBgColor);
+
+                h3 {
+                    color: $communications_tipsHeadlineColor;
+                }
+            }
+            // @if $communications_tipsHeadlineLinkColor and $communications_tipsHeadlineLinkColor != $communications_blockHeadlineLinkColor {
+            //     a {
+            //         color: $communications_tipsHeadlineLinkColor;
+            //     }
+            // }
+        }
+    }
+    .manageAlertsBlock {
+        .blockHeadline {
+            @if $communications_alertsHeadlineBgColor and $communications_alertsHeadlineBgColor != $communications_blockHeadlineBgColor {
+                background-color: $communications_alertsHeadlineBgColor;
+            }
+
+            @if $communications_alertsHeadlineColor and $communications_alertsHeadlineColor != $communications_blockHeadlineColor {
+                @include fontSmoothing($communications_alertsHeadlineColor, $communications_alertsHeadlineBgColor or $communications_blockHeadlineBgColor);
+
+                h3 {
+                    color: $communications_alertsHeadlineColor;
+                }
+            }
+            // @if $communications_alertsHeadlineLinkColor and $communications_alertsHeadlineLinkColor != $communications_blockHeadlineLinkColor {
+            //     a {
+            //         color: $communications_alertsHeadlineLinkColor;
+            //     }
+            // }
+        }
+    }
+    #resourceFilterSelect,
+    #bannersFilterSelect,
+    #newsFilterSelect,
+    #tipsFilterSelect {
+        width: 100%;
+    }
+
+    .control-group.text-center .btn {
+        padding: 8px 25px;
+        margin-bottom: 10px;
+    }
+    .manageComModal .text-center {
+        margin-bottom: 20px;
+        width: 500px;
+
+        h4 {
+            margin-bottom: 30px;
+        }
+    }
+
+    // Audience Table
+    #selectAudienceTable {
+        tr {
+            td{
+                 position: relative;
+            }
+
+            i {
+                display: none;
+            }
+
+            .addToAudience {
+                display: block;
+            }
+        }
+        .selected {
+            .addToAudience {
+                display: none;
+            }
+
+            i {
+                display: block;
+            }
+        }
+        .audienceSelectCheckbox {
+            position: absolute;
+            top: 0;
+            visibility: hidden;
+        }
+    }
+
+    .audienceParticipants {
+        width: 120px;
+
+        ul {
+            list-style: none;
+            margin: 0 0 5px 5px;
+            max-height: 200px;
+            overflow-y: auto;
+
+        }
+
+        .excelExportIcon {
+            @include safeImgUrls('reports/reports_exportXls.png', $communications_exportImgUrlPath);
+            background-repeat: no-repeat;
+            display: block;
+            height: 34px;
+            width: 34px;
+        }
+    }
+
+    //general page styles
+    .spincover {
+        position: absolute;
+    }
+    .bannerAddLink,
+    .resourceCenterAddLink {
+        clear: both;
+
+        i {
+            padding-right: 7px;
+        }
+        a {
+            padding-right: 10px;
+        }
+    }
+    .resourceDisplayAttached,
+    .bannerDisplayAttached {
+        height: 20px;
+        padding: 5px 0;
+        position: relative;
+
+        .spin {
+            // display: block;
+            height: $spinner_widthHeight / 2;
+            left: 30px;
+            margin: 0;
+            position: absolute;
+            width: $spinner_widthHeight / 2;
+        }
+    }
+    .bannerDisplayLink,
+    .resourceDisplayLink {
+        /* NOTE: I (Joel) commented all this out because the styles were interfering with the (X) added as part of .removeLink
+         * If these need to come back, I'm sorry. Some adjustment will need to be done to make the (X) display properly
+         */
+        // display: inline-block;
+        // height: 20px;
+        // overflow: hidden;
+        // position: absolute;
+        // text-overflow: ellipsis;
+        // white-space: nowrap;
+        // width: 100%;
+        // z-index: 1;
+    }
+    .removeLink {
+        cursor: pointer;
+    }
+    #resourceCenterLink,
+    #bannerLink {
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        height: 0;
+        outline: none;
+        padding: 0;
+        position: absolute;
+        top: -15px;
+        width: 170px;
+        z-index: 0;
+    }
+    .attachUrlResource,
+    .attachUrlBanner {
+        vertical-align: top;
+    }
+    .addDocBannerPopover,
+    .addDocResourcePopover {
+        .control-group {
+            margin-bottom: 0;
+
+            label {
+                cursor: default;
+            }
+        }
+        form {
+            line-height: $baseLineHeight * 1.1;
+            margin-top: 10px;
+
+            input {
+                height: 25px;
+                line-height: $baseLineHeight * .85;
+                outline: none;
+            }
+        }
+
+    }
+    .communicationsHelpText {
+        color: #666666;
+        font-size: $baseFontSize * .86;
+    }
+    #newsMessage {
+        clear: both;
+        margin-bottom: 15px;
+    }
+    .linkColumn,
+    .storyColumn,
+    .contentColumn {
+        word-break: break-all;
+    }
+    .imageColumn {
+        width: 75px;
+    }
+    .bannerAddedContent,
+    .newsAddedContent {
+        .imageColumn img {
+            height: 75px;
+            width: 75px;
+            max-width: none;
+        }
+    }
+    .resourceCenterAddedContent,
+    .bannerAddedContent,
+    .tipsAddedContent,
+    .newsAddedContent {
+        &.isEditing {
+            @include opacity(0.5);
+        }
+
+        .table {
+            margin-bottom: 0;
+
+            i {
+                font-size: 20px;
+            }
+
+            td {
+                vertical-align: middle;
+            }
+
+            .editColumn,
+            .remove {
+                text-align: center;
+            }
+
+            .remove a[disabled]{
+                cursor: not-allowed;
+            }
+        }
+
+        .emptyMessage td {
+            background-color: #cccccc;
+        }
+    }
+    .resourceCenterAddNewContent,
+    .bannerAddNewContent,
+    .tipAddNewContent,
+    .newsAddNewContent {
+        background-color: #E0E0E0;
+        padding: 20px 10px;
+
+        label {
+            font-weight: bold;
+        }
+    }
+    .addLanguageContent {
+        margin: 30px 0;
+
+        a.disabled {
+            cursor: not-allowed;
+        }
+    }
+
+    //news and banner image select/upload
+    .chooseImagesSection {
+        float: left;
+        margin-bottom: 15px;
+        position: relative;
+
+        .imageLargeWrapper {
+            background-color: #7F7F7F;
+            border: 1px solid $inputBorder;
+            float: left;
+            height: 395px;
+            margin-top: 45px;
+            width: 395px;
+            line-height: 395px;
+            vertical-align: middle;
+            text-align: center;
+
+            p {
+                font-weight: bold;
+                color: $white;
+                margin: 0 10px;
+                line-height: 1;
+                display: inline-block;
+            }
+
+            img {
+                width: 100%;
+                vertical-align: top;
+            }
+
+            @media (max-width: 648px) {
+                margin-top: 0;
+            }
+            @media (max-width: 464px) {
+                width: 254px;
+                height: 254px;
+            }
+        }
+        .thumbnailWrapper {
+            float: right;
+
+            .selectedImageInput {
+                position: absolute;
+                right: 60px;
+                top: 40px;
+                visibility: hidden;
+            }
+        }
+        #thumbnailContainer {
+            height: 405px;
+            margin-top: 13px;
+            overflow: hidden;
+            position: relative;
+            width: 430px;
+
+            @media (min-width: 1200px) {
+                width: 565px;
+            }
+            @media (max-width: 979px) and (min-width: 649px) {
+                width: 160px;
+            }
+            @media (max-width: 648px) {
+                margin-left: -5px;
+                width: auto;
+                height: 135px;
+            }
+        }
+        #thumbnailPager {
+            height: 30px;
+            margin-left: 30px;
+
+            @media (max-width: 648px) {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+            @media (max-width: 479px) {
+                .btn {
+                    display: inline-block;
+                    width: auto;
+                    padding-left: 12px;
+                    padding-right: 12px;
+                    margin-top: 0;
+                }
+            }
+        }
+        #thumbnailSelect {
+            @media (max-width: 648px) {
+                margin-left: 0;
+            }
+        }
+        #thumbnailSelect li {
+            border: 1px solid #ccc;
+            cursor: pointer;
+            float: left;
+            height: 128px;
+            list-style: none;
+            margin:0 0 5px 5px;
+            width: 128px;
+
+            img {
+                width: 100%;
+            }
+            &.uploadContainer {
+                background-color: $white;
+                position: relative;
+
+                a {
+                    display: block;
+                    height: 100%;
+                    width: 100%;
+
+                }
+                img {
+                    position: absolute;
+                    @include opacity(0.5);
+                }
+                .icon-upload {
+                    color: #4b4b4b;
+                    font-size: $baseFontSize * 2.86;
+                    left: 39px;
+                    position: absolute;
+                    text-decoration: none;
+                    top: 28px;
+                    z-index: 2;
+                }
+                .upload-text {
+                    color: #4b4b4b;
+                    font-size: $baseFontSize * 1.14;
+                    left: 15px;
+                    position: absolute;
+                    top: 72px;
+                    z-index: 2;
+                }
+            }
+            &.selected {
+                border: 1px solid $black;
+            }
+        }
+    }
+
+    #uploadImageModal {
+        .imageUploadContainer {
+            border-top: 1px solid #4b4b4b;
+            padding: $baseLineHeight 0;
+            overflow: auto;
+        }
+
+        .replaceImageTip {
+            ul {
+                margin-left: $baseLineHeight / 2;
+            }
+            input[type="file"] {
+                height: $baseLineHeight;
+                line-height: $baseLineHeight;
+            }
+        }
+
+        .module {
+            position: relative;
+            margin: 0 ($g5ModuleGutter * 2 - 2px) $gridGutterWidth 0;
+
+            &.grid-dimension-2x2 {
+                float: left;
+            }
+            &.grid-dimension-page {
+                overflow: visible;
+            }
+
+            .module-wrapper {
+                position: relative;
+                overflow: auto;
+            }
+
+            .module-liner {
+                margin: 0;
+                border: 1px solid $communications_uploadPreviewImgBorderColor;
+            }
+
+            .fauxBgImg {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
+
+            .replaceImage {
+                position: relative;
+                float: left;
+                clear: both;
+                padding: $g5ModulePadding / 2 $g5ModulePadding;
+                background: $communications_uploadPreviewReplaceBgColor;
+                cursor: pointer;
+                @if $communications_uploadPreviewReplaceBorderColor {
+                    border: 1px solid $communications_uploadPreviewReplaceBorderColor;
+                    border-top: 0;
+                }
+            }
+
+            .spincover {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                @include safeBkgs(rgba(255,255,255,0.5));
+
+                .spin {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    margin: (-1 * $spinner_widthHeight / 2) 0 0 (-1 * $spinner_widthHeight / 2);
+                    padding: 0;
+                    background: none;
+                    filter: none;
+                }
+            }
+        }
+        .pageUploadPreview .module {
+            margin: 0;
+
+            img {
+                position: relative;
+            }
+        }
+        @media (max-width: 767px) {
+            .pageUploadPreview {
+                .span2 {
+                    @include clearfix();
+                }
+                .grid-dimension-page {
+                    float: left;
+
+                    img {
+                        float: left;
+                    }
+                }
+            }
+        }
+
+        .spin {
+            display: block;
+            height: $spinner_widthHeight;
+            margin: 0 auto;
+            position: relative;
+            top: 30%;
+            width: $spinner_widthHeight;
+        }
+        .newsUploadImage,
+        .bannerUploadImage {
+            overflow: hidden;
+
+            label {
+                display: inline;
+            }
+
+            input[type="file"] {
+                line-height: $baseLineHeight;
+            }
+        }
+
+        .uploadRequirements {
+            color: #999;
+            display: block;
+            font-size: $baseFontSize * .86;
+            line-height: $baseLineHeight * .7;
+            margin-top: 10px;
+        }
+    }
+    // /#uploadImageModal
+
+    //richtext editor
+    .contribCommentWrapper {
+        @include clearfix();
+        margin-top: $baseLineHeight;
+        margin-right: -1 * ($baseLineHeight / 2);
+        margin-left: -1 * ($baseLineHeight / 2);
+        padding: $baseLineHeight / 2;
+        position: relative;
+
+        .mask {
+            @include opacity(.5);
+            background: black;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            position: absolute;
+            top: 0;
+            z-index: 100;
+        }
+        .spin {
+            left: 50%;
+            margin: (-1 * $spinner_widthHeight / 2) 0 0 (-1 * $spinner_widthHeight / 2);
+            position: absolute;
+            top: 50%;
+        }
+
+        .commentTools {
+            font-size: .9em;
+            text-align: right;
+
+            .lt-ie8 & { // ie7
+                width: 95%;
+            }
+            .remChars {
+                font-weight: bold;
+            }
+            .checkSpellingDdBtn {
+                display: inline-block;
+                line-height: 16px;
+                margin-bottom: 2px;
+                padding: 0 2px;
+                width: auto;
+            }
+        }
+        .contribCommentInp {
+            @include input-block-level();
+            margin-bottom: 2px;
+
+            .lt-ie8 & { // ie7
+                width: 95%;
+            }
+        }
+        .dropdown-menu {
+            color: black;
+            left: auto;
+            right: 0;
+            text-align: left;
+
+            & a {
+                color: black;
+            }
+            & .check:hover {
+                background: inherit;
+                color: black;
+            }
+        }
+        @media (max-width: 480px) {
+
+            .commentTools {
+                clear: both;
+                padding-top: 10px;
+            }
+        }
+    }// .contribCommentWrapper
+
+    .communicationsUploadImagePopover {
+        z-index: 25000 !important;
+    }
+
+} /* /.page.communications */
+
+.lt-ie9 {
+    .bannerAddedContent,
+    .newsAddedContent,
+    .resourceCenterAddedContent,
+    .tipsAddedContent {
+        overflow: auto;
+    }
+}

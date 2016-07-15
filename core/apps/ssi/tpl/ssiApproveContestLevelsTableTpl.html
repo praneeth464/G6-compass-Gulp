@@ -1,0 +1,66 @@
+<div class="pagination pagination-right paginationControls"></div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th rowspan="2" class="participant sortable string {{#eq sortedOn "lastName"}}sorted {{sortedBy}}{{else}}asc{{/eq}}" data-sort-on="lastName" data-sort-by="{{#eq sortedOn "lastName"}}{{#eq sortedBy "asc"}}desc{{else}}asc{{/eq}}{{else}}asc{{/eq}}">
+                <a href="#">
+                    Participant
+                    <i class="icon-sort-up"></i><i class="icon-sort-down"></i>
+                </a>
+            </th>
+            <th rowspan="2" class="baseline sortable number {{#eq sortedOn "stepItUpBaselineAmount"}}sorted {{sortedBy}}{{else}}asc{{/eq}}" data-sort-on="stepItUpBaselineAmount" data-sort-by="{{#eq sortedOn "stepItUpBaselineAmount"}}{{#eq sortedBy "asc"}}desc{{else}}asc{{/eq}}{{else}}asc{{/eq}}">
+                <a href="#">
+                    Individual Baseline
+                    <i class="icon-sort-up"></i><i class="icon-sort-down"></i>
+                </a>
+            </th>
+
+            {{#each levels}}
+            <th class="level number">
+                <a href="#">
+                    <span>{{name}}</span>
+                    <span>+{{baseline}}</span>
+                </a>
+            </th>
+            {{/each}}
+        </tr>
+    </thead>
+
+    <tfoot>
+        <tr>
+            <td>Total</td>
+            <td class="number">{{baselineTotal}}</td>
+            {{#each levels}}
+            <td class="number">{{total}}</td>
+            {{/each}}
+        </tr>
+    </tfoot>
+
+    <tbody>
+        {{#each results}}
+        <tr>
+            <td class="participantName">
+                <a class="profile-popover" href="#" data-participant-ids="[{{id}}]">
+                    {{lastName}}, {{firstName}}
+                </a>
+            </td>
+            <td class="baseline number">
+                {{baseline}}
+            </td>
+
+            {{#each levelAmounts}}
+            <td class="level number">
+                {{amount}}
+            </td>
+            {{/each}}
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<div class="pagination pagination-right paginationControls"></div>
+
+<!--XXXsubTpl.paginationTpl=
+    NOTE: you can safely take the JSP conversion of core/base/tpl/paginationView.html and include it here. Then, remove the "XXX" above and the script will use this child template instead of the remote one
+subTpl-->

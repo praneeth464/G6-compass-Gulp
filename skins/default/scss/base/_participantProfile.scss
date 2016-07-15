@@ -1,0 +1,65 @@
+// Partial-specific variables (uncomment to use)
+// =========================
+// $participantProfile_textColor: ;
+// $participantProfile_linkColor: ;
+// $participantProfile_headFontFace: ;
+// $participantProfile_headFontFullString: ; // font-style font-variant font-weight font-size[req]/line-height font-family[req]
+
+// $participantProfile_footIconColor: ;
+// $participantProfile_footNumMsgsTextColor: ;
+// $participantProfile_footNumMsgsBgColor: ;
+// $participantProfile_footNumMsgsBorderColor: ;
+
+// $participantProfile_alertBoxTextColor: ;
+// $participantProfile_alertBoxBgColor: ;
+// $participantProfile_alertBoxGradMeta: ;
+// $participantProfile_alertBoxGradStops: ;
+// $participantProfile_alertBoxBorderWidth: ;
+// $participantProfile_alertBoxBorderColor: ;
+// $participantProfile_alertBoxBorderRadius: ;
+// $participantProfile_alertBoxTopBevelWidth: ;
+// $participantProfile_alertBoxTopBevelColor: ;
+// $participantProfile_alertBoxIconColor: ;
+// $participantProfile_alertBoxLinkColor: ;
+// $participantProfile_alertBoxCloseFontSize: ;
+// $participantProfile_alertBoxCloseIconColor: ;
+// $participantProfile_alertBoxCloseBorderColor: ;
+// $participantProfile_alertBoxCloseCircleWidth: ;
+// $participantProfile_alertBoxCloseBorderWidth: ;
+
+// $participantProfile_delegatorsTextColor: ;
+// $participantProfile_delegatorsLinkColor: ;
+
+// $participantProfile_mobileBtnBg: ; // pass 'none' for a completely transparent button background
+// $participantProfile_mobileBtnBgHighlight: ;
+// $participantProfile_mobileBtnTextColor: ;
+// $participantProfile_textColorMobile: ;
+// $participantProfile_linkColorMobile: ;
+// $participantProfile_footIconColorMobile: ;
+// $participantProfile_footNumMsgsTextColorMobile: ;
+// $participantProfile_footNumMsgsBgColorMobile: ;
+// $participantProfile_footNumMsgsBorderColorMobile: ;
+
+// $participantProfile_magnifyColor: ;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "partials/participantProfile";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// Partial-specific code for this skin
+// ==================================================
+
+
+// TODO 5.4: add a check of textColor/header background color (from _global.scss) for font smoothing
+// #participantProfileView {
+//     -webkit-font-smoothing: antialiased; // makes light-on-dark text look a bit better
+// }

@@ -1,0 +1,49 @@
+<table id="selectAudienceTable" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Select</th>
+            <th>Group</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+
+    {{#if audienceTable.results}}
+        <tbody>
+            {{#audienceTable.results}}
+                <tr class="{{#if selected}}selected{{/if}}" data-group-id="{{id}}">
+                    <td class="selectedColumn">
+                        <a href="#" class="addToAudience">add</a>
+                        <i class="icon-ok selected-txt"></i> 
+                        <input name="audienceSelGroup[{{id}}].id" value="{{id}}" type="checkbox" data-group-id="{{id}}" {{#if selected}} checked="checked"{{/if}} class="audienceSelectCheckbox" />
+                        <input name="audienceSelGroup[{{id}}].name" value="{{group}}" type="checkbox" {{#if selected}} checked="checked"{{/if}} class="audienceSelectCheckbox" />
+
+                    </td>
+                    <td class="groupColumn">
+                        {{group}}
+                    </td>
+                    <td class="participantColumn">
+                        {{participantAmount}} participants
+                    </td>
+                    <td class="viewColumn">
+                        <a {{#if participantExportLink}} href="{{participantExportLink}}" data-export="true" {{else}} href="#" {{/if}} class="viewAudienceList">
+                            View List
+                        </a>
+
+                        <div class="audienceParticipants" style="display: none">
+                            <ul>
+                                {{#each participantList}}
+                                <li>{{name}}</li>
+                                {{/each}}                                        
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            {{/audienceTable.results}}
+        </tbody>
+    {{/if}}
+</table>
+
+<div class="selectedAudienceTotal">
+    <span>Total Selected: <span class="totalParticipants">0</span> participants</span>
+</div>

@@ -1,0 +1,13 @@
+<?php usleep(50000); ?>
+{
+    "messages":[],
+    "contestJson": {
+        "nextUrl": "ajax/ssiContestParticipantATN.json",
+        "ssiContestClientState": "state0",
+        "id": 123,
+        "measureType": "currency",
+        "currencyTypeId": "eur",
+        "payoutType": "other",
+        "otherPayoutTypeId": "eur"
+    }
+}

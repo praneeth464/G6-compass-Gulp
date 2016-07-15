@@ -1,0 +1,318 @@
+// Partial-specific variables
+// =========================
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+div.jHtmlArea { display: inline block; }
+
+div.jHtmlArea div { padding: 0px; margin: 0px; }
+
+div.jHtmlArea .ToolBar ul li a.html { /*background-position: -192px 0;*/ opacity:0.6; filter:alpha(opacity=60);}
+
+div.jHtmlArea .ToolBar ul li a.html.highlighted { opacity:1.0; filter:alpha(opacity=100);}
+
+
+// rich text editors
+.jHtmlArea {
+    zoom: 1;
+}
+.jHtmlArea,
+.jHtmlArea .ToolBar {
+    // clear: both; // NOTE: I (joel) added this back on Dec 21, but I cannot remember why. It's pushing the editor and toolbar down too far right now, so I had to take it out.
+    width: 540px !important;
+
+    @media (min-width: 1200px) {
+        width: 702px !important;
+    }
+    @media (min-width: 538px) and (max-width: 979px) {
+        width: 360px !important;
+    }
+    @media (max-width: 767px) {
+        width: 240px !important;
+    }
+}
+div.jHtmlArea .ToolBar {
+    position: relative;
+    @include clearfix();
+    z-index: 2; // keeps it above the badwordsContainer
+
+    ul {
+        position: relative;
+        z-index: 1;
+        margin: 0 0 5px 0;
+        padding: 0;
+        float: left;
+
+        li {
+            display: inline;
+            float: left;
+            width: auto;
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+            line-height: 18px;
+
+            &.sep-before {
+                @include border-top-right-radius($baseBorderRadius);
+                @include border-bottom-right-radius($baseBorderRadius);
+            }
+            &.sep-after {
+                @include border-top-left-radius($baseBorderRadius);
+                @include border-bottom-left-radius($baseBorderRadius);
+            }
+
+            &.separator {
+                padding: 0;
+                width: 6px;
+                height: $baseLineHeight;
+            }
+
+            a {
+                display: block;
+                padding: 4px 8px;
+                line-height: 18px;
+                color: $grayDark;
+
+                &:hover {
+                    color: $grayDark;
+                    text-decoration: none;
+                }
+            }
+
+            @media (max-width: 767px) {
+                a {
+                    padding-left: 4px;
+                    padding-right: 4px;
+                }
+            }
+        }
+
+        @media (max-width: 979px) {
+            float: none;
+            margin-bottom: 0;
+        }
+    }
+    /* char counter */
+
+    .charCount {
+        position: relative;
+        z-index: 0;
+        // float:right;
+        text-align: right;
+        height:30px;
+        line-height:30px;
+        color:gray;
+
+        @media (max-width: 979px) {
+            text-align: left;
+            // float: none;
+            clear: both;
+        }
+    }
+
+    .charCount.warning {
+        color: $red;
+    }
+}
+textarea.richtext,
+.jHtmlArea iframe {
+    width: 526px !important; // 14px less than the wrapper due to padding + border
+    height: 100px !important;
+
+    @media (min-width: 1200px) {
+        width: 688px !important; // 14px less than the wrapper due to padding + border
+        height: 160px !important;
+    }
+    @media (min-width: 538px) and (max-width: 979px) {
+        width: 346px !important; // 14px less than the wrapper due to padding + border
+    }
+    @media (max-width: 767px) {
+        width: 206px !important; // Bootstrap default
+    }
+}
+.jHtmlArea iframe {
+    display: block;
+    // borrowed from Bootstrap's core _forms.scss
+    padding: 4px 6px;
+    font-size: $baseFontSize;
+    line-height: $baseLineHeight;
+    color: $gray;
+    @include border-radius($inputBorderRadius);
+    // @include border-top-left-radius(0);
+    background-color: $inputBackground;
+    border: 1px solid $inputBorder;
+    @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+    @include transition(border linear .2s, box-shadow linear .2s);
+
+    // Focus state
+    &:focus {
+        border-color: rgba(82,168,236,.8);
+        outline: 0;
+        outline: thin dotted \9; /* IE6-9 */
+        @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6));
+    }
+}
+@media (max-width: 568px) {
+    .jHtmlArea iframe {
+        font-size: 16px; // Mobile Safari (and other mobile browsers???) zooms in on input fields when the font-size is less than 16px
+    }
+}
+
+
+/* spellchecker */
+
+div.jHtmlArea .ToolBar .spellchecker {
+    position: relative;
+}
+
+div.jHtmlArea .ToolBar .langs.hide {
+    display: none !important;
+}
+
+// a few overrides borrowed from bootstrap/_dropdowns.scss
+// others necessary to override .ToolBar ul from above
+div.jHtmlArea .ToolBar .langs {
+    position: absolute;
+    z-index: $zindexDropdown;
+    padding: 5px 0;
+    margin: 2px 0 0; // override default ul
+    text-align: left;
+    @include text-shadow(none);
+}
+
+div.jHtmlArea .ToolBar .langs li {
+    float: none;
+    display: block;
+    white-space: nowrap;
+    color: #666;
+    font-weight: normal;
+    font-size: 14px;
+    padding: 5px 20px;
+    clear: both;
+    line-height: $baseLineHeight / 2;
+    white-space: nowrap;
+}
+
+div.jHtmlArea .ToolBar .langs li:hover{
+    color: white;
+    background-color: #0081C2;
+    background-image: -webkit-linear-gradient(top, #08C, #0077B3);
+    background-repeat: repeat-x;
+}
+
+div.jHtmlArea .ToolBar .langs .check {
+    // padding: 1px;
+    border: 0;
+    font-weight: bold;
+    line-height: 14px;
+    color: #444;
+}
+
+div.jHtmlArea .ToolBar .langs .check:hover{
+    background: #fff;
+    cursor: default;
+    color: #444;
+}
+
+div.jHtmlArea .ToolBar .langs .lang {
+    cursor: pointer;
+}
+
+/* spellchecker badwords box */
+.badwordsContainer {
+    position: relative;
+    z-index: 1;
+
+    .badwordsWrapper {
+        position: relative;
+        // position: absolute;
+        // overflow: hidden;
+        width: 100%;
+        top: 2px;
+        left: 0;
+
+        .close {
+            // display: none;
+            position: absolute !important;
+            top: 8px !important;
+            right: 8px !important;
+            color: $black;
+            &:hover {
+                color: $black;
+            }
+        }
+        .badwordsContent {
+            .spellcheck-badwords {
+                @extend .alert, .alert-danger;
+
+                margin-bottom: 0;
+                // padding: 5px 10px;
+                // background: $grayLighter;
+                // border: 1px solid $grayLight;
+                // border: 0;
+                // border-image: initial;
+                // @include border-radius($inputBorderRadius);
+
+                strong {
+                    padding-right: 0.5em;
+                    font-weight: normal;
+                    // color: $black;
+                }
+
+                .spellcheck-word-highlight {
+                    color: $red;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+/* spellchecker suggest box */
+// many of these styles should mimic those of the spellchecker .langs list above
+.spellcheck-suggestbox {
+    @include text-shadow(none);
+    margin: -10px 0 0 -20px;
+    padding: 5px 0;
+    text-align: left;
+    background: #fff;
+    border: 1px solid #B5B5B5;
+    border-color: rgba(0, 0, 0, 0.2);
+    border-image: initial;
+    @include border-radius(6px);
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 10px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 10px;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+
+    .spellcheck-suggestbox-words,
+    .spellcheck-suggestbox-foot {
+        a {
+            padding: 5px 20px;
+            line-height: 10px;
+
+            &:hover {
+                color: white;
+                text-decoration: none;
+                background-color: #0081C2;
+                background-image: -webkit-linear-gradient(top, #08C, #0077B3);
+                background-repeat: repeat-x;
+            }
+        }
+        em {
+            padding: 0 20px;
+        }
+    }
+    .spellcheck-suggestbox-words {
+        padding-bottom: 5px;
+    }
+    .spellcheck-suggestbox-foot {
+        padding-top: 5px;
+        border-top: 1px solid #B5B5B5;
+        border-top-color: rgba(0, 0, 0, 0.2);
+    }
+}

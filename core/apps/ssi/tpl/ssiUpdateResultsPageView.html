@@ -1,0 +1,195 @@
+<div id="ssiUpdateResultsPageView" class="page-content">
+    <div class="row">
+        <div class="span6">
+            <h2>Contest Name</h2>
+        </div>
+
+        <!--JAVA NOTE: Display error text in the below list when page submit returns an error and set the hidden input value to true. -->
+        <!--<div id="ssiUpdateResultsErrorBlock" class="alert alert-block alert-error">
+            <h4>The following errors occurred</h4>
+            <ul>
+                <li>This is an example of a specific error message</li>
+            </ul>
+            <input type="hidden" id="serverReturnedErrored" value="false">
+        </div>-->
+    </div>
+
+    <div class="row">
+        <div class="span12 uploadInProgress text-error" style="display:none">
+            <p>Your previous updates are still being calculated. You will receive an email when calculations are complete and you can add more activity:</p>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="span12">
+            <p>There are 2 options to update your contest activity.</p>
+        </div>
+    </div>
+
+    <div class="row ssiEnterActivityWrap">
+        <div class="span12">
+            <h3 class="ssiToggleView" data-toggle="ssiEnterActivityForm">Use the Online Form</h3>
+        </div>
+
+        <form id="ssiEnterActivityForm" class="ssiShowHideForm span12" method="post" action="layout.html?tplPath=apps/ssi/tpl/&amp;tpl=ssiCreatorPage.html#contest/1" style="display: none">
+
+                <div class="control-group validateme"
+                    data-validate-fail-msgs='{"nonempty":"You must select an activity date."}'
+                    data-validate-flags='nonempty' >
+                    <label for="ssiEnterActivityDate" class="control-label">Activity Date</label>
+                    <div class="controls">
+                        <!--
+                            NOTE: JSP set data-date-format AND data-date-startdate
+                        -->
+                        <span class="input-append datepickerTrigger"
+                                data-date-format="mm/dd/yyyy"
+                                data-date-language="en_US"
+                                data-date-startdate="08/14/2014"
+                                data-date-todaydate="08/14/2014"
+                                data-date-autoclose="true">
+                            <input class="date datepickerInp"
+                                    type="text"
+                                    id="ssiEnterActivityDate"
+                                    name="ssiEnterActivityDate"
+                                    placeholder=""
+                                    readonly="readonly"><button class="btn datepickerBtn" type="button"><i class="icon-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="ssiEnterActivityTableWrap">
+                    <!-- dynamic from ssiUpdateResultsActivityTable.html-->
+                </div>
+
+                <div class="ssiUploadFormActions">
+                    <button class="btn btn-primary ssiUpdateNext">Next</button>
+                    <button class="btn btn-primary ssiUpdateSave" style="display:none">Save</button>
+                    <button class="btn ssiUpdateCancel">Cancel</button>
+                </div>
+        </form>
+    </div>
+
+    <div class="row">
+        <div class="span12">
+            <h4>OR</h4>
+        </div>
+    </div>
+
+    <div class="row ssiUploadSpreadsheet">
+        <div class="span12">
+            <h3 class="ssiToggleView" data-toggle="ssiUploadSSForm">Use the My Contest Spreadsheet</h3>
+        </div>
+
+        <form id="ssiUploadSSForm" class="ssiShowHideForm span12" method="post" action="ajax/ssiUpdateResultsData.json" style="display: none" enctype="multipart/form-data">
+
+            <div class="ssiUploadSSInstructions">
+                <p>Please follow these steps to use the My Contest spreadsheet. You must use this template to update your contest activity.</p>
+                <div class="instructionStep">
+                    <h4>Step #1: Save the My Contest spreadsheet template</h4>
+                    <p>Download the template and save in a .csv, .xls, or .xlsx format to your local directory.</p>
+                    <a href="#" class="btn btn-primary exportCsvButton"> <i class="icon icon-download-alt"></i> Download Template</a>
+                </div>
+
+                <div class="instructionStep">
+                    <h4>Step #2: Track activity</h4>
+                    <p>Update activity results by fillinf in the Activity Amount and Activity Date columns on the spreadsheet. A valid activity date for each participant is required. Save the spreadsheet to your local directory.</p>
+                </div>
+
+                <div class="instructionStep">
+                    <h4>Step #3: Upload the contest results</h4>
+                    <p>Activity can be uploaded at any time during the contest period to provide participants with frequent updates. Results are cumulative reflecting the total of an individual's performance. Awards will be issued once the contest has ended and results are finalized.</p>
+                    <strong>Upload Spreadsheet</strong>
+                </div>
+            </div>
+
+            <div class="ssiUploadSSButton control-group validateme"
+                    data-validate-fail-msgs='{"nonempty": "You must select a spreadsheet."}'
+                    data-validate-flags='nonempty'
+                    data-extra-validate='Only .csv, .xls and .xlsx file types are supported'>
+
+                <div class="controls">
+                    <input type="file" id="ssiHiddenUpload" name="ssiHiddenUpload" />
+                </div>
+            </div>
+
+            <div class="ssiUploadFormActions">
+                <button class="btn btn-primary ssiUpdateSave">Save</button>
+                <button class="btn ssiUpdateCancel">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Send Progress Update tooltip: shown on Save action -->
+    <div class="ssiSaveSendProgress" style="display:none">
+        <p>Would you like to send a Progress Update notification email to all Contest Participants and Managers?</p>
+
+        <p class="tc">
+            <button class="btn btn-primary sendProgressConfirmSubmit" name="saveAndSendProgressUpdate" value="yes">Yes</button>
+            <button class="btn sendProgressConfirmSubmit" name="saveAndSendProgressUpdate" value="no" >No</button>
+        </p>
+    </div>
+
+    <!-- Cancel update results tooltip: shown on Cancel action -->
+    <div class="ssiUpdateCancelConfirm" style="display:none">
+        <p> Selecting Yes will cancel the current page and send a Progress Update notification email to all Contest Participants and Managers. Selecting No will only cancel the current page
+        </p>
+        <form id="ssiSendProgress" action="ajax/serverCommand_redirect.json" method="post">
+            <p class="tc">
+                <button class="btn btn-primary sendProgressConfirmCancel" name="cancelAndSendProgress" value="yes">Yes</button>
+                <button class="btn sendProgressConfirmCancel" name="cancelAndSendProgress" value="no">No</button>
+            </p>
+        </form>
+    </div>
+
+    <!-- modal to catch errors from server on submit OR save draft -->
+    <div class="modal hide fade contestErrorsModal">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+            <h3>
+                <i class="icon-exclamation-sign"></i>
+                            Error(s) encountered
+            </h3>
+        </div>
+        <div class="modal-body">
+            <ul class="errorsList text-error">
+                <!-- dynamic -->
+            </ul>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+        </div>
+    </div><!-- /.contestErrorsModal -->
+
+</div><!--/#ssiUpdateResultsPageView -->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function() {
+        // G5.props.URL_JSON_SSI_UPDATE_RESULTS_TABLE = ;
+        // G5.props.URL_JSON_SSI_UPDATE_RESULTS_UPLOAD = ;
+
+        var contestData = {
+            "daysToEnd": 0,
+            "hasApprovePayout": false,
+            "allowFinalizeResults": true
+        };
+
+        //attach the view to an existing DOM element
+        var ssiNav = new SSIUpdateResultsPageView({
+            el: $('#ssiUpdateResultsPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'moduleSandbox.html'
+                }
+            },
+            pageTitle : 'Update Activity',
+            data: contestData
+        });
+    });
+</script>

@@ -1,0 +1,50 @@
+<!-- ======== NEWS PAGE ======== -->
+
+<div id="newsPageView" class="newsPage-liner page-content">
+</div>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+$(document).ready(function() {
+
+    //attach the view to an existing DOM element
+    var cpv = new NewsPageView({
+        el:$('#newsPageView'),
+        pageNav : {
+            back : {
+                text : 'Back',
+                url : 'layout.html'
+            },
+            home : {
+                text : 'Home',
+                url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+            }
+        },
+        pageTitle : 'News'
+    });
+
+});
+</script>
+
+<script type="text/template" id="newsCollectionViewTpl">
+    <div class="page-topper">
+        <div class="row">
+            <div class="span12">
+                <form class="form-inline">
+                    <label>Sort By:</label>
+                    <select id="sortBy">
+                        <option value="date"{{#if sortedByDate}} selected="selected"{{/if}}>Most Recent</option>
+                        <option value="name"{{#if sortedByName}} selected="selected"{{/if}}>Alphabetically</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <h2>Recent News</h2>
+        </div>
+    </div>
+    <div id="collectionOfStories">
+    </div>
+</script>

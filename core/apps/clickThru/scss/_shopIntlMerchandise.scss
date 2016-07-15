@@ -1,0 +1,73 @@
+// App-specific variables
+// =========================
+$shopIntlMerchandise_bgColor: $g5ModuleBgColor !default;
+$shopIntlMerchandise_gradType: $g5ModuleGradType !default;
+$shopIntlMerchandise_gradMeta: $g5ModuleGradMeta !default;
+$shopIntlMerchandise_gradStops: $g5ModuleGradStops !default;
+
+$shopIntlMerchandise_iconColor: $g5ModuleIconColor !default;
+$shopIntlMerchandise_titleColor: $g5ModuleTitleColor !default;
+$shopIntlMerchandise_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$shopIntlMerchandise_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$shopIntlMerchandise_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$shopIntlMerchandise_textColor: false !default;
+$shopIntlMerchandise_h3FontFamily: false !default;
+$shopIntlMerchandise_pFontFamily: false !default;
+$shopIntlMerchandise_visitAppBtnColor: false !default;
+$shopIntlMerchandise_visitAppBtnBorderColor: false !default;
+$shopIntlMerchandise_imgUrlPath: false !default;
+$shopIntlMerchandise_imgUrl2x2: "clickThru/shopIntlMerchandise_2x2.jpg" !default;
+$shopIntlMerchandise_imgUrl4x2: "clickThru/shopIntlMerchandise_4x2.jpg" !default;
+$shopIntlMerchandise_imgUrl4x4: "clickThru/shopIntlMerchandise_4x4.jpg" !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- MODULE STYLES ----- */
+.module.clickThru {
+
+    &.shopIntlMerchandise {
+
+        .module-liner {
+            @include module_moduleLinerBackground(
+                $bgColor: $shopIntlMerchandise_bgColor,
+                $gradType: $shopIntlMerchandise_gradType,
+                $gradMeta: $shopIntlMerchandise_gradMeta,
+                $gradStops: $shopIntlMerchandise_gradStops
+            );
+        }
+
+        @include clickThruSkinBkgViews(
+            $textColor: $shopIntlMerchandise_textColor,
+            $h3FontFamily: $shopIntlMerchandise_h3FontFamily,
+            $pFontFamily: $shopIntlMerchandise_pFontFamily,
+            $visitAppBtnColor: $shopIntlMerchandise_visitAppBtnColor,
+            $visitAppBtnBorderColor: $shopIntlMerchandise_visitAppBtnBorderColor,
+            $imgUrlPath: $shopIntlMerchandise_imgUrlPath,
+            $imgUrl2x2: $shopIntlMerchandise_imgUrl2x2,
+            $imgUrl4x2: $shopIntlMerchandise_imgUrl4x2,
+            $imgUrl4x4: $shopIntlMerchandise_imgUrl4x4
+        );
+
+        .title-icon-view {
+            @include module_titleIconView(
+                $iconColor: $shopIntlMerchandise_iconColor,
+                $titleColor: $shopIntlMerchandise_titleColor,
+                $titleFontFamily: $shopIntlMerchandise_titleFontFamily
+            );
+
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                @include g5HomeAppIconBoxReflect($adjust : -46px);
+            }
+        }
+
+        @include module_titleIconViewFontSizesWeights($shopIntlMerchandise_titleFontSizes, $shopIntlMerchandise_titleFontWeights);
+
+    } /* /.shopIntlMerchandise */
+
+} /* /.module.clickThru */

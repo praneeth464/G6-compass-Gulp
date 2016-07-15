@@ -1,0 +1,34 @@
+/*styles set here will override default styles of jhtml iframes*/
+html {
+    height: 100%;
+    overflow: hidden;
+    border: 0;
+}
+
+body {
+    height: 100%;
+    overflow: auto;
+    word-wrap: break-word;
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333333;
+    background: white;
+}
+/* Mobile Safari (and other mobile browsers???) zooms in on input fields when the font-size is less than 16px */
+@media (max-width: 240px) {
+    body {
+        font-size: 16px;
+    }
+}
+
+p {
+    margin-bottom: 0;
+}
+
+p.placeholder,
+p span i span {
+    color: #999;
+    font-style: normal;
+}

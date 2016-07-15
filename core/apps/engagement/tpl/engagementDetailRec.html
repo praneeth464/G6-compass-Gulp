@@ -1,0 +1,63 @@
+<?php //sleep(1); ?>
+
+<div class="row">
+    {{#if byPromo}}
+    <div class="{{#if byBehavior}}span6{{else}}span12{{/if}} byPromo">
+        <h4 class="subhead withHelp"><span>By Promotion</span> <a class="byPromoHelp">View Dashboard Promotions</a></h4>
+
+        <div class="chartContainer" id="chartContainer_{{type}}"></div>
+    </div><!-- /.byPromo -->
+    {{/if}}
+
+    {{#if byBehavior}}
+    <div class="{{#if byPromo}}span6{{else}}span12{{/if}} byBehavior">
+        <h4 class="subhead{{#unless byPromo}} withHelp{{/unless}}">{{#unless byPromo}}<span>{{/unless}}By Behavior{{#unless byPromo}}</span> <a class="byPromoHelp">View Dashboard Promotions</a>{{/unless}}</h4>
+
+        <div class="wrapper">
+            <ul class="behaviors unstyled">
+        {{#each byBehavior}}
+                <li class="behavior">
+                    {{#if iconUrl}}<img src="{{iconUrl}}" alt="{{name}}" class="icon">{{/if}}
+                    <h5 class="name">{{name}}</h5>
+                    <div class="progress">
+                        <div class="bar" data-percent="{{percent}}">
+                            <span class="count">{{count}}</span>
+                        </div>
+                    </div>
+                </li>
+        {{/each}}
+            </ul>
+        </div>
+    </div><!-- /.byBehavior -->
+    {{/if}}
+
+    <div class="byPromoHelpTip hide">
+        <dl>
+            <dt>Your dashboard activity includes results from the following promotions:</dt>
+
+            <dd>Promotion 1</dd>
+            <dd>Promotion 2</dd>
+            <dd>Promotion 3</dd>
+        </dl>
+    </div>
+</div><!-- /.row -->
+
+{{#eq mode "user"}}
+    <div class="engagementRecognitionsView pubRecTabs publicRecognition page"><!-- .publicRecognition and .page were borrowed to apply the pubRec styles -->
+        <!-- Recognitions -->
+        <div class="pubRecItemsCont" data-msg-empty="No recognitions found">
+            <div class="publicRecognitionItems">
+                <!-- dynamic - pubRecItems -->
+            </div>
+
+            <!-- shown when there are more recognitions -->
+            <div class="app-row">
+                <p>
+                    <a href="#" class="viewAllRecognitions"  style="display: none">
+                        View More
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div><!-- /.pubRecTabs.publicRecognition.page -->
+{{/eq}}

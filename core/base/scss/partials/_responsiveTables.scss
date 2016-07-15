@@ -1,0 +1,50 @@
+// Partial-specific variables
+// =========================
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+.rT-wrapper {
+    margin-bottom: $baseLineHeight;
+
+    table {
+        max-width: none;
+    }
+    .table {
+        margin-bottom: 0;
+    }
+    .rT-innerWrapper {
+        position : static;
+        width : 100%;
+        overflow : auto;
+        padding-bottom: $baseLineHeight / 2;
+        min-height: 0%; // http://stackoverflow.com/a/10002755
+        opacity: 1; // IE9 scrollbar not working (bugzilla #56789)
+    }
+    .rT-pinLeft-wrap {
+        position : absolute;
+        left : 0;
+        top : 0;
+        overflow : hidden;
+        background-color: $white;
+        @include box-shadow(2px 0px 2px rgba(0,0,0,.125));
+
+        .rT-pinLeft {
+            th, td {
+                visibility : hidden;
+            }
+            .visible {
+                visibility : visible;
+            }
+        }
+    }
+
+    .pagination ~ &,
+    & ~ .pagination {
+        margin-top: -1 * $baseLineHeight / 2;
+        clear: both;
+    }
+}

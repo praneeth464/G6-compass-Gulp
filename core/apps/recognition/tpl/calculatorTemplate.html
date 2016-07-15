@@ -1,0 +1,26 @@
+<div id="recogCalcWrapper" class="recogCalcWrapper">
+
+	<!-- JAVA NOTE: set the i18n for "Select Rating" calc tooltip dropdown -->
+	<div class="msgSelectRatingInstruction" style="display:none">Select Rating</div>
+
+	<h1>Recognition Calculator</h1>
+	<button type="button" id="recogCalcCloseBtn" class="close recogCalcCloseBtn"><i class="icon-remove"></i></button>
+	<ul>
+		<li class="recogCalcRatingLabel">Rating</li>
+
+		{{#if hasScore}}
+		<li class="recogCalcScoreLabel">{{scoreLabel}}</li>
+		{{/if}}
+
+		{{#if hasWeight}}
+		<li class="recogCalcWeightLabel">{{weightLabel}}</li>
+		{{/if}}
+	</ul>
+	<div id="recogCalcInnerWrapper" class="recogCalcInnerWrapper">
+		{{{criteriaDiv}}}
+	</div>
+	<a id="recogCalcPayoutTableLink" class="recogCalcPayoutTableLink" href="#"><i class="icon-th"></i>View Payout Grid</a>
+	<!-- {{#if showPayTable}} -->
+
+	<!-- {{/if}} -->
+</div>

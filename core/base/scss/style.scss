@@ -1,0 +1,67 @@
+// CORE APPLICATION VARIABLES AND MEASUREMENTS
+@import "partials/variables";
+@import "partials/mixins";
+
+// this variable makes it possible to import these files without outputting all the css
+// in this file, we obviously want the output
+$base_variablesOnly: false;
+
+//@font-face fonts
+@import "fonts";
+
+//3rd party goodies
+@import "compass/css3";
+@import "partials/bootstrap/bootstrap";
+@import "partials/bootstrap/responsive";
+
+// library-type things
+@import "partials/font-awesome";
+@import "partials/font-awesome-extended";
+@import "partials/g5-fonticons";
+@import "partials/jHtmlArea.patchedG5";
+@import "partials/spellchecker";
+@import "partials/responsiveTables";
+@import "partials/video-js.min";
+
+//overall platform parts
+@import "partials/global";
+@import "partials/globalHeader";
+@import "partials/participantProfile";
+@import "partials/pageNav";
+@import "partials/globalFooter";
+
+//pages
+@import "partials/pages";
+
+// login page styles
+@import "partials/login";
+@import "partials/loginFirstTime";
+
+//home app styles
+@import "partials/homeApp";
+@import "partials/allModules";
+
+//widgets etc...
+@import "partials/autoModals";
+@import "partials/datepicker";
+@import "partials/generic";
+@import "partials/forms";
+@import "partials/icons";
+@import "partials/modals";
+@import "partials/navs";
+@import "partials/pagesWithoutViews";
+@import "partials/pagination";
+@import "partials/participantPopover";
+@import "partials/participantSearch";
+@import "partials/participantCollectionView";
+@import "partials/participantItem";
+@import "partials/popovers";
+@import "partials/progress-bars";
+@import "partials/qtip";
+@import "partials/qtip-extended";
+@import "partials/rules";
+@import "partials/sharePopover";
+@import "partials/slider.patchedG5";
+@import "partials/stackModal";
+@import "partials/tables";
+@import "partials/wizardTabsView";

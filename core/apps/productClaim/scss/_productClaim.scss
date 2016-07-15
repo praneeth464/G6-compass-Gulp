@@ -1,0 +1,386 @@
+// App-specific variables
+// =========================
+$productClaim_bgColor: $g5ModuleBgColor !default;
+$productClaim_gradType: $g5ModuleGradType !default;
+$productClaim_gradMeta: $g5ModuleGradMeta !default;
+$productClaim_gradStops: $g5ModuleGradStops !default;
+
+$productClaim_iconColor: $g5ModuleIconColor !default;
+$productClaim_titleColor: $g5ModuleTitleColor !default;
+$productClaim_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$productClaim_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$productClaim_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$productClaim_bgColorBig: $grayDarker !default;
+$productClaim_gradTypeBig: $g5ModuleGradType !default;
+$productClaim_gradMetaBig: left !default;
+$productClaim_gradStopsBig: $productClaim_bgColorBig, lighten($productClaim_bgColorBig, 12.5%), $productClaim_bgColorBig !default;
+
+$productClaim_promoTitleColor: false !default;
+$productClaim_promoTitleFontFamily: $titleFont !default;
+$productClaim_promoTitleFontSize: 24px !default;
+$productClaim_promoTitleFontWeight: $titleFontWeightBold !default;
+$productClaim_textColor: $grayLight !default;
+$productClaim_textCalloutColor: $white !default;
+$productClaim_submitApprovalFontFamily: $titleFont !default;
+$productClaim_submitApprovalFontSize: 24px !default;
+$productClaim_claimBgModuleOdd: transparentize($white, .9) !default;
+$productClaim_claimBgModuleEven: transparentize($black, .9) !default;
+
+$productClaim_productEditIconColor: $gray !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.claim {
+
+} /* /.claim */
+
+/* ----- MODULE STYLES ----- */
+.module.claim {
+
+    // never show the dataLoading spinner on the icon versions of this module
+    &.grid-dimension-1x1.dataLoading,
+    &.grid-dimension-2x1.dataLoading {
+        .spin {
+            display: none;
+        }
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        // hide the big version of this module when we're loading data and show a faded version of the title-icon-view
+        @include module_fadeOnDataLoading();
+
+        .module-liner {
+            @if $productClaim_textColor {
+                color: $productClaim_textColor;
+            }
+
+            // define the backgrounds of the big version first so we can bring back the small version when .dataLoading
+            @include module_moduleLinerBackground(
+                $bgColor: $productClaim_bgColorBig,
+                $gradType: $productClaim_gradTypeBig,
+                $gradMeta: $productClaim_gradMetaBig,
+                $gradStops: $productClaim_gradStopsBig
+            );
+        }
+
+        .title-icon-view {
+            display: none;
+        }
+    }
+
+    // define the backgrounds of the general version second so we can override the big color when .dataLoading
+    &.dataLoading .module-liner,
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $productClaim_bgColor,
+            $gradType: $productClaim_gradType,
+            $gradMeta: $productClaim_gradMeta,
+            $gradStops: $productClaim_gradStops
+        );
+    }
+
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $productClaim_iconColor,
+            $titleColor: $productClaim_titleColor,
+            $titleFontFamily: $productClaim_titleFontFamily
+        );
+
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            // font-size: 78px;
+            @include g5HomeAppIconBoxReflect(-43px);
+        }
+    }
+
+    @include module_titleIconViewFontSizesWeights($productClaim_titleFontSizes, $productClaim_titleFontWeights);
+
+    .wide-view {
+        padding: 0;
+
+        .internal-liner {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+
+        .claimsHeader {
+            padding: $g5ModulePadding;
+        }
+
+        .claimItem {
+            margin-left: 0;
+            padding: 12px ($g5ModulePadding / 2) 12px ($g5ModulePadding / 2);
+
+            &.odd {
+                @include safeBkgs($productClaim_claimBgModuleOdd);
+            }
+            &.even {
+                @include safeBkgs($productClaim_claimBgModuleEven);
+            }
+
+            .title {
+                line-height: 30px; // height of the button floated right
+                overflow: hidden;
+
+                .promotion {
+                    float: left;
+                    font-family: $productClaim_promoTitleFontFamily;
+                    font-size: $productClaim_promoTitleFontSize;
+                    font-weight: $productClaim_promoTitleFontWeight;
+                    @if $productClaim_promoTitleColor {
+                        color: $productClaim_promoTitleColor;
+                    }
+                }
+
+                .history {
+                    float: right;
+                }
+            }
+
+            .ends {
+                margin-top: -1 * $baseLineHeight / 2;
+                clear: both;
+                font-size: 12px;
+            }
+
+            .emphasized {
+                margin: 0;
+                min-height: 0;
+                font-family: $productClaim_submitApprovalFontFamily;
+                font-size: $productClaim_submitApprovalFontSize;
+                line-height: 1.3333em;
+
+                .highlight {
+                    font-weight: bold;
+                    font-size: 1.3333em;
+
+                    @if $productClaim_textCalloutColor {
+                        color: $productClaim_textCalloutColor;
+                    }
+                }
+            }
+        }
+
+        .claimsWrap {
+            position: absolute;
+            overflow-y: auto;
+            margin: 0;
+            right: $g5ModulePadding / 2;
+            bottom: $g5ModulePadding / 2;
+            left: $g5ModulePadding / 2;
+            zoom: 1;
+
+            ul {
+                zoom: 1;
+            }
+        }
+    }
+
+    &.grid-dimension-2x2 {
+        .claimsHeader {
+            padding: $g5ModulePadding / 2;
+        }
+
+        .claimItem {
+            // the element with the .emphasized class is also a .span6
+            // when the screen gets narrower than 768px the .span6 stops floating and goes 100% wide
+            // we need to force it to always be 50% wide and float (49.5% because of IE7, actually. Barf)
+            .emphasized {
+                float: left;
+                width: 49.5%;
+                font-size: $productClaim_submitApprovalFontSize * .75;
+            }
+            .title {
+                line-height: 26px; // height of the button floated right
+
+                .promotion {
+                    font-size: $productClaim_promoTitleFontSize * .75;
+                }
+                .history {
+                    // following three rules borrowed from bootstrap/_buttons/.btn-small
+                    padding: $paddingSmall;
+                    font-size: $fontSizeSmall;
+                    @include border-radius($borderRadiusSmall);
+                }
+            }
+        }
+
+        .claimsWrap {
+            top: 48px; // magic number (height of the button + $g5ModulePadding)
+        }
+    }
+
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        .claimItem {
+            .emphasized {
+                font-size: 30px;
+            }
+        }
+
+        .claimsWrap {
+            top: 66px; // magic number (height of the button + 2 * $g5ModulePadding)
+        }
+    }
+} /* /.module.claim */
+
+/* ----- PAGE STYLES ----- */
+.page.claim {
+
+    input.hiddenValidationInput {
+        margin: 0;
+        padding: 0;
+        width: 0;
+        border: 0;
+    }
+
+    #claimForm {
+        margin-bottom: 0;
+
+        .dl-horizontal {
+            @media (min-width: 768px){
+                dt {
+                    margin-bottom: 10px;
+                    width: 30%;
+                    white-space: normal;
+                }
+                dd {
+                    float: left;
+                    margin: 0 0 10px 10px;
+                    width: 30%;
+                }
+            }
+
+            @media (max-width: 767px) {
+                dt {
+                    width: auto;
+                }
+                dd {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+
+    .formSection {
+        margin-bottom: $g5PageContentSpacingVertical;
+    }
+
+    .relative-qtip-wrapper {
+        position: relative;
+    }
+
+    .relative-qtip {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .ui-tooltip-instruction .ui-tooltip-content {
+        padding:12px;
+        font-size:12px;
+        line-height:16px;
+    }
+
+    #claimSelectPromotion {
+        #claimNav {
+            position: relative;
+            z-index: 1;
+        }
+        #promoSelectInputWrap {
+            margin-left: 0;
+        }
+        .control-label.promotionId {
+            display: none;
+        }
+    }
+
+    #selectedPromoText {
+        #promoTitle {
+            margin-right: 10px;
+            line-height: 30px;
+            float: left;
+        }
+
+        #changePromotion {
+            float: left;
+        }
+    }
+
+    #promotionInfo {
+        clear: both;
+    }
+
+    #claimNav {
+        .qtip {
+            margin-top: 12px;
+        }
+    }
+
+    #productsTable {
+
+        th {
+            text-align: left;
+        }
+        .quantity {
+            width: 1%;
+            text-align: right;
+            padding-right: 12px;
+            white-space: nowrap;
+        }
+        dl {
+            margin: 0px;
+        }
+
+        .editProduct {
+            i { // icon
+                font-size: 28px;
+                color: $productClaim_productEditIconColor;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .deleteProductQtip {
+        width: 120px;
+    }
+
+    .edit-qtip {
+        max-width: 100%;
+
+        @media (max-width: 480px) {
+            margin: 0 2%;
+            min-width: 96%;
+        }
+    }
+
+    .editProductForm {
+        position: relative;
+        padding: 15px 6px 0 6px;
+        width: 454px; // form elements (180 + 260 (datepicker is wider)) + left-right padding below + 1px border
+
+        @media (max-width: 480px) {
+            width: auto;
+        }
+
+        .close {
+            position: absolute;
+            font-size: 20px;
+            z-index: 9999;
+            right: 0;
+            top: 0;
+            width: auto;
+        }
+    }
+
+} /* /.page.claim */

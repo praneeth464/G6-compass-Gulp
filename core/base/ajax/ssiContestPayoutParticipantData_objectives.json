@@ -1,0 +1,35 @@
+<?php
+header('Content-Type: application/json');
+sleep(1);
+require_once('paxGenerator/paxGenerator.php');
+
+/*
+ * OBJECTIVES
+ */
+
+$payoutTypeIsOther = false;
+
+if (isset($_POST['id']) && strpos($_POST['id'], "other")) {
+    $payoutTypeIsOther = true;
+}
+
+if ($payoutTypeIsOther) {
+    $ed = array(
+        "goal" => "1000.0100",
+        "progress" => "800.0110",
+        "payoutDescription" => "lorum ipsom",
+        "qty" => "100",
+        "payoutValue" => "100"
+    );
+} else {
+    $ed = array(
+        "goal" => "1000.0100",
+        "progress" => "800.0110",
+        "objectivePayout" => "50",
+        "bonusPayout" => "100",
+        "payout" => "150",
+        "includeBonus" => true
+    );
+}
+
+generatePaxesPaginatedJson(6,500,$ed);

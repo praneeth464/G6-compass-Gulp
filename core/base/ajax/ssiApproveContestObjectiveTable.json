@@ -1,0 +1,47 @@
+{
+    "payoutType": "other",
+    "includeBonus": false,
+    "results":[
+        {
+            "id": "123",
+            "firstName": "Mary",
+            "lastName": "Smith",
+            "objective":{
+                "name": "Objective 1",
+                "amount": "1,500",
+                "payoutAmount": "200",
+                "payoutDescription": "$50 gift card"
+            },
+            "bonus": {
+                "forEvery": "500",
+                "payoutAmount": "50",
+                "payoutCap": "300"
+            }
+        },
+        {
+            "id": "234",
+            "firstName": "Albert",
+            "lastName": "Johnson",
+            "objective":{
+                "name": "Objective 1",
+                "amount": "1,500",
+                "payoutAmount": "200",
+                "payoutDescription": "$50 gift card"
+            },
+            "bonus": {
+                "forEvery": "500",
+                "payoutAmount": "50",
+                "payoutCap": "300"
+            }
+        }
+    ],
+    "objectiveAmountTotal": "40,000",
+    "payoutTotal": "5,000",
+    "bonusPayoutTotal": "500",
+    "bonusPayoutCapTotal": "20,000",
+    "sortedOn": "lastName",
+    "sortedBy": "asc",
+    "total": 100,
+    "paxPerPage": 50,
+    "currentPage": 1
+}

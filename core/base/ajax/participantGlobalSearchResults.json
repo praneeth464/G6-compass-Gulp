@@ -1,0 +1,106 @@
+{
+	"messages":[
+		{
+			"type":"error",
+			"code":"",
+			"name":"",
+			"text":"No results, please refine search"
+		}
+	],
+
+	"participants":[
+		{
+			"avatarUrl":"img/_samples/x-profile-pic1.jpg",
+			"countryName":"United States",
+			"countryCode":"us",
+			"departmentName":"Sales",
+			"firstName":"Aaron",
+			"id":"34",
+			"jobName":"Legal Council",
+			"lastName":"Abrahmson",
+			"isLocked":true,
+			"nodes":[{"id":123,"name":"Yet another Org/Node"},{"id":123,"name":"Last Org/Node"}],
+			"participantUrl" : "layout.html?tplPath=apps/publicProfile/tpl/&tpl=publicProfilePage.html&id=34"
+		},
+		{
+			"avatarUrl":"img/_samples/x-profile-pic2.jpg",
+			"countryName":"Germany",
+			"countryCode":"de",
+			"departmentName":"Auto",
+			"firstName":"Aaron",
+			"id":"1203",
+			"jobName":"Mechanic",
+			"lastName":"Billings",
+			"isLocked":false,
+			"nodes":[{"id":123,"name":"Yet another Org/Node"},{"id":123,"name":"Last Org/Node"}],
+			"participantUrl" : "layout.html?tplPath=apps/publicProfile/tpl/&tpl=publicProfilePage.html&id=1203"
+		},
+		{
+			"avatarUrl":"img/_samples/x-profile-pic3.jpg",
+			"countryName":"United States",
+			"countryCode":"us",
+			"departmentName":"Accounting",
+			"firstName":"Aaron",
+			"id":"456",
+			"jobName":"Number Cruncher",
+			"lastName":"Corwin",
+			"isLocked":false,
+			"nodes":[{"id":123,"name":"Yet another Org/Node"},{"id":123,"name":"Last Org/Node"}],
+			"participantUrl" : "layout.html?tplPath=apps/publicProfile/tpl/&tpl=publicProfilePage.html&id=456"
+		},
+		{
+
+			"avatarUrl":"img/_samples/x-profile-pic1.jpg",
+			"countryName":"United States",
+			"countryCode":"us",
+			"departmentName":"HR",
+			"firstName":"Aaron",
+			"id":"9870",
+			"jobName":"Cube Filler",
+			"lastName":"Dupont",
+			"isLocked":false,
+			"nodes":[{"id":123,"name":"Yet another Org/Node"},{"id":123,"name":"Last Org/Node"}],
+			"participantUrl" : "layout.html?tplPath=apps/publicProfile/tpl/&tpl=publicProfilePage.html&id=9870"
+		},
+		{
+			"avatarUrl":"img/_samples/x-profile-pic2.jpg",
+			"countryName":"United States",
+			"countryCode":"us",
+			"departmentName":"IT",
+			"firstName":"Aaron",
+			"id":"9874",
+			"jobName":"Programmeister",
+			"lastName":"Evenson",
+			"isLocked":false,
+			"nodes":[{"id":123,"name":"Yet another Org/Node"},{"id":123,"name":"Last Org/Node"}],
+			"participantUrl" : "layout.html?tplPath=apps/publicProfile/tpl/&tpl=publicProfilePage.html&id=9874"
+		},
+
+		{
+			"avatarUrl":"img/_samples/x-profile-pic3.jpg",
+			"countryName":"United States",
+			"countryCode":"us",
+			"departmentName":"Sales",
+			"firstName":"Aaron",
+			"id":"341",
+			"jobName":"Legal Council",
+			"lastName":"Alic",
+			"isLocked":false,
+			"nodes":[{"id":123,"name":"Yet another Org/Node"},{"id":123,"name":"Last Org/Node"}],
+			"participantUrl" : "layout.html?tplPath=apps/publicProfile/tpl/&tpl=publicProfilePage.html&id=341"
+		},
+		{
+			"avatarUrl":"img/_samples/x-profile-pic2.jpg",
+			"countryName":"Germany",
+			"countryCode":"de",
+			"departmentName":"Auto",
+			"firstName":"Erin",
+			"id":"12031",
+			"jobName":"Mechanic",
+			"lastName":"Billmire",
+			"isLocked":false,
+			"nodes":[{"id":123,"name":"Yet another Org/Node"},{"id":123,"name":"Last Org/Node"}],
+			"participantUrl" : "layout.html?tplPath=apps/publicProfile/tpl/&tpl=publicProfilePage.html&id=12031"
+		}
+	]
+}

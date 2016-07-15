@@ -1,0 +1,391 @@
+{
+    "messages": [],
+    "report": {
+        "id": "<?php echo( $_GET['reportId'] ); ?>",
+        "reportDisplayName": "Login Activity - List of Participant",
+        "parameters": [
+            {
+                "name": "Dates",
+                "value": "01/01/2012 - 12/04/2012"
+            }
+        ],
+        "tabularData": [
+            {
+                "meta": {
+                    "columns": [
+                        {
+                            "id": "1",
+                            "name": "Participant",
+                            "description": "Shows the organizational entity",
+                            "type": "string",
+                            "alignment": "",
+                            "sortable": false,
+                            "sortUrl": "",
+                            "summary": ""
+                        },
+                        {
+                            "id": "2",
+                            "name": "Position",
+                            "description": "Shows the Participant department details",
+                            "type": "string",
+                            "alignment": "",
+                            "sortable": false,
+                            "sortUrl": "",
+                            "summary": ""
+                        },
+                        {
+                            "id": "3",
+                            "name": "Department",
+                            "description": "Shows the Participant role details",
+                            "type": "string",
+                            "alignment": "",
+                            "sortable": false,
+                            "sortUrl": "",
+                            "summary": ""
+                        },
+                        {
+                            "id": "4",
+                            "name": "Country",
+                            "description": "Shows the Last, First name details of Participant",
+                            "type": "string",
+                            "alignment": "",
+                            "sortable": false,
+                            "sortUrl": "",
+                            "summary": ""
+                        },
+                        {
+                            "id": "5",
+                            "name": "Organization",
+                            "description": "Shows the date details of users last time login to system",
+                            "type": "string",
+                            "alignment": "",
+                            "sortable": false,
+                            "sortUrl": "",
+                            "summary": ""
+                        },
+                        {
+                            "id": "6",
+                            "name": "Login Date",
+                            "description": "Shows the count of individual visits to the system",
+                            "type": "string",
+                            "alignment": "",
+                            "sortable": true,
+                            "sortUrl": "",
+                            "summary": ""
+                        }
+                    ],
+                    "sortedOn": "2",
+                    "sortedBy": "desc",
+                    "maxRows": "310",
+                    "exportFullReportUrl": [
+                        {
+                            "label" : "Export One",
+                            "url" : "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayLoginActivityByPaxReport.do?method=extractReport&exportViewType=fullView"
+                        }
+                    ],
+                    "exportCurrentView": {
+                        "label" : "Export Current View",
+                        "url" : "http://tsgbuild-dv.biperf.com:7001/pentag/reports/displayLoginActivityByPaxReport.do?method=extractReport&exportViewType=currentView&foo=bar"
+                    },
+                    "inlineTextDescription": ""
+                },
+                "results": [
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "08/16/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "08/17/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "08/17/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "08/17/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "08/17/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "08/17/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "08/20/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "08/21/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "08/22/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "11/29/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "11/29/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "11/29/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "11/30/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "11/30/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "11/30/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "11/30/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "11/30/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "11/30/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "12/03/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "12/03/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "12/03/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "12/03/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "12/03/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "12/03/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "12/03/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "12/03/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "12/03/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "12/04/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "12/04/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "12/04/2012"
+                    ],
+                    [
+                        "Davis, Denny",
+                        "Director",
+                        "Service",
+                        "United States",
+                        "BONFIRE HOME DESIGNS",
+                        "12/04/2012"
+                    ]
+                ]
+            }
+        ],
+        "chartSet": [
+            {
+                "displayName":"Unique Login Activity by Timeframe",
+                "category":"Login",
+                "chartType":"Pie3D",
+                "dataUrl":"ajax/reportsDisplayLoginActivityByPaxReport-2.json",
+                "fusionChartsParameters":{
+                    "exportEnabled":"1",
+                    "exportFileName":"Unique Login Activity by Timeframe",
+                    "exportAtClient":"0",
+                    "exportFormats":"PDF",
+                    "exportAction":"download",
+                    "exportShowMenuItem":"0",
+                    "html5ExportHandler":"exportToPDF.do",
+                    "showlabels":"1",
+                    "showlegend":"1",
+                    "xAxisName":"Logged In",
+                    "yAxisName":"Not Logged In"
+                },
+                "pdfUrl":"ajax/displayLoginActivityByPaxReport.do?method=displayTimeFrameBarResults&amp;pdf=1",
+                "id":"5002"
+            },
+            {
+                "displayName":"Login Activity by Organization",
+                "category":"Login",
+                "chartType":"Column3D",
+                "dataUrl":"ajax/reportsDisplayLoginActivityByPaxReport-3.json",
+                "fusionChartsParameters":{
+                    "exportEnabled":"1",
+                    "exportFileName":"Login Activity by Organization",
+                    "exportAtClient":"0",
+                    "exportFormats":"PDF",
+                    "exportAction":"download",
+                    "exportShowMenuItem":"0",
+                    "html5ExportHandler":"exportToPDF.do",
+                    "showlabels":"1",
+                    "showlegend":"1",
+                    "xAxisName":"Organization",
+                    "yAxisName":"Logins"
+                },
+                "pdfUrl":"ajax/displayLoginActivityByPaxReport.do?method=displayOrganizationBarResults&amp;pdf=1",
+                "id":"5003"
+            }
+        ],
+        "selectedChartId": "",
+        "reportDetailAsOfTimestamp": "12/04/2012, 16:27:23 CST"
+    }
+}

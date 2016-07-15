@@ -1,0 +1,51 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $reports_bgColor: ;
+// $reports_borderWidth: ;
+// $reports_borderColor: ;
+// $reports_parametersColor: ;
+// $reports_addReportTitleFontFamily: ;
+// $reports_addReportTitleColor: ;
+// $reports_titleIconViewTitleColor: ;
+// $reports_titleIconViewIconColor: ;
+
+// $reports_all_bgColor: ;
+// $reports_all_gradType: ;
+// $reports_all_gradMeta: ; // list the gradient non-color properties such as position, shape, etc.
+// $reports_all_gradStops: ; // list the stops as one would a series of raw gradient stops
+
+// $reports_all_iconColor: ;
+// $reports_all_titleColor: ;
+// $reports_all_titleFontFamily: ;
+// $reports_all_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $reports_all_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+// $reports_fav_bgColor: ;
+// $reports_fav_gradType: ;
+// $reports_fav_gradMeta: ; // list the gradient non-color properties such as position, shape, etc.
+// $reports_fav_gradStops: ; // list the stops as one would a series of raw gradient stops
+
+// $reports_fav_iconColor: ;
+// $reports_fav_titleColor: ;
+// $reports_fav_titleFontFamily: ;
+// $reports_fav_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $reports_fav_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+// $reports_manageFavoritesPopoverBorderColor: ;
+// $reports_changeFiltersPopoverBorderColor: ;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "reports/scss/reports";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

@@ -1,0 +1,38 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $gamification_bgColor: ;
+// $gamification_gradType: ;
+// $gamification_gradMeta: ; // list the gradient non-color properties such as position, shape, etc.
+// $gamification_gradStops: ; // list the stops as one would a series of raw gradient stops
+
+// $gamification_iconColor: ;
+// $gamification_titleColor: ;
+// $gamification_titleFontFamily: ;
+// $gamification_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $gamification_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+$gamification_bgColorBig: $g5ModuleBgColor;
+// $gamification_gradTypeBig: ;
+// $gamification_gradMetaBig: ; // list the gradient non-color properties such as position, shape, etc.
+$gamification_gradStopsBig: $g5ModuleGradStops; // list the stops as one would a series of raw gradient stops
+
+// $gamification_textColor: ;
+// $gamification_textColorEarned: ;
+// $gamification_progressBackColor: ; // progress bar background color
+// $gamification_progressBarColor: ;  // progress bar foreground color
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "gamification/scss/gamification";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

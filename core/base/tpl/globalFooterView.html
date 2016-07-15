@@ -1,0 +1,39 @@
+<div id="globalFooterView">
+    <ul class="nav nav-pills">
+        <li><a href="layout.html?tplPath=base/tpl/&amp;tpl=privacyPolicyPage.html" id="privacyPolicyFooterLink" data-page-id="privacyPageView">Privacy Policy</a></li>
+        <li><a href="layout.html?tplPath=base/tpl/&amp;tpl=termsPage.html" id="termsFooterLink" data-page-id="termsPageView">Terms &amp; Conditions</a></li>
+        {{#if loggedIn}}<li><a href="layout.html?tplPath=base/tpl/&amp;tpl=rulesPage.html" id="rulesFooterLink" data-page-id="rulesPageView">Rules</a></li>{{/if}}
+        <li><a href="layout.html?tplPath=base/tpl/&amp;tpl=faqPage.html" id="faqFooterLink" data-page-id="faqPageView">FAQs</a></li>
+        <li><a href="layout.html?tplPath=apps/contactForm/tpl/&amp;tpl=ContactForm.html" id="contactUsFooterLink" data-page-id="contactFormView">Contact Us</a></li>
+        <li><a href="#" class="language-select"><i class="icon-flag"></i> Change Language</a></li>
+        <li class="pull-right copyright">Copyright &copy;2012 BI WORLDWIDE&trade;. All rights reserved.</li>
+    </ul>
+
+	<!-- inline modal (stack style), the class .modal has been replaced by .modal-stack -->
+	<div class="modal-stack container hide fade" id="sheetOverlayModal" style="display:none;" data-y-offset="adjust">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+			<h3 class="sheetOverlayModalTitle"></h3>
+		</div>
+
+		<div class="modal-body">
+			<!-- dynamic content -->
+
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Close</a>
+		</div>
+	</div>
+
+
+    <div class="language-list" style="display:none;">
+        <ul>
+            {{#languages}}
+            <li><a href="?cmsLocaleCode={{languageCode}}" class="language-item" ><img src="img/flags/{{flagCode}}.png" /> {{languageName}}</a></li>
+            {{/languages}}
+        </ul>
+    </div>
+</div><!-- /#globalFooterView -->
+
+
+

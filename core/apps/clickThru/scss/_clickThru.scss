@@ -1,0 +1,144 @@
+// TODO 5.5: add more font size/weight/style controls
+// TODO 5.x: consider rewriting and/or removing this module as it doesn't seem terribly useful. the shop* modules can become their own shop app
+
+// App-specific variables and mixins
+// =========================
+$clickThru_h3FontFamily: $g5ModuleTitleFontFamily !default;
+$clickThru_pFontFamily: $g5ModuleTitleFontFamily !default;
+
+@mixin clickThruSkinBkgViews(
+    $textColor: false,
+    $h3FontFamily: false,
+    $pFontFamily: false,
+    $visitAppBtnColor: false,
+    $visitAppBtnBorderColor: false,
+    $imgUrlPath: false,
+    $imgUrl2x2: false,
+    $imgUrl4x2: false,
+    $imgUrl4x4: false
+) {
+    @if $textColor {
+        .wide-view {
+            color: $textColor;
+        }
+    }
+    @if $h3FontFamily {
+        h3 {
+            font-family: $h3FontFamily;
+        }
+    }
+    @if $pFontFamily {
+        p {
+            font-family: $pFontFamily;
+        }
+    }
+
+    @if $visitAppBtnColor or $visitAppBtnBorderColor {
+        .visitAppBtn {
+            i {
+                @include circledAwesomeIconRecolored(
+                    $color: $visitAppBtnColor,
+                    $borderColor: $visitAppBtnBorderColor
+                );
+            }
+        }
+    }
+
+    @if $imgUrl2x2 {
+        &.grid-dimension-2x2 {
+            .module-liner {
+                @include safeImgUrls($imgUrl2x2, $imgUrlPath, $property: 'background-image');
+                background-repeat: no-repeat;
+                filter: none;
+            }
+        }
+    }
+    @if $imgUrl4x2 {
+        &.grid-dimension-4x2 {
+            .module-liner {
+                @include safeImgUrls($imgUrl4x2, $imgUrlPath, $property: 'background-image');
+                background-repeat: no-repeat;
+                filter: none;
+            }
+        }
+    }
+    @if $imgUrl4x4 {
+        &.grid-dimension-4x4 {
+            .module-liner {
+                @include safeImgUrls($imgUrl4x4, $imgUrlPath, $property: 'background-image');
+                background-repeat: no-repeat;
+                filter: none;
+            }
+        }
+    }
+}
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+.module.clickThru {
+    .wide-view {
+        h3 {
+            font-family: $clickThru_h3FontFamily;
+        }
+        p {
+            font-family: $clickThru_pFontFamily;
+        }
+    }
+    .wide-view,
+    .title-icon-view {
+        cursor: pointer;
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        .title-icon-view {
+            display: none;
+        }
+        .wide-view {
+            line-height: 1.1;
+
+            h3 {
+                margin: 0;
+                font-size: 2em;
+            }
+        }
+        @include module_visitAppBtnFullModule();
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2 {
+        .wide-view {
+            padding: ($g5ModuleGutter * 4) ($g5ModuleGutter * 5);
+            font-size: 18px;
+
+            h3, p {
+                font-weight: normal;
+            }
+        }
+    }
+
+    &.grid-dimension-4x2 {
+        .wide-view {
+            padding-right: ($g5ModuleGutter * 6);
+            padding-left: ($g5ModuleGutter * 40);
+            font-size: 21px;
+        }
+    }
+    &.grid-dimension-4x4 {
+        .wide-view {
+            padding: ($g5ModuleGutter * 12) ($g5ModuleGutter * 15);
+            font-size: 24px;
+            line-height: 1.2;
+
+            h3 {
+                font-size: 2.5em;
+                line-height: 1.2;
+            }
+        }
+    }
+
+} /* /.module.clickThru */

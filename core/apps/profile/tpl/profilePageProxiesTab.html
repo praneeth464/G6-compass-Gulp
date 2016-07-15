@@ -1,0 +1,121 @@
+<h2>Delegates</h2>
+
+<p>A delegate is a participant who you authorize to act on your behalf.</p>
+
+<div id="profilePageProxiesTabList">
+
+    <!--
+        Participant search view Element
+        - data-search-types: defines the dropdowns and autocompletes
+        - data-search-params: defines extra static parameters to send with autocomp and participant requests
+        - data-autocomp-delay: how long to wait after key entry to query server
+        - data-autocomp-min-chars: min num chars before querying server
+        - data-search-url: override search json provider (usually needed)
+        - data-select-url: send selected participant id to server (optional)
+        - data-deselect-url: send deselected participant id to server (optional)
+        - data-select-mode: 'single' OR 'multiple' select behavior
+        - data-msg-select-txt: link to select (optional)
+        - data-msg-selected-txt: text to show something is selected (optional)
+    -->
+    <div class="" id="participantSearchView" style="display:none"
+        data-search-types='[{"id":"lastName","name":"Last Name"},{"id":"firstName","name":"First Name"},{"id":"location","name":"Location"},{"id":"jobTitle","name":"Job Title"},{"id":"department","name":"Department"}]'
+        data-search-params='{"extraKey":"extraValue","anotherKey":"some value"}'
+        data-autocomp-delay="500"
+        data-autocomp-min-chars="2"
+        data-autocomp-url="ajax/participantSearch_autocomp_firstName.json"
+        data-search-url="ajax/participantSearchResults_addProxy.json"
+        data-select-url="ajax/profilePageProxiesTabProxy_add.json"
+        data-deselect-url="ajax/profilePageProxiesTabProxy_remove.json"
+        data-select-mode="multiple"
+        data-msg-select-txt="add"
+        data-msg-selected-txt="<i class='icon icon-ok'></i>"
+        data-visibility-controls="showAndHide"
+        data-msg-show="Add a Delegate"
+        data-msg-hide="Done Adding">
+        <!-- added by view -->
+    </div>
+
+
+    <div class="well container-splitter participantCollectionViewWrapper pullBottomUp">
+
+        <!-- NOTE: if desired, the contents of profilePageProxiesTabListRow.html can be inserted into this script tag for the reduced server call of an inline template -->
+        <!--subTpl.profilePageProxiesTabListRow=
+            <tr class="participant-item"
+                    data-participant-cid="{{cid}}"
+                    data-participant-id="{{id}}">
+
+                <td class="participant">
+                    <input type="hidden" name="pax[{{autoIndex}}].userId" value="{{id}}" />
+
+                    <a class="participant-popover" href="#" data-participant-ids="[{{id}}]">
+                        {{#if avatarUrl}}<img alt="{{firstName}} {{lastName}}" class="profile-proxy-list-avatar avatar" src="{{avatarUrl}}">{{/if}}
+                        {{firstName}}
+                        {{lastName}}
+                        {{#if countryCode}}<img src="img/flags/{{countryCode}}.png" alt="{{countryCode}}" class="countryFlag" title="{{countryName}}" />{{/if}}
+                    </a>
+
+                    <span class="org">{{orgName}} {{#if departmentName}}{{#if orgName}}&bull;{{/if}} {{departmentName}}{{/if}} {{#if jobName}}{{#if departmentName}}&bull;{{else}}{{#if orgName}}&bull;{{/if}}{{/if}} {{jobName}}{{/if}}</span>
+                </td>
+
+                <td class="coreaccess">
+                    <ul>
+                    {{#each coreAccess}}
+                        <li>{{this}}</li>
+                    {{/each}}
+                    </ul>
+                </td>
+
+                <td class="modpromo">
+                    {{#each module}}
+                    <strong>{{this.title}}</strong>
+                    <ul>
+                        {{#each this.promotions}}
+                        <li>{{this}}</li>
+                        {{/each}}
+                    </ul>
+                    {{/each}}
+                </td>
+
+                <td class="edit">
+                    <a class="editProxyControl" href="{{urlEdit}}" title="edit this proxy"><i class="icon-edit"></i></a>
+                </td>
+
+                <td class="remove">
+                    <a class="remParticipantControl" title="remove this proxy"><i class="icon-remove"></i></a>
+                </td>
+
+            </tr>
+        subTpl-->
+
+        <h3>Selected Delegates</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th class="participant">Participant</th>
+                    <th class="coreaccess">Core Access</th>
+                    <th class="modpromo">Module / Promotions</th>
+                    <th class="edit">Edit</th>
+                    <th class="remove">Remove</th>
+                </tr>
+            </thead>
+
+            <tbody id="participantsView"
+                class="participantCollectionView"
+                data-msg-empty="You have not added anyone."
+                data-hide-on-empty="false">
+            </tbody>
+        </table>
+        <!--
+            used to keep track of the number of participants, req. a 'participantCount' class
+            name is flexible
+         -->
+        <input type="hidden" name="paxCount" value="0" class="participantCount" />
+    </div><!-- /.well.container-splitter.participantCollectionViewWrapper -->
+
+</div><!-- /#profilePageProxiesTabList -->
+
+
+<div id="profilePageProxiesTabEdit" class="hide pushTopDown">
+    <!-- inserted dynamically -->
+</div><!-- /#profilePageProxiesTabEdit -->

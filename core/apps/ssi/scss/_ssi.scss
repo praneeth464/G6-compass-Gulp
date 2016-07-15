@@ -1,0 +1,673 @@
+// App-specific variables (uncomment to use)
+// =========================
+/* * * * *
+* Global Styles
+* * * * */
+$ssi_objectives_bgColor: $g5ModuleBgColor !default;
+$ssiModule_objectives_gradType: $g5ModuleGradType !default;
+$ssiModule_objectives_gradMeta: $g5ModuleGradMeta !default;
+$ssiModule_objectives_gradStops: $g5ModuleGradStops !default;
+
+$ssi_DTGT_bgColor: $g5ModuleBgColor !default;
+$ssiModule_DTGT_gradType: $g5ModuleGradType !default;
+$ssiModule_DTGT_gradMeta: $g5ModuleGradMeta !default;
+$ssiModule_DTGT_gradStops: $g5ModuleGradStops !default;
+
+$ssi_SIU_bgColor: $g5ModuleBgColor !default;
+$ssiModule_SIU_gradType: $g5ModuleGradType !default;
+$ssiModule_SIU_gradMeta: $g5ModuleGradMeta !default;
+$ssiModule_SIU_gradStops: $g5ModuleGradStops !default;
+
+$ssi_stackRank_bgColor: $g5ModuleBgColor !default;
+$ssiModule_stackRank_gradType: $g5ModuleGradType !default;
+$ssiModule_stackRank_gradMeta: $g5ModuleGradMeta !default;
+$ssiModule_stackRank_gradStops: $g5ModuleGradStops !default;
+
+$ssi_ATN_bgColor: $g5ModuleBgColor !default;
+
+$ssi_primaryFontFamily: $titleFont !default;
+$ssi_secondaryFontFamily: $bodyFont !default;
+$ssi_primaryTextColor: $white !default;
+
+$ssi_giftIcon_circleBgColor: $black !default;
+$ssi_giftIcon_circleBgGradType: $g5ModuleGradType !default;
+$ssi_giftIcon_circleBgGradMeta: $g5ModuleGradMeta !default;
+$ssi_giftIcon_circleBgGradStops: $black $black !default;
+$ssi_giftIconComplete_circleBgColor: #cccccc !default;
+$ssi_giftIconComplete_circleBgGradStops: #cccccc #cccccc !default;
+$ssi_giftIcon_circleTextColor: $white !default;
+$ssi_giftIconCompleteColor: $black !default;
+
+$qtipDefaultWidth: 800px !default;
+$qtipBackgroundColor: $black !default;
+$qtipPrimaryTextColor: $white !default;
+$qtipTabInactiveColor: $grayLight !default;
+
+$textInputErrorBorderColor: #a94442;
+$staleColor: #aaaaaa;
+
+$ssi_exportImgUrlPath: false !default;
+
+
+/* * * * *
+* Chart Styles
+* * * * */
+$ssi_SIU_barChart_moduleBarColor: $white !default;
+$ssi_SIU_barChart_moduleCompleteBarColor: $black !default;
+$ssi_SIU_barChart_barValueColor: $white !default;
+$ssi_SIU_barChart_axisBgColor: $black !default;
+$ssi_SIU_barChart_axisTextColor: $white !default;
+
+$ssi_objectives_circleChart_bgArcColor: $black !default;
+$ssi_objectives_circleChart_fgArcColor: $white !default;
+$ssi_objectives_circleChart_ovArcColor: #b3b3b3 !default;
+
+$ssi_SIU_circleChart_bgArcColor: $white !default;
+$ssi_SIU_circleChart_fgArcColor: $black !default;
+$ssi_SIU_circleChart_ovArcColor: #b3b3b3 !default;
+
+$ssi_chartPercentCompleteColor: $black !default;
+
+$ssiDetails_chartGoalTextColor: $black !default;
+$ssiDetails_chartProgressTextColor: $white !default;
+
+
+/* * * * *
+* Module Styles
+* * * * */
+$ssiModule_asOf_daysRemaining_textColor: $white !default;
+$ssiModule_activityDescription: $white !default;
+$ssiModule_rankCompleteColor: $black !default;
+$ssiModule_defaultBorder: 1px solid $black !default;
+$ssiModule_detailsBtnTextColor: $black !default;
+
+$ssiModule_objectives_percentColor: $white !default;
+$ssiModule_objectives_progressTextColor: $white !default;
+$ssiModule_objectives_goalTextColor: $white !default;
+$ssiModule_objectives_completeTextColor: $black !default;
+$ssiModule_objectiveMetaColor: $white !default;
+$ssiModule_multiGoalToGo: $white !default;
+$ssiModule_objectives_multiGoalAchieved: $white !default;
+
+$ssiModule_dtgt_goalTextColor: $black !default;
+$ssiModule_dtgt_progressTextColor: $white !default;
+$ssiModule_dtgt_remainingTextColor: $grayLight !default;
+$ssiModule_dtgt_dataCompleteColor: $black !default;
+
+$ssiModule_siu_progressTextColor: $white !default;
+$ssiModule_siu_goalTextColor: $black !default;
+$ssiModule_siu_dataCompleteColor: $black !default;
+
+$ssiModule_stackRank_activityProgressCompleteColor: $black !default;
+
+$ssiModule_contestComplete_footerBgColor: #404040 !default;
+$ssiModule_contestComplete_footerTextColor: $white !default;
+$ssiModule_contestComplete_borderColor: $white !default;
+
+$ssiModule_contestList_asOfColor: $white !default;
+
+$ssiModule_managerList_bgColor: $g5ModuleBgColor !default;
+$ssiModule_managerList_bgGradType: $g5ModuleGradType !default;
+$ssiModule_managerList_bgGradMeta: $g5ModuleGradMeta !default;
+$ssiModule_managerList_bgGradStops: $g5ModuleGradStops !default;
+
+$ssiModule_createContest_bgColor: $g5ModuleBgColor !default;
+$ssiModule_createContest_bgGradType: $g5ModuleGradType !default;
+$ssiModule_createContest_bgGradMeta: $g5ModuleGradMeta !default;
+$ssiModule_createContest_bgGradStops: $g5ModuleGradStops !default;
+
+$ssiModule_createContest_textColor: $white !default;
+$ssiModule_createContest_qTipLink: #313131 !default;
+
+
+/* * * * *
+* Detail Page Styles
+* * * * */
+$ssiDetails_attachmentPdfImgUrl: 'fileIcons/pdf34x34.png' !default;
+$ssiDetails_attachmentPdfImgPath: $appImagesPath !default;
+
+$ssiDetails_pageTopperPlain: false !default;
+$ssiDetails_pageTopperPlain_bgColor: #cccccc !default;
+$ssiDetails_btnsPlain: false !default;
+$ssiDetails_btnsPlain_btnTextColor: $black !default;
+$ssiDetails_btnsPlain_btnBorderColor: $black !default;
+$ssiDetails_sectionTitleColor: $black !default;
+
+$ssiDetails_statusBannerBgColor: #474747 !default;
+$ssiDetails_statusBannerTextColor: $white !default;
+
+$ssiDetails_SIU_payoutBgColor: $grayLight !default;
+
+$ssiDetails_stackRank_payoutRowBgColor: $grayLight !default;
+$ssiDetails_stackRank_maxPayoutTextColor: $black !default;
+
+$ssiDetails_DTGT_contestInfoBgColor: #363636 !default;
+$ssiDetails_DTGT_goalPercentTextColor: $white !default;
+$ssiDetails_DTGT_progressTextColor: $white !default;
+$ssiDetails_DTGT_payoutTextColor: $black !default;
+
+$ssiDetails_objectives_payoutBgColor: $grayLight !default;
+
+
+/* * * * *
+* Page Edit Styles
+* * * * */
+$ssiContest_pageEdit_translations_bgColor: $pages_splitterBgColor !default;
+$ssiContest_pageEdit_translations_textColor: $pages_splitterTextColor !default;
+
+$ssiContest_pageEdit_paxSelectWrapBorderWidth: 1px !default;
+$ssiContest_pageEdit_paxSelectWrapBorderColor: $pages_splitterBorderTopBottomColor !default;
+
+$ssiContest_pageEdit_objectiveBonusDividerBorderColor: $gray !default; // should match $participantCollectionView_thBorderBottomColor in _participantCollectionView.scss
+
+$ssiContest_pageEdit_activityHeaderFontColor: false !default;
+$ssiContest_pageEdit_activityHeaderBgColor: false !default;
+
+$ssiContest_pageEdit_activityItem_textColor: $pages_splitterTextColor !default;
+$ssiContest_pageEdit_activityItem_bgColor: transparent !default;
+$ssiContest_pageEdit_activityItem_borderBottom: 1px solid $grayLight !default;
+$ssiContest_pageEdit_activityItem_backgroundFlash: #FFFFA3 !default; // same as backgroundFlash in _participantItem.scss
+$ssiContest_pageEdit_activityItem_editRemoveIconColor: $gray !default; // same as editRemoveIconColor in _participantItem.scss
+
+$ssiContest_pageEdit_activityItemSortHelper_textColor: false !default;
+$ssiContest_pageEdit_activityItemSortHelper_bgColor: transparentize($grayLight, 0.33) !default;
+$ssiContest_pageEdit_activityItemSortHolder_textColor: false !default;
+$ssiContest_pageEdit_activityItemSortHolder_bgColor: $grayLight !default;
+
+$ssiContest_pageEdit_noActivitiesFontColor: false !default;
+
+$ssiContest_pageEdit_activityItemHover_textColor: false !default;
+$ssiContest_pageEdit_activityItemHover_bgColor: #bbb !default; // same as rowHoverBgColor in _participantItem.scss
+
+$ssiContest_pageEdit_activityItemActive_textColor: false !default;
+$ssiContest_pageEdit_activityItemActive_iconColor: $ssiContest_pageEdit_activityItemActive_textColor !default;
+$ssiContest_pageEdit_activityItemActive_bgColor: $white !default;
+
+$ssiContest_pageEdit_estimator_bgColor: #eeeeee !default;
+$ssiContest_pageEdit_estimator_borderRadius: 0 !default;
+$ssiContest_pageEdit_estimatorSliderDisabled_progressColor: $grayLight !default;
+$ssiContest_pageEdit_estimatorSliderDisabled_tipBgColor: $gray !default;
+$ssiContest_pageEdit_estimatorSliderDisabled_tipTextColor: false !default;
+
+$ssiDetail_SIU_levelDetails_tableBgColor: #fff !default;
+$ssiDetail_SIU_levelDetails_borderColor: #ddd !default;
+$ssiDetail_SIU_levelDetails_informationBgColor: #f2f2f2 !default;
+$ssiDetail_SIU_levelDetails_currentLevelBgColor: #c9c9c9 !default;
+$ssiDetail_SIU_levelDetails_levelStatusBorderColor: #333 !default;
+
+$ssiDetail_SIU_achievedDetails_activeTabColor: #f2f2f2 !default;
+$ssiDetail_SIU_achievedDetails_inactiveTabColor: #ddd !default;
+$ssiDetail_SIU_barChart_barColor: #666 !default;
+
+
+/* * * * *
+* Approve Contest Styles
+* * * * */
+$ssiApproveContestDetails_linkColor: $linkColor !default;
+$ssiApproveContestDetails_linkFontSize: $baseFontSize !default;
+$ssiApproveContestDetails_paxManagerTableBg: #eeeeee !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// =========================
+
+/* ----- GLOBAL APP STYLES ----- */
+/***
+ *     .d8888b.  888      .d88888b.  888888b.         d8888 888
+ *    d88P  Y88b 888     d88P" "Y88b 888  "88b       d88888 888
+ *    888    888 888     888     888 888  .88P      d88P888 888
+ *    888        888     888     888 8888888K.     d88P 888 888
+ *    888  88888 888     888     888 888  "Y88b   d88P  888 888
+ *    888    888 888     888     888 888    888  d88P   888 888
+ *    Y88b  d88P 888     Y88b. .d88P 888   d88P d8888888888 888
+ *     "Y8888P88 88888888 "Y88888P"  8888888P" d88P     888 88888888
+ *
+ *
+ *
+ */
+
+ .ssi {
+
+    // re-empower generic "tr" class for bootstrap tables
+    .table td.tr {
+        text-align: right;
+    }
+
+    // do this get that payout type "other" icon
+    .payoutGift {
+        position: relative;
+
+        .giftCount {
+            @include module_moduleLinerBackground(
+                $bgColor: $ssi_giftIcon_circleBgColor,
+                $gradType: $ssi_giftIcon_circleBgGradType,
+                $gradMeta: $ssi_giftIcon_circleBgGradMeta,
+                $gradStops: $ssi_giftIcon_circleBgGradStops
+            );
+            border-radius: 50%;
+            box-shadow: 0px 1px 2px 0 rgba(0,0,0,0.4), inset 0px 2px 2px lighten($ssi_giftIcon_circleBgColor, 20%);
+            color: $ssi_giftIcon_circleTextColor;
+            display: inline-block;
+            font-family: $ssi_secondaryFontFamily;
+            font-size: $baseFontSize * 0.857;//12px
+            height: 20px;
+            left: -9px;
+            padding: 5px;
+            position: relative;
+            text-shadow: 0px 1px rgba(0,0,0,.5);
+            top: -20px;
+            width: 20px;
+        }
+    } // \.payoutGift
+
+    .complete {
+        .payoutGift {
+            .icon-gift {
+                color: $ssi_giftIconCompleteColor;
+            }
+            .giftCount {
+                @include module_moduleLinerBackground(
+                    $bgColor: $ssi_giftIconComplete_circleBgColor,
+                    $gradType: $ssi_giftIcon_circleBgGradType,
+                    $gradMeta: $ssi_giftIcon_circleBgGradMeta,
+                    $gradStops: $ssi_giftIconComplete_circleBgGradStops
+                );
+                box-shadow: 0px 1px 2px 0 rgba(0,0,0,0.4), inset 0px 2px 2px #cccccc;
+                color: $black;
+            }
+        }
+    }
+ }
+
+ .ssiSelectContestQtip {
+    background-color: $qtipBackgroundColor;
+    max-width: none;
+    width: 800px;
+
+    .tabNav:hover {
+        cursor: pointer;
+    }
+
+    .close {
+        font-weight: 200;
+        opacity: 1;
+        position: absolute;
+        right: 7px;
+        text-shadow: none;
+        top: 7px;
+
+        i {
+            color: $qtipPrimaryTextColor;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-family: $ssi_primaryFontFamily;
+    }
+
+    h1 {
+        color: $qtipPrimaryTextColor;
+        font-size: $baseFontSize * 2.143;//30px
+        margin-bottom: 0;
+        text-transform: uppercase;
+    }
+
+    h2 {
+        font: {
+            size: 3.2em;
+            weight: normal;
+        }
+    }
+
+    h3 {
+        color: $black;
+        font: {
+            size: 1.4em;
+            weight: normal;
+        }
+        line-height: normal;
+        margin: 0;
+        text: {
+            align: center;
+            transform: uppercase;
+        }
+    }
+
+    .row-fluid .span12 {
+        width: 100%;
+    }
+
+    .contestGuide {
+        font: {
+            family: $ssi_secondaryFontFamily;
+            size: $baseFontSize * 1.071;//15px
+        }
+        text-decoration: underline;
+
+        img {
+            height: 20px;
+            margin: 0 5px 0 10px;
+            width: 20px;
+        }
+    }
+
+    .tabContent {
+        color: $qtipPrimaryTextColor;
+        display: none;
+        padding: 10px;
+
+        p {
+            font: {
+                family: $ssi_secondaryFontFamily;
+                size: $baseFontSize;
+            }
+            line-height: normal;
+        }
+    }
+
+    .createButtonWrap {
+        .span10 {
+            height: auto;
+        }
+    }
+
+    .qtipSubmit {
+        font-size: 17px;
+        margin: 5px 30px 15px;
+
+    }
+
+    .navContainer {
+        position: relative;
+
+           &::before {
+            content: "";
+            display: block;
+            margin-left: -2px;
+            padding-top: 20%;
+            width: 2px;
+        }
+    } // .navContainer
+
+    /**
+     * Small screen sizes
+     */
+    &.qtipSmall {
+
+        .tabLargeContainer {
+            display: none;
+        }
+
+        .tabNavContent h3 {
+            background: $qtipTabInactiveColor;
+            padding: 5px 0;
+        }
+
+        .objectives.active .tabNavContent h3 {
+            background: $ssi_objectives_bgColor;
+        }
+
+        .stepItUp.active .tabNavContent h3 {
+            background: $ssi_SIU_bgColor;
+        }
+
+        .doThisGetThat.active .tabNavContent h3 {
+            background: $ssi_DTGT_bgColor;
+        }
+
+        .stackRank.active .tabNavContent h3 {
+            background: $ssi_stackRank_bgColor;
+        }
+
+        .awardThemNow.active .tabNavContent h3 {
+            background: $ssi_ATN_bgColor;
+        }
+    }
+
+    /**
+     * Medium and larger screen sizes
+     */
+    &.qtipMedium,
+    &.qtipLarge,
+    &.qtipHuge {
+
+        /**
+         * Since there are five links being displayed and bootstrap's
+         * grid is based on 12 columns, a small custom grid needs to be
+         * created based on 10 columns.
+         */
+        .container10 {
+            width: 100%;
+
+            @for $i from 1 through 10 {
+                .span#{$i} {
+                    width: $i/10*100%;
+                }
+
+                .offset#{$i} {
+                    margin-left: $i/10*100%;
+                }
+            }
+        } // .container10
+
+        .tabNav {
+            border: 5px solid $qtipBackgroundColor;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+
+            .tabNavContent {
+                background: $qtipTabInactiveColor;
+                bottom: 0;
+                font-family: $ssi_primaryFontFamily;
+                left: 0;
+                margin-bottom: 10px;
+                padding: 10px;
+                position: absolute;
+                right: 0;
+                text-align: center;
+                top: 0;
+
+                &::after {
+                    border-top: solid 10px transparent;
+                    border-left: solid 10px transparent;
+                    border-right: solid 10px transparent;
+                    content:'';
+                    height: 0;
+                    left: 0;
+                    margin: 0 auto;
+                    position: absolute;
+                    right: 0;
+                    top: 100%;
+                    width: 0;
+                }
+
+                i {
+                    display: block;
+                    font-size: 7em;
+                    margin-top: 15%;
+                }
+            }
+
+            &::after {
+                content: " ";
+                display: block;
+                margin-left: -2px;
+                padding-top: 100%;
+                width: 2px;
+            }
+        } // .tabNav
+
+        .active .tabNavContent {
+            i,
+            h3 {
+                color: $white;
+            }
+        }
+
+        .objectives {
+            &.active {
+                .tabNavContent {
+                    background: $ssi_objectives_bgColor;
+
+                    &::after {
+                        border-top-color: $ssi_objectives_bgColor;
+                    }
+                }
+            }
+        }//.objectives
+
+        .stepItUp {
+            &.active {
+                .tabNavContent {
+                    background: $ssi_SIU_bgColor;
+
+                    &::after {
+                        border-top-color: $ssi_SIU_bgColor;
+                    }
+                }
+            }
+        }//.stepItUp
+
+        .doThisGetThat {
+            &.active {
+                .tabNavContent {
+                    background: $ssi_DTGT_bgColor;
+
+                    &::after {
+                        border-top-color: $ssi_DTGT_bgColor;
+                    }
+                }
+            }
+        }//.doThisGetThat
+
+        .stackRank {
+            &.active {
+                .tabNavContent {
+                    background: $ssi_stackRank_bgColor;
+
+                    &::after {
+                        border-top-color: $ssi_stackRank_bgColor;
+                    }
+                }
+            }
+        }//.stackRank
+
+        .awardThemNow {
+            &.active {
+                .tabNavContent {
+                    background: $ssi_ATN_bgColor;
+
+                    &::after {
+                        border-top-color: $ssi_ATN_bgColor;
+                    }
+                }
+            }
+        }//.awardThemNow
+
+        .tabGroup {
+            @include clearfix();
+        }
+    } // .qtipMedium, .qtipLarge, .qtipHuge
+
+    /**
+     * Medium extra styles
+     */
+    &.qtipMedium {
+       .tabLargeContainer {
+            display: none;
+        }
+
+        h3 {
+            font-size: 1.2em;
+        }
+
+        .lt-ie9 & {
+            .tabNav {
+                height: 76px;
+            }
+            .tabContent {
+                margin-top: 50px;
+            }
+        }
+    }
+
+    /**
+    * Large screen sizes
+    */
+    &.qtipLarge {
+        .objectives .tabNavContent img {
+            margin-top: 7%;
+        }
+
+        .stepItUp .tabNavContent img {
+            margin-top: 16%;
+        }
+
+        .doThisGetThat .dtgtMockData  {
+            padding: 7px 3px 5px 3px;
+
+            & + .dtgtMockData {
+                display: none;
+            }
+        }
+
+        .stackRank .stackRankMockData {
+            padding: 3px 0;
+
+            .avatar {
+                height: 15px;
+                margin: 0 5px;
+                width: 15px;
+            }
+
+            .leaderName {
+                padding: 0 5px 0 0;
+            }
+        }
+
+        .awardThemNow .tabNavContent i {
+            font-size: 5em;
+            margin-top: 11%;
+        }
+
+        .lt-ie9 & {
+            .tabNav {
+                height: 116px;
+            }
+
+            .tabContent {
+                margin-top: 90px;
+            }
+        }
+    }
+
+    &.qtipHuge {
+        .lt-ie9 & {
+            .tabNav {
+                height: 156px;
+            }
+
+            .tabContent {
+                margin-top: 130px;
+            }
+        }
+    }
+} // .ssiSelectContestQtip
+
+/* ----- IMPORTS ----- */
+@import "ssiModule";
+@import "ssiCharts";
+@import "ssiCreateEditContest";
+@import "ssiContestDetails";
+@import "ssiUpdateContest";
+@import "ssiApproveContest";
+@import "ssiClaims";

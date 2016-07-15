@@ -1,0 +1,33 @@
+<?php //sleep(1); ?>
+
+{{#eq mode "team"}}
+
+<div class="chartContainer" id="chartContainer_{{type}}"></div>
+
+{{else}}
+
+{{#if logins}}
+<h4 class="subhead">Site Visits</h4>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th class="d">Date</th>
+            <th class="t">Time</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {{#each logins}}
+        <tr>
+            <td class="d">{{date}}</td>
+            <td class="t">{{time}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+<h4 class="visits subhead">You have 0 Site Visits at this time.</h4>
+{{/if}}
+
+{{/eq}}

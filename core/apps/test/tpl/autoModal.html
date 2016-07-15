@@ -1,0 +1,73 @@
+
+
+<div id="testPageView" class="page-content">
+	<div class="hero-unit">
+			<h1>AutoModal</h1>
+			<h3>modal shows on document ready (for any PageView)</h3>
+			<p>
+				Any <i>bootstrap style</i> modal markup with the class <i>autoModal</i> will be displayed on document ready for any <i>PageView</i>. Please see the HTML source of this page for details.
+			</p>
+	</div>
+
+
+</div><!-- /#testPageView -->
+
+<!-- if you want to test a different autoModal, use this include (relative to core/base/) -->
+<?php // include("core/apps/recognition/tpl/recognitionPageInviteContributorsAutoModal.html"); ?>
+
+<!-- AutoModal (if more than one: first one will be shown - error will be logged) -->
+<div class="modal hide fade autoModal">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+		<h3>Modal header</h3>
+	</div>
+	<div class="modal-body">
+		<p>One fine body…</p>
+		<p>One fine body…</p>
+		<p>One fine body…</p>
+		<p>One fine body…</p>
+	</div>
+	<div class="modal-footer">
+		<a href="#" class="btn" data-dismiss="modal">Close</a>
+		<a class="btn btn-primary" data-dismiss="modal">Save changes</a>
+	</div>
+</div>
+
+
+<div class="modal hide fade autoModal">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+		<h3>YYY HEADER</h3>
+	</div>
+	<div class="modal-body">
+		<p>yyy body...</p>
+	</div>
+	<div class="modal-footer">
+		<a href="#" class="btn" data-dismiss="modal">Close</a>
+	</div>
+</div>
+
+
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function(){
+    	var testPageView;
+
+        // attach the view to an existing DOM element
+        window.testPageView = new PageView({
+        	el: $('#testPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'AutoModal'
+        });
+    });
+</script>

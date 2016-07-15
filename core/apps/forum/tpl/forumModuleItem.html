@@ -1,0 +1,84 @@
+{{#each .}}
+<div class="item">
+    <div class="discussion">
+        <p class="discussionTopic">
+            <span class="discussionTopicLabel">Topic:</span>
+            <a href="layout.html?tplPath=apps/forum/tpl/&amp;tpl=forumPageDiscussions.html&amp;topicId={{topicId}}&amp;topicName={{topicName}}" class="discussionTopicLink">{{topicName}}</a>
+        </p>
+
+    {{#if id}}
+
+        <h3 class="discussionHeadline">
+            <a href="layout.html?tplPath=apps/forum/tpl/&amp;tpl=forumPageDiscussion.html&amp;topicId={{topicId}}&amp;topicName={{topicName}}&amp;discussionId={{id}}&amp;discussionName={{name}}" class="viewLink">
+                <span class="headline ellipsis multiline">{{name}}</span>
+                <!-- <i class="icon-chevron-right"></i> -->
+            </a>
+        </h3>
+
+        <div class="discussionDetails">
+            {{#if author.avatarUrl}}<img alt="{{author.firstName}} {{author.lastName}}" class="avatar" src="{{author.avatarUrl}}" width="48" height="48">{{/if}}
+
+            <div class="indent">
+                <div class="userInfo" data-id="{{author.id}}">
+                    <span class="author">
+                        by <a class="profile-popover" href="#" data-participant-ids="[{{author.id}}]">{{author.firstName}} {{author.lastName}}</a>
+                    </span>
+                    <span class="timeStamp">
+                        <a href="layout.html?tplPath=apps/forum/tpl/&amp;tpl=forumPageDiscussion.html&amp;topicId={{topicId}}&amp;topicName={{topicName}}&amp;discussionId={{id}}&amp;discussionName={{name}}">{{time}}</a>
+                    </span>
+                </div>
+                <div class="text ellipsis multiline">
+                    {{{text}}}
+                </div>
+            </div><!-- /.indent -->
+
+            {{#if comments.0.comment}}
+            <div class="discussionLatestComment">
+                <div class="innerCommentWrapper">
+                    {{#if comments.0.commenter.avatarUrl}}<img alt="{{comments.0.commenter.firstName}} {{comments.0.commenter.lastName}}" class="avatar" src="{{comments.0.commenter.avatarUrl}}" width="48" height="48">{{/if}}
+
+                    <div class="indent">
+                        <div class="userInfo" data-id="{{comments.0.commenter.id}}">
+                            <span class="author">
+                                <a class="profile-popover" href="#" data-participant-ids="[{{comments.0.commenter.id}}]">{{comments.0.commenter.firstName}} {{comments.0.commenter.lastName}}</a>
+                            </span>
+                            <span class="timeStamp">
+                                {{comments.0.time}}
+                            </span>
+                        </div>
+                        <div class="text ellipsis multiline">
+                            {{{comments.0.comment}}}
+                        </div>
+                    </div><!-- /.indent -->
+                </div><!-- /.innerCommentWrapper -->
+            </div>
+            {{/if}}
+
+            <div class="commentsWrapper">
+                <span class="commentsCount"><i class="icon-comments"></i>
+                    {{#if comments}}
+                    <span class="count">{{numberOfReplies}}</span> total comments
+                    {{else}}
+                    No comments yet
+                    {{/if}}
+                </span>
+                <a href="layout.html?tplPath=apps/forum/tpl/&amp;tpl=forumPageDiscussion.html&amp;topicId={{topicId}}&amp;topicName={{topicName}}&amp;discussionId={{id}}&amp;discussionName={{name}}#commentForm" class="btn btn-primary"><i class="icon-bullhorn"></i> Add Yours!</a>
+            </div>
+
+        </div>
+
+    {{else}}
+
+        <h3 class="discussionHeadline noResults">
+            There are no discussions for the <span class="topicName">{{topicName}}</span> forum.
+            <a href="layout.html?tplPath=apps/forum/tpl/&amp;tpl=forumPageNewDiscussion.html&amp;topicId={{topicId}}&amp;topicName={{topicName}}" class="btn btn-primary">Start One <i class="icon-chevron-right"></i></a>
+        </h3>
+
+    {{/if}}
+
+    </div>
+    <!-- <div class="btn-wrap">
+        <a href="#/url/to/the/topics/page/{{topicId}}" class="btn btn-large btn-primary"><i class="icon-g5-forum"></i> View Forum</a>
+    </div> -->
+</div>
+{{/each}}

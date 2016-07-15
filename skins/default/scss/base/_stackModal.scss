@@ -1,0 +1,26 @@
+// Partial-specific variables (uncomment to use)
+// =========================
+// $stackModal_pageContentBorderColor: ;
+
+// $stackModal_titleFontFamily: ;
+// $stackModal_titleFontWeight: ;
+// $stackModal_titleFontStyle: ;
+// // $stackModal_titleFontSize: ; // currently commented out in 5.4
+// // $stackModal_titleLineHeight: ; // currently commented out in 5.4
+// $stackModal_titleTextColor: ;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "partials/stackModal";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// Partial-specific code for this skin
+// ==================================================

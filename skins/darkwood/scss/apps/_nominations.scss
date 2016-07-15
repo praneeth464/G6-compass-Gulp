@@ -1,0 +1,38 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $nominations_bgColor: ;
+// $nominations_gradType: ;
+// $nominations_gradMeta: ;
+// $nominations_gradStops: ;
+
+// $nominations_iconColor: ;
+// $nominations_titleColor: ;
+// $nominations_titleFontFamily: ;
+// $nominations_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $nominations_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+// $nominations_textColor: ;
+// $nominations_h3FontFamily: ;
+// $nominations_pFontFamily: ;
+// $nominations_visitAppBtnColor: ;
+// $nominations_visitAppBtnBorderColor: ;
+// $nominations_imgUrlPath: ; // setting this to $appImagesPath points at core/base/img. Leave blank to use images in this skin
+// $nominations_imgUrl2x2: ;
+// $nominations_imgUrl4x2: ;
+// $nominations_imgUrl4x4: ;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "clickThru/scss/nominations";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

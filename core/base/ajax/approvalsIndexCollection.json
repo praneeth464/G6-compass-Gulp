@@ -1,0 +1,111 @@
+{
+
+	"messages":[],
+
+	"nominationApprovals":[
+		{
+			"id": 1001,
+			"type": "NominationApproval",
+			"name": "NominationApprovalName 1",
+			"alertMessage": "You have approvals to review",
+			"url": "layout.html?tpl=approvalsPagePendingNominationApprovals&tplPath=apps/approvals/tpl/",
+			"numberOfApprovables":3
+		},
+		{
+			"id": 1002,
+			"type": "NominationApproval",
+			"name": "NominationApprovalName 2",
+			"alertMessage": "You have approvals to review",
+			"url": "layout.html?tpl=approvalsPagePendingNominationApprovals&tplPath=apps/approvals/tpl/",
+			"numberOfApprovables":1
+		},
+		{
+			"id": 1003,
+			"type": "NominationApproval",
+			"name": "NominationApprovalName 3",
+			"alertMessage": "You have approvals to review",
+			"url": "layout.html?tpl=approvalsPagePendingNominationApprovals&tplPath=apps/approvals/tpl/",
+			"numberOfApprovables":2
+		}
+	],
+
+	"RecognitionApprovals":[
+		{
+			"id": 1004,
+			"type": "RecognitionApproval",
+			"name": "RecognitionApprovalName 1",
+			"alertMessage": "You have approvals to review",
+			"url": "layout.html?tpl=approvalsPagePendingRecognitionNominationsClean&tplPath=apps/approvals/tpl/#",
+			"numberOfApprovables":3
+		},
+						{
+			"id": 1005,
+			"type": "RecognitionApproval",
+			"name": "RecognitionApprovalName 2",
+			"alertMessage": "You have approvals to review",
+			"url": "layout.html?tpl=approvalsPagePendingRecognitionNominationsClean&tplPath=apps/approvals/tpl/#",
+			"numberOfApprovables":2
+		}
+	],
+
+	"claimApprovals":[
+		{
+			"id": 1006,
+			"type": "ClaimApproval",
+			"name": "ClaimApprovalName 1 (pending only)",
+			"alertMessage": "You have approvals to review",
+			"url": "layout.html?tpl=approvalsPagePendingClaimApprovals&tplPath=apps/approvals/tpl/",
+			"numberOfApprovables":3
+		},
+		{
+			"id": 1007,
+			"type": "ClaimApproval",
+			"name": "ClaimApprovalName 2 (pending only)",
+			"alertMessage": "You have approvals to review",
+			"url": "layout.html?tpl=approvalsPagePendingClaimApprovals&tplPath=apps/approvals/tpl/",
+			"numberOfApprovables":3
+		},
+		{
+			"id": 1008,
+			"type": "ClaimApproval",
+			"name": "ClaimApprovalName 3 (pending only)",
+			"alertMessage": "You have approvals to review",
+			"url": "layout.html?tpl=approvalsPagePendingClaimApprovals&tplPath=apps/approvals/tpl/",
+			"numberOfApprovables":3
+		},
+		{
+			"id": 1009,
+			"type": "ClaimApproval",
+			"name": "ClaimApprovalName 4 (pending only)",
+			"alertMessage": "You have approvals to review",
+			"url": "layout.html?tpl=approvalsPagePendingClaimApprovals&tplPath=apps/approvals/tpl/",
+			"numberOfApprovables":3
+		},
+		{
+			"id": 1010,
+			"type": "ClaimApproval",
+			"name": "ClaimApprovalName",
+			"alertMessage": "You have approvals to review",
+			"url": "layout.html?tpl=approvalsPageClaims&tplPath=apps/approvals/tpl/",
+			"numberOfApprovables":3
+		}
+	],
+
+	"ssiApprovals": [
+		{
+			"id": 1111,
+			"type": "SSIApproval",
+			"name": "SSIApprovalName 1",
+			"alertMessage": "Contest approval required by 01/01/15",
+			"url": "layout.html?tplPath=apps/ssi/tpl/&tpl=ssiApproveContestPage.html"
+		},
+		{
+			"id": 1112,
+			"type": "SSIApproval",
+			"name": "SSIApprovalName 2",
+			"alertMessage": "Contest approved on 12/01/15",
+			"url": "layout.html?tplPath=apps/ssi/tpl/&tpl=ssiApproveContestPage.html"
+		}
+	]
+
+}

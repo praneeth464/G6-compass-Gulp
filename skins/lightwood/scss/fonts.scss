@@ -1,0 +1,99 @@
+@import "base/variables";
+
+// Partial-specific variables (uncomment to use)
+// =========================
+$fontsUrlPath: $appFontsPath;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "../../../core/base/scss/fonts";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// Partial-specific code for this skin
+// ==================================================
+// If there are any custom @font-face fonts, put the rules for them here using the code block below.
+// Note: Your font files must be located in the skin's rsrc folder for this code structure to work. For fonts in other directories, you will need to pass $path arguments to the font-face() and font-files-safe() functions. See core/base/scss/fonts.scss for how to use those arguments
+// Note: For brevity, you may leave off the argument names ($name, $font-files, etc) provided all arguments are included in the correct order
+// @include font-face(
+//     $name: 'FontAwesome',
+//     $font-files: font-files-safe(
+//             $fonts: ("fontawesome-webfont.woff" 'woff',
+//                 "fontawesome-webfont.ttf" 'truetype',
+//                 "fontawesome-webfont.svg#FontAwesome" 'svg')
+//         ),
+//     $eot: 'fontawesome-webfont.eot',
+//     $weight: normal,
+//     $style: normal);
+
+@include font-face(
+    'din',
+    font-files-safe(
+        ("din_regular-webfont.woff" 'woff',
+            "din_regular-webfont.ttf" 'truetype',
+            "din_regular-webfont.svg#din" 'svg')
+    ),
+    'din_regular-webfont.eot',
+    normal,
+    normal);
+
+@include font-face(
+    'din',
+    font-files-safe(
+        ("din_light-webfont.woff" 'woff',
+            "din_light-webfont.ttf" 'truetype',
+            "din_light-webfont.svg#din" 'svg')
+    ),
+    'din_light-webfont.eot',
+    300,
+    normal);
+
+@include font-face(
+    'din',
+    font-files-safe(
+        ("din_bold-webfont.woff" 'woff',
+            "din_bold-webfont.ttf" 'truetype',
+            "din_bold-webfont.svg#din" 'svg')
+    ),
+    'din_bold-webfont.eot',
+    bold,
+    normal);
+
+
+
+
+
+// -------------------- Special Cases -------------------- //
+// If you are REPLACING the base G5 Fonticons font with a custom font that includes a FULL SET of glyphs, uncomment the following lines. Note the filenames.
+// @include font-face(
+//     'G5Fonticons',
+//     font-files-safe(
+//         ("g5-fonticons-webfont.woff" 'woff',
+//          "g5-fonticons-webfont.ttf" 'truetype',
+//          "g5-fonticons-webfont.svg#G5Fonticons" 'svg'),
+//         $fontsUrlPath
+//     ),
+//     'g5-fonticons-webfont.eot',
+//     normal,
+//     normal,
+//     $fontsUrlPath);
+
+
+// If you are ADDING glyphs to the base G5 Fonticons font, uncomment the following lines. Note the filenames.
+// @include font-face(
+//     $name: 'G5FonticonsExtended',
+//     $font-files: font-files-safe(
+//             $fonts: ("g5-fonticons-extended.woff" 'woff',
+//                 "g5-fonticons-extended.ttf" 'truetype',
+//                 "g5-fonticons-extended.svg#G5FonticonsExtended" 'svg')
+//         ),
+//     $eot: 'g5-fonticons-extended.eot',
+//     $weight: normal,
+//     $style: normal);

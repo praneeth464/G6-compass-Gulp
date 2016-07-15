@@ -1,0 +1,134 @@
+<?php sleep(1); ?>
+{
+    "messages" : [],
+
+    "surveyJson" : {
+        "id": "ThisIsASurveyId",
+        "promotionId": "IfItExists",
+        "name": "This is a survey name",
+        "startDate": "08/16/2013",
+        "endDate": "08/16/2015",
+        "introText": "<p>This is the introduction text for this survey. <b>Cheers!</b></p>",
+
+        "_comment": "If a user has to choose a node against which he should report the survey, put those here",
+        "nodes": [
+            {
+                "id": 23456,
+                "name": "OrgUnit1"
+            },
+            {
+                "id": 23457,
+                "name": "OrgUnit2",
+                "isChosen": true
+            }
+        ],
+
+        "questions":[
+            {
+                "_comment": "Checkbox-type questions currently aren't possible, but I started working on them so I'm leaving this in for potential future additions. Ignore for now",
+                "id": "ThisIsAQuestionID01",
+                "number": 1,
+                "type": "checkbox",
+                "answerLimit": 2,
+                "text": "What is color?",
+                "isAnswered": false,
+                "answers": [
+                    {
+                        "number": 1,
+                        "id": "ThisIsAAnswerID01",
+                        "text": "Purple",
+                        "_comment": "If this question is already answered and this is the answer chosen, flag the following attribute as true",
+                        "isChosen": true
+                    },
+                    {
+                        "number": 2,
+                        "id":"ThisIsAAnswerID02",
+                        "text": "The optical sensation ellicited when quanta of light bombard the retina, sending neurotransmitters to frolick about the visual cortex."
+                    },
+                    {
+                        "number": 3,
+                        "id":"ThisIsAAnswerID03",
+                        "text": "It is a city in Spain."
+                    },
+                    {
+                        "number": 4,
+                        "id":"ThisIsAAnswerID04",
+                        "text": "\"color\" is just a word."
+                    }
+                ]
+            },
+            {
+                "id": "ThisIsAQuestionID02",
+                "number": 2,
+                "type": "radio",
+                "text": "Is G5 delicious?",
+                "isAnswered": false,
+                "answers": [
+                    {
+                        "number": 1,
+                        "id": "ThisIsAAnswerID01",
+                        "text": "Yes, G5 is quite delicious.",
+                        "_comment": "If this question is already answered and this is the answer chosen, flag the following attribute as true",
+                        "isChosen": true
+                    },
+                    {
+                        "number": 2,
+                        "id": "ThisIsAAnswerID02",
+                        "text": "No, I don't think so."
+                    }
+                ]
+            },
+            {
+                "id": "ThisIsAQuestionID03",
+                "number": 3,
+                "type": "essay",
+                "text": "What is your favorite color and why?",
+                "_comment": "Open ended questions can be required or not. Making the default required, so isOptional needs to be set to true to override",
+                "isOptional": true,
+                "isAnswered": true,
+                "_comment": "When an essay question is unanswered pass an empty array",
+                "_comment": "When an essay question is answered pass the contents of the answer as the text",
+                "answers": [
+                    {
+                        "text": "something cool",
+                        "_comment": "Any additional attributes inside the answer object for open-ended questions are ignored",
+                        "number": 1,
+                        "id": "ThisIsAAnswerID01"
+                    }
+                ]
+            },
+            {
+                "id": "ThisIsAQuestionID04",
+                "number": 4,
+                "type": "range",
+                "text": "How much do you love winter?",
+                "_comment": "Optional won't really have any effect, as sliders are automatically answered from the start based on the 'value' attribute of the 'slider' object",
+                "isOptional": true,
+                "isAnswered": false,
+                "slider" : {
+                    "min" : 0,
+                    "max" : 10,
+                    "step" : 1,
+                    "_comment" : "'value' is the starting position. Leave as null to default to the center of the slider. Pass an actual value when 'isAnswered' is true",
+                    "value" : null,
+                    "_comment" : "Valid options for 'tooltip' are 'show' and 'hide'",
+                    "tooltip" : "hide"
+                },
+                "_comment" : "In a range/slider type question, the answers array is used to provide labels for the starting and ending points",
+                "_comment" : "The 'number' attribute should be the same as the values for min/max above, respectively",
+                "answers": [
+                    {
+                        "text": "None. None at all.",
+                        "number": 0,
+                        "id": "ThisIsAAnswerID00"
+                    },
+                    {
+                        "text": "Lots and so much more.",
+                        "number": 10,
+                        "id": "ThisIsAAnswerID10"
+                    }
+                ]
+            }
+        ]
+    }
+}

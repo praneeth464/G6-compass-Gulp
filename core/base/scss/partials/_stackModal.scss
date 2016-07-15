@@ -1,0 +1,150 @@
+// Partial-specific variables
+// =========================
+$stackModal_pageContentBorderColor: scale-color($pages_pageContentBorderColor, $lightness: -25%) !default;
+
+$stackModal_titleFontFamily: $pageNav_pageTitleFontFamily !default;
+$stackModal_titleFontWeight: $pageNav_pageTitleFontWeight !default;
+$stackModal_titleFontStyle: $pageNav_pageTitleFontStyle !default;
+// $stackModal_titleFontSize: $pageNav_pageTitleFontSize !default;
+// $stackModal_titleLineHeight: $pageNav_pageTitleLineHeight !default;
+$stackModal_titleTextColor: $pageNav_pageTitleTextColor !default;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+
+//Stack modal stylings
+
+// bootstrap container width (from bootstrap _mixins)
+$btStrpCntWidth_vanilla: ($gridColumnWidth * $gridColumns) + ($gridGutterWidth * ($gridColumns - 1));
+$btStrpCntWidth_1200: ($gridColumnWidth1200 * $gridColumns) + ($gridGutterWidth1200 * ($gridColumns - 1));
+$btStrpCntWidth_768: ($gridColumnWidth768 * $gridColumns) + ($gridGutterWidth768 * ($gridColumns - 1));
+
+.modal-stack {
+    position:absolute;
+    background:#fff;
+    top:0; // this can be adjusted via plugin
+    left: ($btStrpCntWidth_vanilla / -2) + 20; // + 20 to make up for no margin adjustment
+    margin-left: 50%;
+    margin-top: 20px;
+    padding: 0;
+    // @include box-shadow(#666 -2px -2px 9px 2px);
+    @include box-shadow(0 3px 7px rgba(0,0,0,0.3)); // borrowed from bootstrap/_modals
+    z-index: 20000; // greater than default qtip (and pretty much everything else)
+    overflow: hidden;
+
+    & ~ .ui-tooltip {
+        z-index: 20001 !important;
+    }
+}
+
+// Responsive: Large desktop and up
+@media (min-width: 1200px) {
+    .modal-stack {
+        left: ($btStrpCntWidth_1200 / -2) + 20;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+    .modal-stack {
+        left: ($btStrpCntWidth_768 / -2) + 10;
+    }
+}
+
+// Responsive: Landscape phone to desktop/tablet
+@media (max-width: 767px) {
+    .modal-stack {
+        width: 96%;
+        margin-left:0;
+        left:2%;
+    }
+}
+
+// Responsive: Up to Landscape phone;
+@media (max-width: 480px) {
+}
+
+
+.modal-stack {
+    .modal-header {
+        @if $pages_pageContentBorderWidth {
+            border-top: $pages_pageContentBorderWidth solid $stackModal_pageContentBorderColor;
+            border-right: $pages_pageContentBorderWidth solid $stackModal_pageContentBorderColor;
+            border-left: $pages_pageContentBorderWidth solid $stackModal_pageContentBorderColor;
+        }
+
+        h3 {
+            // same as _pageNav.scss #pageTitle
+            font-family: $stackModal_titleFontFamily;
+            font-weight: $stackModal_titleFontWeight;
+            font-style: $stackModal_titleFontStyle;
+            // font-size: $stackModal_titleFontSize;
+            // line-height: $stackModal_titleLineHeight;
+            color: $stackModal_titleTextColor;
+        }
+    }
+
+    .modal-body {
+        min-height: 400px;
+        max-height: none;
+        overflow: hidden;
+        @if $pages_pageContentBorderWidth {
+            border-right: $pages_pageContentBorderWidth solid $stackModal_pageContentBorderColor;
+            border-left: $pages_pageContentBorderWidth solid $stackModal_pageContentBorderColor;
+
+            @media (min-width: 1200px) {
+                border-left-width: $pages_pageContentBorderWidth1200;
+                border-right-width: $pages_pageContentBorderWidth1200;
+            }
+            @media (min-width: 768px) and (max-width: 979px) {
+                border-left-width: $pages_pageContentBorderWidth768;
+                border-right-width: $pages_pageContentBorderWidth768;
+            }
+            @media (max-width: 767px) {}
+        }
+
+        .page-content {
+            margin: -15px; // undoing the 15px padding set in bootstrap/_modals.scss
+            // setting the "same" min-height as above. Start with 400px, take away top/bottom padding from _pages.scss, add back .modal-body 15px padding
+            min-height: 400px - 2 * ($g5PageContentPaddingHoriz - $pages_pageContentBorderWidth) + 2 * 15px;
+            border-color: $stackModal_pageContentBorderColor;
+            border-top: 0;
+            @if $pages_pageContentBorderWidth {
+                border-right: 0; // moved these borders to .modal-body
+                border-left: 0; // moved these borders to .modal-body
+            }
+
+            @media (min-width: 1200px) {
+                min-height: 400px - 2 * ($g5PageContentPaddingHoriz1200 - $pages_pageContentBorderWidth1200) + 2 * 15px;
+            }
+            @media (min-width: 768px) and (max-width: 979px) {
+                min-height: 400px - 2 * ($g5PageContentPaddingHoriz768 - $pages_pageContentBorderWidth768) + 2 * 15px;
+            }
+            @media (max-width: 767px) {
+                min-height: 400px - 2 * ($g5PageContentPaddingHorizMobile * 3 / 4) + 2 * 15px;
+            }
+
+            .page-topper {
+                .lt-ie8 & {
+                    top: 0;
+                }
+            }
+        }
+
+        & ~ .modal-footer {
+            position: relative;
+            margin-top: -$pages_pageContentBorderWidth;
+        }
+    }
+
+    .modal-footer {
+        @if $pages_pageContentBorderWidth {
+            border-right: $pages_pageContentBorderWidth solid $stackModal_pageContentBorderColor;
+            border-bottom: $pages_pageContentBorderWidth solid $stackModal_pageContentBorderColor;
+            border-left: $pages_pageContentBorderWidth solid $stackModal_pageContentBorderColor;
+        }
+    }
+}

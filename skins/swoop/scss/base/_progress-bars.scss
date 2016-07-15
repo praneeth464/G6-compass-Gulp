@@ -1,0 +1,43 @@
+// Partial-specific variables (uncomment to use)
+// =========================
+// $progressBars_backBorderRadius: ;
+
+$progressBars_backBgColor: $grayLighter;
+// $progressBars_backGradMeta: ;
+$progressBars_backGradStops: (darken($progressBars_backBgColor, 10%), $progressBars_backBgColor);
+
+$progressBars_barBgColor: $linkColor;
+// $progressBars_barGradMeta: ;
+// $progressBars_barGradStops: ;
+
+// $progressBars_barDangerBgColor: ;
+// $progressBars_barDangerGradMeta: ;
+// $progressBars_barDangerGradStops: ;
+
+// $progressBars_barSuccessBgColor: ;
+// $progressBars_barSuccessGradMeta: ;
+// $progressBars_barSuccessGradStops: ;
+
+$progressBars_barInfoBgColor: $progressBars_barBgColor;
+// $progressBars_barInfoGradMeta: ;
+$progressBars_barInfoGradStops: false;
+
+// $progressBars_barWarningBgColor: ;
+// $progressBars_barWarningGradMeta: ;
+// $progressBars_barWarningGradStops: ;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "partials/progress-bars";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// Partial-specific code for this skin
+// ==================================================

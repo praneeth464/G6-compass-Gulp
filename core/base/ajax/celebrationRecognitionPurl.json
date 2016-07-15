@@ -1,0 +1,52 @@
+{
+    "purlComments":[
+        {
+            "id": "123",
+            "firstName": "Firstname",
+            "lastName": "Lastname",
+            "hasAvatar": true,
+            "avatarUrl": "../../skins/default/img/celebration/placeholder-avatar1.jpg",
+            "comment": "Lorem ipsum dolor sit amet, cte tur adipiscing elit. Aenean ltus. Aliquam et lorem Cras urna libero, trist in consec etur ",
+            "hasImg": false,
+            "imgUrl": "",
+            "hasVid": false,
+            "purlUrl": "#"
+        },
+        {
+            "id": "234",
+            "firstName": "Firstname",
+            "lastName": "Lastname",
+            "hasAvatar": true,
+            "avatarUrl": "../../skins/default/img/celebration/placeholder-avatar2.jpg",
+            "comment": "Lorem ipsum dolor sit amet, cte tur adipiscing elit. Aenean ltus. Aliquam et lorem vitae quarutm ullamcorper quis sem! Cras urna libero, trist in consec etur sollicitudin, pum quis tellus. Morbi aliquam mauris.",
+            "hasImg": false,
+            "imgUrl": "",
+            "hasVid": false,
+            "purlUrl": "#"
+        },
+        {
+            "id": "345",
+            "firstName": "Firstname",
+            "lastName": "Lastname",
+            "hasAvatar": true,
+            "avatarUrl": "../../skins/default/img/celebration/placeholder-avatar3.jpg",
+            "comment": "Lorem ipsum dolor sit amet, cte tur adipiscing elit. Aenean ltus. Aliquam et lorem vitae quarutm asdf",
+            "hasImg": true,
+            "imgUrl": "../base/img/celebration/placeholder-photo1.jpg",
+            "hasVid": false,
+            "purlUrl": "#"
+        },
+        {
+            "id": "456",
+            "firstName": "Firstname",
+            "lastName": "Lastname",
+            "hasAvatar": true,
+            "avatarUrl": "../../skins/default/img/celebration/placeholder-avatar4.jpg",
+            "comment": "Lorem ipsum dolor sit amet, cte tur adipiscing elit. Aenean ltus. Aliquam et lorem vitae quarutm ullamcorper quis sem! Cras urna libero, trist in consec etur sollicitudin, pum quis tellus. Morbi aliquam mauris.",
+            "hasImg": false,
+            "imgUrl": "",
+            "hasVid": false,
+            "purlUrl": "#"
+        }
+    ]
+}

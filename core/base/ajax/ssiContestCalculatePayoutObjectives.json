@@ -1,0 +1,13 @@
+<?php usleep(1200000); ?>
+{
+    "messages":[],
+    "contestJson": {
+        "objectiveAmountTotal": 100000,
+        "objectivePayoutTotal": 10000,
+        "bonusPayoutTotal": 3000,
+        "bonusPayoutCapTotal": 5000,
+        "maxPayout": 10000,
+        "maxPayoutWithBonus": 15000,
+        "maxPotential": 100000
+    }
+}

@@ -1,0 +1,513 @@
+// Partial-specific variables
+// =========================
+$homeApp_filterNavHeight: 36px !default;
+
+$homeApp_filterTextSize: ($homeApp_filterNavHeight / 3 * 2) !default;
+$homeApp_filterFontFamily: $titleFont !default;
+$homeApp_filterFontColor: $grayLight !default;
+// TODO 5.5: add a check of the homeApp text color against the body background color to run the font smoothing mixin
+$homeApp_filterFontStyle: false !default;
+$homeApp_filterFontWeight: false !default;
+$homeApp_filterTextTransform: false !default;
+
+$homeApp_filterTextSizeSelected: $homeApp_filterNavHeight !default;
+$homeApp_filterFontColorSelected: $gray !default;
+$homeApp_filterFontStyleSelected: false !default;
+$homeApp_filterFontWeightSelected: false !default;
+$homeApp_filterTextTransformSelected: false !default;
+
+$homeApp_mobileBtnBg: false !default; // pass 'none' for a completely transparent button background
+$homeApp_mobileBtnBgHighlight: false !default;
+$homeApp_mobileBtnFontColor: $homeApp_filterFontColorSelected !default;
+
+// when #pageNav is given a background color, the homeApp will automatically place the filters on top of it to give the illusion of a navigation bar. Set this to false to prevent that bar from displaying on the homeApp page.
+$homeApp_emulatePageNav: true !default;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+/* HOME APP STYLES
+    - basic module settings for grid height and width
+    - basic home styles
+*/
+
+// GENERAL HOMEAPP CONTAINER STYLING
+// default 6 module columns
+.homeApp .container {
+    padding: 0;
+    width: homeAppContainer(6);
+}
+// 8 module columns
+// this is 1301 instead of 1281 because the browser window at 1280 falls right on a division point between columns of modules, resulting in some confusion to the script when a scrollbar pops up and changes the effective size of the window
+@media (min-width: 1301px) {
+    .homeApp .container {
+        width: homeAppContainer(8);
+    }
+}
+// override default grid
+// this is 1300 instead of 1280 due to the reasons outlined in the long comment above on or around line 13
+@media (min-width: 980px) and (max-width: 1300px) {
+    .homeApp .container {
+        width: homeAppContainer(6);
+    }
+}
+// 4 module columns
+@media (min-width: 640px) and (max-width: 979px) {
+    .homeApp .container {
+        width: homeAppContainer(4);
+    }
+}
+// auto columns
+@media (max-width: 639px) {
+    .homeApp .container {
+        width: auto;
+    }
+}
+
+// we have to make additional rules for when the restrictWidth flag is on
+@if $global_outerWrapper_restrictWidth {
+    $breakPoint8: homeAppContainer(8) + 2 * (($g5PageContentPaddingHoriz1200 * 2 / 3) - $global_outerWrapper_borderWidth);
+    $breakPoint6: homeAppContainer(6) + 2 * (($g5PageContentPaddingHoriz * 2 / 3) - $global_outerWrapper_borderWidth);
+    $breakPoint4: homeAppContainer(4) + 2 * (($g5PageContentPaddingHoriz768 * 2 / 3) - $global_outerWrapper_borderWidth);
+
+    // resetting these two so they don't interfere
+    @media (min-width: 1301px) {
+        .homeApp .container {
+            width: homeAppContainer(6);
+        }
+    }
+    @media (min-width: 1200px) {
+        .homeApp #wrapper_outer {
+            width: ($gridColumnWidth * $gridColumns) + ($gridGutterWidth * ($gridColumns - 1)) + 2 * (($g5PageContentPaddingHoriz * 2 / 3) - $global_outerWrapper_borderWidth);
+        }
+    }
+
+    // show 8 columns
+    @media (min-width: $breakPoint4 + 20px) and (max-width: $breakPoint6 + 20px) {
+        .homeApp .container {
+            width: homeAppContainer(4);
+        }
+        .homeApp #wrapper_outer {
+            width: $breakPoint4;
+        }
+    }
+
+    // show 4 columns
+    @media (min-width: $breakPoint8 + 20px) {
+        .homeApp .container {
+            width: homeAppContainer(8);
+        }
+        .homeApp #wrapper_outer {
+            width: $breakPoint8;
+        }
+    }
+
+    // auto columns
+    @media (max-width: 767px) {
+        .homeApp #wrapper_outer {
+            width: auto;
+        }
+    }
+
+}
+
+
+@if $homeApp_emulatePageNav == false {
+    .homeApp #pageNav {
+        padding: 0;
+        background: none;
+        border: 0;
+    }
+}
+
+//MODULE CONTAINER STYLING
+#homeAppPageView {
+    // negative left/right margin to pull this entire view out just enough that the modules "line up" with the outer boundaries of pages
+    margin-right: $g5ModuleGutter * -1;
+    margin-left: $g5ModuleGutter * -1;
+
+    // if a background color has been set in _pageNav, we have to tweak layout a little bit
+    @if ($pageNav_bgColor or ($pageNav_borderTopWidth and $pageNav_borderTopWidth > 0) or ($pageNav_borderBottomWidth and $pageNav_borderBottomWidth > 0)) and $homeApp_emulatePageNav {
+        margin-top: ($pageNav_spaceBelow * 1.5 + $homeApp_filterNavHeight + $pageNav_borderBottomWidth) * -1;
+    }
+    @else {
+        // negative top margin to pull this up to the #pageNav so it can sit on top of that element and fake a nav bar
+        margin-top: ($pageNav_spaceBelow + $homeApp_filterNavHeight) * -1;
+    }
+
+    @media (min-width: 1200px) {
+        // if a background color has been set in _pageNav, we have to tweak layout a little bit
+        @if ($pageNav_bgColor or ($pageNav_borderTopWidth and $pageNav_borderTopWidth > 0) or ($pageNav_borderBottomWidth and $pageNav_borderBottomWidth > 0)) and $homeApp_emulatePageNav {
+            margin-top: ($pageNav_spaceBelow1200 * 1.5 + $homeApp_filterNavHeight + $pageNav_borderBottomWidth) * -1;
+        }
+        @else {
+            margin-top: ($pageNav_spaceBelow1200 + $homeApp_filterNavHeight) * -1;
+        }
+    }
+    @media (min-width: 768px) and (max-width: 979px) {
+        // if a background color has been set in _pageNav, we have to tweak layout a little bit
+        @if ($pageNav_bgColor or ($pageNav_borderTopWidth and $pageNav_borderTopWidth > 0) or ($pageNav_borderBottomWidth and $pageNav_borderBottomWidth > 0)) and $homeApp_emulatePageNav {
+            margin-top: ($pageNav_spaceBelow768 * 1.5 + $homeApp_filterNavHeight + $pageNav_borderBottomWidth) * -1;
+        }
+        @else {
+            margin-top: ($pageNav_spaceBelow768 + $homeApp_filterNavHeight) * -1;
+        }
+    }
+    @media (max-width: 767px) {
+        // if a background color has been set in _pageNav, we have to tweak layout a little bit
+        @if ($pageNav_bgColor or ($pageNav_borderTopWidth and $pageNav_borderTopWidth > 0) or ($pageNav_borderBottomWidth and $pageNav_borderBottomWidth > 0)) and $homeApp_emulatePageNav {
+            margin-top: ($pageNav_spaceBelowMobile * 1.5 + $homeApp_filterNavHeight + $pageNav_borderBottomWidth) * -1;
+        }
+        @else {
+            margin-top: ($pageNav_spaceBelowMobile + $homeApp_filterNavHeight) * -1;
+        }
+    }
+    @media (max-width: 479px) {
+        // if a background color has been set in _pageNav, we have to tweak layout a little bit
+        @if ($pageNav_bgColor or ($pageNav_borderTopWidth and $pageNav_borderTopWidth > 0) or ($pageNav_borderBottomWidth and $pageNav_borderBottomWidth > 0)) and $homeApp_emulatePageNav {
+            // margin-top: ($pageNav_spaceBelowMobile * 1.5 + $homeApp_filterNavHeight * .75) * -1;
+        }
+        @else {
+            // margin-top: ($pageNav_spaceBelowMobile + $homeApp_filterNavHeight * .75) * -1;
+        }
+    }
+
+    // if there is no top nav, we can't pull the view up
+    &.noTopNav {
+        margin-top: 0;
+    }
+}
+// faking the pageNav
+.homeApp #pageNav {
+    height: $homeApp_filterNavHeight;
+
+    @media (max-width: 479px) {
+        // height: $homeApp_filterNavHeight * .75;
+    }
+}
+
+.moduleContainerViewElement {
+    position: relative;
+    margin: ($g5ModuleGutter * -1) auto;
+}
+
+/* BOOTSTRAP OVERRIDES */
+
+//_responsive-767px-max.scss
+@media (max-width: 767px) {
+    #homeAppPageView {
+        @include gridCoreInnerNegMargin(0);
+
+        .subnav {
+            @include gridCoreInnerPadding($g5PageContentPaddingHorizMobile);
+        }
+    }
+}
+@media (max-width: 479px) {
+    #homeAppPageView {
+        .subnav {
+            // @include gridCoreInnerPadding($g5ModuleGutter);
+        }
+    }
+}
+
+@-moz-keyframes bounce {
+  from {
+    -moz-transform: translateY(0px);
+    -moz-animation-timing-function: ease-in;
+  }
+  60% {
+    -moz-transform: translateY(-5px);
+    -moz-animation-timing-function: ease-out;
+  }
+  73% {
+    -moz-transform: translateY(0px);
+    -moz-animation-timing-function: ease-in;
+  }
+  86% {
+    -moz-transform: translateY(5px);
+    -moz-animation-timing-function: ease-out;
+  }
+  93% {
+    -moz-transform: translateY(3px);
+    -moz-animation-timing-function: ease-in;
+  }
+  to {
+    -moz-transform: translateY(5px);
+    -moz-animation-timing-function: ease-out;
+  }
+}
+
+@-webkit-keyframes bounce {
+  from {
+    -webkit-transform: translateY(0px);
+    -webkit-animation-timing-function: ease-in;
+  }
+  60% {
+    -webkit-transform: translateY(-5px);
+    -webkit-animation-timing-function: ease-out;
+  }
+  73% {
+    -webkit-transform: translateY(0px);
+    -webkit-animation-timing-function: ease-in;
+  }
+  86% {
+    -webkit-transform: translateY(5px);
+    -webkit-animation-timing-function: ease-out;
+  }
+  93% {
+    -webkit-transform: translateY(3px);
+    -webkit-animation-timing-function: ease-in;
+  }
+  to {
+    -webkit-transform: translateY(5px);
+    -webkit-animation-timing-function: ease-out;
+  }
+}
+
+// NAVIGATION
+#homeAppPageView #homeAppTopNav {
+    position: relative;
+    visibility: hidden;
+
+    // if a background color has been set in _pageNav, we have to tweak layout a little bit
+    @if ($pageNav_bgColor or ($pageNav_borderTopWidth and $pageNav_borderTopWidth > 0) or ($pageNav_borderBottomWidth and $pageNav_borderBottomWidth > 0)) and $homeApp_emulatePageNav {
+        padding-bottom: $pageNav_spaceBelow * 1.5 + $pageNav_borderBottomWidth;
+    }
+    @else {
+        padding-bottom: $pageNav_spaceBelow;
+    }
+
+    @media (min-width: 1200px) {
+        // if a background color has been set in _pageNav, we have to tweak layout a little bit
+        @if ($pageNav_bgColor or ($pageNav_borderTopWidth and $pageNav_borderTopWidth > 0) or ($pageNav_borderBottomWidth and $pageNav_borderBottomWidth > 0)) and $homeApp_emulatePageNav {
+            padding-bottom: $pageNav_spaceBelow1200 * 1.5 + $pageNav_borderBottomWidth;
+        }
+        @else {
+            padding-bottom: $pageNav_spaceBelow1200;
+        }
+    }
+    @media (min-width: 768px) and (max-width: 979px) {
+        // if a background color has been set in _pageNav, we have to tweak layout a little bit
+        @if ($pageNav_bgColor or ($pageNav_borderTopWidth and $pageNav_borderTopWidth > 0) or ($pageNav_borderBottomWidth and $pageNav_borderBottomWidth > 0)) and $homeApp_emulatePageNav {
+            padding-bottom: $pageNav_spaceBelow768 * 1.5 + $pageNav_borderBottomWidth;
+        }
+        @else {
+            padding-bottom: $pageNav_spaceBelow768;
+        }
+    }
+    @media (max-width: 767px) {
+        // if a background color has been set in _pageNav, we have to tweak layout a little bit
+        @if ($pageNav_bgColor or ($pageNav_borderTopWidth and $pageNav_borderTopWidth > 0) or ($pageNav_borderBottomWidth and $pageNav_borderBottomWidth > 0)) and $homeApp_emulatePageNav {
+            padding-bottom: $pageNav_spaceBelowMobile * 1.5 + $pageNav_borderBottomWidth;
+        }
+        @else {
+            padding-bottom: $pageNav_spaceBelowMobile;
+        }
+    }
+    @media (max-width: 479px) {
+        // if a background color has been set in _pageNav, we have to tweak layout a little bit
+        @if ($pageNav_bgColor or ($pageNav_borderTopWidth and $pageNav_borderTopWidth > 0) or ($pageNav_borderBottomWidth and $pageNav_borderBottomWidth > 0)) and $homeApp_emulatePageNav {
+            // margin-top: ($pageNav_spaceBelowMobile * 1.5 + $homeApp_filterNavHeight * .75) * -1;
+        }
+        @else {
+            // margin-top: ($pageNav_spaceBelowMobile + $homeApp_filterNavHeight * .75) * -1;
+        }
+    }
+
+    &.rendered {
+        visibility: visible;
+    }
+
+    .toggler {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        right: $g5PageContentPaddingHorizMobile;
+        margin-top: -13px; // half the height of a small button
+        padding: 2px; // left/right padding of .btn-small
+        width: $baseLineHeight; // make it the same height and width
+
+        @if $homeApp_mobileBtnBg {
+            @if $homeApp_mobileBtnBg == 'none' {
+                background-color: transparent;
+                background-image: none;
+                @include box-shadow(none);
+                border-color: transparent;
+                @include border-radius(0);
+            }
+            @else if $homeApp_mobileBtnBgHighlight {
+                @include buttonBackground($homeApp_mobileBtnBg, $homeApp_mobileBtnBgHighlight);
+            }
+            @else {
+                @include buttonBackground($homeApp_mobileBtnBg, $homeApp_mobileBtnBg);
+            }
+        }
+        @if $homeApp_mobileBtnFontColor {
+            color: $homeApp_mobileBtnFontColor;
+        }
+
+        .open,
+        .close {
+        }
+    }
+    .opened .opener,
+    .closed .closer {
+        display: none;
+    }
+    // .collapse {
+    //     height: auto;
+    // }
+
+    .nav {
+        margin: 0;
+        padding: 0;
+        height: $homeApp_filterNavHeight;
+        line-height: $homeApp_filterNavHeight;
+        position: relative; // for justification
+
+        li {
+            position: absolute; // for justification
+            bottom: ($homeApp_filterTextSizeSelected - $homeApp_filterTextSize) / 2 * .3; // divide by 2 to get the amount of space on the top and bottom. Multiply by 30% to get an adjustment that trial-and-error has found to be about right
+            display: block;
+            font-family: $homeApp_filterFontFamily;
+            font-size: $homeApp_filterTextSize;
+            line-height: $homeApp_filterTextSize;
+            @if $homeApp_filterFontStyle {
+                font-style: $homeApp_filterFontStyle;
+            }
+            @if $homeApp_filterFontWeight {
+                font-weight: $homeApp_filterFontWeight;
+            }
+            @if $homeApp_filterTextTransform {
+                text-transform: $homeApp_filterTextTransform;
+            }
+
+            a {
+                display: inline;
+                margin: 0;
+                padding: 0;
+                color: $homeApp_filterFontColor;
+                white-space: nowrap;
+
+                &:hover {
+                    background: none;
+                }
+                -moz-transition: -moz-transform .3s ease-in;
+                -webkit-transition: -webkit-transform .3s ease-in;
+                -o-transition: -o-transform .3s ease-in;
+                -ms-transition: -ms-transform .3s ease-in;
+            }
+
+            &.active {
+                bottom: 0;
+                font-size: $homeApp_filterTextSizeSelected;
+                line-height: $homeApp_filterTextSizeSelected;
+                @if $homeApp_filterFontStyleSelected {
+                    font-style: $homeApp_filterFontStyleSelected;
+                }
+                @if $homeApp_filterFontWeightSelected {
+                    font-weight: $homeApp_filterFontWeightSelected;
+                }
+                @if $homeApp_filterTextTransformSelected {
+                    text-transform: $homeApp_filterTextTransformSelected;
+                }
+
+                a {
+                    background: none;
+                    color: $homeApp_filterFontColorSelected;
+
+                    -moz-animation-name: bounce;
+                    -moz-animation-duration: .3s;
+                    -moz-animation-iteration-count: 1;
+                    -moz-transform: translateY(0);
+                    -moz-transition: none;
+
+                    -webkit-animation-name: bounce;
+                    -webkit-animation-duration: .3s;
+                    -webkit-animation-iteration-count: 1;
+                    -webkit-transform: translateY(0);
+                    -webkit-transition: none;
+                }
+            }
+        }
+
+        @media (max-width: 479px) {
+            // height: $homeApp_filterNavHeight * .75;
+            // line-height: $homeApp_filterNavHeight * .75;
+
+            li {
+                bottom: ($homeApp_filterTextSizeSelected - $homeApp_filterTextSize) * .75 / 2 * .3; // divide by 2 to get the amount of space on the top and bottom. Multiply by 30% to get an adjustment that trial-and-error has found to be about right
+                font-size: $homeApp_filterTextSize * .75;
+
+                &.active {
+                    font-size: $homeApp_filterTextSizeSelected * .75;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 767px) {
+        .toggler {
+            display: block;
+        }
+        .nav {
+            height: auto;
+
+            li {
+                position: static;
+                float: none;
+                padding-top: 2px;
+                padding-bottom: 2px;
+                text-align: center;
+            }
+        }
+        .closed {
+            .nav {
+                height: $homeApp_filterTextSizeSelected;
+            }
+            li {
+                @include opacity(0);
+            }
+            .active {
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: auto;
+                width: 100%;
+                @include opacity(1);
+            }
+        }
+    }
+    @media (max-width: 479px) {
+        .toggler {
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box;
+        }
+    }
+}
+
+// .homeApp header{
+
+//   background:#ccc;
+// }
+
+.appPageContainerViewElement {
+    position:relative;
+}
+
+.appPageContainerViewElement .goBackBtn {
+    margin-bottom:20px;
+}
+
+.appPageContainerDynamicContent {
+    position:relative;
+    min-height:600px;
+    //@include box-shadow(#eeeeee 0px 0px 9px 2px);
+    border:1px solid #ccc;
+}
+

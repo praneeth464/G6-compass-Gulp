@@ -1,0 +1,375 @@
+<!-- ======== PURLCONTRIBUTE: PURL MAIN PAGE ======== -->
+
+<div id="PURLMainView" class="PURLMainView">
+    <div id="PURLMainViewWrapper" class="PURLMainViewWrapper page-content">
+
+        <div id="PURLCongratsColumn" class="PURLCongratsColumn">
+            <h1>Congratulations, [Firstname] [Lastname]</h1>
+            <p class="PURLCongratsSubHeader">In recognition of your [Field1] [Field2] [Field3] [Promotion Name]</p>
+            <div id="PURLMainVideoWrapper" class="PURLMainVideoWrapper">
+                <video id="example_video_1" class="video-js vjs-default-skin" controls width="432" preload="auto" data-setup="{}">
+                  <source type="video/mp4" src="http://video-js.zencoder.com/oceans-clip.mp4">
+                  <source type="video/webm" src="http://video-js.zencoder.com/oceans-clip.webm">
+                </video>
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula lorem nec risus venenatis convallis. Sed vestibulum, mi a faucibus ultrices, nisi massa auctor massa, fermentum placerat quam orci et purus.</p>
+
+            <div class="stupidIE8Hack">
+                <!-- NOTE: THIS BUTTON ONLY APPEARS TO CONTRIBUTORS AND NOT TO THE PERSON BEING RECOGNIZED. AFTER THE END DATE, IT DISSAPPEARS -->
+                <div>
+                    <p class="PURLCongratsFooter">This Recognition PURL contribution will end on 01/01/2012</p>
+                    <button id="PURLInviteBtn" class="btn btn-primary PURLInviteBtn">Invite Others</button>
+                </div>
+
+                <!-- NOTE: THESE BUTTONS ONLY APPEAR TO THE PERSON BEING RECOGNIZED -->
+                <div>
+                    <p class="PURLCongratsFooter">Your Recognition PURL will end on 01/01/2012</p>
+                    <button id="PURLRedeemAwardBtn" class="btn PURLRedeemAwardBtn btn-primary">Redeem Award</button>
+                    <button id="PURLThankEveryoneBtn" data-loginRedirect="layout.html?tplPath=base/tpl/&tpl=loginPage.html" class="btn PURLThankEveryoneBtn btn-primary">Thank Everyone</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="PURLActivityPanelWrapper" class="PURLActivityPanelWrapper">
+
+            <!-- NOTE: THE SHARE ICONS ONLY APPPEAR TO THE REDEEMER AND NOT TO CONTRIBUTORS -->
+            <div id="PURLShareIcons" class="PURLShareIcons">
+                <p>Share: </p>
+                <div class="shareButton">
+                    <div class="buttonInnerWrapper">
+                        <button onclick="window.open('http://www.google.com')">
+                            <i class="faceButton"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="shareButton">
+                    <div class="buttonInnerWrapper">
+                        <button onclick="window.open('http://www.google.com')">
+                            <i class="tweetButton"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="shareButton">
+                    <div class="buttonInnerWrapper">
+                        <button onclick="window.open('http://www.google.com')">
+                            <i class="linkedInButton"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="shareButton">
+                    <div class="buttonInnerWrapper">
+                        <a class="printButton">
+                            <i class="icon-print"></i>
+                            Print
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- NOTE: THIS COMMENT WRAPPER ONLY APPEARS TO CONTRIBUTORS AND NOT TO THE PERSON BEING RECOGNIZED. AFTER THE END DATE, IT DISSAPPEARS -->
+            <div id="PURLActivityPanelCommentWrapper" class="PURLActivityPanelCommentWrapper">
+                <div id="PURLCommentBox" class="PURLCommentBox">
+                    <form>
+                        <label>Add a Comment</label>
+                        <div id="charCountWrapper" class="charCountError">
+                            Remaining Characters:
+                            <span id="charCount">1000</span>
+                        </div>
+                        <div class="control-group validateme" data-validate-flags="nonempty,maxlength" data-validate-max-length="1000" data-validate-fail-msgs='{"nonempty" : "Please enter comments", "maxlength" : "Your message is too long"}'>
+                            <textarea class="PURLCommentBox"></textarea>
+                        </div>
+                        <div id="PURLCommentAttacheMediaWrapper" class="PURLCommentAttacheMediaWrapper">
+                            <h4>Attached Media:</h4>
+                            <span id="PURLRemoveAttachedMediaBtn" class="PURLRemoveAttachedMediaBtn"><i class="icon-remove"></i></span>
+                            <span id="attachedMedia" class="attachedMedia"></span>
+                        </div>
+                        <div id="PURLAttachLinksWrapper">
+                            <span>Attach:</span>
+                            <a id="PURLCommentAddVideo"><i class="icon-facetime-video"></i> Video</a>
+                            <a id="PURLCommentAddPhoto"><i class="icon-camera"></i> Photo</a>
+                        </div>
+
+                        <button id="PURLCommentSubmit" class="btn btn-primary">Submit</button>
+                        <div id="PURLCommentCheckSpell" class="btn-group">
+                              <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" title="Check Spelling">
+                                <i class="icon-check"></i>
+                                <!-- <span class="caret"></span> -->
+                              </a>
+                              <ul class="dropdown-menu langs">
+                                <!-- dropdown menu links -->
+                              </ul>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+            <div id="PURLActivityPanelFeed" class="PURLActivityPanelFeed"></div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<div id="PURLWelcomeModal" class="modal hide fade PURLModal" data-backdrop="static">
+    <div class="modal-header">
+        <h3>Welcome to [Firstname] [Lastname]'s Recognition PURL!</h3>
+    </div>
+    <div class="modal-body">
+        <p class="lead">Please confirm your personal information.</p>
+
+        <div class="innerFormPurlModal">
+            <form class="form-horizontal">
+                <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter your first name"}'>
+                    <label for="PURLWelcomeModalFirstName" class="control-label">First Name</label>
+                    <div class="controls">
+                        <input type="text" id="PURLWelcomeModalFirstName" name="PURLWelcomeModalFirstName">
+                    </div>
+                </div>
+
+                <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter your last name"}'>
+                    <label for="PURLWelcomeModalLastName" class="control-label">Last Name</label>
+                    <div class="controls">
+                        <input type="text" id="PURLWelcomeModalLastName" name="PURLWelcomeModalLastName">
+                    </div>
+                </div>
+
+                <div class="control-group validateme" data-validate-flags="nonempty,email" data-validate-fail-msgs='{"nonempty" : "Please enter your email address", "email" : "Your email address is invalid"}'>
+                    <label for="PURLWelcomeModalEmailAddress" class="control-label">Email</label>
+                    <div class="controls">
+                        <input type="text" id="PURLWelcomeModalEmailAddress" name="PURLWelcomeModalEmailAddress">
+                    </div>
+                </div>
+
+                <div class="control-group" id="PURLWelcomeModalProfilePhotoContainer">
+                    <label for="PURLWelcomeModalProfilePhoto" class="control-label">Your Photo</label>
+                    <div class="controls">
+                        <img src="">
+                        <input type="file" id="PURLWelcomeModalProfilePhoto" name="PURLWelcomeModalProfilePhoto">
+                        <p class="muted">File size limit 10mb. Supports Jpeg, PNG and GIF</p>
+                        <p class="alert alert-info hide no-fileinput">Sorry! Your device does not support file uploads. Please use a desktop browser to complete this upload.</p>
+                    </div>
+                </div>
+
+                <p><em>The Recognition PURL will expire on 01/01/2012</em></p>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a id="modalContributeBtn" class="btn btn-primary">Contribute</a>
+  </div>
+</div>
+
+<div id="PURLInviteSucessMessage" class="modal hide fade PURLInviteSucessModal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></button>
+        <h3>Your Invitations have been sent</h3>
+    </div>
+    <div class="modal-body">
+        <p>Lorem ipsum onsectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+        <ul id="PURLInviteSucessModalList"></ul>
+        <div class="PURLInviteSucessModalLegendWrapper">
+            <ul class="PURLInviteSucessModalLegend">
+                <li>
+                    <i class="icon-ok"></i>
+                    <span class="PURLInviteListsuccess">= Invite Sent</span>
+                </li>
+                <li>
+                    <i class="icon-ok"></i>
+                    <span class="PURLInviteListexists">= Already Invited</span>
+                </li>
+                <li>
+                    <i class="icon-remove"></i>
+                    <span class="PURLInviteListfail">= Invite failed, please try again</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="PURLThanksModal" class="modal hide fade PURLThanksModal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></button>
+        <h3>Thank Everyone</h3>
+    </div>
+    <div class="modal-body">
+        <p id="PURLThanksModalStaticText">Lorem ipsum onsectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+        <textarea id="PURLThanksModalText"></textarea>
+    </div>
+    <div class="modal-footer">
+        <a id="PURLThanksModalSubmitBtn" class="btn btn-primary">Submit</a>
+  </div>
+</div>
+
+<div id="PURLThanksModalSuccess" class="modal hide fade PURLThanksModalSuccess">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></button>
+        <h4>Your thank you message was sent</h4>
+    </div>
+</div>
+
+<input type="hidden" id="PURLContributorID" value="54321">
+<input type="hidden" id="PURLContributorUserName" value="Some Person">
+<input type="hidden" id="finalPrefixURL" value="http://cocchiar-dv.biperf.com/NDSCVS/products/penta-g/src/fe/core/apps/purlContribute/img/">
+<input type="hidden" id="stagerPrefixURL" value="http://cocchiar-dv.biperf.com/NDSCVS/products/penta-g/src/fe/core/apps/purlContribute/img/">
+<input type="hidden" id="PURLThanksModalSubjectText" value="Subject of the thanks message">
+<input type="hidden" id="purlRecipientId" value="12345">
+<input type="hidden" id="commentOrderDescending" value="true">
+
+<!-- NOTE: IF THE URL CONTAINS LOGIN INFO FROM  AN EMAIL INVITE, FE PULLS THIS INFO -->
+<input type="hidden" name="PURLInviteAvatarUrl" id="PURLInviteAvatarUrl" value="/purl/avatar.photoFile.jpg">
+<input type="hidden" name="gotEmailInvite" id="gotEmailInvite" value="true">
+<input type="hidden" name="PURLInviteFirstName" id="PURLInviteFirstName" value="Some">
+<input type="hidden" name="PURLInviteLastName" id="PURLInviteLastName" value="Person">
+<input type="hidden" name="PURLInviteEmailAddress" id="PURLInviteEmailAddress" value="Some.Person@gmailz.com">
+
+<!-- Authentication data -->
+<input type="hidden" name="userAuthenticated" id="userAuthenticated" value="true">
+<input type="hidden" name="returnAuthenticated" id="returnAuthenticated" value="false">
+
+
+<script id="purlContributorActivityPodTpl" type="text/x-handlebars-template">
+    <div class="PURLActivityPod">
+        <div id="PURLActivityPodLeftCol" class="PURLActivityPodLeftCol">
+            <img class="profile-photo" src="{{profilePhoto}}">
+        </div>
+        <div id="PURLActivityPodRightCol" class="PURLActivityPodRightCol">
+            <span class="PURLActivityPodPaxName">{{{theProfileLink}}}</span>
+            <p>{{commentText}}</p>
+            {{#if media}}
+            {{#with media}}
+                {{#if image}}
+                <img src="{{image.prefixUrl}}{{image.src}}" alt="">
+                {{/if}}
+
+                {{#if video}}
+                <div id="PURLActivityPodVideoWrapper{{video.activityId}}" class="PURLActivityPodVideoWrapper">
+                    <video id="feed_video_{{video.activityId}}" class="video-js vjs-default-skin" controls preload="auto" data-setup='{}'>
+                        {{#video.sources}}
+                        <source type="video/{{type}}" src="{{source}}">
+                        {{/video.sources}}
+                    </video>
+                </div>
+                {{/if}}
+
+                {{#if videoLink}}
+                <p>
+                    <a href="{{videoLink.link}}" target='_blank'>
+                        <img class="PURLActivityPodVideoPlaceholder" src="img/purlContribute_placeHolderVid.jpg" />
+                        {{videoLink.link}}
+                    </a>
+                </p>
+                {{/if}}
+            {{/with}}
+            {{/if}}
+        </div>
+    </div>
+</script>
+
+<script id="purlNoActivityTpl" type="text/x-handlebars-template">
+    <h4 style="margin-top: 60px; text-align: center">No activity to show yet</h4>
+</script>
+
+<script id="purlCommentAttachTipTemplate" type="text/x-handlebars-template">
+    <div class="PURLPopUpSubWrapper">
+        <span>Web Link:</span>
+        <input id="PURLCommentVideoInputWeb" class="videoInput" type='text'>
+        <button type="button" id="PURLCommentVideoWebBtn" class="btn btn-primary">Attach</button>
+        <p id="PURLCommentVideoInstructionsWeb" class="PURLCommentVideoInstructionsWeb">Example: "http://www.youtube.com/watch?v=2Vk9Jd3ilh4"</p>
+    </div>
+    <div class="PURLPopUpSubWrapper">
+        <span>Direct Link:</span>
+        <input id="PURLCommentVideoInput" class="videoInput" type='text'>
+        <button type="button" id="PURLCommentVideobBtn" class="btn btn-primary">Attach</button>
+        <p id="PURLCommentVideoInstructions" class="PURLCommentVideoInstructions">
+            <i class="icon-info-sign" data-class="purlVideoPopover" data-trigger="hover" data-placement="bottom" data-content="<table class='table table-striped table-bordered'><tbody><tr><th width='25%' align='left'>Browser</th><th width='25%' align='left'>MP4</th><th width='25%' align='left'>WebM</th><th width='25%' align='left'>Ogg</th></tr><tr><td>Internet Explorer 9+</td><td>YES</td><td>NO</td><td>NO</td></tr><tr><td>Chrome 6+</td><td>YES</td><td>YES</td><td>YES</td></tr><tr><td>Firefox 3.6+</td><td>NO</td><td>YES</td><td>YES</td></tr><tr><td>Safari 5+</td><td>YES</td><td>NO</td><td>NO</td></tr><tr><td>Opera 10.6+</td><td>NO</td><td>YES</td><td>YES</td></tr></tbody></table>" href="#" data-original-title="Video Browser Support" ></i>
+            Supported video types: .mp4 .m4v .webm and .ogg
+        </p>
+    </div>
+</script>
+
+<script id="purlCommentUploadPhoto" type="text/x-handlebars-template">
+    <form id="PURLVideoUploadTip" class="PURLVideoUploadTip">
+        <input type="file" name="purlUploadFiles">
+        <p class="muted">File size limit 10mb. Supports Jpeg, PNG and GIF</p>
+        <p class="alert alert-info hide no-fileinput">Sorry! Your device does not support file uploads. Please use a desktop browser to complete this upload.</p>
+    </form>
+</script>
+
+<script id="PURLInviteToolTip" type="text/x-handlebars-template">
+    <span id="PURLInviteToolTipCloseBtn" class="PURLInviteToolTipCloseBtn close"><i class="icon-remove"></i></span>
+    <h4>Invite Contributors</h4>
+    <p>
+        To invite others to contribute, enter their email addresses. Enter multiple email addresses separated by a semi-colon.
+    </p>
+    <form>
+        <div>
+            <textarea class="inviteTooltipEmailText" spellcheck="false"
+                placeholder="example: emailaddress@company.com; Lastname, Firstname <emailaddress@company.com>; Firstname Lastname <emailaddress@company.com>"></textarea>
+        </div>
+        <button type="button" id="PURLInviteToolTipAddBtn" class="btn">
+            <i class="icon-plus"></i>
+            Add
+        </button>
+
+        <!-- error messaging -->
+        <div class="alert invitePurlEmailsFeedback" style="display:none">
+            <div class="msg errorEmailsFound">
+                <b>Error(s) with the following email(s):</b><br>
+                <div class="errorEmailsList">
+                    <!-- dyn -->
+                </div>
+            </div>
+            <div class="msg noEmailsFound">
+                No email addresses found.
+            </div>
+            <div class="msg emailsFound">
+                added
+                <span class="count"><!-- dyn --></span>
+                email(s)
+            </div>
+        </div>
+
+    </form>
+    <form>
+        <div id="PURLInviteToolTip_AddedContributors" class="PURLInviteToolTip_AddedContributors"></div>
+        <button type="submit" id ="PURLInviteToolTip_SecondaryInviteBtn" class="btn btn-primary PURLInviteToolTip_ActionBtns">Invite</button>
+        <button type="button" id ="PURLInviteToolTip_SecondaryInviteBtnCancel" class="btn PURLInviteToolTip_ActionBtns">Cancel</button>
+    </form>
+</script>
+
+<script id="purlContributorTemplate" type="text/x-handlebars-template">
+    <div class="purlContributorWrapper">
+        <span class="PURLRemoveContributorBtn"><i class="icon-remove"></i></span>
+        <div class="emailAndNameWrapper">
+            <span class="email">{{email}}</span>
+            {{#if firstName}}
+                <span class="name">(<span class="first">{{firstName}}</span>{{#if lastName}} <span class="last">{{lastName}}{{/if}}</span>)</span>
+            {{/if}}
+        </div>
+    </div>
+</script>
+
+<script>
+    $(document).ready(function(){
+        window.plmp = new PurlContributeMainPageView({
+            el:$("#PURLMainViewWrapper"),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Recognition PURL'
+        });
+    });
+</script>

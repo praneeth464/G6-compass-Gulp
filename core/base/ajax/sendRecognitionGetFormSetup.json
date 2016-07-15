@@ -1,0 +1,370 @@
+<?php sleep(3); ?>
+{
+    "messages":[],
+    "formSetup":{
+        "promotions": [
+            {
+                "id":12345555,
+                "name":"No Awards Promo",
+                "pageTitle":"Page Title From promotions json",
+                "awardType":"none",
+                "behaviors":[
+                    {"id":"abovebeyond","name":"Above and Beyond"},
+                    {"id":"item.10001841","name":"Creativity"}
+                ],
+                "rulesText":"<p>I am some rules text</p><p><b>I am bold</b></p>.",
+                "drawToolSettings": {
+                    "canUpload": true,
+                    "canDraw": true,
+                    "sizes": [4, 8, 16, 32],
+                    "colors":[
+                        { "hex" : "000000", "title" : "black" },
+                        { "hex" : "ffffff", "title" : "white" },
+                        { "hex" : "676767", "title" : "dark gray" },
+                        { "hex" : "ADADAD", "title" : "gray" },
+                        { "hex" : "E9E9E9", "title" : "light gray" },
+                        { "hex" : "960000", "title" : "burgundy" },
+                        { "hex" : "F50008", "title" : "red" },
+                        { "hex" : "FB5A15", "title" : "orange" },
+                        { "hex" : "FCA605", "title" : "tangerine" },
+                        { "hex" : "FEE150", "title" : "gold" },
+                        { "hex" : "F8F338", "title" : "yellow" },
+                        { "hex" : "67CF31", "title" : "green" },
+                        { "hex" : "26821F", "title" : "grass" },
+                        { "hex" : "0B4E1B", "title" : "pine" },
+                        { "hex" : "73B592", "title" : "seafoam" },
+                        { "hex" : "2AA3E5", "title" : "sky" },
+                        { "hex" : "1747BE", "title" : "blue" },
+                        { "hex" : "0B2666", "title" : "navy" },
+                        { "hex" : "5B3999", "title" : "indigo" },
+                        { "hex" : "AB4BCB", "title" : "purple" },
+                        { "hex" : "FB77A9", "title" : "pink" },
+                        { "hex" : "664629", "title" : "brown" },
+                        { "hex" : "B28E48", "title" : "tan" },
+                        { "hex" : "F2D992", "title" : "sand" }
+                    ]
+                },
+                "eCards":[
+                    {
+                        "id":123,
+                        "name":"Certificate (cannot edit)",
+                        "smallImage":"http://placehold.it/100x100",
+                        "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                        "canEdit":false,
+                        "cardType": "cert"
+                    },
+                    {
+                        "id":1234,
+                        "name":"Another eCard Name",
+                        "smallImage":"http://placehold.it/101x101",
+                        "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                        "canEdit":true,
+                        "cardType": "card"
+                    },
+                    {
+                        "id":12345,
+                        "name":"Another eCard Name",
+                        "smallImage":"http://placehold.it/102x102",
+                        "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                        "canEdit":true,
+                        "cardType": "card"
+                    },
+                    {
+                        "id":12543,
+                        "name":"Another eCard Name",
+                        "smallImage":"http://placehold.it/103x103",
+                        "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                        "canEdit":true,
+                        "cardType": "card"
+                    },
+                    {
+                        "id":11234,
+                        "name":"Another eCard Name",
+                        "smallImage":"http://placehold.it/104x104",
+                        "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                        "canEdit":true,
+                        "cardType": "card"
+                    },
+                    {
+                        "id":11876,
+                        "name":"Another eCard Name",
+                        "smallImage":"http://placehold.it/105x105",
+                        "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                        "canEdit":true,
+                        "cardType": "card"
+                    },
+                    {
+                        "id":11548,
+                        "name":"Another eCard Name",
+                        "smallImage":"http://placehold.it/106x106",
+                        "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                        "canEdit":true,
+                        "cardType": "card"
+                    },
+                    {
+                        "id":11468,
+                        "name":"Another eCard Name",
+                        "smallImage":"http://placehold.it/107x107",
+                        "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                        "canEdit":true,
+                        "cardType": "card"
+                    },
+                    {
+                        "id":11945,
+                        "name":"Another eCard Name",
+                        "smallImage":"http://placehold.it/108x108",
+                        "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                        "canEdit":true,
+                        "cardType": "card"
+                    },
+                    {
+                        "id":11542,
+                        "name":"Another eCard Name",
+                        "smallImage":"http://placehold.it/109x109",
+                        "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                        "canEdit":true,
+                        "cardType": "card"
+                    }
+                ],
+                "promoType": "none",
+                "defaultDeliverDate": "01/01/2013",
+                "copyManagerAlways":true,
+                "ecardsActive":true,
+                "behaviorActive":true,
+                "messageActive":true,
+                "copyManagerActive":true,
+                "copyMeActive":true,
+                "copyOthersActive":true,
+                "deliverDateActive":true,
+                "anniversaryCelebrateActive": false,
+                "anniversaryYears": false,
+                "recognitionPrivateActive": false,
+                "contributorsActive":false
+            },
+            {
+                "id":123477777,
+                "name":"Levels Promo",
+                "pageTitle":"Levels Promo Page Title",
+                "awardType":"levels",
+                "awardLevels": {
+                    "us":[
+                        {"id":45,"name":"Level 1","points":50},
+                        {"id":77,"name":"Level 2","points":500},
+                        {"id":23,"name":"Level 3","points":100}
+                    ],
+                    "de":[
+                        {"id":10,"name":"Zee Level 1","points":75},
+                        {"id":123,"name":"Ein Level 2","points":200}
+                    ]
+                },
+                "behaviors":[
+                    {"id":"abovebeyond","name":"Above and Beyond"},
+                    {"id":"item.10001841","name":"Creativity"}
+                ],
+                "drawToolSettings": {
+                    "canUpload": false,
+                    "canDraw": true,
+                    "sizes": [4, 8, 16, 32],
+                    "colors":[
+                        { "hex" : "000000", "title" : "black" },
+                        { "hex" : "ffffff", "title" : "white" },
+                        { "hex" : "676767", "title" : "dark gray" },
+                        { "hex" : "ADADAD", "title" : "gray" },
+                        { "hex" : "E9E9E9", "title" : "light gray" },
+                        { "hex" : "960000", "title" : "burgundy" },
+                        { "hex" : "F50008", "title" : "red" },
+                        { "hex" : "FB5A15", "title" : "orange" },
+                        { "hex" : "FCA605", "title" : "tangerine" },
+                        { "hex" : "FEE150", "title" : "gold" },
+                        { "hex" : "F8F338", "title" : "yellow" },
+                        { "hex" : "67CF31", "title" : "green" },
+                        { "hex" : "26821F", "title" : "grass" },
+                        { "hex" : "0B4E1B", "title" : "pine" },
+                        { "hex" : "73B592", "title" : "seafoam" },
+                        { "hex" : "2AA3E5", "title" : "sky" },
+                        { "hex" : "1747BE", "title" : "blue" },
+                        { "hex" : "0B2666", "title" : "navy" },
+                        { "hex" : "5B3999", "title" : "indigo" },
+                        { "hex" : "AB4BCB", "title" : "purple" },
+                        { "hex" : "FB77A9", "title" : "pink" },
+                        { "hex" : "664629", "title" : "brown" },
+                        { "hex" : "B28E48", "title" : "tan" },
+                        { "hex" : "F2D992", "title" : "sand" }
+                    ]
+                },
+                "eCards":[
+                    {
+                        "id":11234,
+                        "name":"Another eCard Name",
+                        "smallImage":"http://placehold.it/104x104",
+                        "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                        "canEdit":false,
+                        "cardType": "card"
+                    },
+                    {
+                        "id":11876,
+                        "name":"Another eCard Name",
+                        "smallImage":"http://placehold.it/105x105",
+                        "largeImage":"ajax/drawToolImage_placeholder_image.gif",
+                        "canEdit":true,
+                        "cardType": "card"
+                    }
+                ],
+                "promoType": "none",
+                "ecardsActive":true,
+                "behaviorActive":false,
+                "messageActive":false,
+                "copyManagerActive":false,
+                "copyMeActive":false,
+                "copyOthersActive":false,
+                "deliverDateActive":false,
+                "anniversaryCelebrateActive": true,
+                "anniversaryYears": false,
+                "recognitionPrivateActive": true,
+                "contributorsActive":false
+            },
+            {
+                "id":12345,
+                "name":"Points Range Promo",
+                "pageTitle":"Points Range Promo Page Title",
+                "awardType":"pointsRange",
+                "awardMin":1,
+                "awardMax":100,
+                "behaviors":[
+                    {"id":"abovebeyond","name":"Above and Beyond"},
+                    {"id":"item.10001841","name":"Creativity"},
+                    {"id":"item.10001842","name":"Customer Service"},
+                    {"id":"innovation","name":"Innovation"},
+                    {"id":"leadership","name":"Leadership"},
+                    {"id":"item.10001843","name":"Teamwork"}
+                ],
+                "promoType": "none",
+                "ecardsActive":false,
+                "behaviorActive":true,
+                "messageActive":true,
+                "copyManagerActive":true,
+                "copyMeActive":true,
+                "copyOthersActive":true,
+                "deliverDateActive":true,
+                "anniversaryCelebrateActive": false,
+                "anniversaryYears": false,
+                "recognitionPrivateActive": false,
+                "contributorsActive":false,
+                "myNewSectionActive":true
+            },
+            {
+                "id":9123459,
+                "name":"Points Fixed Promo",
+                "awardType":"pointsFixed",
+                "awardFixed":5000,
+                "behaviors":[
+                    {"id":"abovebeyond","name":"Above and Beyond"},
+                    {"id":"item.10001841","name":"Creativity"},
+                    {"id":"item.10001842","name":"Customer Service"},
+                    {"id":"innovation","name":"Innovation"},
+                    {"id":"leadership","name":"Leadership"},
+                    {"id":"item.10001843","name":"Teamwork"}
+                ],
+                "promoType": "none",
+                "ecardsActive":false,
+                "behaviorActive":true,
+                "messageActive":true,
+                "copyManagerActive":true,
+                "copyMeActive":true,
+                "copyOthersActive":true,
+                "deliverDateActive":true,
+                "anniversaryCelebrateActive": false,
+                "anniversaryYears": false,
+                "recognitionPrivateActive": false,
+                "contributorsActive":false,
+                "myNewSectionActive":true
+            },
+            {
+                "id":55555,
+                "name":"PURL Promotion",
+                "awardType":"pointsRange",
+                "awardMin":100,
+                "awardMax":2000,
+                "behaviors":[
+                    {"id":"xabovebeyond","name":"XAbove and Beyond"},
+                    {"id":"item.10001849","name":"XCreativity"},
+                    {"id":"item.10001849","name":"XCustomer Service"},
+                    {"id":"xinnovation","name":"XInnovation"},
+                    {"id":"xleadership","name":"XLeadership"},
+                    {"id":"item.10001849","name":"XTeamwork"}
+                ],
+                "promoType": "purl",
+                "defaultDeliverDate": "02/02/2013",
+                "ecardsActive":false,
+                "behaviorActive":false,
+                "messageActive":false,
+                "copyManagerActive":false,
+                "copyMeActive":true,
+                "copyOthersActive":false,
+                "deliverDateActive":false,
+                "anniversaryCelebrateActive": true,
+                "anniversaryYears": true,
+                "recognitionPrivateActive": false,
+                "contributorsActive":true
+            },
+            {
+                "id":12348888,
+                "name":"Calc Levels Promo",
+                "awardType":"calculated",
+                "isAwardCalcLevels": true,
+                "behaviors":[
+                    {"id":"abovebeyond","name":"Above and Beyond"},
+                    {"id":"item.10001841","name":"Creativity"}
+                ],
+                "promoType": "none",
+                "ecardsActive":false,
+                "behaviorActive":true,
+                "messageActive":true,
+                "copyManagerActive":true,
+                "copyMeActive":true,
+                "copyOthersActive":true,
+                "deliverDateActive":true,
+                "anniversaryCelebrateActive": false,
+                "anniversaryYears": false,
+                "recognitionPrivateActive": false,
+                "contributorsActive":false,
+                "customSections": [
+                    "myNewSection" 
+                ]
+            },
+            {
+                "id":95559,
+                "name":"Nomination Promotion",
+                "awardType":"pointsRange",
+                "awardMin":100,
+                "awardMax":2000,
+                "behaviors":[
+                    {"id":"xabovebeyond","name":"XAbove and Beyond"},
+                    {"id":"item.10001849","name":"XCreativity"}
+                ],
+                "promoType": "nomination",
+                "maxRecipients":3,              
+                "ecardsActive":false,
+                "behaviorActive":false,
+                "messageActive":false,
+                "copyManagerActive":false,
+                "copyMeActive":false,
+                "copyOthersActive":true,
+                "deliverDateActive":false,
+                "anniversaryCelebrateActive": false,
+                "anniversaryYears": false,
+                "recognitionPrivateActive": false,
+                "contributorsActive":false,
+                "teamActive":true,
+                "myNewSectionActive":true
+            }
+        ],
+
+        "nodes": [
+            {"id":23456,"name":"Node A"},
+            {"id":99456,"name":"Node B"},
+            {"id":53456,"name":"Node X"},
+            {"id":59456,"name":"Node Y"}
+        ]
+    }
+}

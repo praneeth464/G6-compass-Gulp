@@ -1,0 +1,79 @@
+<?php sleep(1); ?>
+{
+    "messages": [],
+    "tree": {
+        "root" : {
+            "name" : "name",
+            "_comment" : "can be userId or nodeId, either works depending on if we're in user or team mode",
+            "userId" : 1234,
+            "avatarUrl" : "url/to/user/avatar.png"
+        },
+        "participants" : [
+            {
+                "name" : "Firstname",
+                "id" : 2345,
+                "avatarUrl" : "url/to/user/avatar.png",
+                "count" : 4,
+                "nodeName" : "Account Management",
+                "nodeId" : <?php echo( $_POST['page'] ); ?>987
+            },
+            {
+                "name" : "Firstname",
+                "id" : 3456,
+                "avatarUrl" : "url/to/user/avatar.png",
+                "count" : 1,
+                "nodeName" : "Account Management",
+                "nodeId" : <?php echo( $_POST['page'] ); ?>987
+            },
+            {
+                "name" : "Firstname",
+                "id" : 4567,
+                "avatarUrl" : "url/to/user/avatar.png",
+                "count" : 2,
+                "nodeName" : "Account Management",
+                "nodeId" : <?php echo( $_POST['page'] ); ?>987
+            },
+            {
+                "name" : "Firstname",
+                "id" : 5678,
+                "avatarUrl" : "url/to/user/avatar.png",
+                "count" : 1,
+                "nodeName" : "Marketing",
+                "nodeId" : <?php echo( $_POST['page'] ); ?>876
+            },
+            {
+                "name" : "Firstname",
+                "id" : 6789,
+                "avatarUrl" : "url/to/user/avatar.png",
+                "count" : 2,
+                "nodeName" : "Sales",
+                "nodeId" : <?php echo( $_POST['page'] ); ?>765
+            },
+            {
+                "name" : "Firstname",
+                "id" : 7890,
+                "avatarUrl" : "url/to/user/avatar.png",
+                "count" : 12,
+                "nodeName" : "Sales",
+                "nodeId" : <?php echo( $_POST['page'] ); ?>765
+            },
+            {
+                "name" : "Firstname",
+                "id" : 8901,
+                "avatarUrl" : "url/to/user/avatar.png",
+                "count" : 1,
+                "nodeName" : "Sales",
+                "nodeId" : <?php echo( $_POST['page'] ); ?>765
+            },
+            {
+                "name" : "Firstname",
+                "id" : 9012,
+                "avatarUrl" : "url/to/user/avatar.png",
+                "count" : 2,
+                "nodeName" : "Sales",
+                "nodeId" : <?php echo( $_POST['page'] ); ?>765
+            }
+        ],
+        "hasMore" : true
+    }
+}

@@ -1,0 +1,41 @@
+
+<!-- smackTalkComment {{id}} -->
+<div class="app-row comment-block clearfix smackTalkCommentsComment comment{{id}}" data-comment-id="{{id}}" style="display: none;">
+
+    <div class="app-col">
+        <a class="profile-popover" data-participant-ids="[{{commenter.id}}]">
+            <img alt="" class="avatar" src="{{commenter.avatarUrl}}" >
+        </a>
+    </div>
+
+    <div class="app-col comment {{#if isMine}}mine{{/if}}">
+
+        <p>
+            <a class="profile-popover" href="#" data-participant-ids="[{{commenter.id}}]">
+                {{commenter.firstName}} {{commenter.lastName}}
+            </a>
+
+            <div class="readMore" data-read-more-num-lines="2" data-msg-read-more="more">
+                {{comment}}
+            </div>
+            {{#if isMine}}
+            <span class="hide-comment">
+                {{#unless isHidden}}
+                <a href="#" class="hideSmackTalkLnk" title="Delete this comment">Delete</a> &bull;
+                <span class="smackTalkHiddenLinkText" style="display:none;">
+                    Hidden
+                </span>
+                {{/unless}}
+            </span>
+            {{/if}}
+            {{#if isLiked}}
+                Liked
+            {{else}}
+                <a href="#" class="likeSmackTalkBtn" data-msg-liked="Liked">Like</a>
+            {{/if}}
+        </p>
+
+    </div>
+
+</div>
+<!-- /smackTalkComment {{id}} -->

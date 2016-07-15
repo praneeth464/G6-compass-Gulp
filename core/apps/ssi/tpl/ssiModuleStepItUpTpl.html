@@ -1,0 +1,118 @@
+<div class="raphael" data-src="../libs/raphael-min.js"></div>
+
+<div class="row-fluid">
+	<div class="span12">
+		<p class="activityDescription">{{activityDescription}}</p>
+	</div>
+</div>
+
+{{! 2x2 module }}
+<div class="narrowModule">
+	{{#each contestLevels}}
+		{{#if isCurrentLevel}}
+			<div class="row-fluid">
+				<div class="span8">
+					<div class="chartHolder participantChartWrap" data-model-id="{{id}}">
+						<div class="chartData">
+							<div class="levelProgress">
+								<span>{{progress}}</span>
+							</div>
+							<div class="levelGoal">
+								<span>{{goal}}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="span4">
+					<span class="levelTitle">Level</span>
+					<span class="levelAchieved">{{name}}</span>
+				</div>
+			</div>
+			{{#ueq ../../status "finalize_results"}}
+				<div class="row-fluid">
+					<div class="span12 text-center">
+						{{#and isLastLevel isCompleted}}
+						<span class="levelRemaining {{#and ../../../../includeBonus ../../../../bonusEarned}}hidden{{/and}}">Highest Level Achieved</span>
+						{{else}}
+						<span class="levelRemaining"><strong>{{remaining}}</strong> until next level achieved</span>
+						{{/and}}
+					</div>
+				</div>
+			{{/ueq}}
+		{{/if}}
+	{{/each}}
+</div>
+
+{{! 4x4 and 4x2 module }}
+<div class="shortAndWideModule wideModule">
+	<div class="levelChartWrapper numLevels{{contestLevels.length}}">
+		<div class="row-fluid">
+			{{#each contestLevels}}
+				{{#if isCurrentLevel}}
+					<div class="span3 levelCol currentLevelCol">
+						<div class="chartHolder participantChartWrap" data-model-id="{{id}}">
+							<div class="chartData">
+								<div class="levelProgress">
+									<span>{{progress}}</span>
+								</div>
+								<div class="levelGoal">
+									<span>{{goal}}</span>
+								</div>
+							</div>
+						</div>
+                        <div class="backgroundLinkBar"></div>
+					</div>
+				{{else}}
+					{{#if isCompleted}}
+						<div class="span2 levelCol">
+							<div class="levelCompleted circleData">
+								<i class="icon-ok-circle"></i>
+							</div>
+	                        <div class="backgroundLinkBar"></div>
+						</div>
+					{{else}}
+						<div class="span2 levelCol">
+							<div class="levelNotCompleted circleData"></div>
+                            <div class="backgroundLinkBar"></div>
+						</div>
+					{{/if}}
+				{{/if}}
+			{{/each}}
+		</div>
+		<div class="row-fluid levelMeta">
+			{{#each contestLevels}}
+				{{#if isCurrentLevel}}
+					<div class="span3 levelCol currentLevelCol">
+						<strong class="levelName currentLevel">Level <span>{{name}}</span></strong>
+					</div>
+				{{else}}
+					<div class="span2 levelCol">
+						<strong class="levelName {{#unless isCompleted}}notComplete{{/unless}}">Level <span>{{name}}</span></strong>
+					</div>
+				{{/if}}
+			{{/each}}
+		</div>
+	</div>
+	{{#ueq daysToEnd "0"}}
+		{{#each contestLevels}}
+			{{#if isCurrentLevel}}
+				<div class="row-fluid levelRemaining">
+					<div class="span12 text-center">
+						{{#and isLastLevel isCompleted}}
+						<span>Highest Level Achieved</span>
+						{{else}}
+						<span><strong>{{remaining}}</strong> until next level achieved</span>
+						{{/and}}
+					</div>
+				</div>
+			{{/if}}
+		{{/each}}
+	{{/ueq}}
+
+</div>
+
+{{#ueq status "finalize_results"}}
+	{{#and includeBonus bonusActivity}}
+	<div class="bonusLabel">{{bonusActivity}} in bonus</div>
+	{{/and}}
+{{/ueq}}

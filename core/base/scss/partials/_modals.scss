@@ -1,0 +1,66 @@
+// Partial-specific variables
+// =========================
+$modals_borderRadius: 0 !default;
+
+$modals_closeIconFontSize: $circledAwesomeIconFontSize !default;
+$modals_closeIconLineHeight: $circledAwesomeIconLineHeight !default;
+$modals_closeIconColor: $circledAwesomeIconColor !default;
+$modals_closeIconBorderColor: $circledAwesomeIconBorderColor !default;
+$modals_closeIconCircleWidth: $circledAwesomeIconCircleWidth !default;
+$modals_closeIconBorderWidth: $circledAwesomeIconBorderWidth !default;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+.modal {
+    z-index: 20000; // greater than default qtip (and pretty much everything else)
+    @include border-radius($modals_borderRadius);
+
+	.modal-footer {
+		.btn + .btn {
+			// we don't want this wierd space when buttons gobble horiz. space
+			@media (max-width: 480px) {
+				margin-left: 0px;
+			}
+		}
+	}
+}
+.modal-backdrop {
+    z-index: 20000; // greater than default qtip (and pretty much everything else)
+}
+// overriding the opacity of the backdrop to darken things a little bit
+.modal-backdrop, .modal-backdrop.fade.in {
+    @include opacity(0.5);
+}
+
+// overriding the core Bootstrap modal max height. I'd prefer to avoid inline scrolling when it isn't necessary
+.modal-body {
+    max-height: none;
+}
+
+// overriding the core Bootstrap modal-footer radius so it'll apply to stack modals too
+.modal-footer {
+    @include border-radius($modals_borderRadius);
+}
+
+// pulled over from the core Bootstrap files. Dominic C had made a custom edit on 10 Jan 2013 but we want the core files to remain unchanged if at all possible
+.modal-header {
+    h1 {
+        word-wrap: break-word;
+    }
+
+    .icon-remove {
+        @include circledAwesomeIcon(
+            $fontSize: $modals_closeIconFontSize,
+            $lineHeight: $modals_closeIconLineHeight,
+            $color: $modals_closeIconColor,
+            $borderColor: $modals_closeIconBorderColor,
+            $circleWidth: $modals_closeIconCircleWidth,
+            $borderWidth: $modals_closeIconBorderWidth
+        );
+    }
+}
+// end pull

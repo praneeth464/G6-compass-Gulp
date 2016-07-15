@@ -1,0 +1,72 @@
+// App-specific variables
+// =========================
+$bannerModule_cycleDotWidth: false !default;
+$bannerModule_cycleDotBkg: false !default;
+$bannerModule_cycleDotBorder: false !default;
+$bannerModule_cycleDotBkgHover: false !default;
+$bannerModule_cycleDotBorderHover: false !default;
+$bannerModule_cycleDotBkgActive: false !default;
+$bannerModule_cycleDotBorderActive: false !default;
+$bannerModule_cycleDotBorderRadius: false !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.bannerModule {
+
+} /* /.bannerModule */
+
+/* ----- MODULE STYLES ----- */
+.module.bannerModule {
+
+    .visitAppBtn{
+        display: none;
+    }
+
+    .wide-view,
+    .carousel,
+    .cycle,
+    .bannerModuleSlideItem {
+        padding: 0;
+        width: 100%;
+        height: 100%;
+
+        a {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 0 !important;
+            width: 100%;
+            height: 100%;
+            text-indent: -9999px;
+            overflow: hidden;
+        }
+    }
+
+    @include module_cycleDots(
+        $cycleDotWidth: $bannerModule_cycleDotWidth,
+        $cycleDotBkg: $bannerModule_cycleDotBkg,
+        $cycleDotBorder: $bannerModule_cycleDotBorder,
+        $cycleDotBkgHover: $bannerModule_cycleDotBkgHover,
+        $cycleDotBorderHover: $bannerModule_cycleDotBorderHover,
+        $cycleDotBkgActive: $bannerModule_cycleDotBkgActive,
+        $cycleDotBorderActive: $bannerModule_cycleDotBorderActive,
+        $cycleDotBorderRadius: $bannerModule_cycleDotBorderRadius
+    );
+
+    &.grid-dimension-2x1 {
+        .wide-view {
+            display: block;
+        }
+        .title-icon-view {
+            display: none;
+        }
+    }
+
+} /* /.module.bannerModule */

@@ -1,0 +1,133 @@
+
+<!-- participantInfoPopover TPL -->
+<div class="participantPopover{{#if _isLongList}} long-list{{/if}}" data-msg-loading="Loading...">
+    <button type="button" class="close closePopoverBtn">&times;</button>
+
+{{#isSingle participants}}
+
+    <div class='row'>
+
+        <div class='profile-popover-left'>
+            {{#if single.isPublic}}<a href='{{single.profileUrl}}' class="publicProfileLink" data-title-page-view="Public Profile">{{/if}}<img alt='' class="avatar" src='{{single.avatarUrl}}' width="48" height="48">{{#if single.isPublic}}</a>{{/if}}
+        </div>
+
+        <div class='profile-popover-right'>
+
+            <div class="profile-popover-info">
+                <p>
+                    {{#if single.isPublic}}<a href='{{single.profileUrl}}' class="publicProfileLink" data-title-page-view="Public Profile">{{/if}}{{single.firstName}} {{single.lastName}}{{#if single.isPublic}}</a>{{/if}}<br />
+                    {{#if single.orgName}}<span>{{single.orgName}}</span>{{/if}}
+                    {{#if single.departmentName}}<span>{{single.departmentName}}</span>{{/if}}
+                    {{#if single.jobName}}<span>{{single.jobName}}</span>{{/if}}
+                </p>
+                <p>
+                    <img src="img/flags/{{single.countryCode}}.png" />
+                    {{single.countryName}}
+                </p>
+            </div>
+
+            <div class='profile-popover-links'>
+                {{#if ../_isShowRecognizeLink}}
+                	{{#unless single.isSelf}}
+                		{{#if single.isDelegate}}
+                    		 {{#if single.canRecognize}}
+                				<span><a href='#' class="regonizeFromPopover" >Recognize</a></span>
+                			 {{/if}}
+                   	   {{else}}
+                   			  	<span><a href='#' class="regonizeFromPopover" >Recognize</a></span>
+                   	   {{/if}}
+                	{{/unless}}
+                {{/if}}
+
+                {{#if ../_isShowFollowLink}}
+                    {{#if single.isPublic}}
+                        {{#unless single.isSelf}}
+                        {{#unless single.isDelegate}}
+                        <span><a href='#' class="miniProfFollowLink unfollow"
+                                {{#unless single.isFollowed}}style="display:none"{{/unless}}>Unfollow</a><a href='#' class="miniProfFollowLink follow"
+                                {{#if single.isFollowed}}style="display:none"{{/if}}>Follow</a></span>
+                        {{/unless}}
+                        {{/unless}}
+                    {{/if}}
+                {{/if}}
+
+                {{#if single.isPublic}}
+                    {{#if single.profileUrl}}
+                        {{#unless single.isDelegate}}
+                        <span><a href="{{single.profileUrl}}" class="publicProfileLink" {{#if single.isSelf}}data-isSelf="true"{{/if}} data-title-page-view="Public Profile">Public Profile</a></span>
+                        {{/unless}}
+                    {{/if}}
+                {{/if}}
+
+                {{#if single.throwdownEnabled}}
+                    {{#if single.profileUrl}}
+                        <span><a href="{{single.profileUrl}}#tab/PlayerStats" class="publicProfileLink" {{#if single.isSelf}}data-isSelf="true"{{/if}} data-title-page-view="Public Profile">Player Stats</a></span>
+                    {{/if}}
+                {{/if}}
+            </div><!-- /.profile-popover-links -->
+
+        </div><!-- /.profile-popover-right -->
+    </div><!-- /.row -->
+
+    {{#if ../_isShowBadge}}
+        {{#if single.isPublic}}
+            {{#if single.badges}}
+                <div class='row'>
+                    <div class='profile-popover-left'>&nbsp;</div>
+                    <div class='profile-popover-right'>
+
+                        {{#single.badges}}
+                        <div class="popover-badge">
+                            <img src="{{img}}" title="{{name}}">
+                            <!--p>{{name}}</p-->
+                        </div>
+                        {{/single.badges}}
+
+                    </div>
+                </div>
+            {{/if}}
+        {{/if}}
+    {{/if}}
+
+
+{{else}}<!-- not single, produce list of participants -->
+
+    <div class="profileList">
+
+    <!--subTpl.paxList=
+    {{#participants}}
+        <div class='row multiProfile'>
+            {{#if ../_isLongList}}
+                {{#if this.isPublic}}<a class="naked-name-link" href="{{this.profileUrl}}">{{/if}}{{this.firstName}} {{this.lastName}}{{#if this.isPublic}}</a>{{/if}}
+            {{else}}
+                <div class='profile-popover-left'>
+                    {{#if this.isPublic}}<a href='{{this.profileUrl}}' class="publicProfileLink" data-title-page-view="Public Profile">{{/if}}<img alt='' class='avatar' src='{{this.avatarUrl}}' width="32" height="32">{{#if this.isPublic}}</a>{{/if}}
+                </div>
+                <div class='profile-popover-right'>
+                    <p>
+                        {{#if this.isPublic}}<a href='{{this.profileUrl}}' class="publicProfileLink" data-title-page-view="Public Profile">{{/if}}{{this.firstName}} {{this.lastName}}{{#if this.isPublic}}</a>{{/if}}<br />
+                        {{this.orgName}}<br />
+                        <img src="img/flags/{{this.countryCode}}.png" />{{this.countryName}}
+                    </p>
+                </div>
+            {{/if}}
+        </div>
+    {{/participants}}
+    subTpl-->
+
+    </div>
+
+    {{#if _isShowMoreBtn}}
+        <button class="btn btn-block moreParticipantsBtn">
+            more
+        </button>
+    {{/if}}
+
+
+{{/isSingle}}
+
+</div><!-- /.participantPopover -->
+<!-- /participantInfoPopover TPL -->
+
+<div class="modal hide fade module recognition" id="ezRecognizeMiniProfileModal" data-backdrop="static" data-keyboard="false">
+</div>

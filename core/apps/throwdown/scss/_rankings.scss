@@ -1,0 +1,837 @@
+// App-specific variables
+// =========================
+$throwdownRankings_bgColor: $g5ModuleBgColor !default;
+$throwdownRankings_gradStops: $g5ModuleGradStops !default;
+$throwdownRankings_titleColor: $throwdown_tertiaryAccentColor !default;
+$throwdownRankings_headerBgColor: $black !default;
+$throwdownRankings_tabsNavBgColor: $black !default;
+$throwdownRankings_topRankedBgColor: $black !default;
+$throwdownRankings_topRankedTextColor: $white !default;
+$throwdownRankings_badgeFirstPlaceColor: $grayLight !default;
+$throwdownRankings_badgeSecondPlaceColor: $grayLight !default;
+$throwdownRankings_badgeThirdPlaceColor: $grayLight !default;
+$throwdownRankings_badgeTextShadowColor: rgba(255, 255, 255, .5) !default;
+$throwdownRankings_tableTextColor: $white !default;
+$throwdownRankings_tableBorderColor: $white !default;
+$throwdownRankings_numberColor: $throwdown_primaryAccentColor !default;
+
+$throwdownRankings_leaderBgModuleOdd: $white !default;
+$throwdownRankings_leaderBgModuleEven: $grayLighter !default;
+$throwdownRankings_moduleBackgroundColor: $white !default;
+
+//Varables for avatar detail
+$throwdownRankings_fancyAvatar_avatarPageDimension: 148px !default;
+$throwdownRankings_fancyAvatar_avatarModuleDimension: 60px !default;
+$throwdownRankings_fancyAvatar_avatarPadding: $throwdown_fancyAvatar_avatarPadding !default;
+$throwdownRankings_fancyAvatar_border: $throwdown_fancyAvatar_border !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.throwdownRankings {
+	color: $throwdown_textColor;
+    font-family: $throwdown_primaryFontFamily;
+    position: relative;
+
+    .page-topper {
+        font-family: $throwdown_secondaryFontFamily;
+    }
+
+    .progress-text {
+        color: $throwdown_textColor;
+        display: block;
+        font-family: $throwdown_secondaryFontFamily;
+    }
+    .activitydate {
+        @extend .progress-text;
+        color: $throwdown_textLight;
+        font-size: 13px;
+    }
+    .pre-rank,
+    .round-info span {
+        font-weight: $throwdown_secondaryFontWeight;
+        text-transform: uppercase;
+    }
+    .pre-large-rank-text,
+    .large-rank-text {
+        color: $throwdownRankings_numberColor;
+        font-weight: $throwdown_secondaryFontWeight;
+        vertical-align: top;
+    }
+    .leaders-col {
+        float: left;
+        font-family: $throwdown_secondaryFontFamily;
+        list-style: none;
+        margin: 0;
+
+        li {
+            font-size: $baseFontSize *.93; //~13px
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
+             b {
+                @include inline-block;
+                @include ie7-inline-block();
+                float: left;
+                padding: 0 9px 0 5%;
+                text-align: right;
+            }
+            img {
+                display: inline;
+                float: left;
+                height: 20px;
+                margin: 0 6px 0 0;
+                width: 20px;
+            }
+            &.label {
+                background-color: $throwdownRankings_headerBgColor;
+                display: list-item;
+
+                .rank {
+                    float: left;
+                    margin-left: 18px;
+                }
+            }
+            &.you b,
+            &.you a.leaderName {
+                font-size: $baseFontSize * 1.15; //~16px
+            }
+            &.tied b {
+                visibility: hidden;
+            }
+        }
+        .leaderName {
+            font-weight: $throwdown_secondaryFontWeight;
+            vertical-align: top;
+        }
+    }/* /.leaders-col */
+}/* /.rankings */
+
+/* ----- MODULE STYLES ----- */
+.module.throwdownRankings {
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $throwdownRankings_bgColor,
+            $gradType: $throwdown_gradTypeLinear,
+            $gradMeta: $throwdown_gradMetaTop,
+            $gradStops: $throwdownRankings_gradStops
+        );
+    }
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $throwdown_iconColor,
+            $titleColor: $throwdownRankings_titleColor,
+            $titleFontFamily: $throwdown_primaryFontFamily
+        );
+
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            @include g5HomeAppIconBoxReflect(-54px);
+        }
+    }
+    .wide-view {
+        background-color: $throwdownRankings_moduleBackgroundColor;
+        padding: 0;
+    }
+    .rankingsModuleTop {
+        @include gradient-vertical($throwdownRankings_tabsNavBgColor, $black);
+        height: 45px;
+
+        h2.rankingModuleTitle {
+            margin:0 12px;
+            color: $throwdownRankings_titleColor;
+            float: left;
+            font-size: $baseFontSize * 1.7857;
+            line-height: 45px;
+            text-transform: uppercase;
+        }
+    }
+    .pre-large-rank-text {
+        font-size: $baseFontSize * 1.3;
+        line-height: $baseLineHeight * .85;
+    }
+    .large-rank-text {
+        font-size: $baseFontSize * 1.8;
+    }
+    .pre-rank {
+        display: inline-block;
+        font-size: $baseFontSize * 1.72; //~24px
+        line-height: $baseLineHeight * 1.05;
+        padding-right: 2px;
+        vertical-align: top;
+    }
+    .paginationControls,
+    .rankingsMetaData,
+    .top-ranked,
+    .info-text,
+    .round-info {
+        display: none;
+    }
+
+    .highlightedUser {
+        @include box-shadow(rgba(0, 0, 0, 0.3) 0 1px 4px, inset rgba(0, 0, 0, 0.1) 0 0 40px);
+        border-bottom: 1px solid #cccccc;
+        padding: 12px 15px;
+        position: relative;
+        height: 64px;
+
+        .avatarContainer {
+            padding-right: 15px;
+
+            img {
+                height: 60px;
+                width: 60px;
+            }
+        }
+        .name {
+            font-size: $baseFontSize * 1.45; //~20px
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 163px;
+        }
+    }
+    .leadersContainer {
+        height: 174px;
+    }
+    .leaders-col {
+        li {
+            color: $throwdown_textColor;
+            padding: 7px 0 8px;
+
+            b {
+                color: $throwdown_textNormal;
+                font: $throwdown_secondaryFontWeight $baseFontSize * 1.5 $throwdown_primaryFontFamily;
+                line-height: $baseLineHeight * .9;
+                margin-top: 2px;
+            }
+            &.label,
+            span {
+                display: none;
+            }
+        }
+
+        .odd { background: $throwdownRankings_leaderBgModuleOdd; }
+        .even { background: $throwdownRankings_leaderBgModuleEven; }
+    }
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2 {
+        .title-icon-view {
+            display: none;
+        }
+    }
+    &.grid-dimension-2x2 {
+        .userInfoContainer {
+            max-width: 70%;
+        }
+        .leaders-col {
+            float: none;
+        }
+        .leaders-col-b {
+            display: none;
+        }
+    }
+    &.grid-dimension-4x2 {
+        .leaders-col {
+            width: (($g5ModuleUnit * 2) - $g5ModuleGutter) - 2;
+
+            &.leaders-col-b-empty {
+                width: 100%;
+            }
+        }
+        .leaders-col-b {
+            float: right;
+        }
+    }
+    &.grid-dimension-2x1,
+    &.grid-dimension-1x1 {
+        .rankingsModuleTop {
+            display: none;
+
+            h2 {
+                display: none;
+            }
+        }
+        .title-icon-view h3 {
+            font-weight: $throwdown_secondaryFontWeight;
+            text-transform: uppercase;
+        }
+    }
+    &.grid-dimension-2x1 {
+        .title-icon-view h3 {
+            font-size: $baseFontSize * 2.5;//~64px
+			padding: 0 5% 0 52%;
+        }
+    }
+	&.grid-dimension-1x1 {
+		.title-icon-view h3 {
+			font-size: $baseFontSize * 1.15;
+            padding: 0;
+			bottom: 0px;
+		}
+	}
+}/* /.module.throwdown */
+
+/* ----- PAGE STYLES ----- */
+.page.throwdownRankings {
+    .page-topper {
+		// @include throwdown_customSelectBox($throwdownCustomSelect_gradColor, $throwdownCustomSelect_gradStops, $throwdownCustomSelect_arrowColor);
+        // font-family: $throwdown_secondaryFontFamily;
+
+        .control-group {
+            margin-right: 0;
+            width: 100%;
+
+            .controls {
+                width: 100%;
+                select {
+                    width: auto;
+                    min-width: 220px;
+                    max-width: 100%;
+                }
+            }
+        }
+	}
+    .background-flash {
+        background-color: #FFFFA3;
+    }
+    .formRankingsSetSelect {
+        color: $throwdown_textColor;
+        float: right;
+        font-family: $throwdown_secondaryFontFamily;
+        position: absolute;
+        right: 20px;
+
+        .control-group {
+            display: block;
+        }
+        .controls {
+            margin-bottom: 0;
+        }
+    }
+
+    .rankingsMetaData {
+        .endDate {
+            color: $throwdown_textLight;
+            display: inline-block;
+            float: left;
+            font-family: $throwdown_secondaryFontFamily;
+            font-size: $baseFontSize * .93; //~13px
+            margin: 0;
+
+            strong {
+                color: $throwdown_textNormal;
+            }
+        }
+        .startDate {
+            @extend .endDate;
+            padding-right: 10px;
+            @media (max-width: 480px) {
+                display: block;
+                float: none;
+            }
+        }
+        h2 {
+            font-size: $baseFontSize * 1.85; //~26px
+            line-height: $baseLineHeight;
+            margin: 10px 0 5px 0;
+            text-transform: uppercase;
+        }
+        a {
+            clear: left;
+            display: block;
+            float: left;
+            font-family: $throwdown_secondaryFontFamily;
+            font-size: $baseFontSize * .85; //~12px
+            margin-bottom: 8px;
+        }
+    }
+    .highlightedUser {
+        @include throwdown_fancyProfile($throwdownRankings_fancyAvatar_avatarPageDimension, $throwdownRankings_fancyAvatar_avatarPadding, $throwdownRankings_fancyAvatar_border);
+        margin-bottom: 16px;
+
+        .fl + .fl {
+            margin-left: 10px;
+        }
+        .pre-rank {
+            display: block;
+        }
+        .pre-rank,
+        .round-info span {
+            font-size: $baseFontSize * 1.8;
+            line-height: $baseLineHeight * 1.15; //23px
+            text-transform: uppercase;
+        }
+        .pre-large-rank-text {
+            display: inline-block;
+            font-size: $baseFontSize * 3.6; //~50px
+            line-height: $baseLineHeight * 3.05; //61px
+        }
+        .large-rank-text {
+            display: inline-block;
+            font-size: $baseFontSize * 5.45; //~76px
+            line-height: $baseLineHeight * 3.4; //68px
+        }
+        .progress-text,
+        .activitydate {
+            font-size: $baseFontSize * 0.93; //~13px
+        }
+        .your-round,
+		.round-total {
+            color: $throwdown_secondaryAccentColor;
+        }
+    }
+    .info-text {
+		color: $throwdown_textLight;
+        font-family: $throwdown_secondaryFontFamily;
+    }
+    .top-ranked {
+        visibility: hidden; /* javascript will show these if they exist in JSON */
+        background-color: $throwdownRankings_topRankedBgColor;
+        color: $throwdownRankings_topRankedTextColor;
+        margin: 1% 0;
+        padding: 15px 1%;
+
+        .rank-player-info {
+            float: left;
+            margin-top: 4px;
+            width: 210px;
+
+            .avatar {
+                float: left;
+                height: 50px;
+                margin: 0 10px 0 0;
+				width: 50px;
+            }
+            .firstName {
+                display: block;
+                font-size: $baseFontSize * 1.7;
+                line-height: $baseLineHeight * 1.25;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                text-transform: uppercase;
+                white-space: nowrap;
+                width: 149px;
+            }
+            .lastName {
+                @extend .firstName;
+                font-size: $baseFontSize * 2;
+                line-height: $baseLineHeight * 1.3;
+            }
+            .score {
+                clear: left;
+                display: block;
+                font-family: $throwdown_secondaryFontFamily;
+                font-size: $baseFontSize;
+                line-height: $baseLineHeight;
+                margin-left: 60px;
+            }
+        }
+
+        .rank-info {
+            float: left;
+            margin-right: 10px;
+
+            .rank-icon {
+                background-repeat: no-repeat;
+                display: block;
+                margin-right: 0;
+                width: 84px;
+            }
+            span {
+				color: $throwdown_textLight;
+                display: block;
+				font-size: $baseFontSize * 1.7; //~24px
+                font-weight: $throwdown_secondaryFontWeight;
+                text-align: center;
+                text-transform: uppercase;
+                width: auto;
+            }
+        }
+        .rank-badge-container {
+            float: left;
+            margin-top: 4px;
+
+            .rank-badge {
+                width: 36px;
+            }
+            .rank-badge-text {
+                @include text-shadow( -1px 1px 0px $throwdownRankings_badgeTextShadowColor );
+                display: inline-block;
+                font-size: $baseFontSize * 2.35; //~33px
+                line-height: $baseLineHeight * 1.5;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                text-transform: uppercase;
+                vertical-align: bottom;
+                white-space: nowrap;
+                width: 180px;
+            }
+
+            .in-progress {
+                @include opacity(0.5);
+            }
+        }
+        &.first-place {
+            .rank-badge-text {
+                color: $throwdownRankings_badgeFirstPlaceColor;
+            }
+        }
+        &.second-place {
+            margin-left: 2.7%;
+            margin-right: 2.7%;
+
+            .rank-badge-text {
+                color: $throwdownRankings_badgeSecondPlaceColor;
+            }
+        }
+        &.third-place {
+            .rank-badge-text {
+                color: $throwdownRankings_badgeThirdPlaceColor;
+            }
+        }
+    }
+
+    .paginationControls {
+        clear: both;
+        font-family: $throwdown_secondaryFontFamily;
+        margin: 0;
+        padding: 20px 0;
+    }
+    .leaders-col {
+        width: 50%;
+
+        li {
+            color: $throwdownRankings_tableTextColor;
+            padding: 0;
+
+            b {
+                color: $throwdown_textColor;
+                font-size: $baseFontSize;
+                font-weight: $throwdown_primaryFontWeight;
+                margin: 8px 0 3px;
+                padding-left: 6%;
+            }
+            img {
+                margin: 5px 6px 6px 0;
+            }
+            .leaderName {
+                color: $throwdownRankings_tableTextColor;
+                @include inline-block;
+                margin-top: 7px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            .score {
+                border-left: solid $throwdownRankings_tableBorderColor 1px;
+                border-right: solid $throwdownRankings_tableBorderColor 1px;
+                display: block;
+                float: right;
+                height: 26px;
+                margin-left: 4px;
+                min-width: 62px;
+                padding: 5px 10px 0;
+                text-align: center;
+            }
+            &.label {
+                border-radius: 0;
+
+                span {
+                    font-weight: $throwdown_primaryFontWeight;
+                    height: auto;
+                    padding: 12px 10px;
+                }
+                .rank {
+                     border: none;
+                }
+            }
+        }
+
+        .you.odd,
+        .you.even {
+            background: scale-color($throwdown_tableOdd, $lightness: -21%);
+
+            .score,
+            b,
+            a.leaderName {
+                color: $throwdown_tableYouText;
+            }
+        }
+        .odd { background: $throwdown_tableOdd; }
+        .even { background: $throwdown_tableEven; }
+    }
+} /* /.page.throwdownRankings */
+
+// IE specific garbage
+.lt-ie9 {
+    .page.throwdownRankings {
+        .top-ranked.second-place {
+            margin-left: 2%;
+            margin-right: 2%;
+        }
+        .top-ranked .rank-info .rank-icon {
+            max-width: none;
+        }
+        .top-ranked .rank-player-info {
+            width: 163px;
+
+            .firstName {
+                font-size: $baseFontSize * 1.3;
+                width: 100px;
+            }
+            .secondName {
+                font-size: $baseFontSize * 1.57;
+                width: 100px;
+            }
+        }
+        .top-ranked .rank-badge-container {
+            width: 163px;
+
+            .rank-badge-text {
+                width: 127px;
+            }
+        }
+    }
+    .module.throwdownRankings {
+        .highlightedUser .avatarContainer img {
+            max-width: none;
+        }
+        .title-icon-view h3 {
+            padding-top: 10px;
+            vertical-align: top;
+        }
+    }
+}
+.lt-ie8 {
+    .page.throwdownRankings {
+        .row {
+            position: relative;
+        }
+        .page-topper {
+            margin-bottom: 0;
+        }
+        .top-ranked.span4 {
+            width: 265px;
+        }
+        .top-ranked.second-place {
+            margin-left: 1%;
+            margin-right: 1%;
+        }
+        .large-rank-text {
+            line-height: 68px !important;
+        }
+        .top-ranked .rank-badge-container .rank-badge-text {
+            zoom: 1;
+        }
+        .rankingsMetaData {
+            margin-bottom: 15px;
+
+            h2 {
+                margin-top: 0;
+            }
+        }
+        .formRankingSetSelect .control-group {
+            margin-bottom: 0;
+        }
+    }
+}
+@media (min-width: 980px) and (max-width: 1199px) {
+    .page.throwdownRankings {
+        .top-ranked {
+            .rank-info .rank-icon {
+                width: 75px;
+            }
+            .rank-badge-container .rank-badge-text {
+                font-size: $baseFontSize * 2;
+                width: 132px;
+            }
+            &.second-place {
+                margin-left: 2%;
+                margin-right: 2%;
+            }
+            .rank-player-info {
+                width: 163px;
+
+                .firstName {
+                    font-size: $baseFontSize * 1.3;
+                    line-height: $baseLineHeight;
+                    width: 102px;
+                }
+                .lastName {
+                    font-size: $baseFontSize * 1.58;
+                    line-height: $baseLineHeight * 1.2;
+                    width: 102px;
+                }
+            }
+        }
+    }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+    .page.throwdownRankings {
+        .top-ranked {
+            min-height: 155px;
+            position: relative;
+            padding: 10px 8px 25px;
+
+            .rank-info {
+                margin-right: 6px;
+                position: relative;
+                top: 66px;
+
+                .rank-icon {
+                    width: 44px;
+                }
+                span {
+                    font-size: $baseFontSize * 1.15;
+                }
+            }
+            .rank-player-info {
+                position: absolute;
+                left: 10px;
+                width: 90%;
+
+                .avatar {
+                    width: 40px;
+                }
+                .firstName {
+                    font-size: $baseFontSize * 1.15;
+                    line-height: $baseLineHeight * .9;
+                    width: 138px;
+                }
+                .lastName {
+                    font-size: $baseFontSize * 1.5;
+                    line-height: $baseLineHeight * 1.05;
+                    width: 138px;
+                }
+                .score {
+                    margin-left: 50px;
+                }
+            }
+            .rank-badge-container {
+                position: relative;
+                top: 78px;
+
+                .rank-badge-text {
+                    font-size: $baseFontSize * 1.57; //~22px
+                    line-height: $baseLineHeight * 1.65;
+                    width: 107px;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 767px) {
+    .page.throwdownRankings {
+        .leaders-col {
+            width: 100%;
+
+            &.leaders-col-a {
+                float: none;
+                margin-left: 0;
+                margin-right: 0;
+            }
+            &.leaders-col-b {
+                @extend .leaders-col-a;
+
+                li.label {
+                    display: none;
+                }
+            }
+        }
+        .top-ranked.second-place {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .top-ranked {
+            @include inline-block;
+            padding: 15px 2%;
+
+            .rank-player-info {
+                width: 60%;
+            }
+            .rank-badge-container {
+                width: 64%;
+
+                .rank-badge-text {
+                    width: auto;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 600px) {
+    .page.throwdownRankings {
+        .formRankingsSetSelect {
+            position: absolute;
+            left: 16px;
+            top: 66px;
+        }
+        .rankingsMetaData {
+            margin-top: 115px;
+        }
+        .avatarContainer {
+            margin-bottom: 16px;
+        }
+        .top-ranked .rank-player-info {
+            width: 66%;
+
+            .firstName,
+            .lastName {
+                line-height: $baseLineHeight * 1.25;
+                width: 136px;
+            }
+            .score {
+                margin-left: 60px;
+            }
+            .rank-badge-container .rank-badge-text {
+                line-height: $baseLineHeight * 1.25;
+            }
+        }
+    }
+}
+@media (max-width: 360px) {
+    .page.throwdownRankings {
+        .top-ranked {
+            padding: 10px 8px;
+
+            .rank-info {
+                .rank-icon {
+                    width: 45px;
+                }
+                span {
+                    font-size: $baseFontSize * 1.15;
+                }
+            }
+            .rank-badge-container {
+                clear: left;
+                width: 85%;
+            }
+            .rank-player-info {
+                width: 72%;
+
+                .avatar {
+                    width: 40px;
+                }
+                .firstName {
+                    font-size: $baseFontSize * 1.15;
+                    line-height: $baseLineHeight * .9;
+                    width: 70%;
+                }
+                .lastName {
+                    font-size: $baseFontSize * 1.5;
+                    line-height: $baseLineHeight * 1.05;
+                }
+                .score {
+                    margin-left: 50px;
+                }
+            }
+        }
+    }
+}

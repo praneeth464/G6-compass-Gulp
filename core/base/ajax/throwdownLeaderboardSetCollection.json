@@ -1,0 +1,95 @@
+{
+	"messages":[],
+    "rankingsUrl": "layout.html?tpl=throwdownRankingsPage&amp;tplPath=apps/throwdown/tpl/",
+    "visible": true,
+
+    "rankingsSets":[
+        {
+            "nameId":"all",
+            "name":"All Rankings",
+            "emptyMessage":"Currently there are no active rankings available.",
+            "rankings":
+
+                {
+                    "id":1234,
+                    "name":"Promotion Name 1",
+                    "startDate":"2012-06-29",
+                    "endDate":"2012-09-29",
+                    "displayEndDate":"2012-10-29",
+                    "rules":"should this be stored as text or as a link to externally stored rules?",
+                    "activityTitle":"Widgets Sold",
+                    "activitySortOrder":"DSC",
+                    "activityDate":"2012-07-10",
+                    "editableByUser":false,
+                    "toalNumberLeaders": 200,
+                    "currentPage": 1,
+                    "leadersPerPage": 20,
+                    "urls":{
+                        "editPromoInfo":"layout.html?tpl=throwdownLeaderboardPageEditPromoInfo&amp;tplPath=apps/throwdown/tpl/&amp;boardId=1234",
+                        "editActivity":"layout.html?tpl=throwdownLeaderboardPageEditActivity&amp;tplPath=apps/throwdown/tpl/&amp;boardId=1234",
+                        "copyToNew":"layout.html?tpl=throwdownLeaderboardPageCopy&amp;tplPath=apps/throwdown/tpl/&amp;boardId=1234"
+                    },
+                    "leaders":[]
+                }
+
+
+        },
+
+        {
+            "nameId":"region",
+            "name":"Region Rankings",
+            "emptyMessage":"Currently there are no region throwdown rankings available.",
+            "rankings":
+
+                {
+                    "id":1236,
+                    "name":"Promotion Name 3",
+                    "startDate":"2012-06-30",
+                    "endDate":"2012-09-30",
+                    "displayEndDate":"2012-10-30",
+                    "rules":"should this be stored as text or as a link to externally stored rules?",
+                    "activityTitle":"Calls Handled",
+                    "activitySortOrder":"DSC",
+                    "activityDate":"2012-07-11",
+                    "editableByUser":true,
+                    "urls":{
+                        "editPromoInfo":"layout.html?tpl=throwdownLeaderboardPageEditPromoInfo&amp;tplPath=apps/throwdown/tpl/&amp;boardId=1236",
+                        "editActivity":"layout.html?tpl=throwdownLeaderboardPageEditActivity&amp;tplPath=apps/throwdown/tpl/&amp;boardId=1236",
+                        "copyToNew":"layout.html?tpl=throwdownLeaderboardPageCopy&amp;tplPath=apps/throwdown/tpl/&amp;boardId=1236"
+                    },
+                    "leaders":[]
+                }
+
+
+        },
+
+        {
+            "nameId":"division",
+            "name":"Division Rankings",
+            "emptyMessage":"Currently there are no division throwdown rankings available.",
+            "rankings":
+
+                {
+                    "id":1230,
+                    "name":"Promotion Name 4",
+                    "startDate":"2012-01-29",
+                    "endDate":"2012-06-29",
+                    "displayEndDate":"2012-07-29",
+                    "rules":"should this be stored as text or as a link to externally stored rules?",
+                    "activityTitle":"Customers Lost",
+                    "activitySortOrder":"ASC",
+                    "activityDate":"2012-06-29",
+                    "editableByUser":true,
+                    "urls":{
+                        "editPromoInfo":"layout.html?tpl=throwdownLeaderboardPageEditPromoInfo&amp;tplPath=apps/throwdown/tpl/&amp;boardId=1230",
+                        "editActivity":"layout.html?tpl=throwdownLeaderboardPageEditActivity&amp;tplPath=apps/throwdown/tpl/&amp;boardId=1230",
+                        "copyToNew":"layout.html?tpl=throwdownLeaderboardPageCopy&amp;tplPath=apps/throwdown/tpl/&amp;boardId=1230"
+                    },
+                    "leaders":[]
+                }
+
+
+        }
+    ]
+
+}

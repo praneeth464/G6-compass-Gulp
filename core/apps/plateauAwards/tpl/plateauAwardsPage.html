@@ -1,0 +1,95 @@
+<!-- ======== PLATEAU AWARDS PAGE ======== -->
+
+<!--
+    DEVELOPERS NOTE:
+    - the data-promo-id, data-level-id, and data-product-id attributes will be selected on load
+    - data-promo-id will be forwared on the JSON request for data as 'promoId'
+    - OTHER OPTIONS - such as using the URL query string are implementable (just ask)
+    - JSON data:
+      * every request should return all promotion objects
+      * every request must include the levels+products for provided promotionId parameter (this data will be cached in browser)
+      * PLEASE SEE: ajax/browsePlateauAwards.json  and  ajax/browsePlateauAwards_differentPromotion.json
+      * JSON structure: object.promotions.levels.products (see ajax/browsePlateauAwards.json)
+-->
+<div id="plateauAwardsPageView" class="page-content"  >
+
+    <div class="page-topper">
+        <div class="row">
+            <div class="promotionSelectWrapper span12 form-inline form-labels-inline">
+                <div class="control-group">
+                    <label class="control-label">Pick A Promotion:</label>
+                    <div class="controls">
+                        <select id="promotionSelect">
+                            <option value="-1">Select a Promotion</option>
+
+                            <!-- dynamic -->
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span12">
+                <ul id="levelsTabs" class="nav nav-tabs" data-msg-empty="No levels found">
+
+                    <!-- dynamic -->
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="productBrowser" class="tab-content">
+
+        <div class="row noPromotionSelected" style="display:none">
+            <div class="span12">
+                <p>
+                    [text to display if there is not a promotion selected]
+                </p>
+            </div>
+        </div><!-- /.noPromotionSelected -->
+
+        <div class="row">
+            <div class="span12">
+                <h2 class="levelDescription">
+                    <!-- dynamic -->
+                </h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span12">
+                <ul class="currentProducts thumbnails" data-msg-empty="No products found">
+                    <!-- dynamic -->
+                </ul>
+            </div>
+        </div>
+
+    </div><!-- /#productBrowser -->
+
+</div><!-- /#plateauAwardsPageView -->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function(){
+        //attach the view to an existing DOM element
+        window.pap = new PlateauAwardsPageView({
+            el:$('#plateauAwardsPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Browse Awards'
+        });
+    });
+</script>
+

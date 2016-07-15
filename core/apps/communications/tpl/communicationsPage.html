@@ -1,0 +1,143 @@
+<!-- ======== COMMUNICATIONS PAGE ======== -->
+
+<div id="communicationsPageView" class="communicationsPage-liner page-content">
+    <div class="row">
+            <div class="manageBannersBlock communicationsBlock span6">
+                <div class="blockHeadline">
+                    <h3><i class="icon-bookmark"></i> <span>Banner</span></h3>
+                    <a href="layout.html?tplPath=apps/communications/tpl/&tpl=communicationsManageBanners.html" class="btn">Start</a>
+                </div>
+                <div class="blockContent">
+                    <p>Post an image with a link to a document or link to an external video.</p>
+                    <p>Banners can help you:</p>
+                    <ul>
+                        <li>Announce promotions</li>
+                        <li>Link to contest rules</li>
+                        <li>Access corporate videos</li>
+                        <li>Quick link to complementary websites</li>
+                    </ul>
+                    <a href="#exampleContentModal" class="exampleLink exampleBanner" data-toggle="modal">See Example &raquo;</a>
+                </div>
+            </div>
+            <div class="manageTipsBlock communicationsBlock span6">
+                <div class="blockHeadline">
+                    <h3><i class="icon-g5-tips"></i> <span>Tips</span></h3>
+                    <a href="layout.html?tplPath=apps/communications/tpl/&tpl=communicationsManageTips.html" class="btn">Start</a>
+                </div>
+                <div class="blockContent">
+                    <p>Post a short tip to reinforce key messages.</p>
+                    <p>Tips can help you:</p>
+                    <ul>
+                        <li>Display best practices</li>
+                        <li>Reinforce key behaviors</li>
+                        <li>Team values</li>
+                    </ul>
+                    <a href="#exampleContentModal" class="exampleLink exampleTip" data-toggle="modal">See Example &raquo;</a>
+                </div>
+            </div>
+            <div class="manageNewsBlock communicationsBlock span6">
+                <div class="blockHeadline">
+                    <h3><i class="icon-g5-news"></i> <span>News Story</span></h3>
+                    <a href="layout.html?tplPath=apps/communications/tpl/&tpl=communicationsManageNews.html" class="btn">Start</a>
+                </div>
+                <div class="blockContent">
+                    <p>Post an article with an image.</p>
+                    <p>News Stories can help you:</p>
+                    <ul>
+                        <li>Announce programs or promotions</li>
+                        <li>Communicate Best Practices</li>
+                        <li>Celebrate special events</li>
+                        <li>Celebrate Achievements</li>
+                    </ul>
+                    <a href="#exampleContentModal" class="exampleLink exampleNews" data-toggle="modal">See Example &raquo;</a>
+                </div>
+            </div>
+            <div class="manageAlertsBlock communicationsBlock span6">
+                <div class="blockHeadline">
+                    <h3><i class="icon-exclamation"></i><span>Send Alerts</span></h3>
+                    <a href="layout.html?tplPath=apps/managerToolkit/tpl/&tpl=managerToolkitPageAlert.html" class="btn">Start</a>
+                </div>
+                <div class="blockContent">
+                    <p>Sends an email or text message and posts an alert message on program websites.</p>
+                    <p>Send Alerts can help you:</p>
+                    <ul>
+                        <li>Send reminders of important deadlines</li>
+                        <li>Announce programs</li>
+                        <li>Share corporate news</li>
+                        <li>Recognize accomplishments</li>
+                    </ul>
+                    <a href="#exampleContentModal" class="exampleLink exampleAlert" data-toggle="modal">See Example &raquo;</a>
+                </div>
+            </div>
+            <div class="manageResourceBlock communicationsBlock span6">
+                <div class="blockHeadline">
+                    <h3><i class="icon-g5-resourcecenter"></i> <span>Resource Center Content</span></h3>
+                    <a href="layout.html?tplPath=apps/communications/tpl/&tpl=communicationsManageResourceCenter.html" class="btn">Start</a>
+                </div>
+                <div class="blockContent">
+                    <p>Post materials for program participants to access such as recognition guidelines, etc.</p>
+                    <p>Resource Center can help you:</p>
+                    <ul>
+                        <li>Post best practices</li>
+                        <li>Reinforce coroprate values</li>
+                        <li>Post training guides and forms</li>
+                        <li>Program rules</li>
+                    </ul>
+                    <a href="#exampleContentModal" class="exampleLink exampleResource" data-toggle="modal">See Example &raquo;</a>
+                </div>
+            </div>
+    </div>
+
+    <div class="modal hide fade" id="exampleContentModal" >
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+            <h3>Example Content</h3>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="exampleImage exampleBannerModal" style="display:none">
+                    <img src="../base/img/communications/bannerExample.png" alt="exampleBannerContent" />
+                </div>
+
+                <div class="exampleImage exampleNewsModal" style="display:none">
+                    <img src="../base/img/communications/newsStoryExample.png" alt="exampleNewsContent" />
+                </div>
+
+                <div class="exampleImage exampleResourceModal" style="display:none">
+                    <img src="../base/img/communications/resourceExample.png" alt="exampleResourceContent" />
+                </div>
+
+                <div class="exampleImage exampleTipModal" style="display:none">
+                    <img src="../base/img/communications/tipExample.png" alt="exampleTipContent" />
+                </div>
+
+                <div class="exampleImage exampleAlertModal" style="display:none">
+                    <img src="../base/img/communications/alertExample.png" alt="exampleAlertContent" />
+                </div>
+            </div>
+        </div>
+    </div><!--/#exampleContentModal-->
+</div>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+$(document).ready(function() {
+
+    //attach the view to an existing DOM element
+    var cpv = new CommunicationsPageView({
+        el:$('#communicationsPageView'),
+        pageNav : {
+            back : {
+                text : 'Back',
+                url : 'layout.html'
+            },
+            home : {
+                text : 'Home',
+                url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+            }
+        },
+        pageTitle : 'Communications'
+    });
+
+});
+</script>

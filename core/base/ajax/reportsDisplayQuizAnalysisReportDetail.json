@@ -1,0 +1,297 @@
+{
+    "messages": [],
+    "report": {
+        "id": "5020",
+        "reportDisplayName": "Quiz Analysis",
+        "parameters": [
+            {
+                "name": "Dates",
+                "value": "01/01/2012 - 12/18/2012"
+            },
+            {
+                "name": "Promotion Status",
+                "value": "Active"
+            },
+            {
+                "name": "Promotion(s)",
+                "value": "Quizzer"
+            }
+        ],
+        "tabularData": [
+            {
+                "meta": {
+                    "columns": [
+                        {
+                            "id": "1",
+                            "name": "Quiz Name",
+                            "description": "Shows quiz name details",
+                            "type": "string",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "https://pentagpprd.performnet.com/pentag/reports/displayQuizAnalysisReport.do?method=displaySummaryReport&sortedOn=1&sortedBy=",
+                            "summary": "Total"
+                        },
+                        {
+                            "id": "2",
+                            "name": "Organization drill-down URL",
+                            "description": "",
+                            "type": "URL",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": false,
+                            "sortUrl": "",
+                            "summary": ""
+                        },
+                        {
+                            "id": "3",
+                            "name": "Quiz Type",
+                            "description": "Shows the type of quiz (i.e., fixed or random). For a fixed quiz, all individuals are served the same set of questions in the same order. For a random quiz, questions are served randomly from a pool of available questions",
+                            "type": "string",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "https://pentagpprd.performnet.com/pentag/reports/displayQuizAnalysisReport.do?method=displaySummaryReport&sortedOn=3&sortedBy=",
+                            "summary": ""
+                        },
+                        {
+                            "id": "4",
+                            "name": "# Questions In Pool",
+                            "description": "Shows the number of available questions for a given quiz. For a fixed quiz, the number of questions in the pool is equal to the Number to Ask. For a random quiz, the number of questions in the pool must be greater or equal to the Number to Ask",
+                            "type": "number",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "https://pentagpprd.performnet.com/pentag/reports/displayQuizAnalysisReport.do?method=displaySummaryReport&sortedOn=4&sortedBy=",
+                            "summary": "8"
+                        },
+                        {
+                            "id": "5",
+                            "name": "# Questions To Ask Per Attempt",
+                            "description": "Shows the number of questions to ask for each quiz attempt",
+                            "type": "number",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "https://pentagpprd.performnet.com/pentag/reports/displayQuizAnalysisReport.do?method=displaySummaryReport&sortedOn=5&sortedBy=",
+                            "summary": "8"
+                        },
+                        {
+                            "id": "6",
+                            "name": "# Required to Pass",
+                            "description": "Shows the number of questions that must be answered correctly for each quiz attempt to pass to given quiz",
+                            "type": "number",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "https://pentagpprd.performnet.com/pentag/reports/displayQuizAnalysisReport.do?method=displaySummaryReport&sortedOn=6&sortedBy=",
+                            "summary": "5"
+                        },
+                        {
+                            "id": "7",
+                            "name": "Quiz Attempts",
+                            "description": "Shows the total number of times a quiz has been taken by participants of selected organization(s)",
+                            "type": "number",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "https://pentagpprd.performnet.com/pentag/reports/displayQuizAnalysisReport.do?method=displaySummaryReport&sortedOn=7&sortedBy=",
+                            "summary": "2"
+                        },
+                        {
+                            "id": "8",
+                            "name": "Quiz Attempts Percentage",
+                            "description": "Shows the percentage of total number of times a quiz has been taken by participants of selected organization(s)",
+                            "type": "number",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "https://pentagpprd.performnet.com/pentag/reports/displayQuizAnalysisReport.do?method=displaySummaryReport&sortedOn=8&sortedBy=",
+                            "summary": "100.0"
+                        },
+                        {
+                            "id": "9",
+                            "name": "Passed Attempts",
+                            "description": "Shows the number of quiz attempts passed",
+                            "type": "number",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "https://pentagpprd.performnet.com/pentag/reports/displayQuizAnalysisReport.do?method=displaySummaryReport&sortedOn=9&sortedBy=",
+                            "summary": "2"
+                        },
+                        {
+                            "id": "10",
+                            "name": "Passed Attempts Percentage",
+                            "description": "Shows the percent of quiz attempts passed",
+                            "type": "number",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "https://pentagpprd.performnet.com/pentag/reports/displayQuizAnalysisReport.do?method=displaySummaryReport&sortedOn=10&sortedBy=",
+                            "summary": "100.0"
+                        },
+                        {
+                            "id": "11",
+                            "name": "Failed Attempts",
+                            "description": "Shows the number of quiz attempts failed",
+                            "type": "number",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "https://pentagpprd.performnet.com/pentag/reports/displayQuizAnalysisReport.do?method=displaySummaryReport&sortedOn=11&sortedBy=",
+                            "summary": "0"
+                        },
+                        {
+                            "id": "12",
+                            "name": "Failed Attempts Percentage",
+                            "description": "Shows the percent of quiz attempts failed",
+                            "type": "number",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "https://pentagpprd.performnet.com/pentag/reports/displayQuizAnalysisReport.do?method=displaySummaryReport&sortedOn=12&sortedBy=",
+                            "summary": "0.0"
+                        },
+                        {
+                            "id": "13",
+                            "name": "Incomplete Attempts",
+                            "description": "Shows the number of quiz attempts initiated that have not been completed (i.e., passed or failed)",
+                            "type": "number",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "https://pentagpprd.performnet.com/pentag/reports/displayQuizAnalysisReport.do?method=displaySummaryReport&sortedOn=13&sortedBy=",
+                            "summary": "0"
+                        },
+                        {
+                            "id": "14",
+                            "name": "Incomplete Attempts Percentage",
+                            "description": "Shows the percent of quiz attempts initiated that have not been completed (i.e., passed or failed)",
+                            "type": "number",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "https://pentagpprd.performnet.com/pentag/reports/displayQuizAnalysisReport.do?method=displaySummaryReport&sortedOn=14&sortedBy=",
+                            "summary": "0.0"
+                        },
+                        {
+                            "id": "15",
+                            "name": "Max Attempts Allowed For Pax",
+                            "description": "Shows the maximum number of attempts that an individual is allotted to pass a given quiz",
+                            "type": "number",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "https://pentagpprd.performnet.com/pentag/reports/displayQuizAnalysisReport.do?method=displaySummaryReport&sortedOn=15&sortedBy=",
+                            "summary": ""
+                        }
+                    ],
+                    "sortedOn": "1",
+                    "sortedBy": "asc",
+                    "maxRows": "1",
+                    "exportFullReportUrl": [
+                        {
+                            "label": "Export Full Report",
+                            "url": "https://pentagpprd.performnet.com/pentag/reports/displayQuizAnalysisReport.do?method=extractReport&exportViewType=fullView"
+                        }
+                    ],
+                    "exportCurrentView": {
+                        "label": "Export Current View",
+                        "url": "https://pentagpprd.performnet.com/pentag/reports/displayQuizAnalysisReport.do?method=extractReport&exportViewType=currentView"
+                    },
+                    "inlineTextDescription": ""
+                },
+                "results": [
+                    [
+                        "I-nventions",
+                        "https://pentagpprd.performnet.com/pentag/reports/displayQuizAnalysisReport.do?method=displayQuizAnalysisDetailOneReport&quizId=5040",
+                        "fixed",
+                        "8",
+                        "8",
+                        "5",
+                        "2",
+                        "100.0",
+                        "2",
+                        "100.0",
+                        "0",
+                        "0.0",
+                        "0",
+                        "0.0",
+                        "2"
+                    ]
+                ]
+            }
+        ],
+        "chartSet": [
+            {
+                "displayName": "Quiz Question Analysis",
+                "category": "Quiz",
+                "chartType": "MSColumn3D",
+                "dataUrl": "https://pentagpprd.performnet.com/pentag/reports/displayQuizAnalysisReport.do?method=displayQuizQuestionAnalysisBarchart",
+                "fusionChartsParameters": {
+                    "exportFileName": "Quiz Question Analysis",
+                    "exportAtClient": "0",
+                    "exportFormat": "PDF",
+                    "exportAction": "download",
+                    "html5ExportHandler": "exportToPDF.do",
+                    "exportTargetWindow": "_blank",
+                    "decimals": "2",
+                    "showLabels": "1",
+                    "showLegend": "1",
+                    "enableSmartLabels": "0",
+                    "xAxisName": "Questions",
+                    "yAxisName": "% Correct/Incorrect Responses"
+                },
+                "pdfUrl": "https://pentagpprd.performnet.com/pentag/reports/displayQuizAnalysisReport.do?method=displayQuizQuestionAnalysisBarchart&amp;pdf=1",
+                "id": "5085"
+            },
+            {
+                "displayName": "Quiz Attempts %",
+                "category": "Quiz",
+                "chartType": "MSColumn3D",
+                "dataUrl": "https://pentagpprd.performnet.com/pentag/reports/displayQuizAnalysisReport.do?method=displayQuizAttemptsPercentForOrgBarchart",
+                "fusionChartsParameters": {
+                    "exportFileName": "Quiz Attempts %",
+                    "exportAtClient": "0",
+                    "exportFormat": "PDF",
+                    "exportAction": "download",
+                    "html5ExportHandler": "exportToPDF.do",
+                    "exportTargetWindow": "_blank",
+                    "decimals": "2",
+                    "showLabels": "1",
+                    "showLegend": "1",
+                    "enableSmartLabels": "0",
+                    "xAxisName": "Promotion",
+                    "yAxisName": "Passed/Failed/Incomplete"
+                },
+                "pdfUrl": "https://pentagpprd.performnet.com/pentag/reports/displayQuizAnalysisReport.do?method=displayQuizAttemptsPercentForOrgBarchart&amp;pdf=1",
+                "id": "5086"
+            },
+            {
+                "displayName": "Quiz Attempt Status",
+                "category": "Quiz",
+                "chartType": "MSColumn3D",
+                "dataUrl": "https://pentagpprd.performnet.com/pentag/reports/displayQuizAnalysisReport.do?method=displayQuizAttemptStatusForOrgBarchart",
+                "fusionChartsParameters": {
+                    "exportFileName": "Quiz Attempt Status",
+                    "exportAtClient": "0",
+                    "exportFormat": "PDF",
+                    "exportAction": "download",
+                    "html5ExportHandler": "exportToPDF.do",
+                    "exportTargetWindow": "_blank",
+                    "decimals": "2",
+                    "showLabels": "1",
+                    "showLegend": "1",
+                    "enableSmartLabels": "0",
+                    "xAxisName": "Promotion",
+                    "yAxisName": "Passed/Failed/Incomplete"
+                },
+                "pdfUrl": "https://pentagpprd.performnet.com/pentag/reports/displayQuizAnalysisReport.do?method=displayQuizAttemptStatusForOrgBarchart&amp;pdf=1",
+                "id": "5087"
+            }
+        ],
+        "selectedChartId": "",
+        "reportDetailAsOfTimestamp": "12/18/2012, 06:16:58 CST"
+    }
+}

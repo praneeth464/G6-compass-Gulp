@@ -1,0 +1,94 @@
+{
+    "audienceTable": {
+        "results": [
+            {
+                "id" : "100",
+                "selected": false,
+                "group": "Group Name",
+                "participantAmount": "500",
+                "participantExportLink": "link/to/excel/report.xls",
+                "participantList": [ ]
+            },
+            {
+                "id" : "101",
+                "selected": true,
+                "group": "Group Name2",
+                "participantAmount": "10",
+                "participantList": [
+                    {
+                        "id": "223",
+                        "name": "lastName, firstName"
+                    },
+                    {
+                        "id": "224",
+                        "name": "lastName, firstName"
+                    },
+                    {
+                        "id": "225",
+                        "name": "lastName, firstName"
+                    }
+                ]
+            },
+            {
+                "id" : "102",
+                "selected": false,
+                "group": "Group Name3",
+                "participantAmount": "400",
+                "participantList": [
+                    {
+                        "id": "323",
+                        "name": "lastName, firstName"
+                    },
+                    {
+                        "id": "324",
+                        "name": "lastName, firstName"
+                    },
+                    {
+                        "id": "325",
+                        "name": "lastName, firstName"
+                    }
+                ]
+            },
+            {
+                "id" : "103",
+                "selected": false,
+                "group": "Group Name4",
+                "participantAmount": "100",
+                "participantList": [
+                    {
+                        "id": "423",
+                        "name": "lastName, firstName"
+                    },
+                    {
+                        "id": "424",
+                        "name": "lastName, firstName"
+                    },
+                    {
+                        "id": "425",
+                        "name": "lastName, firstName"
+                    }
+                ]
+            },
+            {
+                "id" : "104",
+                "selected": false,
+                "group": "Group Name5",
+                "participantAmount": "50",
+                "participantList": [
+                    {
+                        "id": "523",
+                        "name": "lastName, firstName"
+                    },
+                    {
+                        "id": "524",
+                        "name": "lastName, firstName"
+                    },
+                    {
+                        "id": "525",
+                        "name": "lastName, firstName"
+                    }
+                ]
+            }
+        ]
+    }
+}

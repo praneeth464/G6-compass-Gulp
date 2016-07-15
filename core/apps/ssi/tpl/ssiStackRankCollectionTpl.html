@@ -1,0 +1,34 @@
+{{! NOTE: subTpl.leaderTpl is passed back to JavaScript through the TemplateManager }}
+{{! NOTE: this is modeled after the leaderboard template in leaderboard/leaderboardModel.html }}
+{{! NOTE: `payout` is set in the JavaScript based on the payouts passed with the contest data }}
+
+{{! generic leaderboard row }}
+<!--subTpl.leaderTpl=
+    {{#each this}}
+    <li value="{{rank}}" {{#if classes.length}}class="{{#classes}}{{this}} {{/classes}}"{{/if}}>
+        {{#if score}}<span class="score">{{score}}</span>{{/if}}
+        {{#if rank}}<b>{{rank}}.</b>{{/if}}
+        {{#if avatarUrl}}<img alt="{{firstName}} {{lastName}}" class="avatar" src="{{avatarUrl}}" height="20" width="20" >{{/if}}
+        {{#if contestUrl}}
+        <a href="{{contestUrl}}" class="leaderName">{{firstName}} {{lastName}}</a>
+        {{else}}
+        <span class="leaderName">{{firstName}} {{lastName}}</span>
+        {{/if}}
+    </li>
+    {{/each}}
+subTpl-->
+
+<div class="splitColWrap{{#classes}} {{this}}{{/classes}}" id="leaderboard{{id}}" data-id="{{id}}">
+    <!-- Account info and ranking -->
+    <div class="clearfix">
+        <!-- <ol class="leaders-col leaders-col-a leadersColA"> -->
+        <ol class="splitCol splitColA">
+            <!-- dynamic -->
+        </ol>
+        <!-- second col, responsive (float left) -->
+        <!-- <ol class="leaders-col leaders-col-b leadersColB"> -->
+        <ol class="splitCol splitColB">
+            <!-- dynamic -->
+        </ol>
+    </div>
+</div>

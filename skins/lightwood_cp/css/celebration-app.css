@@ -1,0 +1,1120 @@
+/* ----- GLOBAL APP STYLES ----- */
+/* ----- MAIN CELEBRATION MODULE STYLES ----- */
+/* line 44, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration {
+  font-family: "akzidenz-condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+/* line 48, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration .module-liner {
+  margin: 6px;
+}
+/* line 58, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration .module-liner .visitAppBtn {
+  right: 9px;
+  top: 9px;
+}
+/* line 64, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration .celebrateContainer {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  zoom: 1;
+}
+/* line 72, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration .celebrateContainer .item {
+  height: 100%;
+  width: 100%;
+}
+/* line 78, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration .celebrationCongratsInfo {
+  float: left;
+  position: relative;
+}
+/* line 82, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration .celebrationCongratsInfo span {
+  display: block;
+  line-height: 1;
+}
+/* line 87, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration .celebrationCongratsInfo .congrats-intro,
+.module.celebrationMainTile.celebration .celebrationCongratsInfo .congrats-msg {
+  color: #fff;
+}
+/* line 92, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration .celebrationCongratsInfo .congrats-name {
+  color: #fff;
+}
+/* line 97, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration .ecard {
+  float: right;
+}
+/* line 100, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration .ecard img {
+  width: 100%;
+}
+/* line 105, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration .bottom-util {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+/* line 112, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration .bottom-util .celebrationViewDetails {
+  display: inline-block;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  margin: 30px auto;
+}
+/* line 121, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration.grid-dimension-4x4 .celebrationCongratsInfo {
+  padding: 45px 0 0 35px;
+  width: 300px;
+}
+/* line 125, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration.grid-dimension-4x4 .celebrationCongratsInfo .congrats-intro,
+.module.celebrationMainTile.celebration.grid-dimension-4x4 .celebrationCongratsInfo .congrats-msg {
+  font-size: 39.998px;
+}
+/* line 130, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration.grid-dimension-4x4 .celebrationCongratsInfo .congrats-name {
+  font-size: 87.99px;
+}
+/* line 135, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration.grid-dimension-4x4 .ecard {
+  height: 240px;
+  padding: 45px 35px 0 0;
+  width: 240px;
+}
+/* line 141, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration.grid-dimension-4x4 .celebrationViewDetails {
+  margin: 50px auto 70px;
+}
+/* line 145, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration.grid-dimension-4x4 .large-message {
+  color: #fff;
+  font-size: 33.992px;
+  line-height: 1;
+  margin: 0 auto;
+  text-align: center;
+  width: 90%;
+}
+/* line 157, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration.grid-dimension-4x2 .title-icon-view, .module.celebrationMainTile.celebration.grid-dimension-2x2 .title-icon-view {
+  display: none;
+}
+/* line 160, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration.grid-dimension-4x2 .large-message, .module.celebrationMainTile.celebration.grid-dimension-2x2 .large-message {
+  display: none;
+}
+/* line 166, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration.grid-dimension-4x2 .celebrationCongratsInfo {
+  padding: 25px 0 0 45px;
+  width: 340px;
+}
+/* line 170, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration.grid-dimension-4x2 .celebrationCongratsInfo .congrats-intro,
+.module.celebrationMainTile.celebration.grid-dimension-4x2 .celebrationCongratsInfo .congrats-msg {
+  font-size: 33.992px;
+}
+/* line 175, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration.grid-dimension-4x2 .celebrationCongratsInfo .congrats-name {
+  font-size: 69px;
+}
+/* line 180, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration.grid-dimension-4x2 .ecard {
+  height: 160px;
+  padding: 25px 55px 0 0;
+  width: 160px;
+}
+/* line 188, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration.grid-dimension-2x2 .celebrationCongratsInfo {
+  padding: 45px 0 0 20px;
+  width: 140px;
+}
+/* line 192, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration.grid-dimension-2x2 .celebrationCongratsInfo .congrats-intro,
+.module.celebrationMainTile.celebration.grid-dimension-2x2 .celebrationCongratsInfo .congrats-msg {
+  font-size: 22.96px;
+}
+/* line 197, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration.grid-dimension-2x2 .celebrationCongratsInfo .congrats-name {
+  font-size: 45.99px;
+}
+/* line 201, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration.grid-dimension-2x2 .ecard {
+  height: 125px;
+  padding: 45px 20px 0 0;
+  width: 125px;
+}
+/* line 206, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration.grid-dimension-2x2 .celebrationViewDetails {
+  width: 28%;
+}
+/* line 212, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebrationMainTile.celebration.grid-dimension-2x1 .title-icon-view {
+  display: block;
+}
+
+/* ----- ALL CELEBRATION MODULE STYLES ----- */
+/* line 219, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebration {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+/* line 223, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebration h2 {
+  font-family: "akzidenz-condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+/* line 228, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebration .module-liner {
+  margin: 0;
+}
+/* line 238, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebration .module-liner .visitAppBtn {
+  right: 18px;
+  top: 18px;
+}
+/* line 244, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebration .title-icon-view {
+  display: none;
+}
+/* line 248, ../../../core/apps/celebration/scss/_celebration.scss */
+.module.celebration .module-content {
+  height: inherit;
+  width: inherit;
+  z-index: 2;
+}
+
+/* /.module.celebration */
+/* ----- PAGE MODULE STYLES ----- */
+/* line 268, ../../../core/apps/celebration/scss/_celebration.scss */
+body.celebrationPage.homeApp .container .shareIcons {
+  margin: 30px 0 0 0;
+  width: 100%;
+}
+/* line 272, ../../../core/apps/celebration/scss/_celebration.scss */
+body.celebrationPage.homeApp .container .shareIcons ul.share-print {
+  margin-bottom: 0;
+}
+@media (min-width: 1301px) {
+  /* line 267, ../../../core/apps/celebration/scss/_celebration.scss */
+  body.celebrationPage.homeApp .container {
+    width: 948px;
+  }
+}
+/* line 284, ../../../core/apps/celebration/scss/_celebration.scss */
+body.celebrationPage .module.celebration.grid-dimension-2x2 .module-liner {
+  height: 320px;
+  width: 320px;
+}
+/* line 291, ../../../core/apps/celebration/scss/_celebration.scss */
+body.celebrationPage .module.celebration.grid-dimension-4x2 .module-liner {
+  height: 320px;
+  width: 640px;
+}
+/* line 297, ../../../core/apps/celebration/scss/_celebration.scss */
+body.celebrationPage .module.celebration .carousel,
+body.celebrationPage .module.celebration .cycle,
+body.celebrationPage .module.celebration .item {
+  height: 320px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+/* line 307, ../../../core/apps/celebration/scss/_celebration.scss */
+body.celebrationPage .module.celebration [class^='icon-me-'],
+body.celebrationPage .module.celebration [class*=' icon-me-'] {
+  font-family: 'MEfonticons';
+  font-style: normal;
+  font-weight: normal;
+}
+/* line 314, ../../../core/apps/celebration/scss/_celebration.scss */
+body.celebrationPage .module.celebration .icon-me-time:before {
+  content: '\f000';
+}
+/* line 319, ../../../core/apps/celebration/scss/_celebration.scss */
+body.celebrationPage .module.celebration .icon-me-time {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf000;&nbsp;');
+}
+
+/* ----- IMPORTS ----- */
+/* ----- GLOBAL APP STYLES ----- */
+/* /.celebration */
+/* ----- MODULE STYLES ----- */
+/* line 29, ../../../core/apps/celebration/scss/_congratulations.scss */
+.module.celebrationCongrats .module-liner {
+  background-image: url("../../../core/base/img/celebration/congratsBg.png");
+  background-repeat: no-repeat;
+  filter: none;
+}
+/* line 46, ../../../core/apps/celebration/scss/_congratulations.scss */
+.module.celebrationCongrats.grid-dimension-2x2 .module-liner {
+  height: 640px;
+  width: 320px;
+}
+/* line 52, ../../../core/apps/celebration/scss/_congratulations.scss */
+.module.celebrationCongrats .celebrationCongratsInfo {
+  margin: 32px 0 0 12px;
+  width: 260px;
+}
+/* line 56, ../../../core/apps/celebration/scss/_congratulations.scss */
+.module.celebrationCongrats .celebrationCongratsInfo span {
+  display: block;
+}
+/* line 60, ../../../core/apps/celebration/scss/_congratulations.scss */
+.module.celebrationCongrats .celebrationCongratsInfo .congrats-intro {
+  color: #000;
+  font: 300 39.9px "akzidenz-condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.2;
+}
+/* line 66, ../../../core/apps/celebration/scss/_congratulations.scss */
+.module.celebrationCongrats .celebrationCongratsInfo .congrats-name {
+  color: #000;
+  font: 75.88px "akzidenz-super", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+/* line 73, ../../../core/apps/celebration/scss/_congratulations.scss */
+.module.celebrationCongrats .celebrationCongratsInfo .congrats-msg {
+  color: #000;
+  font-size: 21.98px;
+  line-height: 1.2;
+  white-space: normal;
+  width: 250px;
+}
+
+/* /.module.celebrationCongrats */
+/* ----- PAGE STYLES ----- */
+/* /.page.celebrationCongrats */
+/* ----- GLOBAL APP STYLES ----- */
+/* /.celebration */
+/* ----- MODULE STYLES ----- */
+/* line 25, ../../../core/apps/celebration/scss/_ecard.scss */
+.module.celebrationEcard .module-liner {
+  background-image: url("../../../core/base/img/celebration/ecardBg.png");
+  background-repeat: no-repeat;
+  filter: none;
+}
+/* line 41, ../../../core/apps/celebration/scss/_ecard.scss */
+.module.celebrationEcard .celebrationCongratsEcard {
+  height: 214px;
+  left: 52px;
+  position: absolute;
+  top: 30px;
+  width: 214px;
+}
+/* line 50, ../../../core/apps/celebration/scss/_ecard.scss */
+.module.celebrationEcard.grid-dimension-2x2 .module-liner {
+  height: 640px;
+  width: 320px;
+}
+
+/* /.module.celebrationCongrats */
+/* ----- PAGE STYLES ----- */
+/* /.page.celebrationCongrats */
+/* ----- GLOBAL APP STYLES ----- */
+/* /.celebrationChooseAward  */
+/* ----- MODULE STYLES ----- */
+/* line 30, ../../../core/apps/celebration/scss/_chooseAward.scss */
+.module.celebrationChooseAward.grid-dimension-2x2 .module-liner {
+  background-image: url("../../../core/base/img/celebration/bg-choose-award-module.jpg");
+  background-repeat: no-repeat;
+  filter: none;
+}
+/* line 48, ../../../core/apps/celebration/scss/_chooseAward.scss */
+.module.celebrationChooseAward h2 {
+  color: #666666;
+  font-size: 31.92px;
+  line-height: 1.1;
+  margin: 0 0 14px 0;
+}
+/* line 54, ../../../core/apps/celebration/scss/_chooseAward.scss */
+.module.celebrationChooseAward h2 span {
+  display: block;
+  font-size: 26.88px;
+}
+/* line 60, ../../../core/apps/celebration/scss/_chooseAward.scss */
+.module.celebrationChooseAward .celebrationCountdownContainer {
+  bottom: 20px;
+  color: #fff;
+  position: absolute;
+  text-align: right;
+  width: 280px;
+}
+/* line 67, ../../../core/apps/celebration/scss/_chooseAward.scss */
+.module.celebrationChooseAward .celebrationCountdownContainer p {
+  font: 300 19.88px "akzidenz-condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-bottom: 4px;
+}
+/* line 72, ../../../core/apps/celebration/scss/_chooseAward.scss */
+.module.celebrationChooseAward .celebrationCountdownContainer .icon-me-time {
+  float: left;
+  font-size: 35px;
+}
+/* line 77, ../../../core/apps/celebration/scss/_chooseAward.scss */
+.module.celebrationChooseAward .celebrationCountdownContainer #redeemCountdown {
+  font: normal 35px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+/* line 82, ../../../core/apps/celebration/scss/_chooseAward.scss */
+.module.celebrationChooseAward .link-cover {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+/* line 90, ../../../core/apps/celebration/scss/_chooseAward.scss */
+.module.celebrationChooseAward .celebrationPointsContainer p {
+  bottom: 20px;
+  color: #fff;
+  font: normal 21.98px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  position: absolute;
+}
+@media (max-width: 479px) {
+  /* line 98, ../../../core/apps/celebration/scss/_chooseAward.scss */
+  .module.celebrationChooseAward .btn {
+    width: 50%;
+  }
+}
+
+/* /.module.celebrationChooseAward  */
+/* ----- PAGE STYLES ----- */
+/* /.page.celebrationChooseAward  */
+/* ----- GLOBAL APP STYLES ----- */
+/* line 28, ../../../core/apps/celebration/scss/_browseAwards.scss */
+.celebrationBrowseAwards a {
+  color: #fff;
+}
+/* line 31, ../../../core/apps/celebration/scss/_browseAwards.scss */
+.celebrationBrowseAwards a:hover {
+  color: #fff;
+}
+
+/* /.celebrationBrowseAwards  */
+/* ----- MODULE STYLES ----- */
+/* line 41, ../../../core/apps/celebration/scss/_browseAwards.scss */
+.module.celebrationBrowseAwards .module-liner {
+  background: transparent;
+}
+/* line 45, ../../../core/apps/celebration/scss/_browseAwards.scss */
+.module.celebrationBrowseAwards .wide-view {
+  padding: 0;
+}
+/* line 49, ../../../core/apps/celebration/scss/_browseAwards.scss */
+.module.celebrationBrowseAwards .module-header {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  height: 62px;
+  line-height: 1;
+  position: relative;
+}
+/* line 56, ../../../core/apps/celebration/scss/_browseAwards.scss */
+.module.celebrationBrowseAwards .module-header h2 {
+  bottom: 8px;
+  font-size: 30px;
+  left: 20px;
+  margin: 0;
+  position: absolute;
+}
+/* line 67, ../../../core/apps/celebration/scss/_browseAwards.scss */
+.module.celebrationBrowseAwards #awardsCarousel.carousel .item {
+  height: 258px;
+}
+/* line 70, ../../../core/apps/celebration/scss/_browseAwards.scss */
+.module.celebrationBrowseAwards #awardsCarousel.carousel .item .item-wrap {
+  background-color: #fff;
+  height: 196px;
+  text-align: center;
+  width: 100%;
+}
+/* line 76, ../../../core/apps/celebration/scss/_browseAwards.scss */
+.module.celebrationBrowseAwards #awardsCarousel.carousel .item .item-wrap img {
+  -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  margin-top: 11px;
+  width: 174px;
+}
+/* line 83, ../../../core/apps/celebration/scss/_browseAwards.scss */
+.module.celebrationBrowseAwards #awardsCarousel.carousel .item .carousel-caption {
+  background: rgba(0, 0, 0, 0.25);
+  height: 62px;
+  padding: 0;
+}
+/* line 88, ../../../core/apps/celebration/scss/_browseAwards.scss */
+.module.celebrationBrowseAwards #awardsCarousel.carousel .item .carousel-caption p {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.2;
+  padding: 14px 20px 0;
+}
+/* line 97, ../../../core/apps/celebration/scss/_browseAwards.scss */
+.module.celebrationBrowseAwards #awardsCarousel.carousel .carousel-control {
+  background: none;
+  border: none;
+  color: #cccccc;
+  font-size: 59.99px;
+  height: auto;
+  left: 15px;
+  outline: none;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 66px;
+  width: auto;
+  z-index: 6;
+}
+/* line 112, ../../../core/apps/celebration/scss/_browseAwards.scss */
+.module.celebrationBrowseAwards #awardsCarousel.carousel .carousel-control.right {
+  left: auto;
+  right: 15px;
+}
+/* line 117, ../../../core/apps/celebration/scss/_browseAwards.scss */
+.module.celebrationBrowseAwards #awardsCarousel.carousel .carousel-control:hover {
+  text-decoration: none;
+}
+
+/* /.module.celebrationBrowseAwards  */
+/* line 126, ../../../core/apps/celebration/scss/_browseAwards.scss */
+.lt-ie9 .carousel-caption {
+  background: black;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=75);
+}
+/* line 130, ../../../core/apps/celebration/scss/_browseAwards.scss */
+.lt-ie9 .item img {
+  border: 1px solid #cccccc;
+}
+
+/* ----- PAGE STYLES ----- */
+/* /.page.celebrationBrowseAwards  */
+/* ----- GLOBAL APP STYLES ----- */
+/* /.celebrationManagerMessage */
+/* ----- MODULE STYLES ----- */
+/* line 38, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.module.celebrationManagerMessage .module-liner {
+  background: transparent;
+}
+/* line 51, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.module.celebrationManagerMessage .wide-view {
+  padding: 0;
+}
+/* line 57, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.module.celebrationManagerMessage .carousel .item {
+  height: 320px;
+}
+/* line 61, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.module.celebrationManagerMessage .carousel .item-wrap {
+  padding-left: 60px;
+  height: 320px;
+}
+/* line 65, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.module.celebrationManagerMessage .carousel .item-wrap .comment {
+  bottom: 113px;
+  color: #000;
+  font: 47.992px "neuton", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: -1px;
+  line-height: .9;
+  margin: 10px 15px 10px 0;
+  padding-right: 20px;
+  position: absolute;
+  max-height: 158px;
+  max-width: 545px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+/* line 80, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.module.celebrationManagerMessage .carousel .item-wrap .commenter {
+  bottom: 20px;
+  position: absolute;
+  right: 18px;
+}
+/* line 85, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.module.celebrationManagerMessage .carousel .item-wrap .commenter .commenter-avatar {
+  height: 60px;
+  float: right;
+  width: 60px;
+}
+/* line 91, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.module.celebrationManagerMessage .carousel .item-wrap .commenter .commenter-avatar[src=""] {
+  display: none;
+}
+/* line 95, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.module.celebrationManagerMessage .carousel .item-wrap .commenter .commenter-meta {
+  color: #000;
+  padding: 28.8px 10px 0 0;
+  float: right;
+  text-align: right;
+}
+/* line 101, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.module.celebrationManagerMessage .carousel .item-wrap .commenter .commenter-meta p {
+  margin: 0;
+}
+/* line 106, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.module.celebrationManagerMessage .carousel .item-wrap .commenter .commenter-name {
+  font-size: 15.96px;
+  font-weight: bold;
+  line-height: 1.2;
+}
+/* line 112, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.module.celebrationManagerMessage .carousel .item-wrap .commenter .commenter-title {
+  font-size: 11.998px;
+  line-height: 1;
+}
+/* line 120, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.module.celebrationManagerMessage .cycleLegend {
+  left: 18px !important;
+  bottom: 20px;
+}
+/* line 124, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.module.celebrationManagerMessage .cycleLegend .cycleDot {
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  background-color: #fff;
+  border: none;
+  color: #000;
+  height: 20px;
+  margin: 0 10px 0 0;
+  text-align: center;
+  width: 20px;
+}
+/* line 134, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.module.celebrationManagerMessage .cycleLegend .cycleDot.selected {
+  background-color: #999;
+}
+/* line 141, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.module.celebrationManagerMessage .cycleLegend .cycleDot:hover {
+  border: none;
+}
+/* line 149, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.module.celebrationManagerMessage.grid-dimension-2x2 .carousel .item-wrap {
+  padding-left: 15px;
+}
+/* line 152, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.module.celebrationManagerMessage.grid-dimension-2x2 .carousel .commenter {
+  bottom: 30px;
+}
+/* line 157, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.module.celebrationManagerMessage.grid-dimension-2x2 .cycleLegend {
+  bottom: 10px;
+  left: 10px !important;
+}
+
+/* /.module.celebrationManagerMessage   */
+/* ----- PAGE STYLES ----- */
+/* line 167, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.page.celebration#celebrationManagerMessagePageView .celebrationRecipientMeta div {
+  float: left;
+}
+/* line 170, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.page.celebration#celebrationManagerMessagePageView .celebrationRecipientMeta div span {
+  font-size: 12px;
+  line-height: 15px;
+}
+/* line 174, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.page.celebration#celebrationManagerMessagePageView .celebrationRecipientMeta div span.recipientName, .page.celebration#celebrationManagerMessagePageView .celebrationRecipientMeta div span.recipientOrg {
+  display: block;
+}
+/* line 179, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.page.celebration#celebrationManagerMessagePageView .celebrationRecipientMeta div span.recipientTitle {
+  float: left;
+}
+/* line 185, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.page.celebration#celebrationManagerMessagePageView img.avatar {
+  height: 40px;
+  margin-right: 10px;
+  width: 40px;
+}
+/* line 191, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.page.celebration#celebrationManagerMessagePageView .celebrationMessageContainer {
+  *zoom: 1;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  position: relative;
+  width: 50%;
+}
+/* line 14, ../../../core/base/scss/partials/bootstrap/_mixins.scss */
+.page.celebration#celebrationManagerMessagePageView .celebrationMessageContainer:before, .page.celebration#celebrationManagerMessagePageView .celebrationMessageContainer:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+/* line 22, ../../../core/base/scss/partials/bootstrap/_mixins.scss */
+.page.celebration#celebrationManagerMessagePageView .celebrationMessageContainer:after {
+  clear: both;
+}
+/* line 198, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.page.celebration#celebrationManagerMessagePageView .celebrationMessageContainer .mask {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+  background: black;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  top: 0;
+  z-index: 100;
+}
+/* line 208, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.page.celebration#celebrationManagerMessagePageView .celebrationMessageContainer .spin {
+  left: 50%;
+  margin: -30px 0 0 -30px;
+  position: absolute;
+  top: 50%;
+}
+/* line 215, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.page.celebration#celebrationManagerMessagePageView .celebrationMessageContainer label {
+  float: left;
+}
+/* line 219, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.page.celebration#celebrationManagerMessagePageView .celebrationMessageContainer .commentTools {
+  font-size: .9em;
+  text-align: right;
+}
+/* line 223, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.lt-ie8 .page.celebration#celebrationManagerMessagePageView .celebrationMessageContainer .commentTools {
+  width: 95%;
+}
+/* line 226, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.page.celebration#celebrationManagerMessagePageView .celebrationMessageContainer .commentTools .remChars {
+  font-weight: bold;
+}
+/* line 229, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.page.celebration#celebrationManagerMessagePageView .celebrationMessageContainer .commentTools .checkSpellingDdBtn {
+  display: inline-block;
+  line-height: 16px;
+  margin-bottom: 2px;
+  padding: 0 2px;
+  width: auto;
+}
+/* line 237, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.page.celebration#celebrationManagerMessagePageView .celebrationMessageContainer .managerMessageInp {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-bottom: 2px;
+  font: 14px "neuton", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+/* line 242, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.lt-ie8 .page.celebration#celebrationManagerMessagePageView .celebrationMessageContainer .managerMessageInp {
+  width: 95%;
+}
+/* line 246, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.page.celebration#celebrationManagerMessagePageView .celebrationMessageContainer .dropdown-menu {
+  color: black;
+  left: auto;
+  right: 0;
+  text-align: left;
+}
+/* line 252, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.page.celebration#celebrationManagerMessagePageView .celebrationMessageContainer .dropdown-menu a {
+  color: black;
+}
+/* line 255, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.page.celebration#celebrationManagerMessagePageView .celebrationMessageContainer .dropdown-menu .check:hover {
+  background: inherit;
+  color: black;
+}
+@media (max-width: 480px) {
+  /* line 262, ../../../core/apps/celebration/scss/_managerMessage.scss */
+  .page.celebration#celebrationManagerMessagePageView .celebrationMessageContainer .commentTools {
+    clear: both;
+    padding-top: 10px;
+  }
+}
+/* line 269, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.page.celebration#celebrationManagerMessagePageView .celebrationManagerMeta div {
+  float: left;
+}
+/* line 272, ../../../core/apps/celebration/scss/_managerMessage.scss */
+.page.celebration#celebrationManagerMessagePageView .celebrationManagerMeta div .managerName {
+  font-size: 12px;
+}
+
+/* /.page.celebrationManagerMessage   */
+/* ----- MODULE STYLES ----- */
+/* line 28, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl .module-liner {
+  background: transparent url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzk5OTk5OSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjAiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
+  background: transparent -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #999999), color-stop(100%, rgba(255, 255, 255, 0)));
+  background: transparent -moz-linear-gradient(top, #999999, rgba(255, 255, 255, 0));
+  background: transparent -webkit-linear-gradient(top, #999999, rgba(255, 255, 255, 0));
+  background: transparent linear-gradient(to bottom, #999999, rgba(255, 255, 255, 0));
+}
+/* line 59, ../../../core/base/scss/partials/_mixins.scss */
+.lt-ie9 .module.celebrationRecognitionPurl .module-liner {
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF999999', endColorstr='#00FFFFFF', GradientType=0);
+}
+/* line 37, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl .wide-view {
+  padding: 0;
+}
+/* line 41, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl .module-header {
+  color: #000;
+  height: 62px;
+  position: relative;
+}
+/* line 46, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl .module-header h2 {
+  bottom: 8px;
+  font-size: 29.96px;
+  font-weight: normal;
+  left: 20px;
+  margin: 0;
+  position: absolute;
+}
+/* line 55, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl .module-header .visitAppBtn {
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  opacity: 1;
+  right: 20px;
+  text-decoration: underline;
+}
+/* line 66, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl .purl-items .purl-col {
+  float: left;
+  width: 290px;
+  max-height: 235px;
+  overflow: hidden;
+}
+/* line 72, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl .purl-items .purl-col.left {
+  margin: 0 10px 0 20px;
+}
+/* line 76, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl .purl-items .purl-col.right {
+  margin: 0 20px 0 10px;
+}
+/* line 81, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl .purl-items #protoReadMore {
+  display: none;
+}
+/* line 87, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl.grid-dimension-2x2 .purl-items .purl-col.right {
+  display: none;
+}
+/* line 91, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl.grid-dimension-4x2 .purl-items .purl-col.full {
+  width: 600px;
+  margin: 0 20px;
+}
+/* line 95, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl.grid-dimension-4x2 .purl-items .purl-col.full .comment-bubble {
+  width: auto;
+}
+/* line 98, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl.grid-dimension-4x2 .purl-items .purl-col.full .comment-bubble .img-wrap img {
+  width: auto;
+  max-height: 154px;
+}
+/* line 106, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl .comment {
+  margin-bottom: 15px;
+}
+/* line 109, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl .comment .commenter-avatar {
+  float: left;
+  width: 60px;
+}
+/* line 114, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl .comment .comment-bubble {
+  margin-left: 75px;
+  position: relative;
+  width: 215px;
+}
+/* line 120, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl .comment .icon-caret-left {
+  color: #fff;
+  font-size: 18px;
+  left: -6px;
+  position: absolute;
+  top: 22px;
+  width: 6px;
+}
+/* line 129, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl .comment .comment-text {
+  background-color: #fff;
+  line-height: 1.3;
+  max-height: 85px;
+  min-height: 33px;
+  overflow: hidden;
+  padding: 12px 0 15px;
+}
+/* line 137, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl .comment .comment-text h4 {
+  color: #000;
+  font-size: 14px;
+  margin: 0 15px;
+}
+/* line 143, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl .comment .comment-text p {
+  color: #333;
+  font-size: 11.998px;
+  margin: 0 15px;
+  max-height: 60px;
+  overflow: hidden;
+  position: relative;
+}
+/* line 152, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl .comment .comment-text .read-more {
+  background-color: #fff;
+  bottom: 0;
+  color: #dd7200;
+  display: block;
+  padding-left: .5em;
+  position: absolute;
+  right: 0;
+}
+/* line 161, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl .comment .comment-text .read-more:hover {
+  color: #914b00;
+}
+/* line 166, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl .comment .comment-text .purlCommentVideoIcon {
+  color: #787878;
+  font-size: 16px;
+  margin: 5px 15px;
+}
+/* line 172, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl .comment .comment-text.has-img {
+  max-height: 209px;
+}
+/* line 175, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl .comment .comment-text.has-img p {
+  max-height: 45px;
+}
+/* line 180, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl .comment .comment-text .img-wrap {
+  margin: 0 15px;
+}
+/* line 183, ../../../core/apps/celebration/scss/_recognitionPurl.scss */
+.module.celebrationRecognitionPurl .comment .comment-text .img-wrap img {
+  margin-top: 4px;
+  width: 100%;
+}
+
+/* /.module.celebrationRecognitionPurl  */
+/* ----- PAGE STYLES ----- */
+/* /.page.celebrationRecognitionPurl  */
+/* ----- GLOBAL APP STYLES ----- */
+/* /.celebrationAnniversaryFacts  */
+/* ----- MODULE STYLES ----- */
+/* line 28, ../../../core/apps/celebration/scss/_anniversaryFacts.scss */
+.module.celebrationAnniversaryFacts .wide-view {
+  padding: 0;
+}
+/* line 34, ../../../core/apps/celebration/scss/_anniversaryFacts.scss */
+.module.celebrationAnniversaryFacts .carousel .item {
+  height: 321px;
+}
+/* line 38, ../../../core/apps/celebration/scss/_anniversaryFacts.scss */
+.module.celebrationAnniversaryFacts .carousel .year-content {
+  bottom: 0;
+  position: absolute;
+  width: 170px;
+}
+/* line 43, ../../../core/apps/celebration/scss/_anniversaryFacts.scss */
+.module.celebrationAnniversaryFacts .carousel .year-content .year {
+  color: #555555;
+  font: 119px "akzidenz-condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-left: -5px;
+  position: relative;
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+  top: 8px;
+  z-index: 1;
+}
+/* line 53, ../../../core/apps/celebration/scss/_anniversaryFacts.scss */
+.module.celebrationAnniversaryFacts .carousel .year-content .year-desc {
+  background-color: #555555;
+  color: #fff;
+  line-height: 1.2;
+  margin: -30px 0 0 0;
+  max-height: 190px;
+  min-height: 64px;
+  overflow: hidden;
+  padding: 10px;
+  position: relative;
+  text-overflow: ellipsis;
+  z-index: 2;
+}
+
+/* /.module.celebrationAnniversaryFacts  */
+/* ----- PAGE STYLES ----- */
+/* /.page.celebrationAnniversaryFacts  */
+/* ----- GLOBAL APP STYLES ----- */
+/* /.celebrationCompanyTimeline  */
+/* ----- MODULE STYLES ----- */
+/* line 34, ../../../core/apps/celebration/scss/_companyTimeline.scss */
+.module.celebrationCompanyTimeline .wide-view {
+  height: 100%;
+  padding: 0;
+  width: 100%;
+}
+/* line 42, ../../../core/apps/celebration/scss/_companyTimeline.scss */
+.module.celebrationCompanyTimeline .carousel .carousel-caption {
+  background: rgba(0, 0, 0, 0.75);
+  bottom: 40px;
+  font-family: "akzidenz-condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  height: 60px;
+  left: 0;
+  padding: 10px 0;
+  position: absolute;
+  width: 100%;
+}
+/* line 52, ../../../core/apps/celebration/scss/_companyTimeline.scss */
+.module.celebrationCompanyTimeline .carousel .carousel-caption .year {
+  background-color: #fff;
+  border-radius: 30px;
+  color: #000;
+  float: left;
+  font: 25.9px "akzidenz-condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 58px;
+  margin-left: 40px;
+  text-align: center;
+  width: 60px;
+}
+/* line 64, ../../../core/apps/celebration/scss/_companyTimeline.scss */
+.module.celebrationCompanyTimeline .carousel .carousel-caption .year-desc {
+  float: left;
+  margin: 8px 0 0 16px;
+  max-width: 176px;
+}
+/* line 69, ../../../core/apps/celebration/scss/_companyTimeline.scss */
+.module.celebrationCompanyTimeline .carousel .carousel-caption .year-desc h4 {
+  color: #fff;
+  font-size: 25.998px;
+  font-weight: normal;
+  line-height: 26px;
+  margin: 0 0 3px 0;
+}
+/* line 77, ../../../core/apps/celebration/scss/_companyTimeline.scss */
+.module.celebrationCompanyTimeline .carousel .carousel-caption .year-desc p {
+  color: #fff;
+  font-size: 15.96px;
+  font-weight: 300;
+  margin-bottom: 0;
+}
+/* line 86, ../../../core/apps/celebration/scss/_companyTimeline.scss */
+.module.celebrationCompanyTimeline .carousel .carousel-control {
+  color: #fff;
+  font-size: 36px;
+  height: 40px;
+  position: absolute;
+  text-align: center;
+  top: 220px;
+  width: 34px;
+  z-index: 6;
+}
+/* line 96, ../../../core/apps/celebration/scss/_companyTimeline.scss */
+.module.celebrationCompanyTimeline .carousel .carousel-control.left {
+  left: 0;
+}
+/* line 100, ../../../core/apps/celebration/scss/_companyTimeline.scss */
+.module.celebrationCompanyTimeline .carousel .carousel-control.right {
+  right: 0;
+}
+
+/* /.module.celebrationCompanyTimeline  */
+/* ----- PAGE STYLES ----- */
+/* /.page.celebrationCompanyTimeline  */
+/* ----- GLOBAL APP STYLES ----- */
+/* /.celebrationCorporateVideo  */
+/* ----- MODULE STYLES ----- */
+/* line 26, ../../../core/apps/celebration/scss/_corporateVideo.scss */
+.module.celebrationCorporateVideo .wide-view {
+  padding: 0;
+}
+/* line 30, ../../../core/apps/celebration/scss/_corporateVideo.scss */
+.module.celebrationCorporateVideo .btn-vid-play {
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=75);
+  opacity: 0.75;
+  background-color: #000;
+  color: #fff;
+  display: block;
+  font-size: 36px;
+  height: 80px;
+  left: 96px;
+  line-height: 80px;
+  position: absolute;
+  text-align: center;
+  top: 120px;
+  width: 128px;
+}
+
+/* /.module.celebrationCorporateVideo  */
+/* ----- PAGE STYLES ----- */
+/* /.page.celebrationCorporateVideo  */
+/* line 58, ../../../core/apps/celebration/scss/_corporateVideo.scss */
+.celebrationPage #corporateVideoModal .modal-body {
+  padding: 0;
+}
+/* line 61, ../../../core/apps/celebration/scss/_corporateVideo.scss */
+.celebrationPage #corporateVideoModal .modal-body a {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  text-decoration: none;
+  top: 0;
+}
+/* line 70, ../../../core/apps/celebration/scss/_corporateVideo.scss */
+.celebrationPage #corporateVideoModal .modal-body a:hover .btn-vid-play {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+}
+/* line 77, ../../../core/apps/celebration/scss/_corporateVideo.scss */
+.celebrationPage #corporateVideoModal #celebrationVideo {
+  width: 100%;
+}
+/* line 81, ../../../core/apps/celebration/scss/_corporateVideo.scss */
+.celebrationPage #corporateVideoModal .close {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+  color: #fff;
+  left: -15px;
+  position: absolute;
+  text-shadow: 0 1px 0 #000;
+  top: -15px;
+}
+
+/* ----- GLOBAL APP STYLES ----- */
+/* /.celebrationImageFiller  */
+/* ----- MODULE STYLES ----- */
+/* line 23, ../../../core/apps/celebration/scss/_imageFiller.scss */
+.module.celebrationImageFiller .wide-view {
+  padding: 0;
+}
+/* line 28, ../../../core/apps/celebration/scss/_imageFiller.scss */
+.module.celebrationImageFiller .imageFillerWrapper span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  color: #fff;
+  font: bold 288px "din-condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 320px;
+  text-align: center;
+  background-image: url("../../../core/base/img/celebration/year.jpg");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+/* /.module.celebrationImageFiller  */
+/* ----- PAGE STYLES ----- */
+/* /.page.celebrationImageFiller  */

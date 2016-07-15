@@ -1,0 +1,112 @@
+<?php
+// header('Content-Type: application/json');
+sleep(1);
+require_once('paxGenerator/paxGenerator.php');
+
+/*
+ * STACK RANK
+ */
+
+$hasTie = false;
+
+if (isset($_POST['id']) && strpos($_POST['id'], "tie")) {
+    $hasTie = true;
+}
+
+$payoutTypeIsOther = false;
+
+if (isset($_POST['id']) && strpos($_POST['id'], "other")) {
+    $payoutTypeIsOther = true;
+}
+
+$ed = array(
+    "badge" => array(
+        "id" => 2504,
+        "name" => "1 Year Anniversary",
+        "img" => "img/badges/service1_sm.png"
+    )
+);
+
+$ranks = array(1,( $hasTie ? 1 : 2 ),3,4,5,6);
+
+
+if ($payoutTypeIsOther) {
+    $payouts = array(
+        array(
+            "progress" => "200,000.1000",
+            "payoutDescription" => "lipsum",
+            "payoutValue" => "500"
+        ),
+        array(
+            "progress" => "200,000.0100",
+            "payoutDescription" => "lipsum",
+            "payoutValue" => $hasTie ? "500" : "300"
+        ),
+        array(
+            "progress" => "125,000.0100",
+            "payoutDescription" => "lipsum",
+            "payoutValue" => "100"
+        ),
+        array(
+            "progress" => "123,000.0100",
+            "payoutValue" => "0"
+        ),
+        array(
+            "progress" => "120,000.0100",
+            "payoutValue" => "0"
+        ),
+        array(
+            "progress" => "100,000.0100",
+            "payoutValue" => "0"
+        )
+    );
+} else {
+    $payouts = array(
+        array(
+            "progress" => "200,000.0100",
+            "payout" => "500"
+        ),
+        array(
+            "progress" => "200,000.0100",
+            "payout" => $hasTie ? "500" : "300"
+        ),
+        array(
+            "progress" => "125,000.0100",
+            "payout" => "100"
+        ),
+        array(
+            "progress" => "123,000.0100",
+            "payout" => "0"
+        ),
+        array(
+            "progress" => "120,000.0100",
+            "payout" => "0"
+        ),
+        array(
+            "progress" => "100,000.0100",
+            "payout" => "0"
+        )
+    );
+}
+
+function combine ($par, $pay, $rank) {
+    $ar = array_merge($par, $pay);
+    $ar['rank'] = $rank;
+    return $ar;
+}
+
+ob_start();
+generatePaxesPaginatedJson(6,500,$ed);
+$output = json_decode(ob_get_clean(), true);
+
+$output['participants'] = array_map("combine", $output['participants'], $payouts, $ranks);
+
+if (isset($_POST['method']) && $_POST['method'] === "updatePayout") {
+    if ($payoutTypeIsOther) {
+        $output['totalPayoutValue'] = "10,000";
+    } else {
+        $output['totalPayout'] = "10,000";
+    }
+}
+
+print json_encode($output);

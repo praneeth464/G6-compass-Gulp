@@ -1,0 +1,154 @@
+// Partial-specific variables
+// =========================
+$rules_colLeftBgColor: scale-color($linkColor, $lightness: 93.75%) !default;
+$rules_colLeftBorderWidth: $g5PageContentLeftRightBorderWidth !default;
+$rules_colLeftBorderWidth1200: $g5PageContentLeftRightBorderWidth1200 !default;
+$rules_colLeftBorderWidth768: $g5PageContentLeftRightBorderWidth768 !default;
+$rules_colLeftBorderColor: scale-color($linkColor, $lightness: 75%) !default;
+$rules_colLeftLinkColor: $linkColor !default;
+$rules_colLeftLinkHoverBgColor: $white !default;
+$rules_colLeftLinkActiveBgColor: scale-color($rules_colLeftLinkColor, $lightness: 75%) !default;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+/* ----- DEFINE THE MODULE ICON, GRADIENT AND BACKGROUND COLOR ----- */
+
+// $rules-icon-url: "plateauAwards_2x1-icon-placeholder.png";
+// $rules-grad-start: #4abdb6;
+// $rules-grad-end: #34aaa1;
+// $rules-bg-color: #34aaa1; /* FOR IE */
+
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.rules {
+
+} /* /.rules */
+
+/* ----- MODULE STYLES ----- */
+.module.rules {
+} /* /.module.rules */
+
+/* ----- PAGE STYLES ----- */
+.page.rules {
+    position: relative;
+
+    .modal-body & {
+        position: static;
+
+        .span3 {
+            left: $g5PageContentLeftRightBorderWidth;
+
+            @media (min-width: 1200px) {
+                left: $g5PageContentLeftRightBorderWidth1200;
+            }
+            @media (min-width: 768px) and (max-width: 979px) {
+                left: $g5PageContentLeftRightBorderWidth768;
+            }
+            @media (max-width: 767px) {
+                left: 0;
+            }
+        }
+    }
+
+    .span3 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 0 0 0 $g5PageContentPaddingHoriz;
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        background: $rules_colLeftBgColor;
+        @if $rules_colLeftBorderWidth {
+            border-right: $rules_colLeftBorderWidth solid $rules_colLeftBorderColor;
+        }
+
+        #col-left {
+            padding: ($g5PageContentPaddingHoriz - $g5PageContentLeftRightBorderWidth) 0; // borrowed from .page-content in _pages.scss
+        }
+
+        @media (min-width: 1200px) {
+            padding-left: $g5PageContentPaddingHoriz1200;
+            border-right-width: $rules_colLeftBorderWidth1200;
+
+            #col-left {
+                padding: ($g5PageContentPaddingHoriz1200 - $g5PageContentLeftRightBorderWidth1200) 0;
+            }
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+            padding-left: $g5PageContentPaddingHoriz768;
+            border-right-width: $rules_colLeftBorderWidth768;
+
+            #col-left {
+                padding: ($g5PageContentPaddingHoriz768 - $g5PageContentLeftRightBorderWidth768) 0;
+            }
+        }
+        @media (max-width: 767px) {
+            position: relative;
+            margin: (-1 * $g5PageContentPaddingHorizMobile * 3 / 4) ($g5PageContentPaddingHorizMobile * -1) ($g5PageContentPaddingHorizMobile * 3 / 4) ($g5PageContentPaddingHorizMobile * -1);
+            padding: ($g5PageContentPaddingHorizMobile * 3 / 4) $g5PageContentPaddingHorizMobile;
+            width: auto;
+            border-right: 0;
+            @if $rules_colLeftBorderWidth {
+                border-bottom: $rules_colLeftBorderWidth solid $rules_colLeftBorderColor;
+            }
+
+            #col-left {
+                padding: 0;
+            }
+        }
+
+        #col-left {
+
+            .nav-list {
+                padding-left: 0;
+                padding-right: 0;
+
+                > li > a {
+                    margin-left: -1 * $g5PageContentPaddingHoriz;
+                    margin-right: 0;
+                    padding-left: $g5PageContentPaddingHoriz;
+                    padding-right: $gridGutterWidth - $rules_colLeftBorderWidth;
+                    text-overflow: ellipsis;
+                    overflow-x: hidden;
+        
+                    @media (min-width: 1200px) {
+                        margin-left: -1 * $g5PageContentPaddingHoriz1200;
+                        padding-left: $g5PageContentPaddingHoriz1200;
+                        padding-right: $gridGutterWidth1200 - $rules_colLeftBorderWidth1200;
+                    }
+                    @media (min-width: 768px) and (max-width: 979px) {
+                        margin-left: -1 * $g5PageContentPaddingHoriz768;
+                        padding-left: $g5PageContentPaddingHoriz768;
+                        padding-right: $gridGutterWidth768 - $rules_colLeftBorderWidth768;
+                    }
+                    @media (max-width: 767px) {
+                        margin-left: -1 * $g5PageContentPaddingHorizMobile;
+                        margin-right: -1 * $g5PageContentPaddingHorizMobile;
+                        padding-left: $g5PageContentPaddingHorizMobile;
+                        padding-right: $g5PageContentPaddingHorizMobile;
+                    }
+
+                    &:hover {
+                        text-shadow: none;
+                        background: $rules_colLeftLinkHoverBgColor;
+                    }
+                }
+                > .active > a,
+                > .active > a:hover {
+                    color: $rules_colLeftLinkColor;
+                    text-shadow: none;
+                    background: $rules_colLeftLinkActiveBgColor;
+                    cursor: default;
+                }
+            }
+        }
+    }
+
+} /* /.page.rules */

@@ -1,0 +1,14 @@
+{
+    "messages":[
+        {
+            "type":"error",
+            "code":"validationError",
+            "fields": [
+                {
+                    "name": " selectedTitle",
+                    "text": " Duplicate title, please enter another name."
+                }
+    		]
+		}
+	]
+}

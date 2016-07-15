@@ -1,0 +1,11 @@
+{{#each destination}}
+<div class="span3" data-destination='[{"name": "{{destinationName}}","locale": "{{destinationLocale}}","country": "{{destinationCountry}}"}]'>
+    <div class="thumbnail">
+        <img alt="{{destinationName}}" data-image-src="http://placekitten.com/g/160/160" src="http://www.placehold.it/160/160">
+        <div class="caption">
+          <h5>{{destinationName}}</h5>
+          <p>{{destinationLocale}}, {{destinationCountry}}</p>
+        </div>
+    </div>
+</div>
+{{/each}}

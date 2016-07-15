@@ -1,0 +1,24 @@
+<div id="myFavoriteReportsWrapper">
+    <div id="myFavoriteReportsHeader">
+    <button class="close closePopoverBtn" type="button"><i class="icon-remove"></i></button>
+        <h3>My Favorite Reports</h3>
+        <p>Save up to five of your favorite reports to the My Reports page. <span id="minimumAlert">You must save a minimum of one report.</span></p>
+        <p id="dragToChange">Drag to change the display order of your reports.</p>
+        <p id="pleaseRemoveAlert" class="alert alert-error">Please remove a report before adding more to your My Reports page.</p>
+    </div> <!-- myFavoriteReportsHeader -->
+    <div class="drag-group drag-group-vertical myFavoriteReports">
+        {{#favorites}}
+            <div id="{{this.id}}" class="ui-state-default dragItem row">
+                <span class="icon-resize-vertical"></span><span class="icon-remove"></span>
+                <div class="reportFavoriteIcon"><img class="{{this.chartType}}" alt="{{this.chartType}}" src="img/reports/type_{{this.chartType}}.jpg"></div>
+                <div class="reportFavoriteText"><p>{{this.displayName}}</br>
+                <small>{{this.favoriteParameters}}</small></div>
+            </div>
+        {{/favorites}}
+    </div> <!-- myFavoriteReports -->
+    {{#if showViewMyReportsLink}}
+    <div class="viewMyReportsButtonArea form-actions">
+        <a href="layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html#filter/reports" class="btn btn-link"><i class="icon-eye-open"></i>View My Reports</a>
+    </div>
+    {{/if}}
+</div><!-- myFavoriteReportsWrapper -->

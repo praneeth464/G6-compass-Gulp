@@ -1,0 +1,142 @@
+// Partial-specific variables
+// =========================
+$global_footer_linksFontStyle: false !default;
+$global_footer_linksFontWeight: false !default;
+$global_footer_linksTextTransform: false !default;
+$global_footer_linksColor: $gray !default;
+$global_footer_linksDisabledColor: #C4C4C4 !default;
+$global_footer_linksBgColor: false !default;
+$global_footer_copyrightFontStyle: false !default;
+$global_footer_copyrightFontWeight: false !default;
+$global_footer_copyrightTextTransform: false !default;
+$global_footer_copyrightTextColor: $gray !default;
+
+// TODO 5.5: add a check of the footer text color against the body background color to run the font smoothing mixin
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+#globalFooterView {
+    @if $global_footer_adjustVerticalAlignment {
+        padding: 0 0 $g5PageContentPaddingHoriz 0;
+    }
+    @else {
+        padding: ($g5PageContentPaddingHoriz * .67) 0 $g5PageContentPaddingHoriz 0;
+    }
+    border-top: $global_footerView_borderTopWidth solid $global_footerView_borderTopColor;
+    font-size: 10px;
+    @include clearfix();
+
+    @if $global_footer_linksBgColor {
+        .nav-pills {
+            margin-top: -1 * $baseLineHeight / 2;
+            margin-bottom: $baseLineHeight / 2;
+            padding: ($baseLineHeight / 2) $g5PageContentPaddingHoriz;
+            @include safeBkgs($global_footer_linksBgColor);
+        }
+    }
+
+    .nav-pills > li {
+        margin-right: $gridGutterWidth;
+
+        &.pull-right {
+            margin-right: 0;
+        }
+    }
+    .nav-pills > li > a {
+        padding: 0;
+        margin: 0;
+        line-height: inherit;
+        @if $global_footer_linksFontStyle {
+            font-style: $global_footer_linksFontStyle;
+        }
+        @if $global_footer_linksFontWeight {
+            font-weight: $global_footer_linksFontWeight;
+        }
+        @if $global_footer_linksTextTransform {
+            text-transform: $global_footer_linksTextTransform;
+        }
+        color: $global_footer_linksColor;
+        @include border-radius(0);
+
+        &:hover {
+            background: none;
+        }
+    }
+
+    .nav-pills > li > a.disabledFootLink{
+        color: $global_footer_linksDisabledColor;
+    }
+
+    .nav-pills > li > a.disabledFootLink:hover{
+        background-color: transparent;
+        cursor: default;
+    }
+
+    .copyright {
+        @if $global_footer_copyrightFontStyle {
+            font-style: $global_footer_copyrightFontStyle;
+        }
+        @if $global_footer_copyrightFontWeight {
+            font-weight: $global_footer_copyrightFontWeight;
+        }
+        @if $global_footer_copyrightTextTransform {
+            text-transform: $global_footer_copyrightTextTransform;
+        }
+        color: $global_footer_copyrightTextColor;
+    }
+}
+
+@media (min-width: 1200px) {
+    #globalFooterView {
+        @if $global_footer_adjustVerticalAlignment {
+            padding: 0 0 $g5PageContentPaddingHoriz1200 0;
+        }
+        @else {
+            padding: ($g5PageContentPaddingHoriz1200 * .67) 0 $g5PageContentPaddingHoriz1200 0;
+        }
+
+        .nav-pills > li {
+            margin-right: $gridGutterWidth1200;
+        }
+    }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+    #globalFooterView {
+        @if $global_footer_adjustVerticalAlignment {
+            padding: 0 0 $g5PageContentPaddingHoriz768 0;
+        }
+        @else {
+            padding: ($g5PageContentPaddingHoriz768 * .67) 0 $g5PageContentPaddingHoriz768 0;
+        }
+
+        .nav-pills > li {
+            margin-right: $gridGutterWidth768;
+        }
+    }
+}
+@media (max-width: 767px) {
+    #globalFooterView {
+        .nav-pills {
+            text-align: center;
+
+            > li {
+                float: none;
+                display: inline-block;
+                margin-right: $g5PageContentPaddingHorizMobile / 2;
+                margin-left: $g5PageContentPaddingHorizMobile / 2;
+                margin-bottom: $baseLineHeight / 2;
+            }
+        }
+
+        .copyright {
+            float: none;
+            text-align: center;
+            margin-right: $g5PageContentPaddingHorizMobile / 2 !important;
+            margin-bottom: 0 !important;
+        }
+    }
+}

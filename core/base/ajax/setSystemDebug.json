@@ -1,0 +1,11 @@
+{
+    "_comment" : "if the user is setting debug (POST), return the first message. if the user is getting debug (GET), return the second",
+    "messages":[{
+        "type": "success",
+        <?php if( isset($_POST['debug']) ) { ?>
+        "text": "system.debug has been set to <?php echo $_POST['debug']; ?> for this session; reload to use"
+        <?php } else { ?>
+        "text": "system.debug is currently set to [true|false]"
+        <?php } ?>
+    }]
+}

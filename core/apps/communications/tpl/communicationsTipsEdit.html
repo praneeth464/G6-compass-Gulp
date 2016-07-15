@@ -1,0 +1,262 @@
+<!-- ======== COMMUNICATIONS TIPS EDIT/CREATE PAGE ======== -->
+
+<div id="communicationsTipsEditView" class="page-content">
+    <div class="row">
+        <div class="span12">
+            <form class="sendForm pullBottomUp" method="post" action="layout.html?tplPath=apps/communications/tpl/&tpl=communicationsManageTips.html">
+
+                <!--JAVA NOTE: Display error text in the below list when page submit returns an error and set the hidden input value to true. -->
+                <div id="communicationsErrorBlock" class="alert alert-block alert-error" style="display:none">
+                    <h4>The following errors occurred</h4>
+                    <ul>
+                        <li>This is an example of a specific error message</li>
+                    </ul>
+                    <input type="hidden" id="serverReturnedErrored" value="false">
+                </div>
+
+                <input type="hidden" name="method" id="sendFormMethod" />
+
+                <fieldset class="formSection tipsSection">
+                    <h3>Tip</h3>
+
+                    <div class="control-group validateme"
+                        data-validate-fail-msgs='{"nonempty":"You must enter a title."}'
+                        data-validate-flags='nonempty'>
+                        <label class="control-label" for="tipTitle">Tip Title</label>
+                        <div class="controls">
+                            <input type="text" name="tipTitle" id="tipTitle" />
+                        </div>
+                    </div>
+
+                    <div class="control-group validateme"
+                        data-validate-fail-msgs='{"nonempty":"You must select a start date."}'
+                        data-validate-flags='nonempty' >
+                        <label for="tipStartDate" class="control-label">Start Date</label>
+                        <div class="controls">
+                            <!--
+                                NOTE: JSP set data-date-format AND data-date-startdate
+                            -->
+                            <span class="input-append datepickerTrigger"
+                                data-date-format="mm/dd/yyyy"
+                                data-date-language="fr"
+                                data-date-startdate="09/24/2012"
+                                data-date-autoclose="true">
+                                <input type="text" class="date datepickerInp"
+                                    name="tipStartDate"
+                                    id="tipStartDate"
+                                    readonly="readonly"><button type="button" class="btn datepickerBtn"><i class="icon-calendar"></i></button>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="control-group validateme"
+                        data-validate-fail-msgs='{"nonempty":"You must select an end date."}'
+                        data-validate-flags='nonempty' >
+                        <label for="tipEndDate" class="control-label">End Date</label>
+                        <div class="controls">
+                            <!--
+                                NOTE: JSP set data-date-format AND data-date-endDate
+                            -->
+                            <span class="input-append datepickerTrigger"
+                                data-date-format="mm/dd/yyyy"
+                                data-date-language="fr"
+                                data-date-enddate="09/24/2012"
+                                data-date-autoclose="true">
+                                <input type="text" class="date datepickerInp"
+                                    name="tipEndDate"
+                                    id="tipEndDate"
+                                    readonly="readonly"><button type="button" class="btn datepickerBtn"><i class="icon-calendar"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="formSection tipSelectAudience">
+                    <h3>Select Audience</h3>
+
+                    <div class="selectAudienceTableWrapper">
+                        <!-- Dynamic from selectAudienceParticipants in base-->
+                    </div>
+                </fieldset>
+
+                <fieldset class="formSection tipAddContentSection">
+                    <h3>Add Tip</h3>
+
+                    <div class="tipsAddedContent">
+                        <table class="table table-bordered table-striped" id="tipsContentTable">
+                            <thead>
+                                <tr>
+                                    <th class="defaultHeader">Default</th>
+                                    <th>Language</th>
+                                    <th>Tip</th>
+                                    <th class="editColumn">Edit</th>
+                                    <th class="remove">Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody data-msg-empty="No tip saved">
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <script id="tipsContentTableTpl" type="text/x-handlebars-template">
+                        <tr data-tipId="{{id}}" data-indexId="{{index}}" {{#if isNew}} class="newTip" {{/if}}>
+                            <td class="defaultColumn">
+                                <div class="control-group validateme"
+                                    data-validate-fail-msgs="You must select a default tip."
+                                    data-validate-flags='nonempty'>
+                                    <div class="controls">
+                                        <input type="radio" name="defaultLanguage" value="{{language}}" {{#if isDefaultLang}}checked{{/if}} {{#if systemLocale}}class="systemDefault"{{/if}}/>
+                                    </div>
+                                </div>
+
+                            </td>
+                            <td class="languageColumn">
+                                <span data-language="{{language}}">{{languageDisplay}}</span>
+
+                                <input type="hidden" name="tipContent[{{index}}].id" value="{{id}}"/>
+                                <input type="hidden" name="tipContent[{{index}}].language" value="{{language}}"/>
+ 								<input type="hidden" name="tipContent[{{index}}].languageDisplay" value="{{languageDisplay}}"/>
+                                <input type="hidden" name="tipContent[{{index}}].content" value="{{content}}"/>
+                            </td>
+                            <td class="contentColumn">{{content}}</td>
+                            <td class="editColumn">
+                                <a href="#">
+                                    <i class="icon-pencil"></i>
+                                </a>
+                            </td>
+                            <td class="remove">
+                                <a class="remParticipantControl {{#if systemLocale}}disabled{{/if}}" title="remove this tip" {{#if systemLocale}}disabled{{/if}}><i class="icon-remove-circle"></i></a>
+                            </td>
+                        </tr>
+                    </script>
+
+                    <div class="tipRemoveConfirmDialog" style="display:none">
+                        <p>
+                            <i class="icon-question-sign"></i>
+                            <b>Are you sure?</b>
+                        </p>
+                        <p class="tc">
+                            <button type="button" id="tipRemoveDialogConfirm" class="btn btn-primary">Yes</button>
+                            <button type="button" id="tipRemoveDialogCancel" class="btn">No</button>
+                        </p>
+                    </div>
+
+                    <div class="tipAddNewContent">
+                        <input type="hidden" name="tipId" id="tipId" />
+
+                        <!--Java Note: change the value of below input to set default language -->
+                        <input type="hidden" id="userDefaultLanguage" name="userDefaultLanguage" value="en_US" />
+
+                        <div class="control-group validateme"
+                            data-validate-fail-msgs='{"nonempty":"You must select a language."}'
+                            data-validate-flags='nonempty'>
+                            <label class="control-label" for="chooseLanguage">
+                                Audience Language
+                            </label>
+                            <div class="controls">
+                                <select id="chooseLanguage" name="chooseLanguage">
+                                    <option value="en_US">U.S. English</option>
+                                    <option value="sp">Spanish</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="contribCommentWrapper">
+                            <div class="mask" style="display:none"></div>
+                            <div class="control-group validateme"
+                                data-validate-fail-msgs='{"nonempty":"You must enter a tip."}'
+                                data-validate-flags='nonempty'>
+                                <label class="control-label" for="chooseLanguage">
+                                    Tip Content
+                                </label>
+                                <div class="commentTools">
+                                    Remaining Characters: <span class="remChars">&nbsp;</span>
+                                    <span class="spellchecker dropdown">
+                                        <button class="checkSpellingDdBtn btn dropdown-toggle"
+                                                title="check spelling"
+                                                type="button"
+                                                data-toggle="dropdown">
+                                            <i class="icon-check"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="check"><b>Check spelling</b></a></li>
+                                        </ul>
+                                    </span>
+                                </div>
+                                <div class="controls">
+                                    <textarea class="contribCommentInp" rows="4" maxlength="1000" placeholder="add a comment"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-danger contribCommentBadWords" style="display:none">
+                                <button type="button" class="close"><i class="icon-remove"></i></button>
+                                <span>&nbsp;</span>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-primary saveContent">Save Tip Content</button>
+                        <button type="button" class="btn cancelContent">Cancel</button>
+                    </div>
+
+                    <div class="addLanguageContent">
+                        <a href="#" class="disabled">Add content in another language</a>
+                    </div>
+                </fieldset>
+
+                <fieldset class="formSection form-actions pullBottomUp">
+                    <button class="tipSubmit btn btn-primary" type="submit" disabeld>
+                        Submit
+                    </button>
+                    <button class="tipCancel btn" data-url="layout.html">
+                        Cancel
+                    </button>
+                </fieldset>
+
+                <div class="saveCancelConfirm" style="display:none">
+                    <p>
+                        <i class="icon-question-sign"></i>
+                        <b>Are you sure? All changes will be lost.</b>
+                    </p>
+                    <p class="tc">
+                        <button type="submit" id="saveCancelDialogConfirm" class="btn btn-primary">Yes</button>
+                        <button type="submit" id="saveCancelDialogCancel" class="btn">No</button>
+                    </p>
+                </div>
+
+                <div class="tipsCancelConfirm" style="display:none">
+                    <p>
+                        <i class="icon-question-sign"></i>
+                        <b>Are you sure? All changes will be lost.</b>
+                    </p>
+                    <p class="tc">
+                        <button type="submit" id="tipsCancelDialogConfirm" class="btn btn-primary">Yes</button>
+                        <button type="submit" id="tipsCancelDialogCancel" class="btn">No</button>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+$(document).ready(function() {
+
+    //attach the view to an existing DOM element
+    var ctev = new CommunicationsTipsEditView({
+        el:$('#communicationsTipsEditView'),
+        pageNav : {
+            back : {
+                text : 'Back',
+                url : 'layout.html'
+            },
+            home : {
+                text : 'Home',
+                url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+            }
+        },
+        pageTitle : 'Communications'
+    });
+
+});
+</script>

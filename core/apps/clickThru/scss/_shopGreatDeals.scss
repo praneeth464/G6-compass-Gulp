@@ -1,0 +1,73 @@
+// App-specific variables
+// =========================
+$shopGreatDeals_bgColor: $g5ModuleBgColor !default;
+$shopGreatDeals_gradType: $g5ModuleGradType !default;
+$shopGreatDeals_gradMeta: $g5ModuleGradMeta !default;
+$shopGreatDeals_gradStops: $g5ModuleGradStops !default;
+
+$shopGreatDeals_iconColor: $g5ModuleIconColor !default;
+$shopGreatDeals_titleColor: $g5ModuleTitleColor !default;
+$shopGreatDeals_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$shopGreatDeals_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$shopGreatDeals_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$shopGreatDeals_textColor: false !default;
+$shopGreatDeals_h3FontFamily: false !default;
+$shopGreatDeals_pFontFamily: false !default;
+$shopGreatDeals_visitAppBtnColor: false !default;
+$shopGreatDeals_visitAppBtnBorderColor: false !default;
+$shopGreatDeals_imgUrlPath: false !default;
+$shopGreatDeals_imgUrl2x2: "clickThru/shopGreatDeals_2x2.jpg" !default;
+$shopGreatDeals_imgUrl4x2: "clickThru/shopGreatDeals_4x2.jpg" !default;
+$shopGreatDeals_imgUrl4x4: "clickThru/shopGreatDeals_4x4.jpg" !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- MODULE STYLES ----- */
+.module.clickThru {
+
+    &.shopGreatDeals {
+
+        .module-liner {
+            @include module_moduleLinerBackground(
+                $bgColor: $shopGreatDeals_bgColor,
+                $gradType: $shopGreatDeals_gradType,
+                $gradMeta: $shopGreatDeals_gradMeta,
+                $gradStops: $shopGreatDeals_gradStops
+            );
+        }
+
+        @include clickThruSkinBkgViews(
+            $textColor: $shopGreatDeals_textColor,
+            $h3FontFamily: $shopGreatDeals_h3FontFamily,
+            $pFontFamily: $shopGreatDeals_pFontFamily,
+            $visitAppBtnColor: $shopGreatDeals_visitAppBtnColor,
+            $visitAppBtnBorderColor: $shopGreatDeals_visitAppBtnBorderColor,
+            $imgUrlPath: $shopGreatDeals_imgUrlPath,
+            $imgUrl2x2: $shopGreatDeals_imgUrl2x2,
+            $imgUrl4x2: $shopGreatDeals_imgUrl4x2,
+            $imgUrl4x4: $shopGreatDeals_imgUrl4x4
+        );
+
+        .title-icon-view {
+            @include module_titleIconView(
+                $iconColor: $shopGreatDeals_iconColor,
+                $titleColor: $shopGreatDeals_titleColor,
+                $titleFontFamily: $shopGreatDeals_titleFontFamily
+            );
+
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                @include g5HomeAppIconBoxReflect($adjust : -47px);
+            }
+        }
+
+        @include module_titleIconViewFontSizesWeights($shopGreatDeals_titleFontSizes, $shopGreatDeals_titleFontWeights);
+
+    } /* /.shopGreatDeals */
+
+} /* /.module.clickThru */

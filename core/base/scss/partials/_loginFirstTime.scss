@@ -1,0 +1,95 @@
+// Partial-specific variables
+// =========================
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+.firstTimeLoginPage {
+    #firstTimeLoginPageForm,
+    #selfEnrollmentFirstTimeLoginPageForm {
+        margin-bottom: 0;
+    }
+
+    legend + .control-group {
+        margin-top: 0;
+    }
+
+    .firstTimeLoginFieldSet {
+        margin-bottom: $g5PageContentSpacingVertical; // same dimension as the bottom margin on each section in the send recognition form
+
+        img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 6px;
+        }
+        
+        // This is used on the selfEnrollmentFirstTimeLogin page, Please leave in place.
+        .captchaContainer {
+            margin: auto;
+            width: auto;
+        }
+        #captchaimg {
+            width: auto;
+            height: auto;
+            border: 1px solid #E3E3E3;
+            border-radius: 5px;
+            padding: 5px;
+        }
+    }
+
+    #securitySettings {
+        select {
+            width: auto;
+            max-width: 100%;
+
+            @media (max-width: 768px) {
+                width: 100%;
+            }
+        }
+
+        #securityQuestionAnswer {
+            max-width: 95%;
+
+            @media (max-width: 768px) {
+                width: 95%;
+            }
+        }
+    }
+
+    #myPreferences {
+        blockquote {
+            border-left-color: transparent;
+        }
+
+        .selectToggle {
+            padding-left: 0;
+        }
+
+        #phoneNumber {
+            margin-bottom: 20px;
+        }
+
+        .txtTerms {
+            margin-top: $baseLineHeight / 2;
+
+            label {
+                font-weight: bold;
+            }
+            p {
+                font-style: italic;
+            }
+        }
+    }
+}
+
+// special consideration for devices that cannot upload files (iOS5 and older, older Androids, etc)
+.no-fileinput #profilePicUpload,
+.no-fileinput #profilePicUpload ~ p {
+    display: none;
+}
+.no-fileinput #profilePicUpload ~ .no-fileinput {
+    display: block;
+}

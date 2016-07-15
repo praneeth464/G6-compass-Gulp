@@ -1,0 +1,62 @@
+
+<!-- publicRecognitionComment {{id}} -->
+<div class="app-row comment-block clearfix pubRecCommentsComment comment{{id}}" data-comment-id="{{id}}" style="display:none">
+
+    <div class="app-col">
+
+        <a class="profile-popover" data-participant-ids="[{{commenter.id}}]">
+            <img alt="" class="avatar" src="{{commenter.avatarUrl}}" >
+        </a>
+
+    </div>
+
+    <div class="app-col comment {{#if isMine}}mine{{/if}}">
+
+        <p>
+            <a class="profile-popover" href="#" data-participant-ids="[{{commenter.id}}]">
+                {{commenter.firstName}} {{commenter.lastName}}
+            </a>
+            <div class="readMore" data-read-more-num-lines="2" data-msg-read-more="more">
+                {{comment}}
+            </div>
+
+            {{#if isMine}}
+                {{#if ../allowAddPoints}}
+
+                {{else}}
+                <span class="hide-comment">
+                    {{#if isHidden}}
+                        Hidden
+                    {{else}}
+                        <a href="#" class="deletePublicRecognitionLnk">Delete</a>
+                        <span class="publicRecognitionHiddenLinkText" style="display:none;">
+                                Hidden
+                        </span>
+                    {{/if}}
+                </span>
+                {{/if}}
+            {{#if allowTranslate}}
+                &bull;
+                <a href="#" class="translatePubRec">Translate</a>
+            {{/if}}
+
+            {{else}}
+                {{#if allowTranslate}}
+                    <a href="#" class="translatePubRec">Translate</a>
+                {{/if}}
+
+            {{/if}}
+
+        </p>
+    </div>
+</div>
+<!-- /publicRecognitionComment {{id}} -->
+
+<div class="deletePublicRecognitionQTip" style="display:none">
+    <p>This will permanently remove this comment. Are you sure you want to delete this comment?
+    </p>
+    <p class="tc">
+        <button type="submit" class="btn btn-primary publicRecognitionDeleteRecognitionConfirm">Yes</button>
+         <button type="submit" class="btn publicRecognitionDeleteRecognitionCancel">No</button>
+    </p>
+</div>

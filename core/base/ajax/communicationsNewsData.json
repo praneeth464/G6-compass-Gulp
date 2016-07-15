@@ -1,0 +1,122 @@
+{
+    "newsTable": {
+        "news": [
+            {
+                "id": "1234",
+                "index": 0,
+                "languageDisplay": "U.S. English",
+                "language": "en_US",
+                "headline": "News Headline",
+                "imageId":"addedImage0",
+                "imageSize162x162": "http://placehold.it/162x162/4386ca",
+                "imageSize2x1": "http://placehold.it/308x148",
+                "imageSize2x2": "http://placehold.it/308x308",
+                "imageSize4x2": "http://placehold.it/628x308",
+                "imageSize4x4": "http://placehold.it/628x628",
+                "story": "<p>Here is some text</p>"
+            },
+            {
+                "id": "1235",
+                "index": 1,
+                "languageDisplay": "Spanish",
+                "language": "sp",
+                "headline": "News Headline 2",
+                "imageId": 12543,
+                "imageSize162x162": "http://placehold.it/162x162/4386ca",
+                "imageSize2x1": "http://placehold.it/308x148/4386ca",
+                "imageSize2x2": "http://placehold.it/308x308/4386ca",
+                "imageSize4x2": "http://placehold.it/628x308/4386ca",
+                "imageSize4x4": "http://placehold.it/628x628/4386ca",
+                "story": "And some more text"
+            }
+        ]
+    },
+    "newsTitle": "New News Story",
+    "newsStartDate": "05/23/2014",
+    "newsEndDate": "06/01/2014",
+    "newsImages": {
+        "images": [
+            {
+                "id":123,
+                "imageSize162x162": "http://placehold.it/162x162",
+                "imageSize2x1":"http://placehold.it/308x148",
+                "imageSize2x2":"http://placehold.it/308x308",
+                "imageSize4x2":"http://placehold.it/628x308",
+                "imageSize4x4":"http://placehold.it/628x628"
+            },
+            {
+                "id":1234,
+                "imageSize162x162": "http://placehold.it/162x162/000000",
+                "imageSize2x1":"http://placehold.it/308x148/000000",
+                "imageSize2x2":"http://placehold.it/308x308/000000",
+                "imageSize4x2":"http://placehold.it/628x308/000000",
+                "imageSize4x4":"http://placehold.it/628x628/000000"
+            },
+            {
+                "id":12543,
+                "imageSize162x162": "http://placehold.it/162x162/4386ca",
+                "imageSize2x1":"http://placehold.it/308x148/4386ca",
+                "imageSize2x2":"http://placehold.it/308x308/4386ca",
+                "imageSize4x2":"http://placehold.it/628x308/4386ca",
+                "imageSize4x4":"http://placehold.it/628x628/4386ca"
+            },
+            {
+                "id":12345,
+                "isSelected": true,
+                "imageSize162x162": "http://placehold.it/162x162/ffffff",
+                "imageSize2x1":"http://placehold.it/308x148/ffffff",
+                "imageSize2x2":"http://placehold.it/308x308/ffffff",
+                "imageSize4x2":"http://placehold.it/628x308/ffffff",
+                "imageSize4x4":"http://placehold.it/628x628/ffffff"
+            },
+            {
+                "id":11234,
+                "imageSize162x162": "http://placehold.it/162x162",
+                "imageSize2x1":"http://placehold.it/308x148",
+                "imageSize2x2":"http://placehold.it/308x308",
+                "imageSize4x2":"http://placehold.it/628x308",
+                "imageSize4x4":"http://placehold.it/628x628"
+            },
+            {
+                "id":11876,
+                "imageSize162x162": "http://placehold.it/162x162/000000",
+                "imageSize2x1":"http://placehold.it/308x148/000000",
+                "imageSize2x2":"http://placehold.it/308x308/000000",
+                "imageSize4x2":"http://placehold.it/628x308/000000",
+                "imageSize4x4":"http://placehold.it/628x628/000000"
+            },
+            {
+                "id":11548,
+                "imageSize162x162": "http://placehold.it/162x162/4386ca",
+                "imageSize2x1":"http://placehold.it/308x148/4386ca",
+                "imageSize2x2":"http://placehold.it/308x308/4386ca",
+                "imageSize4x2":"http://placehold.it/628x308/4386ca",
+                "imageSize4x4":"http://placehold.it/628x628/4386ca"
+            },
+            {
+                "id":11468,
+                "imageSize162x162": "http://placehold.it/162x162/ffffff",
+                "imageSize2x1":"http://placehold.it/308x148/ffffff",
+                "imageSize2x2":"http://placehold.it/308x308/ffffff",
+                "imageSize4x2":"http://placehold.it/628x308/ffffff",
+                "imageSize4x4":"http://placehold.it/628x628/ffffff"
+            },
+            {
+                "id":11945,
+                "imageSize162x162": "http://placehold.it/162x162",
+                "imageSize2x1":"http://placehold.it/308x148",
+                "imageSize2x2":"http://placehold.it/308x308",
+                "imageSize4x2":"http://placehold.it/628x308",
+                "imageSize4x4":"http://placehold.it/628x628"
+            },
+            {
+                "id":11542,
+                "imageSize162x162": "http://placehold.it/162x162/000000",
+                "imageSize2x1":"http://placehold.it/308x148/000000",
+                "imageSize2x2":"http://placehold.it/308x308/000000",
+                "imageSize4x2":"http://placehold.it/628x308/000000",
+                "imageSize4x4":"http://placehold.it/628x628/000000"
+            }
+        ]
+    }
+}

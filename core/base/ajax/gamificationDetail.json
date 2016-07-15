@@ -1,0 +1,292 @@
+<?php sleep(2); ?>
+{
+    "messages":[],
+    "badgeGroups":[
+        {
+            "headerTitle": "SSI Contests",
+            "badges": [
+                {
+                    "id": "10",
+                    "type": "ssi",
+                    "name": "First Place SSI Badge Name",
+                    "img": "img/badges/gold_sm.png",
+                    "howToEarnText": null,
+                    "contestName": "Objectives Contest",
+                    "earned": true,
+                    "dateEarned": "2015-02-16",
+                    "progressNumerator": 0,
+                    "progressDenominator": 0,
+                    "progressVisible": null
+                },
+                {
+                    "id": "11",
+                    "type": "ssi",
+                    "name": "First Place SSI Badge Name",
+                    "img": "img/badges/gold_sm.png",
+                    "howToEarnText": null,
+                    "contestName": "Step It Up Contest",
+                    "earned": true,
+                    "dateEarned": "2015-02-16",
+                    "progressNumerator": 0,
+                    "progressDenominator": 0,
+                    "progressVisible": null
+                },
+                {
+                    "id": "12",
+                    "type": "ssi",
+                    "name": "Level One Badge Name",
+                    "img": "img/badges/Level1_sm.png",
+                    "howToEarnText": null,
+                    "contestName": "Do This Get That Contest",
+                    "earned": true,
+                    "dateEarned": "2015-02-16",
+                    "progressNumerator": 0,
+                    "progressDenominator": 0,
+                    "progressVisible": null
+                },
+                {
+                    "id": "13",
+                    "type": "ssi",
+                    "name": "Second Place SSI Badge Name",
+                    "img": "img/badges/silver_sm.png",
+                    "howToEarnText": null,
+                    "contestName": "Step It Up Contest",
+                    "earned": true,
+                    "dateEarned": "2015-02-16",
+                    "progressNumerator": 0,
+                    "progressDenominator": 0,
+                    "progressVisible": null
+                }
+            ]
+        },
+        {
+            "headerTitle": "Promotion A, Promotion B, Promotion D",
+            "allBehaviorPoints": "200",
+            "badges":[
+                {
+                    "id":                   "23",
+                    "type":                 "progress",
+                    "name":                 "Earned Progress Badge Name 1 2a",
+                    "howToEarnText":        "1 How to earn badge",
+                    "img":                  "img/badges/above_beyond_sm.png",
+                    "earned":               true,
+                    "dateEarned":           "2012-06-06",
+                    "progressNumerator":    0,
+                    "progressDenominator":  0,
+                    "progressVisible":      null
+                },
+                {
+                    "id":                   "24",
+                    "type":                 "progress",
+                    "name":                 "Earned Progress Badge Name 2 2a",
+                    "howToEarnText":        "2 How to earn badge",
+                    "img":                  "img/badges/birthday_sm.png",
+                    "earned":               true,
+                    "dateEarned":           "2012-05-01",
+                    "progressNumerator":    0,
+                    "progressDenominator":  0,
+                    "progressVisible":      null
+                },
+                {
+                    "id":                   "25",
+                    "type":                 "progress",
+                    "name":                 "Progress Badge Name 3 2b",
+                    "howToEarnText":        "3 How to earn badge",
+                    "img":                  "img/badges/bronze_sm.png",
+                    "earned":               false,
+                    "dateEarned":           null,
+                    "progressNumerator":    0,
+                    "progressDenominator":  10,
+                    "progressVisible":      true
+                },
+                {
+                    "id":                   "26",
+                    "type":                 "progress",
+                    "name":                 "Progress Badge Name 4 2c",
+                    "howToEarnText":        "4 How to earn badge",
+                    "img":                  "img/badges/cold_call_sm.png",
+                    "earned":               false,
+                    "dateEarned":           null,
+                    "progressNumerator":    4,
+                    "progressDenominator":  20,
+                    "progressVisible":      true
+                },
+                {
+                    "id":                   "27",
+                    "type":                 "behavior",
+                    "name":                 "Earned Behavior Badge Name 5 2d",
+                    "howToEarnText":        "5 How to earn badge",
+                    "img":                  "img/badges/conquest_sale_sm.png",
+                    "earned":               true,
+                    "dateEarned":           "2012-05-15",
+                    "progressNumerator":    0,
+                    "progressDenominator":  0,
+                    "progressVisible":      null
+                },
+                {
+                    "id":                   "28",
+                    "type":                 "behavior",
+                    "name":                 "Earned Behavior Badge Name 6 2d",
+                    "howToEarnText":        "6 How to earn badge",
+                    "img":                  "img/badges/contest_winner_sm.png",
+                    "earned":               true,
+                    "dateEarned":           "2012-04-15",
+                    "progressNumerator":    0,
+                    "progressDenominator":  0,
+                    "progressVisible":      null
+                },
+                {
+                    "id":                   "29",
+                    "type":                 "behavior",
+                    "name":                 "Earned Behavior Badge Name 7 2e",
+                    "howToEarnText":        "7 How to earn badge",
+                    "img":                  "img/badges/creativity_sm.png",
+                    "earned":               false,
+                    "dateEarned":           null,
+                    "progressNumerator":    0,
+                    "progressDenominator":  0,
+                    "progressVisible":      null
+                },
+                {
+                    "id":                   "30",
+                    "type":                 "behavior",
+                    "name":                 "Earned Behavior Badge Name 8 2e",
+                    "howToEarnText":        "8 How to earn badge",
+                    "img":                  "img/badges/customer_service_sm.png",
+                    "earned":               false,
+                    "dateEarned":           null,
+                    "progressNumerator":    0,
+                    "progressDenominator":  0,
+                    "progressVisible":      null
+                },
+                {
+                    "id":                   "31",
+                    "type":                 "behavior",
+                    "name":                 "File Load Earned Badge Name 9 2f",
+                    "howToEarnText":        "9 How to earn badge",
+                    "img":                  "img/badges/gold_sm.png",
+                    "earned":               true,
+                    "dateEarned":           "2012-04-03",
+                    "progressNumerator":    0,
+                    "progressDenominator":  0,
+                    "progressVisible":      null
+                }
+            ]
+        },
+        {
+            "headerTitle": "Promotion C",
+            "allBehaviorPoints": "100",
+            "badges":[
+                {
+                "id":                       "33",
+                    "type":                 "progress",
+                    "name":                 "Earned Progress Badge Name 11",
+                    "howToEarnText":        "11 How to earn badge",
+                    "img":                  "img/badges/innovation_sm.png",
+                    "earned":               true,
+                    "dateEarned":           "2012-06-06",
+                    "progressNumerator":    0,
+                    "progressDenominator":  0,
+                    "progressVisible":      null
+                },
+                {
+                    "id":                   "34",
+                    "type":                 "progress",
+                    "name":                 "Earned Progress Badge Name 12",
+                    "howToEarnText":        "12 How to earn badge",
+                    "img":                  "img/badges/leadership_sm.png",
+                    "earned":               false,
+                    "dateEarned":           null,
+                    "progressNumerator":    8,
+                    "progressDenominator":  10,
+                    "progressVisible":      true
+                }
+            ]
+        },
+        {
+            "headerTitle": "Other Badges",
+            "allBehaviorPoints": "200",
+            "badges":[
+                {
+                    "id":                   "43",
+                    "type":                 "behavior",
+                    "name":                 "File Load Earned Badge Name 21",
+                    "howToEarnText":        "21 How to earn badge",
+                    "img":                  "img/badges/md_01_acclaim_apprentice_sm.png",
+                    "earned":               true,
+                    "dateEarned":           "2012-06-06",
+                    "progressNumerator":    0,
+                    "progressDenominator":  0,
+                    "progressVisible":      null
+                },
+                {
+                    "id":                   "44",
+                    "type":                 "behavior",
+                    "name":                 "File Load Earned Badge Name 22",
+                    "howToEarnText":        "22 How to earn badge",
+                    "img":                  "img/badges/md_02_recognition_rocker_sm.png",
+                    "earned":               true,
+                    "dateEarned":           "2012-05-15",
+                    "progressNumerator":    0,
+                    "progressDenominator":  0,
+                    "progressVisible":      null
+                }
+            ]
+        },
+        {
+            "headerTitle": "History",
+            "allBehaviorPoints": "200",
+            "badges":[
+                {
+                    "id":                   "53",
+                    "type":                 "behavior",
+                    "name":                 "Behavior Earned Badge Name 31",
+                    "howToEarnText":        "31 How to earn badge",
+                    "img":                  "img/badges/md_03_captain_congrats_sm.png",
+                    "earned":               true,
+                    "dateEarned":           "2012-01-06",
+                    "progressNumerator":    0,
+                    "progressDenominator":  0,
+                    "progressVisible":      null
+                },
+                {
+                    "id":                   "54",
+                    "type":                 "progress",
+                    "name":                 "Progress Earned Badge Name 32",
+                    "howToEarnText":        "32 How to earn badge",
+                    "img":                  "img/badges/md_04_celebration_champ_sm.png",
+                    "earned":               true,
+                    "dateEarned":           "2012-01-15",
+                    "progressNumerator":    0,
+                    "progressDenominator":  0,
+                    "progressVisible":      null
+                },
+                {
+                    "id":                   "55",
+                    "type":                 "behavior",
+                    "name":                 "File Load Earned Badge Name 33",
+                    "howToEarnText":        "33 How to earn badge",
+                    "img":                  "img/badges/md_05_ovation_overlord_sm.png",
+                    "earned":               true,
+                    "dateEarned":           "2012-02-06",
+                    "progressNumerator":    0,
+                    "progressDenominator":  0,
+                    "progressVisible":      null
+                },
+                {
+                    "id":                   "56",
+                    "type":                 "ssi",
+                    "name":                 "Second Place SSI Badge Name",
+                    "img":                  "img/badges/silver_sm.png",
+                    "howToEarnText":        null,
+                    "contestName":          "Step It Up Contest",
+                    "earned":               true,
+                    "dateEarned":           "2015-02-16",
+                    "progressNumerator":    0,
+                    "progressDenominator":  0,
+                    "progressVisible":      null
+                }
+            ]
+        }
+    ]
+}

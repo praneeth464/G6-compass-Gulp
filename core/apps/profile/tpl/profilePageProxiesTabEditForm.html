@@ -1,0 +1,139 @@
+<h3>Edit Delegate</h3>
+<form id="profilePageProxyTabFormEditProxy" class="form-horizontal" action="ajax/profilePageProxiesTab_success.json" method="POST">
+    <div class="row">
+        <div class="span12">
+
+            <!-- this looks like a {{handlebars}} template, but isn't. Fill in the curlies with proper JSP tags -->
+            <p class="participant">
+                <a class="participant-popover" href="#" data-participant-ids="[{{id}}]">
+                    {{#if avatarUrl}}<img alt="{{firstName}} {{lastName}}" class="profile-proxy-list-avatar avatar" src="{{avatarUrl}}">{{/if}}
+                    {{firstName}}
+                    {{lastName}}
+                    {{#if countryCode}}<img src="img/flags/{{countryCode}}.png" alt="{{countryCode}}" class="countryFlag" title="{{countryName}}" />{{/if}}
+                </a>
+
+                <span class="org">{{orgName}} {{#if departmentName}}{{#if orgName}}&bull;{{/if}} {{departmentName}}{{/if}} {{#if jobName}}{{#if departmentName}}&bull;{{else}}{{#if orgName}}&bull;{{/if}}{{/if}} {{jobName}}{{/if}}</span>
+            </p>
+
+            <div class="control-group">
+                <label class="control-label">Core Access</label>
+                <!-- BUG 58384 -->
+                <!-- *Note: dynamic generate group should have its own label instead -->
+                <div class="controls">
+                    <!-- dynamic one -->
+                    <label class="checkbox">
+                        <input type="checkbox" value="roster_mgmt" name="coreAccess" id="roster_mgmt"> Roster Management
+                    </label>
+                    <!-- dynamic two -->
+                    <label class="checkbox">
+                        <input type="checkbox" value="budget_transfer" name="coreAccess" id="budget_transfer"> Roster Management
+                    </label>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">Promotion Rights</label>
+                <div class="controls">
+                    <label class="checkbox">
+                        <input type="checkbox" value="on" name="allModules" id="allModules" data-conditional="onunchecked" data-conditional-target="#allModulesOpts"> All current and future promotions of all types
+                    </label>
+                </div>
+            </div>
+
+            <div id="allModulesOpts" class="show">
+
+                <div class="control-group">
+                    <label class="control-label">Recognition Promotions</label>
+
+                    <div class="controls">
+                        <label class="radio">
+                            <input type="radio" value="all" name="allRecPromos" id="allRecPromosAll"> All current and future recognition promotions
+                        </label>
+
+                        <label class="radio">
+                            <input type="radio" value="none" name="allRecPromos" id="allRecPromosNone"> No recogntion promotions
+                        </label>
+
+                        <label class="radio">
+                            <input type="radio" value="specific" name="allRecPromos" id="allRecPromosSpecific" data-conditional="onchecked" data-conditional-target="#allRecPromosSpecificOpts"> Specific recognition promotions
+                        </label>
+
+                        <blockquote id="allRecPromosSpecificOpts" class="hide">
+
+                            <label class="checkbox">
+                                <input type="hidden" name="recognitionProxyList[0].promotionId" value="250">
+                                <input type="hidden" name="recognitionProxyList[0].promotionName" value="Employee to Employee">
+                                <input type="checkbox" value="on" name="recognitionProxyList[0].selected"> Employee to Employee
+                            </label>
+
+                            <label class="checkbox">
+                                <input type="hidden" name="recognitionProxyList[1].promotionId" value="611">
+                                <input type="hidden" name="recognitionProxyList[1].promotionName" value="Plateau Awards">
+                                <input type="checkbox" value="on" name="recognitionProxyList[1].selected"> Plateau Awards
+                            </label>
+
+                            <label class="checkbox">
+                                <input type="hidden" name="recognitionProxyList[2].promotionId" value="810">
+                                <input type="hidden" name="recognitionProxyList[2].promotionName" value="Manager to Employee">
+                                <input type="checkbox" value="on" name="recognitionProxyList[2].selected"> Manager to Employee
+                            </label>
+
+                            <label class="checkbox">
+                                <input type="hidden" name="recognitionProxyList[3].promotionId" value="510">
+                                <input type="hidden" name="recognitionProxyList[3].promotionName" value="Manager Discretionary">
+                                <input type="checkbox" value="on" name="recognitionProxyList[3].selected"> Manager Discretionary
+                            </label>
+
+                            <label class="checkbox">
+                                <input type="hidden" name="recognitionProxyList[4].promotionId" value="450">
+                                <input type="hidden" name="recognitionProxyList[4].promotionName" value="Recognition Calculator">
+                                <input type="checkbox" value="on" name="recognitionProxyList[4].selected"> Recognition Calculator
+                            </label>
+
+                            <label class="checkbox">
+                                <input type="hidden" name="recognitionProxyList[5].promotionId" value="730">
+                                <input type="hidden" name="recognitionProxyList[5].promotionName" value="Years of Service">
+                                <input type="checkbox" value="on" name="recognitionProxyList[5].selected"> Years of Service
+                            </label>
+
+                        </blockquote>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">Nomination Promotions</label>
+
+                    <div class="controls">
+                        <label class="radio">
+                            <input type="radio" value="all" name="allNomPromos" id="allNomPromosAll"> All current and future nominations promotions
+                        </label>
+
+                        <label class="radio">
+                            <input type="radio" value="none" name="allNomPromos" id="allNomPromosNone"> No nomination promotions
+                        </label>
+
+                        <label class="radio">
+                            <input type="radio" value="specific" name="allNomPromos" id="allNomPromosSpecific" data-conditional="onchecked" data-conditional-target="#allNomPromosSpecificOpts"> Specific nomination promotions
+                        </label>
+
+                        <blockquote id="allNomPromosSpecificOpts" class="hide">
+
+                            <label class="checkbox">
+                                <input type="hidden" name="nominationProxyList[0].promotionId" value="293">
+                                <input type="hidden" name="nominationProxyList[0].promotionName" value="Signature Service Nomination">
+                                <input type="checkbox" value="on" name="nominationProxyList[0].selected"> Signature Service Nomination
+                            </label>
+
+                        </blockquote>
+                    </div>
+                </div>
+
+            </div><!-- /#specificModulesOpts -->
+
+            <div class="form-actions">
+                <button type="submit" id="profilePageProxyTabButtonSaveProxy" class="btn btn-primary">Save</button>
+                <a id="profilePageProxyTabButtonCancel" href="#" class="btn">Reset</a>
+            </div>
+        </div>
+    </div>
+</form>

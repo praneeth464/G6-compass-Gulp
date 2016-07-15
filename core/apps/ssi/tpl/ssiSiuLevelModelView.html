@@ -1,0 +1,146 @@
+<div class="levelItem{{#_isActiveNew}} isActiveNew{{/_isActiveNew}}" data-level-id="{{id}}">
+
+    {{#unless _isActiveNew}}
+    <div class="levelHeaders">
+        <div class="levelHeader levelSequenceNumber">
+            <div data-model-key="sequenceNumber">&nbsp;</div>
+            <div class="lowestLevel levelCaption" style="display:none">(lowest level)</div>
+            <div class="highestLevel levelCaption" style="display:none">(highest level)</div>
+        </div>
+        <div class="levelHeader levelAmount">
+            <span class="currSymb act">
+            </span><span data-model-key="amount" data-msg-edit="edit">&nbsp;
+            </span><span class="currSymbAfter act"></span>
+        </div>
+        <div class="levelHeader levelPayout">
+            <span class="currSymb pay"></span><span data-model-key="payout">&nbsp;</span>
+        </div>
+        <div class="levelHeader levelPayoutDesc">&nbsp;
+            <span data-model-key="payoutDescription"></span>
+        </div>
+        <div class="levelHeader levelBadge">
+            <!-- dyn -->
+        </div>
+        <div class="levelHeader levelEdit">
+            <i class="icon-pencil editControl"></i>
+        </div>
+        <div class="levelHeader levelRemove">
+            <i class="icon-remove removeControl"></i>
+        </div>
+    </div><!-- /.levelHeaders -->
+    {{/unless}}{{!-- _isActiveNew --}}
+
+    <div class="levelDetails" style="display:none">
+        {{#if _isActiveNew}}
+            <h5>
+                <i class="icon-plus-sign"></i>
+                Add Contest Level
+                {{_levelNum}}{{#eq _levelNum 1}}: This is the lowest level{{/eq}}
+            </h5>
+        {{else}}
+            <h5>
+                <i class="icon-pencil"></i>
+                Edit Level Details
+            </h5>
+            <div class="levelDetailLevel clearfix">
+                <span id="level{{id}}" data-model-key="sequenceNumber" ></span>
+            </div>
+        {{/if}}
+
+
+
+
+        <div class="levelDetailAmount clearfix">
+            <label for="amount{{id}}">
+                <span class="msg measureLabel amount hide">
+                    Amount
+                    <i class="icon-info-sign pageView_help"
+                        data-help-content="Define the activity amount required to achieve the corresponding award."></i>
+                </span>
+                <span class="msg measureLabel currency hide">
+                    Currency
+                    <i class="icon-info-sign pageView_help"
+                        data-help-content="Define the activity amount required to achieve the corresponding award."></i>
+                </span>
+                <span class="msg measureLabel percentOverBaseline hide">
+                    % over Baseline
+                    <i class="icon-info-sign pageView_help"
+                        data-help-content="Define the % over baseline required to achieve the corresponding award."></i>
+                </span>
+                <span class="msg measureLabel amountOverBaseline hide">
+                    Amount over Baseline
+                    <i class="icon-info-sign pageView_help"
+                        data-help-content="Define the amount over baseline required to achieve the corresponding award."></i>
+                </span>
+                <span class="msg measureLabel currencyOverBaseline hide">
+                    Currency over Baseline
+                    <i class="icon-info-sign pageView_help"
+                        data-help-content="Define the currency over baseline required to achieve the corresponding award."></i>
+                </span>
+            </label>
+            <input type="text" id="amount{{id}}" data-model-key="amount" />
+            <span class="currSymb act"></span>
+            <span class="currDisp act"></span>
+        </div>
+
+        <div class="levelDetailPayoutDesc clearfix" style="display:none">
+            <label for="payoutDescription{{id}}">
+                Payout Description
+                <i class="icon-info-sign pageView_help"
+                    data-help-content="Describe the specific award a recipient will receive for reaching their objective."></i>
+            </label>
+            <input type="text"  id="payoutDescription{{id}}" data-model-key="payoutDescription" maxlength="50" />
+        </div>
+
+        <div class="levelDetailPayout clearfix">
+            <label for="payout{{id}}">
+                <span class="showForPOTOther">
+                    Value of award
+                    <i class="icon-info-sign pageView_help"
+                        data-help-content="Monetary value of the award. This will not be displayed to the participants."></i>
+                </span>
+                <span class="hideForPOTOther">
+                    Payout
+                    <i class="icon-info-sign pageView_help"
+                        data-help-content="Value of the award. This will not be displayed to the participants."></i>
+                </span>
+            </label>
+            <input type="text" id="payout{{id}}" data-model-key="payout" />
+            <span class="currSymb pay"></span>
+            <span class="currDisp pay"></span>
+        </div>
+
+        <div class="badgesOuterWrapper" >
+            <h5>Badge</h5>
+            <div class="badgesSelectorView" data-msg-no-badge="No Badge"><!-- dyn --></div>
+        </div>
+
+
+        <div class="levelDetailItemActions">
+            <button class="btn btn-primary btn-small saveLevelBtn">
+                Save
+            </button>
+            <button class="btn btn-small cancelLevelBtn">
+                Cancel
+            </button>
+        </div>
+
+    </div>
+
+
+
+    <div class="ssiSiuLevelModelViewErrorMsgs" style="display:none">
+        <b class="req">This field is required.</b>
+        <b class="reqNum">Please enter a whole number.</b>
+        <b class="reqDec_2">Please enter a number with up to 2 decimals.</b>
+        <b class="reqDec_4">Please enter a number with up to 4 decimals.</b>
+        <b class="reqDec_pos_2">Please enter a positive number with up to 2 decimals.</b>
+        <b class="reqDec_pos_4">Please enter a positive number with up to 4 decimals.</b>
+        <b class="numBeyondMax">This number must be less than 10000000000.</b>
+        <b class="mustEditSave">Please save or cancel.</b>
+        <b class="uniqueDescReq">Please make sure all descriptions are unique.</b>
+        <b class="amountOutOfOrder">This value must be ascending.</b>
+        <b class="payoutOutOfOrder">Payout must be ascending in value.</b>
+    </div><!-- /.ssiSiuLevelModelViewErrorMsgs -->
+
+</div>

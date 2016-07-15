@@ -1,0 +1,47 @@
+<!-- - - - - - - - - GAMIFICATION MODULE - - - - - - - - - - - - - -->
+
+<div class="module-liner">
+    <div class="wide-view">
+    <div class="app-row">
+        <div class="incomplete-badges">
+            <ul>
+                {{#each incompleteBadges}}
+                    <div class="incomplete-badge {{this.type}}-type"><!-- progress-type behavior-type earned-type -->
+                    <li class="liBadge">
+                        <a href="#">
+                            <img src="{{this.img}}" align="left" />
+                            <span class="badge-name">{{this.name}}</span><br />
+                            <span class="badge-how-to-earn">{{this.howToEarnText}}</span><br />
+                            <span class="badge-progress-percent">{{this.progressPercent}}</span><br />
+                            <span class="badge-date-earned">{{this.dateEarned}}</span>
+                        </a>
+                    </li>
+                    </div>
+                {{/each}}
+            </ul>
+        </div>
+        <div class="complete-badges">
+            <ul>
+                {{#each completeBadges}}
+                    <div class="complete-badge {{this.type}}-type"><!-- progress-type behavior-type earned-type -->
+                        <li class="liBadge">
+                            <a href="#">
+                                <img src="{{this.img}}" align="left" />
+                                <span class="badge-name">{{this.name}}</span><br />
+                                <span class="badge-how-to-earn">{{this.howToEarnText}}</span><br />
+                                <span class="badge-progress-percent">{{this.progressPercent}}</span><br />
+                                <span class="badge-date-earned">{{this.dateEarned}}</span>
+                            </a>
+                        </li>
+                    </div>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    </div>
+
+    <div class="title-icon-view">
+        <h3>My Badges</h3>
+    </div>
+
+</div>

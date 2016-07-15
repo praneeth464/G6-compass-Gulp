@@ -1,0 +1,9 @@
+<?php sleep(4); ?>
+{
+	"messages": [
+		{
+			"isSuccess": true,
+			"text": "This is the failure message"
+		}
+	]
+}

@@ -1,0 +1,19 @@
+<form id="loginPageFormForgotPass" action="tpl/loginPageFormSecurityQuestion.html" method="POST" class="form-horizontal">
+    <input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="57316dd9f62b17a7281782c571bc2d45">
+    <input type="hidden" name="method" value="forgotPwdNameValidate">
+
+    <fieldset id="forgotPasswordFieldset">
+        <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter your login ID"}'>
+            <label class="control-label">Login ID</label>
+            <div class="controls">
+                <input type="text" name="userName" id="userName">
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset class="form-actions">
+        <button type="submit" id="forgotPasswordFormSubmit" name="button" value="forgotPasswordFormSubmit" formaction="ajax/loginPageFormForgotPassResponse.json" class="btn btn-primary">Submit</button>
+        <a href="?tplPath=base/tpl/&amp;tpl=loginPage.html" id="forgotPasswordFormCancel" class="btn">Cancel</a>
+    </fieldset>
+
+</form>

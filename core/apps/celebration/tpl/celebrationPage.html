@@ -1,0 +1,203 @@
+
+<div id="homeAppPageView" class="noTopNav">
+    <div class="moduleContainerViewElement">
+
+        <!-- dynamic content -->
+
+    </div> <!-- /.moduleContainerViewElement -->
+
+    <div class="container shareIcons">
+        <div class="social-icons-container">
+            <ul class="share-print fr">
+                <li>
+                    <a target="_blank"
+                        class="social-icon chatter icon-size-16"
+                        href="http://www.salesforce.com/chatter"></a>
+                </li>
+
+                <li>
+                    <a target="_blank"
+                        class="social-icon facebook icon-size-16"
+                        href="http://www.facebook.com"></a>
+                </li>
+
+                <li>
+                    <a target="_blank"
+                        class="social-icon linkedin icon-size-16"
+                        href="http://www.linkedin.com"></a>
+                </li>
+
+                <li>
+                    <a target="_blank"
+                        class="social-icon twitter icon-size-16"
+                        href="http://www.twitter.com"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div><!-- /#homeAppPageView -->
+
+<!-- MODULES SETUP -->
+<script>
+    //Main Home Application Setup Function
+    $(document).ready(function(){
+        var isSubset = typeof G5.props.urlParams.moduleSubset != 'undefined',
+            allModules,moduleSubset;
+
+        //instantiate HomeApp
+        window.hapv = new HomeAppPageView({
+            el : $('#homeAppPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                     url : 'javascript:history.back();'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Celebration',
+            isFooterSheets : false
+        });
+
+        //body class for custom background image
+        $('body').addClass('celebrationPage');
+
+        // Every Module in the World
+        // Listed in order by appName
+        allModules = [
+            /*
+             * Celebration modules
+             */
+            {
+                name:'celebrationCongratsModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'celebration',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'4x2', order:1}
+                }
+            },
+            {
+                name:'celebrationEcardModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'celebration',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'2x2', order:2}
+                }
+            },
+            {
+                name:'celebrationChooseAwardModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'celebration',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'2x2', order:3}
+                }
+            },
+            {
+                name:'celebrationBrowseAwardsModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'celebration',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'2x2', order:4}
+                }
+            },
+            {
+                name:'celebrationImageFillerModule1',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'celebration',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                templateName: 'celebrationImageFillerModule',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                viewName: 'CelebrationImageFillerModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'2x2', order:4}
+                }
+            },
+            {
+                name:'celebrationManagerMessageModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'celebration',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'4x2', order:5}
+                }
+            },
+            {
+                name:'celebrationRecognitionPurlModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'celebration',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'4x2', order:6}
+                }
+            },
+            {
+                name:'celebrationAnniversaryFactsModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'celebration',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'2x2', order:7}
+                }
+            },
+            {
+                name:'celebrationCompanyTimelineModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'celebration',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'2x2', order:7}
+                }
+            },
+            {
+                name:'celebrationImageFillerModule2',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'celebration',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                templateName: 'celebrationImageFillerModule',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                viewName: 'CelebrationImageFillerModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'2x2', order:8}
+                }
+            },
+            {
+                name:'celebrationCorporateVideoModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'celebration',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'2x2', order:9}
+                }
+            },
+            {
+                name:'celebrationImageFillerModule3',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'celebration',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                templateName: 'celebrationImageFillerModule',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                viewName: 'CelebrationImageFillerModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'2x2', order:9}
+                }
+            },
+            {
+                name:'celebrationImageFillerModule4',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'celebration',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                templateName: 'celebrationImageFillerModule',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                viewName: 'CelebrationImageFillerModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'2x2', order:10}
+                }
+            }
+
+        ]; // allModules
+
+        // FE Development only
+        if(isSubset) {
+            hapv.doDevMode(allModules);
+        } else {
+
+            //ADD MODULES
+            hapv.homeApp.moduleCollection.reset(allModules);
+        }
+
+    });
+</script>

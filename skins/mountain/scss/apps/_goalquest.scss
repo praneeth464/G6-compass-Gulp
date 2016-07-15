@@ -1,0 +1,144 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $goalquest_bgColor: ;
+// $goalquest_gradType: ;
+// $goalquest_gradMeta: ; // list the gradient non-color properties such as position, shape, etc.
+// $goalquest_gradStops: ; // list the stops as one would a series of raw gradient stops
+
+// $goalquest_iconColor: ;
+// $goalquest_titleColor: ;
+// $goalquest_titleFontFamily: ;
+// $goalquest_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $goalquest_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+// $goalquest_cp_bgColor: ;
+// $goalquest_cp_gradType: ;
+// $goalquest_cp_gradMeta: ; // list the gradient non-color properties such as position, shape, etc.
+// $goalquest_cp_gradStops: ; // list the stops as one would a series of raw gradient stops
+
+// $goalquest_cp_iconColor: ;
+// $goalquest_cp_titleColor: ;
+// $goalquest_cp_titleFontFamily: ;
+// $goalquest_cp_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $goalquest_cp_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+// $goalquest_wideIconColor: ;
+// $goalquest_wideTitleColor: ;
+// $goalquest_wideTitleFontFamily: ;
+// $goalquest_wideSubtitleColor: ;
+// $goalquest_wideSubtitleFontFamily: ;
+// $goalquest_wideTextColor: ;
+// $goalquest_wideTextAccentColor: ;
+// $goalquest_cp_wideTextAccentColor: ;
+// $goalquest_multiItemBgColor: ;
+// $goalquest_levelChosenIconColor: ;
+// $goalquest_levelOpenIconColor: ;
+// $goalquest_progressBarBorderRadius: ;
+// $goalquest_statusTxtBgColor: ;
+
+// $goalquest_pageMultiItemBgColor: ;
+// $goalquest_pageActiveLevelBg: ;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "goalquest/scss/goalquest";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================
+
+
+/* cheating to do image icons for GQ/CP only */
+.module.goalquest {
+    .icon-g5-goalquest,
+    .icon-g5-challengepoint {
+        text-indent: -9999px !important;
+        overflow: hidden;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+
+        &:before {
+            display: none;
+        }
+    }
+    @include module_titleIconViewFonticonsSizes(1, 'goalquest', 'goalquest', $imageOnly: true, $force: true);
+    @include module_titleIconViewFonticonsSizes(1, 'challengepoint', 'challengepoint', $imageOnly: true, $force: true);
+
+    &.grid-dimension-2x2.dataLoading .title-icon-view,
+    &.grid-dimension-4x2.dataLoading .title-icon-view {
+        @include module_titleIconViewFonticonsSizes(2, 'goalquest', 'goalquest', $imageOnly: true, $force: true);
+        @include module_titleIconViewFonticonsSizes(2, 'challengepoint', 'challengepoint', $imageOnly: true, $force: true);
+    }
+    &.grid-dimension-4x4.dataLoading .title-icon-view {
+        @include module_titleIconViewFonticonsSizes(4, 'goalquest', 'goalquest', $imageOnly: true, $force: true);
+        @include module_titleIconViewFonticonsSizes(4, 'challengepoint', 'challengepoint', $imageOnly: true, $force: true);
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2 .gqMultiple {
+        @include module_titleIconViewFonticonsSizes(1, 'goalquest', 'goalquest', $imageOnly: true, $force: true);
+        @include module_titleIconViewFonticonsSizes(1, 'challengepoint', 'challengepoint', $imageOnly: true, $force: true);
+    }
+    &.grid-dimension-4x2 {
+        @include module_titleIconViewFonticonsSizes(2, 'goalquest', 'goalquest', $imageOnly: true, $force: true);
+        @include module_titleIconViewFonticonsSizes(2, 'challengepoint', 'challengepoint', $imageOnly: true, $force: true);
+    }
+    &.grid-dimension-4x4 {
+        @include module_titleIconViewFonticonsSizes(2, 'goalquest', 'goalquest', $imageOnly: true, $force: true);
+        @include module_titleIconViewFonticonsSizes(2, 'challengepoint', 'challengepoint', $imageOnly: true, $force: true);
+
+        &.goalquestManager,
+        &.challengepointManager {
+            @include module_titleIconViewFonticonsSizes(4, 'goalquest', 'goalquest', $imageOnly: true, $force: true);
+            @include module_titleIconViewFonticonsSizes(4, 'challengepoint', 'challengepoint', $imageOnly: true, $force: true);
+        }
+    }
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2),
+           only screen and (min-resolution: 192dpi) {
+        .icon-g5-goalquest,
+        .icon-g5-challengepoint {
+            background-size: 100%;
+        }
+        @include module_titleIconViewFonticonsSizes(2, 'goalquest', 'goalquest', $imageOnly: true, $force: true);
+        @include module_titleIconViewFonticonsSizes(2, 'challengepoint', 'challengepoint', $imageOnly: true, $force: true);
+
+        &.grid-dimension-2x2.dataLoading .title-icon-view,
+        &.grid-dimension-4x2.dataLoading .title-icon-view {
+            @include module_titleIconViewFonticonsSizes(4, 'goalquest', 'goalquest', $imageOnly: true, $force: true);
+            @include module_titleIconViewFonticonsSizes(4, 'challengepoint', 'challengepoint', $imageOnly: true, $force: true);
+        }
+        &.grid-dimension-4x4.dataLoading .title-icon-view {
+            @include module_titleIconViewFonticonsSizes(8, 'goalquest', 'goalquest', $imageOnly: true, $force: true);
+            @include module_titleIconViewFonticonsSizes(8, 'challengepoint', 'challengepoint', $imageOnly: true, $force: true);
+        }
+
+        &.grid-dimension-2x2,
+        &.grid-dimension-4x2 .gqMultiple {
+            @include module_titleIconViewFonticonsSizes(2, 'goalquest', 'goalquest', $imageOnly: true, $force: true);
+            @include module_titleIconViewFonticonsSizes(2, 'challengepoint', 'challengepoint', $imageOnly: true, $force: true);
+        }
+        &.grid-dimension-4x2 {
+            @include module_titleIconViewFonticonsSizes(4, 'goalquest', 'goalquest', $imageOnly: true, $force: true);
+            @include module_titleIconViewFonticonsSizes(4, 'challengepoint', 'challengepoint', $imageOnly: true, $force: true);
+        }
+        &.grid-dimension-4x4 {
+            @include module_titleIconViewFonticonsSizes(4, 'goalquest', 'goalquest', $imageOnly: true, $force: true);
+            @include module_titleIconViewFonticonsSizes(4, 'challengepoint', 'challengepoint', $imageOnly: true, $force: true);
+
+            &.goalquestManager,
+            &.challengepointManager {
+                @include module_titleIconViewFonticonsSizes(8, 'goalquest', 'goalquest', $imageOnly: true, $force: true);
+                @include module_titleIconViewFonticonsSizes(8, 'challengepoint', 'challengepoint', $imageOnly: true, $force: true);
+            }
+        }
+    }
+}

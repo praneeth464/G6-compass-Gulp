@@ -1,0 +1,14 @@
+// Debug development assertions
+//ARNxyzzy//// Only being used in moduleSandboxARN.html at this point
+
+.assertPass:before {
+    content: 'PASS: ';
+    color:  blue;
+    font-weight: bold;
+}
+
+.assertFail:before {
+    content: 'FAIL: ';
+    color: red;
+    font-weight: bold;
+}

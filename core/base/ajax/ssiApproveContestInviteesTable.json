@@ -1,0 +1,101 @@
+{
+    "participants": {
+        "meta": {
+            "total": 4,
+            "paxPerPage": 2,
+            "currentPage": 2
+        },
+        "members":[
+            {
+                "id": "123",
+                "firstName": "Allie",
+                "lastName": "Smith",
+                "countryCode":"us",
+                "countryName":"United States",
+                "orgName": "Org Name",
+                "departmentName": "Department Name",
+                "jobName": "Job Title"
+            },
+            {
+                "id": "234",
+                "firstName": "Mark",
+                "lastName": "Lasers",
+                "countryCode":"us",
+                "countryName":"United States",
+                "orgName": "Org Name",
+                "departmentName": "Department Name",
+                "jobName": "Job Title"
+            },
+            {
+                "id": "345",
+                "firstName": "Bob",
+                "lastName": "Riley",
+                "countryCode":"us",
+                "countryName":"United States",
+                "orgName": "Org Name",
+                "departmentName": "Department Name",
+                "jobName": "Job Title"
+            },
+            {
+                "id": "456",
+                "firstName": "Chris",
+                "lastName": "Money",
+                "countryCode":"us",
+                "countryName":"United States",
+                "orgName": "Org Name",
+                "departmentName": "Department Name",
+                "jobName": "Job Title"
+            }
+        ]
+    },
+    "managers": {
+        "meta": {
+            "total": 4,
+            "paxPerPage": 2,
+            "currentPage": 2
+        },
+        "members":[
+            {
+                "id": "123",
+                "firstName": "Lance",
+                "lastName": "Smith",
+                "countryCode":"us",
+                "countryName":"United States",
+                "orgName": "Org Name",
+                "departmentName": "Department Name",
+                "jobName": "Job Title"
+            },
+            {
+                "id": "234",
+                "firstName": "Mark",
+                "lastName": "Lasers",
+                "countryCode":"us",
+                "countryName":"United States",
+                "orgName": "Org Name",
+                "departmentName": "Department Name",
+                "jobName": "Job Title"
+            },
+            {
+                "id": "345",
+                "firstName": "Bob",
+                "lastName": "Riley",
+                "countryCode":"us",
+                "countryName":"United States",
+                "orgName": "Org Name",
+                "departmentName": "Department Name",
+                "jobName": "Job Title"
+            },
+            {
+                "id": "456",
+                "firstName": "Chris",
+                "lastName": "Money",
+                "countryCode":"us",
+                "countryName":"United States",
+                "orgName": "Org Name",
+                "departmentName": "Department Name",
+                "jobName": "Job Title"
+            }
+        ]
+    }
+}
+

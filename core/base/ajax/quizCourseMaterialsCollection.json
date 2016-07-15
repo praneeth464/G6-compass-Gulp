@@ -1,0 +1,61 @@
+{
+	"messages":[],
+	"quizCourseMaterialsCollection":[
+		{
+			"id" : 3000,
+			"slideTitle": 		"The title for the slide. In this case, Course Materials (page 1).",
+			"slideContent":
+			[
+				{
+					"contentMedia":		"",
+					"contentText":		"<p>If only <strong>contentText</strong> has a value, it displays across the width of the page. If contentMedia and contentText both have values, they each take up 6 columns. I've designed the JSON model to support multiple rows of content per slide, if needed.</p>"
+				}
+			]
+		},
+		{
+			"id" : 3001,
+			"slideTitle": 		"The title for the slide. In this case, Course Materials (page 2).",
+			"slideContent":
+			[
+				{
+					"contentMedia":		"<p>Since a variety of formats can be presented for the media, this is being left as an escaped HTML box that back-end can send HTML into. Links to PDF's, embedded video, what have you. <a href='http://www.biworldwide.com/some/video'>Video link</a></p>",
+					"contentText":		"<p>Look at how this is now on the right-hand side. This is also escaped HTML, in order to work just as well if it is the only content on the page (text only, basically).</p>"
+				},
+				{
+					"contentMedia": "<p><img src='https://g5testpprd.performnet.com/g5test-cm/cm3dam/quiz/diy_quiz/1015_redo1.jpg' alt='Photo' class='thumb'/></p>",
+					"contentText": "This is important course material. Read it or die.<p></p>"
+				},
+				{
+					"contentMedia": "<p><a href='something/for/a.pdf'>PDF title</a></p>",
+					"contentText": "This is important course material. Read it or die.<p></p>"
+				}
+			]
+		},
+		{
+			"id" : 3002,
+			"slideTitle": 		"The title for the slide. In this case, Course Materials (page 3).",
+			"slideContent":
+			[
+				{
+					"contentMedia":		"<div id='PURLMainVideoWrapper' class='PURLMainVideoWrapper'><a href='http://www.youtube.com/watch?v=2Vk9Jd3ilh4' target='_blank'>Click here</a></div>",
+					"contentText":		"<p>Just text again. The previous/next buttons at this point are theoretically generated dynamically for these pages, since they are loaded as a collection.</p>"
+				}
+			]
+		},
+		{
+			"id" : 3003,
+			"slideTitle": 		"The title for the slide. In this case, Course Materials (page 4).",
+			"slideContent":
+			[
+				{
+					"contentMedia":		"<p>Here is content on the left side, again. (Pretend it's an embedded image)</p>",
+					"contentText":		"<p>Two rows of content this time. This is also the last slide of content, so the button on the bottom should be to complete instead of just go to the 'next' slide.</p>"
+				},
+				{
+					"contentMedia":		"",
+					"contentText":		"<p>A second row of content. This one should span all 12 columns again and sit inside its own row. Quiz detail and Quiz course material both load a collection of slides at a time, but the quiz itself will load each question dynamically to avoid any attempts to peek at quiz questions early.</p>"
+				}
+			]
+		}		
+	]
+}	

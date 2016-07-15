@@ -1,0 +1,272 @@
+<!-- ======== QUIZ PAGE ======== -->
+
+<div id="ssiPageView" class="quizPage-liner page-content">
+    <div id="ssiContestNav" class="page-topper">
+        <!-- SsiContestNavigationTpl -->
+    </div>
+    <div id="ssiContestView">
+        <!--  -->
+    </div>
+
+    <!-- JAVA NOTE: render the following HTML if the user has just awarded payout -->
+    <div class="modal hide fade autoModal recognitionResponseModal">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+
+            <h1>Success!</h1>
+
+            <p>Your payouts are being processed.</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function() {
+
+        G5.props.URL_SSI_ATN_ISSUE_AWARDS = "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiContestPageEdit.html&contestType=awardThemNow&awardThemNowStatus=issueMoreAwards";
+        G5.props.URL_SSI_ATN_CONTEST_SUMMARY = "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiContestSummaryATN.html";
+
+        // JAVA NOTE: url for participant drill down
+        // G5.props.URL_SSI_STACK_RANK_PARTICIPANT_PAGE = "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiParticipantPage.html";
+
+        // JAVA NOTE: url for denied contest list page
+        G5.props.URL_JSON_SSI_DENIED_CONTEST = G5.props.URL_ROOT+'ajax/ssiDeniedContests.json';
+
+        // todo
+        /*"archived": {
+            "contestType": "archived",
+        },*/
+
+        // JAVA NOTE: `contestData` represents a single bootstrapped contest.
+        var contestData;
+        /*
+        // Provide a contest object if the page should load with a contest
+        var contestData = {
+            "id": "1",
+            "contestType": "stepItUp",
+            "updatedOnDate": "03/01/2014",
+            "startDate": "08/16/2013",
+            "endDate": "09/16/2014",
+            "daysToEnd": 31,
+            "name": "Step It Up Example",
+            "description": "Lorem ipsum Commodo id irure aliqua qui mollit nulla anim Ut nulla occaecat anim sint cupidatat sint nulla incididunt nulla incididunt deserunt sit eu eiusmod voluptate in aliqua nisi laboris pariatur elit irure amet fugiat pariatur occaecat reprehenderit exercitation labore ut aliqua dolore labore in amet veniam ullamco qui ad eiusmod et consequat dolore sint dolore aliqua incididunt sint qui irure aliquip est velit est sint tempor nostrud Duis aliqua reprehenderit est tempor tempor sed exercitation ut incididunt exercitation eu eu veniam et in velit laborum do sint et culpa dolor nisi labore ut consectetur incididunt.",
+            "status": "live",
+            "attachmentTitle": "Contest Rules",
+            "attachmentUrl": "//placehold.it/300x300",
+            "activityDescription": "Activity Description",
+            "includeSubmitClaim": true,
+            "includeBonus": true,
+            "includeStackRanking": true,
+            "bonusForEvery": 1000,
+            "badge": {
+                "id":2504,
+                "type":"1 Year Anniversary",
+                "name":"1 Year Anniversary",
+                "howToEarnText":"1 Year Anniversary",
+                "img":"http://localhost:7001/pentag/assets/img/badges/service1_sm.png"
+            },
+            "baseline": 1000,
+            "payoutType": "points",
+            "contestLevels": [
+                {
+                    "id": 123,
+                    "name": "Level 1",
+                    "payout": 100,
+                    "isCurrentLevel": false,
+                    "isCompleted": true,
+                    "goalPercent": "105%",
+                    "goalAmount": "1,050",
+                    "goal": 30,
+                    "progress": 24,
+                    "remaining": 6
+                },
+                {
+                    "id": 124,
+                    "name": "Level 2",
+                    "payout": 200,
+                    "isCurrentLevel": false,
+                    "isCompleted": true,
+                    "goalPercent": "110%",
+                    "goalAmount": "1,100"
+                },
+                {
+                    "id": 125,
+                    "remaining": "118",
+                    "name": "Level 3",
+                    "payout": 300,
+                    "isCurrentLevel": true,
+                    "goalPercent": "105%",
+                    "goalAmount": "1,050",
+                    "goal": 30,
+                    "progress": 35,
+                    "remaining": 0
+                },
+                {
+                    "id": 126,
+                    "name": "Level 4",
+                    "payout": 400,
+                    "goalPercent": "120%",
+                    "goalAmount": "1,200"
+                },
+                {
+                    "id": 127,
+                    "name": "Level 5",
+                    "payout": 500,
+                    "goalPercent": "115%",
+                    "goalAmount": "1,150",
+                    "goal": 30,
+                    "progress": 24,
+                    "remaining": 6
+                    ,
+                    "includeBonus": true
+                }
+            ]
+        };*/
+
+
+        // draft, waiting_for_approval, approved, pending, live
+        // bootstrapped json for active contests
+        var activeContests = [
+            {
+                "id": "1",
+                "name": "A Step It Up Example",
+                "status": "waiting_for_approval",
+                "statusLabel": "Waiting for Approval",
+                "startDate": "08/16/2014",
+                "endDate": "09/16/2014",
+                "role": "creator",
+                "roleLabel": "Creator",
+                "detailPageUrl": "layout.html"
+            },
+            {
+                "id": "2",
+                "name": "E Do This Get That Example",
+                "status": "pending",
+                "statusLabel": "Pending",
+                "startDate": "03/10/2013",
+                "endDate": "09/16/2014",
+                "role": "creator",
+                "roleLabel": "Creator",
+                "detailPageUrl": "layout.html"
+            },
+            {
+                "id": "3",
+                "name": "B Objective Example",
+                "status": "pending",
+                "statusLabel": "Approved",
+                "startDate": "01/01/2014",
+                "endDate": "02/01/2014",
+                "role": "creator",
+                "roleLabel": "Creator",
+                "detailPageUrl": "layout.html"
+            },
+            /*{
+                "id": "3c",
+                "name": "Objective Completed Example",
+                "status": "live",
+                "statusLabel": "Complete",
+                "startDate": "01/01/2014",
+                "endDate": "02/01/2014",
+                "role": "creator",
+                "roleLabel": "Creator",
+                "detailPageUrl": "layout.html"
+            },*/
+            {
+                "id": "4",
+                "name": "X Stack Rank Example",
+                "status": "draft",
+                "statusLabel": "Incomplete",
+                "startDate": "05/20/2014",
+                "endDate": "02/01/2014",
+                "role": "creator",
+                "roleLabel": "Creator",
+                "detailPageUrl": "layout.html"
+            },
+            {
+                "id": "3",
+                "name": "X Objective Contest Example",
+                "status": "live",
+                "statusLabel": "Active",
+                "startDate": "05/20/2014",
+                "endDate": "01/01/2014",
+                "role": "creator",
+                "roleLabel": "Creator",
+                "detailPageUrl": "layout.html"
+            },
+            {
+                "id": "1",
+                "name": "Y Step It Up Contest Example",
+                "status": "live",
+                "statusLabel": "Active",
+                "startDate": "05/20/2014",
+                "endDate": "03/01/2015",
+                "role": "creator",
+                "roleLabel": "Creator",
+                "detailPageUrl": "layout.html"
+            },
+            {
+                "id": "7",
+                "name": "Z Stack Rank Example",
+                "status": "live",
+                "statusLabel": "Active",
+                "startDate": "05/20/2014",
+                "endDate": "02/01/2016",
+                "role": "manager",
+                "roleLabel": "Manager",
+                "detailPageUrl": "layout.html"
+            },
+            {
+                "id": "10",
+                "name": "Z Stack Rank Example",
+                "status": "live",
+                "statusLabel": "Active",
+                "startDate": "05/20/2014",
+                "endDate": "02/01/2016",
+                "role": "participant",
+                "roleLabel": "Participant",
+                "detailPageUrl": "layout.html"
+            },
+            {
+                "id": "8",
+                "name": "Denied",
+                "status": "denied",
+                "statusLabel": "Denied",
+                "startDate": "05/20/2014",
+                "endDate": "02/01/2016",
+                "role": "creator",
+                "roleLabel": "Creator",
+                "detailPageUrl": "layout.html"
+            },
+
+
+            {
+                "id": "9",
+                "name": "ATN Example Contest",
+                "startDate": "05/20/2014",
+                "status": "live",
+                "endDate": "02/01/2016",
+                "contestType": "awardThemNow"
+            }
+        ];
+
+        //attach the view to an existing DOM element
+        var ssiNav = new SSICreatorPageView({
+            contestData: contestData,
+            activeContests: activeContests,
+            el: $('#ssiPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'moduleSandbox.html'
+                }
+            },
+            pageTitle : 'SSI'
+        });
+    });
+</script>

@@ -1,0 +1,37 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $destinations_bgColor: ;
+// $destinations_gradType: ;
+// $destinations_gradMeta: ;
+// $destinations_gradStops: ;
+
+// $destinations_iconColor: ;
+// $destinations_titleColor: ;
+// $destinations_titleFontFamily: ;
+// $destinations_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $destinations_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+// $destinations_cycleDotWidth: ;
+// $destinations_cycleDotBkg: ;
+// $destinations_cycleDotBorder: ;
+// $destinations_cycleDotBkgHover: ;
+// $destinations_cycleDotBorderHover: ;
+// $destinations_cycleDotBkgActive: ;
+// $destinations_cycleDotBorderActive: ;
+// $destinations_cycleDotBorderRadius: ;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "destinations/scss/destinations";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

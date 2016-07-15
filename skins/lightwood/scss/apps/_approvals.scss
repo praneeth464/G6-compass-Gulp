@@ -1,0 +1,30 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $approvals_bgColor: ;
+// $approvals_gradType: ;
+// $approvals_gradMeta: ; // list the gradient non-color properties such as position, shape, etc.
+// $approvals_gradStops: ; // list the stops as one would a series of raw gradient stops
+
+// $approvals_iconColor: ;
+// $approvals_titleColor: ;
+// $approvals_titleFontFamily: ;
+// $approvals_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $approvals_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+$approvals_exportImgUrlPath: $appImagesPath;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "approvals/scss/approvals";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

@@ -1,0 +1,213 @@
+<h4 class="defaultName">{{_defContName.text}}</h4>
+
+<h5>How to collect contest data:</h5>
+<div class="control-group validateme"
+        data-validate-flags="nonempty"
+        data-validate-fail-msgs="{&quot;nonempty&quot; : &quot;Please make a choice&quot;}">
+    {{#if isUploadSpreadsheetAvailable}}
+    <label class="radio" for="collectDataMethodUploadSpreadsheet">
+        <input type="radio"
+                class="collectDataMethodRadio autoBind"
+                id="collectDataMethodUploadSpreadsheet"
+                name="collectDataMethod"
+                value="activityUpload"
+                data-model-key="collectDataMethod"
+                {{#eq collectDataMethod "activityUpload"}}checked{{/eq}}>
+        I want to collect the data via a spreadsheet.
+        <p>
+            Download a spreadsheet and update it with individual participant contest
+            activity. Upload the spreadsheet throughout the contest on the Contest
+            Detail page for the system to display the results.
+        </p>
+    </label>
+    {{/if}}
+    {{#if isFillOutFormAvailable}}
+    <label class="radio" for="collectDataMethodFillOutForm">
+        <input type="radio"
+                class="collectDataMethodRadio autoBind"
+                id="collectDataMethodFillOutForm"
+                name="collectDataMethod"
+                value="claimSubmission"
+                data-model-key="collectDataMethod"
+                {{#eq collectDataMethod "claimSubmission"}}checked{{/eq}}>
+        I want to build a claim form and have the participants submit the data.
+        <p>
+            Build a Claim Form for individual participants to submit their own contest
+            activity for the system to display the results. Approval process is included.
+        </p>
+    </label>
+    {{/if}}
+</div>
+
+
+
+<div id="buildAClaimForm" {{#ueq collectDataMethod "claimSubmission"}}style="display:none"{{/ueq}}>
+    <hr/>
+    <h3>Build Claim Form</h3>
+
+
+
+    <!--
+            888b.       w
+            8   8 .d88 w8ww .d88b
+            8   8 8  8  8   8.dP'
+            888P' `Y88  Y8P `Y88P
+    -->
+    <div class="control-group validateme claimDeadlineDateWrapper"
+        data-validate-flags="nonempty"
+        data-validate-fail-msgs='{"nonempty" : "Please enter a deadline date"}'>
+        <label class="control-label" for="claimDeadlineDate">Last date for participants to submit claims</label>
+        <div class="controls">
+            <!-- JAVA NOTE: set data-date-* attrs -->
+            <span class="input-append datepickerTrigger claimDeadlineDateTrigger"
+                    data-date-format="mm/dd/yyyy"
+                    data-date-language="en_US"
+                    data-date-todaydate="<?php echo date('m/d/Y')?>"
+                    data-date-autoclose="true">
+                <input type="text"
+                        id="claimDeadlineDate"
+                        data-model-key="claimDeadlineDate"
+                        readonly="readonly"
+                        class="date claimDeadlineDateInput"
+                        value="{{claimDeadlineDate}}">
+                <button class="btn" type="button"><i class="icon-calendar"></i></button>
+            </span>
+        </div>
+    </div>
+
+
+
+
+    <!--
+            8888 w       8    8
+            8www w .d88b 8 .d88 d88b
+            8    8 8.dP' 8 8  8 `Yb.
+            8    8 `Y88P 8 `Y88 Y88P
+    -->
+    <h4>Claim Form Fields</h4>
+
+    <!--subTpl.fieldItem=
+        <div class="fieldItem{{#if isSelected}} selected{{/if}}" id="field_{{name}}" data-field-name="{{name}}">
+            <div class="cellSort fieldCell">
+                {{#unless _editable}}
+                    &nbsp;
+                {{else}}
+                    <i class="icon-resize-vertical dragHandle"></i>
+                {{/unless}}
+            </div>
+            <div class="cellSelect fieldCell">
+                {{#unless _editable}}
+                    {{#if isSelected}}
+                        <i class="icon-ok"></i>
+                    {{else}}
+                        &nbsp;
+                    {{/if}}
+                {{else}}
+                    {{#if isSelected}}
+                        <i class="icon-ok selectBtn"></i>
+                    {{else}}
+                        <a href="#" class="addBtn">Add</a>
+                    {{/if}}
+                {{/unless}}
+            </div>
+            <div class="cellName fieldCell">
+                {{label}}<br>
+                <small>{{typeDisplay}}</small>
+            </div>
+            <div class="cellRequired fieldCell">
+                <label class="checkbox">
+                    {{#unless _editable}}
+                        <input type="checkbox" disabled="disabled" {{#if isRequired}}checked{{/if}} />Required
+                    {{else}}
+                        <input type="checkbox" {{#if isRequired}}checked{{/if}} />Required
+                    {{/unless}}
+                </label>
+            </div>
+        </div>
+    subTpl-->
+
+    <h5>Required System Fields</h5>
+    <div class="fieldItemListWrapper">
+        <div class="fieldItemList systemFields">
+            <!-- dyn -->
+        </div>
+    </div>
+
+    {{#_hasAdditionalFields}}
+    <h5>Additional Fields</h5>
+    <p>
+        Select from the predefined list of form fields below or add
+        your own fields. Drag and drop to change the display order
+        of your selected form fields.
+    </p>
+    <div class="fieldItemListWrapper">
+        <div class="fieldItemList additionalFields{{#ueq status "live"}} editable{{/ueq}}">
+            <!-- dyn -->
+        </div>
+    </div>
+    {{/_hasAdditionalFields}}
+
+    <!--
+
+        NOTE: This functionality removed for 5.5 release.
+
+    <div class="addNewFieldWrapper">
+        <div class="showFieldEditControls">
+            {{#ueq status "live"}}
+            <a href="#" class="showAddBtn">
+                Add a new field
+            </a>
+            {{/ueq}}
+        </div>
+        <div class="fieldEditor" style="display:none">
+            <div><strong>Add a New Field</strong></div>
+            <input class="newFieldLabel" type="text"
+                placeholder="enter field label" />
+            <span class="errMsg label label-important" style="display:none">required</span>
+
+            <div class="control-group">
+                <div>Field Type</div>
+                <select class="fieldTypeInp">
+                    {{#fieldTypes}}
+                        <option value="{{id}}">{{display}}</option>
+                    {{/fieldTypes}}
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label class="checkbox">
+                    <input class="isReqInp" type="checkbox" />Required
+                </label>
+            </div>
+
+            <div class="fieldEditorControls">
+                <button class="btn btn-small btn-primary addFieldBtn">
+                    Add
+                </button>
+                <button class="btn btn-small cancelAddFieldBtn">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+    -->
+
+    <div class="control-group">
+        <br>
+        <button class="previewBtn btn btn-primary">
+            Preview Claim Form
+        </button>
+    </div>
+    <div class="modal-stack container hide fade" id="previewClaimFormModal" data-y-offset="adjust">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+            <h3>
+                Preview Claim Form
+            </h3>
+        </div>
+        <div class="modal-body">
+            <!-- dynamic -->
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,241 @@
+// Partial-specific variables
+// =========================
+$wizardTabsView_stateLockedBorderColor: #B7B5B6 !default;
+$wizardTabsView_stateLockedTextColor:   $wizardTabsView_stateLockedBorderColor !default;
+$wizardTabsView_stateLockedNumberColor: false !default;
+$wizardTabsView_stateLockedIconColor:   false !default;
+
+$wizardTabsView_stateUnlockedBorderColor: #55B3E7 !default;
+$wizardTabsView_stateUnlockedTextColor:   $wizardTabsView_stateUnlockedBorderColor !default;
+$wizardTabsView_stateUnlockedNumberColor: false !default;
+$wizardTabsView_stateUnlockedIconColor:   false !default;
+
+$wizardTabsView_stateIncompleteBorderColor: #55B3E7 !default;
+$wizardTabsView_stateIncompleteTextColor:   $wizardTabsView_stateIncompleteBorderColor !default;
+$wizardTabsView_stateIncompleteNumberColor: false !default;
+$wizardTabsView_stateIncompleteIconColor:   $red !default;
+
+$wizardTabsView_stateCompleteBorderColor: #55B3E7 !default;
+$wizardTabsView_stateCompleteTextColor:   $wizardTabsView_stateCompleteBorderColor !default;
+$wizardTabsView_stateCompleteNumberColor: false !default;
+$wizardTabsView_stateCompleteIconColor:   $green !default;
+
+$wizardTabsView_stateActiveBorderColor: #3583B1 !default;
+$wizardTabsView_stateActiveTextColor:   $wizardTabsView_stateActiveBorderColor !default;
+$wizardTabsView_stateActiveNumberColor: false !default;
+$wizardTabsView_stateActiveIconColor:   false !default;
+
+$wizardTabsView_deedleDimension: 18px !default;
+$wizardTabsView_deedleColor: $wizardTabsView_stateActiveBorderColor !default;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+
+
+.wizardTabsView {
+    position: relative;
+
+    // clear the riff-raff for UL
+    padding: 0 0 ($baseLineHeight / 2) 0; // bottom room for deedle
+    margin: 0 0 $baseLineHeight 0; // bottom margin for room
+    list-style: none;
+    overflow: hidden;
+
+    .wtDeedle {
+        display: none;
+        position: absolute;
+        left: 50%;
+        bottom: - $wizardTabsView_deedleDimension / 2 + 2;
+        margin-left: - $wizardTabsView_deedleDimension / 2;
+        width: $wizardTabsView_deedleDimension;
+        height: $wizardTabsView_deedleDimension;
+        background: $wizardTabsView_deedleColor;
+        @include border-radius($wizardTabsView_deedleDimension / 2);
+    }
+    .active .wtDeedle {
+        display: block;
+    }
+    &.compactMode .wtDeedle { display: none; }
+
+    .wtTab {
+        display: block;
+        position: relative;
+        float: left;
+        overflow: visible;
+        line-height: normal;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    .wtTab.stateLocked {
+        cursor: default;
+    }
+
+    .wtTabLiner {
+        overflow: hidden;
+        position: relative;
+        padding: 0;
+        border-right: 1px solid $wizardTabsView_stateLockedBorderColor;
+        border-bottom: 4px solid $wizardTabsView_stateLockedBorderColor;
+        min-height: 32px;
+    }
+    .wtTab.last .wtTabLiner {
+        border-right: 0;
+    }
+    .wtNumber {
+        font-size: 32px;
+        line-height: 32px;
+        font-weight: bold;
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 0 8px; // left padding here
+    }
+    .wtName {
+        display: block;
+        padding: 8px 34px; // top/bottom padding here
+    }
+    .verticalCompact .wtName { // applied to tall text
+        line-height: 13px;
+    }
+    &.compactMode .wtName { 
+        display: none;
+    }
+    &.compactMode .active .wtName {
+        display: block;
+    }
+    &.compactMode.superCompactMode .active .wtName { 
+        display: none; 
+    }
+
+
+    .wtIconWrap {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 0; // right padding here
+    }
+    .wtIcon {
+        font-size: 28px;
+        line-height: 32px;
+        display: none; // js controls this
+        i { 
+            text-align: left; 
+            width: 30px;
+        }
+    }
+    &.compactMode.superCompactMode .wtIcon { 
+        font-size: 20px;
+        i {
+            width: 22px;
+        }
+    }
+
+    // state colorization
+    .wtTab {
+        &.stateLocked { 
+            color: $wizardTabsView_stateLockedTextColor;
+
+            .wtTabLiner {
+                border-color: $wizardTabsView_stateLockedBorderColor;
+            }
+            @if $wizardTabsView_stateLockedNumberColor {
+                .wtNumber {
+                    color: $wizardTabsView_stateLockedNumberColor;
+                }
+            }
+            @if $wizardTabsView_stateLockedIconColor {
+                // this icon color can never override active because a locked step cannot be active
+                .wtIcon {
+                    color: $wizardTabsView_stateLockedIconColor;
+                }
+            }
+        }
+        &.stateUnlocked { 
+            color: $wizardTabsView_stateUnlockedTextColor;
+
+            .wtTabLiner {
+                border-color: $wizardTabsView_stateUnlockedBorderColor;
+            }
+            @if $wizardTabsView_stateUnlockedNumberColor {
+                .wtNumber {
+                    color: $wizardTabsView_stateUnlockedNumberColor;
+                }
+            }
+            @if $wizardTabsView_stateUnlockedIconColor {
+                &, &.active { // this icon color overrides the active icon color
+                    .wtIcon {
+                        color: $wizardTabsView_stateUnlockedIconColor;
+                    }
+                }
+            }
+        }
+        &.stateIncomplete { 
+            color: $wizardTabsView_stateIncompleteTextColor;
+
+            .wtTabLiner {
+                border-color: $wizardTabsView_stateIncompleteBorderColor;
+            }
+            @if $wizardTabsView_stateIncompleteNumberColor {
+                .wtNumber {
+                    color: $wizardTabsView_stateIncompleteNumberColor;
+                }
+            }
+            @if $wizardTabsView_stateIncompleteIconColor {
+                &, &.active { // this icon color overrides the active icon color
+                    .wtIcon {
+                        color: $wizardTabsView_stateIncompleteIconColor;
+                    }
+                }
+            }
+        }
+        &.stateComplete { 
+            color: $wizardTabsView_stateCompleteTextColor;
+
+            .wtTabLiner {
+                border-color: $wizardTabsView_stateCompleteBorderColor;
+            }
+            @if $wizardTabsView_stateCompleteNumberColor {
+                .wtNumber {
+                    color: $wizardTabsView_stateCompleteNumberColor;
+                }
+            }
+            @if $wizardTabsView_stateCompleteIconColor {
+                &, &.active { // this icon color overrides the active icon color
+                    .wtIcon {
+                        color: $wizardTabsView_stateCompleteIconColor;
+                    }
+                }
+            }
+        }
+        &.active {
+            color: $wizardTabsView_stateActiveTextColor;
+
+            .wtTabLiner {
+                border-color: $wizardTabsView_stateActiveBorderColor;
+            }
+            @if $wizardTabsView_stateActiveNumberColor {
+                .wtNumber {
+                    color: $wizardTabsView_stateActiveNumberColor;
+                }
+            }
+            @if $wizardTabsView_stateActiveIconColor {
+                .wtIcon {
+                    color: $wizardTabsView_stateActiveIconColor;
+                }
+            }
+        }
+    }
+
+    // show hide icons
+    .stateUnlocked .iconUnlocked,
+    .stateLocked .iconLocked,
+    .stateIncomplete .iconIncomplete,
+    .stateComplete .iconComplete { display:block; }
+
+} //.wizardTabsView

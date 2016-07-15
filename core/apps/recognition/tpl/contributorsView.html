@@ -1,0 +1,194 @@
+<div class="contributorsView">
+
+    <h2>Select Contributors</h2>
+
+    <!-- **************************************************************
+        WizardTabsView
+     ***************************************************************** -->
+    <ul class="wizardTabsView" data-content=".wizardTabsContent">
+
+        <li class="wtTab"
+            data-tab-uid="1"
+            data-tab-name="stepCoworkers"
+            data-tab-content=".wizardTabsContent .stepCoworkersContent"
+            data-tab-state="unlocked" >
+            <div class="wtTabLiner">
+                <div class="wtNumber"><span><!-- auto --></span></div>
+                <div class="wtName"><span>Add Coworkers</span></div>
+                <div class="wtIconWrap">
+                    <span class="wtIcon iconLocked"><i class="icon-lock"></i></span>
+                    <span class="wtIcon iconUnlocked"></span>
+                    <span class="wtIcon iconIncomplete"><i class="icon-remove-sign"></i></span>
+                    <span class="wtIcon iconComplete"><i class="icon-ok-sign"></i></span>
+                </div>
+            </div>
+            <div class="wtDeedle">&nbsp;</div><!-- iff you want the nubbin -->
+        </li><!-- /.wtTab -->
+
+        <li class="wtTab"
+            data-tab-uid="2"
+            data-tab-name="stepOthers"
+            data-tab-content=".wizardTabsContent .stepOthersContent"
+            data-tab-state="locked" >
+            <div class="wtTabLiner">
+                <div class="wtNumber"><span><!-- auto --></span></div>
+                <div class="wtName"><span>Add Friends &amp; Family</span></div>
+                <div class="wtIconWrap">
+                    <span class="wtIcon iconLocked"><i class="icon-lock"></i></span>
+                    <span class="wtIcon iconUnlocked"></span>
+                    <span class="wtIcon iconIncomplete"><i class="icon-remove-sign"></i></span>
+                    <span class="wtIcon iconComplete"><i class="icon-ok-sign"></i></span>
+                </div>
+            </div>
+            <div class="wtDeedle">&nbsp;</div><!-- iff you want the nubbin -->
+        </li><!-- /.wtTab -->
+
+        <li class="wtTab"
+            data-tab-uid="3"
+            data-tab-name="stepPreview"
+            data-tab-content=".wizardTabsContent .stepPreviewContent"
+            data-tab-state="locked" >
+            <div class="wtTabLiner">
+                <div class="wtNumber"><span><!-- auto --></span></div>
+                <div class="wtName"><span>Preview Pending Invitations</span></div>
+                <div class="wtIconWrap">
+                    <span class="wtIcon iconLocked"><i class="icon-lock"></i></span>
+                    <span class="wtIcon iconUnlocked"></span>
+                    <span class="wtIcon iconIncomplete"><i class="icon-remove-sign"></i></span>
+                    <span class="wtIcon iconComplete"><i class="icon-ok-sign"></i></span>
+                </div>
+            </div>
+            <div class="wtDeedle">&nbsp;</div><!-- iff you want the nubbin -->
+        </li><!-- /.wtTab -->
+
+    </ul><!-- /.wizardTabsView -->
+
+
+
+    <!-- **************************************************************
+        WIZARD TABS CONTENT
+     ***************************************************************** -->
+    <div class="wizardTabsContent">
+
+        <!-- **************************************************************
+            COWORKERS
+         ***************************************************************** -->
+        <div class="stepCoworkersContent stepContent" style="display:none">
+
+            <p>
+                The recipient's team members have been pre-selected to receive invitations
+                to contribute to the PURL. To select multiple teams, first add the
+                contributors from one team and then select the next team.
+            </p>
+            <!--
+                Participant search view Element
+                - data-search-types: defines the dropdowns and autocompletes
+                - data-search-params: defines extra static parameters to send with autocomp and participant requests
+                - data-autocomp-delay: how long to wait after key entry to query server
+                - data-autocomp-min-chars: min num chars before querying server
+                - data-search-url: override search json provider (usually needed)
+                - data-select-mode: 'single' OR 'multiple' select behavior
+                - data-msg-select-txt: link to select (optional)
+                - data-msg-selected-txt: text to show something is selected (optional)
+            -->
+            <div class="" id="contributorSearchView"
+                data-default-filter-creation-btn-label="Search by Individual"
+                data-search-types='[{"id":"lastName","name":"Last Name"},{"id":"firstName","name":"First Name"},{"id":"location","name":"Location"},{"id":"jobTitle","name":"Job Title"},{"id":"department","name":"Department"}]'
+                data-search-params='{}'
+                data-autocomp-delay="500"
+                data-autocomp-min-chars="2"
+                data-autocomp-url="ajax/participantSearch_autocomp_firstName.json"
+                data-search-url="ajax/participantSearchResults_contributors.json"
+                data-select-mode="multiple"
+                data-msg-select-txt="add"
+                data-msg-selected-txt="<i class='icon icon-ok'></i>"
+                data-visibility-controls="hideOnly">
+                <!-- added by view -->
+            </div><!-- /#contributorSearchView -->
+
+        </div><!-- /.stepCoworkersContent -->
+
+        <!-- **************************************************************
+            OTHERS
+         ***************************************************************** -->
+        <div class="stepOthersContent stepContent" style="display:none">
+
+            <p>
+                To invite the recipient's friends and family to contribute,
+                enter their email addresses and click the Add button.
+                <span class="help-inline">Separate multiple email addresses with a semi-colon.</span>
+            </p>
+
+            <div class="row">
+                <div class="span10">
+
+                    <textarea class="contribEmailsInput"
+                        placeholder="example: emailaddress@company.com; Lastname, Firstname <emailaddress@company.com>; Firstname Lastname <emailaddress@company.com>"
+                        spellcheck="false"
+                    ></textarea>
+
+                    <div class="alert contribEmailsFeedback" style="display:none">
+                        <div class="msg errorEmailsFound">
+                            <b>Error(s) with the following email(s):</b><br>
+                            <div class="errorEmailsList">
+                                <!-- dyn -->
+                            </div>
+                        </div>
+                        <div class="msg noEmailsFound">
+                            No email addresses found.
+                        </div>
+                        <div class="msg emailsFound">
+                            added
+                            <span class="count"><!-- dyn --></span>
+                            email(s)
+                        </div>
+                    </div>
+
+                </div><!-- /.span10 -->
+                <div class="span2">
+                    <p>
+                        <button class="btn btn-primary btn-large addEmailsBtn">
+                            <i class="icon-plus"></i> Add
+                        </button>
+                    </p>
+                </div><!-- /.span2 -->
+            </div><!-- /.row -->
+
+        </div><!-- /.stepOthersContent -->
+
+        <!-- **************************************************************
+            PREVIEW
+         ***************************************************************** -->
+        <div class="stepPreviewContent stepContent" style="display:none">
+
+            <h5>Send invitations to the following people:</h5>
+
+        </div><!-- /.stepPreviewContent -->
+
+    </div><!-- /.wizardTabsContent -->
+
+
+    <!-- all contributors -->
+    <div class="well container-splitter participantCollectionViewWrapper">
+        <h4>Selected Contributors</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th class="participant sortable" data-sort-selector=".name">Contributor</th>
+                    <th class="type sortable" data-sort-selector=".sourceType">Type</th>
+                    <th class="invitationSent sortable" data-sort-selector=".sortOnMe">Invitation Sent</th>
+                    <th class="remove">Remove</th>
+                </tr>
+            </thead>
+
+            <tbody id="allContributorsView"
+                class="participantCollectionView"
+                data-msg-empty="No Contributors"
+                data-msg-all-invited="No invitations to send"
+                data-hide-on-empty="false">
+            </tbody>
+        </table>
+    </div><!-- /.participantCollectionViewWrapper -->
+
+
+</div><!-- /.contributorsView -->

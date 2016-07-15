@@ -1,0 +1,55 @@
+<!-- ======== QUIZ PAGE SHELL ======== -->
+
+<div id="quizPageView" class="quizPageMaterials-liner page-content">
+    <div id="quizPageShell">
+        <!--dynamic content here-->
+    </div>
+</div>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function() {
+
+        //attach the view to an existing DOM element
+        window.activeQuizView = new ActiveQuizView({
+            el:$('#quizPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html?tpl=quizPage&tplPath=apps/quiz/tpl/'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Take a Quiz'
+        });
+
+    });
+</script>
+
+<!-- NOTE: the following includes were added to make this shell behave like the JSP -->
+<script type="text/template" id="quizPageShellTemplateTpl">
+    <?php include("quizPageShellTemplate.html"); ?>
+</script>
+
+<script type="text/template" id="quizPageDetailsTpl">
+    <?php include("quizPageDetails.html"); ?>
+</script>
+
+<script type="text/template" id="quizPageCourseMaterialsTpl">
+    <?php include("quizPageCourseMaterials.html"); ?>
+</script>
+
+<script type="text/template" id="quizPageQuestionTpl">
+    <?php include("quizPageQuestion.html"); ?>
+</script>
+
+<script type="text/template" id="quizPageAnswerTpl">
+    <?php include("quizPageAnswer.html"); ?>
+</script>
+
+<script type="text/template" id="quizPageResultsTpl">
+    <?php include("quizPageResults.html"); ?>
+</script>

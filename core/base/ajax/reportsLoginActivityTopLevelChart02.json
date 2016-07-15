@@ -1,0 +1,14 @@
+{
+  "messages": [],
+  "chart": {},
+  "data": [
+    {
+      "label": "???login.activity.STATUS???",
+      "value": "2"
+    },
+    {
+      "label": "???notlogin.activity.STATUS???",
+      "value": "233"
+    }
+  ]
+}

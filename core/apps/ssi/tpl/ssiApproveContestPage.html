@@ -1,0 +1,457 @@
+<div id="ssiApproveContestPageView" class="page-content">
+
+    <div id="ssiApproveContestSummary">
+        <!-- SSI Approve Contest Summary dynamically loaded -->
+    </div>
+    <div id="ssiApproveContestDetails" style="display:none">
+        <!-- SSI Approve Contest Details dynamically loaded -->
+    </div>
+
+    <div class="ssiDenyContestPopover" style="display: none">
+        <form id="ssiADenyContest" method="post" action="layout.html?tplPath=../apps/approvals/tpl/&tpl=approvalsPageIndex.html" enctype="multipart/form-data">
+            <div class="control-group validateme"
+                data-validate-fail-msgs='{"nonempty":"You must enter a reason for denial."}'
+                data-validate-flags='nonempty'>
+                <button type="button" class="close">&times;</button>
+                <label class="control-label">Reason For Denial</label>
+                <div class="commentTools">
+                    <span class="spellchecker dropdown">
+                        <button class="checkSpellingDdBtn btn dropdown-toggle"
+                                title="check spelling"
+                                type="button"
+                                data-toggle="dropdown">
+                            <i class="icon-check"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="check"><b>Check spelling</b></a></li>
+                        </ul>
+                    </span>
+                    Remaining Characters: <span class="remChars">&nbsp;</span>
+                </div>
+                <div class="controls">
+                    <div class="contribCommentWrapper">
+                        <textarea class="contribCommentInp" rows="4" maxlength="1000" placeholder="add a comment" name="comment"></textarea>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary ssiDenyContestSubmit" name="status" value="denied">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div><!--/.ssiDenyContestPopover-->
+</div><!--/#ssiApproveContestPageView-->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function() {
+        var contestData,
+            exampleData = {}; // FE ONLY
+
+        // Provide a contest object if the page should load with a contest
+       exampleData.stackRank =
+           {
+                "id": "4",
+                "clientState": "AlY01PSM1juDesAVNC5olTvtDaKv%2FigT5abqEcBR%2BzGBR7QUVLsL5H9u%2BBEm20kVqrp4DJuXxgkq%0AJr9CT%2FIX83fP4gJ0pyt9RkHyBXtXuZYTdWN45zLngf0WGCNeswjLyiHMFOP9%2B9huArPENnsImAoO%0AjBcNi2aSEAkcYMmzZxLB7eKCOSZWIEq0HC5p01L2I1lqcSQiVxRxVjWQqE5W4g7yp6%2BZHnMuPzGd%0A45OueXoC82%2BbOy3lg9g3K1BmjSiV4kmKe4FdDYfBR%2BDHMsaZw0zNL1mKpneTDGZe%2BdH2AdUv%2B3xG%0A7u19lRNP8jI%3D",
+                "contestType": "stackRank", //OPTIONS: objectives|stackRank|doThisGetThat|stepItUp
+                "startDate": "01/01/2014",
+                "endDate": "02/01/2014",
+                "tileStartDate": "01/01/2014",
+                "contestCreator": "Bob Smith",
+                "approvalRequired": true,
+                "approvalLevels": [
+                    {
+                        "id": 123,
+                        "name": "Level 1",
+                        "approved": false,
+                        "approverList": [
+                            {
+                                "id": 21,
+                                "name": "LastName, FirstName"
+                            },
+                            {
+                                "id": 22,
+                                "name": "LastName, FirstName"
+                            },
+                            {
+                                "id": 23,
+                                "name": "LastName, FirstName"
+                            },
+                            {
+                                "id": 24,
+                                "name": "LastName, FirstName"
+                            },
+                            {
+                                "id": 25,
+                                "name": "LastName, FirstName"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 234,
+                        "name": "Level 2",
+                        "approved": false,
+                        "approverList": [
+                            {
+                                "id": 21,
+                                "name": "LastName, FirstName"
+                            },
+                            {
+                                "id": 22,
+                                "name": "LastName, FirstName"
+                            },
+                            {
+                                "id": 23,
+                                "name": "LastName, FirstName"
+                            },
+                            {
+                                "id": 24,
+                                "name": "LastName, FirstName"
+                            },
+                            {
+                                "id": 25,
+                                "name": "LastName, FirstName"
+                            }
+                        ]
+                    }
+                ],
+                "name": "Super Summer Stack Rank Contest",
+                "description": "Lorem ipsum Officia occaecat occaecat quis do aliqua ut reprehenderit id cupidatat eu amet ex in.",
+                "includeMessage": true,
+                "message": "Incididunt sint qui irure aliquip est velit est sint tempor nostrud Duis aliqua reprehenderit est tempor tempor sed exercitation ut incididunt exercitation eu eu veniam et in velit laborum do sint et culpa dolor nisi labore ut consectetur incididunt.",
+                "attachmentTitle": "Contest Rules",
+                "attachmentUrl": "//placehold.it/300x300",
+                "activityDescription": "Activity Description",
+                "activityMeasuredIn": "currency",
+                "activityMeasuredName": "Currency",
+                "minimumQualifier": "20,000.0800",
+                "goal": "3,200,000.0090",
+                "maximumPayout": "129,000",
+                "payoutType": "other",
+                "payoutTypeName": "points",
+                "participantsCount": "27",
+                "managersCount": "3",
+                "chargeContestTo": "Participants Org Unit",
+                "ranksToPayout": "5",
+                "status": "waiting_for_approval", // draft|waiting_for_approval|denied|pending|live|closed
+                "role": "creator"
+            };
+
+        exampleData.doThisGetThat =
+            {
+                "id": "2",
+                "clientState": "AlY01PSM1juDesAVNC5olTvtDaKv%2FigT5abqEcBR%2BzGBR7QUVLsL5H9u%2BBEm20kVqrp4DJuXxgkq%0AJr9CT%2FIX83fP4gJ0pyt9RkHyBXtXuZYTdWN45zLngf0WGCNeswjLyiHMFOP9%2B9huArPENnsImAoO%0AjBcNi2aSEAkcYMmzZxLB7eKCOSZWIEq0HC5p01L2I1lqcSQiVxRxVjWQqE5W4g7yp6%2BZHnMuPzGd%0A45OueXoC82%2BbOy3lg9g3K1BmjSiV4kmKe4FdDYfBR%2BDHMsaZw0zNL1mKpneTDGZe%2BdH2AdUv%2B3xG%0A7u19lRNP8jI%3D",
+                "contestType": "doThisGetThat",//OPTIONS: objectives|stackRank|doThisGetThat|stepItUp
+                "startDate": "08/16/2013",
+                "endDate": "09/16/2014",
+                "tileStartDate": "01/01/2014",
+                "contestCreated": "01/01/2015",
+                "contestCreator": "Bob Smith",
+                "approvalRequired": false,
+                "name": "Super Summer Do This Get That Contest",
+                "description": "Lorem ipsum Commodo id irure aliqua qui mollit nulla anim Ut nulla occaecat anim sint cupidatat sint nulla incididunt nulla incididunt deserunt sit eu eiusmod voluptate in aliqua nisi laboris.",
+                "includeMessage": true,
+                "message": "Incididunt sint qui irure aliquip est velit est sint tempor nostrud Duis aliqua reprehenderit est tempor tempor sed exercitation ut incididunt exercitation eu eu veniam et in velit laborum do sint et culpa dolor nisi labore ut consectetur incididunt.",
+                "attachmentTitle": "Contest Rules",
+                "attachmentUrl": "//placehold.it/300x300",
+                "payoutType": "points",
+                "payoutTypeName": "points",
+                "participantsCount": "27",
+                "managersCount": "3",
+                "badge": {
+                    "id":2504,
+                    "name":"1 Year Anniversary",
+                    "img":"http://localhost:7001/pentag/assets/img/badges/service1_sm.png"
+                },
+                "activities": [
+                    {
+                        "forEvery": "1",
+                        "minQualifier": "3",
+                        "individualPayoutCap": "1,000",
+                        "maxPayout": "4,600,000",
+                        "goal": "20",
+                        "description": "Widgets",
+                        "payoutType": "points",
+                        "maxPotential": "$2,000",
+                        "payoutDescription": "$50 gift card",
+                        "payoutAmount": "50"
+                    },
+                    {
+                        "forEvery": "5",
+                        "minQualifier": "5",
+                        "individualPayoutCap": "1,000",
+                        "maxPayout": "4,600,000",
+                        "goal": "10",
+                        "description": "More widgets",
+                        "payoutType": "points",
+                        "maxPotential": "$2,000",
+                        "payoutDescription": "$25 gift card",
+                        "payoutAmount": "25"
+                    }
+                ],
+                "totalMaxPayout": "8,800,000",
+                "chargeContestTo": "Creator Org Unit",
+                "includeStackRanking": false,
+                "status": "waiting_for_approval" // draft|waiting_for_approval|denied|pending|live|closed
+            };
+
+        exampleData.stepItUp =
+            {
+                "id": "1",
+                "clientState": "AlY01PSM1juDesAVNC5olTvtDaKv%2FigT5abqEcBR%2BzGBR7QUVLsL5H9u%2BBEm20kVqrp4DJuXxgkq%0AJr9CT%2FIX83fP4gJ0pyt9RkHyBXtXuZYTdWN45zLngf0WGCNeswjLyiHMFOP9%2B9huArPENnsImAoO%0AjBcNi2aSEAkcYMmzZxLB7eKCOSZWIEq0HC5p01L2I1lqcSQiVxRxVjWQqE5W4g7yp6%2BZHnMuPzGd%0A45OueXoC82%2BbOy3lg9g3K1BmjSiV4kmKe4FdDYfBR%2BDHMsaZw0zNL1mKpneTDGZe%2BdH2AdUv%2B3xG%0A7u19lRNP8jI%3D",
+                "contestType": "stepItUp",//OPTIONS: objectives|stackRank|doThisGetThat|stepItUp
+                "startDate": "08/16/2013",
+                "endDate": "09/16/2014",
+                "tileStartDate": "01/01/2014",
+                "contestCreator": "Bob Smith",
+                "approvalRequired": true,
+                "approvalLevels": [
+                    {
+                        "id": 123,
+                        "name": "Level 1",
+                        "approved": false,
+                        "approverList": [
+                            {
+                                "id": 21,
+                                "name": "LastName, FirstName"
+                            },
+                            {
+                                "id": 22,
+                                "name": "LastName, FirstName"
+                            },
+                            {
+                                "id": 23,
+                                "name": "LastName, FirstName"
+                            },
+                            {
+                                "id": 24,
+                                "name": "LastName, FirstName"
+                            },
+                            {
+                                "id": 25,
+                                "name": "LastName, FirstName"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 234,
+                        "name": "Level 2",
+                        "approved": false,
+                        "approverList": [
+                            {
+                                "id": 21,
+                                "name": "LastName, FirstName"
+                            },
+                            {
+                                "id": 22,
+                                "name": "LastName, FirstName"
+                            },
+                            {
+                                "id": 23,
+                                "name": "LastName, FirstName"
+                            },
+                            {
+                                "id": 24,
+                                "name": "LastName, FirstName"
+                            },
+                            {
+                                "id": 25,
+                                "name": "LastName, FirstName"
+                            }
+                        ]
+                    }
+                ],
+                "name": "Super Summer Step It Up Contest",
+                "description": "Lorem ipsum Commodo id irure aliqua qui mollit nulla anim Ut nulla occaecat anim sint cupidatat sint nulla incididunt nulla incididunt deserunt sit eu eiusmod voluptate in aliqua nisi laboris pariatur elit irure amet f,ugiat pariatur occaecat reprehenderit exercitation labore ut aliqua dolore labore in amet veniam ullamco qui ad eiusmod et consequat dolore sint dolore aliqua incididunt sint qui irure aliquip est velit est sint tempor nostrud Duis aliqua reprehenderit est tempor tempor sed exercitation ut incididunt exercitation eu eu veniam et in velit laborum do sint et culpa dolor nisi labore ut consectetur incididunt.",
+                "includeMessage": true,
+                "message": "Incididunt sint qui irure aliquip est velit est sint tempor nostrud Duis aliqua reprehenderit est tempor tempor sed exercitation ut incididunt exercitation eu eu veniam et in velit laborum do sint et culpa dolor nisi labore ut consectetur incididunt.",
+                "attachmentTitle": "Contest Rules",
+                "attachmentUrl": "placehold.it/300x300",
+                "activityDescription": "Activity Description",
+                "activityMeasuredIn": "Currency",
+                "activityMeasuredName": "Currency",
+                "activityMeasuredValue": "2,000",
+                "includeBonus": true,
+                "individualBonusCap": "5,000",
+                "individualBaseline": true,
+                "includeStackRanking": true,
+                "bonus": "For every 1,000 over the Level 3 Objective, the participant will earn 500 points",
+                "goal": "$250,000 USD",
+                "payoutType": "points",
+                "payoutTypeName": "points",
+                "maximumPayout": "50,000",
+                "maximumPayoutBonus": "100,000",
+                "maximumPotential": "$100,000 USD",
+                "chargeContestTo": "332345",
+                "participantsCount": "27",
+                "managersCount": "3",
+                "contestLevels": [
+                    {
+                        "id": 123,
+                        "name": "Level 1",
+                        "isFirstLevel":true,
+                        "payout": "100",
+                        "activityLabel": "Currency over Baseline",
+                        "payoutDescription": "$25 gift card",
+                        "badge": null
+                    },
+                    {
+                        "id": 124,
+                        "name": "Level 2",
+                        "payout": "200",
+                        "activityLabel": "Currency over Baseline",
+                        "payoutDescription": "$50 gift card",
+                        "badge": {
+                            "id":2504,
+                            "name":"Level 2 Badge",
+                            "img":"img/badges/Level2_sm.png"
+                        }
+                    },
+                    {
+                        "id": 125,
+                        "remaining": "118",
+                        "name": "Level 3",
+                        "activityLabel": "Currency over Baseline",
+                        "payout": "300",
+                        "payoutDescription": "$75 gift card",
+                        "badge": {
+                            "id":2504,
+                            "name":"Level 3 Badge",
+                            "img":"img/badges/Level3_sm.png"
+                        }
+                    },
+                    {
+                        "id": 126,
+                        "name": "Level 4",
+                        "activityLabel": "Currency over Baseline",
+                        "payout": "400",
+                        "payoutDescription": "$100 gift card",
+                        "badge": {
+                            "id":2504,
+                            "name":"Level 4 Badge",
+                            "img":"img/badges/silver_sm.png"
+                        }
+                    },
+                    {
+                        "id": 127,
+                        "name": "Level 5",
+                        "isLastLevel": true,
+                        "payout": "500",
+                        "activityLabel": "Currency over Baseline",
+                        "payoutDescription": "$150 gift card",
+                        "badge": {
+                            "id":2504,
+                            "name":"Level 5 Badge",
+                            "img":"img/badges/gold_sm.png"
+                        }
+                    }
+                ],
+                "status": "waiting_for_approval" // draft|waiting_for_approval|denied|pending|live|closed
+            };
+
+        exampleData.objectives =
+            {
+                "id": "3",
+                "clientState": "AlY01PSM1juDesAVNC5olTvtDaKv%2FigT5abqEcBR%2BzGBR7QUVLsL5H9u%2BBEm20kVqrp4DJuXxgkq%0AJr9CT%2FIX83fP4gJ0pyt9RkHyBXtXuZYTdWN45zLngf0WGCNeswjLyiHMFOP9%2B9huArPENnsImAoO%0AjBcNi2aSEAkcYMmzZxLB7eKCOSZWIEq0HC5p01L2I1lqcSQiVxRxVjWQqE5W4g7yp6%2BZHnMuPzGd%0A45OueXoC82%2BbOy3lg9g3K1BmjSiV4kmKe4FdDYfBR%2BDHMsaZw0zNL1mKpneTDGZe%2BdH2AdUv%2B3xG%0A7u19lRNP8jI%3D",
+                "contestType": "objectives",//OPTIONS: objectives|stackRank|doThisGetThat|stepItUp
+                "startDate": "01/01/2014",
+                "endDate": "02/01/2014",
+                "tileStartDate": "01/01/2014",
+                "contestCreator": "Bob Smith",
+                "approvalRequired": true,
+                "approvalLevels": [
+                    {
+                        "id": 123,
+                        "name": "Level 1",
+                        "approved": true,
+                        "approvedBy": "Nancy Smith"
+                    },
+                    {
+                        "id": 234,
+                        "name": "Level 2",
+                        "approved": false,
+                        "approverList": [
+                            {
+                                "id": 21,
+                                "name": "LastName, FirstName"
+                            },
+                            {
+                                "id": 22,
+                                "name": "LastName, FirstName"
+                            },
+                            {
+                                "id": 23,
+                                "name": "LastName, FirstName"
+                            },
+                            {
+                                "id": 24,
+                                "name": "LastName, FirstName"
+                            },
+                            {
+                                "id": 25,
+                                "name": "LastName, FirstName"
+                            }
+                        ]
+                    }
+                ],
+                "name": "Super Summer Objectives Contest",
+                "description": "Lorem ipsum Esse eiusmod nostrud dolore laboris amet laborum cillum cillum dolor esse dolor mollit quis qui irure quis veniam consequat et qui sed anim est occaecat in commodo voluptate.",
+                "includeMessage": true,
+                "message": "<p>Incididunt <i>sint qui irure</i> <b>aliquip est</b> velit est sint tempor nostrud Duis aliqua reprehenderit est tempor tempor sed exercitation ut incididunt exercitation eu eu veniam et in velit laborum do sint et culpa dolor nisi labore ut consectetur incididunt.</p>",
+                "attachmentTitle": "Contest Rules",
+                "attachmentUrl": "//placehold.it/300x300",
+                "activityDescription": "Objective Description",
+                "activityMeasuredIn": "currency",
+                "activityMeasuredName": "Currency",
+                "includeBonus": true,
+                "bonus": "For every 1,000 over the Objective, the participant will earn 500 points",
+                "individualBonusCap": "5,000",
+                "includeStackRanking": true,
+                "badge": {
+                    "id":2504,
+                    "name":"1 Year Anniversary",
+                    "img":"img/badges/service1_sm.png"
+                },
+                "goal": "1,000.0010",
+                "objectiveAmount": "300,000.0090",
+                "payoutAmount": "2,000",
+                "maximumPayout": "50,000",
+                "maximumPayoutBonus": "100,000",
+                "payoutType": "points",
+                "payoutTypeName": "points",
+                "payoutDescription": "$50 gift card",
+                "maximumPotential": "$100,000 USD",
+                "chargeContestTo": "Creator Org Unit",
+                "participantsCount": "27",
+                "managersCount": "3",
+                "status": "waiting_for_approval" // draft|waiting_for_approval|denied|pending|live|closed
+            };
+
+        // FE ONLY **************************************************************************************
+        contestData = exampleData[G5.props.urlParams.contestType || 'objectives']; // default to objectives
+        if(G5.props.urlParams.status) {
+            contestData.status = G5.props.urlParams.status;
+        }
+        if(G5.props.urlParams.role) {
+            contestData.role = G5.props.urlParams.role;
+        }
+        // END: FE ONLY *********************************************************************************
+
+
+        //attach the view to an existing DOM element
+        var ssiNav = new SSIApproveContestPageView({
+            el: $('#ssiApproveContestPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'moduleSandbox.html'
+                }
+            },
+            pageTitle : 'Approve Contest',
+            contestData: contestData
+        });
+    });
+</script>

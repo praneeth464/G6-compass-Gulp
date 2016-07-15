@@ -1,0 +1,16 @@
+<div id="recogCalcScoreWrapper" class="recogCalcScoreWrapper">
+	<div id="recogCalcTotalWrapper" class="recogCalcTotalWrapper">
+		<span id="recogCalcTotalLabel" class="recogCalcTotalLabel">Total Score: </span>
+		<span id="recogCalcTotal" class="recogCalcTotal">{{totalScore}}</span>
+	</div>
+	{{#if isRange}}
+	<p>Select Amount {{{awardRange}}}</p>
+	{{/if}}
+	{{#if hasFixed}}
+	<p class="recogCalcFixedAward">Award Amount: {{fixedAmount}}</p>
+	{{/if}}
+	{{#if hasAwardLevel}}
+	<p class="recogCalcFixedAward">Award Level: {{{awardLevel}}}</p>
+	{{/if}}
+	<button disabled="disabled">Save</button>
+</div>

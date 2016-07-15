@@ -1,0 +1,73 @@
+// App-specific variables
+// =========================
+$celebrationAnniversaryFacts_bgColor: $g5ModuleBgColor !default;
+$celebrationAnniversaryFacts_gradType: $g5ModuleGradType !default;
+$celebrationAnniversaryFacts_gradMeta: $g5ModuleGradMeta !default;
+$celebrationAnniversaryFacts_gradStops: $g5ModuleGradStops !default;
+
+$celebrationAnniversaryFacts_yearTitleColor: #555555 !default;
+$celebrationAnniversaryFacts_yearBgColor: #555555 !default;
+$celebrationAnniversaryFacts_yearTextColor: $white !default;
+
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.celebrationAnniversaryFacts {
+
+} /* /.celebrationAnniversaryFacts  */
+
+/* ----- MODULE STYLES ----- */
+.module.celebrationAnniversaryFacts {
+
+    .wide-view {
+        padding: 0;
+    }
+
+    .carousel {
+
+        .item {
+            height: 321px;
+        }
+
+        .year-content {
+            bottom: 0;
+            position: absolute;
+            width: 170px;
+
+            .year {
+                color: $celebrationAnniversaryFacts_yearTitleColor;
+                font: $baseFontSize * 8.5 $celebration_secondaryFontFamily;
+                margin-left: -5px;
+                position: relative;
+                text-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+                top: 8px;
+                z-index: 1;
+            }
+
+            .year-desc {
+                background-color: $celebrationAnniversaryFacts_yearBgColor;
+                color: $celebrationAnniversaryFacts_yearTextColor;
+                line-height: 1.2;
+                margin: -30px 0 0 0;
+                max-height: 190px;
+                min-height: 64px;
+                overflow: hidden;
+                padding: 10px;
+                position: relative;
+                text-overflow: ellipsis;
+                z-index: 2;
+            }
+        }
+    }
+} /* /.module.celebrationAnniversaryFacts  */
+
+/* ----- PAGE STYLES ----- */
+.page.celebrationAnniversaryFacts {
+
+} /* /.page.celebrationAnniversaryFacts  */

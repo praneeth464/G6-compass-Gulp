@@ -1,0 +1,26 @@
+        <!-- Render Alerts to Alerts and Messages Page-->
+<tr>
+    <td>
+        {{#if alertId}}
+            {{#if alertText}}
+                <strong>
+                    <a data-alertId="{{{alertId}}}" class="viewDetails" href="#"\>{{alertSubject}}</a>
+                </strong>
+            {{else}}
+                {{alertSubject}}
+            {{/if}}
+        {{/if}}
+    </td>
+    <td>
+        {{datePostedDisplay}}
+    </td>
+    <td>
+        {{dueDateDisplay}}
+    </td>
+    <td>
+        {{#if isLink}}
+            <a href="{{alertLinkUrl}}" {{#if openNewWindow}}target="_blank"{{/if}}class="btn btn-primary">{{alertLinkText}}</a>
+        {{/if}}
+    </td>
+</tr>
+       

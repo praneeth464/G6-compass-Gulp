@@ -1,0 +1,81 @@
+<div class="">
+
+    <div id="activeLevelMask" class="mask" style="display:none"></div>
+
+    <div class="levels well container-splitter">
+
+        <div class="lockUI" style="display:none"></div>
+
+        <div class="levelItem noLevels text-error" style="display:none">
+            <i class="icon-exclamation-sign"></i>
+            No levels added. Please add at least two levels.
+        </div>
+
+        <div class="levelItem headerDescriptions" style="display: none">
+            <div class="levelHeader levelSequenceNumber">
+                <span>Level</span>
+            </div>
+            <div class="levelHeader levelAmount">
+                <span class="msg measureLabel amount hide">Amount</span>
+                <span class="msg measureLabel currency hide">Currency</span>
+                <span class="msg measureLabel percentOverBaseline hide">% over Baseline</span>
+                <span class="msg measureLabel amountOverBaseline hide">Amount over Baseline</span>
+                <span class="msg measureLabel currencyOverBaseline hide">Currency over Baseline</span>
+            </div>
+            <div class="levelHeader levelPayout">
+                <span>Payout</span>
+            </div>
+            <div class="levelHeader levelPayoutDesc">
+                <span>
+                    Payout<br> Description
+                    <i class="icon-info-sign pageView_help"
+                        data-help-content="Describe the specific award a recipient who reaches that level will receive."></i>
+                </span>
+            </div>
+            <div class="levelHeader levelBadge">
+                <span>Badge</span>
+            </div>
+            <div class="levelHeader levelEdit">
+                <span>Edit</span>
+            </div>
+            <div class="levelHeader levelRemove">
+                <span>Remove</span>
+            </div>
+        </div><!-- /.levelItem.headerDescriptions -->
+
+        <div class="levelList ui-sortable">
+            <!-- levels rendered here -->
+        </div><!-- /.levelList -->
+
+        <div class="newLevel">
+            <!-- single new level rendered here -->
+        </div><!-- /.newLevel -->
+
+
+        <div class="bottomControls">
+            <button class="btn btn-primary addLevelBtn">
+                <i class="icon-plus-sign"></i> Add level
+            </button>
+        </div><!-- /.bottomControls -->
+
+
+        <div class="levelRemoveDialog" style="display:none">
+            <p>
+                <i class="icon-question-sign"></i>
+                <b>Remove Level?</b>
+            </p>
+            <p>
+                All level data will be lost.
+            </p>
+            <p class="tc">
+                <a class="btn btn-small confirmBtn closeTip">Yes</a>
+                <a class="btn btn-small cancelBtn closeTip">No</a>
+            </p>
+        </div><!-- /.levelRemoveDialog -->
+
+
+    </div><!-- /.levels -->
+
+
+
+</div>

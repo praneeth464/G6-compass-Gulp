@@ -1,0 +1,73 @@
+// App-specific variables
+// =========================
+$shopRealDeal_bgColor: $g5ModuleBgColor !default;
+$shopRealDeal_gradType: $g5ModuleGradType !default;
+$shopRealDeal_gradMeta: $g5ModuleGradMeta !default;
+$shopRealDeal_gradStops: $g5ModuleGradStops !default;
+
+$shopRealDeal_iconColor: $g5ModuleIconColor !default;
+$shopRealDeal_titleColor: $g5ModuleTitleColor !default;
+$shopRealDeal_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$shopRealDeal_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$shopRealDeal_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$shopRealDeal_textColor: false !default;
+$shopRealDeal_h3FontFamily: false !default;
+$shopRealDeal_pFontFamily: false !default;
+$shopRealDeal_visitAppBtnColor: false !default;
+$shopRealDeal_visitAppBtnBorderColor: false !default;
+$shopRealDeal_imgUrlPath: false !default;
+$shopRealDeal_imgUrl2x2: "clickThru/shopRealDeal_2x2.jpg" !default;
+$shopRealDeal_imgUrl4x2: "clickThru/shopRealDeal_4x2.jpg" !default;
+$shopRealDeal_imgUrl4x4: "clickThru/shopRealDeal_4x4.jpg" !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- MODULE STYLES ----- */
+.module.clickThru {
+
+    &.shopRealDeal {
+
+        .module-liner {
+            @include module_moduleLinerBackground(
+                $bgColor: $shopRealDeal_bgColor,
+                $gradType: $shopRealDeal_gradType,
+                $gradMeta: $shopRealDeal_gradMeta,
+                $gradStops: $shopRealDeal_gradStops
+            );
+        }
+
+        @include clickThruSkinBkgViews(
+            $textColor: $shopRealDeal_textColor,
+            $h3FontFamily: $shopRealDeal_h3FontFamily,
+            $pFontFamily: $shopRealDeal_pFontFamily,
+            $visitAppBtnColor: $shopRealDeal_visitAppBtnColor,
+            $visitAppBtnBorderColor: $shopRealDeal_visitAppBtnBorderColor,
+            $imgUrlPath: $shopRealDeal_imgUrlPath,
+            $imgUrl2x2: $shopRealDeal_imgUrl2x2,
+            $imgUrl4x2: $shopRealDeal_imgUrl4x2,
+            $imgUrl4x4: $shopRealDeal_imgUrl4x4
+        );
+
+        .title-icon-view {
+            @include module_titleIconView(
+                $iconColor: $shopRealDeal_iconColor,
+                $titleColor: $shopRealDeal_titleColor,
+                $titleFontFamily: $shopRealDeal_titleFontFamily
+            );
+
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                @include g5HomeAppIconBoxReflect($adjust : -46px);
+            }
+        }
+
+        @include module_titleIconViewFontSizesWeights($shopRealDeal_titleFontSizes, $shopRealDeal_titleFontWeights);
+
+    } /* /.shopRealDeal */
+
+} /* /.module.clickThru */

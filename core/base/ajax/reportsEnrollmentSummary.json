@@ -1,0 +1,236 @@
+{
+  "messages": [],
+  "report": {
+    "id": "1",
+    "reportDisplayName": "Enrollment Summary",
+    "parameterGroups": [
+      {
+        "name": "Basics",
+        "fields": [
+          {
+            "type": "select",
+            "label": "Display Type",
+            "id": "displaytype",
+            "name": "displaytype",
+            "selected": "count",
+            "options": [
+              {
+                "value": "count",
+                "display": "count"
+              },
+              {
+                "value": "percent",
+                "display": "percent"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Participants",
+        "fields": [
+          {
+            "type": "select",
+            "label": "Participant Status",
+            "id": "participantStatus",
+            "name": "participantStatus",
+            "selected": "active",
+            "options": [
+              {
+                "value": "",
+                "display": "show all"
+              },
+              {
+                "value": "active",
+                "display": "active"
+              },
+              {
+                "value": "inactive",
+                "display": "inactive"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "label": "Department(s)",
+            "id": "participantStatus",
+            "name": "participantStatus",
+            "selected": "",
+            "options": [
+              {
+                "value": "",
+                "display": "show all"
+              },
+              {
+                "value": "Accounting",
+                "display": "Accounting"
+              },
+              {
+                "value": "hr",
+                "display": "Human Resources"
+              },
+              {
+                "value": "offc",
+                "display": "Office"
+              },
+              {
+                "value": "sales",
+                "display": "Sales"
+              },
+              {
+                "value": "svc",
+                "display": "Service"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "label": "Job Position(s)",
+            "id": "participantStatus",
+            "name": "participantStatus",
+            "selected": "",
+            "options": [
+              {
+                "value": "",
+                "display": "show all"
+              },
+              {
+                "value": "dir",
+                "display": "Director"
+              },
+              {
+                "value": "emp",
+                "display": "Employee"
+              },
+              {
+                "value": "mgr",
+                "display": "Manager"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "tabularData": [
+      {
+        "meta": {
+          "columns": [
+            {
+              "id": "1",
+              "name": "Hierarchy",
+              "description": "",
+              "type": "string",
+              "alignment": "",
+              "nameId": "",
+              "sortable": false,
+              "sortUrl": "",
+              "summary": ""
+            },
+            {
+              "id": "2",
+              "name": "Organization drill-down URL",
+              "description": "",
+              "type": "URL",
+              "alignment": "",
+              "nameId": "",
+              "sortable": false,
+              "sortUrl": "",
+              "summary": ""
+            },
+            {
+              "id": "3",
+              "name": "Active",
+              "description": "",
+              "type": "number",
+              "alignment": "",
+              "nameId": "",
+              "sortable": false,
+              "sortUrl": "",
+              "summary": ""
+            },
+            {
+              "id": "4",
+              "name": "Inactive",
+              "description": "",
+              "type": "number",
+              "alignment": "",
+              "nameId": "",
+              "sortable": false,
+              "sortUrl": "",
+              "summary": ""
+            },
+            {
+              "id": "5",
+              "name": "Total",
+              "description": "",
+              "type": "number",
+              "alignment": "",
+              "nameId": "",
+              "sortable": false,
+              "sortUrl": "",
+              "summary": ""
+            }
+          ],
+          "sortedOn": "Hierarchy",
+          "sortedBy": "asc",
+          "maxRows": 0
+        },
+        "results": []
+      }
+    ],
+    "chartSet": [
+      {
+        "displayName": "Total # of Enrollments",
+        "category": "Enrollment",
+        "chartType": "Column3D",
+        "dataUrl": "totalEnrollmentBarchartReport.do?reportName=totalenrollment",
+        "fusionChartsParameters": {
+          "caption": "Total # of Enrollments",
+          "subcaption": "For Organization, Monthly",
+          "xAxisName": "Month",
+          "yAxisName": "Enrollments"
+        },
+        "pdfUrl": "totalEnrollmentBarchartReport.do?reportName=totalenrollment&pdf=1"
+      },
+      {
+        "displayName": "Active Vs Inactive Enrollments",
+        "category": "Enrollment",
+        "chartType": "Column3D",
+        "dataUrl": "enrollmentActiveInactiveBarchartReport.do?reportName=enrollmentactiveinactive",
+        "fusionChartsParameters": {
+          "caption": "Active Vs Inactive Enrollments",
+          "subcaption": "For Organization",
+          "xAxisName": "Status",
+          "yAxisName": "Enrollments"
+        },
+        "pdfUrl": "enrollmentActiveInactiveBarchartReport.do?reportName=enrollmentactiveinactive&pdf=1"
+      },
+      {
+        "displayName": "% Enrollment Status",
+        "category": "Enrollment",
+        "chartType": "MSColumn3D",
+        "dataUrl": "enrollmentStatusPercentageBarchartReport.do?reportName=enrollmentstatuspercentage",
+        "fusionChartsParameters": {
+          "caption": "% Enrollment Status",
+          "subcaption": "For Organization",
+          "xAxisName": "Organization",
+          "yAxisName": "Enrollments"
+        },
+        "pdfUrl": "enrollmentStatusPercentageBarchartReport.do?reportName=enrollmentstatuspercentage&pdf=1"
+      },
+      {
+        "displayName": "% Active Enrollments",
+        "category": "Enrollment",
+        "chartType": "Pie3D",
+        "dataUrl": "enrollmentPiechartReport.do?reportName=enrollment",
+        "fusionChartsParameters": {
+          "caption": "% Active Enrollments",
+          "subcaption": "Region",
+          "showlabels": "0",
+          "showlegend": "1"
+        },
+        "pdfUrl": "enrollmentPiechartReport.do?reportName=enrollment&pdf=1"
+      }
+    ]
+  }
+}

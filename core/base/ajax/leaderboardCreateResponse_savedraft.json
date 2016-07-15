@@ -1,0 +1,10 @@
+{
+	"messages":[
+        {
+            "type":"serverCommand",
+            "command":"redirect",
+            "url":"layout.html?tplPath=apps/leaderboard/tpl/&tpl=leaderboardPage.html"
+        }
+    ]
+
+}

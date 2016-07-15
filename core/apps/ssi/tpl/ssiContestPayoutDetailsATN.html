@@ -1,0 +1,245 @@
+<!-- ======== CONTEST SUMMARY PAGE ======== -->
+
+<div id="ssiContestPayoutDetails" class="contestPage ssiContestSummary page-content">
+
+    <div id="ssiATNPayoutDetails">
+        <!-- dynamic content -->
+    </div>
+
+    <script id="ssiATNPayoutDetailsTpl" type="text/x-handlebars-template">
+
+        {{#if isApproveMode}}
+
+            <div class="page-topper">
+                <div class="row">
+                    <div class="span8">
+                        <h2>{{name}}</h2>
+                        <dl class="dl-horizontal">
+                            <dt>Approval Status</dt>
+
+                            {{#if approvalRequired}}
+                            {{#approvalLevels}}
+                            <dd class="ssiApproverLevel">
+                                {{name}}:
+                                {{#if approved}}
+                                    Approved By {{approvedBy}}
+                                {{else}}
+                                    Waiting for Approval
+                                    <a href="#" class="ssiApproverPopover" data-participant-ids="[{{id}}]">View Approvers</a>
+                                    <div class="ssiApproverList" style="display: none">
+                                        <ul>
+                                            {{#approverList}}
+                                            <li>{{name}}</li>
+                                            {{/approverList}}
+                                        </ul>
+                                    </div>
+                                {{/if}}
+                            </dd>
+                            {{/approvalLevels}}
+
+                            {{else}}
+                            <dd>Waiting for Approval</dd>
+                            {{/if}}
+                        </dl>
+                    </div>
+                    <div class="span4 buttons text-right">
+                        <form id="ssiApproveContest" method="post" action="layout.html?tplPath=../apps/approvals/tpl/&tpl=approvalsPageIndex.html" enctype="multipart/form-data">
+                            <input type="hidden" value="{{clientState}}" name="clientState" />
+                            <button type="submit" class="btn btn-primary ssiApproveContestBtn" name="status" value="approved">Approve</button>
+                            <button type="button" class="btn ssiDenyContestBtn">Deny</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        {{else}}
+
+            <div class="row">
+                <div class="span12">
+                    <div class="ssiPreviewSection well">
+                        <div class="">
+                            <h3>{{name}}</h3>
+                                <dl class="dl-horizontal">
+                                <dt>Status</dt>
+                                <dd>{{status}}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div><!-- /.span12 -->
+            </div><!-- /.row -->
+
+        {{/if}}
+
+    </script>
+
+
+
+    <div class="row">
+        <div class="span12">
+            <h3>Participants and Payouts</h3>
+            <div id="ssiATNHistory" class="spinnerOverlayWrap">
+                <!-- dynamic content -->
+            </div>
+            <!-- JAVA NOTE: back url set in jsp -->
+            <a href="layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiContestSummaryATN.html#URL_BACK" class="btn">Back</a>
+        </div><!-- /.span12 -->
+    </div><!-- /.row -->
+
+
+
+    <div class="ssiDenyContestPopover" style="display: none">
+        <form id="ssiADenyContest" method="post" action="layout.html?tplPath=../apps/approvals/tpl/&tpl=approvalsPageIndex.html" enctype="multipart/form-data">
+            <div class="control-group validateme"
+                data-validate-fail-msgs='{"nonempty":"You must enter a reason for denial."}'
+                data-validate-flags='nonempty'>
+                <label class="control-label">Reason For Denial</label>
+                <div class="commentTools">
+                    <span class="spellchecker dropdown">
+                        <button class="checkSpellingDdBtn btn dropdown-toggle"
+                                title="check spelling"
+                                type="button"
+                                data-toggle="dropdown">
+                            <i class="icon-check"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="check"><b>Check spelling</b></a></li>
+                        </ul>
+                    </span>
+                    Remaining Characters: <span class="remChars">&nbsp;</span>
+                </div>
+                <div class="controls">
+                    <textarea class="contribCommentInp" rows="4" maxlength="1000" placeholder="add a comment" name="comment"></textarea>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary ssiDenyContestSubmit" name="status" value="denied">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div><!--/.ssiDenyContestPopover-->
+
+
+
+</div><!-- /#ssiContestPageEditView -->
+
+<script>
+    $(document).ready(function() {
+        var contestJson = null;
+
+        // JAVA NOTE: url for ATN history pagination
+        G5.props.URL_JSON_CONTEST_SUMMARY_PAYOUT_DETAILS = G5.props.URL_ROOT+'ajax/ssiContestPayoutDetails.json';
+
+        // JAVA NOTE: bootstrapped JSON
+        contestJson = {
+            id: "3",
+            name: "Objective Creator Example",
+            sortedOn: "lastName",
+            sortedBy: "asc",
+            totalActivity: "20,000.0100",
+            totalPayoutAmount: "12,000",
+            payoutType: "points",
+            status: "waiting_for_approval",
+            approvalRequired: true,
+            approvalLevels: [
+                    {
+                        id: 123,
+                        name: "Level 1",
+                        approved: false,
+                        approverList: [
+                            {
+                                id: 21,
+                                name: "LastName, FirstName"
+                            },
+                            {
+                                id: 22,
+                                name: "LastName, FirstName"
+                            }
+                        ]
+                    }
+                ],
+            canApprove: true,
+            clientState: 'encryptedObfuscatedServerData'
+        };
+
+
+
+
+        // FE ONLY - this should be removed before pushing to production
+        // this section can be use to switch between different data types
+        // using a GET value in the URL like:
+        // ssiApprovePayout.html&contestType=stepItUp&payoutType=other
+        (function(){
+            if (!window.location.search) return;
+
+            var search = window.location.search,
+                parts  = search.split(/&(?:amp;)?/), // split at "&" or "&amp;"
+                pairs  = function (key, str) {
+                        var regex = (/^(?:(?:.+)?\?)?(\w+)=(.+)$/i), // get "layout.html?foo=bar" as "foo", "bar"
+                            res   = regex.exec(str);
+                        map[res[1]] = res[2]
+                    },
+                map = {};
+
+            $.each(parts, pairs);
+
+            // use GET value to over write contestData
+            if (map.payoutType === 'other') {
+                contestJson = {
+                    id: "3other",
+                    name: "Objective Creator Example",
+                    status: "live",
+                    sortedOn: "lastName",
+                    sortedBy: "asc",
+                    totalActivity: "20,000",
+                    totalPayoutAmount: "12,000",
+                    payoutType: "other"
+                };
+            }
+
+            // approve mode
+            if(map.canApprove) {
+                contestJson.canApprove = map.canApprove == 'true';
+            }
+
+        }());
+        // END FE ONLY
+
+
+
+
+
+        var contest = new SSIContestPayoutDetails_ATN({
+            el:$('#ssiContestPayoutDetails'),
+            contestJson: contestJson, // contest json to populate model
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'moduleSandbox.html'
+                }
+            },
+            pageTitle : 'SSI Contest Payout Details Page Title'
+        });
+
+        //attach the view to an existing DOM element
+/*        window.ssiContestPageEditView = new SSIContestPageEditView({
+            contestJson: contestJson, // contest json to populate model
+            contestTypeJson: contestTypeJson, // tab variations etc per contestType
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'moduleSandbox.html'
+                }
+            },
+            pageTitle : 'Create/Edit a Contest', // JAVA NOTE: 'Create a Contest' OR 'Edit a Contest'
+            tabsJson : tabsJson
+        });
+*/
+    });
+</script>

@@ -1,0 +1,40 @@
+<form class="contestCreate" action="#POST_DATA_URL" method="post" accept-charset="utf-8" novalidate>
+    <input type="hidden" name="locale" value="en_US">
+    <a href="#" class="cancelCreateContest">Cancel</a>
+    <fieldset>
+        <div class="module-flip-title">
+            <h3>Create a Contest</h3>
+        </div>
+        <div class="contestNameWrap">
+           <!--  <label for="contestName">Name your contest <span>(you can change it later).</span></label> -->
+            <div class="contestStatus contestNameStatus">
+                <input type="text" class="contestName" name="contestName" value="" placeholder="Name your contest" maxlength="50">
+                <span class="pending"></span>
+                <div class="iconWrap">
+                    <i class="valid icon-ok-sign"></i>
+                    <i class="invalid icon-remove-sign"></i>
+                </div>
+                <p class="msg"></p>
+            </div>
+        </div>
+        <div class="selectSubmitWrap">
+            <div class="selectWrap">
+                <select class="contestType" name="contestType" required>
+                    <option value="">Select Contest Type</option>
+                    {{#each contestTypes}}
+                    <option value="{{contestType}}">{{contestTypeName}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="submitWrap">
+                <button type="submit" class="btn btn-large btn-primary submitForm">Next</button>
+            </div>
+        </div>
+        <a href="#" class="showContestQtip">
+            <i class="icon-question-sign"></i> Help me choose
+        </a>
+        <div class="row-fluid creatorBottomUtil">
+            <a href="#URL_TO_CONTEST_LIST_PAGE" class="myContestsLink">My Contests</a>
+        </div>
+    </fieldset>
+</form>

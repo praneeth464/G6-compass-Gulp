@@ -1,0 +1,225 @@
+// Partial-specific variables
+// =========================
+$participantSearch_selectedRowBgColor: scale-color($linkColor, $lightness: 80%) !default;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+.participantSearchView {
+    .filterCreationModeSelectWrapper {
+        [class^="icon-"],
+        [class*=" icon-"] {
+            width: auto;
+        }
+    }
+    .dropdown-menu-info {
+        padding: 5px 10px;
+        font-size: 80%;
+    }
+    .participantSearchSelect,
+    .participantSearchInput {
+        margin-bottom: $baseLineHeight / 2; // borrowed from bootstrap/_forms.scss
+    }
+    .participantSearchDropdownWrapper {
+        @include inline-block;
+    }
+    .participantSearchDropdownMenu {
+        margin-top:-8px;
+    }
+    .filterDelBtn {
+        color: inherit;
+        text-decoration: none;
+        // font-size: 120%;
+
+        @media (max-width: 479px) {
+            display: inline-block;
+            width: auto;
+            padding: 0px 6px;
+        }
+    }
+    .participantSearchCountAndFilters {
+        padding-bottom: 10px;
+        .participantSearchResultCountWrap,
+        .participantSearchFilters {
+            width: auto;
+
+            @media (max-width: 767px) {
+                float: left;
+                margin-right: $gridGutterWidth;
+            }
+        }
+        .participantSearchResultCountWrap {
+            float: right;
+            font-weight: bold;
+        }
+        .participantSearchFilters .filter {
+            display: inline-block;
+            margin-left: 8px;
+        }
+    }
+    .participantSearchTableWrapper {
+        margin-bottom: $baseLineHeight / 2;
+        max-height: 262px;
+        overflow-y:auto;
+        position:relative;
+
+        th {
+            font-size: $baseFontSize * .875; // 14px -> 12px if baseFontSize is unchanged
+        }
+        .sortHeader {
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .selectAllBtn {
+            margin-top: -2px;
+            margin-bottom: -2px;
+        }
+
+        table {
+            margin-bottom: 0;
+            font-size: $baseFontSize;
+            line-height: 143%; // 14px -> 20px without using baseLineHeight
+
+            *width: 859px;// IE7 (not responsive)
+
+            @media (max-width: 479px) {
+                font-size: 87.5%;
+            }
+
+            tbody {
+                td {
+                    cursor: pointer;
+                }
+                .locked * {
+                    cursor: default;
+                    cursor: not-allowed;
+                    text-decoration: none;
+                    color: inherit;
+                }
+            }
+        }
+
+        &.stickyScroll {
+            overflow: visible;
+        }
+
+        .scrollTable {
+            height: 100%;
+            max-height: 262px;
+            width: 100%;
+            overflow-y: auto;
+        }
+        .stickyHeader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+        }
+    }
+    th.selectHeader,
+    th.countryHeader,
+    td.participantSearchCountryCol {
+        text-align:center;
+    }
+
+    //style selected rows
+    tr.selected td {
+        background-color: $participantSearch_selectedRowBgColor !important;
+    }
+
+    //show hide 'select' and 'selected'
+    .selectCell {
+        text-align: center;
+        position: relative;
+
+        .select-txt {
+            display:inline;
+        }
+        .selected-txt {
+            display:none;
+        }
+
+        &.selected {
+            .select-txt {
+                display:none;
+            }
+            .selected-txt {
+                display:inline;
+            }
+        }
+
+        .spincover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            cursor: default;
+            @include safeBkgs(rgba(255,255,255,0.5));
+        }
+        .spin {
+            display: inline-block;
+            width: $baseLineHeight /* * 2 */ !important;
+            height: $baseLineHeight /* * 2 */ !important;
+            top: 50% !important;
+            margin-top: -1 * $baseLineHeight / 2 !important;
+            margin-left: -1 * $baseLineHeight / 2 !important;
+        }
+    }
+
+    // spinners
+    .autocompSpinner {
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        display: inline-block;
+        @include ie7-inline-block();
+    }
+
+    // hide certain columns as the screen gets too narrow
+    @media (max-width: 979px) {
+        th.jobHeader,
+        td.participantSearchJobCol {
+            display: none;
+        }
+    }
+    @media (max-width: 767px) {
+        th.departmentHeader,
+        td.participantSearchDepartmentCol {
+            display: none;
+        }
+    }
+    @media (max-width: 479px) {
+        th.orgHeader,
+        td.participantSearchOrgCol {
+            display: none;
+        }
+    }
+
+    .tableMsg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: 12px;
+        z-index: 2;
+        @include box-shadow(0 0 5px 2px #888);
+    }
+
+}// .participantSearchView
+
+// this one gets pushed outside the view element
+.participantSearchVisibilityControls {
+    .visibilityControlsLiner {
+        *margin-top: 10px; //ie7
+        margin-bottom: 10px;
+    }
+}
+
+
+

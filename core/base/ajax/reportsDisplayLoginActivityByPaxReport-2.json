@@ -1,0 +1,71 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  "messages": [],
+  "chart": {},
+  "categories":[
+  	{
+      "category":[
+
+
+        {
+          "label":"BONFIRE HOME DESIGNS"
+        }
+
+      ,
+        {
+          "label":"Bonfire Uber Corp Team"
+        }
+
+      ]
+    }
+  ],
+  "dataset":[
+ 	{
+      "seriesname":"% Have Logged In",
+      "data":[
+
+
+      	{
+          "value":"4.76"
+        }
+
+	     ,
+      	{
+          "value":"0"
+        }
+
+      ]
+    },
+    {
+      "seriesname":"% Have Not Logged In",
+      "data":[
+
+
+      	{
+          "value":"95.24"
+        }
+
+		,
+      	{
+          "value":"100"
+        }
+
+      ]
+    }
+  ]
+}

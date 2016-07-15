@@ -1,0 +1,82 @@
+<h2>Statement</h2>
+
+<ul class="export-tools fr">
+    <li><a href="#">Print <i class="icon-print"></i></a></li>
+</ul>
+
+<div id="profilePageStatementTabSummary">
+    <h3>Summary</h3>
+    <dl class="dl-horizontal dl-h1">
+        <dt>Account Number:</dt>
+        <dd>971000420666</dd>
+
+        <dt>Beginning Balance:</dt>
+        <dd id="beginningBalance">240</dd>
+        <input type="hidden" id="beginningBalanceValue" value="550">
+
+        <dt>Earned this Period:</dt>
+        <dd id="earnedBalance">30</dd>
+        <input type="hidden" id="earnedBalanceValue" value="20">
+
+        <dt>Redeemed this Period:</dt>
+        <dd id="redeemedBalance">0</dd>
+        <input type="hidden" id="redeemedBalanceValue" value="44">
+
+        <dt>Adjustment this Period:</dt>
+        <dd id="adjustmentBalance">0</dd>
+        <input type="hidden" id="adjustmentBalanceValue" value="20">
+
+        <dt>Pending Order:</dt>
+        <dd id="pendingBalance">0</dd>
+        <input type="hidden" id="pendingBalanceValue" value="999">
+
+        <dt>Ending Balance:</dt>
+        <dd id="endingBalance">240</dd>
+        <input type="hidden" id="endingBalanceValue" value="88">
+    </dl>
+</div>
+
+<form class="form-inline" action="ajax/profilePageStatementTabResponse.html" id="profilePageStatementTabForm">
+    <h3>Summary Period</h3>
+
+    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter a starting date"}'>
+        <label class="control-label" for="profilePageStatementTabStartDate">Show Activity From:</label>
+        <div class="controls">
+            <span class="input-append datepickerTrigger"
+                data-date-format="mm/dd/yyyy"
+                data-date-language="en_US"
+                data-date-autoclose="true">
+                <input type="text"  class="date datepickerInp validateme"
+                    id="profilePageStatementTabStartDate"
+                    name="startDate"
+                    value="9/02/2012"
+                    readonly="readonly">
+                <button class="btn datepickerBtn"><i class="icon-calendar"></i></button>
+            </span>
+        </div>
+    </div>
+
+    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter an ending date"}'>
+        <label class="control-label" for="profilePageStatementTabEndDate">To:</label>
+        <div class="controls">
+            <span class="input-append datepickerTrigger"
+                data-date-format="mm/dd/yyyy"
+                data-date-language="en_US"
+                data-date-autoclose="true">
+                <input type="text"  class="date datepickerInp validateme"
+                    id="profilePageStatementTabEndDate"
+                    name="endDate"
+                    value="10/02/2012"
+                    readonly="readonly">
+                <button class="btn datepickerBtn"><i class="icon-calendar"></i></button>
+            </span>
+        </div>
+    </div>
+    <div class="controls">
+        <button type="submit" class="btn btn-primary" id="statementTabUpdateTransactionDetailsButton"> Show Activity </button>
+    </div>
+
+</form>
+
+<div id="profilePageStatementTabTransactionDetails">
+</div>

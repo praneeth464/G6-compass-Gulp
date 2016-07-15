@@ -1,0 +1,245 @@
+<!-- ======== APPROVALS: APPROVALS PENDING NOMINATIONS PAGE ======== -->
+
+<div id="approvalsPagePendingNominations" class="page-content">
+	<div id="pendingNominationsWrapper" class="approvalSearchWrapper">
+		<div class="row">
+			<div class="span12">
+
+			<div id="approvalsErrorBlock" class="alert alert-block alert-error" style="display:none;">
+                <h4>The following errors occurred:</h4>
+                <ul>
+                    <li>This is an error</li>
+                    <li>This is another error</li>
+                </ul>
+            </div>
+
+            	<h3>Search for Recognition Approvals</h3>
+        	</div>
+			<div class="span12">
+	            <ul class="export-tools fr">
+	                <li><a href="#">Print</a></li>
+	                <li><a href="#"><i class="icon-print"></i></a></li>
+	            </ul>
+	        </div>
+	    </div>
+
+	    <div class="row">
+	    	<div class="span12">
+				<form id="approvalsSearchForm" class="form-horizontal">
+					<div class="control-group">
+						Submittited Between:
+
+                        <div class="input-append datepickerTrigger showTodayBtn"
+                            data-date-format="mm/dd/yyyy"
+                            data-date-language="en_US"
+                            data-date-startdate="11/14/2012"
+                            data-date-todaydate="11/14/2012"
+                            data-date-autoclose="true">
+                            <input type="text" id="dateStart" name="dateStart" readonly="readonly" class="input-medium">
+                            <button class="btn awardDateIcon">
+                                <i class="icon-calendar"></i>
+                            </button>
+                        </div>
+
+						and
+
+                        <div class="input-append datepickerTrigger showTodayBtn"
+                            data-date-format="mm/dd/yyyy"
+                            data-date-language="en_US"
+                            data-date-startdate="11/14/2012"
+                            data-date-todaydate="11/14/2012"
+                            data-date-autoclose="true">
+                            <input type="text" id="dateEnd" name="dateEnd" readonly="readonly" class="input-medium">
+                            <button class="btn awardDateIcon">
+                                <i class="icon-calendar"></i>
+                            </button>
+                        </div>
+					</div>
+
+					<div class="control-group promotionGroup">
+						For Promotion: <select name="promotionSelected" id="promotionSelected">
+											<option value="123456">Signature Service Nomination*</option>
+											<option value="123457">Team Nomination</option>
+											<option value="123458">RecogitionApprovalsName</option>
+											<option value="123459">All Promotions</option>
+										</select>
+									<span>* = has pending</span>
+					</div>
+						<input type="submit" name="showNominations" value="Show Activity" class="btn btn-primary showActivityBtn"/>
+						<input type="hidden" id="currentPage" name="currentPage" value="3">
+						<input type="hidden" id="requestedPage" name="requestedPage" value="">
+				</form>
+
+				<div id="nominationsTableWrapper" class="nominationsTableWrapper">
+					<div class="row">
+						<div class="approvalsExportIconsWrapper pushDown">
+							<a href="#"><span class="excelExportIcon"></span></a>
+						</div>
+					</div>
+
+					<div class="row">
+						<div id="paginationControls" class="pagination pagination-right">
+							<ul>
+							    <li class="first disabled" data-page="1">
+							        <a href="#"><i class="icon-double-angle-left"></i></a>
+							    </li>
+							    <li class="prev disabled" data-page="0">
+							        <a href="#"><i class="icon-angle-left"></i> Prev</a>
+							    </li>
+
+							    <li class="active" data-page="1">
+							        <a href="#">1</a>
+							    </li>
+
+							    <li data-page="2">
+							        <a href="#">2</a>
+							    </li>
+
+							    <li data-page="3">
+							        <a href="#">3</a>
+							    </li>
+
+							    <li data-page="4">
+							        <a href="#">4</a>
+							    </li>
+
+							    <li data-page="5">
+							        <a href="#">5</a>
+							    </li>
+
+							    <li class="disabled gap" data-page="">
+							        <a href="#">…</a>
+							    </li>
+
+							    <li data-page="67">
+							        <a href="#">67</a>
+							    </li>
+
+							    <li class="next" data-page="2">
+							        <a href="#">Next <i class="icon-angle-right"></i></a>
+							    </li>
+							    <li class="last" data-page="67">
+							        <a href="#"><i class="icon-double-angle-right"></i></a>
+							    </li>
+							</ul>
+						</div>
+					</div>
+
+					<form id="approvalsCalcGiverForm" name="approvalsCalcGiverForm">
+						<table class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th></th>
+									<th>Nominee</th>
+									<th>Award</th>
+									<th>Nominator</th>
+									<th>Date Submittted</th>
+									<th class="hasSelects">Status</th>
+								</tr>
+							</thead>
+							<div class="tableSwipeHelp">
+		                        <i class="icon-chevron-right"></i>
+		                        <span>Swipe for more</span>
+		                        <i class="icon-chevron-left"></i>
+		                    </div>
+							<tbody>
+								<tr>
+									<td>
+										<a href="#">View Details</a>
+									</td>
+									<td><a href="#">Lastname, FirstName</a></td>
+									<td>
+										50 AwardperQs
+									</td>
+									<td>LastName, FirstName</td>
+									<td>05/20/2012</td>
+									<td class="crud-content hasSelects" nowrap="nowrap">
+										<select name="recognitionApprovalFormByClaimRecipientIdString(5243).approvalStatusType" id="applyAllClassClaimAndClaimRecipientId-10243-0-status">
+											<option value="approv">Approved</option>
+											<option value="deny">Denied</option>
+											<option value="pend" selected="selected">Pending</option>
+											<option value="hold" selected="selected">On Hold</option>
+										</select>
+
+										<select id="onHoldReasonSelect">
+											<option>Reason 1</option>
+											<option>Reason 2</option>
+											<option>Reason 3</option>
+										</select>
+
+										<select name="recognitionApprovalFormByClaimRecipientIdString(5421).denyPromotionApprovalOptionReasonType" disabled="disabled" id="hold-applyAllClassClaimAndClaimRecipientId-10241-0-reason">
+											<option value="">select one</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="#">View Details</a>
+									</td>
+									<td>Lastname, FirstName</td>
+									<td>
+										Node Name
+									</td>
+									<td>LastName, FirstName</td>
+									<td>05/20/2012</td>
+									<td class="crud-content hasSelects" nowrap="nowrap">
+										<select name="recognitionApprovalFormByClaimRecipientIdString(5243).approvalStatusType" id="applyAllClassClaimAndClaimRecipientId-10243-0-status">
+											<option value="approv">Approved</option>
+											<option value="deny">Denied</option>
+											<option value="pend" selected="selected">Pending</option>
+											<option value="hold" selected="selected">On Hold</option>
+										</select>
+
+										<select name="recognitionApprovalFormByClaimRecipientIdString(5240).denyPromotionApprovalOptionReasonType" disabled="disabled" id="hold-applyAllClassClaimAndClaimRecipientId-10241-0-reason">
+											<option value="">select one</option>
+										</select>
+
+										<select id="onHoldReasonSelect">
+											<option>Reason 1</option>
+											<option>Reason 2</option>
+											<option>Reason 3</option>
+										</select>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<button class="btn btn-primary">Save</button>
+						<button class="btn">Cancel</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="sameForAllTipTpl" class="sameForAllTip" style="display:none">
+	<a href="#">same for all<br>recipients</a>
+</div>
+
+<input type="hidden" id="serverReturnedErrored" value="true">
+
+	<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+
+<script>
+
+$(document).ready(function() {
+
+	//attach the view to an existing DOM element
+	var asmlp = new ApprovalsSearchModelView({
+		el:$('#approvalsPagePendingNominations'),
+        pageNav : {
+            back : {
+                text : 'Back',
+                url : 'layout.html?tpl=approvalsPageIndex&tplPath=apps/approvals/tpl/'
+            },
+            home : {
+                text : 'Home',
+                url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+            }
+        },
+        pageTitle : 'Approvals'
+	});
+
+});
+
+</script>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+	<title>Websanova Paint</title>
+	
+	<!-- jQuery -->
+	<script type="text/javascript" src="/fe/core/libs/jquery.js"></script>
+
+	<!-- wColorPicker -->
+<!-- 	<link rel="Stylesheet" type="text/css" href="./inc/wColorPicker.1.2.min.css" />
+	<script type="text/javascript" src="./inc/wColorPicker.1.2.min.js"></script>
+ -->	
+	<!-- wPaint -->
+	<script type="text/javascript" src="./wPaint.js"></script>
+
+</head>
+<body>
+	
+<div id="wPaint" style="position:relative; width:500px; height:300px; background:#CACACA; border:solid black 1px; overflow:hidden;">
+</div>
+
+<div id="drawToolMenu">
+	<a href="#" id = "saveImage">save image</a> 
+	<a href="#" id = "clearImage">clear image</a> 	
+	<div class="_wPaint_icon _wPaint_pencil" id = "pencilButton" title="pencil">pencil
+	</div>
+	<div class="_wPaint_icon _wPaint_eraser" id = "eraserButton" title="eraser">eraser
+	</div>
+	<ul id="lineWidthSelect">
+		<li id="lineWidth2">2</li>
+		<li id="lineWidth4">4</li>
+		<li id="lineWidth6">6</li>
+		<li id="lineWidth8">8</li>
+	</ul>
+	<ul id = "colorSelect">
+		<li id="colorSelectRed">red</li>
+		<li id="colorSelectBlue">blue</li>
+		<li id="colorSelectGreen">green</li>
+	</ul>
+</div>    
+<ul id="backgroundSelect">
+	<li id="background0">None</li>
+	<li id="background1">Mountains</li>
+	<li id="background2">Forest</li>
+	<li id="background3">Canoe</li>
+</ul>
+<div id="drawToolHiddenInputs">
+<!-- (12:07) Stricker, Aaron: cardType: {upload|drawing|eCard}
+(12:08) Stricker, Aaron: eCardId: <id of selected ecard>
+(12:08) Stricker, Aaron: cardUrl: <url of uploaded card>
+(12:09) Stricker, Aaron: cardData: <drawing data>	
+ -->	
+ <input type="hidden" id="drawToolCardType" name="cardType" value="">
+	<input type="hidden" id="drawToolCardId" name="cardId" value="">
+	<input type="hidden" id="drawToolCardUrl" name="cardUrl" value="">
+	<input type="hidden" id="drawToolCardData" name="cardData" value="">
+</div>
+	
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+	var testLoadData = {
+		"data": [
+			{
+				"loadImageUrl": "./images/background1.jpg",
+				"eCards": [
+					// { these two get built by the template
+					// 	"id": 0,
+					// 	"name":"None",
+					// 	"smallImage":"http://placehold.it/50x50",
+					// 	"largeImage":"http://placehold.it/400x400",
+					// 	"canEdit": true
+					// },
+					// {
+					// 	"id": "upload",
+					// 	"name":"Upload your own",
+					// 	"smallImage":"http://placehold.it/50x50",
+					// 	"largeImage":"http://placehold.it/400x400",
+					// 	"canEdit": true
+					// },
+					{
+						"id":1,
+						"name":"Mountains",
+						"smallImage":"http://placehold.it/50x50",
+						"largeImage":"http://placehold.it/400x400",
+						"canEdit": true
+					},
+					{
+						"id":2,
+						"name":"Forest",
+						"smallImage":"http://placehold.it/50x50",
+						"largeImage":"http://placehold.it/400x400",
+						"canEdit": false
+					},
+					{
+						"id":3,
+						"name":"Canoe",
+						"smallImage":"http://placehold.it/50x50",
+						"largeImage":"http://placehold.it/400x400",
+						"canEdit": true
+					}
+				]
+			}
+		]
+	};
+
+	//initial loading
+	$("#wPaint").wPaint({
+		image: "",
+	});
+	var drawTool = $("#wPaint");
+
+	// drawTool.wPaint.defaultSettings.sayHello = "Hello there.";
+	console.log('drawTool.wPaint.defaultSettings');
+	// drawTool.wPaint.defaultSettings.sayHello();
+
+});
+		
+</script>
+</body>
+</html>

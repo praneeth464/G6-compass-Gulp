@@ -1,0 +1,104 @@
+{
+    "messages" : [
+<?php if( isset($_POST) && $_POST['method'] == 'save') { ?>
+        {
+            "type":"serverCommand",
+            "command":"redirect",
+            "url":"layout.html?tplPath=apps/ssi/tpl/&tpl=ssiCreatorPage"
+        }
+<?php } ?>
+    ],
+    "response" : {
+        "uploadInProgress": false,
+        "contestType": "objectives",
+        "payoutType": "points",
+        "activityAsOfDate": "03/03/15",
+        "measureType": "currency",
+
+        "_comment": "activitiesTableData array is only for doThisGetThat contestType",
+        "activitiesTableData": [
+            {
+                "activityName": "ActivityName1",
+                "activityTotal": "123"
+            },
+            {
+                "activityName": "ActivityName2",
+                "activityTotal": "223"
+            }
+        ],
+        "results": [
+            {
+                "index": 0,
+                "id": "1234",
+                "participantName": "LastName, FirstName",
+                "activityName": "ActivityName1",
+                "activity": "3",
+
+                "_comment": "activities array is only for doThisGetThat contestType, for others it can be null",
+                "activities": [
+                    {
+                        "id": 12,
+                        "activityNumber": 1,
+                        "activityName": "ActivityName1",
+                        "activity": "2"
+                    },
+                    {
+                        "id": 13,
+                        "activityNumber": 2,
+                        "activityName": "ActivityName2",
+                        "activity": "4"
+                    }
+                ]
+            },
+            {
+                "index": 1,
+                "id": "2345",
+                "participantName": "LastName, FirstName",
+                "activityName": "ActivityName1",
+                "activity": "4",
+                "totalCurrentActivity": null,
+                "activities": [
+                    {
+                        "id": 14,
+                        "activityNumber": 1,
+                        "activityName": "ActivityName1",
+                        "activity": null
+                    },
+                    {
+                        "id": 15,
+                        "activityNumber": 2,
+                        "activityName": "ActivityName2",
+                        "activity": "1"
+                    }
+                ]
+            },
+            {
+                "index": 2,
+                "id": "3456",
+                "participantName": "LastName, FirstName",
+                "activityName": "ActivityName2",
+                "activity": "2",
+                "activities": [
+                    {
+                        "id": 16,
+                        "activityNumber": 1,
+                        "activityName": "ActivityName1",
+                        "activity": "4"
+                    },
+                    {
+                        "id": 17,
+                        "activityNumber": 2,
+                        "activityName": "ActivityName2",
+                        "activity": null
+                    }
+                ]
+            }
+        ],
+        "activityTotal": "234",
+        "sortedOn": "lastName",
+        "sortedBy": "asc",
+        "total": 15,
+        "perPage": 10,
+        "current": 2
+    }
+}

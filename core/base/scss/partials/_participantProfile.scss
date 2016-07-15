@@ -1,0 +1,630 @@
+// Partial-specific variables
+// =========================
+$participantProfile_textColor: false !default;
+$participantProfile_linkColor: false !default;
+$participantProfile_headFontFace: $titleFont !default;
+$participantProfile_headFontFullString: 20px/18px $participantProfile_headFontFace !default;
+
+$participantProfile_footIconColor: $grayLight !default;
+$participantProfile_footNumMsgsTextColor: $white !default;
+$participantProfile_footNumMsgsBgColor: $red !default;
+$participantProfile_footNumMsgsBorderColor: $white !default;
+
+$participantProfile_alertBoxTextColor: $gray !default;
+$participantProfile_alertBoxBgColor: $grayLighter !default;
+$participantProfile_alertBoxGradMeta: top;
+$participantProfile_alertBoxGradStops: $participantProfile_alertBoxBgColor, $white;
+$participantProfile_alertBoxBorderWidth: 1px !default;
+$participantProfile_alertBoxBorderColor: $grayLight !default;
+$participantProfile_alertBoxBorderRadius: 0 !default;
+$participantProfile_alertBoxTopBevelWidth: 1px !default;
+$participantProfile_alertBoxTopBevelColor: $white !default;
+$participantProfile_alertBoxIconColor: $participantProfile_footNumMsgsBgColor !default;
+$participantProfile_alertBoxLinkColor: $participantProfile_alertBoxIconColor !default;
+$participantProfile_alertBoxCloseFontSize: 11px !default;
+$participantProfile_alertBoxCloseIconColor: $gray !default;
+$participantProfile_alertBoxCloseBorderColor: $circledAwesomeIconBorderColor !default;
+$participantProfile_alertBoxCloseCircleWidth: 15px !default;
+$participantProfile_alertBoxCloseBorderWidth: 2px !default;
+
+$participantProfile_delegatorsTextColor: $grayLight !default;
+$participantProfile_delegatorsLinkColor: false !default;
+
+$participantProfile_mobileBtnBg: false !default; // pass 'none' for a completely transparent button background
+$participantProfile_mobileBtnBgHighlight: false !default;
+$participantProfile_mobileBtnTextColor: false !default;
+$participantProfile_textColorMobile: false !default;
+$participantProfile_linkColorMobile: false !default;
+$participantProfile_footIconColorMobile: false !default;
+$participantProfile_footNumMsgsTextColorMobile: false !default;
+$participantProfile_footNumMsgsBgColorMobile: false !default;
+$participantProfile_footNumMsgsBorderColorMobile: $global_header_bgColorMobile !default;
+
+$participantProfile_magnifyColor: $gray !default;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+#participantProfileView {
+    position: relative;
+    display: inline;
+    float: right;
+    width: 50%;
+    @if $participantProfile_textColor {
+        color: $participantProfile_textColor;
+        // TODO 5.5: add a check of textColor/header background color (from _global.scss) for font smoothing
+    }
+    @if $participantProfile_linkColor {
+        a {
+            color: $participantProfile_linkColor;
+        }
+    }
+    zoom: 1;
+
+    #participantProfileMobileToggle {
+        display: none;
+    }
+
+    .profile-delegators {
+        color: $participantProfile_delegatorsTextColor;
+
+        a {
+            display: block;
+            line-height: 20px;
+            @if $participantProfile_delegatorsLinkColor {
+                color: $participantProfile_delegatorsLinkColor;
+            }
+        }
+        a.active {
+            text-decoration: none;
+            font-weight: bold;
+            color: $participantProfile_delegatorsTextColor;
+        }
+    }
+
+    .profile-pic-wrapper {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1000;
+        height: $global_header_logoHeight; // ie8
+        width: $global_header_logoHeight; // ie8
+    }
+    .profile-pic {
+        height: $global_header_logoHeight;
+        width: $global_header_logoHeight;
+    }
+    .profile-meta {
+        float: right;
+        padding: 5px 0;
+        padding-right: 8px + $global_header_logoHeight;
+
+        .profile-head {
+            // NOTE: if set height, check ie7 text alignment
+            padding-top: 4px;
+            font: $participantProfile_headFontFullString;
+            text-align: right;
+
+            .profile-before-delegator-name {
+                @if $participantProfile_headFontFace { // we only need to reset the font to body if the header font face is set
+                    font-family: $bodyFont;
+                }
+                font-size: 60%;
+            }
+        }
+        .profile-body {
+            font-size: 12px;
+            text-align: right;
+
+            .profile-points {
+                display: inline-block;
+                margin-right: 4px;
+                min-width: $baseLineHeight;
+                @include transition-property(font-size);
+                @include transition-duration(500ms);
+            }
+            .changing {
+                font-weight: bold;
+                //background-color: lighten($yellow, lightness($yellow)/2);
+            }
+        }
+        .profile-foot {
+            font-size: 11px;
+            text-align: right;
+
+            a {
+                display: inline-block;
+                margin-left: 8px;
+                font-weight: bold;
+                zoom: 1;
+
+                i {
+                    margin-right: 2px;
+                    font-size: 16px;
+                    font-weight: regular;
+                    text-decoration: none;
+                    color: $participantProfile_footIconColor;
+                }
+            }
+        }
+    }
+
+    .profile-messages {
+        position: relative;
+        *left: 8px; //ie7 won't render the margin-left when this is position: relative;
+
+        i {
+            width: auto;
+        }
+        .profile-num-messages {
+            display: none;
+            position: absolute;
+            left: -7px;
+            top: -6px;
+            padding: 3px 4px;
+            font-size: 10px;
+            line-height: 8px;
+            font-weight: normal;
+            color: $participantProfile_footNumMsgsTextColor;
+            background-color: $participantProfile_footNumMsgsBgColor; //#E9171A;
+            @if $participantProfile_footNumMsgsBorderColor {
+                border: 1px solid $participantProfile_footNumMsgsBorderColor;
+                background-clip: padding-box;
+            }
+            border-radius: 30px;
+        }
+    }
+
+    .alert-box {
+        position: absolute;
+        right: 0;
+        top: 0px;
+        z-index: 999;
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+        height: $global_header_logoHeight - ($participantProfile_alertBoxBorderWidth * 2);
+        font-size: 14px;
+        line-height: 16px;
+        text-align: left;
+        color: $participantProfile_alertBoxTextColor;
+        text-shadow: none;
+        background: $participantProfile_alertBoxBgColor;
+        @if $participantProfile_alertBoxGradMeta and $participantProfile_alertBoxGradStops {
+            @include module_moduleLinerBackground(
+                $bgColor: $participantProfile_alertBoxBgColor,
+                $gradType: linear,
+                $gradMeta: $participantProfile_alertBoxGradMeta,
+                $gradStops: $participantProfile_alertBoxGradStops,
+                $force: true
+            );
+        }
+        @if $participantProfile_alertBoxBorderWidth {
+            border: $participantProfile_alertBoxBorderWidth solid $participantProfile_alertBoxBorderColor;
+        }
+        @include borderRadiusSlim($participantProfile_alertBoxBorderRadius, true);
+
+        .close {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            right: auto;
+            float: none;
+
+            i {
+                vertical-align: top;
+                @include circledAwesomeIcon(
+                    $fontSize: $participantProfile_alertBoxCloseFontSize,
+                    $color: $participantProfile_alertBoxCloseIconColor,
+                    $borderColor: $participantProfile_alertBoxCloseBorderColor,
+                    $circleWidth: $participantProfile_alertBoxCloseCircleWidth,
+                    $borderWidth: $participantProfile_alertBoxCloseBorderWidth
+                );
+            }
+        }
+
+        p {
+            margin: 0;
+            padding: 18px (12px + $global_header_logoHeight) 18px 84px;
+            @if $participantProfile_alertBoxTopBevelWidth {
+                border-top: $participantProfile_alertBoxTopBevelWidth solid $participantProfile_alertBoxTopBevelColor;
+            }
+
+            // .icon-exclamation-sign {
+            .icon-g5-alerts {
+                position: absolute;
+                left: 34px;
+                // top: 7px;
+                top: 50%;
+                margin-top: -22px;
+                height: 34px;
+                width: 42px;
+                font-size: 36px;
+                line-height: 42px;
+                // color: $red;
+                color: $participantProfile_alertBoxIconColor; //#E00000;
+
+                &::before {
+                    vertical-align: top;
+                }
+            }
+
+            .alertText {
+                display: block;
+                @include text-overflow();
+            }
+
+            a {
+                display: block;
+                @include text-overflow();
+                color: $participantProfile_alertBoxLinkColor;
+            }
+        }
+    }
+
+    .profile-global-participant-search {
+        min-width: 220px; // roughly the width of the input + the width of the button
+
+        .close {
+            i {
+                vertical-align: top;
+
+                @include circledAwesomeIcon(
+                    $fontSize: $participantProfile_alertBoxCloseFontSize,
+                    $color: $participantProfile_alertBoxCloseIconColor,
+                    $borderColor: $participantProfile_alertBoxCloseBorderColor,
+                    $circleWidth: $participantProfile_alertBoxCloseCircleWidth,
+                    $borderWidth: $participantProfile_alertBoxCloseBorderWidth
+                );
+            }
+        }
+
+        #gps-form {
+            margin: 0;
+
+            .close {
+                margin-top: -4px;
+            }
+        }
+        .input-append {
+            position: relative;
+
+            input {
+                border-radius: 4px;
+            }
+            .btn {
+                background: $white;
+                border: none;
+                border-radius: 4px;
+                box-shadow: none;
+                height: 28px;
+                padding: 0 9px;
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                z-index: 3;
+            }
+        }
+        .icon-search {
+            color: $participantProfile_magnifyColor;
+            font-size: 18px;
+            line-height: $baseLineHeight;
+            text-shadow: none;
+        }
+        .spinnerWrap {
+            background-color: $white;
+            border-radius: 4px;
+            display: none;
+            position: absolute;
+            z-index: 4;
+            top: 1px;
+            right: 1px;
+            margin: 0;
+            padding: 0;
+            height: 28px;
+            width: 28px;
+            vertical-align: top;
+        }
+        .gps-name-input {
+            @media (max-width: 767px) {
+                width: 206px; // from bootstrap/_forms.scss
+            }
+        }
+        .searchBtn {
+            @media (max-width: 479px) {
+                display: inline;
+                padding-right: 12px; // from bootstrap/_buttons.scss
+                padding-left: 12px; // from bootstrap/_buttons.scss
+                width: auto;
+            }
+        }
+        .advanced {
+            margin: 0;
+        }
+    }
+
+    // START EZ Recognition auto-complete list
+    .searchList {
+
+        ul {
+            margin: 0 -9px $baseLineHeight/2 -9px; // -9px negates the inner padding on .ui-tooltip-content
+            list-style: none;
+
+            .gpsResultWrapper {
+                padding: 4px 8px;
+
+                h1 {
+                    margin: 0;
+                    margin-bottom: 2px;
+                    font-size: $baseFontSize * 1.2;
+                    line-height: $baseLineHeight;
+                    color:$black;
+                }
+                h2,
+                h3 {
+                    font-size: $baseFontSize;
+                    line-height: 1.2;
+                    font-weight: normal;
+                    color: #666;
+                    margin: 0;
+                }
+                h3 {
+                    color: #999;
+                    font-style: italic;
+                }
+
+                &:focus {
+                    background: mix($linkColor, $white, 33%);
+                    cursor: pointer;
+                }
+                &.selected,
+                &:hover {
+                    color: $white;
+                    background: $linkColor;
+                    cursor: pointer;
+
+                    h2, h3 {
+                        color: $white;
+                    }
+                }
+
+                &.locked {
+                    h1,
+                    h2,
+                    h3 {
+                        color: lighten($black, 66%);
+                    }
+                }
+
+                &.locked:focus,
+                &.locked.selected,
+                &.locked:hover {
+                    cursor: default;
+                    color: lighten($black, 50%);
+                    background: $white;
+                }
+            }
+        }
+    }
+}
+
+
+
+// Media Queries
+// big desktop sizes
+@media (min-width: 1200px) {
+    #participantProfileView {
+
+        @if $global_header_logoHeight1200 {
+            .profile-pic-wrapper,
+            .profile-pic {
+                height: $global_header_logoHeight1200;
+                width: $global_header_logoHeight1200;
+            }
+            .profile-meta {
+                padding-right: 8px + $global_header_logoHeight1200;
+            }
+            .alert-box {
+                height: $global_header_logoHeight1200 - ($participantProfile_alertBoxBorderWidth * 2);
+
+                p {
+                    padding-right: 18px + $global_header_logoHeight1200;
+                }
+            }
+        }
+
+    }
+}
+// typical desktop sizes
+@media (min-width: 768px) and (max-width: 979px) {
+    #participantProfileView {
+
+        @if $global_header_logoHeight768 {
+            .profile-pic-wrapper,
+            .profile-pic {
+                height: $global_header_logoHeight768;
+                width: $global_header_logoHeight768;
+            }
+            .profile-meta {
+                padding-right: 8px + $global_header_logoHeight768;
+            }
+            .alert-box {
+                height: $global_header_logoHeight768 - ($participantProfile_alertBoxBorderWidth * 2);
+            }
+        }
+
+        .profile-meta {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .profile-head {
+            padding-top: 2px;
+        }
+
+        .alert-box {
+            font-size: 12px;
+
+            p {
+                padding: 12px (9px + $global_header_logoHeight768) 12px 72px;
+
+                .icon-g5-alerts {
+                    font-size: 28px;
+                    left: 30px;
+                    // top: 13px;
+                }
+            }
+        }
+    }
+}
+// styles for tablet sizes and below
+@media (max-width: 767px) {
+    #participantProfileView {
+        display: block;
+        float: none;
+        padding: 6px 0;
+        width: 100%;
+        @if $participantProfile_textColorMobile {
+            color: $participantProfile_textColorMobile;
+        }
+
+        @if $participantProfile_linkColorMobile {
+            a {
+                color: $participantProfile_linkColorMobile;
+            }
+        }
+
+        #participantProfileMobileToggle {
+            display: inline;
+            position: absolute;
+            top: 6px;
+            left: 0;
+            padding: 2px 6px;
+            width: auto;
+
+            @if $participantProfile_mobileBtnBg {
+                @if $participantProfile_mobileBtnBg == 'none' {
+                    background-color: transparent;
+                    background-image: none;
+                    @include box-shadow(none);
+                    border-color: transparent;
+                    @include border-radius(0);
+                }
+                @else if $participantProfile_mobileBtnBgHighlight {
+                    @include buttonBackground($participantProfile_mobileBtnBg, $participantProfile_mobileBtnBgHighlight);
+                }
+                @else {
+                    @include buttonBackground($participantProfile_mobileBtnBg, $participantProfile_mobileBtnBg);
+                }
+            }
+            @if $participantProfile_mobileBtnTextColor {
+                color: $participantProfile_mobileBtnTextColor;
+            }
+
+            .icon-minus {
+                display: none;
+            }
+
+            &.active {
+                .icon-minus {
+                    display: inline-block;
+                }
+                .icon-plus {
+                    display: none;
+                }
+            }
+        }
+
+        .profile-pic-wrapper, .profile-pic {
+            position: static;
+            float: right;
+            width: 24px;
+            height: 24px;
+        }
+        .profile-meta {
+            float: none;
+            padding-top: 0;
+            padding-right: 8px;
+            padding-bottom: 0;
+            overflow: hidden;
+
+            .profile-head {
+                padding-bottom: 2px;
+            }
+            .profile-body {
+                margin-top: -2px;
+                display: none;
+
+                .changing {
+                    background-color: $yellow;
+                }
+            }
+            .profile-foot {
+                text-align: right;
+                display: none;
+
+                a {
+                    i {
+                        @if $participantProfile_footIconColorMobile {
+                            color: $participantProfile_footIconColorMobile;
+                        }
+                    }
+                }
+            }
+        }
+        .profile-messages {
+            .profile-num-messages {
+                @if $participantProfile_footNumMsgsTextColorMobile {
+                    color: $participantProfile_footNumMsgsTextColorMobile;
+                }
+                @if $participantProfile_footNumMsgsBgColorMobile {
+                    background-color: $participantProfile_footNumMsgsBgColorMobile;
+                }
+                @if $participantProfile_footNumMsgsBorderColorMobile {
+                    border-color: $participantProfile_footNumMsgsBorderColorMobile;
+                }
+                @else {
+                    border: 0;
+                }
+            }
+        }
+
+        .alert-box {
+            right: 0;
+            top: -$global_header_borderTopWidthMobile;
+            margin-top: -1px;
+            width: 100%;
+            height: auto;
+            @include box-shadow(0px 2px 8px rgba(0,0,0,.5));
+
+            .close {
+                left: auto;
+                // top: 4px;
+                right: 6px;
+            }
+
+            p {
+                padding: 7px 36px 8px 42px;
+
+                .icon-g5-alerts {
+                    left: 8px;
+                    margin-top: 0px;
+                    height: 24px;
+                    width: 24px;
+                    font-size: 24px;
+                    line-height: 24px;
+                    top: 7px;
+                }
+
+                .alertText,
+                a {
+                    white-space: normal;
+                }
+            }
+        }
+    }
+}
+
+

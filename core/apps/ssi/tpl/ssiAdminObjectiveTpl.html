@@ -1,0 +1,210 @@
+{{! NOTE: these variables are set via javascript: }}
+{{!       isCreator }}
+
+{{! NOTE: this src needs to point to the javascript lib}}
+<div class="raphael" data-src="../libs/raphael-min.js"></div>
+
+<!-- {{#if isCreator}} CREATOR {{else}} MANAGER {{/if}} -->
+
+<!--
+    each pax recognition to/by item has special CM keys containing the full translated string for the various permutations of the "## of ## participants [have] achieved their objectives" text
+    the keys' output will have a {0} and {1} placeholder where the number of people is inserted
+    this allows the translations to have plain text and the number in any order
+    we embed this CM output as a tplVariable in our ssiAdminObjective Handlebars template
+    we use `G5.util.cmReplace` to add the data from the model to the string, and append it using jQuery
+-->
+
+<!--tplVariable.achievedCount={
+    "description" : "{0} of {1} participants have achieved their objectives",
+    "descriptionComplete" : "{0} of {1} participants achieved their objectives"
+} tplVariable-->
+
+<div class="row">
+	<div class="span12 contestData">
+		{{#unless hasMultipleObjectives}}
+			<div class="row">
+				<div class="span3 dataSection activityGoal">
+					<h5>{{goal}}</h5><br>
+					{{#if isCreator}}
+					<span>Goal</span>
+					{{else}}
+					<span>Team Goal</span>
+					{{/if}}
+				</div>
+				<div class="span3 dataSection activityProgress">
+					{{#if progress}}
+						<h5>{{progress}}</h5><br>
+					{{else}}
+						<h5>0</h5><br>
+					{{/if}}
+					{{#eq status "finalize_results"}}
+					<span>Final Activity</span>
+					{{else}}
+						{{#if isCreator}}
+						<span>Activity</span>
+						{{else}}
+						<span>Team Activity</span>
+						{{/if}}
+					{{/eq}}
+				</div>
+				<div class="span2 dataSection activityToGo">
+					{{#ueq status "finalize_results"}}
+						{{#unless goalAchieved}}
+							<h5>{{remaining}}</h5><br>
+							<span>To Go</span>
+						{{else}}
+							<h5 class="activityGoalAchieved"><i class="icon-ok-circle"></i></h5>
+	                    	<span>Goal Achieved</span>
+						{{/unless}}
+					{{/ueq}}
+				</div>
+				<div class="span4">
+					<div class="chartPercentHolder chartHolder" data-model-id="{{id}}">
+						<div class="chartPercentProgress">
+							{{#if percentProgress}}
+		                        <strong>{{percentProgress}}<sup>%</sup></strong>
+	                        {{else}}
+		                        <strong>0<sup>%</sup></strong>
+	                        {{/if}}
+	                    </div>
+					</div>
+				</div>
+			</div>
+
+			<div class="span12">
+				{{#if participantsCount}}
+					<div class="row achievedCountWrap">
+						{{! content generated using tplVariable.achievedCount }}
+					</div>
+				{{/if}}
+			</div>
+
+		{{else}}
+
+			<div class="row multipleObjectives">
+				<div class="span8">
+				{{#if participantsCount}}
+					<div class="row achievedCountWrap">
+						{{! content generated using tplVariable.achievedCount }}
+					</div>
+				{{/if}}
+				</div>
+
+				<div class="span4">
+					<div class="chartPercentHolder chartHolder" data-model-id="{{id}}">
+						<div class="chartPercentProgress">
+							{{#if percentProgress}}
+			                    <strong>{{percentProgress}}<sup>%</sup></strong>
+		                    {{else}}
+			                    <strong>0<sup>%</sup></strong>
+		                    {{/if}}
+		                </div>
+					</div>
+				</div>
+			</div>
+
+		{{/unless}}
+	</div>
+</div>
+
+
+{{#if isCreator}}
+	<div class="row">
+		<div class="span12 payoutData">
+			<div class="row">
+				<div class="span12 payoutTitle">
+					{{#eq status "finalize_results"}}
+						<p><span class="graphFlow">Final Payout</span></p>
+					{{else}}
+						{{#eq payoutType "other"}}
+							<p><span class="graphFlow">Potential Payout Value</span></p>
+						{{else}}
+							<p><span class="graphFlow">Potential Payout</span></p>
+						{{/eq}}
+					{{/eq}}
+				</div>
+			</div>
+			<div class="row">
+				<div class="span7 offset1">
+					<div class="ssiPayoutGraph" data-model-id="{{id}}" data-chart-type="payoutProgress">
+						<div class="ssiPayoutGraphBar">
+							<div class="barFill"></div>
+						</div>
+
+							<div class="ssiPayoutGraphProgressMarker">
+								<i class="arrow"></i>
+								<div class="number">
+									<p class="val">{{payoutProgress}}</p> <p class="percent">({{payoutPercentProgress}}%)</p>
+								</div>
+
+							</div>
+
+						<div class="ssiPayoutGraphGoalMarker payout">
+							<span class="goalMarkerCount">{{payoutCap}}</span>
+							<span class="goalMarkerLabel">Payout</span>
+						</div>
+						<div class="ssiPayoutGraphGoalMarker bonus">
+							<span class="goalMarkerCount">{{payoutBonusCap}}</span>
+							<span class="goalMarkerLabel">with Bonus</span>
+						</div>
+					</div>
+
+				</div>
+				<div class="span4 dataSection activityRemaining">
+					{{#if payoutProgress}}
+						{{#eq status "finalize_results"}}
+							{{#eq payoutType "points"}}
+								<h5>{{payoutProgress}}</h5>
+							{{/eq}}
+							{{#eq payoutType "other"}}
+								<h5>{{payoutProgress}}</h5>
+							{{/eq}}
+							<span>points issued</span>
+						{{else}}
+							{{#eq payoutType "points"}}
+								<h5>{{payoutRemaining}}</h5>
+							{{/eq}}
+							{{#eq payoutType "other"}}
+								<h5>{{payoutRemaining}}</h5>
+							{{/eq}}
+							<span>remaining</span>
+						{{/eq}}
+					{{/if}}
+				</div>
+
+			</div>
+		</div>
+	</div>
+{{/if}}
+
+{{#if includeStackRanking}}
+{{#if isProgressLoaded}}
+<div class="row">
+	<div class="span12 stackRankWrap">
+		<div class="row">
+			<div class="span6">
+				<p class="sectionTitle">Stack Rank</p>
+			</div>
+			<div class="span6 text-right">
+				<!-- <a href="#URL_TO_STACKRANK_VIEW/{{id}}" title="" class="viewAll">view all</a> -->
+                <button type="button" class="viewAll viewAllStackRank btn btn-link">view all</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span12">
+				<ol>
+					{{#each stackRankParticipants}}
+					<li>
+						<span class="score">{{score}}</span>
+						<b class="rank">{{rank}}.</b>
+						<img src="{{avatarUrl}}" alt="{{lastName}}, {{firstName}}" class="avatar">
+						<a href="{{contestUrl}}" class="leaderName" title="">{{lastName}}, {{firstName}}</a>
+					</li>
+					{{/each}}
+				</ol>
+			</div>
+		</div>
+	</div>
+</div>
+{{/if}}
+{{/if}}

@@ -1,0 +1,920 @@
+// Partial-specific variables
+// =========================
+$pages_pageContentBgColor: $white !default;
+$pages_pageContentBorderWidth: $g5PageContentLeftRightBorderWidth !default;
+$pages_pageContentBorderWidth1200: $g5PageContentLeftRightBorderWidth1200 !default;
+$pages_pageContentBorderWidth768: $g5PageContentLeftRightBorderWidth768 !default;
+$pages_pageContentBorderColor: $g5ModPgBorderColor !default;
+
+$pages_pageContentH2FontSize: false !default;
+$pages_pageContentH2FontWeight: false !default;
+$pages_pageContentH2Color: false !default;
+
+$pages_pageTopperBgColor: $g5ModPgTopperBgColor !default;
+$pages_pageTopperGradType: linear !default;
+$pages_pageTopperGradMeta: top !default;
+$pages_pageTopperGradStops: ($pages_pageTopperBgColor, darken($pages_pageTopperBgColor, 15%)) !default;
+
+$pages_pageTopperTextColor: $white !default;
+$pages_pageTopperLinkColor: $grayLight !default;
+$pages_pageTopperLinkHoverColor: $grayLighter !default;
+$pages_pageTopperControlLinkColor: $white !default;
+$pages_pageTopperControlLinkHoverColor: $grayLight !default;
+
+// tabs text
+$pages_navTabsTextColor: false !default; // will inherit $pages_pageTopperLinkColor when false
+$pages_navTabsTextHoverColor: false !default; // will inherit $pages_pageTopperLinkHoverColor when false
+$pages_navTabsTextActiveColor: false !default;
+$pages_navTabsTextSelectedColor: $pages_pageTopperBgColor !default;
+// tabs text shadow
+$pages_navTabsTextShadow: 0 -1px 0 rgba(0,0,0,.5) !default;
+$pages_navTabsTextShadowHover: false !default;
+$pages_navTabsTextShadowActive: false !default;
+$pages_navTabsTextShadowSelected: none !default;
+// tabs bg color
+$pages_navTabsBgColor: false !default; // transparent by default
+$pages_navTabsBgHoverColor: $linkColor !default; // colorful by default
+$pages_navTabsBgActiveColor: false !default; // matches the bgColor of the page so the tab blends into it
+$pages_navTabsBgSelectedColor: $pages_pageContentBgColor !default; // matches the bgColor of the page so the tab blends into it
+// tabs box shadow
+$pages_navTabsBoxShadow: false !default;
+$pages_navTabsBoxShadowHover: false !default;
+$pages_navTabsBoxShadowActive: rgba(0,0,0, 0.4) 0 2px 5px inset !default;
+$pages_navTabsBoxShadowSelected: none !default;
+
+// progress well
+$pages_progressHeight: false !default;
+
+// container-splitter
+$pages_splitterH2Color: false !default;
+$pages_splitterTextColor: false !default;
+$pages_splitterLinkColor: false !default;
+$pages_splitterLinkHoverColor: false !default;
+$pages_splitterLinkIconColor: false !default;
+$pages_splitterLinkIconHoverColor: false !default;
+$pages_splitterBgColor: $grayLighter !default;
+$pages_splitterBgGradType: linear !default; // A false value will cancel the gradient altogether
+$pages_splitterBgGradMeta: top !default;
+$pages_splitterBgGradStops: (darken($pages_splitterBgColor, 5%), $pages_splitterBgColor) !default;
+$pages_splitterBorderTopBottomWidth: 1px !default;
+$pages_splitterBorderTopBottomColor: $pages_pageContentBorderColor !default;
+$pages_splitterBoxShadow: none !default; // default .well box-shadow of inset 0 1px 1px rgba(0,0,0,.05) applies if this is false
+
+// TODO 5.4: add progress bar variables for the container-splitter element
+
+$pages_fileLinkIconUrlPath: false !default;
+$pages_displayTableIconUrlPath: false !default;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+
+// ----- START output ----->
+@if $base_variablesOnly == false {
+
+
+// fixed width (normal)
+// -------------------------
+.page-content {
+    // we hide the .page-content initially so there aren't strange flashes of content
+    visibility: hidden;
+
+    // IE8 wasn't agreeing with the visibility approach. FontAwesome icons weren't rendering
+    .lt-ie9 & {
+        visibility: visible;
+        height: 0;
+        overflow: hidden;
+        @include opacity(0);
+    }
+
+    // when a pageView is initialized it adds the class of .page to .page-content, allowing us to then show the element
+    &.page {
+        visibility: visible;
+
+        // IE8 wasn't agreeing with the visibility approach. FontAwesome icons weren't rendering
+        .lt-ie9 & {
+            height: auto;
+            overflow: visible;
+            @include opacity(1);
+        }
+    }
+
+    // Fixed (940px)
+    @include gridCoreG5($gridColumnWidth, $gridGutterWidth, $g5PageContentPaddingHoriz);
+
+    padding: ($g5PageContentPaddingHoriz - $pages_pageContentBorderWidth) 0;
+    background: $pages_pageContentBgColor;
+    @if $pages_pageContentBorderWidth {
+        border: $pages_pageContentBorderWidth solid $pages_pageContentBorderColor;
+    }
+
+    a.disabled {
+        color: #999;
+        @include opacity(.5);
+        cursor: default;
+    }
+
+    h2 {
+        margin-top: 0;
+        @if $pages_pageContentH2FontSize {
+            font-size: $pages_pageContentH2FontSize;
+        }
+        @if $pages_pageContentH2FontWeight {
+            font-weight: $pages_pageContentH2FontWeight;
+        }
+        @if $pages_pageContentH2Color {
+            color: $pages_pageContentH2Color;
+        }
+    }
+
+    .progress {
+        @if $pages_progressHeight {
+            height: $pages_progressHeight;
+            line-height: $pages_progressHeight;
+        }
+    }
+
+    // Pull the header up on pages where the h2 is the first content in the page. The line height on headers
+    // makes the h2 in this case look like it is pushed down about 8 or 9 pixels too far.
+
+    // Sorry, VQA: this breaks on mobile and it seems silly to write a media query just to satisfy this very unique spacing situation
+    // .row:first-child .span12:first-child h2:first-child {
+    //     margin-top: -($g5PageContentSpacingVertical / 4);
+    // }
+
+
+    .page-topper {
+        margin-top: -($g5PageContentPaddingHoriz - $pages_pageContentBorderWidth);
+        margin-bottom: $g5PageContentPaddingHoriz * 2 / 3;
+        margin-left: 0;
+        @include gridCoreInnerPadding($g5PageContentPaddingHoriz, ($g5PageContentPaddingHoriz * 2 / 3), $pages_pageContentBorderWidth, $pages_pageContentBorderWidth);
+        // padding-bottom: 0;
+        color: $pages_pageTopperTextColor;
+        // background: $black;
+        .lt-ie8 & {
+            zoom: 1;
+            position: relative;
+            top: -($g5PageContentPaddingHoriz - $pages_pageContentBorderWidth);
+        }
+        // buttons in page-topper don't display correctly in IE8
+        .lt-ie9 & .btn {
+            position: relative;
+        }
+        @include module_moduleLinerBackground(
+            $bgColor: $pages_pageTopperBgColor,
+            $gradType: $pages_pageTopperGradType,
+            $gradMeta: $pages_pageTopperGradMeta,
+            $gradStops: $pages_pageTopperGradStops,
+            $force: true
+        );
+        @include fontSmoothing($pages_pageTopperTextColor, $pages_pageTopperBgColor);
+
+        @if $pages_pageTopperLinkColor {
+            a {
+                color: $pages_pageTopperLinkColor;
+
+                &.btn {
+                    color: $grayDark;
+
+                    &.btn-primary,
+                    &.btn-primary,
+                    &.btn-warning,
+                    &.btn-danger,
+                    &.btn-success,
+                    &.btn-info,
+                    &.btn-inverse,
+                    &:hover {
+                        color: $white;
+                    }
+                }
+            }
+        }
+        @if $pages_pageTopperLinkHoverColor {
+            a:hover {
+                color: $pages_pageTopperLinkHoverColor;
+            }
+        }
+        .topper-control-link {
+            @if $pages_pageTopperControlLinkColor {
+                color: $pages_pageTopperControlLinkColor;
+            }
+            font-weight: bold;
+        }
+        .topper-control-link:hover {
+            @if $pages_pageTopperControlLinkHoverColor {
+                color: $pages_pageTopperControlLinkHoverColor;
+            }
+            text-decoration: none;
+        }
+
+        .row {
+            margin-left: -$gridGutterWidth;
+        }
+
+        .nav-tabs {
+            position: relative;
+            bottom: 0;
+            margin-bottom: 0;
+
+            a {
+                @if $pages_navTabsTextColor {
+                    color: $pages_navTabsTextColor;
+                }
+                @if $pages_navTabsBgColor {
+                    background: $pages_navTabsBgColor;
+                }
+                @if $pages_navTabsTextShadow {
+                    text-shadow: $pages_navTabsTextShadow;
+                }
+                @if $pages_navTabsBoxShadow {
+                    @include box-shadow($pages_navTabsBoxShadow);
+                }
+
+                &:hover {
+                    @if $pages_navTabsTextHoverColor {
+                        color: $pages_navTabsTextHoverColor;
+                    }
+                    @if $pages_navTabsBgHoverColor {
+                        background: $pages_navTabsBgHoverColor;
+                    }
+                    @if $pages_navTabsTextShadowHover {
+                        text-shadow: $pages_navTabsTextShadowHover;
+                    }
+                    @if $pages_navTabsBoxShadowHover {
+                        @include box-shadow($pages_navTabsBoxShadowHover);
+                    }
+                }
+
+                &:active {
+                    @if $pages_navTabsTextActiveColor {
+                        color: $pages_navTabsTextActiveColor;
+                    }
+                    @if $pages_navTabsBgActiveColor {
+                        background: $pages_navTabsBgActiveColor;
+                    }
+                    @if $pages_navTabsTextShadowActive {
+                        text-shadow: $pages_navTabsTextShadowActive;
+                    }
+                    @if $pages_navTabsBoxShadowActive {
+                        @include box-shadow($pages_navTabsBoxShadowActive);
+                    }
+                }
+            }
+            .active {
+                a,
+                &:hover,
+                &:active {
+                    @if $pages_navTabsTextSelectedColor {
+                        color: $pages_navTabsTextSelectedColor;
+                    }
+                    @if $pages_navTabsBgSelectedColor {
+                        background: $pages_navTabsBgSelectedColor;
+                    }
+                    @if $pages_navTabsTextShadowSelected {
+                        text-shadow: $pages_navTabsTextShadowSelected;
+                    }
+                    @if $pages_navTabsBoxShadowSelected {
+                        @include box-shadow($pages_navTabsBoxShadowSelected);
+                    }
+                }
+            }
+
+            // a:hover {
+            //     background-color: $grayDark;
+            // }
+            // .active a {
+            //     color: $grayDark;
+
+            //     &:hover {
+            //         background-color: $white;
+            //     }
+            // }
+        }
+        .row ~ .row .nav-tabs {
+            padding-top: 0;
+        }
+
+        form,
+        .control-group,
+        .controls {
+            margin-bottom: 0;
+        }
+        .control-group .control-label {
+            padding-right: 4px;
+        }
+    }
+
+    .container-splitter,
+    .nav-tabs {
+        @include gridCoreInnerFullSplit($leftRightPad: $g5PageContentPaddingHoriz, $leftRightBorder: $pages_pageContentBorderWidth);
+    }
+    .container-splitter {
+        @include page_containerSplitterDisplay(
+            $h2Color :              $pages_splitterH2Color,
+            $textColor :            $pages_splitterTextColor,
+            $linkColor :            $pages_splitterLinkColor,
+            $linkHoverColor :       $pages_splitterLinkHoverColor,
+            $linkIconColor :        $pages_splitterLinkIconColor,
+            $linkIconHoverColor :   $pages_splitterLinkIconHoverColor,
+            $bgColor :              $pages_splitterBgColor,
+            $bgGradType :           $pages_splitterBgGradType,
+            $bgGradMeta :           $pages_splitterBgGradMeta,
+            $bgGradStops :          $pages_splitterBgGradStops,
+            $borderTopBottomWidth : $pages_splitterBorderTopBottomWidth,
+            $borderTopBottomColor : $pages_splitterBorderTopBottomColor,
+            $boxShadow :            $pages_splitterBoxShadow
+        );
+
+        .spin {
+            display: block;
+            margin: 0 auto;
+            width: $spinner_widthHeight;
+            height: $spinner_widthHeight;
+        }
+
+        // just in case a .container-splitter also has .page-topper (happens on the PURL contribute page)
+        &.page-topper {
+            // we need to remove any top border
+            border-top: 0;
+            // we need to override the .page-topper text color just in case $pages_splitterTextColor is set to false
+            @if $pages_splitterTextColor == false {
+                color: inherit;
+                *color: $textColor;
+            }
+
+            // we need to evaluate whether or not there is a filter
+            @if $pages_splitterBgGradType == false {
+                .lt-ie9 & {
+                    filter: none;
+                }
+            }
+
+            // for some reason, the top rule isn't needed when both classes are on the element
+            .lt-ie8 & {
+                top: 0;
+            }
+        }
+
+        // just in case a container-splitter has a responsive table within
+        .rT-pinLeft-wrap {
+            background: $pages_splitterBgColor;
+        }
+    }
+    .pullBottomUp,
+    .row:last-child *:last-child > *:last-child > .container-splitter:last-child,
+    .row:last-child > *:last-child *:last-child > *:last-child > .container-splitter:last-child,
+    &.page .formSection:last-child.pullBottomUp {
+        margin-bottom: -1 * ($g5PageContentPaddingHoriz - $pages_pageContentBorderWidth);
+
+        @media (min-width: 1200px) {
+            margin-bottom: -1 * ($g5PageContentPaddingHoriz1200 - $pages_pageContentBorderWidth1200);
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+            margin-bottom: -1 * ($g5PageContentPaddingHoriz768 - $pages_pageContentBorderWidth768);
+        }
+        @media (max-width: 767px) {
+            margin-bottom: -1 * ($g5PageContentPaddingHorizMobile * 3 / 4);
+        }
+    }
+    .pullBottomUp.container-splitter {
+        margin-bottom: -1 * ($g5PageContentPaddingHoriz - $pages_pageContentBorderWidth + $pages_splitterBorderTopBottomWidth);
+
+        @media (min-width: 1200px) {
+            margin-bottom: -1 * ($g5PageContentPaddingHoriz1200 - $pages_pageContentBorderWidth1200 + $pages_splitterBorderTopBottomWidth);
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+            margin-bottom: -1 * ($g5PageContentPaddingHoriz768 - $pages_pageContentBorderWidth768 + $pages_splitterBorderTopBottomWidth);
+        }
+        @media (max-width: 767px) {
+            margin-bottom: -1 * ($g5PageContentPaddingHorizMobile * 3 / 4 + $pages_splitterBorderTopBottomWidth);
+        }
+    }
+    // IE8 ?
+    .lt-ie9 & .form-actions.pullBottomUp {
+        margin-bottom: -1 * ($g5PageContentPaddingHoriz - $pages_pageContentBorderWidth);
+    }
+    // IE7
+    &.page .formSection.pullBottomUp {
+        *margin-bottom: -1 * ($g5PageContentPaddingHoriz - $pages_pageContentBorderWidth);
+    }
+    .pushTopDown {
+        margin-top: $g5PageContentPaddingHoriz - $pages_pageContentBorderWidth + 20px;
+
+        @media (min-width: 1200px) {
+            margin-top: $g5PageContentPaddingHoriz1200 - $pages_pageContentBorderWidth1200 + 20px;
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+            margin-top: $g5PageContentPaddingHoriz768 - $pages_pageContentBorderWidth768 + 20px;
+        }
+        @media (max-width: 767px) {
+            margin-top: $g5PageContentPaddingHorizMobile * 3 / 4 + 20px;
+        }
+    }
+    .pullTopUp {
+        margin-top: -1 * ($g5PageContentPaddingHoriz - $pages_pageContentBorderWidth);
+
+        @media (min-width: 1200px) {
+            margin-top: -1 * ($g5PageContentPaddingHoriz1200 - $pages_pageContentBorderWidth1200);
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+            margin-top: -1 * ($g5PageContentPaddingHoriz768 - $pages_pageContentBorderWidth768);
+        }
+        @media (max-width: 767px) {
+            margin-top: -1 * ($g5PageContentPaddingHorizMobile * 3 / 4);
+        }
+
+        & ~ .pullTopUp {
+            margin-top: 0;
+        }
+    }
+    .pullTopUp.container-splitter {
+        margin-top: -1 * ($g5PageContentPaddingHoriz - $pages_pageContentBorderWidth + $pages_splitterBorderTopBottomWidth);
+
+        @media (min-width: 1200px) {
+            margin-top: -1 * ($g5PageContentPaddingHoriz1200 - $pages_pageContentBorderWidth1200 + $pages_splitterBorderTopBottomWidth);
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+            margin-top: -1 * ($g5PageContentPaddingHoriz768 - $pages_pageContentBorderWidth768 + $pages_splitterBorderTopBottomWidth);
+        }
+        @media (max-width: 767px) {
+            margin-top: -1 * ($g5PageContentPaddingHorizMobile * 3 / 4 + $pages_splitterBorderTopBottomWidth);
+        }
+
+        & ~ .pullTopUp {
+            margin-top: 0;
+        }
+    }
+
+
+}
+
+.lt-ie8 .page-content {
+    margin:0;
+}
+
+.page-head {
+    margin: 0 0 15px -15px;
+}
+
+// this is a global style pageView help icons
+.pageView_help {
+    cursor: pointer;
+
+    &:hover {
+        cursor: pointer;
+        color: #666;
+    }
+}
+
+
+// reset grid inside page-content with padding if appropriate
+// -------------------------
+@media (min-width: 1200px) {
+    .page-content {
+        @include gridCoreG5($gridColumnWidth1200, $gridGutterWidth1200, $g5PageContentPaddingHoriz1200);
+        padding: ($g5PageContentPaddingHoriz1200 - $pages_pageContentBorderWidth1200) 0;
+        @if $pages_pageContentBorderWidth1200 != $pages_pageContentBorderWidth {
+            border-width: $pages_pageContentBorderWidth1200;
+        }
+
+        .page-topper {
+            margin-top: -($g5PageContentPaddingHoriz1200 - $pages_pageContentBorderWidth1200);
+            margin-bottom: $g5PageContentPaddingHoriz1200 * 2 / 3;
+            @include gridCoreInnerPadding($g5PageContentPaddingHoriz1200, ($g5PageContentPaddingHoriz1200 * 2 / 3), $pages_pageContentBorderWidth1200, $pages_pageContentBorderWidth1200);
+            // padding-bottom: ($g5PageContentPaddingHoriz * 2 / 3);
+
+            .row {
+                margin-left: -$gridGutterWidth1200;
+            }
+        }
+
+        .container-splitter,
+        .nav-tabs {
+            @include gridCoreInnerFullSplit($leftRightPad: $g5PageContentPaddingHoriz1200, $leftRightBorder: $pages_pageContentBorderWidth1200);
+        }
+    }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+    .page-content {
+        @include gridCoreG5($gridColumnWidth768, $gridGutterWidth768, $g5PageContentPaddingHoriz768);
+        padding: ($g5PageContentPaddingHoriz768 - $pages_pageContentBorderWidth768) 0;
+        @if $pages_pageContentBorderWidth768 != $pages_pageContentBorderWidth {
+            border-width: $pages_pageContentBorderWidth768;
+        }
+
+        .page-topper {
+            margin-top: -($g5PageContentPaddingHoriz768 - $pages_pageContentBorderWidth768);
+            margin-bottom: $g5PageContentPaddingHoriz768 * 2 / 3;
+            @include gridCoreInnerPadding($g5PageContentPaddingHoriz768, ($g5PageContentPaddingHoriz768 * 2 / 3), $pages_pageContentBorderWidth768, $pages_pageContentBorderWidth768);
+            // padding-bottom: ($g5PageContentPaddingHoriz768 * 2 / 3);
+
+            .row {
+                margin-left: -$gridGutterWidth768;
+            }
+        }
+
+        .container-splitter,
+        .nav-tabs {
+            @include gridCoreInnerFullSplit($leftRightPad: $g5PageContentPaddingHoriz768, $leftRightBorder: $pages_pageContentBorderWidth768);
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .page-content {
+        // margin-left: ($g5PageContentPaddingHorizMobile * -1);
+        // margin-right: ($g5PageContentPaddingHorizMobile * -1);
+        padding: ($g5PageContentPaddingHorizMobile * 3 / 4) 0;
+        border-left-width: 0;
+        border-right-width: 0;
+
+        // Fixed (940px)
+        @include gridCoreSpanMobile(12);
+        .row,
+        .public-recognition-item {
+            margin-left: $g5PageContentPaddingHorizMobile;
+            margin-right: $g5PageContentPaddingHorizMobile;
+        }
+        .row {
+            //make sure nested rows have no effective margin
+            .row {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+
+        [class*="span"] {
+            float: none;
+            margin-left: 0;
+        }
+
+        .page-topper {
+            margin-top: -1 * ($g5PageContentPaddingHorizMobile * 3 / 4);
+            margin-right: 0;
+            margin-bottom: ($g5PageContentPaddingHorizMobile * 3 / 4);
+            margin-left: 0;
+            @include gridCoreInnerPadding($g5PageContentPaddingHorizMobile, ($g5PageContentPaddingHorizMobile * 3 / 4));
+
+            .row {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .nav-tabs {
+                margin-top: 0;
+                padding-top: 0;
+                bottom: 0;
+
+                li {
+                    float: none;
+                    margin-right: 0;
+                }
+            }
+            .row ~ .row .nav-tabs {
+                margin-top: $g5PageContentPaddingHorizMobile * 3 / 4;
+                margin-bottom: $g5PageContentPaddingHorizMobile * 3 / 4;
+                bottom: 0;
+            }
+        }
+
+        .container-splitter,
+        .nav-tabs {
+            @include gridCoreInnerFullSplit($leftRightPad: $g5PageContentPaddingHorizMobile);
+        }
+    }
+
+    .page-head {
+        margin-left: ($g5PageContentPaddingHorizMobile * -1);
+        margin-right: ($g5PageContentPaddingHorizMobile * -1);
+    }
+}
+
+@media (max-width: 479px) {
+    .btn {
+        @include mobileBtn(100%);
+    }
+
+    .btn + .btn {
+        margin-top: 5px;
+        margin-left: 0px;
+    }
+
+    input.btn {
+        @include mobileBtn(100%);
+    }
+
+    .btn.datepickerBtn {
+        display: inline-block;
+        width: auto;
+        padding-right: 12px;
+        padding-left: 12px;
+    }
+}
+
+
+// file links
+.fileLink.pdfLink {
+    display: inline-block;
+    @include ie7-inline-block();
+    padding-left: 18px;
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+    @include safeImgUrls(
+        'fileIcons/pdf16px.png',
+        $pages_fileLinkIconUrlPath,
+        $property: 'background-image'
+    );
+}
+
+
+// export tools -- used in reports, statement, activity hist. etc.
+.export-tools {
+    white-space: nowrap;
+    margin: 0;
+
+    li {
+        margin-left: 4px;
+    }
+
+    .export {
+        display: inline-block;
+        @include ie7-inline-block();
+        line-height: $exportIconHeight;
+        vertical-align: top;
+    }
+
+    .export a {
+        display: inline-block;
+        position: relative;
+        width: auto !important;
+        width: $exportIconHeight;
+        min-width: $exportIconHeight;
+        height: $exportIconHeight;
+        text-align: right;
+        font-size: 10px;
+        line-height: $exportIconHeight; // same height as the icon images
+        // NOTE: setting a fixed height doesn't really belong in this more general block of SCSS. Not sure why I put it here. Will live with it for now.
+        color: $gray;
+
+        img, span {
+            display: block;
+            margin: 0 auto;
+        }
+        img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin-left: 4px;
+            // float: right;
+        }
+        span {
+            margin-left: 8px;
+            padding-right: $exportIconWidth + 4px;
+        }
+    }
+}
+
+// styles for the view that manipulates disp. table output
+.displayTableAjaxView {
+    position: relative;
+    min-height: 200px;
+
+    .export-tools {
+        padding-bottom: 8px;
+        *padding-bottom: 0; //ie7
+    }
+
+    // for DisplayTableAjaxView output (uses bg images)
+    .bgBtn {
+        text-decoration:none;
+        margin-left: 4px;
+    }
+    .bgBtnCsv,
+    .bgBtnXls,
+    .bgBtnPdf {
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+    }
+    .bgBtnCsv {
+        @include safeImgUrls(
+            'reports/reports_exportCsv.png',
+            $pages_displayTableIconUrlPath,
+            $property: 'background-image'
+        );
+    }
+    .bgBtnXls {
+        @include safeImgUrls(
+            'reports/reports_exportXls.png',
+            $pages_displayTableIconUrlPath,
+            $property: 'background-image'
+        );
+    }
+    .bgBtnPdf {
+        @include safeImgUrls(
+            'reports/reports_exportPdf.png',
+            $pages_displayTableIconUrlPath,
+            $property: 'background-image'
+        );
+    }
+
+    .paginationControls {
+
+        &.full, &.first, &.last, &.onepage {
+            clear: both;
+        }
+
+        // if nested then style for DisplayTableAjaxView.js
+        .paginationControls.paginationDesc {
+            float:left;
+            margin:0;
+            line-height: 31px; // height of the pagination buttons/widget
+        }
+    }
+
+    // ASC and DESC icons
+    // *yanked from profile messagesAndAlerts, not sure why its not global
+    th {
+        a:hover { text-decoration: none; }
+        i { vertical-align: top; }
+        &.unsorted {
+            i { opacity: 0.15; }
+            i.icon-sort-down { display: none; }
+        }
+
+        &.sorted {
+            i { opacity: 1.0; }
+            &.ascending i.icon-sort-down { display: none; }
+            &.ascending i.icon-sort-up { display: inline-block; }
+            &.descending i.icon-sort-up { display: none; }
+            &.descending i.icon-sort-down { display: inline-block; }
+        }
+        &:hover i { opacity: 0.63; }
+        &:active i { opacity: 1.0; }
+    }
+
+    // waiting spinner
+    // * yanked from profile
+    .spincover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10000;
+        width: 100%;
+        height: 100%;
+        background: $white;
+        background: rgba(255, 255, 255, .5);
+
+        .spin {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            // width: 60px;
+            // height: 60px;
+            margin: (-1 * $spinner_widthHeight / 2) 0 0 (-1 * $spinner_widthHeight / 2);
+        }
+    }
+    .spin {
+        display: block;
+        margin: 0 auto;
+        width: $spinner_widthHeight;
+        height: $spinner_widthHeight;
+    }
+}
+
+
+
+ul.export-tools,
+ul.recordset-paging,
+ul.select-all,
+ul.comment-attachements,
+ul.breadcrumbs {
+    list-style-type: none;
+    list-style-position: inside;
+    margin-left: 0;
+}
+
+ul.export-tools li,
+ul.recordset-paging li,
+ul.select-all li,
+ul.comment-attachements li,
+ul.breadcrumbs li {
+    display: inline;
+    margin: 0 0 0 10px;
+}
+
+ul.export-tools li,
+ul.recordset-paging li,
+ul.select-all li,
+ul.breadcrumbs li {
+    margin-left: 0;
+}
+
+// ul.recordset-paging li.first-item:before {
+//     content: "\003c \003c";
+// }
+
+// ul.recordset-paging li.last-item:after {
+//     content: "\003e \003e";
+// }
+
+.pagination ul .first i,
+.pagination ul .last i {
+    // margin-left: -6px;
+
+    & ~ i {
+        // margin-left: -4px;
+        // margin-right: -6px;
+    }
+}
+.pagination ul .prev i {
+    margin-left: -6px;
+}
+.pagination ul .next i {
+    margin-right: -6px;
+}
+
+ul.comment-attachements li {
+    margin: 0 7px 0 0;
+}
+
+ul.breadcrumbs li:after {
+    content: " \00BB \0020";
+}
+
+ul.breadcrumbs li.active:after {
+    content: " ";
+}
+
+// .dl-h1 dt {
+//     width: 146px;
+//     text-align: left;
+//     text-overflow: inherit;
+// }
+
+// .dl-h1 dd {
+//     margin-left: 156px;
+// }
+
+// .dl-h2 dt {
+//     width: 100px;
+//     text-align: left;
+//     text-overflow: inherit;
+// }
+
+// .dl-h2 dd {
+//     margin-left: 110px;
+// }
+
+// .dl-h3 dt {
+//     width: 78px;
+// }
+
+// .dl-h3 dd {
+//     margin-left: 88px;
+// }
+
+// .dl-h4 dt {
+//     width: 20px;
+// }
+
+// .dl-h4 dd {
+//     margin-left: 30px;
+// }
+
+// .dl-mf {
+//     margin-top: -9px;
+// }
+
+// .form-horizontal .form-actions {
+//     padding-left: 20px;
+// }
+
+table .date,
+table .number {
+    text-align: right;
+}
+
+.lt-ie8 .export-tools{
+    // width: 35px;
+    // margin-right: 80px;
+
+    li {
+        margin-left: 5px;
+    }
+}
+
+// back to top things
+.backToTop {
+    font-size: 85.714%;
+}
+p span.backToTop {
+    padding-left: 8px;
+    white-space: nowrap;
+}
+
+
+// <----- END output -----
+} // end @if $base_variablesOnly == false

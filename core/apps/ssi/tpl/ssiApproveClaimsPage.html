@@ -1,0 +1,214 @@
+<div id="ssiApproveClaimsPageView" class="page-content">
+
+    <!-- JAVA NOTE: render the following HTML if the user has just approved a claim -->
+    <div class="modal hide fade autoModal ssiClaimsApprovalModal">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+            <h1>Claim Approved</h1>
+        </div>
+    </div>
+
+    <div id="ssiApproveClaimsSummary">
+        <script id="ssiApproveClaimsTopTpl" type="text/x-handlebars-template">
+        <div class="page-topper">
+            <div class="row">
+                <div class="span12">
+                    <h2>{{name}}</h2>
+                </div>
+            </div>
+
+            {{#if canApprove}}
+            <div class="row">
+                <div class="span9">
+                    <input type="hidden" name="contestId" value="{{contestId}}">
+                    <p>After approving claim(s), you must select "Done" to update your contest activity results.</p>
+                </div>
+                <div class="span3">
+                    <button class="btn btn-primary ssiApproveClaimsUpdate pull-right" data-contest-id="{{contestId}}">Done</button>
+                </div>
+            </div>
+            {{/if}}
+
+        </div>
+        </script>
+    </div><!-- /#ssiApproveClaimsSummary -->
+
+    <div id="ssiApproveClaimsStats">
+        <script id="ssiApproveClaimsStatsTpl" type="text/x-handlebars-template">
+        <div class="row ssiSummaryDetails">
+            <div class="span12">
+                <ul class="stats unstyled">
+                    <li class="stat claims submitted">
+                        <strong class="count">{{claimsSubmittedCount}}</strong>
+                        <span class="name">Claims Submitted</span>
+                    </li>
+                    <li class="stat claims pending">
+                        <strong class="count">{{claimsPendingCount}}</strong>
+                        <span class="name">Claims Pending</span>
+                    </li>
+                    <li class="stat claims approved">
+                        <strong class="count">{{claimsApprovedCount}}</strong>
+                        <span class="name">Claims Approved</span>
+                    </li>
+                    <li class="stat claims denied">
+                        <strong class="count">{{claimsDeniedCount}}</strong>
+                        <span class="name">Claims Denied</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </script>
+    </div><!-- /#ssiApproveClaimsStats -->
+
+    <div class="row filterClaimsWrapper">
+        <div class="span8">
+            Filter Claims:
+            <select name="claimsFilter" id="claimsFilter">
+                <option value="waiting_for_approval">Waiting for Approval</option>
+                <option value="approved">Approved</option>
+                <option value="denied">Denied</option>
+                <option value="all">All</option>
+            </select>
+        </div>
+        <div class="span4 text-right">
+            <!-- JAVA NOTE: Will need path to spreadsheet download -->
+            <a href="//full/url/to/export.do" class="exportXlsButton"><img src="../base/img/fileIcons/xls34x34.png" alt="CSV"></a>
+        </div>
+    </div>
+
+
+    <div class="awardHistoryWrapper row">
+        <div class="span12">
+            <div id="ssiApproveClaimsHistory" class="spinnerOverlayWrap">
+                <!-- dynamic content -->
+            </div>
+            <div class="approveAllConfirm" style="display:none">
+                <p class="text-center">
+                    <b>Approve All?</b>
+                </p>
+                <p>
+                    This will approve all <span class="pendingClaimsCount"></span> open claims.
+                </p>
+                <p class="tc">
+                    <a class="btn btn-small confirmBtn closeTip">Yes</a>
+                    <a class="btn btn-small cancelBtn closeTip">No</a>
+                </p>
+            </div><!-- /.approveAllConfirm -->
+        </div><!-- /.span12 -->
+    </div><!-- /.awardHistoryWrapper.row -->
+
+    <div class="ssiDenyClaimPopover" style="display: none">
+        <form id="ssiDenyClaim" method="post" action="layout.html?tplPath=../apps/approvals/tpl/&tpl=approvalsPageIndex.html" enctype="multipart/form-data">
+            <div class="control-group validateme"
+                data-validate-fail-msgs='{"nonempty":"You must enter a reason for denial."}'
+                data-validate-flags='nonempty'>
+                <button type="button" class="close">&times;</button>
+                <label class="control-label">Reason For Denial</label>
+                <div class="commentTools">
+                    <span class="spellchecker dropdown">
+                        <button class="checkSpellingDdBtn btn dropdown-toggle"
+                                title="check spelling"
+                                type="button"
+                                data-toggle="dropdown">
+                            <i class="icon-check"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="check"><b>Check spelling</b></a></li>
+                        </ul>
+                    </span>
+                    Remaining Characters: <span class="remChars">&nbsp;</span>
+                </div>
+                <div class="controls">
+                    <div class="contribCommentWrapper">
+                        <textarea class="contribCommentInp" rows="4" maxlength="1000" placeholder="add a comment" name="comment"></textarea>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary ssiDenyClaimSubmit" name="status" value="denied">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div><!--/.ssiDenyClaimsPopover-->
+
+    <!-- Button to trigger modal -->
+    <!-- <a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a> -->
+
+    <!-- Claim Approved Modal -->
+    <div class="modal hide fade ssiClaimsApprovalModal" id="ssiClaimApprovedModal">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+            <h1>Claim Approved</h1>
+        </div>
+    </div>
+
+    <!-- Claim Denied Modal -->
+    <div class="modal hide fade ssiClaimsApprovalModal" id="ssiClaimDeniedModal">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+            <h1>Claim Denied</h1>
+        </div>
+    </div>
+
+    <!-- All Claims Approved Modal -->
+    <div class="modal hide fade ssiClaimsApprovalModal" id="ssiAllClaimsApprovedModal">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+            <h1>All Claims Approved</h1>
+        </div>
+    </div>
+
+    <!-- Update Modal -->
+    <div class="modal hide fade ssiClaimsApprovalModal" id="ssiAllClaimsUpdatedModal">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+            <h1>Claim Updated</h1>
+            <p>You contest activity totals will be updated shortly.</p>
+        </div>
+    </div>
+
+</div><!--/#ssiApproveClaimsPageView-->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+/* jshint ignore:start */
+    $(document).ready(function() {
+        var contestJson = null;
+
+        // JAVA NOTE: url for claims history pagination
+        G5.props.URL_JSON_CLAIMS_APPROVAL_HISTORY = G5.props.URL_ROOT+'ajax/ssiApproveClaimsSummary.json';
+
+        // JAVA NOTE: url for sending update requests
+        G5.props.URL_JSON_CLAIMS_UPDATE = G5.props.URL_ROOT+'ajax/ssiClaimUpdate.json';
+
+        // JAVA NOTE: bootstrapped JSON
+        contestJson = {
+            contestId: "3",
+            name: "Super Summer Big Contest",
+            sortedOn: "dateSubmitted",
+            sortedBy: "desc",
+            contestCreator: "Bob Smith",
+            claimsSubmittedCount: 251,
+            claimsPendingCount: 12,
+            claimsApprovedCount: 236,
+            claimsDeniedCount: 3,
+            canApprove: true
+        };
+
+        var ssiApproveClaimsPageView = new SSIApproveClaimsPageView({
+            el:$('#ssiApproveClaimsPageView'),
+            contestJson: contestJson, // contest json to populate model
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=./tpl/&tpl=modulesPage.html#filter/home'
+                }
+            },
+            pageTitle : 'Approve Claims'
+        });
+    });
+/* jshint ignore:end */
+</script>

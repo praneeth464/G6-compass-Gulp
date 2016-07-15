@@ -1,0 +1,69 @@
+<h2>Activity History</h2>
+
+<form class="form-inline" action="ajax/profilePageActivityHistoryResponse.html" id="profilePageActivityHistoryForm">
+    <fieldset id="profilePageActivityHistoryTabFieldsetSelection">
+        <div class="form-inline">
+            <div class="control-group validateme"
+                 data-validate-flags="nonempty"
+                 data-validate-fail-msgs='{"nonempty" : "Please enter a starting date"}'>
+                <label class="control-label" for="profilePageActivityHistoryTabStartDate">Show Activity From:</label>
+                <div class="controls">
+                    <span class="input-append datepickerTrigger"
+                        data-date-format="mm/dd/yyyy"
+                        data-date-language="en_US"
+                        data-date-autoclose="true">
+                        <input type="text"  class="date datepickerInp"
+                            id="profilePageActivityHistoryTabStartDate"
+                            name="startDate"
+                            value="9/02/2012"
+                            readonly="readonly">
+                        <button class="btn datepickerBtn"><i class="icon-calendar"></i></button>
+                    </span>
+                </div>
+            </div>
+            <div class="control-group validateme"
+                 data-validate-flags="nonempty"
+                 data-validate-fail-msgs='{"nonempty" : "Please enter an ending date"}'>
+                <label class="control-label" for="profilePageActivityHistoryTabEndDate">to:</label>
+                <div class="controls">
+                    <span class="input-append datepickerTrigger"
+                        data-date-format="mm/dd/yyyy"
+                        data-date-language="en_US"
+                        data-date-autoclose="true">
+                        <input type="text"  class="date datepickerInp"
+                            id="profilePageActivityHistoryTabEndDate"
+                            name="endDate"
+                            value="10/02/2012"
+                            readonly="readonly">
+                        <button class="btn datepickerBtn"><i class="icon-calendar"></i></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please select a promotion"}'>
+            <label class="control-label" for="dd">For Promotion:</label>
+            <div class="controls">
+                <select id="profilePageActivityHistoryTabPromotion" name="promotionId">
+                    <option></option>
+                    <option value="allRecognitions" selected>All Recognitions</option>
+                    <option value="allNominations">All Nominations</option>
+                    <option value="allQuizzes">All Quizzes</option>
+                    <option value="allProductClaims">All Product Claims</option>
+                </select>
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset class="actionsSection" id="profilePageActivityHistoryTabFieldsetActions">
+        <div class="controls">
+            <button class="btn btn-primary"
+                id="profilePageActivityHistoryTabButtonShowActivity"
+                type="submit"
+                name="button"
+                value="profilePageActivityHistoryTabButtonShowActivity"> Show Activity </button>
+        </div>
+    </fieldset>
+</form>
+
+<div id="profilePageActivityHistoryPageData">
+</div>

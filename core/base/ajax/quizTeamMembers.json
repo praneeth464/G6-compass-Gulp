@@ -1,0 +1,25 @@
+<?php sleep(2); ?>
+{
+    
+    "participants": [
+        {
+            "id":4500,
+            "firstName":"Ajax",
+            "lastName":"Teaman",
+            "orgName":"Sales",
+            "countryCode":"in",
+            "countryName":"India",
+            "avatarUrl":"img/_samples/x-profile-pic2.jpg"
+        },
+        {
+            "id":44500000,
+            "firstName":"Team",
+            "lastName":"Membor",
+            "orgName":"Organization Name",
+            "countryCode":"fr",
+            "countryName":"France",
+            "avatarUrl":"img/_samples/x-profile-pic1.jpg"
+        }
+    ]
+
+}

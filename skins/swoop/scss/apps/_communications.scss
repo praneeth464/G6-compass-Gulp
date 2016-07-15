@@ -1,0 +1,61 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $communications_bgColor: ;
+// $communications_gradType: ;
+// $communications_gradMeta: ;
+// $communications_gradStops: ;
+
+// $communications_iconColor: ;
+// $communications_titleColor: ;
+// $communications_titleFontFamily: ;
+// $communications_titleFontSizes: ;
+// $communications_titleFontWeights: ;
+
+// $communications_blockHeadlineFontFamily: ;
+// $communications_blockHeadlineFontSize: ;
+// $communications_blockHeadlineFontWeight: ;
+// $communications_blockHeadlineBgColor: ;
+// $communications_blockHeadlineColor: ;
+
+// $communications_blockHeadlineBtnBgColor: ;
+// $communications_blockHeadlineBtnTextColor: ;
+// $communications_blockHeadlineBtnBgGradType: ;
+// $communications_blockHeadlineBtnBgGradMeta: ;
+// $communications_blockHeadlineBtnBgGradStops: ;
+
+// $communications_bannerHeadlineBgColor: ;
+// $communications_bannerHeadlineColor: ;
+
+// $communications_newsHeadlineBgColor: ;
+// $communications_newsHeadlineColor: ;
+
+// $communications_resoureceHeadlineBgColor: ;
+// $communications_resoureceHeadlineColor: ;
+
+// $communications_tipsHeadlineBgColor: ;
+// $communications_tipsHeadlineColor: ;
+
+// $communications_alertsHeadlineBgColor: ;
+// $communications_alertsHeadlineColor: ;
+
+// $communications_uploadPreviewImgBorderColor: ;
+// $communications_uploadPreviewReplaceBgColor: ;
+// $communications_uploadPreviewReplaceBorderColor: ;
+
+// $communications_exportImgUrlPath: ; // uses $appImagesPath by default. change to "false" or some other path to use the skin img folder
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "communications/scss/communications";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

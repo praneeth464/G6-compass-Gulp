@@ -1,0 +1,32 @@
+// Partial-specific variables
+// =========================
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+//General styles
+
+//text alignment
+.tl { text-align: left }
+.tr { text-align: right }
+.tc { text-align: center }
+.tb { text-align: block }
+
+.fl { float: left; }
+.fr { float: right; }
+
+.ifw { width: 99%; }
+
+.ib {@include inline-block;}
+
+
+// there is a bug in the default Android 4.3 browser that causes heading tags to not display their custom fonts
+// turning off text-rendering: optimizeLegibility fixes the issue, but would affect all browsers
+// while this solution does spill over to iOS devices, we can live with that as most users are on desktops anyway
+// Court found the solution here: http://css-tricks.com/almanac/properties/t/text-rendering/#comment-1581773
+h1, h2, h3, h4, h5, h6 {
+    html.touch & { text-rendering: optimizeSpeed; }
+}

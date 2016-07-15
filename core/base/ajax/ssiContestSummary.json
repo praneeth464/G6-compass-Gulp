@@ -1,0 +1,65 @@
+<?php sleep(1); ?>
+
+{
+    "messages": [],
+    "currentPage": 1,
+    "recordsPerPage": 5,
+    "recordsTotal": 500,
+    "contests": [
+        {
+            "id": 123, <?php /* for ssiApproveContestPageATN */ ?>
+            "participantsCount": 20,
+            "amount": "1,234.5600",
+            "payoutDescription": "$50 gift card",
+            "payoutAmount": "2,000",
+            "dateCreated": "06/09/15",
+            "statusDescription": "Approved",
+            "status": "approved" <?php /* for ssiApproveContestPageATN */ ?>
+        },
+        {
+            "id": 223, <?php /* for ssiApproveContestPageATN */ ?>
+            "participantsCount": 23,
+            "amount": "1,234.5600",
+            "payoutDescription": "$50 gift card",
+            "payoutAmount": "50",
+            "dateCreated": "03/09/15",
+            "statusDescription": "Waiting for Approval",
+            "status": "waiting_for_approval", <?php /* for ssiApproveContestPageATN */ ?>
+            "canApprove": true <?php /* for ssiApproveContestPageATN */ ?>
+        },
+        {
+            "id": 323, <?php /* for ssiApproveContestPageATN */ ?>
+            "participantsCount": 5,
+            "amount": "1,234.5600",
+            "payoutDescription": "$50 gift card",
+            "payoutAmount": "17",
+            "dateCreated": "01/06/15",
+            "statusDescription": "Denied",
+            "deniedReason": "reason for denial",
+            "status": "denied" <?php /* for ssiApproveContestPageATN */ ?>
+        },
+        {
+            <?php /* for ssiApproveContestPageATN - this id is an example of the encrypted version BE sends*/ ?>
+            "id": "7o%2BzXgS3bhcsRh07Nh%2BhejfAPkFMBPLFdyNKZr7200%2FzIiOnROkL1l0YQqajkb6T2bxRW02I09Pu%0AajiDqU1spEr8cEaBQpQnbGL7V7vqlTDpZ0nGlhPTD9ADwF7Tg5EghuougjsFofeh2zTHFnjoyiwA%0AToQrISBDzH7Dm0EvI9PH%2Fq8Acll44ZAvYUOhZxWYTwUkrDizp%2FGDWnJ7zISKsTLVSUwuGG7CDoPx%0AZy5p71wuFnkcA%2BCNtt75A3MDzSk9WGbyNsohrXudgrtQzvyDh%2BIuMEVzOnLEfDWp8OxfTYoGzQmX%0A1CCrH3ErERly0c%2FYLKb0xF4CFGDhvA3QuG18IeOxQUAb9ipJrPEpsf%2FlEmqnnrBztjC9roXLVXZt%0A3cdhK%2FHqH3KPfb4ZJQLhoeo64%2FiOkKpNSQjakdAC4vSxTJ4NQWrNoiU3FUyts%2F8ieD7GaWicdw%3D%3D",
+            "participantsCount": 10,
+            "amount": "1,234.5600",
+            "payoutDescription": "$50 gift card",
+            "payoutAmount": "855",
+            "dateCreated": "02/09/15",
+            "statusDescription": "Waiting for Approval",
+            "status": "waiting_for_approval", <?php /* for ssiApproveContestPageATN */ ?>
+            "canApprove": false <?php /* for ssiApproveContestPageATN */ ?>
+        },
+        {
+            "id": 523, <?php /* for ssiApproveContestPageATN */ ?>
+            "participantsCount": 17,
+            "amount": "1,234.5600",
+            "payoutDescription": "$50 gift card",
+            "payoutAmount": "0",
+            "dateCreated": "01/07/15",
+            "statusDescription": "Denied",
+            "deniedReason": "reason for denial",
+            "status": "denied" <?php /* for ssiApproveContestPageATN */ ?>
+        }
+    ]
+}

@@ -1,0 +1,54 @@
+/*  G5 Fonticons EXTENDED
+    additional and/or replacement glyphs for the custom icon font designed just for G5
+    -------------------------------------------------------
+    Completely borrowed from FontAwesome:
+      http://fortawesome.github.com/Font-Awesome/
+    Technique for building a custom icon font found here:
+      http://www.webdesignerdepot.com/2012/01/how-to-make-your-own-icon-g5-webfont/
+
+    Court Cromwell-Carl (cromcarl@biworldwide.com) built the first version of this font with Type Tool
+    Joel Schou (schou@biworldwide.com) iterated additional versions and implemented it into G5
+
+    License
+    -------------------------------------------------------
+    Copyright BI WORLDWIDE. All Rights Reserved.
+*/
+
+// the @font-face declaration can be found in fonts.scss in the root of the scss folder
+
+
+/*  Assign the font name from fonts.scss to a variable
+    -------------------------------------------------------
+    $g5fonticons_extended_fontFamily: 'G5FonticonsExtended';
+*/
+
+
+/*  List the properties for all additional glyphs here
+    !!! These need to be duplicated in g5-fonticons-ie7.scss so both files have access
+    ------------------------------------------------------- */
+/*  G5 Fonticons uses the Unicode Private Use Area (PUA) to ensure screen
+    readers do not read off random characters that represent icons
+    
+    Module icons
+    ------------
+    These are always rendered square and should only be used on the modules in title-icon-view mode.
+    Start with \f800 to avoid collisions with any existing glyphs. The first unicode value is for "good" browsers, the second for ie7
+    $g5fonticons_modules_extended:  'iconnameA' '\f800' 'f800',
+                                    'iconnameB' '\f801' 'f801';
+
+    Utility icons
+    -------------
+    These are rendered at a proportional width and can be used anywere FontAwesome icons are used. They cannot be replaced with images.
+    Start with \f900 to avoid collisions with any existing glyphs. The first unicode value is for "good" browsers, the second for ie7
+    $g5fonticons_utility_extended:  'iconnameC' '\f900' 'f900',
+                                    'iconnameD' '\f901' 'f901';
+*/
+
+// Partial SCSS from G5 Core
+// =========================
+@import "partials/g5-fonticons";
+
+
+// ==================================================
+// Do not do anything else in this file!
+// ==================================================

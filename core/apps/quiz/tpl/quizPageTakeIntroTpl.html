@@ -1,0 +1,25 @@
+{{{introText}}}
+{{#if totalQuestions}}
+    <p class="questionStats">
+        <span>Number of Questions:</span> <strong>{{totalQuestions}}</strong>
+        {{#if passingScore}}<br><span>Need to Pass:</span> <strong>{{passingScore}}</strong>{{/if}}
+    </p>
+{{/if}}
+
+<div class="stepContentControls form-actions pullBottomUp">
+    {{#if materials}}
+    <button class="btn btn-primary nextBtn">
+        Continue to Course Materials <i class="icon-chevron-right"></i>
+    </button>
+    {{else}}
+        {{#if _allQuestionsAnswered}}
+        <button class="btn btn-primary resultsBtn">
+            View Results <i class="icon-chevron-right"></i>
+        </button>
+        {{else}}
+        <button class="btn btn-primary nextBtn">
+            Start Test <i class="icon-chevron-right"></i>
+        </button>
+        {{/if}}
+    {{/if}}
+</div><!-- /.stepContentControls -->

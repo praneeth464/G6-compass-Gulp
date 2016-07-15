@@ -1,0 +1,139 @@
+// App-specific variables
+// =========================
+$celebrationBrowseAwards_bgColor: $white !default;
+$celebrationBrowseAwards_gradType: $g5ModuleGradType !default;
+$celebrationBrowseAwards_gradMeta: $g5ModuleGradMeta !default;
+$celebrationBrowseAwards_gradStops: $g5ModuleGradStops !default;
+
+$celebrationBrowseAwards_linkColor: $white !default;
+$celebrationBrowseAwards_linkHoverColor: $white !default;
+
+$celebrationBrowseAwards_headerBgColor: rgba(0, 0, 0, 0.5) !default;
+$celebrationBrowseAwards_headerFontColor: $white !default;
+$celebrationBrowseAwards_footerBgColor: rgba(0, 0, 0, 0.25) !default;
+
+$celebrationBrowseAwards_carouselControlColor: #cccccc !default;
+
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.celebrationBrowseAwards {
+
+    a {
+        color: $celebrationBrowseAwards_linkColor;
+
+        &:hover {
+            color: $celebrationBrowseAwards_linkHoverColor;
+        }
+    }
+
+} /* /.celebrationBrowseAwards  */
+
+/* ----- MODULE STYLES ----- */
+.module.celebrationBrowseAwards {
+
+    .module-liner {
+        background: transparent;
+    }
+
+    .wide-view {
+        padding: 0;
+    }
+
+    .module-header {
+        background: $celebrationBrowseAwards_headerBgColor;
+        color: $celebrationBrowseAwards_headerFontColor;
+        height: 62px;
+        line-height: 1;
+        position: relative;
+
+        h2 {
+            bottom: 8px;
+            font-size: 30px;
+            left: 20px;
+            margin: 0;
+            position: absolute;
+        }
+    }
+
+    #awardsCarousel.carousel {
+
+        .item {
+            height: 258px;
+
+            .item-wrap {
+                background-color: $celebrationBrowseAwards_bgColor;
+                height: 196px;
+                text-align: center;
+                width: 100%;
+
+                img {
+                    @include box-shadow( 0 0 2px rgba(0,0,0,0.3));
+                    margin-top: 11px;
+                    width: 174px;
+                }
+            }
+
+            .carousel-caption {
+                background: $celebrationBrowseAwards_footerBgColor;
+                height: 62px;
+                padding: 0;
+
+                p {
+                    font-size: $baseFontSize;
+                    font-weight: bold;
+                    line-height: 1.2;
+                    padding: 14px 20px 0;
+                }
+            }
+        }
+
+        .carousel-control {
+            background: none;
+            border: none;
+            color: $celebrationBrowseAwards_carouselControlColor;
+            font-size: $baseFontSize * 4.285;
+            height: auto;
+            left: 15px;
+            outline: none;
+            position: absolute;
+            text-align: center;
+            text-decoration: none;
+            top: 66px;
+            width: auto;
+            z-index: 6;
+
+            &.right {
+                left: auto;
+                right: 15px;
+            }
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+
+} /* /.module.celebrationBrowseAwards  */
+
+.lt-ie9 {
+     .carousel-caption {
+        background: black;
+        filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=75);
+    }
+    .item img {
+        border: 1px solid #cccccc;
+    }
+}
+
+/* ----- PAGE STYLES ----- */
+.page.celebrationBrowseAwards {
+
+
+} /* /.page.celebrationBrowseAwards  */

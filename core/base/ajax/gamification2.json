@@ -1,0 +1,32 @@
+{
+    "messages":[],
+    "badgeInfo":{
+        "noBadgesCompleteText":"Simply diplayed text when no badges are complete.",
+        "badges":[
+            {
+                "id":               "23",
+                "type":             "progress",
+                "name":             "Earned Badge Name 1 2a",
+                "howToEarnText":    "1 How to earn badge",
+                "imgLarge":         "http://placehold.it/261x180",
+                "img":              "img/gamification_badge_placeholder1.jpg",
+                "earned":           true,
+                "dateEarned":       "2012-09-01 (< 2 wks)",
+                "progressNumerator":  "",
+                "progressDenominator":  ""
+            },
+            {
+                "id":               "24",
+                "type":             "progress",
+                "name":             "Earned Badge Name 2 2a",
+                "howToEarnText":    "2 How to earn badge",
+                "imgLarge":         "http://placehold.it/262x180",
+                "img":              "img/gamification_badge_placeholder1.jpg",
+                "earned":           true,
+                "dateEarned":       "2012-09-02 (< 2 wks)",
+                "progressNumerator":  "",
+                "progressDenominator":  ""
+            }
+        ]
+    }
+}

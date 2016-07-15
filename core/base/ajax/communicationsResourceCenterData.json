@@ -1,0 +1,33 @@
+{
+    "resourceTable": {
+        "resources": [
+            {
+                "id":"1234",
+                "index": 0,
+                "languageDisplay": "U.S. English",
+                "language": "en_US",
+                "title": "Resource Center Content Title",
+                "link": "example.pdf"
+            },
+            {
+                "id":"1235",
+                "index":1,
+                "languageDisplay": "Spanish",
+                "language": "sp",
+                "title": "Resource Center Content Title",
+                "link": "www.example.com"
+            },
+            {
+                "id":"1236",
+                "index":2,
+                "languageDisplay": "Spanish",
+                "language": "sp",
+                "title": "Resource Center Content Title3",
+                "link": "www.google.com"
+            }
+        ]
+    },
+    "resourceTitle": "New Resource",
+    "resourceStartDate": "05/23/2014",
+    "resourceEndDate": "06/01/2014"
+}

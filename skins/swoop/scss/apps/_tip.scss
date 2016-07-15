@@ -1,0 +1,42 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $tip_bgColor: ;
+// $tip_gradType: ;
+// $tip_gradMeta: ; // list the gradient non-color properties such as position, shape, etc.
+// $tip_gradStops: ; // list the stops as one would a series of raw gradient stops
+
+// $tip_iconColor: ;
+// $tip_titleColor: ;
+// $tip_titleFontFamily: ;
+// $tip_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $tip_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+// $tip_cycleDotWidth: ;
+// $tip_cycleDotBkg: ;
+// $tip_cycleDotBorder: ;
+// $tip_cycleDotBkgHover: ;
+// $tip_cycleDotBorderHover: ;
+// $tip_cycleDotBkgActive: ;
+// $tip_cycleDotBorderActive: ;
+// $tip_cycleDotBorderRadius: ;
+
+// $tip_textFontFamily: ;
+// $tip_textColor: ;
+// $tip_labelFontWeight: ;
+// $tip_labelFontColor: ;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "tip/scss/tip";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

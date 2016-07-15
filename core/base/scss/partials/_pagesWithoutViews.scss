@@ -1,0 +1,143 @@
+// Partial-specific variables
+// =========================
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+// FAQs page
+// core/base/tpl/faqSheet.html
+// ----------------------------------------
+#faqPageView {
+    .answerHeader {
+        margin-top: $baseLineHeight * 2;
+    }
+    .answerList h4 {
+        margin-top: $baseLineHeight;
+        font-weight: normal;
+    }
+    .answerList blockquote p {
+        font-size: $baseFontSize;
+        font-weight: normal;
+    }
+}
+
+// Paticipant Search page
+// core/base/tpl/participantAdvancedSearchPage.html
+// ----------------------------------------
+#advancedSearchPageView {
+    .visibilityControls .showHideBtn {
+        display: none;
+        visibility: hidden;
+    }
+    .selectCell {
+        &.selected {
+            .select-txt {
+                display:inline;
+            }
+            .selected-txt {
+                display:none;
+            }
+        }
+    }
+    @media (max-width: 482px){
+        .participantSearchSelect {
+            float: left;
+        }
+        .participantSearchDropdownWrapper {
+            clear: left;
+            float: left;
+            margin: 0;
+        }
+    }
+}
+
+// Product Claim Preview Custom Form page
+// core/apps/productClaim/tpl/claimPageAdminFormPreview.html
+// ----------------------------------------
+#claimPageAdminFormPreviewView {
+    .customSection {
+        display: block !important;
+    }
+}
+
+// Product Claim Detail Page in the Profile app
+// core/apps/profile/tpl/profilePageClaimDetail.html
+// ----------------------------------------
+/* special claim detail page that's part of the profile app for some reason */
+#profilePageClaimDetailView {
+    .table {
+        th {
+            &.sortable {
+                padding: 0;
+            }
+
+            a {
+                display: block;
+                padding: 8px;
+                color: $white;
+                cursor: pointer;
+            }
+            a:hover {
+                text-decoration: none;
+            }
+            i { vertical-align: top; }
+
+            &.unsorted {
+                i { @include opacity(0.15); }
+
+                &.ascending {
+                    i.icon-sort-down { display: none; }
+                }
+                &.descending {
+                    i.icon-sort-up { display: none; }
+                }
+            }
+
+            &.sorted {
+                i { @include opacity(1.0); }
+
+                &.ascending {
+                    i.icon-sort-down { display: none; }
+                }
+                &.descending {
+                    i.icon-sort-up { display: none; }
+                }
+            }
+            &:hover i { @include opacity(0.63); }
+            &:active i { @include opacity(1.0); }
+        }
+    }
+}
+
+
+// Participant Chatter Authorization page
+// core/base/tpl/participantChatterAuthorization.html
+// ----------------------------------------
+#participantChatterPageView {
+
+    .participantChatterInstructions p {
+        font-weight: bold;
+    }
+
+    form.participantChatterForm {
+        width: 450px;
+
+        .currentRecognitionText span {
+            font-style: italic;
+            color: $gray;
+        }
+        textarea {
+            float: left;
+            height: 100px;
+            resize: none;
+            width: 450px;
+        }
+        .formButtons {
+            float: left;
+            clear: left;
+        }
+    }
+}

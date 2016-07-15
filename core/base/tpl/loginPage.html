@@ -1,0 +1,100 @@
+<!-- ======== LOGIN PAGE ======== -->
+
+<script type="text/javascript">
+    $('body').addClass('loginPage');
+</script>
+
+<!-- Page Body -->
+
+<!-- NOTE: when self-registration is available, the class here is "selfEnrollmentOn", otherwise it is "selfEnrollmentOff" -->
+<div class="page-content selfEnrollmentOn" id="loginPage">
+
+    <div class="row">
+        <div class="span12">
+            <blockquote class="intro">
+                <p>Welcome to the G5 Employee Recognition Demo! This is your one-stop shop for all of your employee recognition information. Check back often as information changes regularly.</p>
+                <p>Another intro paragraph just in case</p>
+            </blockquote>
+        </div><!-- /.span12 -->
+
+        <div class="span6" id="loginPageFormLogin">
+            <form id="loginForm" action="layout.html" method="POST" class="form-horizontal">
+                <p>If you already have an ID and password, log in here.</p>
+
+                <fieldset id="loginFieldset">
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter your login id"}'>
+                        <label class="control-label" for="j_username">Login ID</label>
+                        <div class="controls">
+                            <input type="text" id="j_username" name="j_username">
+                            <!-- <span class="help-inline"><a href="?tplPath=base/tpl/&amp;tpl=loginPageForgotLoginId.html">Forgot Login ID?</a></span> -->
+                        </div>
+                    </div>
+
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter your password"}'>
+                        <label class="control-label" for="j_password">Password</label>
+                        <div class="controls">
+                            <input type="password" id="j_password" name="j_password">
+                            <!-- <span class="help-inline"><a href="?tplPath=base/tpl/&amp;tpl=loginPageForgotPassword.html">Forgot Password?</a></span> -->
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-actions">
+                    <button type="submit" id="loginFormSubmit" name="button" value="loginFormSubmit" formaction="ajax/loginPageFormLoginResponse.json" class="btn btn-primary">Log In</button>
+                    <a href="?tplPath=base/tpl/&amp;tpl=loginPageHelp.html" id="loginHelpTrigger" class="btn btn-link"><i class="icon-question-sign"></i> Help</a>
+                </fieldset>
+            </form>
+        </div><!-- /#loginPageLoginForm.span6 -->
+
+        <!-- NOTE: if self-registration is NOT available, do not render this second div. The selfEnrollmentOff class will hide it regardless -->
+        <div class="span6" id="loginPageFormRegistration">
+            <form id="regForm" action="" method="POST" class="form-horizontal">
+                <p>If you do not yet have an ID and password, register here.</p>
+
+                <fieldset id="regFieldset">
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter your login id"}'>
+                        <label class="control-label" for="regcode">Registration Code</label>
+                        <div class="controls">
+                            <input type="text" id="regcode" name="registrationCode">
+                            <!-- <span class="help-inline"><a href="?tplPath=base/tpl/&amp;tpl=loginPageRegistrationHelp.html">What is this?</a></span> -->
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-actions">
+                    <button type="submit" id="regFormSubmit" name="button" value="regFormSubmit" formaction="ajax/loginPageFormRegistrationResponse.json" class="btn btn-primary">Register</button>
+                    <a href="?tplPath=base/tpl/&amp;tpl=loginPageHelp.html&amp;helpwith=registration" id="regHelpTrigger" class="btn btn-link"><i class="icon-question-sign"></i> Help</a>
+                </fieldset>
+            </form>
+        </div><!-- /#loginPageRegForm.span6 -->
+
+        <div class="span12" id="loginPageLanguages">
+            <!-- <p class="contactus">If you are having difficulty logging in, <a href="?tplPath=base/tpl/&amp;tpl=loginPageContactUs.html">contact us</a> for assistance.</p> -->
+
+            <ul class="languages unstyled inline">
+                <li class="zh_CN"><a href="?tplPath=base/tpl/&amp;tpl=loginPage.html&amp;cmsLocaleCode=zh_CN">华人</a></li>
+                <li class="en"><a href="?tplPath=base/tpl/&amp;tpl=loginPage.html&amp;cmsLocaleCode=en">English</a></li>
+                <li class="fr_CA"><a href="?tplPath=base/tpl/&amp;tpl=loginPage.html&amp;cmsLocaleCode=fr_CA">Canadienne-Française</a></li>
+                <li class="de_DE"><a href="?tplPath=base/tpl/&amp;tpl=loginPage.html&amp;cmsLocaleCode=de_DE">Deutsch [Deutschland]</a></li>
+                <li class="it_IT"><a href="?tplPath=base/tpl/&amp;tpl=loginPage.html&amp;cmsLocaleCode=it_IT">Italiano</a></li>
+                <li class="es_ES"><a href="?tplPath=base/tpl/&amp;tpl=loginPage.html&amp;cmsLocaleCode=es_ES">Español [España]</a></li>
+                <li class="en_GB"><a href="?tplPath=base/tpl/&amp;tpl=loginPage.html&amp;cmsLocaleCode=en_GB">United Kingdom English</a></li>
+                <li class="en_US"><a href="?tplPath=base/tpl/&amp;tpl=loginPage.html&amp;cmsLocaleCode=en_US">United States English</a></li>
+            </ul>
+        </div><!-- /#loginPageLanguages.span12 -->
+    </div><!-- /.row -->
+
+</div><!-- /#loginPage.page-content -->
+
+<script>
+    $(document).ready(function() {
+        //attach the view to an existing DOM element
+        lpv = new LoginPageView({
+            el : $('#loginPage'),
+            mode : 'login',
+            pageNav : {},
+            pageTitle : 'Welcome',
+            loggedIn : false // to prevent the profile view from executing
+        });
+    });
+</script>

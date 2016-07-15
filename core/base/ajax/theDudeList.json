@@ -1,0 +1,16 @@
+{
+    "messages":[],
+    "dudes":[
+        {
+            "id":"23",
+            "firstName":"The",
+            "lastName":"Dude"
+        },
+        {
+            "id":"24",
+            "firstName":"Walter",
+            "lastName":"Sobchek"
+        }
+    ]
+
+}

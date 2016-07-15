@@ -1,0 +1,327 @@
+/* * * * * *
+*
+*    Page and Module Charts
+*
+* * * * * */
+.page.ssi,
+.module.ssi {
+    .chartHolder.barChart {
+        width: auto;
+        height: 200px;
+    }
+
+    .chartHolder {
+        color: $ssi_objectives_circleChart_ovArcColor;
+        outline-color: $ssi_objectives_circleChart_fgArcColor;
+        border-top-color: $ssi_objectives_circleChart_bgArcColor;
+        font-size: 10px;
+
+        // raphael freaks out without a set width
+        width: 100px;
+        height: 100px;
+    }
+
+    &.stepItUp {
+        .chartHolder {
+            font-size: 5px;
+        }
+    }
+
+    .chartPercentProgress {
+        position: absolute;
+        text-align: center;
+        top: 0;
+
+        strong {
+            color: $ssiModule_objectives_percentColor;
+            display: block;
+        }
+
+        sup {
+            font-size: 40%;
+            margin-right: -0.5ex;
+            top: -1em;
+        }
+    }//.chartPercentProgress
+
+    .barChartContainer {
+        position: relative;
+
+        svg tspan {
+            text-transform: uppercase;
+        }
+
+        .barChart {
+            background: rgba(255,255,255,.25);
+            margin: 20px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .barChartWrapper {
+            border-left: 40px solid $ssi_SIU_barChart_axisBgColor;
+            border-bottom: 40px solid $ssi_SIU_barChart_axisBgColor;
+            position: absolute;
+            top: 20px;
+            z-index: 1;
+        }
+    }//.barChartContainer
+
+    .chartData {
+        background: $white;
+        border: 1px solid $white;
+        border-radius: 50%;
+        position: absolute;
+        text-align: center;
+    }
+
+    .levelProgress span {
+        display: block;
+        color: $ssi_SIU_bgColor;
+    }
+
+    .levelGoal span {
+        display: block;
+        border-top: 1px solid $black;
+        color: $black;
+    }
+
+    .levelRemaining {
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .complete {
+        .levelProgress span,
+        .levelChartWrapper .levelName.currentLevel,
+        .levelChartWrapper .currentLevelCol .levelName {
+            color: $black;
+        }
+
+        .chartPercentProgress strong {
+            color: $ssi_chartPercentCompleteColor;
+        }
+    }
+
+    .levelChartWrapper {
+        .circleData {
+            border-radius: 50%;
+            position: relative;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .levelCompleted {
+            background: black;
+            color: $black;
+
+            i {
+                color: $ssi_SIU_bgColor;
+                font: {
+                    weight: 100;
+                }
+                position: relative;
+                top: 25%;
+            }
+        }
+
+        .levelNotCompleted {
+            background: lighten($ssi_SIU_bgColor, 20%);
+        }
+
+        .levelName {
+            color: $black;
+            display: block;
+            font-family: $ssi_secondaryFontFamily;
+            margin-left: -24px;
+            text: {
+                align: center;
+                transform: uppercase;
+            }
+
+            &.notComplete {
+                color: lighten($ssi_SIU_bgColor, 25%);
+            }
+
+            &.currentLevel {
+                color: $white;
+            }
+        }
+
+        .currentLevelCol .levelName {
+            color: $white;
+        }
+
+        .backgroundLinkBar {
+            background: $black;
+            height: 7px;
+            position: absolute;
+            z-index: 1;
+        }
+    }//.levelChartWrapper
+
+}//.page.ssi, .module.ssi
+
+/* * * * * *
+*
+*    Page Charts
+*
+* * * * * */
+.page.ssi {
+    .chartHolder.barChart {
+        border-top-color: $ssi_SIU_barChart_moduleBarColor;
+        border-left-color: $ssi_SIU_barChart_axisTextColor;
+        border-right-color: $ssi_SIU_barChart_barValueColor;
+    }//.chartHolder.barChart
+
+    .contestWrapper.stepItUp {
+        .ssiPayoutGraphBar {
+            background-color: lighten($ssi_SIU_bgColor, 36%);
+        }
+    }
+
+    .contestWrapper.objectives {
+        .ssiPayoutGraphBar {
+            background-color: lighten($ssi_objectives_bgColor, 36%);
+        }
+    }
+
+    .ssiPayoutGraph {
+        position: relative;
+
+        .ssiPayoutGraphBar {
+            height: 30px;
+            width: 100%;
+            position: relative;
+
+            .barFill {
+                position: absolute;
+                background-color: $ssiDetails_chartProgressTextColor;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                width: 0; // changed via JS
+            }
+        }//.ssiPayoutGraphBar
+
+        .ssiPayoutGraphProgressMarker {
+            background-color: $ssiDetails_chartGoalTextColor;
+            color: $ssiDetails_chartProgressTextColor;
+            display: inline-block;
+            position: absolute;
+            text-align: center;
+            padding: 10px 10px 5px;
+            width: 120px;
+            margin-left: -70px;
+
+            &.top {
+                top: -50px;
+            }
+
+            &.bottom {
+                top: 40px;
+
+                .arrow {
+                    top: auto;
+                    bottom: 100%;
+                    border-width: 0 5px 6px;
+                }
+            }
+
+            .number {
+                font-size: 1.75em;
+                font-weight: bold;
+                font-family: $titleFont;
+
+                > p {
+                    display: inline;
+                    margin-bottom: 0;
+                }
+
+                .percent {
+                    font-size: 66%;
+                    position: relative;
+                    top: -3px;
+                }
+            }
+
+            .potential {
+                font-size: 80%;
+                margin-bottom: 0;
+            }
+
+            .arrow {
+                display: block;
+                position: absolute;
+                border-color: $ssiDetails_chartGoalTextColor transparent;
+                border-style: solid;
+                border-width: 6px 5px 0;
+                top: 100%;
+                left: 50%;
+                margin-left: -5px;
+            }
+
+            @media (max-width: 525px){
+                margin-left: -50px;
+                padding: 10px 5px 5px;
+                width: 94px;
+
+                .number {
+                    font-size: 1.2em;
+                }
+            }
+        }//.ssiPayoutGraphProgressMarker
+
+        .ssiPayoutGraphGoalMarker {
+            position: absolute;
+            padding-top: 10px;
+            margin-left: -1px;
+
+            &:before {
+                content: " ";
+                position: absolute;
+                height: 50px;
+                width: 0;
+                border-left: 1px dashed $ssiDetails_chartGoalTextColor;
+                top: -40px;
+            }
+
+            &.payout {
+                text-align: right;
+
+                span {
+                    margin-left: -100%;
+                }
+            }
+            &.bonus {}
+
+            .goalMarkerCount {
+                display: block;
+            }
+
+            .goalMarkerLabel {
+                display: block;
+                white-space: nowrap;
+            }
+        } // .ssiPayoutGraphGoalMarker
+    } // .ssiPayoutGraph
+}//.page.ssi
+
+/* * * * * *
+*
+*    Module Charts
+*
+* * * * * */
+.module.ssi {
+    .chartHolder.barChart {
+        width: auto;
+        height: 200px;
+        border-top-color: $ssi_SIU_barChart_moduleBarColor;
+        border-left-color: $ssi_SIU_barChart_axisTextColor;
+        border-right-color: $ssi_SIU_barChart_barValueColor;
+    }//.chartHolder.barChart
+
+    .complete .chartHolder.barChart {
+        border-right-color: #000; // This was hardcoded as black, not sure if that's intentional.
+    }//.complete .chartHolder.barChart
+}//.module.ssi

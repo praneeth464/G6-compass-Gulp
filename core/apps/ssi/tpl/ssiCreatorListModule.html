@@ -1,0 +1,134 @@
+<!-- ======== SSI MODULE ======== -->
+{{! NOTE: 'contestType', 'activity', and 'leader' are set in the js }}
+
+
+<a href="#JAVA_POPULATED_URL" class="visitAppBtn">
+    <i class="icon-arrow-right"></i>
+</a>
+
+<div class="module-topper contestType">
+    {{#eq contestType "objectives"}}
+        <h3><i class="icon-g5-objective"></i>Objectives Contests</h3>
+    {{/eq}}
+    {{#eq contestType "stepItUp"}}
+        <h3><i class="icon-g5-stepitup"></i>Step It Up Contests</h3>
+    {{/eq}}
+    {{#eq contestType "doThisGetThat"}}
+        <h3><i class="icon-g5-dothisgetthat"></i>Do This, Get That Contests</h3>
+    {{/eq}}
+    {{#eq contestType "stackRank"}}
+        <h3><i class="icon-g5-stackrank"></i>Stack Rank Contests</h3>
+    {{/eq}}
+</div>
+
+<div class="contestListWrap scrollArea">
+    <ul class="contestList unstyled">
+        {{#each contests}}
+            <li class="contestListItem">
+                <div class="row-fluid">
+                    <div class="span12 contestInfo">
+                        <p class="contestName">{{name}}</p>
+                        <span class="contestAsOf">
+                        {{#eq status "pending"}}
+                            Starts {{startDate}}
+                        {{else}}
+                            as of {{updatedOnDate}}
+                        {{/eq}}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row-fluid">
+                    {{#eq contestType "objectives"}}
+                        <div class="narrowModule">
+                            <div class="span6 activityAchieved">
+                                <span>Activity: {{progress}}</span>
+                            </div>
+                            <div class="span6 text-right">
+                                <a class="btn btn-primary" href="{{creatorDetailPageUrl}}&id={{id}}">
+                                    {{#eq status "finalize_results"}}
+                                        Final Results
+                                    {{else}}
+                                        View Details
+                                    {{/eq}}
+                                </a>
+                            </div>
+                        </div>
+                        <div class="shortAndWideModule wideModule">
+                            <div class="span8 activityAchieved">
+                                {{#if participantsCount}}
+                                <span>Activity: {{progress}} |
+                                <span class="participantEarned">{{achievedParticipantsCount}} of {{participantsCount}} Achieved</span>
+                                </span>
+                                {{/if}}
+                            </div>
+                            <div class="span4 text-right">
+                                <a class="btn btn-primary" href="{{creatorDetailPageUrl}}&id={{id}}">
+                                    {{#eq status "finalize_results"}}
+                                        Final Results
+                                    {{else}}
+                                        View Details
+                                    {{/eq}}
+                                </a>
+                            </div>
+                        </div>
+                    {{/eq}}
+                    {{#eq contestType "stepItUp"}}
+                        <div class="span6 activityAchieved">
+                            <span>Goal: {{goal}}</span> <br>
+                            <span>Activity: {{progress}}</span>
+                        </div>
+                        <div class="span6 text-right">
+                            <a class="btn btn-primary" href="{{creatorDetailPageUrl}}&id={{id}}">
+                                {{#eq status "finalize_results"}}
+                                    Final Results
+                                {{else}}
+                                    View Details
+                                {{/eq}}
+                            </a>
+                        </div>
+                    {{/eq}}
+                    {{#eq contestType "doThisGetThat"}}
+                        <div class="span12 text-right">
+                            <a class="btn btn-primary" href="{{creatorDetailPageUrl}}&id={{id}}">
+                                {{#eq status "finalize_results"}}
+                                    Final Results
+                                {{else}}
+                                    View Details
+                                {{/eq}}
+                            </a>
+                        </div>
+                    {{/eq}}
+                    {{#eq contestType "stackRank"}}
+                            <div class="span6 activityAchieved">
+                                <span>Activity: {{progress}}</span>
+                            </div>
+                            <div class="span6 text-right">
+                                    <a class="btn btn-primary" href="{{creatorDetailPageUrl}}&id={{id}}">
+                                        {{#eq status "finalize_results"}}
+                                            Final Results
+                                        {{else}}
+                                            View Details
+                                        {{/eq}}
+                                    </a>
+                            </div>
+                            {{#if leader.firstName}}
+                            <div class="span12 stackRankLeader">
+                                {{#with leader}}
+                                    <span class="score">{{score}}</span>
+                                    <b>{{rank}}.</b>
+                                    {{#if avatarUrl}}
+                                        <img src="{{avatarUrl}}" class="listTileAvatar">
+                                    {{/if}}
+                                    <span class="leaderName">
+                                        {{firstName}} {{lastName}}
+                                    </span>
+                                {{/with}}
+                            </div>
+                            {{/if}}
+                    {{/eq}}
+                </div>
+            </li>
+        {{/each}}
+    </ul>
+</div>

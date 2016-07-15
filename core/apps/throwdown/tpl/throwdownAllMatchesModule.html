@@ -1,0 +1,135 @@
+<div class="module-liner">
+
+	<a href="this/gets/overwritten/by/json/data" class="visitAppBtn">
+        <i class="icon-arrow-right"></i>
+    </a>
+
+	<div class="app-row main-nav">
+
+		<div class="app-col">
+			<h3>Matches</h3>
+
+			<ul class="nav nav-tabs allMatchesTabs">
+				<li class="tabGlobal active"><a title="" href="#AllMatches" data-toggle="tab" data-original-title="All" data-name-id="global"><i class="icon-g5-pubrec-global"></i><span>Global</span></a></li>
+                <li class=" tabTeam"><a title="" href="#TeamMatches" data-toggle="tab" data-original-title="Team" data-name-id="team"><i class="icon-g5-pubrec-team"></i><span>Team</span></a></li>
+           </ul>
+
+		</div>
+
+	</div>
+
+    <div class="wide-view">
+		<div class="tab-content">
+			<div id="AllMatches" class="tab-pane active">
+				<div id="allMatchesTab">
+
+						<div class="roundPagination pagination pagination-center paginationControls first"></div>
+
+						<div class="allMatchesTable"></div>
+
+				</div>
+			</div>
+
+			<div id="TeamMatches" class="tab-pane">
+				<div id="allMatchesTeamTab">
+						<div class="roundPagination pagination pagination-center paginationControls first"></div>
+
+						<div class="allMatchesTeamTable"></div>
+
+				</div>
+			</div>
+		</div>
+    </div><!--/.wide-view-->
+
+	<div class="title-icon-view">
+
+        <h3>All Matches</h3>
+        <i class="icon-g5-publicsmack-talk"></i>
+
+    </div>
+
+    <!--subTpl.roundPaginationTpl=
+		<ul>
+			<li class="prev {{#eq currentRound "1"}} disabled {{/eq}}">
+				<a>«</a>
+            </li>
+
+			<li>
+				<p>Round <span class="your-round">{{currentRound}}</span> of <span class="round-total">{{totalRounds}}</span></p>
+
+            </li>
+
+            <li class="next {{#eq totalRounds currentRound}} disabled {{/eq}}">
+				<a>»</a>
+            </li>
+
+        </ul>
+
+    subTpl-->
+
+	<!--subTpl.throwdownAllMatchesTpl=
+
+		<div class="clearBoth">
+            <span class="td-fine-print">Sales by units, from {{roundStartDate}} to {{progressEndDate}}</span>
+        </div>
+
+		<table id="allMatchesTable" class="table table-bordered table-striped">
+
+					{{#if tabularData.meta.columns}}
+					<thead>
+					<tr>{{! NOTE: the Handlebars tags in this block are broken onto different lines in a strange way because of an IE whitespace bug}}
+					{{#each tabularData.meta.columns}}<th class="{{type}}" data-sort-by-id="{{id}}" {{#if colSpan}} colspan="{{colSpan}}" {{/if}}> {{name}} </th>{{/each}}
+					</tr>
+					</thead>
+					{{/if}}
+
+					{{#if teams}}
+					<tbody>
+					{{#each teams}}
+					<tr>{{! NOTE: the Handlebars tags in this block are broken onto different lines in a strange way because of an IE }}
+						<td colspan="2"><img src="{{primaryTeam.smallAvatarUrl}}" alt="{{primaryTeam.name}}" /><p><a class="profile-popover" href="" data-participant-ids="[{{primaryTeam.id}}]">{{primaryTeam.name}}</a> </p> <br /> <img src="{{secondaryTeam.smallAvatarUrl}}" alt="{{secondaryTeam.name}}" /><p><a class="profile-popover" href="" data-participant-ids="[{{secondaryTeam.id}}]">{{secondaryTeam.name}}</a></p></td>
+						<td class="td-record"><p>W: <span>{{primaryTeam.stats.wins}}</span> L: <span>{{primaryTeam.stats.losses}}</span> T: <span>{{primaryTeam.stats.ties}}</span></p><br /> <p>W: <span>{{secondaryTeam.stats.wins}}</span> L: <span>{{secondaryTeam.stats.losses}}</span> T: <span>{{secondaryTeam.stats.ties}}</span></p></td>
+                        <td class="td-current-progress"><p>{{#if displayProgress}} {{primaryTeam.currentProgress}} {{#if primaryTeam.isWinnerFinal}}<span>W</span> {{else}} {{#if primaryTeam.isTiedFinal}}<span>T</span> {{/if}} {{/if}} {{else}} {{primaryTeam.currentProgressText}} {{/if}}</p><br /> <p>{{#if displayProgress}} {{secondaryTeam.currentProgress}} {{#if secondaryTeam.isWinnerFinal}}<span>W</span> {{else}} {{#if secondaryTeam.isTiedFinal}}<span>T</span> {{/if}} {{/if}} {{else}} {{secondaryTeam.currentProgressText}} {{/if}}</p></td>
+						<td><div class="app-col chevron"><a href="{{matchUrl}}"><i class="icon-chevron-right"></i></a></div></td>
+					</tr>
+					{{/each}}
+					</tbody>
+					{{/if}}
+					</table>
+
+					<a href="{{allMatchesUrl}}">View More</a>
+	subTpl-->
+
+	<!--subTpl.throwdownAllMatchesTeamTpl=
+
+		<div class="clearBoth">
+            <span class="td-fine-print">Sales by units, from {{roundStartDate}} to {{progressEndDate}}</span>
+        </div>
+
+		<table id="allMatchesTable" class="table table-bordered table-striped">
+
+					{{#if tabularData.meta.columns}}
+					<thead>
+					<tr>{{! NOTE: the Handlebars tags in this block are broken onto different lines in a strange way because of an IE whitespace bug}}
+					{{#each tabularData.meta.columns}}<th class="{{type}}" data-sort-by-id="{{id}}" {{#if colSpan}} colspan="{{colSpan}}" {{/if}}> {{name}} </th>{{/each}}
+					</tr>
+					</thead>
+					{{/if}}
+
+					{{#if teams}}
+					<tbody>
+					{{#each teams}}
+					<tr>{{! NOTE: the Handlebars tags in this block are broken onto different lines in a strange way because of an IE }}
+						<td colspan="2"><img src="{{primaryTeam.smallAvatarUrl}}" alt="{{primaryTeam.name}}" /><p><a class="profile-popover" href="" data-participant-ids="[{{primaryTeam.id}}]">{{primaryTeam.name}}</a> </p> <br /><img src="{{secondaryTeam.smallAvatarUrl}}" alt="{{secondaryTeam.name}}" /><p><a class="profile-popover" href="" data-participant-ids="[{{secondaryTeam.id}}]">{{secondaryTeam.name}}</a></p></td>
+						<td><p>W: <span>{{primaryTeam.stats.wins}}</span> L: <span>{{primaryTeam.stats.losses}}</span> T: <span>{{primaryTeam.stats.ties}}</span></p> <br/> <p>W: <span>{{secondaryTeam.stats.wins}}</span> L: <span>{{secondaryTeam.stats.losses}}</span> T: <span>{{secondaryTeam.stats.ties}}</span></p></td>
+						<td ><p>{{#if displayProgress}} {{primaryTeam.currentProgress}} {{else}} {{primaryTeam.currentProgressText}} {{/if}}</p><br/> <p>{{#if displayProgress}} {{secondaryTeam.currentProgress}} {{else}} {{secondaryTeam.currentProgressText}} {{/if}}</p></td>
+						<td><div class="app-col chevron"><a href="{{matchUrl}}"><i class="icon-chevron-right"></i></a></div></td>
+					</tr>
+					{{/each}}
+					</tbody>
+					{{/if}}
+					</table>
+
+					<a href="{{allMatchesUrl}}">View More</a>
+	subTpl-->
+</div>

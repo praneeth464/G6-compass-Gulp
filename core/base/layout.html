@@ -1,0 +1,1483 @@
+<?php
+// This file is required to set variables for the skin location and name. Documented within. Turning $skinOn to false will revert to the core/base CSS files.
+$skinOn = isset($skinOnOverride) ? $skinOn : true;
+include('../../skin.inc');
+
+// trim off any leading /, ./, ../ from the tplPath
+$tplPath = preg_replace('/^\.*\//', '', $_GET['tplPath']);
+?>
+<?php
+    // check to see if isFullPage has been explicitly set to false. This will only happen when a page is being opened in a sheet
+    if( isset($_POST['isFullPage']) && $_POST['isFullPage'] == 'false'  ) {
+        // check to see if the template variables are set and include
+        if( isset($_GET['tpl']) && isset($tplPath) ) {
+            include( $tplPath . $_GET['tpl'] . (preg_match("/.html/", $_GET['tpl']) ? '' : '.html') );
+            // kick out of the rest of this document so we don't load a page on top of another one
+            return;
+        }
+    }
+?>
+<!doctype html>
+
+<!-- NOTE: the lang="en" attribute should be dependent on the actual language selected by the user -->
+
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+
+    <head>
+        <!-- NOTE: the only places for variable code in the head of this application are the title tag, the CSS links, and the meta tags (if applicable). No install- or page-specific code should ever show up in the head. -->
+        <meta charset="utf-8">
+
+        <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+            More info: h5bp.com/i/378 -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <!-- Manual DNS prefetching (from http://html5boilerplate.com/docs/head-Tips/)
+             Make a DNS handshake with a foreign domain, so the connection goes faster when the user eventually needs to access it. This works well for loading in assets (like images) from another domain, or a JavaScript library from a CDN. -->
+        <!-- Prefetch for AwardslinQ -->
+        <link rel="dns-prefetch" href="//www1.awardslinq.com" />
+        <!-- Prefetch for PURL if applicable -->
+        <link rel="dns-prefetch" href="//subdomain.recognitionpurl.com" />
+
+        <!-- NOTE: the title tag should accurately reflect the name and location of the page. For example, "Send a Recognition : The Exchange" -->
+        <title>Home : G5 [DEV_NEXT]<?php if(isset($tplPath)) { print ' : ' . $tplPath; } if(isset($_GET['tpl'])) { print ' : ' . $_GET['tpl']; } ?></title>
+
+        <!-- Mobile viewport optimized -->
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <!-- APPLICATION CSS -->
+        <!-- As of 5.2, we no longer use the base CSS UNLESS there is no skin present. In place of style.css/apps.css we now use base.css/apps.css in the skin folder. See below. -->
+
+        <?php
+            if( isset( $skinContext ) && $skinContext !== null ):
+                $cssFilename = 'base';
+            else:
+                $cssFilename = 'style';
+            endif;
+        ?>
+
+        <!-- SKIN CSS -->
+        <link rel="stylesheet" href="<?php echo($skinString); ?>css/<?php echo $cssFilename; ?>1.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo($skinString); ?>css/<?php echo $cssFilename; ?>2.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo($skinString); ?>css/apps1.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo($skinString); ?>css/apps2.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo($skinString); ?>css/throwdown-app.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo($skinString); ?>css/celebration-app.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo($skinString); ?>css/ssi-app.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo($skinString); ?>css/print.css" type="text/css" media="print">
+
+        <!--[if (IE 7)&!(IEMobile)]><link rel="stylesheet" href="<?php echo($skinString); ?>css/font-awesome-ie7.css" type="text/css"><![endif]-->
+        <!--[if (IE 7)&!(IEMobile)]><link rel="stylesheet" href="<?php echo($skinString); ?>css/g5-fonticons-ie7.css" type="text/css"><![endif]-->
+
+
+        <!-- All JavaScript at the bottom, except this Modernizr build.
+             Modernizr enables HTML5 elements & feature detects for optimal performance. -->
+        <script src="../libs/modernizr.js"></script>
+        <!-- ALL other JS lives at the bottom EXCEPT JQUERY-->
+        <script src="../libs/jquery.js"></script>
+
+        <!-- For third-generation iPad with high-resolution Retina display: -->
+        <!-- <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo($skinString); ?>img/apple-touch-icon-144x144-precomposed.png"> -->
+        <!-- For iPhone with high-resolution Retina display: -->
+        <!-- <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo($skinString); ?>img/apple-touch-icon-114x114-precomposed.png"> -->
+        <!-- For first- and second-generation iPad: -->
+        <!-- <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo($skinString); ?>img/apple-touch-icon-72x72-precomposed.png"> -->
+        <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+        <!-- <link rel="apple-touch-icon-precomposed" href="<?php echo($skinString); ?>img/apple-touch-icon-precomposed.png"> -->
+        <!-- recommended as of iOS7 -->
+        <link rel="apple-touch-icon" href="<?php echo($skinString); ?>img/apple-touch-icon.png"/>
+        <!-- For everything else -->
+        <link rel="shortcut icon" href="<?php echo($skinString); ?>img/favicon.png">
+
+        <!--iOS -->
+        <!--In full-screen stand-alone mode, links don't always stay in the app and instead kick to Safari.
+            There are some potential JS-based solutions outlined here: http://stackoverflow.com/questions/6429492/how-do-you-keep-an-iphone-ipad-web-app-in-full-screen-mode
+            Until we can fully vet one of these solutions, I'm simply taking away full-screen mode.
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        -->
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <!-- <link rel="apple-touch-startup-image" href="<?php echo($skinString); ?>img/startup.png"> -->
+
+        <!-- <script>(function(){var p,l,r=window.devicePixelRatio;if(navigator.platform==="iPad"){p=r===2?"img/startup/startup-tablet-portrait-retina.png":"img/startup/startup-tablet-portrait.png";l=r===2?"img/startup/startup-tablet-landscape-retina.png":"img/startup/startup-tablet-landscape.png";document.write('<link rel="apple-touch-startup-image" href="'+l+'" media="screen and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="'+p+'" media="screen and (orientation: portrait)"/>');}else{p=r===2?"img/startup/startup-retina.png":"img/startup/startup.png";document.write('<link rel="apple-touch-startup-image" href="'+p+'"/>');}})()</script> -->
+        <!--Microsoft -->
+
+        <!-- Prevents links from opening in mobile Safari -->
+        <!-- <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script> -->
+        <meta http-equiv="cleartype" content="on">
+
+        <!-- IE9 Pinned Sites (from http://html5boilerplate.com/docs/head-Tips/)
+             Enabling your application for pinning will allow IE9 users to add it to their Windows Taskbar and Start Menu. This comes with a range of new tools that you can easily configure with the elements below. See more documentation on IE9 Pinned Sites.
+             Name the Pinned Site for Windows
+             Without this rule, Windows will use the page title as the name for your application. -->
+        <meta name="application-name" content="Sample Title" />
+        <!-- Give Your Pinned Site a Tooltip
+             You know — a tooltip. A little textbox that appears when the user holds their mouse over your Pinned Site's icon. -->
+        <meta name="msapplication-tooltip" content="A description of what this site does." />
+
+    </head>
+
+    <!-- NOTE: the id on the body should match the base URL of the G5 install and be in the form "theexchange-performnet-com" -->
+    <!-- NOTE: G5 is built around the idea of pages — no, this is not a new idea but it is going to be approached in a newish way. Each page belongs to an app. Each app and its pages is namespaced and has carefully compartmentalized JS and CSS. Pages should always come with a unique URL that can be bookmarked in the future. Each page can also have several states (the method for identifying states in the URL is TBD). -->
+    <!-- NOTE: the class names and data-* attributes are necessary for app- and page-specific styling and JavaScript execution and match up with the app names and pages (and potentially page states) -->
+    <body id="g5-biw" data-app="home" data-page="default" class="app_home page_default<?php if( isset($tplPath) && $tplPath == 'tpl/' && preg_match('/loginPage/', $_GET['tpl']) === 'loginPage' ) { print ' loginPage'; } ?>">
+
+        <div id="wrapper_outer">
+            <div id="wrapper_inner">
+
+                <header id="header">
+                    <div class="container">
+
+                        <!-- global header to go here -->
+
+                    </div><!-- /.container -->
+                </header><!-- /#header -->
+
+
+                <section id="contents">
+                    <div class="container">
+
+                        <!-- ********************************************************* -->
+                        <!-- ********************************************************* -->
+                        <!-- ********************************************************* -->
+                        <!-- TEMPORARY STUFF TO LOAD PAGE TEMPLATES -->
+                        <?php
+                            // check to see if the template variables are set and include
+                            if( isset($_GET['tpl']) && isset($tplPath) ) {
+                                $include = $tplPath . $_GET['tpl'] . (preg_match("/.html/", $_GET['tpl']) ? '' : '.html');
+                                // error_log(get_include_path());
+                                // error_log($include);
+                                include($include);
+                            }
+                            else {
+                            // if( !isset($_GET['tpl']) || !isset($tplPath) ) {
+                        ?>
+
+                        <?php
+                            function scandir_exclude($path, $ignore_list) {
+                                return array_diff(scandir($path), $ignore_list);
+                            }
+
+                            function get_release() {
+                                $release = "";
+
+                                $release_regexp = "/(release_\d+_\d+(?:_\d+)?)/";
+                                $release_folder_name = basename(realpath(__DIR__ . "/../.."));
+                                $matches = array();
+
+                                if (preg_match($release_regexp, $release_folder_name, $matches))
+                                    $release = $matches[1];
+
+                                return $release;
+                            }
+
+                            // grab client skins that are compatible with current release
+                            function build_context_skin_map() {
+                                global $fileCrawlIgnoreFiles;
+
+                                $release = get_release();
+                                $context_skin_map = array();
+
+                                $is_current_release_skin = function ($config_path, $release) {
+                                    $config_contents = file_get_contents($config_path);
+                                    return $release && strpos($config_contents, $release) !== false;
+                                };
+
+                                $context_path = "../../clients";
+                                $contexts = scandir_exclude($context_path, $fileCrawlIgnoreFiles);
+
+                                foreach ($contexts as $context) {
+                                    $context_skins_path = $context_path . "/" . $context . "/skins";
+                                    $context_skins = scandir_exclude($context_skins_path, $fileCrawlIgnoreFiles);
+
+                                    foreach ($context_skins as $context_skin) {
+                                        $context_skin_config_path = $context_skins_path . "/" . $context_skin . "/config.rb";
+
+                                        if (file_exists($context_skin_config_path) && $is_current_release_skin($context_skin_config_path, $release)) {
+                                            if (!isset($context_skin_map[$context]))
+                                                $context_skin_map[$context] = array();
+
+                                            $context_skin_map[$context][] = $context_skin;
+                                        }
+                                    }
+                                }
+
+                                return $context_skin_map;
+                            }
+
+                            function extract_contexts($context_skin_map) {
+                                return array_keys($context_skin_map);
+                            }
+
+                            function echo_html_options($arr) {
+                                foreach ($arr as $i) {
+                                    echo "<option value=\"$i\">$i</option>";
+                                }
+                            }
+
+                            function echo_contexts($context_skin_map) {
+                                $contexts = extract_contexts($context_skin_map);
+                                echo_html_options($contexts);
+                            }
+
+                            $context_skin_map = build_context_skin_map();
+                        ?>
+
+                        <script type="application/json" id="release-context-skin-map">
+                            <?php echo json_encode($context_skin_map); ?>
+                        </script>
+
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+                                var optionsTemplate = Handlebars.compile('{{#each this}}<option value="{{.}}">{{.}}</option>{{/each}}');
+                                var contextSkinMap = JSON.parse($("#release-context-skin-map").html());
+
+                                var $contextSelect = $("#skinContext");
+                                var $skinSelect = $("#skinName");
+
+                                $contextSelect.on("change", function (e) {
+                                    var selectedContext = $.trim($contextSelect.val());
+                                    var renderedOptions;
+
+                                    $skinSelect.find("option[value!='']").remove();
+
+                                    if (selectedContext !== "") {
+                                        renderedOptions = optionsTemplate(contextSkinMap[selectedContext]);
+                                        $skinSelect.prop("disabled", false).html(renderedOptions);
+                                    }
+                                    else {
+                                        $skinSelect.val("").prop("disabled", true).append('<option value="">Select Skin</option>');
+                                    }
+                                });
+                            });
+                        </script>
+
+                        <div class="row page" style="margin:20px 0 0 200px;">
+                            <p>
+                                <strong>Active Skin:</strong><br>
+                                <span>context: <strong><?php print $skinContext != '' ? str_replace('/', '', $skinContext) : '[core]'; ?></strong></span> <span>name: <strong><?php print $skinName; ?></strong></span>
+                            </p>
+
+                            <form class="form-inline" action="" method="get" style="margin-bottom: 0;">
+                                <strong>Select skin compatible with this release:</strong><br>
+
+                                <select name="skinContext" id="skinContext">
+                                    <option value="">context</option>
+                                    <?php echo_contexts($context_skin_map); ?>
+                                </select>
+
+                                <select name="skinName" id="skinName" disabled>
+                                    <option value="">name</option>
+                                </select>
+
+                                <button class="btn" type="submit">Go</button>
+                            </form>
+
+                            <form class="form-inline" action="" method="get">
+                                <strong>OR enter other context/name values:</strong><br>
+                                <input type="text" name="skinContext" id="skinContext" placeholder="context">
+                                <input type="text" name="skinName" id="skinName" placeholder="name">
+                                <button class="btn" type="submit">Go</button>
+                            </form>
+
+                            <p>
+                                <a class="btn btn-inverse" href="layout.html?skinReset">Reset Skin to property in skin.inc</a>
+                                <a class="btn btn-inverse" href="layout.html?skinContext=core&amp;skinName=default">Reset Skin to G5 default</a>
+                                <a class="btn btn-inverse" href="layout.html?skinContext=<?php print(str_replace('/', '', $skinContext)); ?>&amp;skinName=<?php print($skinName); ?>">Link to this skin</a>
+                            </p>
+                            <hr>
+
+                            <?php
+
+                                if ( $appsHandle = @opendir( $skinBaseDir.'custom/apps/' ) ):
+
+                                    ?><h3>Custom App Pages</h3><?php
+
+                                    while (false !== ($appName = readdir($appsHandle))):
+
+                                        if( !in_array( $appName, $fileCrawlIgnoreFiles ) && !in_array( $appName, $customApps ) ):
+
+                                            ?>
+                                            <h4><?php echo $appName ?></h4>
+                                            <?php
+
+                                            if ( $appHandle = @opendir( $skinBaseDir.'custom/apps/'.$appName.'/tpl/' ) ):
+
+                                                while( false !== ( $pageName = readdir( $appHandle ) ) ):
+
+                                                    if( !in_array( $pageName, $fileCrawlIgnoreFiles ) ):
+
+                                                        ?><a class="btn tplLoader" data-tpl-path="apps/<?php echo $appName; ?>/tpl/" data-tpl="<?php echo $pageName; ?>"><?php echo $pageName; ?></a><?php
+
+                                                    endif;
+
+                                                endwhile;
+
+                                            endif;
+
+                                        endif;
+
+                                    endwhile;
+
+                                    print('<hr>');
+
+                                endif;
+
+                                if ( $baseHandle = @opendir( $skinBaseDir.'custom/base/tpl/' ) ):
+
+                                    ?><h3>Custom Base Pages</h3><?php
+
+                                    while (false !== ($pageName = readdir($baseHandle))):
+
+                                        if( !in_array( $pageName, $fileCrawlIgnoreFiles ) ):
+
+                                            ?><a class="btn tplLoader" data-tpl-path="base/tpl/" data-tpl="<?php echo $pageName; ?>"><?php echo $pageName; ?></a><?php
+
+                                        endif;
+
+                                    endwhile;
+
+                                    print('<hr>');
+
+                                endif;
+
+                            ?>
+
+                            <h3>Approvals</h3>
+                            <a class="btn tplLoader" data-tpl-path="apps/approvals/tpl/" data-tpl="approvalsPageIndex.html">Approval Page</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/approvals/tpl/" data-tpl="approvalsPagePendingNominationApprovals.html">Nominations Search</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/approvals/tpl/" data-tpl="approvalsPagePendingRecognitionNominationsClean.html">Recognition Search</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/approvals/tpl/" data-tpl="approvalsPagePendingClaimApprovals.html">Claim Search</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/approvals/tpl/" data-tpl="approvalsPageClaimsDetail.html">Claims Detail</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/approvals/tpl/" data-tpl="approvalsPageDetails.html">Nomination Detail</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/approvals/tpl/" data-tpl="approvalsPageRecognitionDetail.html">Recognition Detail</a>
+
+                            <h3>Celebration</h3>
+                            <a class="btn tplLoader" data-tpl-path="apps/celebration/tpl/" data-tpl="celebrationPage.html">Celebration Page</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/celebration/tpl/" data-tpl="celebrationManagerMessagePage.html">Celebration Manager Message Page</a>
+
+                            <h3>Communications</h3>
+                            <a class="btn tplLoader" data-tpl-path="apps/communications/tpl/" data-tpl="communicationsPage.html">Communications Page</a>
+
+                            <h3>Email Template</h3>
+                            <a class="btn" data-tpl-path="" data-tpl="" href="tpl/email.html" id="emailTemplate">Email Template</a>
+
+                            <h3>Destinations</h3>
+                            <a class="btn tplLoader" data-tpl-path="apps/destinations/tpl/" data-tpl="destinationsPage.html">Destinations Page</a>
+
+                            <h3>Engagement</h3>
+                            <a class="btn tplLoader" data-tpl-path="apps/engagement/tpl/" data-tpl="engagementPageTeamDashboard.html">Team Dashboard</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/engagement/tpl/" data-tpl="engagementPageUserDashboard.html">User Dashboard</a>
+
+                            <h3>Forums</h3>
+                            <a class="btn tplLoader" data-tpl-path="apps/forum/tpl/" data-tpl="forumPageTopics.html">Topics Page</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/forum/tpl/" data-tpl="forumPageDiscussions.html">Discussions Page</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/forum/tpl/" data-tpl="forumPageDiscussion.html">Discussion Page</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/forum/tpl/" data-tpl="forumPageNewDiscussion.html">New Discussion Page</a>
+
+                            <h3>Goalquest</h3>
+                            <a class="btn tplLoader" data-tpl-path="apps/goalquest/tpl/" data-tpl="goalquestModulesPage.html">Load All GQ Modules</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/goalquest/tpl/" data-tpl="goalquestPageList.html">List</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/goalquest/tpl/" data-tpl="goalquestPageRules.html">Rules</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/goalquest/tpl/" data-tpl="goalquestPageEdit.html">Create/Edit</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/goalquest/tpl/" data-tpl="goalquestPageManagerList.html">Manager List</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/goalquest/tpl/" data-tpl="goalquestPageRules.html">Manager Rules (same as Rules)</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/goalquest/tpl/" data-tpl="goalquestPageDetail.html">Detail</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/goalquest/tpl/" data-tpl="goalquestPageSurvey.html">Survey</a>
+
+                            <h3>HomeApp</h3>
+                            <a class="btn tplLoader btn-primary" data-tpl-path="base/tpl/" data-tpl="modulesPage.html">Load All Modules</a>
+                            <a class="btn tplLoader" data-tpl-path="base/tpl/" data-tpl="modulesPage.html&amp;moduleSubset">[dev] Load Module Subset</a>
+
+                            <h3>Leaderboard</h3>
+                            <a class="btn tplLoader" data-tpl-path="apps/leaderboard/tpl/" data-tpl="leaderboardPage.html">Leaderboard Page</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/leaderboard/tpl/" data-tpl="leaderboardPageCreate.html">Create</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/leaderboard/tpl/" data-tpl="leaderboardPagePreview.html">Preview</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/leaderboard/tpl/" data-tpl="leaderboardPageEditPromoInfo.html">Edit Promo Info</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/leaderboard/tpl/" data-tpl="leaderboardPageEditActivity.html">Edit Activity</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/leaderboard/tpl/" data-tpl="leaderboardPageCopy.html">Copy</a>
+
+                            <h3>Login</h3>
+                            <a class="btn tplLoader" data-tpl-path="base/tpl/" data-tpl="loginPage.html">Load Login Page</a>
+                            <a class="btn tplLoader" data-tpl-path="base/tpl/" data-tpl="loginPageFirstTime.html">First Time Login Page</a>
+                            <a class="btn tplLoader" data-tpl-path="base/tpl/" data-tpl="changePasswordPage.html">Change Password Page</a>
+                            <a class="btn tplLoader" data-tpl-path="base/tpl/" data-tpl="selfEnrollmentFirstTimeView.html">Self Enrollment First Time Login Page</a>
+
+                            <h3>Manager Toolkit</h3>
+                            <a class="btn tplLoader" data-tpl-path="apps/managerToolkit/tpl/" data-tpl="managerToolkitPageRosterAdd.html">Add Participant</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/managerToolkit/tpl/" data-tpl="managerToolkitPageRosterEdit.html">Edit Participant</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/managerToolkit/tpl/" data-tpl="managerToolkitPageBudget.html">Budget Transfer</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/managerToolkit/tpl/" data-tpl="managerToolkitPageBudgetPreview.html">Budget Preview</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/managerToolkit/tpl/" data-tpl="managerToolkitPageHistory.html">History</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/managerToolkit/tpl/" data-tpl="managerToolkitPageAlert.html">Send Alert</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/managerToolkit/tpl/" data-tpl="managerToolkitPageRoster.html">Roster</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/managerToolkit/tpl/" data-tpl="managerToolkitPageRosterEdit.html">Roster Add/Edit</a>
+
+                            <h3>Plateau Awards</h3>
+                            <a class="btn tplLoader" data-tpl-path="apps/plateauAwards/tpl/" data-tpl="plateauAwardsPage.html">Load Plateau Awards Page</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/plateauAwards/tpl/" data-tpl="plateauAwardsPageReminder.html">Load Plateau Awards Reminder Page</a>
+
+                            <h3>Product Claims</h3>
+                            <a class="btn tplLoader" data-tpl-path="apps/productClaim/tpl/" data-tpl="claimPage.html">Claim landing Page</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/productClaim/tpl/" data-tpl="claimPagePreview.html">Claim Preview</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/productClaim/tpl/" data-tpl="claimPageAdminFormPreview.html">Claim Admin Form Preview</a>
+
+                            <h3>Profile</h3>
+                            <a class="btn tplLoader" data-tpl-path="apps/profile/tpl/" data-tpl="profilePage.html">Profile Page</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/profile/tpl/" data-tpl="profilePage.html#tab/PersonalInfo">Personal Info</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/profile/tpl/" data-tpl="profilePage.html#tab/Badges">Badges</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/profile/tpl/" data-tpl="profilePage.html#tab/AlertsAndMessages">Alerts & Messages</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/profile/tpl/" data-tpl="profilePage.html#tab/Statement">Statement</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/profile/tpl/" data-tpl="profilePage.html#tab/FollowList">Follow List</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/profile/tpl/" data-tpl="profilePage.html#tab/ActivityHistory">Activity History</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/profile/tpl/" data-tpl="profilePage.html#tab/Security">Security</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/profile/tpl/" data-tpl="profilePage.html#tab/Preferences">Preferences</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/profile/tpl/" data-tpl="profilePage.html#tab/Proxies">Proxies</a>
+
+                            <h3>Public Profile</h3>
+                            <a class="btn tplLoader" data-tpl-path="apps/publicProfile/tpl/" data-tpl="publicProfilePage.html">Public Profile</a>
+
+                            <h3>Public Recognition</h3>
+                            <a class="btn tplLoader tplLoader" data-tpl-path="apps/publicRecognition/tpl/" data-tpl="publicRecognitionPage.html">Public Recognition Page</a>
+
+                            <h3>PURL Contribute</h3>
+                            <a class="btn tplLoader" data-tpl-path="apps/purlContribute/tpl/" data-tpl="purlContributeTermsAndConditions.html" >PURL Terms and Conditions</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/purlContribute/tpl/" data-tpl="purlContributePurlList.html" >PURL Contribute List</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/purlContribute/tpl/" data-tpl="purlManagePurlList.html" >PURL Manage List</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/purlContribute/tpl/" data-tpl="purlMainPage.html" >PURL Main Page (OLD)</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/purlContribute/tpl/" data-tpl="purlPage.html" >PURL Main Page</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/purlContribute/tpl/" data-tpl="purlCelebratePage.html" >PURL Celebrate Page</a>
+
+                            <h3>Quiz</h3>
+                            <a class="btn tplLoader" data-tpl-path="apps/quiz/tpl/" data-tpl="quizPage.html">Quiz Page</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/quiz/tpl/" data-tpl="quizPageTake.html">Take a Quiz (new)</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/quiz/tpl/" data-tpl="quizPageManage.html">Manage Quizzes</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/quiz/tpl/" data-tpl="quizPageEdit.html">Quiz Create/Edit</a>
+
+                            <h3>Recognition</h3>
+                            <a class="btn btn-primary tplLoader" data-tpl="recognitionPageSend.html" data-tpl-path="apps/recognition/tpl/">Send Recognition</a>
+                            <a class="btn tplLoader" data-tpl="recognitionPageManagerInviteContributors.html" data-tpl-path="apps/recognition/tpl/">PURL Manager Invite Contributors</a>
+                            <a class="btn tplLoader" data-tpl="recognitionPageAddPoints.html" data-tpl-path="apps/recognition/tpl/">Recognition Add Points</a>
+
+                            <h3>Reports</h3>
+                            <a class="btn tplLoader" data-tpl-path="apps/reports/tpl/" data-tpl="reportsPage.html">Load All Reports Page</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/reports/tpl/" data-tpl="parameterTestForm.html">Load Parameter Test Form</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/reports/tpl/" data-tpl="parameterTestForm2.html">Load Parameter Test Form 2</a>
+
+                            <h3>Resource Center</h3>
+                            <a class="btn tplLoader" data-tpl-path="apps/resourceCenter/tpl/" data-tpl="resourceCenterPage.html">Resource Center</a>
+
+                            <h3>Rules</h3>
+                            <a class="btn tplLoader" data-tpl-path="base/tpl/" data-tpl="rulesPage.html" id="rulesPage">Rules Page</a>
+
+                            <h3>Self-Service Incentives</h3>
+
+                            <div class="btn-group">
+                                <a class="btn tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiParticipantPage.html">Participant Page</a>
+                                <button class="btn dropdown-toggle" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <!-- dropdown menu links -->
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiParticipantPage.html#contest/1">Step It Up Contest</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiParticipantPage.html#contest/1c">Step It Up Contest - completed</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiParticipantPage.html#contest/2">Do This Get That Contest</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiParticipantPage.html#contest/2c">Do This Get That Contest - completed</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiParticipantPage.html#contest/3">Objective Contest</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiParticipantPage.html#contest/3c">Objective Contest - completed</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiParticipantPage.html#contest/4">Stack Rank</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiParticipantPage.html#contest/4c">Stack Rank - completed</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="btn-group">
+                                <a class="btn tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiManagerPage.html">Manager Page</a>
+                                <button class="btn dropdown-toggle" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <!-- dropdown menu links -->
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiManagerPage.html#contest/1">Step It Up Contest</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiManagerPage.html#contest/1c">Step It Up Contest - completed</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiManagerPage.html#contest/2">Do This Get That Contest</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiManagerPage.html#contest/2c">Do This Get That Contest - completed</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiManagerPage.html#contest/3">Objective Contest</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiManagerPage.html#contest/3c">Objective Contest - completed</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiManagerPage.html#contest/4">Stack Rank</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiManagerPage.html#contest/4c">Stack Rank - completed</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="btn-group">
+                                <a class="btn tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiCreatorPage.html">Creator Page</a>
+                                <button class="btn dropdown-toggle" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <!-- dropdown menu links -->
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiCreatorPage.html#contest/1">Step It Up Contest</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiCreatorPage.html#contest/1c">Step It Up Contest - completed</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiCreatorPage.html#contest/2">Do This Get That Contest</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiCreatorPage.html#contest/2c">Do This Get That Contest - completed</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiCreatorPage.html#contest/3">Objective Contest</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiCreatorPage.html#contest/3c">Objective Contest - completed</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiCreatorPage.html#contest/4">Stack Rank</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiCreatorPage.html#contest/4c">Stack Rank - completed</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="btn-group" role="group" aria-label="...">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    Create/Edit  <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiContestPageEdit.html&contestType=objectives">contestType:objectives</a></li>
+                                    <li><a class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiContestPageEdit.html&contestType=doThisGetThat">contestType:doThisGetThat</a></li>
+                                    <li><a class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiContestPageEdit.html&contestType=stepItUp">contestType:stepItUp</a></li>
+                                    <!-- <li><a class="btn tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiATNContestPageEdit.html&contestType=awardThemNow">contestType:awardThemNow</a></li> -->
+                                    <li><a class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiContestPageEdit.html&contestType=awardThemNow">contestType:awardThemNow</a></li>
+                                    <li><a class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiContestPageEdit.html&contestType=awardThemNow&awardThemNowStatus=editInfo">contestType:awardThemNow info (edit) </a></li>
+                                    <li><a class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiContestPageEdit.html&contestType=awardThemNow&awardThemNowStatus=issueMoreAwards">contestType:awardThemNow issue awards (edit)</a></li>
+                                    <li><a class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiContestPageEdit.html&contestType=stackRank">contestType:stackRank</a></li>
+                                </ul>
+                            </div>
+
+                            <a class="btn tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiApproveContestPage.html&amp;status=denied">Read Only (Approve Contest)</a>
+
+                            <div class="btn-group">
+                                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    Approve Contest  <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiApproveContestPage.html&amp;contestType=objectives">Approve Contest (objectives)</a></li>
+                                    <li><a class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiApproveContestPage.html&amp;contestType=stepItUp">Approve Contest (stepItUp)</a></li>
+                                    <li><a class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiApproveContestPage.html&amp;contestType=doThisGetThat">Approve Contest (doThisGetThat)</a></li>
+                                    <li><a class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiApproveContestPage.html&amp;contestType=stackRank">Approve Contest (stackRank)</a></li>
+                                </ul>
+                            </div>
+
+                            <a class="btn tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiUpdateResultsPageView.html">Update Results</a>
+
+                            <div class="btn-group">
+                                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    Claims <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiParticipantSubmitClaimPageView.html">Submit Claim</a></li>
+                                    <li><a class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiParticipantSubmitClaimDetail.html">Claim Details</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="btn-group">
+                                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    Claims Approval <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiApproveClaimsPage.html">Approve Claims</a></li>
+                                    <li><a class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiApproveClaimsDetailPage.html">Approve Claims Detail</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="btn-group">
+                                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    ATN Specific Pages  <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiContestSummaryATN.html">ATN Contest Summary</a></li>
+                                    <li><a class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiContestPayoutDetailsATN.html">ATN Contest Payouts (points)</a></li>
+                                    <li><a class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiContestPayoutDetailsATN.html&amp;payoutType=other">ATN Contest Payouts (other)</a></li>
+                                    <li><a class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiApproveContestPageATN.html">ATN Approve Contest</a></li>
+                                    <li><a class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiContestPayoutDetailsATN.html&amp;canApprove=true">ATN Contest Payouts (approve)</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="btn-group">
+                                <a class="btn tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiApprovePayout.html">Issue Payout</a>
+                                <button class="btn dropdown-toggle" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <!-- dropdown menu links -->
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiApprovePayout.html&amp;contestType=objectives">objectives - points</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiApprovePayout.html&amp;contestType=objectives&amp;payoutType=other">objectives - other</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiApprovePayout.html&amp;contestType=stepItUp">Step It Up - points</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiApprovePayout.html&amp;contestType=stepItUp&amp;payoutType=other">Step It Up - other</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiApprovePayout.html&amp;contestType=doThisGetThat">Do This Get That - points</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiApprovePayout.html&amp;contestType=doThisGetThat&amp;payoutType=other">Do This Get That - other</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiApprovePayout.html&amp;contestType=stackRank">Stack Rank - points</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiApprovePayout.html&amp;contestType=stackRank&amp;payoutType=other">Stack Rank - other</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiApprovePayout.html&amp;contestType=stackRank&amp;hasTie=true">Stack Rank Tied - points</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="tplLoader" data-tpl-path="apps/ssi/tpl/" data-tpl="ssiApprovePayout.html&amp;contestType=stackRank&amp;hasTie=true&amp;payoutType=other">Stack Rank Tied - other</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+
+
+                            <h3>Survey</h3>
+                            <a class="btn tplLoader" data-tpl-path="apps/survey/tpl/" data-tpl="surveyPageList.html">Survey List Page</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/survey/tpl/" data-tpl="surveyPageTake.html">Survey Take Page</a>
+
+                            <h3>Throwdown</h3>
+                            <a class="btn tplLoader" data-tpl-path="apps/throwdown/tpl/" data-tpl="throwdownHomePage.html">Throwdown Home Page</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/throwdown/tpl/" data-tpl="throwdownMatchPage.html">Throwdown Match Detail</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/throwdown/tpl/" data-tpl="smackTalkPage.html">Smack Talk</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/throwdown/tpl/" data-tpl="throwdownStandingsPage.html">Throwdown Matches/Standings List</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/throwdown/tpl/" data-tpl="throwdownRankingsPage.html">Throwdown Rankings</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/throwdown/tpl/" data-tpl="throwdownNewsPage.html">Throwdown News Page</a>
+                            <a class="btn tplLoader" data-tpl-path="apps/throwdown/tpl/" data-tpl="throwdownTrainingCampPage.html">Throwdown Training Camp</a>
+
+                            <!-- generic stuff -->
+                            <h3>Auto Modal</h3>
+                            <a class="btn tplLoader" data-tpl-path="apps/test/tpl/" data-tpl="autoModal.html" >Auto Modal</a>
+
+                            <h3>Sample Functionality (Test)</h3>
+                            <a class="btn tplLoader" data-tpl-path="apps/test/tpl/" data-tpl="testPage.html">Test Page</a>
+
+                            <a class="btn tplLoader" data-tpl-path="apps/test/tpl/paxSearchReact/" data-tpl="paxSearchReact.html">React Pax Search</a>
+
+                        </div>
+                        <script>
+
+                        $(document).ready(function(){
+                            var $qn;
+
+                            //IF we have url params for tpl and tplPath, then try to load that tpl
+                            if(G5.props.urlParams['tpl']&&G5.props.urlParams['tplPath']){
+                                $('#contents .container').load(
+                                    (G5.props.URL_TPL_ROOT||G5.props.urlParams['tplPath'])
+                                    +G5.props.urlParams['tpl']
+                                    +(G5.props.urlParams['tpl'].indexOf('.html')>-1?'':'.html')
+                                );
+                            }
+
+
+                            //GENERIC loader using data attrs
+                            $('.tplLoader').click(function(e){
+                                var $this = $(this),
+                                    tpl = $this.data('tpl'),
+                                    tplPath = G5.props.URL_TPL_ROOT||$this.data('tplPath');
+
+                                if($this.prop('nodeName')=='BUTTON') { //.load
+                                    $('#contents .container').load(tplPath+tpl);
+                                } else { //load new page - get query string style (permanent)
+                                    e.preventDefault();
+                                    if (e.ctrlKey || e.metaKey) {
+                                        e.preventDefault();
+                                        window.open('?tplPath='+tplPath+'&tpl='+tpl, '_blank');
+                                    } else {
+                                        window.location = '?tplPath='+tplPath+'&tpl='+tpl;
+                                    }
+                                }
+
+                                e.preventDefault();
+                            });
+
+
+
+                            // QUICK NAV
+                            if(!G5.props.urlParams['tpl']){
+                                $qn = $('<div class="quickNav btn-group btn-group-vertical" style="position:fixed;left:20px;top:20px"><div style="font-size:12px;">jump to section</div></div>');
+                                $('body').append($qn);
+                                $('#contents .container h3').each(function(){
+                                    var $t = $(this),
+                                        $b = $('<button class="btn btn-mini" style="background:white;width:100%;">'+$t.text()+'</button>');
+
+                                    $b.click(function(){ $.scrollTo($t,200,function(){$t.shake();}); });
+                                    $qn.append($b);
+                                });
+                            }
+
+
+
+                        });// doc ready
+
+                        </script>
+
+                        <?php } ?>
+                        <!-- TODO 5.3: make this image skinnable in case the background color is dark and we see GIF jaggies? -->
+                        <div id="pageLoadingSpinner" class="spincover pageLoading"><img src="img/pageLoadingSpinner.gif" alt="Loading..." /></div>
+                        <!-- END TEMPORARY SCRIPT TO LOAD PAGE TEMPLATES -->
+                        <!-- ********************************************************* -->
+                        <!-- ********************************************************* -->
+                        <!-- ********************************************************* -->
+
+
+
+                    </div><!-- /.container -->
+                </section><!-- /#contents -->
+
+                <footer id="footer">
+                    <div class="container">
+
+                        <!-- global footer to go here -->
+
+                    </div><!-- /.container -->
+                </footer><!-- /#footer -->
+
+            </div><!-- /#wrapper_inner -->
+        </div><!-- /#wrapper_outer -->
+
+
+
+<!-- ==================== END OF APP HTML ==================== -->
+
+    <!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
+
+    <!-- APPLICATION JS
+         Combination of Core and client Custom scripts.
+         To be concantenated and minified to this:
+        <script src="core/base/js/script.js"></script> -->
+
+        <!-- Libraries -->
+        <script src="../libs/safeconsole.js"></script>
+        <script src="../libs/underscore.js"></script>
+        <script src="../libs/backbone.js"></script>
+        <script src="../libs/handlebars.js"></script>
+        <script src="../libs/json2.js"></script>
+        <script src="../libs/jquery-ui.js"></script>
+
+        <!-- Plugins -->
+        <script src="../libs/plugins/bootstrap-transition.js"></script>
+        <script src="../libs/plugins/bootstrap-modal-patch.js"></script>
+        <script src="../libs/plugins/bootstrap-tooltip.js"></script>
+        <script src="../libs/plugins/bootstrap-popover.js"></script>
+        <script src="../libs/plugins/bootstrap-alert.js"></script>
+        <script src="../libs/plugins/bootstrap-collapse.js"></script>
+        <script src="../libs/plugins/bootstrap-datepicker.patchedG5.js"></script>
+        <script src="../libs/plugins/bootstrap-slider.patchedG5.js"></script>
+        <script src="../libs/plugins/bootstrap-tab.js"></script>
+        <script src="../libs/plugins/bootstrap-button.js"></script>
+        <script src="../libs/plugins/bootstrap-dropdown.js"></script>
+        <script src="../libs/plugins/jquery.cycle.all.js"></script>
+        <script src="../libs/plugins/jquery-animate-background.js"></script>
+        <script src="../libs/plugins/shake-animator.js"></script>
+        <script src="../libs/plugins/spin.patchedG5.js"></script>
+        <script src="../libs/plugins/number-animator.js"></script>
+        <script src="../libs/plugins/jquery.scrollTo.js"></script>
+        <script src="../libs/plugins/jquery.color.js"></script>
+        <script src="../libs/plugins/jquery.qtip.js"></script>
+        <script src="../libs/plugins/jquery.elastic.js"></script>
+        <script src="../libs/plugins/jquery.ellipsis.js"></script>
+        <script src="../libs/plugins/jquery.placeholder.js"></script>
+        <script src="../libs/plugins/FusionCharts.js"></script>
+        <script src="../libs/plugins/jquery.query.js"></script>
+        <script src="../libs/plugins/jquery.ui.widget.js"></script>
+        <script src="../libs/plugins/jHtmlArea-0.8.patchedG5.js"></script>
+        <script src="../libs/plugins/jquery.spellchecker.patchedG5.js"></script>
+        <script src="../libs/plugins/jquery.iframe-transport.js"></script>
+        <script src="../libs/plugins/jquery.fileupload.js"></script>
+        <script src="../libs/plugins/jquery.format.js"></script>
+        <script src="../libs/plugins/responsiveTables.js"></script>
+        <script src="../libs/video-js/video.min.js"></script>
+
+        <script src="../libs/BIWHappinessSlider.min.js"></script>
+
+        <!-- Application setup -->
+        <!-- <script src="js/main.js"></script> -->
+
+        <!-- Application core scripts -->
+        <script src="js/backbone/settings.js"></script>
+        <script src="js/backbone/settings.i18n.js"></script>
+        <script src="js/backbone/G5.util.js"></script>
+        <script src="js/backbone/PageView.js"></script>
+        <script src="js/backbone/GlobalHeaderView.js"></script>
+        <script src="js/backbone/GlobalFooterView.js"></script>
+        <script src="js/backbone/PageNavView.js"></script>
+        <script src="js/backbone/ServerResponse.js"></script>
+        <script src="js/backbone/TemplateManager.js"></script>
+        <script src="js/backbone/BudgetCollectionView.js"></script>
+        <script src="js/backbone/ParticipantCollectionView.js"></script>
+        <script src="js/backbone/ParticipantProfileView.js"></script>
+        <script src="js/backbone/ParticipantPopoverView.js"></script>
+        <script src="js/backbone/ParticipantSearchView.js"></script>
+        <script src="js/backbone/ParticipantSearchModel.js"></script>
+        <script src="js/backbone/SharePopoverPlugin.js"></script>
+        <script src="js/backbone/BreadcrumbView.js"></script>
+        <script src="js/backbone/PaginationView.js"></script>
+        <script src="js/backbone/DisplayTableAjaxView.js"></script>
+        <script src="js/backbone/WizardTabsView.js"></script>
+        <script src="js/backbone/ParticipantProfileSearchView.js"></script>
+        <script src="js/backbone/ParticipantChatterAuthorizationView.js"></script>
+        <script src="js/backbone/SelectAudienceParticipantsView.js"></script>
+        <script src="js/backbone/SelectAudienceParticipantsModel.js"></script>
+        <script src="js/backbone/ParticipantPaginatedView.js"></script>
+        <script src="js/backbone/BadgesSelectorView.js"></script>
+        <!-- Page-specific JS to also be concantenated and minified into script.js -->
+
+        <!-- globalSearch -->
+        <script src="js/backbone/ParticipantProfileSearchPageView.js"></script>
+
+        <!-- Login -->
+        <script src="js/backbone/LoginPageView.js"></script>
+        <script src="js/backbone/LoginPageFirstTimeView.js"></script>
+        <script src="js/backbone/ChangePasswordPageView.js"></script>
+
+        <!-- homeApp -->
+        <script src="js/backbone/BinPacker.js"></script>
+        <script src="js/backbone/ModuleLayoutManager.js"></script>
+        <script src="js/backbone/Module.js"></script>
+        <script src="js/backbone/ModuleCollection.js"></script>
+        <script src="js/backbone/ModuleView.js"></script>
+        <script src="js/backbone/ModuleContainerView.js"></script>
+        <script src="js/backbone/HomeApp.js"></script>
+        <script src="js/backbone/HomeAppPageView.js"></script>
+
+        <!-- contactForm -->
+        <script src="../apps/contactForm/js/ContactFormView.js"></script>
+
+        <!-- budgetTracker -->
+        <script src="../apps/budgetTracker/js/BudgetTrackerModuleView.js"></script>
+
+        <!-- bannerModule -->
+        <script src="../apps/bannerModule/js/BannerModuleModel.js"></script>
+        <script src="../apps/bannerModule/js/BannerModuleCollection.js"></script>
+        <script src="../apps/bannerModule/js/BannerModuleModuleView.js"></script>
+
+        <!-- celebration -->
+        <script src="../apps/celebration/js/CelebrationModuleView.js"></script>
+        <script src="../apps/celebration/js/CelebrationPageView.js"></script>
+        <script src="../apps/celebration/js/CelebrationChooseAwardModuleView.js"></script>
+        <script src="../apps/celebration/js/CelebrationBrowseAwardsModuleView.js"></script>
+        <script src="../apps/celebration/js/CelebrationAnniversaryFactsModuleView.js"></script>
+        <script src="../apps/celebration/js/CelebrationCompanyTimelineModuleView.js"></script>
+        <script src="../apps/celebration/js/CelebrationCongratsModuleView.js"></script>
+        <script src="../apps/celebration/js/CelebrationEcardModuleView.js"></script>
+        <script src="../apps/celebration/js/CelebrationManagerMessageModuleView.js"></script>
+        <script src="../apps/celebration/js/CelebrationManagerMessagePageView.js"></script>
+        <script src="../apps/celebration/js/CelebrationRecognitionPurlModuleView.js"></script>
+        <script src="../apps/celebration/js/CelebrationRecognitionPurlModel.js"></script>
+        <script src="../apps/celebration/js/CelebrationCorporateVideoModuleView.js"></script>
+        <script src="../apps/celebration/js/CelebrationImageFillerModuleView.js"></script>
+        <script src="../apps/celebration/js/CelebrationImageFillerModel.js"></script>
+
+        <!-- claim -->
+        <script src="../apps/productClaim/js/ClaimProductModel.js"></script>
+        <script src="../apps/productClaim/js/ClaimProductCollection.js"></script>
+        <script src="../apps/productClaim/js/ClaimModuleView.js"></script>
+        <script src="../apps/productClaim/js/ClaimPageView.js"></script>
+
+        <!-- destinations -->
+        <script src="../apps/destinations/js/DestinationsModuleView.js"></script>
+        <script src="../apps/destinations/js/DestinationsPageView.js"></script>
+
+        <!-- engagement -->
+        <script src="../apps/engagement/js/EngagementModel.js"></script>
+        <script src="../apps/engagement/js/EngagementModelView.js"></script>
+        <script src="../apps/engagement/js/EngagementSummaryModel.js"></script>
+        <script src="../apps/engagement/js/EngagementSummaryModelView.js"></script>
+        <script src="../apps/engagement/js/EngagementSummaryCollection.js"></script>
+        <script src="../apps/engagement/js/EngagementSummaryCollectionView.js"></script>
+        <script src="../apps/engagement/js/EngagementDetailView.js"></script>
+        <script src="../apps/engagement/js/EngagementDetailScoreView.js"></script>
+        <script src="../apps/engagement/js/EngagementDetailRecView.js"></script>
+        <script src="../apps/engagement/js/EngagementDetailRecSentView.js"></script>
+        <script src="../apps/engagement/js/EngagementDetailRecRecvView.js"></script>
+        <script src="../apps/engagement/js/EngagementDetailPaxView.js"></script>
+        <script src="../apps/engagement/js/EngagementDetailPaxRecToView.js"></script>
+        <script src="../apps/engagement/js/EngagementDetailPaxRecByView.js"></script>
+        <script src="../apps/engagement/js/EngagementDetailVisitsView.js"></script>
+        <script src="../apps/engagement/js/EngagementRecognizedModel.js"></script>
+        <script src="../apps/engagement/js/EngagementRecognizedModelView.js"></script>
+        <script src="../apps/engagement/js/EngagementTeamMembersModel.js"></script>
+        <script src="../apps/engagement/js/EngagementTeamMembersCollection.js"></script>
+        <script src="../apps/engagement/js/EngagementTeamMembersCollectionView.js"></script>
+        <script src="../apps/engagement/js/EngagementModuleView.js"></script>
+        <script src="../apps/engagement/js/EngagementModuleManagerView.js"></script>
+        <script src="../apps/engagement/js/EngagementPageDashboardView.js"></script>
+        <script src="../apps/engagement/js/EngagementPageUserDashboardView.js"></script>
+        <script src="../apps/engagement/js/EngagementPageTeamDashboardView.js"></script>
+        <script src="../apps/engagement/js/EngagementPageRecognizedView.js"></script>
+        <script src="../apps/engagement/js/EngagementTeamMembersView.js"></script>
+
+        <!-- forum -->
+        <script src="../apps/forum/js/ForumPageView.js"></script>
+        <script src="../apps/forum/js/ForumModuleView.js"></script>
+        <script src="../apps/forum/js/ForumDiscussionModel.js"></script>
+        <script src="../apps/forum/js/ForumCommentCollection.js"></script>
+
+        <!-- gamification -->
+        <script src="../apps/gamification/js/GamificationCollection.js"></script>
+        <script src="../apps/gamification/js/GamificationDataView.js"></script>
+        <script src="../apps/gamification/js/GamificationModuleView.js"></script>
+
+        <!-- instantPoll -->
+        <script src="../apps/instantPoll/js/InstantPollCollection.js"></script>
+        <script src="../apps/instantPoll/js/InstantPollModuleView.js"></script>
+
+        <!-- leaderboard -->
+        <script src="../apps/leaderboard/js/LeaderboardModel.js"></script>
+        <script src="../apps/leaderboard/js/LeaderboardCollection.js"></script>
+        <script src="../apps/leaderboard/js/LeaderboardSetModel.js"></script>
+        <script src="../apps/leaderboard/js/LeaderboardSetCollection.js"></script>
+        <script src="../apps/leaderboard/js/LeaderboardModelView.js"></script>
+        <script src="../apps/leaderboard/js/LeaderboardModuleView.js"></script>
+        <script src="../apps/leaderboard/js/LeaderboardPageView.js"></script>
+        <script src="../apps/leaderboard/js/LeaderboardPageCreateEditCopyView.js"></script>
+
+        <!-- onTheSpotCard -->
+        <script src="../apps/onTheSpotCard/js/OnTheSpotCardModuleView.js"></script>
+
+        <!-- plateauAwards -->
+        <script src="../apps/plateauAwards/js/PlateauAwardsPageView.js"></script>
+        <script src="../apps/plateauAwards/js/PlateauAwardsPageReminderView.js"></script>
+        <script src="../apps/plateauAwards/js/PlateauAwardsCollection.js"></script>
+        <script src="../apps/plateauAwards/js/PlateauAwardsModuleView.js"></script>
+
+        <script src="../apps/plateauAwards/js/PlateauAwardsRedeemModuleView.js"></script>
+        <script src="../apps/plateauAwards/js/PlateauAwardsRedeemModel.js"></script>
+
+        <!-- publicRecognition -->
+        <script src="../apps/publicRecognition/js/PublicRecognitionModel.js"></script>
+        <script src="../apps/publicRecognition/js/PublicRecognitionCollection.js"></script>
+        <script src="../apps/publicRecognition/js/PublicRecognitionSetModel.js"></script>
+        <script src="../apps/publicRecognition/js/PublicRecognitionSetCollection.js"></script>
+        <script src="../apps/publicRecognition/js/PublicRecognitionModelView.js"></script>
+        <script src="../apps/publicRecognition/js/PublicRecognitionSetCollectionView.js"></script>
+        <script src="../apps/publicRecognition/js/PublicRecognitionModuleView.js"></script>
+        <script src="../apps/publicRecognition/js/PublicRecognitionPageView.js"></script>
+        <script src="../apps/publicRecognition/js/PublicRecognitionPageDetailView.js"></script>
+        <script src="../apps/publicRecognition/js/PublicRecognitionPageFollowListView.js"></script>
+
+        <!-- recognition/PURL -->
+        <script src="../apps/recognition/js/RecognitionPageSendView.js"></script>
+        <script src="../apps/recognition/js/RecognitionPageManagerInviteContributorsView.js"></script>
+        <script src="../apps/recognition/js/AwardeeCollectionView.js"></script>
+        <script src="../apps/recognition/js/ContributorsView.js"></script>
+        <script src="../apps/recognition/js/RecognitionPageAddPointsView.js"></script>
+        <script src="../apps/recognition/js/RecognitionEzView.js"></script>
+        <script src="../apps/recognition/js/RecognitionModuleView.js"></script>
+        <script src="../apps/recognition/js/RecognitionPageBadgesView.js"></script>
+        <script src="../apps/recognition/js/RecognitionPageRecogView.js"></script>
+
+        <!-- drawTool -->
+        <script src="../apps/drawTool/js/DrawToolView.js"></script>
+        <script src="../apps/drawTool/js/DrawCanvasView.js"></script>
+
+        <!-- recognition preview pages -->
+        <script src="../apps/recognition/js/RecognitionPagePreviewView.js"></script>
+
+        <!-- rulesPage -->
+        <script src="js/backbone/RulesPageView.js"></script>
+        <script src="js/backbone/RulesPromotionModel.js"></script>
+        <script src="js/backbone/RulesPromotionModelView.js"></script>
+        <script src="js/backbone/RulesPromotionCollection.js"></script>
+        <script src="js/backbone/RulesPromotionCollectionView.js"></script>
+
+        <!-- reports -->
+        <script src="../apps/reports/js/ReportsModuleView.js"></script>
+        <script src="../apps/reports/js/AllReportsModuleView.js"></script>
+        <script src="../apps/reports/js/FavoriteReportsModuleView.js"></script>
+        <script src="../apps/reports/js/ReportModel.js"></script>
+        <script src="../apps/reports/js/ReportCollection.js"></script>
+        <script src="../apps/reports/js/ReportsPageView.js"></script>
+        <script src="../apps/reports/js/ReportsPageAllView.js"></script>
+        <script src="../apps/reports/js/ReportsPageDetailView.js"></script>
+        <script src="../apps/reports/js/ReportsFavoritesPopoverView.js"></script>
+        <script src="../apps/reports/js/ReportsChangeFiltersPopoverView.js"></script>
+
+        <!-- testModule -->
+        <script src="../apps/test/js/TestModuleView.js"></script>
+
+        <!-- work happier -->
+        <script src="../apps/workHappier/js/WorkHappierPaxModuleView.js"></script>
+        <script src="../apps/workHappier/js/WorkHappierPaxModel.js"></script>
+
+        <!-- communications -->
+        <script src="../apps/communications/js/CommunicationsPageView.js"></script>
+        <script src="../apps/communications/js/CommunicationsManageResourceCenterView.js"></script>
+        <script src="../apps/communications/js/CommunicationsManageResourceCenterModel.js"></script>
+        <script src="../apps/communications/js/CommunicationsResourceCenterEditView.js"></script>
+        <script src="../apps/communications/js/CommunicationsResourceCenterEditModel.js"></script>
+        <script src="../apps/communications/js/CommunicationsManageTipsView.js"></script>
+        <script src="../apps/communications/js/CommunicationsManageTipsModel.js"></script>
+        <script src="../apps/communications/js/CommunicationsTipsEditView.js"></script>
+        <script src="../apps/communications/js/CommunicationsTipsEditModel.js"></script>
+        <script src="../apps/communications/js/CommunicationsManageBannersView.js"></script>
+        <script src="../apps/communications/js/CommunicationsManageBannersModel.js"></script>
+        <script src="../apps/communications/js/CommunicationsImageUploadView.js"></script>
+        <script src="../apps/communications/js/CommunicationsBannersEditView.js"></script>
+        <script src="../apps/communications/js/CommunicationsBannersEditModel.js"></script>
+        <script src="../apps/communications/js/CommunicationsManageNewsView.js"></script>
+        <script src="../apps/communications/js/CommunicationsManageNewsModel.js"></script>
+        <script src="../apps/communications/js/CommunicationsNewsEditView.js"></script>
+        <script src="../apps/communications/js/CommunicationsNewsEditModel.js"></script>
+
+        <!-- news -->
+        <script src="../apps/news/js/NewsModel.js"></script>
+        <script src="../apps/news/js/NewsModuleView.js"></script>
+        <script src="../apps/news/js/NewsCollection.js"></script>
+        <script src="../apps/news/js/NewsCollectionView.js"></script>
+        <script src="../apps/news/js/NewsPageView.js"></script>
+        <script src="../apps/news/js/NewsPageDetailView.js"></script>
+
+        <!-- profile page shell -->
+        <script src="../apps/profile/js/ProfilePageView.js"></script>
+        <script src="../apps/profile/js/ProfilePageShellTabSetEditView.js"></script>
+        <script src="../apps/profile/js/ProfilePageShellTabSetEditLinksView.js"></script>
+        <script src="../apps/profile/js/ProfilePageShellTabSetViewingView.js"></script>
+        <script src="../apps/profile/js/ProfilePageShellTabSetViewingLinksView.js"></script>
+
+        <!-- profile page activity history tab -->
+        <script src="../apps/profile/js/ProfilePageActivityHistoryTabView.js"></script>
+
+        <!-- profile page dashboard (engagement) tab -->
+        <script src="../apps/profile/js/ProfilePageDashboardTabView.js"></script>
+
+        <!-- profile page alerts and messages tab -->
+        <script src="../apps/profile/js/ProfilePageAlertsTabAlertsModel.js"></script>
+        <script src="../apps/profile/js/ProfilePageAlertsTabMessagesModel.js"></script>
+        <script src="../apps/profile/js/ProfilePageAlertsTabMessagesCollection.js"></script>
+        <script src="../apps/profile/js/ProfilePageAlertsTabAlertsCollection.js"></script>
+        <script src="../apps/profile/js/ProfilePageAlertsTabAlertsView.js"></script>
+        <script src="../apps/profile/js/ProfilePageAlertsTabMessagesView.js"></script>
+        <script src="../apps/profile/js/ProfilePageAlertsTabMessageDetailModel.js"></script>
+        <script src="../apps/profile/js/ProfilePageAlertsTabMessageDetailCollection.js"></script>
+        <script src="../apps/profile/js/ProfilePageAlertsTabMessageDetailView.js"></script>
+        <script src="../apps/profile/js/ProfilePageAlertsAndMessagesTabView.js"></script>
+
+        <!-- profile page badges tab -->
+        <script src="../apps/profile/js/ProfilePageBadgesTabCollection.js"></script>
+        <script src="../apps/profile/js/ProfilePageBadgesTabView.js"></script>
+
+        <!-- profile page follow list tab -->
+        <script src="../apps/profile/js/ProfilePageFollowListTabView.js"></script>
+
+        <!--profile page personal info tab -->
+        <script src="../apps/profile/js/ProfilePagePersonalInfoTabView.js"></script>
+        <script src="../apps/profile/js/ProfilePagePersonalInformationTabModel.js"></script>
+        <script src="../apps/profile/js/ProfilePagePersonalInformationTabCollection.js"></script>
+
+        <!-- profile page preferences tab -->
+        <script src="../apps/profile/js/ProfilePagePreferencesTabView.js"></script>
+
+        <!-- profile page proxies tab -->
+        <script src="../apps/profile/js/ProfilePageProxiesTabView.js"></script>
+
+        <!-- profile page security tab -->
+        <script src="../apps/profile/js/ProfilePageSecurityTabView.js"></script>
+
+        <!-- profile page personal information tab -->
+        <script src="../apps/profile/js/ProfilePageStatementTabView.js"></script>
+
+        <!-- profile page throwdown player stats tab -->
+        <script src="../apps/profile/js/ProfilePageThrowdownStatsTabView.js"></script>
+
+        <!-- publicProfile -->
+        <script src="../apps/publicProfile/js/publicProfilePageView.js"></script>
+
+        <!-- approvals -->
+        <script src="../apps/approvals/js/ApprovalsModel.js"></script>
+        <script src="../apps/approvals/js/ApprovalsCollection.js"></script>
+        <script src="../apps/approvals/js/ApprovalsModuleView.js"></script>
+        <script src="../apps/approvals/js/ApprovalsIndexModelView.js"></script>
+        <script src="../apps/approvals/js/ApprovalsSearchModelView.js"></script>
+        <script src="../apps/approvals/js/ApprovalsClaimDetailModelView.js"></script>
+        <script src="../apps/approvals/js/ApprovalsNominationDetailModelView.js"></script>
+        <script src="../apps/approvals/js/ApprovalsPageClaimsModel.js"></script>
+        <script src="../apps/approvals/js/ApprovalsPageClaimsView.js"></script>
+
+        <!-- quiz -->
+        <!-- old take a quiz -->
+        <script src="../apps/quiz/js/QuizPageView.js"></script>
+        <script src="../apps/quiz/js/ActiveQuizCollection.js"></script>
+        <script src="../apps/quiz/js/ActiveQuizView.js"></script>
+        <script src="../apps/quiz/js/ActiveQuizDetailView.js"></script>
+        <script src="../apps/quiz/js/ActiveQuizCourseMaterialsView.js"></script>
+        <script src="../apps/quiz/js/ActiveQuizTakeQuizView.js"></script>
+        <script src="../apps/quiz/js/ActiveQuizResultsView.js"></script>
+        <!-- new take a quiz -->
+        <script src="../apps/quiz/js/QuizModelTake.js"></script>
+        <script src="../apps/quiz/js/QuizPageTakeView.js"></script>
+        <script src="../apps/quiz/js/QuizTakeTabIntroView.js"></script>
+        <script src="../apps/quiz/js/QuizTakeTabMaterialsView.js"></script>
+        <script src="../apps/quiz/js/QuizTakeTabQuestionsView.js"></script>
+        <script src="../apps/quiz/js/QuizTakeTabResultsView.js"></script>
+        <!-- diy quiz -->
+        <script src="../apps/quiz/js/QuizModel.js"></script>
+        <script src="../apps/quiz/js/QuizPageEditView.js"></script>
+        <script src="../apps/quiz/js/QuizEditTabIntroView.js"></script>
+        <script src="../apps/quiz/js/QuizEditTabMaterialsView.js"></script>
+        <script src="../apps/quiz/js/QuizEditTabQuestionsView.js"></script>
+        <script src="../apps/quiz/js/QuizEditTabResultsView.js"></script>
+        <script src="../apps/quiz/js/QuizEditTabPreviewView.js"></script>
+        <script src="../apps/quiz/js/QuizPageManageView.js"></script>
+
+        <!-- purlContribute -->
+        <script src="../apps/purlContribute/js/purlContributeModel.js"></script>
+        <script src="../apps/purlContribute/js/purlContributeCollection.js"></script>
+        <script src="../apps/purlContribute/js/purlContributeTermsPageView.js"></script>
+        <script src="../apps/purlContribute/js/purlContributeMainPageView.js"></script>
+        <script src="../apps/purlContribute/js/purlContributePurlListPageView.js"></script>
+        <script src="../apps/purlContribute/js/PurlPageView.js"></script>
+        <script src="../apps/purlContribute/js/PurlModel.js"></script>
+        <script src="../apps/purlContribute/js/PurlCelebrateModuleView.js"></script>
+        <script src="../apps/purlContribute/js/PurlCelebratePageView.js"></script>
+        <script src="../apps/purlContribute/js/PurlCelebrateModel.js"></script>
+
+        <!-- theDude -->
+        <script src="../apps/theDude/js/TheDudeModuleView.js"></script>
+        <script src="../apps/theDude/js/TheDudeListCollection.js"></script>
+
+        <!-- tip -->
+        <script src="../apps/tip/js/TipModel.js"></script>
+        <script src="../apps/tip/js/TipCollection.js"></script>
+        <script src="../apps/tip/js/TipModuleView.js"></script>
+
+        <!-- resourceCenter -->
+        <script src="../apps/resourceCenter/js/ResourceCenterModuleView.js"></script>
+        <script src="../apps/resourceCenter/js/ResourceCenterPageView.js"></script>
+
+        <!-- managerToolkit -->
+        <script src="../apps/managerToolkit/js/ManagerToolkitModuleView.js"></script>
+        <script src="../apps/managerToolkit/js/ManagerToolkitPageBudgetView.js"></script>
+        <script src="../apps/managerToolkit/js/ManagerToolkitPageHistoryView.js"></script>
+        <script src="../apps/managerToolkit/js/ManagerToolkitPageRosterView.js"></script>
+        <script src="../apps/managerToolkit/js/ManagerToolkitPageRosterEditView.js"></script>
+        <script src="../apps/managerToolkit/js/ManagerToolKitSendAlertPageView.js"></script>
+
+        <!-- survey -->
+        <script src="../apps/survey/js/SurveyModel.js"></script>
+        <script src="../apps/survey/js/SurveyTakeView.js"></script>
+        <script src="../apps/survey/js/SurveyPageListView.js"></script>
+        <script src="../apps/survey/js/SurveyPageTakeView.js"></script>
+
+        <!-- goalquest -->
+        <script src="../apps/goalquest/js/GoalquestCollectionView.js"></script>
+        <script src="../apps/goalquest/js/GoalquestModuleView.js"></script>
+        <script src="../apps/goalquest/js/GoalquestManagerModuleView.js"></script>
+        <script src="../apps/goalquest/js/ChallengepointModuleView.js"></script>
+        <script src="../apps/goalquest/js/ChallengepointManagerModuleView.js"></script>
+        <script src="../apps/goalquest/js/GoalquestPageListView.js"></script>
+        <script src="../apps/goalquest/js/GoalquestPageEditView.js"></script>
+        <script src="../apps/goalquest/js/GoalquestPageDetailView.js"></script>
+
+        <!-- throwdown -->
+        <script src="../apps/throwdown/js/_throwdown.js"></script>
+        <script src="../apps/throwdown/js/ThrowdownPromoSelectModel.js"></script>
+        <script src="../apps/throwdown/js/ThrowdownPromoSelectCollection.js"></script>
+        <script src="../apps/throwdown/js/ThrowdownPromoSelectModuleView.js"></script>
+
+        <script src="../apps/throwdown/js/ThrowdownMatchModel.js"></script>
+        <script src="../apps/throwdown/js/ThrowdownMatchCollection.js"></script>
+        <script src="../apps/throwdown/js/ThrowdownMatchModuleView.js"></script>
+        <script src="../apps/throwdown/js/ThrowdownMatchPageView.js"></script>
+
+        <script src="../apps/throwdown/js/ThrowdownAllMatchesModel.js"></script>
+        <script src="../apps/throwdown/js/ThrowdownAllMatchesModuleView.js"></script>
+        <script src="../apps/throwdown/js/ThrowdownAllMatchesTeamModel.js"></script>
+
+        <script src="../apps/throwdown/js/ThrowdownRankingsModel.js"></script>
+        <script src="../apps/throwdown/js/ThrowdownRankingsCollection.js"></script>
+        <script src="../apps/throwdown/js/ThrowdownRankingsSetModel.js"></script>
+        <script src="../apps/throwdown/js/ThrowdownRankingsSetCollection.js"></script>
+        <script src="../apps/throwdown/js/ThrowdownRankingsModelView.js"></script>
+        <script src="../apps/throwdown/js/ThrowdownRankingsModuleView.js"></script>
+        <script src="../apps/throwdown/js/ThrowdownRankingsPageView.js"></script>
+
+        <script src="../apps/throwdown/js/ThrowdownStandingsModuleView.js"></script>
+
+        <script src="../apps/throwdown/js/ThrowdownStandingsModel.js"></script>
+        <script src="../apps/throwdown/js/ThrowdownStandingsPageView.js"></script>
+
+        <script src="../apps/throwdown/js/ThrowdownTrainingCampModuleView.js"></script>
+        <script src="../apps/throwdown/js/ThrowdownTrainingCampPageView.js"></script>
+
+        <script src="../apps/throwdown/js/ThrowdownNewsModel.js"></script>
+        <script src="../apps/throwdown/js/ThrowdownNewsModuleView.js"></script>
+        <script src="../apps/throwdown/js/ThrowdownNewsCollection.js"></script>
+        <script src="../apps/throwdown/js/ThrowdownNewsCollectionView.js"></script>
+        <script src="../apps/throwdown/js/ThrowdownNewsPageView.js"></script>
+        <script src="../apps/throwdown/js/ThrowdownNewsPageDetailView.js"></script>
+
+        <script src="../apps/throwdown/js/SmackTalkModel.js"></script>
+        <script src="../apps/throwdown/js/SmackTalkCollection.js"></script>
+        <script src="../apps/throwdown/js/SmackTalkSetModel.js"></script>
+        <script src="../apps/throwdown/js/SmackTalkSetCollection.js"></script>
+        <script src="../apps/throwdown/js/SmackTalkModelView.js"></script>
+        <script src="../apps/throwdown/js/SmackTalkSetCollectionView.js"></script>
+        <script src="../apps/throwdown/js/SmackTalkModuleView.js"></script>
+        <script src="../apps/throwdown/js/SmackTalkPageView.js"></script>
+        <script src="../apps/throwdown/js/SmackTalkPageDetailView.js"></script>
+
+        <!-- ssi -->
+        <script src="../apps/ssi/js/SSIModuleView.js"></script>
+        <script src="../apps/ssi/js/SSISharedHelpersView.js"></script>
+        <script src="../apps/ssi/js/SSISharedPaginatedTableView.js"></script>
+        <script src="../apps/ssi/js/SSIEventBus.js"></script>
+        <script src="../apps/ssi/js/SSIContestModel.js"></script>
+        <script src="../apps/ssi/js/SSIDTGTActivityModel.js"></script>
+        <script src="../apps/ssi/js/SSIDTGTActivityCollection.js"></script>
+        <script src="../apps/ssi/js/SSIDTGTActivityModelView.js"></script>
+        <script src="../apps/ssi/js/SSIDTGTActivityCollectionView.js"></script>
+        <script src="../apps/ssi/js/SSISIULevelModel.js"></script>
+        <script src="../apps/ssi/js/SSISIULevelCollection.js"></script>
+        <script src="../apps/ssi/js/SSISIULevelModelView.js"></script>
+        <script src="../apps/ssi/js/SSISIULevelCollectionView.js"></script>
+        <script src="../apps/ssi/js/SSIContestSummaryCollection.js"></script>
+        <script src="../apps/ssi/js/SSIContestSummary_ATN.js"></script>
+        <script src="../apps/ssi/js/SSIContestPayoutDetailsCollection.js"></script>
+        <script src="../apps/ssi/js/SSIContestPayoutDetails_ATN.js"></script>
+        <script src="../apps/ssi/js/SSIApproveContestPageViewATN.js"></script>
+        <script src="../apps/ssi/js/SSIContestPageEditView.js"></script>
+        <script src="../apps/ssi/js/SSIContestEditTranslationsView.js"></script>
+        <script src="../apps/ssi/js/SSIContestEditTabInfoView.js"></script>
+        <script src="../apps/ssi/js/SSIContestEditTabParticipantsManagersView.js"></script>
+        <script src="../apps/ssi/js/SSIContestEditTabPayoutsView_objectives.js"></script>
+        <script src="../apps/ssi/js/SSIContestEditTabPayoutsView_dtgt.js"></script>
+        <script src="../apps/ssi/js/SSIContestEditTabPayoutsView_siu.js"></script>
+        <script src="../apps/ssi/js/SSIContestEditTabPayoutsView_atn.js"></script>
+        <script src="../apps/ssi/js/SSIContestEditTabPayoutsView_sr.js"></script>
+        <script src="../apps/ssi/js/SSIContestEditTabDataCollectionView.js"></script>
+        <script src="../apps/ssi/js/SSIContestEditTabPreviewView.js"></script>
+
+        <!-- ssi nav -->
+        <script src="../apps/ssi/js/SSIPageNavView.js"></script>
+
+        <!-- ssi contest generic -->
+        <script src="../apps/ssi/js/SSIRouter.js"></script>
+        <script src="../apps/ssi/js/SSIPageCollection.js"></script>
+        <script src="../apps/ssi/js/SSIPageView.js"></script>
+        <script src="../apps/ssi/js/SSICircleChartModel.js"></script>
+        <script src="../apps/ssi/js/SSICircleChartCollection.js"></script>
+        <script src="../apps/ssi/js/SSICircleChartView.js"></script>
+        <script src="../apps/ssi/js/SSIBarChartView.js"></script>
+        <script src="../apps/ssi/js/SSIPayoutChartView.js"></script>
+        <script src="../apps/ssi/js/SSIActionPromptView.js"></script>
+        <script src="../apps/ssi/js/SSISortableTableView.js"></script>
+        <script src="../apps/ssi/js/SSISortableTableCollection.js"></script>
+        <script src="../apps/ssi/js/SSIContestListView.js"></script>
+        <script src="../apps/ssi/js/SSICreatorContestModel.js"></script>
+        <script src="../apps/ssi/js/SSIContestCreateModalView.js"></script>
+        <script src="../apps/ssi/js/SSIStackRankCollection.js"></script>
+        <script src="../apps/ssi/js/SSIStackRankCollectionView.js"></script>
+
+        <!-- ssi participant -->
+        <script src="../apps/ssi/js/SSIParticipantContestModel.js"></script>
+        <script src="../apps/ssi/js/SSIParticipantContestView.js"></script>
+        <script src="../apps/ssi/js/SSIParticipantDoThisGetThatView.js"></script>
+        <script src="../apps/ssi/js/SSIParticipantObjectivesView.js"></script>
+        <script src="../apps/ssi/js/SSIParticipantStackRankView.js"></script>
+        <script src="../apps/ssi/js/SSIParticipantStepItUpView.js"></script>
+        <script src="../apps/ssi/js/SSIParticipantSubmitClaimPageView.js"></script>
+        <script src="../apps/ssi/js/SSIParticipantSubmitClaimModel.js"></script>
+        <script src="../apps/ssi/js/SSIParticipantSubmitClaimDetailView.js"></script>
+        <script src="../apps/ssi/js/SSIParticipantPageView.js"></script>
+        <script src="../apps/ssi/js/SSIParticipantModuleView.js"></script>
+
+        <!-- ssi manager -->
+        <script src="../apps/ssi/js/SSIManagerPageView.js"></script>
+        <script src="../apps/ssi/js/SSIManagerModuleView.js"></script>
+
+        <!-- ssi creator -->
+        <script src="../apps/ssi/js/SSICreatorPageView.js"></script>
+        <script src="../apps/ssi/js/SSICreatorModuleView.js"></script>
+        <script src="../apps/ssi/js/SSICreatorListModuleView.js"></script>
+        <script src="../apps/ssi/js/SSICreatorContestsModuleView.js"></script>
+
+        <!-- ssi admin contest details -->
+        <script src="../apps/ssi/js/SSIAdminContestDetailsView.js"></script>
+        <script src="../apps/ssi/js/SSIAdminContestDetailsModel.js"></script>
+
+        <!-- ssi approve contest -->
+        <script src="../apps/ssi/js/SSIApproveContestPageView.js"></script>
+        <script src="../apps/ssi/js/SSIApproveContestDetailsModel.js"></script>
+        <script src="../apps/ssi/js/SSIApproveContestMembersCollection.js"></script>
+        <script src="../apps/ssi/js/SSIApproveContestMembersCollectionView.js"></script>
+
+        <!-- ssi approve payout -->
+        <script src="../apps/ssi/js/SSIApprovePayoutView.js"></script>
+        <script src="../apps/ssi/js/SSIApprovePayoutCollection.js"></script>
+
+        <!-- ssi activity history -->
+        <script src="../apps/ssi/js/SSIActivityHistoryView.js"></script>
+        <script src="../apps/ssi/js/SSIActivityHistoryModel.js"></script>
+
+        <!-- ssi update results / approve payout -->
+        <script src="../apps/ssi/js/SSIUpdateResultsPageView.js"></script>
+        <script src="../apps/ssi/js/SSIUpdateResultsModel.js"></script>
+
+        <!-- ssi approve claims -->
+        <script src="../apps/ssi/js/SSIApproveClaimsPageView.js"></script>
+        <script src="../apps/ssi/js/SSIApproveClaimsDetailPageView.js"></script>
+        <script src="../apps/ssi/js/SSIApproveClaimsSummaryCollection.js"></script>
+
+        <script>
+            // G5.props.DEFAULT_FILTER = 'throwdown';
+        </script>
+
+        <script>
+            //Prevent iframe carjacking XFS vulnerability
+            this.top.location !== this.location && (this.top.location = this.location);
+        </script>
+
+        <?php
+            $core = $_SERVER['DOCUMENT_ROOT'] . $g5BaseUrl . $releaseDirPath;
+
+            if ( $libsHandle = @opendir( $skinBaseDir.'custom/libs/plugins/' ) ):
+
+                echo "\n" . '<!-- custom libs plugins imports -->' . "\n";
+
+                while (false !== ($fileName = readdir($libsHandle))):
+
+                    if( !in_array( $fileName, $fileCrawlIgnoreFiles ) && !file_exists($core . 'core/libs/plugins/' . $fileName) ):
+
+                        echo '<script src="'.$baseUrl.$releaseDirPath.'core/libs/plugins/'.$fileName.'"></script>' . "\n";
+
+                    endif;
+
+                endwhile;
+
+            endif;
+
+
+
+            if ( $backboneHandle = @opendir( $skinBaseDir.'custom/base/js/backbone/' ) ):
+
+                echo "\n" . '<!-- custom base backbone imports -->' . "\n";
+
+                while (false !== ($fileName = readdir($backboneHandle))):
+
+                    if( !in_array( $fileName, $fileCrawlIgnoreFiles ) && !file_exists($core . 'core/base/js/backbone/' . $fileName) ):
+
+                        echo '<script src="'.$baseUrl.$releaseDirPath.'core/base/js/backbone/'.$fileName.'"></script>' . "\n";
+
+                    endif;
+
+                endwhile;
+
+            endif;
+
+
+
+            if ( $appsHandle = @opendir( $skinBaseDir.'custom/apps/' ) ):
+
+                echo "\n" . '<!-- custom app imports -->' . "\n";
+
+                while (false !== ($appName = readdir($appsHandle))):
+
+                    if( !in_array( $appName, $fileCrawlIgnoreFiles ) && !in_array( $appName, $customApps ) ):
+
+                        if ( $appHandle = @opendir( $skinBaseDir.'custom/apps/'.$appName.'/js/' ) ):
+
+                            while( false !== ( $fileName = readdir( $appHandle ) ) ):
+
+                                if( !in_array( $fileName, $fileCrawlIgnoreFiles ) && !file_exists($core . 'core/apps/' . $appName . '/js/' . $fileName) ):
+
+                                    echo '<script src="'.$skinsBaseUrl.$skinsLocation.$skinContext.'custom/apps/'.$appName.'/js/'.$fileName.'"></script>' . "\n";
+
+                                endif;
+
+                            endwhile;
+
+                        endif;
+
+                    endif;
+
+                endwhile;
+
+            endif;
+        ?>
+
+
+    <!-- SKIN JS -->
+        <!--TODO: update the build to compile all the skin JS files into a single script.js -->
+        <!--<script src="<?php echo($skinString); ?>js/script.js"></script>-->
+
+        <script src="<?php echo($skinString); ?>js/props.js"></script>
+        <script type="text/javascript">
+<?php print($skinProps); ?>
+        </script>
+
+
+    <!-- No additional script resources or blocks should be added after this one -->
+    <!-- INIT -->
+        <script>
+            // UTIL.init is found in core/base/js/main.js
+            // $( document ).ready( UTIL.init );
+        </script>
+
+
+    <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
+         mathiasbynens.be/notes/async-analytics-snippet -->
+    <!-- <script>
+        var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script> -->
+
+    </body>
+
+</html>

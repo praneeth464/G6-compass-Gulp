@@ -1,0 +1,86 @@
+<!-- ======== MANAGER TOOLKIT PAGE ALERT ======== -->
+
+<!-- ie7: no space between div.page-content and div.row -->
+<div id="managerToolkitPageAlertView" class="managerToolkitPageAlert-liner page-content"><div class="row">
+        <div class="span12">
+            <h3>Send Alert</h3>
+            <p>This alert will display for program participants assigned to your hierarchy level and below. Please review the alert before clicking Submit. Once your alert is posted it cannot be deleted.</p>
+            <form id="managerToolkitFormSendAlert">
+                <fieldset>
+                    <label>To</label>
+                    <select id="orgUnitSelect" name="orgUnitSelect">
+                        <option value="no">Org Unit</option>
+                        <option value="orgUnitAndBelow">Org Unit and Below</option>
+                    </select>
+                    <label for="managerToolkitAlertSubject">Subject</label>
+                    <div class="validateme" data-validate-fail-msgs='{"nonempty":"Required"}' data-validate-flags="nonempty" >
+                        <input type="text" name="managerToolkitAlertSubject" class="ifw">
+                    </div>
+                    <label>Message</label>
+                    <div class="validateme" data-validate-fail-msgs='{"maxlength":"Maximum length exceeded,<br> please reduce text length.","nonempty":"Required"}' data-validate-flags="maxlength,nonempty" data-validate-max-length="2000" >
+                        <textarea rows="5" name="managerToolkitMessageBody" class="ifw richtext" data-localization="en" data-max-chars="2000"></textarea>
+                    </div>
+                    <label>Duration</label>
+                    <select id="alertDuration" name="alertDuration">
+                        <option value="24hrs">24 hours</option>
+                        <option value="48hrs">48 hours</option>
+                        <option value="7days">7 days</option>
+                    </select>
+                    <div class="form-actions pullBottomUp">
+                        <button class="btn btn-primary submitBtn" type="submit">Submit</button>
+                        <button class="btn cancelBtn" type="button" data-url="layout.html">Cancel</button>
+                    </div>
+                </fieldset>
+
+                <div class="cancelConfirm" style="display:none">
+                    <p>
+                        <i class="icon-question-sign"></i>
+                        <b>Are you sure? All changes will be lost.</b>
+                    </p>
+                    <p class="tc">
+                        <button type="submit" id="cancelDialogConfirm" class="btn btn-primary">Yes</button>
+                        <button type="submit" id="cancelDialogCancel" class="btn">No</button>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<input id="orgUnitRecips" type="hidden" value="15" data-msg-post-fix="recipients">
+<input id="orgUnitBelowRecips" type="hidden" value="42">
+
+<!-- This is the automodal example -->
+
+<!-- <div class="modal hide fade autoModal in" style="display: block;">
+    <div class="modal-body">
+        <h3>Your alert has been sent</h3>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
+    </div>
+</div> -->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+
+    $(document).ready(function(){
+        //attach the view to an existing DOM element
+        var prp = new ManagerToolKitSendAlertPageView({
+            el:$('#managerToolkitPageAlertView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Create Alert'
+        });
+
+    });
+
+</script>

@@ -1,0 +1,40 @@
+<?php sleep(2); ?>
+{
+	"messages":[],
+	"products":[
+		{
+			"id":"23",
+			"name":"A Really Neat White Shirt",
+			"thumbnail":"img/_samples/plateauAward1_thumb.jpg",
+			"url":"/path/to/plateau/awards/browse?promotionId=a&levelId=b"
+		},
+
+		{
+			"id":"55",
+			"name":"Some Fancy Lawn and Garden Table",
+			"thumbnail":"img/_samples/plateauAward2_thumb.jpg",
+			"url":"/path/to/plateau/awards/browse?promotionId=c&levelId=d"
+		},
+
+		{
+			"id":"988",
+			"name":"Expensive Gold Necklace",
+			"thumbnail":"img/_samples/plateauAward3_thumb.jpg",
+			"url":"/path/to/plateau/awards/browse?promotionId=e&levelId=f"
+		},
+
+		{
+			"id":"5965",
+			"name":"A Very Fitting Twins Doormat",
+			"thumbnail":"img/_samples/plateauAward4_thumb.jpg",
+			"url":"/path/to/plateau/awards/browse?promotionId=g&levelId=h"
+		},
+
+		{
+			"id":"5535",
+			"name":"Mariokart K'nex!",
+			"thumbnail":"img/_samples/plateauAward5_thumb.jpg",
+			"url":"/path/to/plateau/awards/browse?promotionId=i&levelId=j"
+		}
+	]
+}

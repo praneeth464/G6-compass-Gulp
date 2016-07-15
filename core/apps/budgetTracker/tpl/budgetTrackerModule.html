@@ -1,0 +1,48 @@
+<!-- ======== BUDGET TRACKER MODULE ======== -->
+
+<div class="module-liner">
+
+    <div class="wide-view">
+        <h3>
+            My Budgets
+            <a href="layout.html?tplPath=apps/managerToolkit/tpl/&amp;tpl=managerToolkitPageBudget.html" class="btn btn-small btn-primary transferBtn">Transfer</a>
+        </h3>
+
+        <!--
+            each budget list has a special CM key containing the full translated string for the "Remaining as of" text
+            the key ouput will have a {0} placeholder where the budgetAsOfTimestamp value is inserted
+            this allows the translations to have plain text and the budgetAsOfTimestamp in any order
+            we embed this CM output as a tplVariable in our budgetTrackerModule Handlebars template
+            we also have an budgetAsOfTimestamp subTpl embedded in our budgetTrackerModule Handlebars template
+            we pass the budgets.budgetAsOfTimestamp value from the JSON to the subTpl, then replace the {0} with the rendered output
+            the final string is assigned to budgets.budgetAsOfTimestampFormatted in the JSON to be inserted into the module via jQ
+        -->
+        <!--tplVariable.budgetAsOfTimestamp= "Remaining as of {0}" tplVariable-->
+        <!--subTpl.budgetAsOfTimestamp= <strong id="budgetAsOfTimestamp">{{budgetAsOfTimestamp}}</strong> subTpl-->
+        <p class="budget-date">
+            <span class="budgetAsOfTimestamp"></span>
+            <a class="reloadBtn"><i class="icon-repeat"></i> Refresh</a>
+        </p>
+
+        <div class="budgetScrollContainer">
+            <!--
+                DEVELOPERS NOTE:
+                - the data-* attributes below will be included in JSON requests for budgetItems
+                - the names will be converted to camel-case without 'data'
+                - EX: 'data-some-param' => 'someParam'
+            -->
+            <div class="budgetCollectionView"
+                data-some-param="1234"
+                data-another-param="98">
+                    <!-- dynamic content -->
+            </div>
+        </div>
+
+    </div><!-- /.wide-view -->
+
+    <div class="title-icon-view">
+        <h3>My Budgets</h3>
+        <i class="icon-g5-budgettracker"></i>
+    </div>
+
+</div><!-- /.module-liner -->

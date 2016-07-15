@@ -1,0 +1,47 @@
+<?php sleep(1); ?>
+
+<div class="tree mode_{{mode}} type_{{type}}">
+
+{{#if participants}}
+    {{#if root}}
+        {{#with root}}
+        <div class="root" {{#if userId}}data-user-id="{{userId}}"{{/if}} {{#if nodeId}}data-node-id="{{nodeId}}"{{/if}}>
+            <img src="{{avatarUrl}}" class="avatar">
+            <span class="name">{{name}}</span>
+            <i class="icon-chevron-down paxRecTo"></i>
+            <i class="icon-chevron-up paxRecBy"></i>
+        </div>
+        {{/with}}
+    {{/if}}
+
+    <ul class="nodes unstyled">
+        {{#each nodes}}
+        <li class="node {{#if isFirst}}first{{/if}} {{#if isLast}}last{{/if}}" data-node-id="{{id}}">
+            <div class="nodewrap">
+                <h5 class="name">{{name}}</h5>
+
+                <ul class="members unstyled">
+                    {{#each members}}
+                    <li class="member {{#if isFirst}}first{{/if}} {{#if isLast}}last{{/if}}" data-user-id="{{id}}">
+                        <a class="participant-popover" href="#" data-participant-ids="[{{id}}]">
+                            <img src="{{avatarUrl}}" class="avatar">
+                            <span class="name">{{name}}</span>
+                            {{#ueq count 1}}
+                            <span class="count">{{count}}</span>
+                            {{/ueq}}
+                        </a>
+                    </li>
+                    {{/each}}
+                </ul><!-- /.members -->
+            </div><!-- /.nodewrap -->
+        </li><!-- /.node -->
+        {{/each}}
+        {{#if hasMore}}
+        <li class="hasMore">
+            <a href="#" class="showMore">show more</a>
+        </li>
+        {{/if}}
+    </ul><!-- /.nodes -->
+{{/if}}
+
+</div><!-- /.tree.mode_{{mode}}.type_{{type}} -->

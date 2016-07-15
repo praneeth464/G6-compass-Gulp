@@ -1,0 +1,98 @@
+{
+	"messages":[],
+
+    "leaderboardSets":[
+        {
+            "nameId":"active",
+            "name":"Active Leaderboards",
+            "emptyMessage":"Currently there are no active leaderboards available.",
+            "leaderboards":[]
+        },
+
+        {
+            "nameId":"pending",
+            "name":"Pending Leaderboards",
+            "emptyMessage":"Currently there are no pending leaderboards available.",
+            "leaderboards":[]
+        },
+
+        {
+            "nameId":"archived",
+            "name":"Archived Leaderboards",
+            "emptyMessage":"Currently there are no archived leaderboards available.",
+            "leaderboards":[
+
+                {
+                    "id":1230,
+                    "name":"Promotion Name 4",
+                    "startDate":"2012-01-29",
+                    "endDate":"2012-06-29",
+                    "displayEndDate":"2012-07-29",
+                    "rules":"should this be stored as text or as a link to externally stored rules?",
+                    "activityTitle":"Customers Lost",
+                    "activitySortOrder":"ASC",
+                    "activityDate":"2012-06-29",
+                    "editableByUser":true,
+                    "urls":{
+                        "editPromoInfo":"layout.html?tpl=LeaderboardPageEditPromoInfo&amp;tplPath=apps/leaderboard/tpl/&amp;boardId=1230",
+                        "editActivity":"layout.html?tpl=leaderboardPageEditActivity&amp;tplPath=apps/leaderboard/tpl/&amp;boardId=1230",
+                        "copyToNew":"layout.html?tpl=LeaderboardPageCopy&amp;tplPath=apps/leaderboard/tpl/&amp;boardId=1230"
+                    },
+                    "leaders":[
+                        {
+                            "id":1000,
+                            "firstName":"Firstname 1",
+                            "lastName":"Lastname",
+                            "avatarUrl":"http://placehold.it/20x20",
+                            "score":0
+                        },
+
+                        {
+                            "id":1001,
+                            "firstName":"Firstname 2",
+                            "lastName":"Lastname",
+                            "avatarUrl":"http://placehold.it/20x20",
+                            "score":0
+                        },
+
+                        {
+                            "id":1002,
+                            "firstName":"Firstname 3",
+                            "lastName":"Lastname",
+                            "avatarUrl":"http://placehold.it/20x20",
+                            "score":1
+                        },
+
+                        {
+                            "id":1003,
+                            "firstName":"Firstname 4",
+                            "lastName":"Lastname",
+                            "avatarUrl":"http://placehold.it/20x20",
+                            "score":1
+                        },
+
+                        {
+                            "id":1004,
+                            "firstName":"Firstname 5",
+                            "lastName":"Lastname",
+                            "avatarUrl":"http://placehold.it/20x20",
+                            "score":3
+                        },
+
+                        {
+                            "id":1006,
+                            "firstName":"Firstname 6",
+                            "lastName":"Lastname",
+                            "avatarUrl":"http://placehold.it/20x20",
+                            "score":400,
+                            "currentUser":true,
+                            "rank":1405
+                        }
+                    ]
+                }
+
+            ]
+        }
+    ]
+
+}

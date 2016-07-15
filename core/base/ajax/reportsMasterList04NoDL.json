@@ -1,0 +1,61 @@
+{
+  "messages": [],
+  "reports": [
+    {
+      "displayName": "Login Activity",
+      "url": "ajax/reportsLoginActivityTopLevelNoDL.json",
+      "id": "1",
+      "category": "Login",
+      "desc": "Login Activity Report - shows various login activity"
+    },
+    {
+      "displayName": "Enrollment",
+      "url": "ajax/reportsEnrollmentSummary.json",
+      "id": "2",
+      "category": "Enrollment",
+      "desc": "Enrollment Activity Report - shows various enrollment activity"
+    },
+    {
+      "displayName": "Award Media",
+      "url": "ajax/reportsLoginActivityTopLevel.json",
+      "id": "3",
+      "category": "Awards",
+      "desc": "Award Media Report - shows various award media info"
+    },
+    {
+      "displayName": "Claims Submitted",
+      "url": "ajax/reportsLoginActivityTopLevel.json",
+      "id": "4",
+      "category": "Activity",
+      "desc": "Claims Submitted - shows claims submitted"
+    },
+    {
+      "displayName": "Budget",
+      "url": "ajax/reportsLoginActivityTopLevel.json",
+      "id": "5",
+      "category": "Budget Reports",
+      "desc": "Budget Report - shows budget info"
+    },
+    {
+      "displayName": "Quiz Activity",
+      "url": "ajax/reportsLoginActivityTopLevel.json",
+      "id": "6",
+      "category": "Activity",
+      "desc": "Quiz Activity - shows quiz info"
+    },
+    {
+      "displayName": "Recognition Activity",
+      "url": "ajax/reportsLoginActivityTopLevel.json",
+      "id": "7",
+      "category": "Activity",
+      "desc": "Recognition Activity - shows recognitions"
+    },
+    {
+      "displayName": "Nomination Activity",
+      "url": "ajax/reportsLoginActivityTopLevel.json",
+      "id": "8",
+      "category": "Activity",
+      "desc": "Nomination Activity - shows nomiations"
+    }
+  ]
+}

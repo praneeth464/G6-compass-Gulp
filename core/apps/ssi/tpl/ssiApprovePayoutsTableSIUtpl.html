@@ -1,0 +1,173 @@
+<div class="row">
+    <div class="span12 clearfix">
+        <h3>
+            {{name}} Results
+        </h3>
+        {{#unless includeSubmitClaim}}
+        <a href="#URL_TO_UPDATE_RESULTS" class="btn btn-small btn-primary updateResultsBtn"><i class="icon-pencil"></i> Update Activity</a>
+        {{/unless}}
+    </div>
+    <div class="span12">
+        {{#if hasQualifiedPayouts}}
+            <p>These are your contest’s final results. If you have additional contest activity, you may update the activity now. Once the payouts are issued you cannot edit the participants’ results.</p>
+
+        {{else}}
+
+            {{#if includeSubmitClaim}}
+                <p>No participants qualified for payouts. You may either approve more claims or close the contest without issuing payouts.</p>
+            {{else}}
+                <p>No participants qualified for payouts. You may either update activity or close the contest without issuing payouts.</p>
+            {{/if}}
+        {{/if}}
+    </div>
+</div>
+{{#if hasQualifiedPayouts}}
+<div class="row">
+    <div class="span12">
+        <div class="paginationControls pagination pagination-right"></div>
+        <div class="emptyMsg alert" style="display:none">You have not added anyone.</div>
+
+            <table class="table table-bordered table-striped accentLast3Cols">
+                <thead>
+                    <tr class="headerContent">
+                        <th class="sortHeader">
+                            Participants
+                            <i data-sort="lastName" class="icon-sort"></i>
+                        </th>
+                        <th class="sortHeader number">
+                            Activity
+                            <i data-sort="activityAmount" class="icon-sort"></i>
+                        </th>
+                        <th class="sortHeader number">
+                            Level Completed
+                            <i data-sort="levelAchieved" class="icon-sort"></i>
+                        </th>
+
+                        {{#eq payoutType "points"}}
+                            <th class="sortHeader columnEmphasis number">
+                                Level Payout
+                                <i data-sort="levelPayout" class="icon-sort"></i>
+                            </th>
+                            {{#if includeBonus}}
+                            <th class="sortHeader columnEmphasis number">
+                                Bonus Payout
+                                <i data-sort="bonusPayout" class="icon-sort"></i>
+                            </th>
+                            {{/if}}
+                            <th class="sortHeader columnEmphasis number">
+                                Total Payout
+                                <i data-sort="totalPayout" class="icon-sort"></i>
+                            </th>
+                        {{/eq}}
+
+                        {{#eq payoutType "other"}}
+                            <th class="sortHeader columnEmphasis">
+                                Payout Description
+                                <i data-sort="payoutDescription" class="icon-sort"></i>
+                            </th>
+                            <th class="sortHeader columnEmphasis number">
+                                Total Payout Value
+                                <i data-sort="payoutValue" class="icon-sort"></i>
+                            </th>
+                        {{/eq}}
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr class="footerContent">
+                        <td class="totalDisp">
+                            Totals
+                        </td>
+                        <td class="totalDisp number">
+                            {{totalActivity}}
+                        </td>
+                        <td class="totalDisp">
+                        </td>
+
+                        {{#eq payoutType "points"}}
+                            <td class="totalDisp columnEmphasis number">
+                                {{totalLevelPayout}}
+                            </td>
+                            {{#if includeBonus}}
+                            <td class="totalDisp columnEmphasis number">
+                                {{totalBonusPayout}}
+                            </td>
+                            {{/if}}
+                            <td class="totalDisp columnEmphasis number">
+                                {{totalPayout}}
+                            </td>
+                        {{/eq}}
+
+                        {{#eq payoutType "other"}}
+                            <td class="totalDisp columnEmphasis">
+                                &nbsp;
+                            </td>
+                            <td class="totalDisp columnEmphasis number">
+                                {{totalPayoutValue}}
+                            </td>
+                        {{/eq}}
+                    </tr>
+                </tfoot>
+                <tbody>
+                </tbody>
+            </table>
+
+        <!-- <div class="paginationConts pagination pagination-right"></div> -->
+        <div class="paginationControls pagination pagination-right"></div>
+    </div>
+</div>
+{{/if}}
+<div class="row">
+    <div class="span12">
+        <div class="form-actions pullBottomUp">
+            <!-- JAVA NOTE: add url to previous page -->
+            <a href="layout.html?tplPath=apps/ssi/tpl/&tpl=ssiCreatorPage.html#contest/{{id}}" class="btn">&laquo; Back</a>
+            {{#if hasQualifiedPayouts}}
+            <button type="button" class="btn btn-primary promptBtn">Issue Payout</button>
+            {{else}}
+            <button type="button" class="btn btn-primary promptBtnCloseContest">Close Contest</button>
+            {{/if}}
+        </div>
+    </div>
+</div>
+
+<!--subTpl.recordRow=
+
+    <tr class="record-item" data-participant-id="{{id}}">
+
+        <td>
+            <a class="profile-popover" data-participant-ids="[{{id}}]">
+                {{lastName}}, {{firstName}}
+            </a>
+        </td>
+        <td class="number">
+            {{activityAmount}}
+        </td>
+        <td class="number">
+            {{levelAchieved}}
+        </td>
+
+        {{#eq extraJSON.payoutType "points"}}
+            <td class="number columnEmphasis">
+                {{levelPayout}}
+            </td>
+            {{#if includeBonus}}
+            <td class="number columnEmphasis">
+                {{bonusPayout}}
+            </td>
+            {{/if}}
+            <td class="number columnEmphasis">
+                {{totalPayout}}
+            </td>
+        {{/eq}}
+
+        {{#eq extraJSON.payoutType "other"}}
+            <td class="columnEmphasis">
+                {{payoutDescription}}
+            </td>
+            <td class="number columnEmphasis">
+                {{payoutValue}}
+            </td>
+        {{/eq}}
+    </tr>
+
+subTpl-->

@@ -1,0 +1,211 @@
+<?php usleep(10000); ?>
+{
+    "messages":[],
+    "contestJson": {
+        "nextUrl": "ajax/ssiContestEditSave.json",
+        "ssiContestClientState": "state0",
+        "id": 123,
+
+<?php if(true) {  /*  below is editable stuff  */ ?>
+
+        "isUploadSpreadsheetAvailable": true,
+        "isFillOutFormAvailable": true,
+
+        "collectDataMethod": "claimSubmission", <?php /* activityUpload|claimSubmission */ ?>
+
+        "claimDeadlineDate": "<?php echo (new DateTime('tomorrow'))->format('m/d/Y')?>",
+
+        <?php // FEATURE REMOVED
+        /* the default approver (contest creator) should be
+                 set in the below list in new contests
+        "claimApprovers": [
+            {
+                "id": 49,
+                "lastName":"Billings",
+                "firstName":"Aaron",
+                "orgName":"Organization Y",
+                "departmentName":"Auto",
+                "jobName":"Mechanic",
+                "countryName":"Germany",
+                "countryCode":"de"
+            }
+        ],
+        */ ?>
+
+        <?php /* for most contestTypes - displayed in Preview Claim Form */ ?>
+        "activityDescription": "Desc from ssiContestDataCollectionData.json.",
+
+        <?php /* for doThisGetThat contestType - displayed in Preview Claim Form */ ?>
+        "activities": [
+            {
+                "id": 123,
+                "description": "Widgets",
+                "name": "Widgets"
+            },
+            {
+                "id": 234,
+                "description": "Cars",
+                "name": "Cars"
+            },
+            {
+                "id": 345,
+                "description": "Toys",
+                "name": "Toys"
+            }
+        ],
+
+        <?php // FEATURE REMOVED
+        /* available field types
+        "fieldTypes": [
+            {"id": "text", "display": "Text"},
+            {"id": "textarea", "display": "Text Area"},
+            {"id": "number", "display": "Number"},
+            {"id": "email", "display": "Email"},
+            {"id": "date", "display": "Date"},
+            {"id": "address", "display": "Address"},
+            {"id": "file", "display": "Attach File"}
+        ],
+        */ ?>
+
+        <?php /* the fields */ ?>
+        "fields": [
+
+            <?php /*
+
+                REQUIRED FIELDS
+                2) quantity
+                3) activity date
+
+                *) to add more just set the metaType=required
+
+                ADDITIONAL FIELDS
+                - metaType=predefined
+
+                (!!!NOTE: REMOVED FOR NOW) CUSTOM FIELDS
+                - type selected from fieldTypes array (above)
+                - name generated and of the form "custom<n>" where <n> is a pos int
+                - metaType=custom
+
+            */ ?>
+
+
+            <?php /* REQUIRED FIELDS */ ?>
+
+            {
+                <?php /* JAVA NOTE:
+                the below label is different for measureType units or currency
+                - for currency the label should be "Amount"
+                - for units the label should be "Quantity"
+
+                 */ ?>
+                "id": 12341,
+                "label": "Quantity",
+                "name": "quantity",
+                "type": "number",
+                "typeDisplay": "number field",
+                "isRequired": true,
+                "isSelected": true,
+                "sequenceNumber": 1,
+                "metaType": "required"
+            },
+            {
+                "id": 12342,
+                "label": "Activity Date",
+                "name": "activityDate",
+                "type": "date",
+                "typeDisplay": "date field",
+                "isRequired": true,
+                "isSelected": true,
+                "sequenceNumber": 2,
+                "metaType": "required"
+            },
+
+
+
+            <?php /* PREDEFINED FIELDS */ ?>
+            {
+                "id": 12343,
+                "label": "Customer Name",
+                "name": "customerName",
+                "type": "text",
+                "typeDisplay": "text field",
+                "isRequired": false,
+                "isSelected": true,
+                "sequenceNumber": 3,
+                "metaType": "predefined"
+            },
+            <?php /* Addresses are just placeholders in Create View */ ?>
+            {
+                "id": 12344,
+                "label": "Customer Address",
+                "name": "customerAddress",
+                "type": "address",
+                "typeDisplay": "text fields",
+                "isRequired": false,
+                "isSelected": true,
+                "sequenceNumber": 4,
+                "metaType": "predefined"
+            },
+            {
+                "id": 12345,
+                "label": "Company Name",
+                "name": "companyName",
+                "type": "text",
+                "typeDisplay": "text field",
+                "isRequired": false,
+                "isSelected": false,
+                "sequenceNumber": 5,
+                "metaType": "predefined"
+            },
+            {
+                "id": 12346,
+                "label": "Customer Title",
+                "name": "customerTitle",
+                "type": "text",
+                "typeDisplay": "text field",
+                "isRequired": true,
+                "isSelected": false,
+                "sequenceNumber": 6,
+                "metaType": "predefined"
+            },
+            {
+                "id": 12347,
+                "label": "Email address",
+                "name": "emailAddress",
+                "type": "email",
+                "typeDisplay": "text field",
+                "isRequired": true,
+                "isSelected": true,
+                "sequenceNumber": 7,
+                "metaType": "predefined"
+            },
+            {
+                "id": 12348,
+                "label": "Attach Supporting Document",
+                "name": "attachDocument",
+                "type": "file",
+                "typeDisplay": "upload file",
+                "isRequired": false,
+                "isSelected": true,
+                "sequenceNumber": 8,
+                "metaType": "predefined"
+            },
+            {
+                "id": 12349,
+                "label": "Notes",
+                "name": "notes",
+                "type": "textarea",
+                "typeDisplay": "text area field",
+                "isRequired": false,
+                "isSelected": true,
+                "sequenceNumber": 9,
+                "metaType": "predefined"
+            }
+
+        ]
+
+<?php } ?>
+
+
+    }
+}

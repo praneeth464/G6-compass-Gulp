@@ -1,0 +1,26 @@
+{{#if slideTitle}}
+<div class="row">
+    <div class="span12">
+        <!-- <h4>{{slideTitle}}</h4> -->
+    </div>
+</div>
+{{/if}}
+<div class="row">
+    <div class="span12">
+        {{#each slideContent}}
+            {{#if numberOfQuestions}}
+                <p class="lead">Number of Questions: <span>{{numberOfQuestions}}</span>{{#if numberToPass}} Need to Pass: <span>{{numberToPass}}</span>{{/if}}</p>
+            {{/if}}
+            {{{contentText}}}
+        {{/each}}
+    </div>
+</div>
+<div class="row">
+    <div class="span12">
+        {{#each buttons}}
+            {{#if buttonDisplay}}
+            <button class="btn {{#if buttonClass}}{{buttonClass}}{{/if}}" id="{{buttonType}}" type="button">{{buttonText}}</button>
+            {{/if}}
+        {{/each}}
+    </div>
+</div>

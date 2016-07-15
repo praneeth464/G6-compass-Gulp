@@ -1,0 +1,54 @@
+<?php sleep(1); ?>
+<!-- ======== On The Spot Card Module ======== -->
+
+<div class="module-liner">
+
+    <a href="#" class="visitAppBtn">
+        <i class="icon-arrow-right"></i>
+    </a>
+
+    <div class="title-icon-view">
+        <h3>Reward Card</h3>
+        <i class="icon-g5-rewardcard"></i>
+    </div>
+
+    <div class="wide-view">
+        <div class="instruction">
+            <div class="bottom-text">
+            Please enter your <b>On The Spot Card</b> serial number below:
+            </div>
+        </div>
+        <!--
+            DEVELOPERS NOTE:
+            - the JSON url is pulled from the action attr of the form if it exists
+                otherwise it is in G5.props.URL_JSON_ON_THE_SPOT_CERT
+            - the data-* attributes below will be included in JSON requests for budgetItems
+            - the names will be converted to camel-case without 'data'
+                EX: 'data-some-param' => 'someParam'
+        -->
+        <form class="onTheSpotCertForm" action="ajax/onTheSpot_cert_success.json" data-some-param="someValue" data-another-param="anotherValue">
+
+            <div class="input-append input-append-inside">
+
+                <!-- the following elements must not have a newline or white-space between them -->
+                <input type="text" size="16" name="inputCertNum" class="inputCertNum" placeholder="Certificate number"><button id="btnSendCert" type="button" class="btn"><i class="icon-arrow-right"></i></button>
+
+            </div>
+
+        </form>
+
+	</div>
+
+    <!--subTpl.modal=
+        <div class="modal hide fade">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+                <h3>{{title}}</h3>
+            </div>
+            <div class="modal-body">
+                <p>{{text}}</p>
+            </div>
+        </div>
+    subTpl-->
+
+</div>

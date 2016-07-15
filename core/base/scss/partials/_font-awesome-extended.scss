@@ -1,0 +1,86 @@
+// Partial-specific variables
+// =========================
+$font-awesome_pdfcolor : #d00 !default;
+$font-awesome_xlscolor : #0b0 !default;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+
+.icons-layered {
+    position: relative;
+
+    [class^="icon-"] ~ [class^="icon-"],
+    [class*=" icon-"] ~ [class*=" icon-"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+    
+        &.icon-download {
+            font-size: .8em;
+            top: 50%;
+            left: 50%;
+            color: $black;
+            text-shadow: 0 -1px 0px $white;
+        }
+    }
+
+}
+
+.icon-styledas-pdf,
+.icon-styledas-xls {
+    font-size: 18px;
+    color: $font-awesome_pdfcolor;
+
+    span {
+        position: absolute;
+        top: 0;
+        right: 50%;
+        width: 100%;
+        margin-right: -50%;
+        font-size: .4em;
+        font-weight: bold;
+        line-height: 2;
+        color: $black;
+        text-shadow: 0 1px 0 $white;
+    }
+}
+.icon-styledas-xls {
+    color: $font-awesome_xlscolor;
+}
+
+
+[class^="icon-"] span,
+[class*=" icon-"] span {
+    font-style: normal;
+}
+
+.btn-inverse {
+
+    .icon-download {
+        color: $white !important;
+        text-shadow: 0 -1px 0px $black !important;
+        -webkit-font-smoothing: antialiased; // makes light-on-dark text look a bit better
+    }
+
+    .icon-styledas-pdf,
+    .icon-styledas-xls {
+        -webkit-font-smoothing: antialiased; // makes light-on-dark text look a bit better
+
+        span {
+            color: $white;
+            text-shadow: 0 1px 0 $black;
+        }
+    }
+}
+
+// give any element the font awesome font, then lookup the 
+// hex and put in HTML ex: &#xf040; = icon-pencil character
+.font-awesome {    
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+}

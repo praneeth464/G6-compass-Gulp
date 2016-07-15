@@ -1,0 +1,197 @@
+{{! JAVA NOTE: isCreator, isManager, and isParticipant are set in the JavaScript }}
+
+{{! this template is used for all creator and participant contest modules }}
+
+{{#if isCreator}}
+<a href="{{creatorDetailPageUrl}}&id={{id}}" class="visitAppBtn">
+{{else}}
+<a href="{{participantDetailPageUrl}}&id={{id}}" class="visitAppBtn">
+{{/if}}
+    <i class="icon-arrow-right"></i>
+</a>
+
+<div class="title-icon-view">
+  	<h3>{{name}}</h3>
+
+	{{#eq contestType "objectives"}}
+	<i class="icon-g5-objective"></i>
+	{{/eq}}
+
+	{{#eq contestType "doThisGetThat"}}
+	<i class="icon-g5-dothisgetthat"></i>
+	{{/eq}}
+
+	{{#eq contestType "stepItUp"}}
+	<i class="icon-g5-stepitup"></i>
+	{{/eq}}
+
+	{{#eq contestType "stackRank"}}
+	<i class="icon-g5-stackrank"></i>
+	{{/eq}}
+
+	{{#eq contestType "awardThemNow"}}
+	<i class="icon-g5-awardnow"></i>
+	{{/eq}}
+</div>
+
+<div class="wide-view {{#eq status "finalize_results"}}complete{{/eq}} {{#unless includeStackRanking}}noStackRanking{{/unless}}">
+	<div class="row-fluid moduleHeader">
+		<div class="span11">
+			<h4>{{name}}</h4>
+			{{#eq status "pending"}}
+			<p>Starts {{startDate}}
+			{{else}}
+			<p>as of {{updatedOnDate}}
+			{{/eq}}
+				{{#eq status "live"}}
+				<span class="daysRemaining">
+					{{#ueq daysToEnd "0"}}
+						{{#eq daysToEnd "1"}}
+							Last Day
+						{{else}}
+							<strong>{{daysToEnd}}</strong> Days Remaining
+						{{/eq}}
+					{{/ueq}}
+				</span>
+				{{/eq}}
+
+				{{#eq status "pending"}}
+				<span class="daysRemaining">
+					<strong>{{daysToStart}}</strong> {{#eq daysToStart "1"}}Day{{else}}Days{{/eq}} to start
+				</span>
+				{{/eq}}
+			</p>
+			<div class="span4 text-right daysToEnd">
+				{{#eq daysToEnd "0"}}
+					{{#if isCreator}}
+						{{#ueq status "finalize_results"}}
+							<p><i class="icon-warning-sign"></i>Update Final Results</p>
+						{{else}}
+							<p>Contest Over</p>
+						{{/ueq}}
+					{{else}}
+						{{#eq status "finalize_results"}}
+							<p>Contest Over</p>
+						{{else}}
+							<p>Pending Results</p>
+						{{/eq}}
+					{{/if}}
+				{{/eq}}
+			</div>
+		</div>
+	</div>
+
+	{{#ueq contestType "doThisGetThat"}}
+		{{! all other contests share the same module header}}
+		{{! the days remaining counter changes posistions from 4x4 to 4x2, so it needs to be duplicated in html and hidden/shown in css}}
+		<div class="moduleSubHeader row-fluid">
+			<div class="span8">
+				{{#if isCreator}}
+					<!-- <p>manager or creator</p> -->
+					{{#eq contestType "objectives"}}
+						{{#unless hasMultipleObjectives}}
+							<p class="activityAchieved">{{achievedParticipantsCount}} of {{participantsCount}} Achieved</p>
+						{{/unless}}
+					{{else}}
+						<p class="activityDescription">{{activityDescription}}</p>
+					{{/eq}}
+				{{else}}
+					{{#if includeStackRanking}}
+						{{#ueq stackRank.participantsCount "0"}}
+						<p class="rankDescription">Rank: #{{stackRank.rank}} of {{stackRank.participantsCount}}</p>
+						{{/ueq}}
+					{{/if}}
+				{{/if}}
+			</div>
+		</div>
+
+	{{/ueq}}
+
+
+	<!-- begin contestHtml -->
+	{{{contestHtml}}}
+	<!-- end contestHtml -->
+
+	{{! footer area}}
+	{{#if isCreator}}
+		<div class="row-fluid contestModuleFooter">
+			{{#eq status "finalize_results"}}
+				<div class="span6">
+					<a href="{{creatorDetailPageUrl}}&id={{id}}" class="btn btn-primary submit-claim" title="">Final Results</a>
+				</div>
+				{{#if totalPayout}}
+					{{#eq payoutType "points"}}
+					<div class="span6 text-right payoutIssued">
+						<strong class="payoutAmount">{{totalPayout}}</strong><span class="payoutType"> Points</span>
+					</div>
+					{{/eq}}
+
+					{{#eq payoutType "other"}}
+	                <div class="span6 text-right payoutIssued">
+	                    <strong class="payoutAmount">{{totalPayout}}</strong><span class="payoutType"> Payout Issued</span>
+	                </div>
+	                {{/eq}}
+	            {{/if}}
+			{{else}}
+				<div class="span12 text-center">
+					<a href="{{creatorDetailPageUrl}}&id={{id}}" class="btn btn-primary" title="">View Details</a>
+				</div>
+			{{/eq}}
+		</div>
+	{{else}}
+		<div class="row-fluid contestModuleFooter participantFooter">
+			{{#eq status "finalize_results"}}
+                {{#if totalPayout}}
+                    {{#eq payoutType "points"}}
+
+					<div class="span7 participantPayoutIssued">
+                        <strong class="payoutAmount">{{totalPayout}} </strong><span class="payoutType">points</span>
+					</div>
+
+					<div class="span5 text-right">
+						<a href="{{participantDetailPageUrl}}&id={{id}}" class="btn btn-primary submit-claim" title="">Final Results</a>
+					</div>
+					{{else}}
+						{{#if multipleActivities}}
+						<div class="span7 participantPayoutIssued">
+							<span class="payoutType">Congratulations you have earned Awards</span>
+						</div>
+
+						<div class="span5 text-right">
+							<a href="{{participantDetailPageUrl}}&id={{id}}" class="btn btn-primary submit-claim" title="">Final Results</a>
+						</div>
+						{{else}}
+						<div class="span7 participantPayoutIssued">
+							<strong class="payoutAmount">{{totalPayout}}</strong><span class="payoutType"> earned</span>
+						</div>
+
+						<div class="span5 text-right">
+						<a href="{{participantDetailPageUrl}}&id={{id}}" class="btn btn-primary submit-claim" title="">Final Results</a>
+					</div>
+						{{/if}}
+					{{/eq}}
+                {{else}}
+                <div class="span12 participantPayoutIssued">
+                    <span class="payoutType">No Award Achieved</span>
+                </div>
+				{{/if}}
+			{{else}}
+				{{#if includeSubmitClaim}}
+					{{#ueq claimDaysToEnd "0"}}
+					<div class="span12 text-center">
+						<a href="layout.html?tplPath=apps/ssi/tpl/&tpl=ssiParticipantSubmitClaimPageView.html" class="btn btn-primary submit-claim" title="">Submit Claim</a>
+					</div>
+					{{else}}
+					<div class="span12 text-center">
+						<a href="{{participantDetailPageUrl}}&id={{id}}" class="btn btn-primary" title="">View Details</a>
+					</div>
+					{{/ueq}}
+				{{else}}
+				<div class="span12 text-center">
+					<a href="{{participantDetailPageUrl}}&id={{id}}" class="btn btn-primary" title="">View Details</a>
+				</div>
+				{{/if}}
+			{{/eq}}
+		</div>
+	{{/if}}
+</div>

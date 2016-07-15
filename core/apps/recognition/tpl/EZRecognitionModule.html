@@ -1,0 +1,49 @@
+<!-- ======== RECOGNITION MODULE STEP ======== -->
+
+<!-- NOTE: when the module is in "largeAudience" mode, a class of the same name will be added to the module-liner by the JSP. It can be tested by doing the same thing here. -->
+<div class="module-liner xlargeAudience">
+
+    <a href="layout.html?tplPath=apps/recognition/tpl/&amp;tpl=recognitionPageSend.html" class="visitAppBtn">
+        <i class="icon-arrow-right"></i>
+    </a>
+
+    <div class="wide-view">
+
+        <div class="recognition-module-wrapper">
+
+            <form>
+
+                <label for="ezRecognitionNameInput">I'd like to recognize</label>
+
+                <div class="input-append">
+
+                    <input id="ezRecognitionNameInput" type="text" class="span2" placeholder="Last Name" data-autocomp-delay="500" data-autocomp-min-chars="2">
+                    <button class="btn"><i class="icon-search"></i></button>
+
+                </div>
+
+            </form>
+
+            <p class="tr">
+                <a class="ez-popover" title="Provides the ability to add an eCard, additional recipients and points (if applicable) to your recognition."><i class="icon-info-sign"></i></a>
+                <a href="#">Advanced <i class="icon-double-angle-right"></i></a>
+            </p>
+
+        </div>
+
+    </div> <!-- ./wide-view -->
+
+    <div class="title-icon-view">
+
+        <h3>Recognize Someone</h3>
+        <i class="icon-g5-recognize"></i>
+
+    </div>
+
+</div> <!-- ./module-liner -->
+
+<!-- <div class="modal hide fade autoModal recognitionResponseModal" id="ezRecSendSuccessModal">
+
+</div> -->
+
+<div id="minCharError" style="display:none">Type at least <span id="minChars"></span> characters</div>

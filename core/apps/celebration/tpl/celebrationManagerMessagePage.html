@@ -1,0 +1,123 @@
+<!-- ======== CELEBRATION MANAGER MESSAGE PAGE ======== -->
+
+<div id="celebrationManagerMessagePageView" class="page-content">
+    <form action="layout.html" class="sendForm" method="post">
+        <div class="row">
+            <div class="span12">
+                <div class="celebrationRecipientContainer">
+                    <p class="celebrationAwardInfo">
+                        Erin Martin has an upcoming 10 year service anniversary award
+                    </p>
+                    <div class="celebrationRecipientMeta">
+                        <div class="recipientMetaLeft">
+                            <img src="http://www.fillmurray.com/g/40/40" alt="" class="avatar" />
+                        </div>
+                        <div class="recipientMetaRight">
+                           <span class="recipientName">Erin Martin <span><img src="img/flags/us.png"></span></span>
+                            <span class="recipientOrg">OrgName</span>
+                            <span class="recipientTitle">Title &bull; <span class="recipientDept">Department</span></span>
+                        </div>
+                    </div>
+                </div><!--/.celebrationRecipientContainer -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span12">
+                <div class="celebrationMessageContainer">
+                    <div class="mask" style="display:none"></div>
+                    <div class="control-group validateme"
+                        data-validate-fail-msgs='{"nonempty":"You must enter a message."}'
+                        data-validate-flags='nonempty'>
+                        <label class="control-label" for="">Add a personal message</label>
+                        <div class="commentTools">
+                            Remaining Characters:
+                            <span class="remChars">&nbsp;</span>
+                            <span class="spellchecker dropdown">
+                                <button class="checkSpellingDdBtn btn dropdown-toggle"
+                                        title="check spelling"
+                                        data-toggle="dropdown">
+                                    <i class="icon-check"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="check"><b>Check spelling</b></a></li>
+                                </ul>
+                            </span>
+                        </div>
+                        <div class="controls">
+                            <textarea class="managerMessageInp" rows="4" maxlength="1000" placeholder="add a message"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-danger managerMessageBadWords" style="display:none">
+                        <button type="button" class="close"><i class="icon-remove"></i></button>
+                        <span>&nbsp;</span>
+                    </div>
+                </div><!-- /.celebrationMessageContainer -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="span12">
+                <div class="celebrationManagerMeta">
+                    <div class="managerMetaLeft">
+                        <img src="http://www.fillmurray.com/g/40/40" alt="" class="avatar" />
+                    </div>
+                    <div class="managerMetaRight">
+                        <span class="managerName">Joe Manager</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span12">
+                <div class="formSection form-actions">
+                    <button class="celebrationMessageSubmit btn btn-primary" type="submit">
+                        Submit
+                    </button>
+                    <!-- JAVA NOTE: Set the data url to the page the user will return to-->
+                    <button class="celebrationMessageCancel btn" data-url="layout.html">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="confirmFormSubmit" style="display:none">
+        <p>
+            <i class="icon-question-sign"></i>
+            <b>Are you sure?</b>
+        </p>
+        <p>
+            Clicking Yes will submit the comment.
+        </p>
+        <p class="tc">
+            <a class="btn btn-small confirmBtn">Yes</a>
+            <a class="btn btn-small cancelBtn closeTip">No</a>
+        </p>
+    </div><!-- /.confirmFormSubmit -->
+</div>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+$(document).ready(function() {
+
+    //attach the view to an existing DOM element
+    var cmmp = new CelebrationManagerMessagePageView({
+        el:$('#celebrationManagerMessagePageView'),
+        pageNav : {
+            back : {
+                text : 'Back',
+                url : 'layout.html'
+            },
+            home : {
+                text : 'Home',
+                url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+            }
+        },
+        pageTitle : 'Add Message to Service Anniversary Award'
+    });
+
+});
+</script>

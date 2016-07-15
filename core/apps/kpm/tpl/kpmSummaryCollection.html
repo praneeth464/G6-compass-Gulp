@@ -1,0 +1,14 @@
+<!-- this template/view should always be inserted into '<div class="kpmSummaryCollectionView">' by the parent view initializing it -->
+
+<div class="tabbable tabs-left">
+    <ul class="tab-tab">
+        {{#each .}}
+        <li class="tab {{type}}"><a data-target="#KPM{{type}}" data-toggle="tab">{{title}}</a></li>
+        {{/each}}
+    </ul>
+    <div class="tab-content">
+        {{#each .}}
+        <div class="tab-pane {{type}}" id="KPM{{type}}"></div>
+        {{/each}}
+    </div>
+</div>

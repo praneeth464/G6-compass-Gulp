@@ -1,0 +1,209 @@
+<div id="reportsPageView" class="reportsPageDetail-liner page-content page reports">
+
+    <div class="page-topper">
+
+        <div class="row">
+
+            <div class="span12">
+
+                <form class="form-inline form-labels-inline">
+                    <div class="control-group">
+
+                        <label class="control-label" for="reportsSelect">Pick a Report:</label>
+
+                        <div class="controls">
+                            <select id="reportsSelect">
+                                <!-- dynamic -->
+                                <option value="1" selected="selected">loading reports...</option>
+                            </select>
+                        </div>
+                    </div> <!-- control-group -->
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div><!-- /.page-topper -->
+
+<!-- ======== REPORTS PAGE DETAIL ======== -->
+    <div id="reportsPageDetailView" class="offScreen">
+
+        <div class="row">
+
+            <div class="span12">
+
+                <ul id="exportFullReport" class="export-tools fr">
+
+                    <li class="export"><a href="#" class="exportCsvButton"><img src="img/reports/reports_exportCsv.png" alt="CSV"><span>Export Full Report</span></a></li>
+
+                </ul>
+
+                <h3 id="reportName">Report Name</h3>
+
+                <p id="timeStamp">As of 01/01/2099, 12:00:00 CDT</p>
+
+            </div>
+
+        </div>
+        <div class="row span12">
+
+
+        </div>
+        <div id="chartRowContainer" class="container-fluid well">
+            <div class="row">
+                <div id="chartRow" class="span12">
+                    <div class="span7">
+                        <div id="chartInFocus">
+                        </div> <!-- chartInFocus -->
+                        <ul class="chartThumbs">
+                        </ul> <!-- chartThumbs -->
+                    </div> <!-- span6 -->
+                    <div class="span5">
+                        <a href="#" id="exportChartPdf" class=""><img src="img/reports/reports_exportPdf.png" alt="PDF"></a>
+                        <div id="chartInfo">
+                            <h3 id="chartName"></h3>
+                            <p><strong>Report Filters</strong> <button type="button" class="btn btn-mini reportsChangeFiltersPopoverTrigger"><i class="icon-pencil"></i> Change Filters</button></p>
+                                <p id="currentParametersSummary">
+                                </p>
+                                <script type="x-handlebars-template" id="reportsCurrentParametersTpl">
+                                    {{#each parameters}}
+                                        <strong>{{name}}:</strong> {{value}}<br>
+                                    {{/each}}
+                                </script>
+                            <a id="reportsFavoritesPopoverTrigger"><button type="button" class="btn btn-primary"><i class="icon-plus-sign"></i> Add to My Favorite Reports</button></a>
+                        </div> <!-- chartThumbs -->
+                    </div> <!-- span5 -->
+
+                </div> <!-- span12 -->
+            </div> <!-- row -->
+        </div> <!-- container-fluid -->
+        <div id="tabularResultsContainer" class="row">
+
+            <div class="span12">
+
+                <div class="row">
+
+                    <div class="span6">
+
+                        <h4 id="reportDefinitionList">Summary <a id="columnDefinitionsPopover" class="columnDefinitions-popover" selector="popover7" data-content='' href="#" rel="popover" data-original-title="Column Definitions"><i id="iconInfoSign" class="icon-info-sign"></i></a><br />
+                        </h4>
+
+                    </div>
+
+                    <div class="span2 offset4">
+
+                        <ul id="exportCurrentView" class="export-tools fr">
+
+                            <li class="export"><a href="#" class="exportCsvButton"><img src="img/reports/reports_exportCsv.png" alt="CSV"><span>Export Current View</span></a></li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="span12">
+
+                        <ul id="breadCrumbs" class="breadcrumbs">
+
+                            <li><a href="#">Back two levels</a></li>
+
+                            <li><a href="#">Back one level</a></li>
+
+                            <li class="last-item">Your current report data</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="span12">
+                        <div id="paginationControls" class="pagination pagination-right">
+                            <ul>
+                            </ul>
+                        </div>
+
+                        <div id="resultsTableWrapper">
+                            <table id="resultsTable" class=" table table-bordered table-striped table-condensed">
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div><!-- /#reportsPageDetailView -->
+<!-- /=========  REPORTS PAGE DETAIL ========= -->
+
+<!-- =========  REPORTS PAGE ALL ========= -->
+    <div id="reportsPageAllView" class="offScreen">
+
+        <div class="row">
+
+            <div class="span12">
+
+                <h3>All Reports</h3>
+
+            </div> <!-- span12 -->
+
+        </div> <!-- row -->
+
+        <div class="row reportCategory">
+
+        </div> <!-- reportCategory -->
+
+    </div> <!-- reportsPageAllView -->
+
+</div><!-- /#reportsPageView -->
+
+<script>
+
+// $(document).ready(function(){
+//     $('.parameters-popover').popover();
+
+    // $('.columnDefinitions-popover').popover();
+
+//     $('.datepicker').datepicker();
+
+//     $('#myTab a:last').tab('show');
+
+//     $('#myModal').modal();
+// });
+
+</script>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+
+    $(document).ready(function(){
+        var reportId = $.query.get('reportId');
+        //attach the view to an existing DOM element
+        var rpv = new ReportsPageViewOld({
+            reportId: reportId,
+            el:$('#reportsPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                     url : 'javascript:history.back();'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'index.html'
+                }
+            },
+            pageTitle : 'Reports'
+        });
+    });
+
+</script>

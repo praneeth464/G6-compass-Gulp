@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1c",
+        "name": "Completed Step It Up Example",
+        "status": "closed",
+        "startDate": "08/16/2013",
+        "endDate": "09/16/2014"
+    },
+    {
+        "id": "2c",
+        "name": "Completed Do This Get That Example",
+        "status": "closed",
+        "startDate": "08/16/2013",
+        "endDate": "09/16/2014"
+    },
+    {
+        "id": "3c",
+        "name": "Completed Objective Example",
+        "status": "closed",
+        "startDate": "01/01/2014",
+        "endDate": "02/01/2014"
+    },
+    {
+        "id": "4c",
+        "name": "Completed Stack Rank Example",
+        "status": "closed",
+        "startDate": "01/01/2014",
+        "endDate": "02/01/2014"
+    },
+    {
+        "id": "9",
+        "name": "Completed ATN Example Contest",
+        "startDate": "05/20/2014",
+        "status": "closed",
+        "endDate": "02/01/2016",
+        "contestType": "awardThemNow"
+    }
+]

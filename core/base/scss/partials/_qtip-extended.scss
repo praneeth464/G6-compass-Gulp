@@ -1,0 +1,77 @@
+// Partial-specific variables
+// =========================
+$qtip_light_borderColor: $grayLight !default;
+
+$qtip_shadow_boxShadow: 1px 2px 12px rgba(0,0,0,.5) !default;
+
+$qtip_validate_minWidth: 75px !default;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+// G5-specific qtip styles
+
+/*! Default tooltip style */
+.ui-tooltip-default {
+
+}
+
+/*! Light tooltip style */
+.ui-tooltip-light {
+    border-color: $qtip_light_borderColor;
+}
+
+/*! Dark tooltip style */
+.ui-tooltip-dark {
+
+}
+
+/*! Cream tooltip style */
+.ui-tooltip-cream {
+
+}
+
+/*! Red tooltip style */
+.ui-tooltip-red {
+
+}
+
+/*! Green tooltip style */
+.ui-tooltip-green {
+
+}
+
+/*! Blue tooltip style */
+.ui-tooltip-blue {
+
+}
+
+/*! Add shadows to your tooltips in: FF3+, Chrome 2+, Opera 10.6+, IE9+, Safari 2+ */
+.ui-tooltip-shadow {
+    @include box-shadow($qtip_shadow_boxShadow);
+}
+
+/*! Add rounded corners to your tooltips in: FF3+, Chrome 2+, Opera 10.6+, IE9+, Safari 2+ */
+.ui-tooltip-rounded,
+.ui-tooltip-tipsy,
+.ui-tooltip-bootstrap {
+
+}
+
+/**
+ * Twitter Bootstrap style.
+ *
+ * Tested with IE 8, IE 9, Chrome 18, Firefox 9, Opera 11.
+ * Does not work with IE 7.
+ */
+.ui-tooltip-bootstrap {
+
+}
+
+.validate-tooltip {
+    font-weight: normal;
+    min-width: $qtip_validate_minWidth;
+}

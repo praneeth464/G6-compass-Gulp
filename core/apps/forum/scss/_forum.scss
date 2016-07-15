@@ -1,0 +1,800 @@
+// App-specific variables
+// =========================
+$forum_bgColor: $g5ModuleBgColor !default;
+$forum_gradType: $g5ModuleGradType !default;
+$forum_gradMeta: $g5ModuleGradMeta !default;
+$forum_gradStops: $g5ModuleGradStops !default;
+
+$forum_iconColor: $g5ModuleIconColor !default;
+$forum_titleColor: $g5ModuleTitleColor !default;
+$forum_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$forum_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$forum_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$forum_cycleDotWidth: false !default;
+$forum_cycleDotBkg: false !default;
+$forum_cycleDotBorder: false !default;
+$forum_cycleDotBkgHover: false !default;
+$forum_cycleDotBorderHover: false !default;
+$forum_cycleDotBkgActive: false !default;
+$forum_cycleDotBorderActive: false !default;
+$forum_cycleDotBorderRadius: false !default;
+
+$forum_textColor: $white !default;
+$forum_headlineColor: $forum_textColor !default;
+$forum_headlineFontFamily: $titleFont !default;
+$forum_linkColor: false !default; //mix($forum_bgColor, $white) !default;
+$forum_linkHoverColor: false !default;
+$forum_viewForumBtnFontFamily: $titleFont !default;
+
+$forum_page_discussionDetailsBgColor: scale-color($linkColor, $lightness: 75%) !default;
+$forum_page_commentBgColorOdd: $grayLighter !default;
+$forum_page_commentBgColorEven: false !default;
+$forum_page_commentFormBgColor: $grayLight !default;
+
+$forum_page_discussionDetailsBorderColor: scale-color($forum_page_discussionDetailsBgColor, $lightness: -12.5%) !default;
+$forum_page_commentBorderColorOdd: scale-color($forum_page_commentBgColorOdd, $lightness: -12.5%) !default;
+$forum_page_commentBorderColorEven: scale-color($forum_page_commentBgColorEven or $white, $lightness: -12.5%) !default;
+$forum_page_commentFormBorderColor: scale-color($forum_page_commentFormBgColor, $lightness: -12.5%) !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.forum {
+
+} /* /.forum */
+
+/* ----- MODULE STYLES ----- */
+.module.forum {
+
+    // never show the dataLoading spinner on the icon versions of this module
+    &.grid-dimension-1x1.dataLoading,
+    &.grid-dimension-2x1.dataLoading {
+        .spin {
+            display: none;
+        }
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        // hide the big version of this module when we're loading data and show a faded version of the title-icon-view
+        @include module_fadeOnDataLoading();
+    }
+    // special dataLoading rules for the big version start here
+    &.grid-dimension-2x2.dataLoading .title-icon-view,
+    &.grid-dimension-4x2.dataLoading .title-icon-view,
+    &.grid-dimension-4x4.dataLoading .title-icon-view {
+        position: static;
+
+        .icon-g5-forum {
+            position: absolute;
+        }
+        h3 {
+            position: absolute;
+            display: block;
+            margin-right: 0;
+            line-height: normal;
+        }
+    }
+    &.grid-dimension-2x2.dataLoading .title-icon-view,
+    &.grid-dimension-4x2.dataLoading .title-icon-view {
+        @include module_titleIconViewFonticonsSizes(2, 'forum', 'forum');
+
+        h3 {
+            font-size: nth($forum_titleFontSizes, 3);
+        }
+    }
+    &.grid-dimension-4x4.dataLoading .title-icon-view {
+        @include module_titleIconViewFonticonsSizes(4, 'forum', 'forum');
+
+        h3 {
+            font-size: nth($forum_titleFontSizes, 5);
+        }
+    }
+    // special dataLoading rules for the big version end here
+
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $forum_bgColor,
+            $gradType: $forum_gradType,
+            $gradMeta: $forum_gradMeta,
+            $gradStops: $forum_gradStops
+        );
+    }
+
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $forum_iconColor,
+            $titleColor: $forum_titleColor,
+            $titleFontFamily: $forum_titleFontFamily
+        );
+
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            @include g5HomeAppIconBoxReflect(-50px);
+        }
+    }
+
+    @include module_titleIconViewFontSizesWeights($forum_titleFontSizes, $forum_titleFontWeights);
+
+    @include module_cycleDots(
+        $cycleDotWidth: $forum_cycleDotWidth,
+        $cycleDotBkg: $forum_cycleDotBkg,
+        $cycleDotBorder: $forum_cycleDotBorder,
+        $cycleDotBkgHover: $forum_cycleDotBkgHover,
+        $cycleDotBorderHover: $forum_cycleDotBorderHover,
+        $cycleDotBkgActive: $forum_cycleDotBkgActive,
+        $cycleDotBorderActive: $forum_cycleDotBorderActive,
+        $cycleDotBorderRadius: $forum_cycleDotBorderRadius
+    );
+
+    // private variables
+    $module_baseAvatarSize: 48px;
+
+    .wide-view {
+        padding: 0;
+        height: 100%;
+        color: $forum_textColor;
+
+        .title-icon {
+            position: absolute;
+            top: 0;
+            left: $g5ModulePadding * 2;
+            margin: 0;
+            font-family: $forum_titleFontFamily;
+            @if $forum_titleColor {
+                color: $forum_titleColor;
+            }
+
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                margin-left: -1.5 * $g5ModulePadding;
+                width: 1.5 * $g5ModulePadding;
+
+                @if $forum_iconColor {
+                    color: $forum_iconColor;
+                }
+            }
+        }
+
+        a {
+            @if $forum_linkColor {
+                color: $forum_linkColor;
+            }
+        }
+        @if $forum_linkHoverColor {
+            &:hover {
+                color: $forum_linkHoverColor;
+            }
+        }
+        @if $forum_linkColor {
+            .btn {
+                color: $white;
+            }
+        }
+
+        .carousel,
+        .carousel-inner {
+            width: 100%;
+            height: 100%;
+        }
+
+        .item {
+            height: 100%;
+            width: 100%;
+            // ie7/ie8-specific
+            background-color: transparent !important;
+        }
+
+        .discussion {
+            padding: 0 ($g5ModulePadding * 2);
+            height: 100%;
+        }
+
+        .discussionTopic {
+            margin: 0;
+            padding-top: $g5ModulePadding * 3;
+            // padding: (/* ($g5ModulePadding / 2) + */ ($baseLineHeight * 2) - 5px) 0 0 $g5ModulePadding;
+            // padding-left: 0;
+            font-family: $forum_titleFontFamily;
+            font-weight: normal;
+            font-size: 16px;
+
+            .discussionTopicLabel {
+            }
+
+            .discussionTopicLink {
+                font-weight: bold;
+                font-size: 18px;
+
+                @if $forum_titleColor {
+                    color: $forum_titleColor;
+                }
+            }
+        }
+
+        .discussionHeadline {
+            display: block;
+            margin-top: 0;
+            padding-top: 0;
+            font-family: $forum_headlineFontFamily;
+            font-weight: normal;
+            vertical-align: middle;
+            @if $forum_headlineColor != $forum_textColor {
+                color: $forum_headlineColor;
+            }
+            // @include clearfix();
+
+            .headline {
+                display: block;
+                overflow: hidden;
+            }
+
+            .viewLink {
+                // position: relative;
+                // float: left;
+                text-decoration: none;
+                @if $forum_headlineColor {
+                    color: $forum_headlineColor;
+                }
+            }
+
+            .icon-chevron-right {
+                position: absolute;
+                left: 100%;
+                top: 50%;
+                text-align: center;
+                @include opacity(.25);
+            }
+            &:hover .icon-chevron-right {
+                @include opacity(.75);
+            }
+
+            &.noResults {
+                font-family: $bodyFont;
+                font-style: italic;
+                text-overflow: clip;
+                white-space: normal;
+
+                .topicName {
+                    font-weight: bold;
+                }
+
+                .btn {
+                    @if $forum_linkColor {
+                        color: #333;
+                    }
+                    font-style: normal;
+                }
+
+                .icon-chevron-right {
+                    position: static;
+                    margin: 0;
+                    width: auto;
+                    @include opacity(1);
+                }
+            }
+        }
+
+        .discussionDetails {
+            a {
+                color: $forum_textColor;
+            }
+            .avatar {
+                display: inline;
+                float: left;
+                width: $module_baseAvatarSize;
+            }
+            .indent {
+                margin-left: $module_baseAvatarSize + $module_baseAvatarSize / 6;
+                // padding: ($module_baseAvatarSize / 12) 0;
+            }
+            .userInfo {
+                overflow: hidden;
+
+                .author a {
+                    font-weight: bold;
+                }
+            }
+            .author {
+                float: left;
+            }
+            .timeStamp {
+                float: right;
+                font-style: italic;
+                font-size: 75%;
+                @include opacity(.5);
+            }
+            .text {
+                max-height: $baseLineHeight * 2; // 2 lines showing
+                overflow: hidden;
+                // @include text-overflow();
+            }
+        }
+        .discussionLatestComment {
+            display: none;
+        }
+
+        .commentsWrapper {
+            position: absolute;
+            bottom: $g5ModulePadding * 1.5;
+            left: $g5ModulePadding;
+            right: $g5ModulePadding;
+            text-align: center;
+
+            .commentsCount {
+                display: block;
+                margin-bottom: $baseLineHeight / 2;
+            }
+        }
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        .title-icon-view {
+            position: absolute;
+            top: 0;
+            left: $g5ModulePadding * 2;
+            margin: 0;
+
+            @include module_titleIconViewFonticonsSizes(0.25, $imageString:'forum');
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                position: static;
+                display: inline;
+                float: left;
+                clear: left;
+                margin: 0;
+                margin-left: -2 * $g5ModulePadding;
+                margin-top: -1 * $baseLineHeight * 2;
+                width: 2 * $g5ModulePadding;
+                height: 2 * $g5ModulePadding;
+                line-height: $baseLineHeight * 2;
+                text-indent: 0;
+            }
+            h3 {
+                position: static;
+                display: inline;
+                float: left;
+                margin-right: -100%;
+                padding: 0;
+                font-size: $baseFontSize * 1.75;
+                line-height: $baseLineHeight * 2;
+            }
+        }
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2 {
+        .discussionMedia {
+
+        }
+    }
+
+    &.grid-dimension-2x2 {
+        .item {
+            // use module_moduleLiner with third 'borderWidth' argument
+            @include module_moduleLiner(2, 2, 0);
+        }
+        // .discussionTopic {
+        //     padding-top: $g5ModulePadding * 2;
+        // }
+        .discussionHeadline {
+            font-size: 24px;
+            line-height: 1.25;
+
+            .headline {
+                max-height: 2.5em; // 2 lines showing (1.25 * 2)
+            }
+
+            // .viewLink {
+            //     margin-right: -24px;
+            //     padding-right: 24px;
+            // }
+
+            .icon-chevron-right {
+                margin: -12px 0 0 -24px;
+                width: 24px;
+            }
+        }
+        .discussionDetails {
+            font-size: $baseFontSize * .75;
+            line-height: $baseLineHeight * .75;
+
+            .avatar {
+                width: $module_baseAvatarSize * .75;
+            }
+            .indent {
+                margin-left: $module_baseAvatarSize * .75 + $module_baseAvatarSize * .75 / 6;
+                // padding: ($module_baseAvatarSize * .75 / 12) 0;
+            }
+            .timeStamp {
+                // display: none;
+            }
+            .text {
+                height: $baseLineHeight * .75 * 2; // 2 lines showing
+            }
+        }
+
+        .commentsWrapper {
+            .commentsCount {
+                margin-bottom: $baseLineHeight / 4;
+            }
+        }
+
+        .discussionText {
+            display: none;
+        }
+
+        .discussionMedia {
+            padding: 0;
+        }
+
+        .btn {
+            // following three rules borrowed from bootstrap/_buttons/.btn-small
+            padding: $paddingSmall;
+            font-size: $fontSizeSmall;
+            @include border-radius($borderRadiusSmall);
+        }
+    }
+
+    &.grid-dimension-4x2 {
+        .item {
+            // use module_moduleLiner with third 'borderWidth' argument
+            @include module_moduleLiner(4, 2, 0);
+        }
+        .discussionHeadline {
+            font-size: 36px;
+            line-height: 1.2;
+
+            .headline {
+                max-height: 2.4em; // 2 lines showing (1.2 * 2)
+            }
+
+            &.noResults {
+                font-size: 24px;
+            }
+
+            // .viewLink {
+            //     padding-right: 36px;
+            //     margin-right: -36px;
+            // }
+
+            .icon-chevron-right {
+                margin: -18px 0 0 -36px;
+                width: 36px;
+            }
+        }
+
+        .commentsWrapper {
+            .commentsCount {
+                display: inline-block;
+                margin-bottom: 0;
+            }
+        }
+
+        .discussionText {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+    }
+
+    &.grid-dimension-4x4 {
+        .item {
+            // use module_moduleLiner with third 'borderWidth' argument
+            @include module_moduleLiner(4, 4, 0);
+        }
+        .discussionTopic {
+            padding-top: ($g5ModulePadding * 5);
+            padding-left: 0;
+        }
+
+        .discussionHeadline {
+            font-size: 64px;
+            line-height: 1.1;
+
+            .headline {
+                max-height: 3.3em; // 3 lines showing (1.1 * 3)
+            }
+
+            &.noResults {
+                font-size: 42px;
+            }
+
+            // .viewLink {
+            //     margin-right: -($g5ModulePadding);
+            //     padding-right: 42px;
+            // }
+
+            .icon-chevron-right {
+                margin: -32px 0 0 -32px;
+                width: 42px;
+            }
+        }
+
+        .discussionDetails {
+            font-size: $baseFontSize * 1.5;
+            line-height: $baseLineHeight * 1.5;
+
+            .avatar {
+                width: $module_baseAvatarSize * 1.5;
+            }
+            .indent {
+                margin-left: $module_baseAvatarSize * 1.5 + $module_baseAvatarSize * 1.5 / 6;
+                // padding: ($module_baseAvatarSize * 1.5 / 12) 0;
+            }
+            .text {
+                max-height: $baseLineHeight * 1.5 * 2; // 2 lines showing
+            }
+        }
+        .discussionLatestComment {
+            display: block;
+            margin-top: $module_baseAvatarSize * 1.5 / 6;
+            margin-left: $module_baseAvatarSize * 1.5 + $module_baseAvatarSize * 1.5 / 6;
+            font-size: 66.666667%; // should take the font size back down to the $baseFontSize
+            line-height: 1.42857142857143; // will convert $baseFontSize of 14px to the $baseLineHeight of 20px
+
+            .avatar {
+                width: $module_baseAvatarSize;
+            }
+            .indent {
+                margin-left: $module_baseAvatarSize + $module_baseAvatarSize / 6;
+                padding: ($module_baseAvatarSize / 12) 0;
+            }
+            .text {
+                max-height: $baseLineHeight * 2; // 2 lines showing
+            }
+        }
+
+        .commentsWrapper {
+            bottom: $g5ModulePadding * 2;
+
+            .btn {
+                padding: $paddingLarge;
+                font-size: $fontSizeLarge;
+                @include border-radius($borderRadiusLarge);
+            }
+        }
+
+        .discussionText {
+            margin-bottom: $g5ModulePadding * 2;
+        }
+    }
+} /* /.module.forum */
+
+/* ----- PAGE STYLES ----- */
+.page.forum {
+    .spincover {
+        position: absolute;
+        top: 0;
+        left: -10px;
+        padding: 0 10px;
+        width: 100%;
+        height: 100%;
+        background: $white;
+        background: rgba(255, 255, 255, .5);
+        zoom: 1;
+
+        .spin {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            margin: (-1 * $spinner_widthHeight / 2) 0 0 (-1 * $spinner_widthHeight / 2);
+            width: $spinner_widthHeight;
+            height: $spinner_widthHeight;
+        }
+    }
+
+    .table {
+        .discussionCountColumn,
+        .replyCountColumn {
+            text-align: right;
+        }
+
+        thead th {
+            white-space: nowrap;
+        }
+    }
+
+
+    .breadcrumbs {
+        margin-bottom: 0;
+
+        .active {
+            display: none;
+            color: $grayLight;
+        }
+    }
+
+    .forumCommentNavigation {
+        float: left;
+        line-height: $baseLineHeight * 1.5;
+        margin-bottom: $baseLineHeight / 2;
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+    .paginationControls {
+        ul {
+            // float: right;
+        }
+    }
+    .forumCommentNavigation ~ .paginationControls {
+        // overflow: hidden;
+        margin-top: 0;
+        margin-bottom: $baseLineHeight / 2;
+    }
+    .discussionCommentsWrapper ~ .forumCommentNavigation,
+    .discussionCommentsWrapper ~ .paginationControls {
+        margin-top: -1 * $baseLineHeight;
+    }
+    .discussionCommentsWrapper {
+        clear: both;
+    }
+
+    .commonDiscussionWrapper {
+        padding-top: $baseLineHeight / 2;
+        padding-bottom: $baseLineHeight;
+        zoom: 1;
+
+        .innerCommentWrapper {
+            @if $forum_page_commentBgColorEven {
+                background: $forum_page_commentBgColorEven;
+            }
+            margin: (-1 * $baseLineHeight / 2) (-1 * $baseLineHeight / 2) 0;
+            padding: $baseLineHeight / 2;
+            zoom: 1;
+
+            &.flashBg {
+                background: $linkColor;
+            }
+        }
+        .avatar {
+            float: left;
+            width: 60px;
+            height: 60px;
+        }
+        .indent {
+            margin-left: 70px;
+            padding-left: 10px;
+            min-height: 60px;
+            border-left: 1px solid $forum_page_commentBorderColorEven;
+        }
+        .userInfo {
+            overflow: hidden;
+
+            .author a {
+                font-weight: bold;
+                color: $textColor;
+            }
+        }
+        .author {
+            float: left;
+        }
+        .timeStamp {
+            float: right;
+            font-style: italic;
+            font-size: 75%;
+            @include opacity(.5);
+        }
+        .likes {
+            margin-top: $baseLineHeight / 4;
+            padding-top: $baseLineHeight / 4;
+            border-top: 1px dashed $forum_page_commentBorderColorEven;
+
+            p {
+                margin: 0;
+            }
+        }
+        @media (max-width: 480px) {
+            .avatar {
+                margin-right: 10px;
+                margin-bottom: 10px;
+                width: 40px;
+                height: 40px;
+            }
+            .indent {
+                margin-left: 0;
+                padding-left: 0;
+                border-left: 0;
+            }
+            .author,
+            .timeStamp {
+                display: block;
+                float: none;
+            }
+            .text {
+                clear: both;
+                margin-top: 10px;
+                padding-top: 10px;
+                border-top: 1px solid $forum_page_commentBorderColorEven;
+            }
+        }
+    }
+    .discussionDetails {
+        .innerCommentWrapper {
+            @if $forum_page_discussionDetailsBgColor {
+                background: $forum_page_discussionDetailsBgColor;
+
+                .indent,
+                .userInfo,
+                .text,
+                .likes {
+                    border-color: $forum_page_discussionDetailsBorderColor;
+                }
+            }
+        }
+    }
+    .discussionComment:nth-of-type(2n+1) {
+        .innerCommentWrapper {
+            @if $forum_page_commentBgColorOdd {
+                background: $forum_page_commentBgColorOdd;
+
+                .indent,
+                .userInfo,
+                .text,
+                .likes {
+                    border-color: $forum_page_commentBorderColorOdd;
+                }
+            }
+        }
+    }
+    .comment-form {
+        margin-bottom: 0;
+    }
+    .discussionCommentForm {
+        padding-bottom: 0;
+
+        .innerCommentWrapper {
+            @if $forum_page_commentFormBgColor {
+                background: $forum_page_commentFormBgColor;
+
+                .indent,
+                .userInfo,
+                .text,
+                .likes {
+                    border-color: $forum_page_commentFormBorderColor;
+                }
+
+                .charCount {
+                    color: scale-color($forum_page_commentFormBgColor, $lightness: -50%);
+
+                    &.warning {
+                        color: $red;
+                    }
+                }
+            }
+        }
+        .userInfo {
+            font-weight: bold;
+        }
+    }
+    .discussionNewDiscussionForm {
+        .innerCommentWrapper {
+            background: none;
+
+            .userInfo {
+                font-weight: bold;
+            }
+        }
+    }
+
+    &#forumPageDiscussionView {
+        .spin {
+            top: 50%;
+        }
+    }
+} /* /.page.forum */
+
+
+

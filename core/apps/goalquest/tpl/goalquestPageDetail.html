@@ -1,0 +1,298 @@
+<!-- ======== GOALQUEST DETAIL PAGE ======== -->
+
+<!--
+    Detail Page for Participants, Partners (and Managers?)
+    - JSP powered
+    - almost every option is displayed, JSP will have to decide what to show based on the various factors
+-->
+
+<div id="goalquestPageDetailView" class="goalquest page-content"><div class="row">
+
+    <!-- DIV.ROW up next to wrapping div.page-content for IE7 -->
+        <div class="span12">
+            <ul class="export-tools fr">
+                <li><a class="pageView_print" href="#">Print</a></li>
+                <li><i class="icon-print"></i></li>
+            </ul>
+            <h2>Promotion Name</h2>
+        </div>
+    </div><!-- /.row -->
+
+    <div class="row gqDescWrapper">
+        <div class="span12">
+            <dl class="dl-horizontal dl-h1 gqDeets">
+                <dt>Goal:</dt>
+                <dd>Increase Sales of G-Plastic products in the 4th quarter</dd>
+                <dt>Program Period:</dt>
+                <dd>Month, DD, YYYY through Month, DD, YYYY</dd>
+            </dl>
+        </div>
+    </div>
+
+    <hr/>
+
+    <!-- rules link -->
+    <div class="row rulesLinkWrapper">
+        <div class="span12">
+            <a class="fr rulesLink" href="layout.html?tplPath=apps/goalquest/tpl/&tpl=goalquestPageRules.html">View Rules</a>
+        </div>
+    </div>
+
+    <!-- CP only - base program description/details -->
+    <div class="row cpProgramWrapper">
+        <div class="span12">
+            <h3>Base Program</h3>
+            <p>Earn 10 Points for every 1 Model 110 units sold above your baseline.</p>
+            <dl class="dl-horizontal dl-h2">
+                <dt>Your Baseline:</dt>
+                <dd>110</dd>
+                <dt>Your Activity:</dt>
+                <dd>48</dd>
+                <dt>Base Program Points Earned:</dt>
+                <dd>119</dd>
+                <dt>Base Program Points Deposited:</dt>
+                <dd>1,600 Points&reg;</dd>
+            </dl>
+        </div>
+    </div><!-- /.cpProgramWrapper -->
+    <!-- /CP only -->
+
+
+    <!-- GQ/CP instruction, progress and status message -->
+    <div class="row gqProgressWrapper">
+        <div class="span12">
+
+            <!-- JAVA NOTE: display apropo .progressTitle element -->
+            <h3 class="progressTitle">Your Goal</h3>
+            <h3 class="progressTitle">Your Challengepoint</h3>
+            <h4 class="progressTitle partnerTitle">Partnered with
+                <span class="partnerName">Patty Partner</span>
+            </h4>
+
+            <!-- NOTE: .gqInstruction is not in any wireframe at the moment, keeping it around in a comment for awhile -->
+            <!--p class="gqInstruction">Earn additional points by achieving your selected Challengepoint</p-->
+
+            <p class="gqProgressAsOf">Progress as of MM/DD/YYYY</p>
+            <div class="progress">
+                <!-- JAVA NOTE: set the percentage in style attr below -->
+                <div class="bar" style="width: 100%;">100%</div>
+            </div>
+
+            <!-- result status -->
+            <!-- JAVA NOTE: display apropo status result message for partner or pax -->
+            <!-- Stage 4a -->
+            <p class="statusTxt notAchieved">
+                <i class="visualItem icon-info-sign"></i>
+                <!-- pax msg -->
+                You did not achieve your goal.
+                <!-- partner msg -->
+                The goal was not achieved.
+
+            </p>
+            <!-- Stage 4b -->
+            <p class="statusTxt achieved">
+                <i class="visualItem icon-thumbs-up"></i>
+                <!-- pax msg -->
+                Congratulations! You achieved your goal!
+                <!-- partner msg -->
+                Congratulations! The goal was achieved!
+
+            </p>
+
+        </div>
+    </div><!-- /.gqProgressWrapper -->
+
+
+    <!-- GQ/CP selected level/goal details -->
+    <div class="row gqLevelWrapper">
+        <div class="span6">
+            <h4 class="levelTitle">Level 3</h4>
+            <!-- JAVA NOTE: promotion id to pass to plateau award browse json URL -->
+            <input type="hidden" class="promotionIdInput" value="1">
+            <!-- JAVA NOTE: please put the 'locked in' level id here so it can be passed to the plateau awards json URL -->
+            <input type="hidden" value="4" class="levelIdInput" >
+            <!-- JAVA NOTE:  value = true|false (plateau type only) -->
+            <input type="hidden" class="isSelectablePlateauAwardInput" value="true">
+            <p class="levelDesc">Sell 27 Model 110 units</p>
+            <dl class="dl-horizontal dl-h2 levelDeets">
+                <dt>Your Baseline:</dt>
+                <dd>110</dd>
+                <dt>Your Activity:</dt>
+                <dd>48</dd>
+                <dt>Your Goal:</dt>
+                <dd>119</dd>
+                <dt>Award:</dt>
+                <!-- JAVA NOTE: points or the title of selected plat. aw. -->
+                <dd>
+                    Plateau Award Title Name Quite Long Indeed
+                    <!-- JAVA NOTE: use JSP to show apropo button -->
+                    <!-- browse award -->
+                    <span class="awardBrowse awardBtn">
+                        <button class="btn btn-small">Browse Awards</button>
+                    </span>
+                    <!-- set award -->
+                    <span class="awardSet awardBtn">
+                        <button class="btn btn-small btn-primary">Select Award</button>
+                    </span>
+                    <!-- edit award -->
+                    <span class="awardEdit awardBtn">
+                        <button class="btn btn-small">Change Award</button>
+                    </span>
+                </dd>
+                <!-- JAVA NOTE: only if has partners -->
+                <dt class="partnersLabel">Partners:</dt>
+                <dd class="partnersList">
+                    <span class="label">Billy Jo Bobby Sox</span>
+                    <span class="label">Bradley Smithson</span>
+                    <span class="label">Tom Aalexson</span>
+                    <span class="label">Wilfred Aalexson</span>
+                    <span class="label">Xaxon Aalexson</span>
+                    <span class="label">Aaron Dupont</span>
+                    <span class="label">Aaron Evenson</span>
+                    <span class="label">Aaron XAbrahmson</span>
+                    <span class="label">Aaron XBillings</span>
+                    <span class="label">Aaron XCorwin</span>
+                    <span class="label">Aaron XDupont</span>
+                    <span class="label">Aaron XEvenson</span>
+                </dd>
+            </dl>
+        </div>
+
+        <!-- GQ/CP selected plateau award -->
+        <!-- JAVA NOTE: only if award selected -->
+        <div class="span6 gqPlateauAward">
+            <!-- IF an award is selected, show this image -->
+            <img class="paImg" src="http://placehold.it/288x288" >
+            <!-- ELSE if no award is selected, show this span -->
+            <span class="paImg"></span>
+            <p class="paTitle">
+                Plateau Award Title Name Quit Long Indeed
+            </p>
+        </div>
+
+    </div><!-- /.gqLevelWrapper -->
+
+    <!-- JAVA NOTE: only if no goal chosen and too late to choose a goal -->
+    <div class="row gqNoGoalTooLateWrapper">
+        <div class="span12">
+            <!-- Stage 3b -->
+            <div class="statusTxt noGoalSel">
+                <b class="sorry">We're Sorry</b>
+                <i class="levelOpen visualItem icon-remove-sign"></i> You did not select a goal within the selection period.
+            </div><!-- /.noGoalSel -->
+        </div>
+    </div><!-- /.gqNoGoalTooLateWrapper -->
+
+
+    <!-- JAVA NOTE: only if uploaded table -->
+    <div class="row gqUploadedTableWrapper">
+        <div class="span12">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Sale Date</th>
+                        <th>Delivery Date</th>
+                        <th>Model</th>
+                        <th>VIN</th>
+                        <th>Transaction Type</th>
+                        <th>Dealer Code</th>
+                        <th>Dealer Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>MM/DD/YYYY</td>
+                        <td>MM/DD/YYYY</td>
+                        <td>Sedan</td>
+                        <td>ASDF1235QWERTY</td>
+                        <td>Sale</td>
+                        <td>1234</td>
+                        <td>Rowdy Roger's Auto Hut</td>
+                    </tr>
+                    <tr>
+                        <td>MM/DD/YYYY</td>
+                        <td>MM/DD/YYYY</td>
+                        <td>Sedan</td>
+                        <td>ASDF1235QWERTY</td>
+                        <td>Sale</td>
+                        <td>1234</td>
+                        <td>Rowdy Roger's Auto Hut</td>
+                    </tr>
+                    <tr>
+                        <td>MM/DD/YYYY</td>
+                        <td>MM/DD/YYYY</td>
+                        <td>Sedan</td>
+                        <td>ASDF1235QWERTY</td>
+                        <td>Sale</td>
+                        <td>1234</td>
+                        <td>Rowdy Roger's Auto Hut</td>
+                    </tr>
+                    <tr>
+                        <td>MM/DD/YYYY</td>
+                        <td>MM/DD/YYYY</td>
+                        <td>Sedan</td>
+                        <td>ASDF1235QWERTY</td>
+                        <td>Sale</td>
+                        <td>1234</td>
+                        <td>Rowdy Roger's Auto Hut</td>
+                    </tr>
+                    <tr>
+                        <td>MM/DD/YYYY</td>
+                        <td>MM/DD/YYYY</td>
+                        <td>Sedan</td>
+                        <td>ASDF1235QWERTY</td>
+                        <td>Sale</td>
+                        <td>1234</td>
+                        <td>Rowdy Roger's Auto Hut</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="levelMerchModal" class="modal-stack container hide fade" data-y-offset="adjust">
+        <div class="modal-header">
+            <button data-dismiss="modal" class="close" type="button"><i class="icon-remove"></i></button>
+            <h3>Select Award</h3>
+        </div>
+        <div class="modal-body">
+            <!-- dynamic -->
+        </div>
+    </div><!-- /.levelMerchModal -->
+
+</div><!-- /#goalquestPageDetailView -->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+
+    $(document).ready(function(){
+
+
+        // JAVA NOTE: this URL produces the JSON to populate the levels + awards
+        G5.props.URL_JSON_PLATEAU_AWARDS = G5.props.URL_JSON_PLATEAU_AWARDS;
+
+        // JAVA NOTE: set this variable to whatever you like, just putting it here for reference
+        G5.props.URL_PAGE_PLATEAU_AWARDS = G5.props.URL_PAGE_PLATEAU_AWARDS;
+
+        // JAVA NOTE: set this variable to the URL to set a new plateau award
+        G5.props.URL_JSON_GOALQUEST_CHANGE_PLATEAU_AWARD = G5.props.URL_JSON_GOALQUEST_CHANGE_PLATEAU_AWARD;
+
+        //attach the view to an existing DOM element
+        window.gpdv = new GoalquestPageDetailView({
+            el:$('#goalquestPageDetailView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'javascript:history.go(-1);'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'GoalQuest Detail' // OR 'ChallengePoint Detail'
+        });
+
+    });
+
+</script>

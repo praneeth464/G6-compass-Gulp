@@ -1,0 +1,38 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $shopRealDeal_bgColor: ;
+// $shopRealDeal_gradType: ;
+// $shopRealDeal_gradMeta: ;
+// $shopRealDeal_gradStops: ;
+
+// $shopRealDeal_iconColor: ;
+// $shopRealDeal_titleColor: ;
+// $shopRealDeal_titleFontFamily: ;
+// $shopRealDeal_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $shopRealDeal_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+// $shopRealDeal_textColor: ;
+// $shopRealDeal_h3FontFamily: ;
+// $shopRealDeal_pFontFamily: ;
+// $shopRealDeal_visitAppBtnColor: ;
+// $shopRealDeal_visitAppBtnBorderColor: ;
+$shopRealDeal_imgUrlPath: $appImagesPath; // setting this to $appImagesPath points at core/base/img. Leave blank to use images in this skin
+// $shopRealDeal_imgUrl2x2: ;
+// $shopRealDeal_imgUrl4x2: ;
+// $shopRealDeal_imgUrl4x4: ;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "clickThru/scss/shopRealDeal";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

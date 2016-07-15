@@ -1,0 +1,683 @@
+// App-specific variables
+// =========================
+$drawTool_width                  : 432px !default;
+$drawTool_widthMobile            : 288px !default;
+$drawTool_thumbnailWidth         : 144px !default;
+$drawTool_thumbnailWidth1200     : 144px !default;
+$drawTool_thumbnailWidth768      : 108px !default;
+$drawTool_thumbnailWidthMobile   : 96px !default;
+$drawTool_borderWidth            : 1px !default;
+$drawTool_borderColor            : $inputBorder !default;
+$drawTool_borderColorSelected    : $black !default;
+$drawTool_canEditIconColor       : $gray !default;
+
+// maths to compute various thumbnail sizes
+$drawTool_numFit                 : $drawTool_width / $drawTool_thumbnailWidth !default;
+$drawTool_numFit768              : $drawTool_width / $drawTool_thumbnailWidth768 !default;
+$drawTool_numFitMobile           : $drawTool_widthMobile / $drawTool_thumbnailWidthMobile !default;
+$drawTool_liWidth                : ($drawTool_width - $gridGutterWidth * ($drawTool_numFit - 1)) / $drawTool_numFit - (2 * $drawTool_borderWidth) !default;
+$drawTool_liWidth768             : ($drawTool_width - $gridGutterWidth768 * ($drawTool_numFit768 - 1)) / $drawTool_numFit768 - (2 * $drawTool_borderWidth) !default;
+$drawTool_liWidthMobile          : ($drawTool_widthMobile - $gridGutterWidth768 * ($drawTool_numFitMobile - 1)) / $drawTool_numFitMobile - (2 * $drawTool_borderWidth) !default;
+
+// maths borrowed from _mixins/gridCoreSpanG5
+$drawTool_span12Width            : ($gridColumnWidth * $gridColumns) + ($gridGutterWidth * ($gridColumns - 1)) - ($g5PageContentPaddingHoriz * 2) !default;
+$drawTool_span12Width1200        : ($gridColumnWidth1200 * $gridColumns) + ($gridGutterWidth1200 * ($gridColumns - 1)) - ($g5PageContentPaddingHoriz1200 * 2) !default;
+$drawTool_span12Width768         : ($gridColumnWidth768 * $gridColumns) + ($gridGutterWidth768 * ($gridColumns - 1)) - ($g5PageContentPaddingHoriz768 * 2) !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+// round the *liWidth values down to the nearest whole number
+$drawTool_liWidth : floor($drawTool_liWidth);
+$drawTool_liWidth768 : floor($drawTool_liWidth768);
+$drawTool_liWidthMobile : floor($drawTool_liWidthMobile);
+
+#drawToolView {
+
+    @media (max-width: 479px) { // 479px is overriding the general G5 style
+        .btn {
+            display: inline-block;
+            width: auto;
+            padding-left: 8px;
+            padding-right: 8px;
+            margin-top: 0;
+        }
+    }
+    #drawingCountInformation{
+        min-height:20px;
+    }
+    #drawingTool {
+        margin: ($baseLineHeight / 2) 0;
+        @include clearfix();
+    }
+
+    #drawToolMenu {
+        .btn-toolbar {
+            position: relative;
+            margin-top: 0;
+            margin-bottom: 5px;
+
+            .btn-group + .btn-group {
+                margin-left: 0;
+            }
+
+            .btn {
+                font-size: 20px;
+
+                &#clearImage {
+                    font-size: 21px;
+                }
+            }
+            #drawToolPickSize .btn {
+                font-size: 18px;
+            }
+
+            // I'd much rather have a more generic rule to handle this spacing, but I can't think of a good way to do it without really messing with the HTML. While I guess that would be fine, given the large amount of HTML editing I've been doing, for now I'm going to stick with this. Blech
+            #selectThumbnail,
+            #eraserButton,
+            #drawToolPickSize,
+            #drawToolPickColor,
+            #drawingCompleteContainer {
+                margin-right: 6px;
+            }
+
+            .alwaysEnable {
+                display: none;
+            }
+
+            // picker menus
+            #drawToolPickSize {
+                .size {
+                    margin-left: 4px;
+                    font-size: 10px;
+                    vertical-align: top;
+                }
+            }
+            #drawToolPickColor {
+                .btn {
+                    color: $btnPrimaryBackground;
+                }
+                @media (max-width: 463px) and (orientation: portrait), (max-height: 463px) and (orientation: landscape) {
+                    position: static;
+                }
+            }
+
+            #lineWidthSelect,
+            #colorSelectMenu {
+                top: 100%;
+                padding: 4px 0 0 4px;
+
+                li {
+                    float: left;
+                    margin: 0 4px 4px 0;
+                    width: 34px;
+                    border: 1px solid $grayLighter;
+                    cursor: pointer;
+
+                    &.selected {
+                        border-color: $drawTool_borderColorSelected;
+                    }
+
+                    [class^="icon-"],
+                    [class*=" icon-"] {
+                        width: auto;
+                    }
+                }
+            }
+            #colorSelectMenu {
+                width: 240px;
+                // max-width: $drawTool_width - (2 * ($drawTool_borderWidth + 1px)) - 4px;
+
+                li {
+                    width: auto;
+
+                    .colorSelect {
+                        width: 32px;
+                        height: 32px;
+                        background: #0f0;
+                        border: 1px solid $white;
+                    }
+                }
+
+                @media (max-width: 463px) and (orientation: portrait), (max-height: 463px) and (orientation: landscape) {
+                    // max-width: $drawTool_widthMobile - (2 * ($drawTool_borderWidth + 1px)) - 4px;
+                    left: 50%;
+                    margin-left: -1 * (120px + 2px + 1px); // half the width + (left padding from above / 2 for some reason) + dropdown-menu border width
+                }
+            }
+            #lineWidthSelect {
+                color: #000000;
+                list-style: none;
+                // min-width: 0;
+
+                li {
+                    position: relative;
+                    height: 34px;
+                    line-height: 34px;
+                    text-align: center;
+                    vertical-align: middle;
+
+                    span {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+
+                        &.erase {
+                            color: $black;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        // &.mode-draw {
+            span.draw {
+                display: block;
+            }
+            .btn span.draw {
+                display: inline-block;
+            }
+            span.erase {
+                display: none;
+            }
+        // }
+        &.mode-erase {
+            span.draw {
+                display: none;
+            }
+            span.erase {
+                display: block;
+            }
+            .btn span.erase {
+                display: inline-block;
+            }
+        }
+
+        // .clearToolTip p ~ p {
+        //     margin: 0;
+        // }
+    }
+
+    #drawToolContainer {
+        position: relative;
+
+        // thumbnails on top
+        @media (max-width: 574px) and (min-height: 464px),
+               (max-width: 463px) and (orientation: portrait),
+               (max-width: 423px) {
+            display: none;
+        }
+
+    }
+
+    .checkbox {
+       &.displayMobile {
+            padding: 10px 18px;
+            background: #ccc;
+        }
+    }
+
+
+
+    #wPaint,
+    #drawToolStatusContainer {
+
+        position: relative;
+        width: $drawTool_width - (2 * $drawTool_borderWidth);
+        height: $drawTool_width - (2 * $drawTool_borderWidth);
+        line-height: $drawTool_width - (2 * $drawTool_borderWidth);
+        overflow: hidden;
+        background: $white;
+        border: $drawTool_borderWidth solid $drawTool_borderColor;
+        @include border-radius($inputBorderRadius);
+        @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+
+        cursor: crosshair;
+        // float: left;
+
+        // &.displayMobile {
+        //     width: $drawTool_widthMobile;
+        //     height: $drawTool_widthMobile;
+        // }
+
+        // &.displayNormal {
+        //     width: $drawTool_width;
+        //     height: $drawTool_width;
+        // }
+        #bgContainer,
+        canvas {
+            position: absolute;
+            top: (-1 * $drawTool_borderWidth) !important;
+            left: (-1 * $drawTool_borderWidth) !important;
+            width: $drawTool_width !important;
+            height: $drawTool_width !important;
+            line-height: $baseLineHeight;
+
+            img {
+                width: 100% !important;
+                height: 100% !important;
+            }
+
+            // &.displayMobile {
+            //     width: $drawTool_widthMobile;
+            //     height: $drawTool_widthMobile;
+            // }
+
+            // &.displayNormal {
+            //     width: $drawTool_width;
+            //     height: $drawTool_width;
+            // }
+        }
+
+        @media (max-width: 463px) and (orientation: portrait), (max-height: 463px) and (orientation: landscape) {
+            width: $drawTool_widthMobile - (2 * $drawTool_borderWidth);
+            height: $drawTool_widthMobile - (2 * $drawTool_borderWidth);
+            line-height: $drawTool_widthMobile - (2 * $drawTool_borderWidth);
+
+            #bgContainer,
+            canvas {
+                width: $drawTool_widthMobile !important;
+                height: $drawTool_widthMobile !important;
+                line-height: $baseLineHeight;
+            }
+        }
+    }
+
+    .cannotDraw ~ #wPaint {
+       margin-top: 36px;
+    }
+
+    #drawToolStatusContainer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        cursor: default;
+        background: none;
+
+        .drawToolQTip {
+            position: absolute;
+            text-align: center;
+            width: 100%;
+            color: #fff;
+            vertical-align: middle;
+            background: rgb(50,50,50);
+            background: rgba(0,0,0,.5);
+            @include border-radius(($inputBorderRadius - 1));
+
+            &.beginToolTip {
+                height: 100%;
+            }
+            &.editingDisabledToolTip {
+                padding: 4px;
+                line-height: $baseLineHeight;
+
+                p {
+                    margin: 0;
+                }
+            }
+            &.beginToolTipTouch .btn,
+            &.pauseToolTipTouch .btn,
+            &.clearToolTip .btn {
+                margin-bottom: 8px;
+            }
+
+            .ui-tooltip-content {
+                padding: 0;
+            }
+            .drawToolQTipContentContainer {
+                display: inline-block;
+                width: 90%;
+                line-height: $baseLineHeight;
+                font-weight: bold;
+                // &.displayMobile {
+                //     width: $drawTool_widthMobile;
+                //     height: $drawTool_widthMobile;
+                // }
+
+                // &.displayNormal {
+                //     width: $drawTool_width;
+                //     height: $drawTool_width;
+                // }
+                // display: table-cell;
+                // font-weight: bold;
+                // font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+                // font-size: 14px;
+
+            }
+        }
+    }
+
+    #drawingCompleteContainer {
+        display: none;
+        // z-index: 100;
+        // position: absolute;
+        // bottom: 5px;
+        // right: 5px;
+        // opacity: 0.9;
+    }
+
+
+    #eCardThumbnailContainerParent {
+        position: relative;
+        float: right;
+        margin: 0 (-1 * $gridGutterWidth) 0 $gridGutterWidth;
+        padding: 36px 0 0 0; // 35px is the height of the toolbar + the bottom margin of the toolbar // but for whatever reason, the toolbar buttons render at 31px high + 5px bottom margin making this 36px instead
+
+        @media (min-width: 1200px) {
+            margin-left: $gridGutterWidth1200;
+            margin-right: (-1 * $gridGutterWidth1200);
+        }
+        @media (min-width: 464px) and (max-width: 979px) {
+            margin-right: (-1 * $gridGutterWidth768);
+        }
+        @media (min-width: 575px) and (max-width: 767px) {
+            position: relative;
+            left: $drawTool_width;
+            float: left;
+            margin-right: -1 * ($drawTool_thumbnailWidth768 + $gridGutterWidth768);
+        }
+        // thumbnails on top
+        @media (max-width: 574px) and (min-height: 464px) { // implied min-width of 464px
+            float: left;
+            margin-left: 0;
+            margin-bottom: $gridGutterWidth768;
+            // padding-top: 0;
+        }
+
+        @media (max-height: 463px) and (max-width: 767px) {
+            position: relative;
+            left: $drawTool_widthMobile;
+            float: left;
+            margin-right: -1 * ($drawTool_thumbnailWidth768 + $gridGutterWidth768);
+        }
+
+        // thumbnails on top
+        @media (max-width: 463px) and (orientation: portrait),
+               (max-width: 423px) {
+            // position: static;
+            left: 0;
+            margin-right: (-1 * $g5PageContentPaddingHorizMobile);
+            margin-bottom: $gridGutterWidth768;
+            margin-left: 0;
+            // padding-top: 0;
+        }
+    }
+    #eCardThumbnailPager {
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-align: left;
+
+        p {
+            white-space: nowrap;
+        }
+        .btn {
+            display: inline;
+            float: left;
+            margin: 0 6px 5px 0;
+            font-size: 18px;
+        }
+
+        @media (min-width: 1200px) {
+        }
+        @media (min-width: 464px) and (max-width: 979px) {
+        }
+        @media (min-width: 575px) and (max-width: 767px) {
+        }
+        @media (max-width: 463px) and (orientation: portrait),
+               (max-height: 463px) and (orientation: landscape) {
+        }
+        // thumbnails on top
+        @media (max-width: 574px) and (min-height: 464px),
+               (max-width: 463px) and (orientation: portrait),
+               (max-width: 423px) {
+        }
+        @media (max-width: 463px) and (orientation: portrait),
+               (max-width: 423px) {
+        }
+    }
+    #eCardThumbnailPagerMeta {
+        line-height: 31px; // cheating to make this match the height of the buttons
+
+        @media (min-width: 1200px) {
+        }
+        @media (min-width: 464px) and (max-width: 979px) {
+        }
+        @media (min-width: 575px) and (max-width: 767px) {
+            position: absolute;
+            left: 0;
+            bottom: 100%;
+            width: 100%;
+            text-align: center;
+        }
+        @media (max-width: 463px) and (orientation: portrait),
+               (max-height: 463px) and (orientation: landscape) {
+            position: absolute;
+            left: 0;
+            bottom: 100%;
+            width: 100%;
+            text-align: center;
+        }
+        // thumbnails on top
+        @media (max-width: 574px) and (min-height: 464px),
+               (max-width: 463px) and (orientation: portrait),
+               (max-width: 423px) {
+        }
+        @media (max-width: 463px) and (orientation: portrait),
+               (max-width: 423px) {
+            position: static;
+        }
+
+        .range {
+            font-weight: bold;
+        }
+        .of {
+            font-style: italic;
+        }
+    }
+
+    #eCardThumbnailContainer {
+        //float: right; //floating this right causes issues in ie7/8
+        height: $drawTool_width;
+        width: $drawTool_span12Width - $drawTool_width;
+        overflow: hidden;
+        position: relative;
+
+        #eCardThumbnailSelect {
+            float: left;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            height: auto;
+            position: relative; // ie7
+
+            li {
+                position: relative;
+                float: left;
+                margin-right: $gridGutterWidth;
+                margin-bottom: $gridGutterWidth;
+                width: $drawTool_liWidth;
+                height: $drawTool_liWidth;
+                overflow: hidden;
+                border: $drawTool_borderWidth solid $drawTool_borderColor;
+                cursor: pointer;
+
+                &.selected {
+                    border-color: $drawTool_borderColorSelected;
+                    cursor: default;
+                }
+
+                img {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: $drawTool_thumbnailWidth;
+                    height: $drawTool_thumbnailWidth;
+                    max-width: none;
+                    margin-top: -1 * $drawTool_thumbnailWidth / 2;
+                    margin-left: -1 * $drawTool_thumbnailWidth / 2;
+                }
+
+                .icon-upload {
+                    display: block;
+                    margin: 10% auto 0 auto;
+                    height: auto;
+                    font-size: 72px;
+                    line-height: 72px;
+                    color: $grayLight;
+                }
+                .upload-text {
+                    display: block;
+                    padding: 0 6px;
+                    text-align: center;
+                    color: $grayLight;
+                }
+
+                .canEdit {
+                    position: absolute;
+                    right: 0px;
+                    bottom: 0px;
+                    z-index: 1;
+                    width: 1.25em; // borrowed from _font-awesome.scss li, .nav li
+                    height: 1.25em;
+                    color: $drawTool_canEditIconColor;
+                }
+            }
+        }
+
+        @media (min-width: 1200px) {
+            width: $drawTool_span12Width1200 - $drawTool_width;
+        }
+        @media (min-width: 464px) and (max-width: 979px) {
+            width: $drawTool_span12Width768 - $drawTool_width;
+
+            #eCardThumbnailSelect {
+                li {
+                    margin-right: $gridGutterWidth768;
+                    margin-bottom: $gridGutterWidth768;
+                    width: $drawTool_liWidth768;
+                    height: $drawTool_liWidth768;
+
+                    img {
+                        width: $drawTool_thumbnailWidth768;
+                        height: $drawTool_thumbnailWidth768;
+                        margin-top: -1 * $drawTool_thumbnailWidth768 / 2;
+                        margin-left: -1 * $drawTool_thumbnailWidth768 / 2;
+                    }
+
+                    .icon-upload {
+                        font-size: 48px;
+                        line-height: 48px;
+                    }
+                    .upload-text {
+                        font-size: 11px;
+                        line-height: 11px;
+                    }
+                }
+            }
+        }
+        @media (min-width: 575px) and (max-width: 767px) {
+            float: left;
+            width: $drawTool_thumbnailWidth768;
+
+            #eCardThumbnailSelect {
+                li {
+                    margin-right: 0;
+                }
+            }
+        }
+        // thumbnails on top
+        @media (max-width: 574px) and (min-height: 464px) { // implied min-width of 464px
+            float: left;
+            // margin-left: $drawTool_thumbnailWidth768 / 2;
+            margin-left: 0;
+            width: $drawTool_width + $gridGutterWidth768/*  - $drawTool_thumbnailWidth768 */;
+            // height: $drawTool_liWidth768 + (2 * $drawTool_borderWidth);
+            height: ($drawTool_liWidth768 + (2 * $drawTool_borderWidth)) * 2 + $gridGutterWidth768;
+        }
+        // this is the breakpoint at which the canvas shrinks
+        @media (max-width: 463px) and (orientation: portrait),
+               (max-height: 463px) and (orientation: landscape) {
+
+            #eCardThumbnailSelect {
+                li {
+                    margin-right: $gridGutterWidth768;
+                    margin-bottom: $gridGutterWidth768;
+                    width: $drawTool_liWidthMobile;
+                    height: $drawTool_liWidthMobile;
+
+                    img {
+                        width: $drawTool_thumbnailWidthMobile;
+                        height: $drawTool_thumbnailWidthMobile;
+                        margin-top: -1 * $drawTool_thumbnailWidthMobile / 2;
+                        margin-left: -1 * $drawTool_thumbnailWidthMobile / 2;
+                    }
+
+                    .icon-upload {
+                        font-size: 48px;
+                        line-height: 48px;
+                    }
+                    .upload-text {
+                        font-size: 10px;
+                        line-height: 10px;
+                    }
+                }
+            }
+        }
+
+        @media (max-height: 463px) {
+            width: $drawTool_span12Width - $drawTool_widthMobile;
+            height: $drawTool_widthMobile;
+        }
+        @media (max-height: 463px) and (min-width: 1200px) {
+            width: $drawTool_span12Width1200 - $drawTool_widthMobile;
+        }
+        @media (max-height: 463px) and (min-width: 464px) and (max-width: 979px) {
+            width: $drawTool_span12Width768 - $drawTool_widthMobile;
+        }
+        @media (max-height: 463px) and (max-width: 767px) {
+            float: left;
+            width: $drawTool_thumbnailWidth768;
+        }
+
+        // thumbnails on top
+        @media (max-width: 463px) and (orientation: portrait),
+               (max-width: 423px) {
+            // margin-left: $drawTool_thumbnailWidthMobile / 2;
+            margin-left: 0;
+            width: $drawTool_widthMobile + $g5PageContentPaddingHorizMobile/*  - $drawTool_thumbnailWidthMobile */;
+            // height: $drawTool_liWidthMobile + (2 * $drawTool_borderWidth);
+            height: ($drawTool_liWidthMobile + (2 * $drawTool_borderWidth)) * 2 + $gridGutterWidth768;
+        }
+    }
+
+}
+
+// this class lives on #drawToolShell
+.cannotDraw {
+    #drawToolMenu {
+        display: none;
+    }
+    #drawToolView #eCardThumbnailContainerParent {
+        margin-top: -35px; // 35px is the height of the toolbar + the bottom margin of the toolbar;
+    }
+}
+
+// this class lives on #drawToolShell
+.touchenabled {
+
+    #drawToolView {
+
+        #drawingCompleteContainer {
+            display: block;
+        }
+
+    }
+
+}
+

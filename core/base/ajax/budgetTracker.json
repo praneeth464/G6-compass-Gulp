@@ -1,0 +1,120 @@
+<?php sleep(2); ?>
+{
+	"messages": [],
+	"budgets": [
+		{
+		  	"id": "23",
+		  	"name": null,
+		  	"used": 10,
+		  	"total": 10000,
+		  	"startDate": "03/01/2014",
+		  	"endDate": "",
+		  	"promotions": [
+				{
+					"name":"Promotion That Has Crazy Long Name and should get truncated on the smaller module",
+					"url": "layout.html?tplPath=apps/recognition/tpl/&tpl=recognitionPageSend.html"
+				},
+				{
+					"name":"Promo Two",
+					"url": "layout.html?tplPath=apps/recognition/tpl/&tpl=recognitionPageSend.html"
+				},
+				{
+					"name":"Prmotion Three",
+					"url": "layout.html?tplPath=apps/recognition/tpl/&tpl=recognitionPageSend.html"
+				}
+		  	]
+		},
+		{
+			"id": "12",
+			"name": null,
+			"used": 9900,
+			"total": 10000,
+			"startDate": "03/01/2014",
+			"endDate": "06/01/2014",
+		  	"promotions": [
+				{
+					"name":"Promotion That Has Crazy Long Name and should get truncated on the smaller module",
+					"url": "layout.html?tplPath=apps/recognition/tpl/&tpl=recognitionPageSend.html"
+				},
+				{
+					"name":"Prmotion Three",
+					"url": "layout.html?tplPath=apps/recognition/tpl/&tpl=recognitionPageSend.html"
+				}
+		  	]
+		},
+		{
+	 		"id": "255",
+	 		"name": "Waffle Fund",
+	 		"used": 3245,
+	 		"total": 10000,
+	 		"startDate": "03/01/2014",
+	 		"endDate": "",
+		  	"promotions": [
+				{
+					"name":"Promotion That Has Crazy Long Name and should get truncated on the smaller module",
+					"url": "layout.html?tplPath=apps/recognition/tpl/&tpl=recognitionPageSend.html"
+				}
+		  	]
+		},
+		{
+			"id": "67",
+			"name": "Travel Budget",
+			"used": 1235,
+			"total": 10000,
+			"startDate": "03/01/2014",
+			"endDate": "",
+		  	"promotions": [
+				{
+					"name":"Promotion That Has Crazy Long Name and should get truncated on the smaller module",
+					"url": "layout.html?tplPath=apps/recognition/tpl/&tpl=recognitionPageSend.html"
+				},
+				{
+					"name":"Promo Two",
+					"url": "layout.html?tplPath=apps/recognition/tpl/&tpl=recognitionPageSend.html"
+				},
+				{
+					"name":"Prmotion Three",
+					"url": "layout.html?tplPath=apps/recognition/tpl/&tpl=recognitionPageSend.html"
+				}
+		  	]
+		},
+		{
+			"id": "2",
+			"name": "Coffee Budget",
+			"used": 8132,
+			"total": 10000,
+			"startDate": "03/01/2014",
+			"endDate": "",
+		  	"promotions": [
+				{
+					"name":"Promotion That Has Crazy Long Name and should get truncated on the smaller module",
+					"url": "layout.html?tplPath=apps/recognition/tpl/&tpl=recognitionPageSend.html"
+				}
+		  	]
+		},
+		{
+			"id": "912",
+			"name": "Defense Budget",
+			"used": 1345,
+			"total": 10000,
+			"startDate": "03/01/2014",
+			"endDate": "",
+		  	"promotions": [
+				{
+					"name":"Promotion That Has Crazy Long Name and should get truncated on the smaller module",
+					"url": "layout.html?tplPath=apps/recognition/tpl/&tpl=recognitionPageSend.html"
+				},
+				{
+					"name":"Promo Two",
+					"url": "layout.html?tplPath=apps/recognition/tpl/&tpl=recognitionPageSend.html"
+				},
+				{
+					"name":"Prmotion Three",
+					"url": "layout.html?tplPath=apps/recognition/tpl/&tpl=recognitionPageSend.html"
+				}
+		  	]
+		}
+	],
+	"budgetAsOfTimestamp": "10/08/2012 10:59am US/Central"
+
+}

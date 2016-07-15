@@ -1,0 +1,129 @@
+    <div class="{{#classes}} {{this}}{{/classes}}" id="rankings{{id}}" data-id="{{id}}">
+
+        <div class="clearfix rankingsMetaData">
+            <h2 class="rankingPromotionTitle">{{name}}</h2>
+            <span class="startDate"><strong>Start Date:</strong> {{startDate}}</span><span class="endDate"> <strong>End Date:</strong> {{endDate}}</span>
+        </div>
+
+        <!-- Account info and ranking -->
+        {{#if titleUser}}
+        <div class="clearfix highlightedUser">
+            {{#if titleUser.avatarUrl}}
+            <div class="fl avatarContainer">
+                <div class="fl avatarContainerBorder">
+                    <img alt="" class="avatar" src="{{titleUser.avatarUrl}}" />
+                </div>
+            </div>
+            {{/if}}
+
+            <div class="fl userInfoContainer">
+                {{#unless titleUser.currentUser}}
+                <span class="name pre-rank">{{titleUser.firstName}} {{titleUser.lastName}}</span>
+                {{else}}
+                <span class="your pre-rank">You are </span>
+                {{/unless}}
+                <span class="pre-large-rank-text">#</span> <span class="large-rank-text">{{titleUser.rank}}</span>
+
+                <div class="round-info">
+                    <span>Round</span>
+                    <span class="your-round">{{titleUser.currentRound}}</span>
+                    <span>of</span>
+                    <span class="round-total">{{titleUser.totalRounds}}</span>
+                </div>
+
+                <span class="progress-text">{{activityTitle}} <strong>{{titleUser.score}}</strong> </span>
+                <span class="activitydate"><span>From </span><strong>{{startDate}}</strong><span> to </span><strong>{{progressEndDate}}</strong></span>
+            </div>
+        </div><!-- /.highlightedUser -->
+
+        <div class="info-text">Match ranking based on units per thousand sold to people between the ages of 7 and 12.</div>
+        {{/if}}
+
+        <div class="row-fluid clearfix">
+            {{#if badgeHolders}}
+            <div class="top-ranked first-place span4">
+                <!-- dynamic -->
+            </div>
+            <div class="top-ranked second-place span4">
+                <!-- dynamic -->
+            </div>
+            <div class="top-ranked third-place span4">
+                <!-- dynamic -->
+            </div>
+            {{/if}}
+            <!--subTpl.topRankedTpl=
+                {{#badgeHolders}}
+                    <div class="rank-info">
+                        <img src="{{icon}}" class="rank-icon">
+                        <span>Rank</span>
+                    </div>
+                    <div class="rank-player-info">
+                        {{#if avatarUrl}}<img alt="{{firstName}} {{lastName}}" class="avatar" src="{{avatarUrl}}">{{/if}}
+                        <span class='firstName'>{{firstName}}</span>
+                        <span class='lastName'>{{lastName}}</span>
+                        <span class='score'>{{score}} Units</span>
+                    </div>
+                    {{#if badge}}
+                        <div class="rank-badge-container">
+                            <img src="{{badge}}" class="rank-badge {{#unless earned}}in-progress{{/unless}}">
+                        </div>
+                    {{/if}}
+                {{/badgeHolders}}
+            subTpl-->
+        </div>
+
+        <div class="paginationControls pagination pagination-right"></div>
+        <!--subTpl.paginationTpl=
+            {{#if pagination}}
+            {{#with pagination}}
+            <ul>
+                <li class="first{{#if first.state}} {{first.state}}{{/if}}" data-page="{{first.page}}">
+                    <a href="#"><i class="icon-double-angle-left"></i>&nbsp;</a>
+                </li>
+                <li class="prev{{#if prev.state}} {{prev.state}}{{/if}}" data-page="{{prev.page}}">
+                    <a href="#"><i class="icon-angle-left"></i> Prev</a>
+                </li>
+                {{#each pages}}
+                <li {{#if state}}class="{{state}}"{{/if}} data-page="{{page}}">
+                    <a href="#">{{#if isgap}}&#8230;{{else}}{{page}}{{/if}}</a>
+                </li>
+                {{/each}}
+                <li class="next{{#if next.state}} {{next.state}}{{/if}}" data-page="{{next.page}}">
+                    <a href="#">Next <i class="icon-angle-right"></i></a>
+                </li>
+                <li class="last{{#if last.state}} {{last.state}}{{/if}}" data-page="{{last.page}}">
+                    <a href="#">&nbsp;<i class="icon-double-angle-right"></i></a>
+                </li>
+            </ul>
+            {{/with}}
+            {{/if}}
+        subTpl-->
+        <div class="leadersContainer clearfix">
+            <ol class="leaders-col leaders-col-a leadersColA">
+                <!-- dynamic -->
+            </ol>
+            <!-- second col, responsive (float left) -->
+            <ol class="leaders-col leaders-col-b leadersColB">
+                <!-- dynamic -->
+            </ol>
+            <!--subTpl.leaderTpl=
+                {{#if leaders}}
+                <li class= "label">
+                    <span class="score">Score</span>
+                    <span class="rank">Rank/Player</span>
+                </li>
+                {{#leaders}}
+                <li value="{{rank}}" {{#if classes.length}}class="{{#classes}}{{this}} {{/classes}}"{{/if}}>
+                    <span class="score">{{score}}</span>
+                    <b>{{rank}}.</b>
+                    {{#if avatarUrl}}<img alt="{{firstName}} {{lastName}}" class="avatar" src="{{avatarUrl}}">{{/if}}
+                    <a class="leaderName" href="#" data-participant-ids="[{{participantId}}]">{{firstName}} {{lastName}}</a>
+                </li>
+                {{/leaders}}
+                {{else}}
+                <h4 class="td-no-rankings-message">There are currently no rankings to display.</h4>
+                {{/if}}
+            subTpl-->
+            <div class="paginationControls pagination pagination-right"></div>
+        </div>
+    </div>

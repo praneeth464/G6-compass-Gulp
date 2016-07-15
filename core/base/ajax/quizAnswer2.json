@@ -1,0 +1,12 @@
+{
+	"messages":[],
+	"quizAnswer":[
+		{
+            "id" : 4001,
+            "isUserCorrect": false,
+			"questionAnswer":				2,
+			"questionAnswerTitle":			"The correct answer is C)4.",
+			"questionAnswerDescription":	"The server keeps track of the list of questions answered. For now a separate JSON file will be used for testing purposes to mimic this behavior."
+		}		
+	]
+}	

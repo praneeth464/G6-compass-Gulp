@@ -1,0 +1,1165 @@
+
+
+<div id="homeAppPageView">
+    <div id="homeAppTopNav" class="container">
+        <div class="subnav closed">
+            <a class="btn btn-small toggler" href="#">
+                <span class="icon-reorder opener"></span>
+                <span class="icon-minus closer"></span>
+            </a>
+
+            <ul class="nav nav-pills">
+                <li class="homeFilter">
+                    <a href="#filter/home">Home</a>
+                </li>
+                <li class="activitiesFilter">
+                    <a href="#filter/activities">Activities</a>
+                </li>
+                <li class="socialFilter">
+                    <a href="#filter/social">Social</a>
+                </li>
+                <li class="shopFilter">
+                    <a href="#filter/shop">Shop</a>
+                </li>
+                <li class="reportsFilter">
+                    <a href="#filter/reports">Reports</a>
+                </li>
+                <li class="throwdownFilter">
+                    <a href="#filter/throwdown">Throwdown</a>
+                </li>
+                <li class="allFilter">
+                    <a href="#filter/all">All</a>
+                </li>
+            </ul>
+
+        </div>
+    </div><!-- /#homeAppTopNav -->
+
+
+    <div class="moduleContainerViewElement">
+
+        <!-- dynamic content -->
+
+    </div> <!-- /.moduleContainerViewElement -->
+</div><!-- /#homeAppPageView -->
+
+
+<!-- MODULES SETUP -->
+<script>
+
+    //Main Home Application Setup Function
+    $(document).ready(function(){
+        var isSubset = typeof G5.props.urlParams.moduleSubset != 'undefined',
+            allModules,moduleSubset;
+
+        //instantiate HomeApp
+        window.hapv = new HomeAppPageView({
+            el : $('#homeAppPageView'),
+            pageNav : {},
+            pageTitle : '',
+            isFooterSheets : false
+        });
+
+        // Every Module in the World
+        // Listed in order by appName
+        allModules = [
+            {
+                name:'approvalsModule',
+                appName: 'approvals',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'bannerModuleModule',
+                appName: 'bannerModule',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'budgetTrackerModule',
+                appName: 'budgetTracker',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'celebrationModule',
+                appName: 'celebration',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'4x4', order:1},
+                    'home':{size:'2x2', order:1},
+                    'activities':{size:'2x1', order:'hidden'},
+                    'social':{size:'2x2', order:'hidden'},
+                    'shop':{size:'4x2', order:'hidden'},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'nominationsModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'clickThru',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            /*
+            REMOVED from product as of 5.2
+            {
+                name:'shopEnvoyTravelModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'clickThru',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            */
+            /*
+            ADDED to product in 5.3
+            */
+            {
+                name:'shopDigitalDownloadsModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'clickThru',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'shopEventsModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'clickThru',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            /*
+            REMOVED from product as of 5.2
+            {
+                name:'shopExperienceModule',    // REQUIRED If not, blankModule and/or other BAD
+                appName: 'clickThru',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            */
+            {
+                name:'shopGreatDealsModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'clickThru',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'shopIntlMerchandiseModule',   // REQUIRED If not, blankModule and/or other BAD
+                appName: 'clickThru',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'shopMerchandiseModule',   // REQUIRED If not, blankModule and/or other BAD
+                appName: 'clickThru',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            /*
+            REMOVED from product as of 5.2
+            {
+                name:'shopPassportTravelModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'clickThru',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            */
+            {
+                name:'shopRealDealModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'clickThru',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'shopTravelModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'clickThru',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'communicationsModule',
+                appName: 'communications',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x1', order:'hidden'},
+                    'shop':{size:'2x1', order:'hidden'},
+                    'reports':{size:'2x1', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'2x1', order:1}
+                },
+                allowedDimensions:[
+                    {w:1,h:1},
+                    {w:2,h:1}
+                ]
+            },
+            /*
+            REMOVED from product as of 5.2
+            {
+                name:'shopTravelGreatDealsModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'clickThru',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            */
+            /*
+            ADDED to product in 5.X
+            {
+                name:'destinationsModule',
+                appName: 'destinations',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            */
+            {
+                name:'engagementModule',
+                appName: 'engagement',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'engagementManagerModule',
+                appName: 'engagement',//name of the app
+                templateName: 'engagementModule',//use this for template lookup instead of name
+                viewName: 'engagementModuleManager',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'forumModule',
+                appName: 'forum',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'gamificationModule',
+                appName: 'gamification',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'goalquestModule',
+                appName: 'goalquest',//name of the app
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'challengepointModule',
+                appName: 'goalquest',//name of the app
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'goalquestManagerModule',
+                appName: 'goalquest',//name of the app
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                },
+                // NOTE: Java has its own version of this, this is here for FE dev only since this
+                //       module uses the generic ModuleView.
+                allowedDimensions:[
+                    {w:1,h:1},
+                    {w:2,h:1},
+                    {w:2,h:2},
+                    {w:4,h:2},
+                    {w:4,h:4}
+                ]
+            },
+            {
+                name:'challengepointManagerModule',
+                appName: 'goalquest',//name of the app
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                },
+                // NOTE: Java has its own version of this, this is here for FE dev only since this
+                //       module uses the generic ModuleView.
+                allowedDimensions:[
+                    {w:1,h:1},
+                    {w:2,h:1},
+                    {w:2,h:2},
+                    {w:4,h:2},
+                    {w:4,h:4}
+                ]
+            },
+            {
+                name:'instantPollModule',
+                appName: 'instantPoll',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'leaderboardModule',
+                appName: 'leaderboard',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'managerToolkitModule',
+                appName: 'managerToolkit',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'newsModule',
+                appName: 'news',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'onTheSpotCardModule',
+                appName: 'onTheSpotCard',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'plateauAwardsModule',
+                appName: 'plateauAwards',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'plateauAwardsRedeemModule',
+                appName: 'plateauAwards',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'claimModule',
+                appName: 'productClaim',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                },
+                // this has no ModuleView sub class, so define allowed dims here
+                allowedDimensions: [
+                    {w:1,h:1}, // icon-only - smallest
+                    {w:2,h:1}, // icon+title
+                    {w:2,h:2}
+                ]
+            },
+            {
+                name:'publicRecognitionModule',
+                appName: 'publicRecognition',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'purlContributeModule',
+                appName: 'purlContribute',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                },
+                // this has no ModuleView sub class, so define allowed dims here
+                // NOTE: copied from purlRecognitionModule just because
+                allowedDimensions: [
+                    {w:1,h:1}, // icon-only - smallest
+                    {w:2,h:1} // icon+title
+                ]
+            },
+            {
+                name:'purlCelebrateModule',
+                appName: 'purlContribute',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                },
+                allowedDimensions: [
+                    {w:2, h:2},
+                    {w:4, h:2},
+                    {w:4, h:4}
+                ]
+            },
+            {
+                name:'quizModule',
+                appName: 'quiz',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                },
+                // this has no ModuleView sub class, so define allowed dims here
+                allowedDimensions: [
+                    {w:1,h:1}, // icon-only - smallest
+                    {w:2,h:1}, // icon+title
+                    {w:2,h:2}
+                ]
+            },
+            {
+                name:'recognitionModule',
+                appName: 'recognition',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'recognitionModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+
+            // REPORTS - have their own filter except for the first one that can show up elsewhere
+            {
+                name:'reportsModule1',          // REQUIRED If not, blankModule and/or other BAD
+                appName: 'reports',             // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                templateName: 'reportsModule',   // .../tpl/[templateName].html or if not .../tpl/[name].html
+                viewName: 'ReportsModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                reportIndex: 0,
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'4x2', order:1},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'reportsModule2',          // REQUIRED If not, blankModule and/or other BAD
+                appName: 'reports',             // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                templateName: 'reportsModule',   // .../tpl/[templateName].html or if not .../tpl/[name].html
+                viewName: 'ReportsModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                reportIndex: 1,
+                filters:{
+                    'default':{size:'1x1', order:'hidden'},
+                    'home':{size:'1x1', order:'hidden'},
+                    'activities':{size:'2x1', order:'hidden'},
+                    'social':{size:'2x2', order:'hidden'},
+                    'shop':{size:'4x2', order:'hidden'},
+                    'reports':{size:'4x2', order:1},
+                    'all':{size:'4x4', order:'hidden'}
+                }
+            },
+            {
+                name:'reportsModule3',          // REQUIRED If not, blankModule and/or other BAD
+                appName: 'reports',             // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                templateName: 'reportsModule',   // .../tpl/[templateName].html or if not .../tpl/[name].html
+                viewName: 'ReportsModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                reportIndex: 2,
+                filters:{
+                    'default':{size:'1x1', order:'hidden'},
+                    'home':{size:'1x1', order:'hidden'},
+                    'activities':{size:'2x1', order:'hidden'},
+                    'social':{size:'2x2', order:'hidden'},
+                    'shop':{size:'4x2', order:'hidden'},
+                    'reports':{size:'4x2', order:1},
+                    'all':{size:'4x4', order:'hidden'}
+                }
+            },
+            {
+                name:'reportsModule4',          // REQUIRED If not, blankModule and/or other BAD
+                appName: 'reports',             // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                templateName: 'reportsModule',   // .../tpl/[templateName].html or if not .../tpl/[name].html
+                viewName: 'ReportsModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                reportIndex: 3,
+                filters:{
+                    'default':{size:'1x1', order:'hidden'},
+                    'home':{size:'1x1', order:'hidden'},
+                    'activities':{size:'2x1', order:'hidden'},
+                    'social':{size:'2x2', order:'hidden'},
+                    'shop':{size:'4x2', order:'hidden'},
+                    'reports':{size:'4x2', order:1},
+                    'all':{size:'4x4', order:'hidden'}
+                }
+            },
+            {
+                name:'reportsModule5',          // REQUIRED If not, blankModule and/or other BAD
+                appName: 'reports',             // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                templateName: 'reportsModule',   // .../tpl/[templateName].html or if not .../tpl/[name].html
+                viewName: 'ReportsModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                reportIndex: 4,
+                filters:{
+                    'default':{size:'1x1', order:'hidden'},
+                    'home':{size:'1x1', order:'hidden'},
+                    'activities':{size:'2x1', order:'hidden'},
+                    'social':{size:'2x2', order:'hidden'},
+                    'shop':{size:'4x2', order:'hidden'},
+                    'reports':{size:'4x2', order:1},
+                    'all':{size:'4x4', order:'hidden'}
+                }
+            },
+            {
+                name:'allReportsModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'reports',             // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                // templateName: 'allReportsModule',   // .../tpl/[templateName].html or if not .../tpl/[name].html
+                // viewName: 'AllReportsModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'1x1', order:'hidden'},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:1},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'favoriteReportsModule',   // REQUIRED If not, blankModule and/or other BAD
+                appName: 'reports',             // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testModule',   // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'1x1', order:'hidden'},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:1},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'resourceCenterModule',
+                appName: 'resourceCenter',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'purlRecognitionModule',
+                appName: 'recognition',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                },
+                // this has no ModuleView sub class, so define allowed dims here
+                allowedDimensions: [
+                    {w:1,h:1}, // icon-only - smallest
+                    {w:2,h:1} // icon+title
+                ]
+            },
+            /*
+            {
+                name:'theDudeModule',
+                appName: 'theDude',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:'hidden'},
+                    'home':{size:'1x1', order:'hidden'},
+                    'activities':{size:'2x1', order:'hidden'},
+                    'social':{size:'2x2', order:'hidden'},
+                    'shop':{size:'4x2', order:'hidden'},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'all':{size:'4x4', order:'hidden'}
+                }
+            },
+            */
+
+            /*
+             * SSI modules
+             */
+            {
+                name:'SSIParticipantModule',
+                appName: 'ssi',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'SSIManagerModule',
+                appName: 'ssi',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'SSICreatorModule',
+                appName: 'ssi',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'SSICreatorContestsModule',
+                appName: 'ssi',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                }
+            },
+            {
+                name:'tipModule',
+                appName: 'tip',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'1x1', order:1},
+                    'home':{size:'1x1', order:1},
+                    'activities':{size:'2x1', order:1},
+                    'social':{size:'2x2', order:1},
+                    'shop':{size:'4x2', order:1},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'1x1', order:'hidden'},
+                    'all':{size:'4x4', order:1}
+                },
+                // this has no ModuleView sub class, so define allowed dims here
+                allowedDimensions: [
+                    {w:1,h:1}, // icon-only - smallest
+                    {w:2,h:1} // icon+title
+                ]
+            },
+
+            /*
+             * Throwdown modules
+             */
+            {
+                name: 'throwdownMatchModule',
+                appName: 'throwdown',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'4x2', order:1},
+                    'home':{size:'4x2', order:'hidden'},
+                    'activities':{size:'4x2', order:'hidden'},
+                    'social':{size:'4x2', order:'hidden'},
+                    'shop':{size:'4x2', order:'hidden'},
+                    'reports':{size:'4x2', order:'hidden'},
+                    'throwdown':{size:'4x2', order:1},
+                    'all':{size:'4x2', order:1}
+                }
+            },
+            {
+                name: 'throwdownPromoSelectModule',
+                appName: 'throwdown',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'4x2', order:1},
+                    'home':{size:'4x2', order:'hidden'},
+                    'activities':{size:'4x2', order:'hidden'},
+                    'social':{size:'4x2', order:'hidden'},
+                    'shop':{size:'4x2', order:'hidden'},
+                    'reports':{size:'4x2', order:'hidden'},
+                    'throwdown':{size:'2x2', order:2},
+                    'all':{size:'4x2', order:1}
+                }
+            },
+            {
+                name:'smackTalkModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'throwdown',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'2x2', order:1},
+                    'home':{size:'2x2', order:'hidden'},
+                    'activities':{size:'2x2', order:'hidden'},
+                    'social':{size:'2x2', order:'hidden'},
+                    'shop':{size:'2x2', order:'hidden'},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'4x2', order:3},
+                    'all':{size:'2x2', order:1}
+                }
+            },
+            {
+                name: 'throwdownRankingsModule',
+                appName: 'throwdown',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'2x2', order:1},
+                    'home':{size:'2x2', order:'hidden'},
+                    'activities':{size:'2x2', order:'hidden'},
+                    'social':{size:'2x2', order:'hidden'},
+                    'shop':{size:'2x2', order:'hidden'},
+                    'reports':{size:'2x2', order:'hidden'},
+                    'throwdown':{size:'2x2', order:4},
+                    'all':{size:'2x2', order:1}
+                }
+            },
+            {
+                name:'throwdownNewsModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'throwdown',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'2x1', order:1},
+                    'home':{size:'2x1', order:'hidden'},
+                    'activities':{size:'2x1', order:'hidden'},
+                    'social':{size:'2x1', order:'hidden'},
+                    'shop':{size:'2x1', order:'hidden'},
+                    'reports':{size:'2x1', order:'hidden'},
+                    'throwdown':{size:'2x1', order:5},
+                    'all':{size:'2x1', order:1}
+                }
+            },
+            {
+                name:'throwdownTrainingCampModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'throwdown',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'2x1', order:1},
+                    'home':{size:'2x1', order:'hidden'},
+                    'activities':{size:'2x1', order:'hidden'},
+                    'social':{size:'2x1', order:'hidden'},
+                    'shop':{size:'2x1', order:'hidden'},
+                    'reports':{size:'2x1', order:'hidden'},
+                    'throwdown':{size:'2x1', order:6},
+                    'all':{size:'2x1', order:1}
+                }
+            },
+            {
+                name:'throwdownStandingsModule',        // REQUIRED If not, blankModule and/or other BAD
+                appName: 'throwdown',           // core/apps/[appName]/tpl/... or if not core/base/tpl/...
+                //templateName: 'testTplName',  // .../tpl/[templateName].html or if not .../tpl/[name].html
+                //viewName: 'testModule',       // 1-[<V>iewName]View 2-[<N>ame]View 3-ModuleView
+                filters:{
+                    'default':{size:'2x1', order:1},
+                    'home':{size:'2x1', order:'hidden'},
+                    'activities':{size:'2x1', order:'hidden'},
+                    'social':{size:'2x1', order:'hidden'},
+                    'shop':{size:'2x1', order:'hidden'},
+                    'reports':{size:'2x1', order:'hidden'},
+                    'throwdown':{size:'2x1', order:7},
+                    'all':{size:'2x1', order:1}
+                }
+            },
+			{
+                name: 'throwdownAllMatchesModule',
+                appName: 'throwdown',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'4x2', order:1},
+                    'home':{size:'4x2', order:'hidden'},
+                    'activities':{size:'4x2', order:'hidden'},
+                    'social':{size:'4x2', order:'hidden'},
+                    'shop':{size:'4x2', order:'hidden'},
+                    'reports':{size:'4x2', order:'hidden'},
+                    'throwdown':{size:'4x2', order:1},
+                    'all':{size:'4x2', order:1}
+                }
+            },
+            {
+                name: 'workHappierPaxModule',
+                appName: 'workHappier',//name of the app
+                //templateName: 'testModule',//use this for template lookup instead of name
+                //viewName: 'testModule',//override name for view object
+                filters:{
+                    'default':{size:'4x2', order:1},
+                    'home':{size:'4x2', order:'hidden'},
+                    'activities':{size:'4x2', order:'hidden'},
+                    'social':{size:'4x2', order:'hidden'},
+                    'shop':{size:'4x2', order:'hidden'},
+                    'reports':{size:'4x2', order:'hidden'},
+                    'throwdown':{size:'4x2', order:1},
+                    'all':{size:'4x2', order:1}
+                }
+            }
+
+
+        ]; // allModules
+
+
+        // FE Development only
+        if(isSubset) {
+            hapv.doDevMode(allModules);
+        } else {
+
+            //ADD MODULES
+            hapv.homeApp.moduleCollection.reset(allModules);
+        }
+
+
+
+    });
+
+</script>

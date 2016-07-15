@@ -1,0 +1,145 @@
+<?php usleep(50000); ?>
+{
+    "messages":[],
+    "contestJson": {
+        "nextUrl": "ajax/ssiContestEditSave.json",
+        "ssiContestClientState": "state0",
+        "id": 123,
+        "measureType": "currency",
+        "currencyTypes": [
+            { "id": "usd", "symbol": "$", "name": "US Dollar (USD)" },
+            { "id": "eur", "symbol": "€", "name": "Euro (EUR)" },
+            { "id": "cny", "symbol": "¥", "name": "Chinese Yuan (CNY)"}
+        ],
+        "currencyTypeId": "eur",
+        "optionShowPayoutTypeOther": true,
+        "optionShowPayoutTypePoints": true,
+        "payoutType": "other",
+        "otherPayoutTypeId": "eur",
+        "includeStackRanking": true,
+        "participantCount": 20,
+
+        "activities": [
+            {
+                "id": 123,
+                "description": "Widgets1",
+                "forEvery": 1,
+                "willEarn": 2300,
+                "valueDescription": "a $50 gift card",
+                "minQualifier": 3,
+                "individualPayoutCap": 2300,
+                "maxPayout": 460000,
+                "maxPotential": 2000,
+                "goal": 200
+            },
+            {
+                "id": 1231,
+                "description": "Widgets2",
+                "forEvery": 1,
+                "willEarn": 2300,
+                "valueDescription": "a $50 gift card",
+                "minQualifier": 3,
+                "individualPayoutCap": 2300,
+                "maxPayout": 460000,
+                "maxPotential": 2000,
+                "goal": 200
+            },
+            {
+                "id": 1232,
+                "description": "Widgets3",
+                "forEvery": 1,
+                "willEarn": 2300,
+                "valueDescription": "a $50 gift card",
+                "minQualifier": 3,
+                "individualPayoutCap": 2300,
+                "maxPayout": 460000,
+                "maxPotential": 2000,
+                "goal": 200
+            },
+            {
+                "id": 1233,
+                "description": "Widgets4",
+                "forEvery": 1,
+                "willEarn": 2300,
+                "valueDescription": "a $50 gift card",
+                "minQualifier": 3,
+                "individualPayoutCap": 2300,
+                "maxPayout": 460000,
+                "maxPotential": 2000,
+                "goal": 200
+            },
+            {
+                "id": 1234,
+                "description": "Widgets5",
+                "forEvery": 1,
+                "willEarn": 2300,
+                "valueDescription": "a $50 gift card",
+                "minQualifier": 3,
+                "individualPayoutCap": 2300,
+                "maxPayout": 460000,
+                "maxPotential": 2000,
+                "goal": 200
+            },
+            {
+                "id": 1235,
+                "description": "Widgets6",
+                "forEvery": 1,
+                "willEarn": 2300,
+                "valueDescription": "a $50 gift card",
+                "minQualifier": 3,
+                "individualPayoutCap": 2300,
+                "maxPayout": 460000,
+                "maxPotential": 2000,
+                "goal": 200
+            },
+            {
+                "id": 1236,
+                "description": "Widgets7",
+                "forEvery": 1,
+                "willEarn": 2300,
+                "valueDescription": "a $50 gift card",
+                "minQualifier": 3,
+                "individualPayoutCap": 2300,
+                "maxPayout": 460000,
+                "maxPotential": 2000,
+                "goal": 200
+            },
+            {
+                "id": 1237,
+                "description": "Widgets8",
+                "forEvery": 1,
+                "willEarn": 2300,
+                "valueDescription": "a $50 gift card",
+                "minQualifier": 3,
+                "individualPayoutCap": 2300,
+                "maxPayout": 460000,
+                "maxPotential": 2000,
+                "goal": 200
+            },
+            {
+                "id": 1238,
+                "description": "Widgets9",
+                "forEvery": 1,
+                "willEarn": 2300,
+                "valueDescription": "a $50 gift card",
+                "minQualifier": 3,
+                "individualPayoutCap": 2300,
+                "maxPayout": 460000,
+                "maxPotential": 2000,
+                "goal": 200
+            },
+            {
+                "id": 1239,
+                "description": "Widgets10",
+                "forEvery": 1,
+                "willEarn": 2300,
+                "valueDescription": "a $50 gift card",
+                "minQualifier": 3,
+                "individualPayoutCap": 2300,
+                "maxPayout": 460000,
+                "maxPotential": 2000,
+                "goal": 200
+            }
+        ]
+    }
+}

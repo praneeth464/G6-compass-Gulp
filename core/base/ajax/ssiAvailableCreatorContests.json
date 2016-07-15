@@ -1,0 +1,37 @@
+<?php
+sleep(1);
+?>{
+    "language": "en_US",
+    "contestGuideUrl": "#URL_TO_CONTEST_GUIDE_PDF",
+    "contestTypes": [
+        {
+            "contestType": "objectives",
+            "contestTypeName": "Objectives",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro nostrum itaque nihil eligendi autem vitae totam? Reprehenderit vel, ad a!"
+        },
+        {
+            "contestType": "stepItUp",
+            "contestTypeName": "Step It Up",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi doloremque fugiat rerum, corporis, saepe ipsum accusantium, dolorem totam perferendis, laborum architecto quod fugit? Provident, delectus, sed. Velit illum tempora, debitis adipisci expedita veniam sint, veritatis maxime odio voluptatibus aspernatur natus?"
+        },
+        {
+            "contestType": "doThisGetThat",
+            "contestTypeName": "Do This, Get That",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit eius delectus quibusdam consequuntur quas rerum corporis, eveniet officia deleniti itaque veritatis cumque ipsa facilis perspiciatis praesentium! Deleniti quia aperiam, qui tempore. Laborum, facere quae numquam repellat eaque, dicta maiores laudantium repellendus labore perspiciatis, ratione ea et corporis unde voluptatum hic?"
+        },
+        {
+            "contestType": "stackRank",
+            "contestTypeName": "Stack Rank",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus ipsum adipisci debitis commodi atque unde, voluptas dignissimos libero amet minima."
+        },
+        {
+            "contestType": "awardThemNow",
+            "contestTypeName": "Award Them Now",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non excepturi rem sapiente distinctio ut dolores porro itaque fugit, dicta tenetur magnam laboriosam deleniti iste quam, dolore provident. Beatae harum vero vel neque ut reiciendis, quia necessitatibus. Dolorem hic eaque et autem voluptatem inventore. Laborum soluta vel, nihil veniam libero laboriosam eius animi ullam laudantium dicta, adipisci maiores fugit voluptate obcaecati aliquid non error dolorum voluptas dolorem, dolor, sint repudiandae alias excepturi molestias! In ducimus obcaecati itaque dignissimos laborum quod distinctio delectus. Fugit dignissimos ipsam, culpa consectetur laborum assumenda voluptates sapiente voluptatem deleniti consequuntur blanditiis voluptate commodi nostrum quidem vitae, provident."
+        }
+    ]
+}
+
+
+
+

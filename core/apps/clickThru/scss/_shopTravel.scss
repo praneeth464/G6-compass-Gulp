@@ -1,0 +1,73 @@
+// App-specific variables
+// =========================
+$shopTravel_bgColor: $g5ModuleBgColor !default;
+$shopTravel_gradType: $g5ModuleGradType !default;
+$shopTravel_gradMeta: $g5ModuleGradMeta !default;
+$shopTravel_gradStops: $g5ModuleGradStops !default;
+
+$shopTravel_iconColor: $g5ModuleIconColor !default;
+$shopTravel_titleColor: $g5ModuleTitleColor !default;
+$shopTravel_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$shopTravel_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$shopTravel_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$shopTravel_textColor: false !default;
+$shopTravel_h3FontFamily: false !default;
+$shopTravel_pFontFamily: false !default;
+$shopTravel_visitAppBtnColor: false !default;
+$shopTravel_visitAppBtnBorderColor: false !default;
+$shopTravel_imgUrlPath: false !default;
+$shopTravel_imgUrl2x2: "clickThru/shopTravel_2x2.jpg" !default;
+$shopTravel_imgUrl4x2: "clickThru/shopTravel_4x2.jpg" !default;
+$shopTravel_imgUrl4x4: "clickThru/shopTravel_4x4.jpg" !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- MODULE STYLES ----- */
+.module.clickThru {
+
+    &.shopTravel {
+
+        .module-liner {
+            @include module_moduleLinerBackground(
+                $bgColor: $shopTravel_bgColor,
+                $gradType: $shopTravel_gradType,
+                $gradMeta: $shopTravel_gradMeta,
+                $gradStops: $shopTravel_gradStops
+            );
+        }
+
+        @include clickThruSkinBkgViews(
+            $textColor: $shopTravel_textColor,
+            $h3FontFamily: $shopTravel_h3FontFamily,
+            $pFontFamily: $shopTravel_pFontFamily,
+            $visitAppBtnColor: $shopTravel_visitAppBtnColor,
+            $visitAppBtnBorderColor: $shopTravel_visitAppBtnBorderColor,
+            $imgUrlPath: $shopTravel_imgUrlPath,
+            $imgUrl2x2: $shopTravel_imgUrl2x2,
+            $imgUrl4x2: $shopTravel_imgUrl4x2,
+            $imgUrl4x4: $shopTravel_imgUrl4x4
+        );
+
+        .title-icon-view {
+            @include module_titleIconView(
+                $iconColor: $shopTravel_iconColor,
+                $titleColor: $shopTravel_titleColor,
+                $titleFontFamily: $shopTravel_titleFontFamily
+            );
+
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                @include g5HomeAppIconBoxReflect($adjust : -60px);
+            }
+        }
+
+        @include module_titleIconViewFontSizesWeights($shopTravel_titleFontSizes, $shopTravel_titleFontWeights);
+
+    } /* /.shopTravel */
+
+} /* /.module.clickThru */

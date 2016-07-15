@@ -1,0 +1,244 @@
+<div class="module-liner">
+
+    <div class="wide-view">
+
+    </div>
+
+    <!--
+    NOTE TO JAVA: the contents of the following sub template is found in matchDetailsInclude.jsp
+    -->
+
+    <!--subTpl.throwdownMatchDetailsTpl=
+
+    <div class="td-match-details-wide">
+
+        <div class="row">
+
+            <div class="td-match-primary-team">
+                <div class="td-match-profile-pic">
+                    <div class="avatarContainer">
+                        <div class="avatarContainerBorder {{#if promotionEnded}}{{#if primaryTeam.isWinner}}winner{{/if}}{{/if}}">
+                            <a href="{{primaryTeam.profileUrl}}"><img src="{{ primaryTeam.avatarUrl }}" alt="" class="avatar"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="td-match-stats-info">
+                    <p class="td-match-rank">
+                        <a href="layout.html?tplPath=apps/throwdown/tpl/&tpl=throwdownRankingsPage.html">
+                            RANK
+                            <span>
+                            {{#if primaryTeam.rank}}
+                                {{ primaryTeam.rank }}
+                            {{else}}
+                                <i class="icon-ban-circle"></i>
+                            {{/if}}
+                            </span>
+                        </a>
+                    </p>
+                    <ul class="td-match-wl-count">
+                        <li>W<span>{{ primaryTeam.stats.wins }}</span></li>
+                        <li>L<span>{{ primaryTeam.stats.losses }}</span></li>
+                        <li>D<span>{{ primaryTeam.stats.ties }}</span></li>
+                    </ul>
+                    {{#if primaryTeam.badgeInfos.0.badges}}
+                    <ul class="td-match-badge-list">
+                        {{#each primaryTeam.badgeInfos.0.badges}}
+                        <li><img src="{{ img }}" alt="{{ name }}"><span>{{ displayCount earnCount }}</span></li>
+                        {{/each}}
+                    </ul>
+                    {{/if}}
+                </div>
+            </div>
+
+            <div class="td-match-vs">vs <span class="reflect">vs </span></div>
+
+            <div class="td-match-secondary-team">
+                <div class="td-match-stats-info">
+                    <p class="td-match-rank">
+                        <a href="layout.html?tplPath=apps/throwdown/tpl/&tpl=throwdownRankingsPage.html">
+                            RANK
+                            <span>
+                                {{#if secondaryTeam.rank}}
+                                {{ secondaryTeam.rank }}
+                            {{else}}
+                                <i class="icon-ban-circle"></i>
+                            {{/if}}
+                            </span>
+                        </a>
+                    </p>
+                    <ul class="td-match-wl-count">
+                        <li>W<span>{{ secondaryTeam.stats.wins }}</span></li>
+                        <li>L<span>{{ secondaryTeam.stats.losses }}</span></li>
+                        <li>D<span>{{ secondaryTeam.stats.ties }}</span></li>
+                    </ul>
+                    {{#if secondaryTeam.badgeInfos.0.badges}}
+                    <ul class="td-match-badge-list">
+                        {{#each secondaryTeam.badgeInfos.0.badges}}
+                        <li><img src="{{ img }}" alt="{{ name }}"><span>{{ displayCount earnCount }}</span></li>
+                        {{/each}}
+                    </ul>
+                    {{/if}}
+                </div>
+                <div class="td-match-profile-pic">
+                    <div class="avatarContainer">
+                        <div class="avatarContainerBorder {{#if promotionEnded}}{{#if secondaryTeam.isWinner}}winner{{/if}}{{/if}}">
+                            <a href="{{secondaryTeam.profileUrl}}"><img src="{{ secondaryTeam.avatarUrl }}" alt="" class="avatar"></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+
+                <div class="td-match-primary-units">
+                    <p class="td-match-participant-name">{{ primaryTeam.firstName }} {{ primaryTeam.lastName }}</p>
+                    <p class="td-match-participant-units">
+                        {{#if primaryTeam.isMyTeam}}
+                        {{comma primaryTeam.currentProgress}}
+                        {{else}}
+                        {{#if displayProgress}}
+                        {{comma primaryTeam.currentProgress}}
+                        {{else}}
+                        {{primaryTeam.currentProgressText}}
+                        {{/if}}
+                        {{/if}}
+                    </p>
+                    {{#if promotionEnded}}
+                        {{#if primaryTeam.isWinner}}
+                            <p class="td-match-winner">WINNER!</p>
+                        {{/if}}
+                    {{else}}
+                    {{#unless displayProgress}}
+                        {{#if primaryTeam.isMyTeam}}
+                            <span class="td-progress-text">{{primaryTeam.currentProgressText}}</span>
+                        {{/if}}
+                    {{/unless}}
+                    {{/if}}
+                </div>
+
+                <div class="td-match-round-info">
+                    <p>ROUND <span class="td-match-round-current">{{ roundNumber }}</span> OF <span>{{ numberOfRounds }}</span></p>
+                    <a href="{{ matchUrl }}" class="btn td-match-button">Smack Talk Match</a>
+                </div>
+
+                <div class="td-match-secondary-units">
+                    <p class="td-match-participant-name">{{ secondaryTeam.firstName }} {{ secondaryTeam.lastName }}</p>
+                    <p class="td-match-participant-units">
+                        {{#if displayProgress}}
+                        {{comma secondaryTeam.currentProgress}}
+                        {{else}}
+                        {{secondaryTeam.currentProgressText}}
+                        {{/if}}
+                    </p>
+                    {{#if promotionEnded}}
+                        {{#if secondaryTeam.isWinner}}
+                            <p class="td-match-winner">WINNER!</p>
+                        {{/if}}
+                    {{/if}}
+                </div>
+
+            </div>
+
+            <p class="td-fine-print">{{promotionOverview}}  From {{startDate}} to {{progressEndDate}}</p>
+    </div>
+
+    <div class="td-match-details-condensed">
+
+        <div class="td-match-primary-team">
+            <div class="td-match-profile-pic">
+                <div class="avatarContainer">
+                    <div class="avatarContainerBorder {{#if promotionEnded}}{{#if primaryTeam.isWinner}}winner{{/if}}{{/if}}">
+                        <img src="{{ primaryTeam.avatarUrl }}" alt="" class="avatar">
+                    </div>
+                </div>
+            </div>
+            <div class="td-match-stats-info">
+                <p class="td-match-participant-name">{{ primaryTeam.firstName }} {{ primaryTeam.lastName }}</p>
+                <p class="td-match-rank">
+                    <a href="layout.html?tplPath=apps/throwdown/tpl/&tpl=throwdownRankingsPage.html">
+                        RANK
+                        <span>
+                        {{#if primaryTeam.rank}}
+                            {{ primaryTeam.rank }}
+                        {{else}}
+                            <i class="icon-ban-circle"></i>
+                        {{/if}}
+                        </span>
+                    </a>
+                </p>
+                <p class="td-match-participant-units">
+                    {{#if primaryTeam.isMyTeam}}
+                    {{comma primaryTeam.currentProgress}}
+                    {{else}}
+                    {{#if displayProgress}}
+                    {{comma primaryTeam.currentProgress}}
+                    {{else}}
+                    {{primaryTeam.currentProgressText}}
+                    {{/if}}
+                    {{/if}}
+                </p>
+                {{#if promotionEnded}}
+                    {{#if primaryTeam.isWinner}}
+                        <p class="td-match-winner">WINNER!</p>
+                    {{/if}}
+                {{else}}
+                {{#unless displayProgress}}
+                    {{#if primaryTeam.isMyTeam}}
+                        <span class="td-progress-text">{{primaryTeam.currentProgressText}}</span>
+                    {{/if}}
+                {{/unless}}
+                {{/if}}
+            </div>
+        </div>
+
+        <div class="td-match-vs">vs</div>
+
+        <div class="td-match-secondary-team">
+            <div class="td-match-profile-pic">
+                <div class="avatarContainer">
+                    <div class="avatarContainerBorder {{#if promotionEnded}}{{#if secondaryTeam.isWinner}}winner{{/if}}{{/if}}">
+                        <img src="{{ secondaryTeam.avatarUrl }}" alt="" class="avatar">
+                    </div>
+                </div>
+
+            </div>
+            <div class="td-match-stats-info">
+                <p class="td-match-participant-name">{{ secondaryTeam.firstName }} {{ secondaryTeam.lastName }}</p>
+                <p class="td-match-rank">
+                    <a href="layout.html?tplPath=apps/throwdown/tpl/&tpl=throwdownRankingsPage.html">
+                        RANK
+                        <span>
+                            {{#if secondaryTeam.rank}}
+                            {{ secondaryTeam.rank }}
+                        {{else}}
+                            <i class="icon-ban-circle"></i>
+                        {{/if}}
+                        </span>
+                    </a>
+                </p>
+                <p class="td-match-participant-units">
+                    {{#if displayProgress}}
+                    {{comma secondaryTeam.currentProgress}}
+                    {{else}}
+                    {{secondaryTeam.currentProgressText}}
+                    {{/if}}
+                </p>
+                {{#if promotionEnded}}
+                    {{#if secondaryTeam.isWinner}}
+                        <p class="td-match-winner">WINNER!</p>
+                    {{/if}}
+                {{/if}}
+            </div>
+
+        </div>
+
+        <div class="td-match-round-info">
+            <p>ROUND <span class="td-match-round-current">{{ roundNumber }}</span> OF <span>{{ numberOfRounds }}</span></p>
+            <a href="#" class="btn td-match-button">Smack Talk Match</a>
+        </div>
+    </div>
+
+    subTpl-->
+
+</div>

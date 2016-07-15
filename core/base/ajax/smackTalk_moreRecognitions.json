@@ -1,0 +1,121 @@
+{
+	"messages":[],
+
+	"smackTalkSets":[
+		{
+			"nameId":"global",
+			"name":"Global",
+			"desc":"Company wide smackTalks",
+			"totalCount":45,
+			"smackTalks":[
+				{
+					"id":12034,
+					"smackTalkPageDetailUrl":"layout.html?tpl=smackTalkPageDetail&tplPath=apps/throwdown/tpl/&promotionId=12034",
+					"player1":
+						{
+							"id":45,
+							"firstName":"Zedrick",
+							"lastName":"Johnson",
+							"avatarUrl":"img/_samples/x-profile-pic2.jpg"
+					},
+                                        "player2": {
+                                                        "id":12,
+							"firstName":"Sethly",
+							"lastName":"Smart",
+							"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+                                        },
+					"commenterMain":{
+						"id":102,
+						"firstName":"John",
+						"lastName":"Smith",
+						"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+					},
+					"comment":"MOAR MOAR MOAR. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+					"numLikers":12,
+					"isLiked":true,
+					"rate":1.0,
+					"time": "2 days ago",
+					"comments":[
+						{
+							"id":23,
+							"commenter":{
+								"id":12,
+								"firstName":"Sethly",
+								"lastName":"Smart",
+								"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+							},
+							"comment":"Some comment loremitty ipsummy. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+						},
+						{
+							"id":833,
+							"commenter":{
+								"id":12,
+								"firstName":"Robert",
+								"lastName":"Jordan",
+								"avatarUrl":"img/_samples/x-profile-pic2.jpg"
+							},
+							"comment":"ANOTHER comment loremitty ipsummy. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+						}
+					]
+				},
+
+				{
+					"id":22034,
+					"smackTalkPageDetailUrl":"layout.html?tpl=smackTalkPageDetail&tplPath=apps/throwdown/tpl/&promotionId=22034",
+					"player1":
+						{
+							"id":45,
+							"firstName":"Biff",
+							"lastName":"Hooper",
+							"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+                                        },
+                                        "player2": {
+                                                        "id":12,
+							"firstName":"Sethly",
+							"lastName":"Smart",
+							"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+                                        },
+					"avatarUrl":"img/_samples/x-profile-pic1.jpg",
+					"commenterMain":{
+						"id":102,
+						"firstName":"Hella",
+						"lastName":"Rad",
+						"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+					},
+					"comment":"MOAR lorem ipsum text. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+					"numLikers":12,
+					"time":"15 minutes ago",
+					"comments":[
+						{
+							"id":23,
+							"commenter":{
+								"id":102,
+								"firstName":"Henry",
+								"lastName":"Kissinger",
+								"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+							},
+							"comment":"OH HOW NICE!!! Kisses! Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore."
+						}
+					]
+				}
+
+			]
+		},
+		{
+			"nameId":"team",
+			"name":"Team",
+			"desc":"Recognitions within my team/org unit",
+			"totalCount":10,
+			"smackTalks":[]
+		},
+
+		{
+			"nameId":"mine",
+			"name":"Mine",
+			"desc":"Recognitions I've received",
+			"totalCount":0,
+			"smackTalks":[]
+		}
+	]
+
+}

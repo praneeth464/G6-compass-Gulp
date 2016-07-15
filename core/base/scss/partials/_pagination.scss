@@ -1,0 +1,73 @@
+// Partial-specific variables
+// =========================
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+// adjust vertical spacing between pagination and tables
+.pagination ~ table,
+table ~ .pagination,
+.pagination ~ .table,
+.table ~ .pagination {
+    margin-top: -1 * $baseLineHeight / 2;
+}
+
+// when pagination breaks onto a second line, we need a left border to remain visible. That's what all these rules eventually do...
+.pagination {
+    height: auto; // allow the container to take as many vertical lines as it needs
+    @include clearfix();
+}
+.pagination ul {
+    vertical-align: middle; // get the UL off the baseline and centered in the container
+    margin-right: 1px; // push the pagination widget away from the right edge by 1px
+    @include box-shadow(none);
+}
+.pagination ul > li > a,
+.pagination ul > li > span {
+    margin-right: -1px; // pulls the entire widget back to the right 1px, also pulls each item over the top of the restored 1px left border
+    margin-bottom: 1px; // when it breaks onto a second line, we need some vertical space between sections
+    border-left-width: 1px; // restore the left border
+}
+.pagination ul > .first [class^="icon-"],
+.pagination ul > .first [class*=" icon-"],
+.pagination ul > .last [class^="icon-"],
+.pagination ul > .last [class*=" icon-"] {
+    width: auto;
+}
+
+.pagination .counts {
+    display: inline;
+    float: left;
+    vertical-align: middle;
+    line-height: $baseLineHeight + 4px + 4px + 1px + 1px; // lifted from bootstrap/pagination .pagination ul > li > a
+
+    .start, .end, .total {
+        font-weight: bold;
+    }
+}
+
+@media (max-width: 567px) { // just under the iPhone 5 width of 568px
+    .pagination {
+        text-align: center;
+    }
+    .pagination ul > li,
+    .pagination ul > .prev span,
+    .pagination ul > .next span {
+        display: none;
+    }
+    .pagination ul > .first,
+    .pagination ul > .prev,
+    .pagination ul > .active,
+    .pagination ul > .next,
+    .pagination ul > .last {
+        display: inline;
+    }
+
+    .pagination .counts {
+        float: none;
+        display: block;
+    }
+}

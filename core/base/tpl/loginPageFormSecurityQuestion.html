@@ -1,0 +1,33 @@
+<form id="loginPageFormSecurityQuestion" action="tpl/loginPageFormChangePass.html" method="POST" class="form-horizontal">
+    <input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="f56aa4802dd6e974e4e0af1b8760bda4">
+    <input type="hidden" name="method" value="forgotPwdAnswerValidate">
+
+    <fieldset id="securityQuestionFieldset">
+        <div class="control-group">
+            <label class="control-label">Login ID</label>
+            <div class="controls">
+                <span class="input naked-input"><strong>Some value here</strong></span>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Secret Question</label>
+            <div class="controls">
+                <span class="input naked-input input-auto-width"><strong>What is your favorite ice cream flavor?</strong></span>
+            </div>
+        </div>
+
+        <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter your secret answer"}'>
+            <label class="control-label" for="secretAnswer">Secret Answer</label>
+            <div class="controls">
+                <input type="text" name="secretAnswer" id="secretAnswer">
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset class="form-actions">
+        <button type="submit" id="securityQuestionFormSubmit" name="button" value="securityQuestionFormSubmit" formaction="ajax/loginPageFormSecurityQuestionResponse.json" class="btn btn-primary">Submit</button>
+        <a href="?tplPath=base/tpl/&amp;tpl=loginPage.html" id="securityQuestionFormCancel" class="btn">Cancel</a>
+    </fieldset>
+
+</form>

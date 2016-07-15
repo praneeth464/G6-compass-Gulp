@@ -1,0 +1,73 @@
+// App-specific variables
+// =========================
+$shopDigitalDownloads_bgColor: $g5ModuleBgColor !default;
+$shopDigitalDownloads_gradType: $g5ModuleGradType !default;
+$shopDigitalDownloads_gradMeta: $g5ModuleGradMeta !default;
+$shopDigitalDownloads_gradStops: $g5ModuleGradStops !default;
+
+$shopDigitalDownloads_iconColor: $g5ModuleIconColor !default;
+$shopDigitalDownloads_titleColor: $g5ModuleTitleColor !default;
+$shopDigitalDownloads_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$shopDigitalDownloads_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$shopDigitalDownloads_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$shopDigitalDownloads_textColor: false !default;
+$shopDigitalDownloads_h3FontFamily: false !default;
+$shopDigitalDownloads_pFontFamily: false !default;
+$shopDigitalDownloads_visitAppBtnColor: false !default;
+$shopDigitalDownloads_visitAppBtnBorderColor: false !default;
+$shopDigitalDownloads_imgUrlPath: false !default;
+$shopDigitalDownloads_imgUrl2x2: "clickThru/shopDigitalDownloads_2x2.jpg" !default;
+$shopDigitalDownloads_imgUrl4x2: "clickThru/shopDigitalDownloads_4x2.jpg" !default;
+$shopDigitalDownloads_imgUrl4x4: "clickThru/shopDigitalDownloads_4x4.jpg" !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- MODULE STYLES ----- */
+.module.clickThru {
+
+    &.shopDigitalDownloads {
+
+        .module-liner {
+            @include module_moduleLinerBackground(
+                $bgColor: $shopDigitalDownloads_bgColor,
+                $gradType: $shopDigitalDownloads_gradType,
+                $gradMeta: $shopDigitalDownloads_gradMeta,
+                $gradStops: $shopDigitalDownloads_gradStops
+            );
+        }
+
+        @include clickThruSkinBkgViews(
+            $textColor: $shopDigitalDownloads_textColor,
+            $h3FontFamily: $shopDigitalDownloads_h3FontFamily,
+            $pFontFamily: $shopDigitalDownloads_pFontFamily,
+            $visitAppBtnColor: $shopDigitalDownloads_visitAppBtnColor,
+            $visitAppBtnBorderColor: $shopDigitalDownloads_visitAppBtnBorderColor,
+            $imgUrlPath: $shopDigitalDownloads_imgUrlPath,
+            $imgUrl2x2: $shopDigitalDownloads_imgUrl2x2,
+            $imgUrl4x2: $shopDigitalDownloads_imgUrl4x2,
+            $imgUrl4x4: $shopDigitalDownloads_imgUrl4x4
+        );
+
+        .title-icon-view {
+            @include module_titleIconView(
+                $iconColor: $shopDigitalDownloads_iconColor,
+                $titleColor: $shopDigitalDownloads_titleColor,
+                $titleFontFamily: $shopDigitalDownloads_titleFontFamily
+            );
+
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                @include g5HomeAppIconBoxReflect($adjust : -63px);
+            }
+        }
+
+        @include module_titleIconViewFontSizesWeights($shopDigitalDownloads_titleFontSizes, $shopDigitalDownloads_titleFontWeights);
+
+    } /* /.shopDigitalDownloads */
+
+} /* /.module.clickThru */

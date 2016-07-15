@@ -1,0 +1,31 @@
+{
+	"messages":[
+		{
+		"type":"success",
+		"name":"Certificate Success",
+		"text":"Some text explaining the nature of the success."
+		},
+
+		{
+		"type":"dataUpdate",
+		"name":"participantProfile",
+		"data":{
+			"points":27876,
+			"numMessages":12
+			}
+		},
+
+		{
+		"type":"serverCommand",
+		"command":"modal",
+		"name":"Sever Command Modal",
+		"text":"Modal triggered by JSON<br><b>message.type = serverCommand</b> <br> <b>message.command = modal</b><br><br>REMOVAL - delete this message from <i>ajax/onTheSpot_cert_success.json</i>" 
+		},
+
+		{
+		"type":"serverCommand",
+		"command":"javascript",
+		"javascript":"alert(\"I am from a JSON serverCommand where \\n command=javascript \\n please don\\'t abuse me \\n REMOVAL - delete this message from ajax/onTheSpot_cert_success.json \");"
+		}
+	]
+}

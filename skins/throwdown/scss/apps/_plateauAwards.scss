@@ -1,0 +1,76 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $plateauAwards_bgColor: ;
+// $plateauAwards_gradType: ;
+// $plateauAwards_gradMeta: ;
+// $plateauAwards_gradStops: ;
+
+// $plateauAwards_iconColor: ;
+// $plateauAwards_titleColor: ;
+// $plateauAwards_titleFontFamily: ;
+// $plateauAwards_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $plateauAwards_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+// $plateauAwards_cycleDotWidth: ;
+// $plateauAwards_cycleDotBkg: ;
+// $plateauAwards_cycleDotBorder: ;
+// $plateauAwards_cycleDotBkgHover: ;
+// $plateauAwards_cycleDotBorderHover: ;
+// $plateauAwards_cycleDotBkgActive: ;
+// $plateauAwards_cycleDotBorderActive: ;
+// $plateauAwards_cycleDotBorderRadius: ;
+
+// $plateauAwards_textColor: ;
+// $plateauAwards_textFontFamily: ;
+// $plateauAwards_carouselFontFullString: ;
+// $plateauAwards_carouselItemCaptionFontFullString: ;
+
+// note: the drawer uses the container-splitter class from _pages.scss, so unless explicitly set to something other than false the nubbin color will match $pages_splitterBorderTopBottomColor if there is a border and $pages_splitterBgColor if there isn't
+// $plateauAwards_pageDrawerNubbinSize: ;
+// $plateauAwards_pageDrawerNubbinColor: ;
+
+
+//Redeem
+// $plateauAwardsRedeemSingleModule_bgColor: ;
+// $plateauAwardsRedeemSingleModule_gradType: ;
+// $plateauAwardsRedeemSingleModule_gradMeta: ;
+// $plateauAwardsRedeemSingleModule_gradStops: ;
+// $plateauAwardsRedeemSingleModule_ImgUrlPath: ; // uses $appImagesPath by default. change to "false" or some other path to use the skin img folder
+// $plateauAwardsRedeemSingleModule_ImgUrl2x2: ;
+
+// $plateauAwardsRedeemMultiModule_bgColor: ;
+// $plateauAwardsRedeemMultiModule_gradType: ;
+// $plateauAwardsRedeemMultiModule_gradMeta: ;
+// $plateauAwardsRedeemMultiModule_gradStops: ;
+// $plateauAwardsRedeemMultiModule_ImgUrlPath: ; // uses $appImagesPath by default. change to "false" or some other path to use the skin img folder
+// $plateauAwardsRedeemMultiModule_ImgUrl2x2: ;
+
+// $plateauAwardsRedeemSingleHeader_fontColor: ;
+// $plateauAwardsRedeemSingle_fontFamily: ;
+// $plateauAwardsRedeemModule_numberColor: ;
+
+// $plateauAwardsRedeemMultiHeader_fontColor: #06547f;
+// $plateauAwardsRedeemMultiList_bgColorTop: #0876b2;
+// $plateauAwardsRedeemMultiList_bgColorBottom: #11abff;
+// $plateauAwardsRedeemMultiList_activeBgColor: #303030;
+// $plateauAwardsRedeemMultiList_borderColor: #a5ddfc;
+
+// $plateauAwardsRedeemMulti_countdownWeeksColor: ;
+// $plateauAwardsRedeemMulti_countdownDaysColor: ;
+
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "plateauAwards/scss/plateauAwards";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

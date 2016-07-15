@@ -1,0 +1,245 @@
+@import "partials/variables";
+
+// Partial-specific variables
+// =========================
+$fontsUrlPath: false !default;
+
+// special font-files function to make use of the path variable. Use this instead of the Compass font-files() function.
+@function font-files-safe(
+    $fonts,
+    $path: false
+) {
+    $return: null;
+    @each $font in $fonts {
+        @if $path {
+            $return: $return, url($path + nth($font, 1)) format(nth($font, 2));
+        }
+        @else {
+            $return: $return, font-url(nth($font, 1)) format(nth($font, 2));
+        }
+    }
+    @return $return;
+}
+
+// borrowed this mixing from the fancy compass font-face tool found here: @import "compass/css3/font-face";
+// edited it to support altered font paths
+@mixin font-face(
+    $name,
+    $font-files,
+    $eot: false,
+    $weight: false,
+    $style: false,
+    $path: false
+) {
+    $iefont: unquote("#{$eot}?#iefix");
+    @font-face {
+        font-family: quote($name);
+        @if $eot {
+            @if $path {
+                src: url($path+$eot);
+                $font-files: url($path+$iefont) unquote("format('eot')"), $font-files;
+            }
+            @else {
+                src: font-url($eot);
+                $font-files: font-url($iefont) unquote("format('eot')"), $font-files;
+            }
+        }
+        src: $font-files;
+        @if $weight {
+            font-weight: $weight;
+        }
+        @if $style {
+            font-style: $style;
+        }
+    }
+}
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+// If there are any custom @font-face fonts, put the rules for them here using the code block below.
+// Note: For brevity, you may leave off the argument names ($name, $font-files, etc) provided all arguments are included in the correct order
+// @include font-face(
+//     $name: 'FontAwesome',
+//     $font-files: font-files-safe(
+//             $fonts: ("fontawesome-webfont.woff" 'woff',
+//                 "fontawesome-webfont.ttf" 'truetype',
+//                 "fontawesome-webfont.svg#FontAwesome" 'svg'),
+//             $path: $fontsUrlPath
+//         ),
+//     $eot: 'fontawesome-webfont.eot',
+//     $weight: normal,
+//     $style: normal,
+//     $path: $fontsUrlPath);
+
+
+@include font-face(
+    'FontAwesome',
+    font-files-safe(
+        ("fontawesome-webfont.woff" 'woff',
+         "fontawesome-webfont.ttf" 'truetype',
+         "fontawesome-webfont.svg#FontAwesome" 'svg'),
+        $fontsUrlPath
+    ),
+    'fontawesome-webfont.eot',
+    normal,
+    normal,
+    $fontsUrlPath);
+
+@include font-face(
+    'G5Fonticons',
+    font-files-safe(
+        ("g5-fonticons-webfont.woff" 'woff',
+         "g5-fonticons-webfont.ttf" 'truetype',
+         "g5-fonticons-webfont.svg#G5Fonticons" 'svg'),
+        $fontsUrlPath
+    ),
+    'g5-fonticons-webfont.eot',
+    normal,
+    normal,
+    $fontsUrlPath);
+
+// normal weight
+@include font-face(
+    'din-condensed',
+    font-files-safe(
+        ("din-condensed-regular-webfont.woff" 'woff',
+         "din-condensed-regular-webfont.ttf" 'truetype',
+         "din-condensed-regular-webfont.svg#din-condensed-regular" 'svg'),
+        $fontsUrlPath
+    ),
+    'din-condensed-regular-webfont.eot',
+    normal,
+    normal,
+    $fontsUrlPath);
+
+// $fontWeightLight (light) weight
+@include font-face(
+    'din-condensed',
+    font-files-safe(
+        ("din-condensed-light-webfont.woff" 'woff',
+         "din-condensed-light-webfont.ttf" 'truetype',
+         "din-condensed-light-webfont.svg#din-condensed-light" 'svg'),
+        $fontsUrlPath
+    ),
+    'din-condensed-light-webfont.eot',
+    $fontWeightLight,
+    normal,
+    $fontsUrlPath);
+
+// bold weight
+@include font-face(
+    'din-condensed',
+    font-files-safe(
+        ("din-condensed-medium-webfont.woff" 'woff',
+         "din-condensed-medium-webfont.ttf" 'truetype',
+         "din-condensed-medium-webfont.svg#din-condensed-medium" 'svg'),
+        $fontsUrlPath
+    ),
+    'din-condensed-medium-webfont.eot',
+    bold,
+    normal,
+    $fontsUrlPath);
+
+
+// Throwdown font definitions
+// ==========================
+
+// normal weight
+@include font-face(
+    'akzidenz-condensed',
+    font-files-safe(
+        ("akzidgrobecn-webfont.woff" 'woff',
+         "akzidgrobecn-webfont.ttf" 'truetype',
+         "akzidgrobecn-webfont.svg#akzidenz-condensed-regular" 'svg'),
+        $fontsUrlPath
+    ),
+    'akzidgrobecn-webfont.eot',
+    normal,
+    normal,
+    $fontsUrlPath);
+
+// $fontWeightLight (light) weight
+@include font-face(
+    'akzidenz-condensed',
+    font-files-safe(
+        ("akzidgrobeligcn-webfont.woff" 'woff',
+         "akzidgrobeligcn-webfont.ttf" 'truetype',
+         "akzidgrobeligcn-webfont.svg#akzidenz-condensed-light" 'svg'),
+        $fontsUrlPath
+    ),
+    'akzidgrobeligcn-webfont.eot',
+    $fontWeightLight,
+    normal,
+    $fontsUrlPath);
+
+// bold weight
+@include font-face(
+    'akzidenz-condensed',
+    font-files-safe(
+        ("akzidgrobebolcn-webfont.woff" 'woff',
+         "akzidgrobebolcn-webfont.ttf" 'truetype',
+         "akzidgrobebolcn-webfont.svg#akzidenz-condensed-bold" 'svg'),
+        $fontsUrlPath
+    ),
+    'akzidgrobebolcn-webfont.eot',
+    bold,
+    normal,
+    $fontsUrlPath);
+
+// bolder(900) weight
+@include font-face(
+    'akzidenz-condensed',
+    font-files-safe(
+        ("akzidgrobexbdcn-webfont.woff" 'woff',
+         "akzidgrobexbdcn-webfont.ttf" 'truetype',
+         "akzidgrobexbdcn-webfont.svg#akzidenz-condensed-exbold" 'svg'),
+        $fontsUrlPath
+    ),
+    'akzidgrobexbdcn-webfont.eot',
+    $fontWeightExBold,
+    normal,
+    $fontsUrlPath);
+
+// Celebration font definitions
+// ==========================
+@include font-face(
+    'akzidenz-super',
+    font-files-safe(
+        ("akzidgrobesup-webfont.woff" 'woff',
+         "akzidgrobesup-webfont.ttf" 'truetype',
+         "akzidgrobesup-webfont.svg#akzidenz-super" 'svg'),
+         $fontsUrlPath
+        ),
+    'akzidgrobesup-webfont.eot',
+    normal,
+    normal,
+    $fontsUrlPath);
+
+@include font-face(
+   'neuton',
+    font-files-safe(
+        ("neuton-italic-webfont.woff" 'woff',
+         "neuton-italic-webfont.ttf" 'truetype',
+         "neuton-italic-webfont.svg#neuton-italic" 'svg'),
+         $fontsUrlPath
+        ),
+    'neuton-italic-webfont.eot',
+    normal,
+    normal,
+    $fontsUrlPath);
+
+@include font-face(
+   'MEfonticons',
+    font-files-safe(
+        ("me-webfont.woff" 'woff',
+         "me-webfont.ttf" 'truetype',
+         "me-webfont.svg#MEfonticons" 'svg'),
+         $fontsUrlPath
+        ),
+    'me-webfont.eot',
+    normal,
+    normal,
+    $fontsUrlPath);

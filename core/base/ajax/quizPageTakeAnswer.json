@@ -1,0 +1,63 @@
+<?php sleep(1); ?>
+{
+    "messages" : [],
+
+    "_comment" : "the following object only needs to be sent when the user has answered the very last question",
+    "_comment" : "any data contained herein will overwrite that already stored in the quiz model",
+    "quizJson" : {
+        "certificate": {
+            "id":"192",
+            "name":"abstract Certificate",
+            "img":"img/certificates/abstract-thumb.jpg",
+            "imgLg":"img/certificates/abstract-preview.jpg",
+            "url":"http://full.url/to/generated/certificate.pdf"
+        },
+
+        "quizAward": "20 Points"
+    },
+
+<?php if($_POST['questionId'] == 'ThisIsAQuestionID02') { ?>
+
+    "question" : {
+        "id": "ThisIsAQuestionID02",
+        "claimId": 12345678,
+        "correctAnswers": [
+            {
+                "id" : "ThisIsAAnswerID01",
+                "exp" : ""
+            }
+        ]
+    }
+
+<?php } else { ?>
+
+    "question" : {
+        "id": "ThisIsAQuestionID01",
+        "claimId": 12345678,
+        "_comment": "correctAnswers/incorrectAnswers exp (Explanation) is for admin quizzes only",
+        "_comment": "leave the value blank for DIY quizzes",
+        "correctAnswers": [
+            {
+                "id" : "ThisIsAAnswerID02",
+                "exp" : "Explanation of the correct answer 02 (admin quiz only)"
+            },
+            {
+                "id" : "ThisIsAAnswerID04",
+                "exp" : "Explanation of the correct answer 04 (admin quiz only)"
+            }
+        ],
+        "incorrectAnswers": [
+            {
+                "id" : "ThisIsAAnswerID01",
+                "exp" : "foo"
+            },
+            {
+                "id" : "ThisIsAAnswerID03",
+                "exp" : "bar"
+            }
+        ]
+    }
+
+<?php } ?>
+
+}

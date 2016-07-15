@@ -1,0 +1,48 @@
+<?php require_once('paxGenerator/paxGenerator.php'); sleep(1); ?>
+
+<?php
+
+$m = $_POST['method'];
+
+if( $m =='calcTotal' || $m == 'sameForAll' ) {
+
+    ?>
+    {
+        "messages":[],
+        "contestJson": {
+            "baselineTotal": 1500.31
+            <?php /*
+            ,
+            "levelTotals": [
+                {"id": 12, "total": 1575.00},
+                {"id": 23, "total": 1650.00},
+                {"id": 34, "total": 1831.00},
+                {"id": 45, "total": 1950.31}
+            ]
+            */ ?>
+        }
+    }
+    <?php
+
+} else if( $m=='saveAsDraft' ) {
+
+// saveAsDraft should return a forwarding url -- going to the list page
+?>
+{
+    "forwardUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiManagerPage.html#index"
+}
+<?php
+
+
+} else {
+
+    $ed = array(
+        'userId' => 123,
+        'baselineAmount' => 300
+    );
+
+    generatePaxesPaginatedJson(5,500,$ed);
+
+}
+
+?>

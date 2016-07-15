@@ -1,0 +1,18 @@
+{
+	"messages":[
+        {
+            "type":"dataUpdate",
+            "name":"participantProfile",
+            "data":{
+            	"numMessages":5,
+            	"alert":{
+	                "displayAlert": true,
+					"alertTitle": "You have 5 outstanding alerts to view.",
+					"alertLink": "layout.html?tpl=profilePage&tplPath=apps/profile/tpl/#tab/AlertsAndMessages",
+					"alertLinkText": "View Alerts",
+                    "openNewWindow": true
+				}
+            }
+        }
+    ]
+}

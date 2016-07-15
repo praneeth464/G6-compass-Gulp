@@ -1,0 +1,41 @@
+<?php sleep(2); ?>
+{
+	"claimApprovals":[
+		{
+			"promotionId": 1006,
+			"claimId": 1006,
+			"promotionName": "Claim Approval Name 1",
+			"numberOfApprovals":3,
+			"numberSubmitted" : 5,
+			"promotionEndDate" : "03/15/2013",
+			"promotionStartDate" : "03/15/2013"
+		},
+		{
+			"promotionId": 1007,
+			"claimId": 1006,
+			"promotionName": "Claim Approval Name 2",
+			"numberOfApprovals":14,
+			"numberSubmitted" : 20,
+			"promotionEndDate" : "03/07/2013",
+			"promotionStartDate" : "03/15/2013"
+		},
+		{
+			"promotionId": 1008,
+			"claimId": 1006,
+			"promotionName": "Claim Approval Name 3",
+			"numberOfApprovals":500,
+			"numberSubmitted" : 600,
+			"promotionEndDate" : "03/03/2013",
+			"promotionStartDate" : "03/15/2013"
+		},
+		{
+			"promotionId": 1009,
+			"claimId": 1006,
+			"promotionName": "Claim Approval Name 4",
+			"numberOfApprovals":6000,
+			"numberSubmitted" : 9000,
+			"promotionEndDate" : "03/01/2013",
+			"promotionStartDate" : "03/15/2013"
+		}
+	]
+}

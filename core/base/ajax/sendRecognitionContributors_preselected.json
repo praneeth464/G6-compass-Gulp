@@ -1,0 +1,41 @@
+{
+	"messages":[],
+	"preselectedContributors":[
+		{
+			"id":1234,
+			"firstName":"Chuck",
+			"lastName":"Cheese",
+			"departmentName":"A Dept.",
+			"orgName":"A Org.",
+			"jobName":"A Job",
+			"countryCode":"us",
+			"countryName":"United States",
+			"contribType":"preselected",
+                        "sourceType": "team",
+			"invitationSentDate":"01/01/2013",
+			"invitationSentDateSort":"20130101"
+		},
+		{
+			"id":5678,
+			"firstName":"Benny",
+			"lastName":"Butters",
+			"departmentName":"B Dept.",
+			"orgName":"C Org.",
+			"jobName":"D Job",
+			"countryCode":"de",
+			"countryName":"Germany",
+			"contribType":"preselected",
+                        "sourceType": "team"
+		}
+	],
+	"presetSearchFilters":{
+        "name":"Add Team Members",
+        "instruction":"Select Team",
+        "filters":[
+            {"type":"orgUnit", "typeName":"Team", "id":1234, "name":"(json) Org Unit with SOOooooooOOOooper Long Name"},
+            {"type":"orgUnit", "typeName":"Team", "id":2345, "name":"(json) Org Unit 51"},
+            {"type":"orgUnit", "typeName":"Team", "id":3456, "name":"(json) Yet another Org/Node"},
+            {"type":"orgUnit", "typeName":"Team", "id":4576, "name":"(json) Last Org/Node"}
+        ]
+    }
+}

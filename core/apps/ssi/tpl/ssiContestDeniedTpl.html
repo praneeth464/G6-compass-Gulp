@@ -1,0 +1,101 @@
+{{#if contests}}
+<div class="row">
+    <div class="span12">
+        <table id="" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th class="sortHeader">
+                        Contest Name
+                        <i data-sort="name" class="sortControl icon-sort"></i>
+                    </th>
+                    <th>
+                        Reason for Denial
+                    </th>
+                    <th class="sortHeader">
+                        Start Date
+                        <i data-sort="startDate" class="sortControl icon-sort asc icon-sort-up"></i>
+                    </th>
+                    <th class="sortHeader">
+                        End Date
+                        <i data-sort="endDate" class="sortControl icon-sort"></i>
+                    </th>
+                    <th>
+                        Copy
+                    </th>
+                    <th>
+                        Delete
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {{#each contests}}
+                <tr>
+                    <td>
+                        <a href="#/contest/{{id}}" title="">{{name}}</a>
+                    </td>
+                    <td>
+                        {{deniedReason}}
+                    </td>
+                    <td>
+                        {{startDate}}
+                    </td>
+                    <td>
+                        {{endDate}}
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-link btn-small promptAction"><i class="icon-copy"></i></button>
+                        <div class="prompt promptCopy" data-prompt="copy">
+                            <button type="button" class="promptClose close">
+                                <i class="icon-remove-sign"></i>
+                            </button>
+                            <form class="copyContest" action="#URL_TO_CREATE_CONTEST" method="post">
+                                <fieldset>
+                                    <legend>Copy Contest</legend>
+                                    <label for="contestName">New Contest Name</label>
+                                    <input type="text" class="contestName" name="contest_name" value="" placeholder="" data-validate-fail-msgs='{"nonempty":"You must enter a contest name."}' maxlength="50">
+                                    <input type="hidden" class="contestId" name="contest_id" value="{{id}}">
+                                    <div class="contestStatus contestNameStatus">
+                                        <span class="pending"></span>
+                                        <i class="valid icon-ok-sign"></i>
+                                        <i class="invalid icon-remove-sign"></i>
+                                        <p class="msg"></p>
+                                    </div>
+                                    <div class="submitWrap clearfix">
+                                        <button type="submit" class="submitCopy">Next</button>
+                                        <div class="contestStatus contestCopyStatus">
+                                            <span class="pending"></span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-link btn-small promptAction"><i class="icon-remove-circle"></i></button>
+                        <div class="prompt promptDelete" data-prompt="delete">
+                             <p>
+                                <strong> Are you sure you want to delete this contest? This action can not be undone.</strong>
+                            </p>
+                            <p class="tc">
+                                <button type="button" class="btn promptClose" data-url="layout.html?tplPath=apps/ssi/tpl/&tpl=ssiCreatorPage.html#contest/1">Cancel</button>
+                                <a href="#/URL_TO_DELETE_PAGE?CONTEST_ID_GET_PARAM={{id}}" title="" class="btn btn-danger deleteContest" data-id="{{id}}">Delete</a>
+                            </p>
+                            <div class="contestStatus contestDeleteStatus">
+                                <span class="pending"></span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+{{else}}
+<div class="row ssiEmptyTableMsg">
+    <div class="span12">
+        <h3>You have no denied contests</h3>
+    </div>
+</div>
+{{/if}}

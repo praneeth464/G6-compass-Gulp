@@ -1,0 +1,58 @@
+SR4 version of FusionCharts.HC.js reads as follows (minified code that's been beautified):
+        exportChart: function (a, h) {
+            var g, t = this.getSVG(h),
+                a = K(this.options.exporting, a),
+                t = t.replace(/(\sd\s*=\s*["'])[M\s\d\.]*(["'])/ig, "$1M 0 0 L 0 0$2");
+            a.type === "application/pdf" && (t = t.replace(/(\<([^s^\s^\>]+)[^\>]+?opacity\s*=\s*['"][^1][^\>]+?(>[\n\r\s]*<\/[^>]+?>|\/>))/ig, '$1<$2 opacity="1" stroke-opacity="1" fill="#cccccc" stroke-width="0" r="0" height="0.5" width="0.5" y="0" x="0" d="M 0 0 L 1 1" />'));
+            g = Ka("form", {
+                method: "POST",
+                action: a.url
+            }, {
+                display: "none"
+            }, B.body);
+            q(["filename", "type", "width", "svg"], function (c) {
+                Ka("input", {
+                    type: "hidden",
+                    name: c,
+                    value: {
+                        filename: a.filename || "FusionCharts",
+                        type: a.type,
+                        width: a.width,
+                        svg: t
+                    }[c]
+                }, null, g)
+            });
+            g.submit();
+            c(g)
+        },
+
+The patch, which inserts a target, reads as follows:
+        exportChart: function (a, h) {
+            var g, t = this.getSVG(h),
+                a = K(this.options.exporting, a),
+                t = t.replace(/(\sd\s*=\s*["'])[M\s\d\.]*(["'])/ig, "$1M 0 0 L 0 0$2");
+            a.type === "application/pdf" && (t = t.replace(/(\<([^s^\s^\>]+)[^\>]+?opacity\s*=\s*['"][^1][^\>]+?(>[\n\r\s]*<\/[^>]+?>|\/>))/ig, '$1<$2 opacity="1" stroke-opacity="1" fill="#cccccc" stroke-width="0" r="0" height="0.5" width="0.5" y="0" x="0" d="M 0 0 L 1 1" />'));
+            g = Ka("form", {
+                method: "POST",
+                action: a.url,
+                target: '_blank'
+            }, {
+                display: "none"
+            }, B.body);
+            q(["filename", "type", "width", "svg"], function (c) {
+                Ka("input", {
+                    type: "hidden",
+                    name: c,
+                    value: {
+                        filename: a.filename || "FusionCharts",
+                        type: a.type,
+                        width: a.width,
+                        svg: t
+                    }[c]
+                }, null, g)
+            });
+            g.submit();
+            c(g)
+        }, 
+
+This becomes necessary, because we do not use the FusionCharts-supported php file. Their code REQUIRES that we run php on our server. If we remove FC php, then the parameters  -- including target -- that it packages up into the object it hands to the JAR get lost. We have asked that FC provide a solution that eliminates php from server-side exporting of FusionCharts to PDF, so we don't have to hack this parameter into the JavaScript code in order to get it to work properly without php.

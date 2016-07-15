@@ -1,0 +1,232 @@
+<?php sleep(2); ?>
+{
+	"messages":[],
+
+	"recognition": {
+
+		"id":1234,
+		"isDetail":true,
+		"isCumulative": false,
+		"recipients":[
+			{
+				"id":45,
+				"firstName":"Ron",
+				"lastName":"Smith",
+				"avatarUrl":"img/_samples/x-profile-pic2.jpg",
+				"orgName":"Sales",
+				"title":"Director",
+				"viewCertificateUrl":"#",
+				"countryCode":"us",
+				"countryName":"United States"
+			},
+			{
+				"id":457,
+				"firstName":"Jason",
+				"lastName":"Billings",
+				"avatarUrl":"img/_samples/x-profile-pic3.jpg",
+				"orgName":"Accounting",
+				"title":"Head Accountant",
+				"countryCode":"us",
+				"countryName":"United States"
+			},
+			{
+				"id":487,
+				"firstName":"Connie",
+				"lastName":"Hailey",
+				"avatarUrl":"img/_samples/x-profile-pic1.jpg",
+				"orgName":"Sales",
+				"title":"VP",
+				"viewCertificateUrl":"#",
+				"countryCode":"us",
+				"countryName":"United States"
+			},
+			{
+				"id":480,
+				"firstName":"Liza",
+				"lastName":"Mason",
+				"avatarUrl":"img/_samples/x-profile-pic1.jpg",
+				"orgName":"Learning",
+				"title":"Technical Writer",
+				"viewCertificateUrl":"#",
+				"countryCode":"us",
+				"countryName":"United States"
+			},
+
+			{
+				"id":459,
+				"firstName":"Ron",
+				"lastName":"Smith",
+				"avatarUrl":"img/_samples/x-profile-pic2.jpg",
+				"orgName":"Sales",
+				"title":"Director",
+				"viewCertificateUrl":"#",
+				"countryCode":"us",
+				"countryName":"United States"
+			},
+			{
+				"id":4579,
+				"firstName":"Jason",
+				"lastName":"Billings",
+				"avatarUrl":"img/_samples/x-profile-pic3.jpg",
+				"orgName":"Accounting",
+				"title":"Head Accountant",
+				"countryCode":"us",
+				"countryName":"United States"
+			},
+			{
+				"id":4879,
+				"firstName":"Connie",
+				"lastName":"Hailey",
+				"avatarUrl":"img/_samples/x-profile-pic1.jpg",
+				"orgName":"Sales",
+				"title":"VP",
+				"viewCertificateUrl":"#",
+				"countryCode":"us",
+				"countryName":"United States"
+			},
+			{
+				"id":4809,
+				"firstName":"Liza",
+				"lastName":"Mason",
+				"avatarUrl":"img/_samples/x-profile-pic1.jpg",
+				"orgName":"Learning",
+				"title":"Technical Writer",
+				"viewCertificateUrl":"#",
+				"countryCode":"us",
+				"countryName":"United States"
+			},
+
+			{
+				"id":450,
+				"firstName":"Ron",
+				"lastName":"Smith",
+				"avatarUrl":"img/_samples/x-profile-pic2.jpg",
+				"orgName":"Sales",
+				"title":"Director",
+				"viewCertificateUrl":"#"
+			},
+			{
+				"id":4570,
+				"firstName":"Jason",
+				"lastName":"Billings",
+				"avatarUrl":"img/_samples/x-profile-pic3.jpg",
+				"orgName":"Accounting",
+				"title":"Head Accountant"
+			},
+			{
+				"id":4870,
+				"firstName":"Connie",
+				"lastName":"Hailey",
+				"avatarUrl":"img/_samples/x-profile-pic1.jpg",
+				"orgName":"Sales",
+				"title":"VP",
+				"viewCertificateUrl":"#"
+			},
+			{
+				"id":4800,
+				"firstName":"Liza",
+				"lastName":"Mason",
+				"avatarUrl":"img/_samples/x-profile-pic1.jpg",
+				"orgName":"Learning",
+				"title":"Technical Writer",
+				"viewCertificateUrl":"#"
+			}
+		],
+		"recognizer":[
+			{
+				"id":102,
+				"firstName":"Jane",
+				"lastName":"Anderson",
+				"avatarUrl":"img/_samples/x-profile-pic1.jpg",
+				"orgName":"TSG",
+				"title":"Director",
+				"countryCode":"us",
+				"countryName":"United States",
+				"comment": "Great work, keep it up!",
+				"date":"01/01/2013",
+				"behavior":"Above and Beyond",
+				"badgeUrl": "img/badges/above_beyond_sm.png",
+				"extraFields":[
+					{"name":"Extra 0","value":"Extra field value"},
+					{"name":"Extra 1","value":"Extra Value"}
+				],
+				"eCard": {
+					"id":"2",
+					"name":"Celebration",
+					"imgUrl":"http://placehold.it/360x360",
+					"imgThumbUrl":"http://placehold.it/70x70",
+					"type": "image",
+					"videoFileType":"",
+					"videoSrc": ""
+				}
+			}
+		]
+		,
+		"teamName":"This is a team name",
+		"purlUrl":"layout.html?tplPath=apps/purlContribute/tpl/&tpl=purlMainPage.html",
+		"promotionName":"Core Values",
+		"promotionType":"purl",
+		"copies":[
+			"A copy of the email will be sent to all recipient's managers.",
+			"A copy of the email will be sent to you."
+		],
+		"isPublicClaim":true,
+		"numLikers":1,
+		"isMine": true,
+		"isHidden": false,
+		"time": "2 days ago",
+		"allowAddPoints":true,
+        "allowTranslate": true,
+		"budget":40,
+		"awardAmountMin":1,
+		"awardAmountMax":50,
+		"countryRatio":1.0,
+		"shareLinks":[
+			{
+				"url":"http://www.salesforce.com/chatter/chatter.foo?u=http://some.server.com/some/page.html",
+				"name":"Chatter",
+				"nameId":"chatter"
+			},
+			{
+				"url":"http://www.facebook.com/share.php?u=http://some.server.com/some/page.html",
+				"name":"Facebook",
+				"nameId":"facebook"
+			},
+			{
+				"url":"http://www.linkedin.com/shareArticle?mini=true&url=articleUrl&title=articleTitle&summary=articleSummary&source=articleSource",
+				"name":"Linkedin",
+				"nameId":"linkedin"
+			},
+			{
+				"url":"http://twitter.com/home/?status=Checkin'%20out%20http://some.server.com/some/page.html%20by%20@someuser",
+				"name":"Twitter",
+				"nameId":"twitter"
+			}
+		],
+		"comments":[
+			{
+				"id":23,
+                "allowTranslate": true,
+				"commenter":{
+					"id":12,
+					"firstName":"Willford",
+					"lastName":"Brinkely",
+					"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+				},
+				"comment":"You make it so fun to come to work."
+			},
+			{
+				"id":833,
+                "isMine":true,
+				"commenter":{
+					"id":12,
+					"firstName":"Jonathan",
+					"lastName":"Cole",
+					"avatarUrl":"img/_samples/x-profile-pic2.jpg"
+				},
+				"comment":"Thank you for doing the RFP. Couldn't have made the sale without you."
+			}
+		]
+	}
+
+}

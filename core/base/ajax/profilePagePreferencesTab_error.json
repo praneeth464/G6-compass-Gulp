@@ -1,0 +1,23 @@
+{
+    "messages":[
+        {
+            "type":"error",
+            "code":"validationError",
+            
+            "name":"It broke.",
+            "text":"Here's how bad it broke.",
+            
+            "fields":[
+                {
+                    "name" : "language",
+                    "text" : "Like, all the languages bro."
+                },
+                {
+                    "name" : "allowInformationPublic",
+                    "text" : "Nah, bro."
+                }
+            ]
+        }
+    ]
+
+}

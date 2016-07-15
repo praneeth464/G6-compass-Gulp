@@ -1,0 +1,34 @@
+{
+	"messages":[],
+	"quizView":[
+		{
+			"id" : 1000,
+			"promotionName":"Promotion Name",
+			"quickSteps": [
+				{
+					"stepName":			"View Quiz Details",
+					"stepStatus":		"Complete",
+					"canNavigate":		true,
+					"numberOfSlides":	1
+				},
+				{
+					"stepName":			"View Course Materials",
+					"stepStatus":		"Complete",
+					"canNavigate":		true,
+					"numberOfSlides":	4
+				},
+				{
+					"stepName":			"Take the Quiz",
+					"stepStatus":		"In Progress",
+					"canNavigate":		false,
+					"numberOfSlides":	1
+				},
+				{
+					"stepName":			"View Results",
+					"stepStatus":		"Locked",
+					"canNavigate":		false,
+				}			
+			]
+		}
+	]
+}

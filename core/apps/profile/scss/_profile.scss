@@ -1,0 +1,799 @@
+// App-specific variables
+// =========================
+$profile_shellTopperUserFontFullString: $titleFontWeightNormal ($baseFontSize * 2) $titleFont !default;
+$profile_shellTopperPointsFontFullString: $titleFontWeightNormal ($baseFontSize * 1.25) $titleFont !default;
+$profile_shellTopperPointsAltTextColor: $grayLight !default;
+
+// Removed all tabs as part of 5.4 change request
+
+$profile_badgesTab_badgeDateEarnedTextColor: $grayLight !default;
+
+$profile_proxiesTab_highlightedPaxBgColor: $grayLight !default;
+
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+
+/* ----- PAGE STYLES ----- */
+.page.profile {
+
+    &.profilePage-liner,
+    &.profilePageAccount-liner {
+        .tab-content {
+            overflow: visible;
+            position: relative;
+
+            .spincover {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 10000;
+                width: 100%;
+                height: 100%;
+                background: $white;
+                background: rgba(255, 255, 255, .5);
+
+                .spin {
+                    position: absolute;
+                    top: 25%;
+                    left: 50%;
+                    // width: 60px;
+                    // height: 60px;
+                    margin: (-1 * $spinner_widthHeight / 2) 0 0 (-1 * $spinner_widthHeight / 2);
+                }
+            }
+
+            .spin {
+                display: block;
+                margin: 0 auto;
+                width: $spinner_widthHeight;
+                height: $spinner_widthHeight;
+            }
+        }
+    }
+
+    #profilePageMessageDetailContent {
+        p {
+            word-wrap: break-word;
+        }
+
+        .progress {
+            td {
+                display: none;
+            }
+
+            td.bar {
+                display: block; //ie7 can be weird about table-cell
+                display: table-cell;
+            }
+        }
+
+    }
+    .page-topper {
+
+        h3 {
+            margin: 0;
+            font: $profile_shellTopperUserFontFullString;
+        }
+
+        h4 {
+            margin-top: 0;
+            font: $profile_shellTopperPointsFontFullString;
+            color: $profile_shellTopperPointsAltTextColor;
+        }
+
+        h3,h4{
+            span{
+                *margin-right: 5px; //ie7
+            }
+        }
+
+        #tabSwitcher {
+            a,
+            a:hover {
+                color: $textColor;
+            }
+
+            .dropdown-menu {
+                a:hover {
+                    color: $white;
+                }
+            }
+
+            @if $g5fonticonsModulesMode == 'image' {
+                .icon-g5-gamification {
+                    background: none;
+
+                    &:before {
+                        content: '\f001';
+                    }
+                }
+                .icon-g5-engagement {
+                    background: none;
+
+                    &:before {
+                        content: '\f02d';
+                    }
+                }
+            }
+        }
+
+        @media (max-width: 767px) {
+            h3 {
+                margin-top: 4px;
+                font-size: $baseFontSize * 1.75; // borrowed from bootstrap/_type
+            }
+
+            #tabSwitcher {
+                .btn {
+                    // overriding the mobile button padding reset
+                    padding-right: 12px;
+                    padding-left: 12px;
+                }
+            }
+        }
+    }
+
+    .datepickerBtn{
+        margin-right: 12px;
+    }
+
+    #profilePageSecurityTabForm {
+        i.icon-lock{
+            font-size: 20px;
+            margin-left: 5px;
+            line-height: 19px;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 479px){
+            .checkbox{
+                padding-left: 0;
+                font-style: italic;
+            }
+        }
+    }
+
+    // Removed the tabs as part of the 5.4 change request
+
+    #profilePageShellActiveTabSet {
+        .input-append .btn {
+            margin-top: 0;
+        }
+    }
+
+    #profilePagePersonalInfoTab {
+        h2 ~ h2 {
+            margin-top: $g5PageContentSpacingVertical;
+        }
+
+        .profileQuestionWrapper {
+            margin-top: 20px;
+        }
+
+        dl, dd, dt {
+            margin: 0;
+        }
+
+        dt {
+            margin-top: 6px;
+        }
+
+        dd {
+            img {
+                vertical-align: baseline; // make sure flags align with text
+            }
+        }
+
+        .profilePictureUploadContainer {
+            img {
+                display: block;
+                max-width: 160px;
+                max-height: 160px;
+            }
+            a {
+                font-size: 12px;
+                font-weight: bold;
+            }
+        }
+        .PURLCommentAttachLinkTip {
+            width: 320px !important;
+            max-width: 320px;
+        }
+        @media (max-width: 767px) {
+            dl {
+                border-bottom: 1px solid #CCC;
+                margin-bottom: 0;
+                padding-bottom: 5px;
+                dt {
+                    width: auto;
+                    margin-top: 7px;
+                }
+            }
+            dl dd {
+                margin-left: 0 !important;
+            }
+        }
+    }
+
+    #profilePageActivityHistoryTab {
+        .profilePageActivityHistoryResultsGraph {
+            p {
+                margin: 0 0 4px 0;
+            }
+            .quant {
+                float: right;
+                width: 20px;
+                margin-left: 10px;
+                line-height: 12px;
+            }
+            .progress {
+                margin-right: 30px;
+                margin-bottom: 10px;
+            }
+            .bar {
+                // reset the transition -- we manually animate this (also will animate in ie8/7)
+                @include transition(none);
+            }
+        }
+
+        th {
+            .headerPadding {
+                padding: 8px;
+                display: block;
+            }
+
+            padding: 0;
+            a {
+                padding: 8px;
+                display: block;
+                color: $white;
+            }
+            a:hover {
+                text-decoration: none;
+            }
+            i { vertical-align: top; }
+            &.unsorted {
+                i { opacity: 0.15; }
+                &.ascending {
+                    i.icon-sort-down { display: none; }
+                }
+                &.descending {
+                    i.icon-sort-up { display: none; }
+                }
+
+            }
+
+            &.sorted {
+
+                i { opacity: 1.0; }
+                &.ascending {
+                    i.icon-sort-down { display: none; }
+                    // &:hover {
+                    //     i.icon-sort-down { display: inline-block; }
+                    //     i.icon-sort-up { display: none; }
+                    // }
+                }
+                &.descending {
+                    i.icon-sort-up { display: none; }
+                    // &:hover {
+                    //     i.icon-sort-up { display: inline-block; }
+                    //     i.icon-sort-down { display: none; }
+                    // }
+                }
+
+            }
+            &:hover i { opacity: 0.63; }
+            &:active i { opacity: 1.0; }
+
+        }
+
+        .table-result-count {
+            p {
+                text-align: right;
+                font-size: 12px;
+            }
+        }
+    }
+
+    #profilePageBadgesTab {
+        span {display: block;}
+
+        h3 {
+        }
+
+        // .badge-group broken out so it can be used in modals and elsewhere
+        // see below
+    }
+
+    #profilePageAlertsAndMessagesTab {
+        .row {
+            position: relative;
+        }
+
+        .spincover .spin {
+            top: 50%;
+        }
+
+        .messagePaginationCounter{
+            display: inline;
+            line-height: 75px;
+            font-size: 14px;
+            font-weight: bold;
+            float: left;
+        }
+
+        .alertsColumn {
+            min-width: 140px;
+        }
+        .tableSwipeHelp {
+            display: none;// TODO remove this element from the DOM
+        }
+
+        table {
+            th,
+            button,
+            .btn {
+                white-space: nowrap;
+            }
+        }
+
+        th {
+
+            // a {
+            //     padding: 8px;
+            //     display: block;
+            //     color: $white;
+            // }
+            a:hover {
+                text-decoration: none;
+            }
+            i { vertical-align: top; }
+            &.unsorted {
+                i { opacity: 0.15; }
+                &.ascending {
+                    i.icon-sort-down { display: none; }
+                }
+                &.descending {
+                    i.icon-sort-up { display: none; }
+                }
+
+            }
+
+            &.sorted {
+
+                i { opacity: 1.0; }
+                &.ascending {
+                    i.icon-sort-down { display: none; }
+                }
+                &.descending {
+                    i.icon-sort-up { display: none; }
+                }
+
+            }
+            &:hover i { opacity: 0.63; }
+            &:active i { opacity: 1.0; }
+        }
+    }
+
+    #profilePageStatementTab {
+
+        #profilePageStatementTabSummary{
+            .dl-horizontal {
+                margin-top: 0;
+                margin-bottom: 10px;
+                dt {
+                    // width: 180px;
+                    width: 22.5%;
+                    text-align: left;
+
+                    @media (max-width: 767px) {
+                        width: auto;
+                    }
+                }
+
+                dd{
+                    margin-left: 22.5%;
+                    margin-right: 60%;
+                    text-align: right;
+
+                    @media (max-width: 767px) {
+                        margin-left: 0;
+                        margin-right: 0;
+                        padding-left: 12px; // same as left padding on the nav items directly above this (taken from bootstrap/_navs.scss)
+                        text-align: left;
+                    }
+                }
+            }
+        }
+
+        #profilePageStatementTabTransactionDetails{
+            margin-top: 10px;
+        }
+        thead tr {white-space: nowrap;}
+        th {
+            .headerPadding {
+                padding: 8px;
+                display: block;
+            }
+
+            padding: 0;
+            a {
+                padding: 8px;
+                display: block;
+                color: $white;
+            }
+            a:hover {
+                text-decoration: none;
+            }
+            i { vertical-align: top; }
+            &.unsorted {
+                i { opacity: 0.15; }
+                &.ascending {
+                    i.icon-sort-down { display: none; }
+                }
+                &.descending {
+                    i.icon-sort-up { display: none; }
+                }
+
+            }
+
+            &.sorted {
+
+                i { opacity: 1.0; }
+                &.ascending {
+                    i.icon-sort-down { display: none; }
+                    // &:hover {
+                    //     i.icon-sort-down { display: inline-block; }
+                    //     i.icon-sort-up { display: none; }
+                    // }
+                }
+                &.descending {
+                    i.icon-sort-up { display: none; }
+                    // &:hover {
+                    //     i.icon-sort-up { display: inline-block; }
+                    //     i.icon-sort-down { display: none; }
+                    // }
+                }
+
+            }
+            &:hover i { opacity: 0.63; }
+            &:active i { opacity: 1.0; }
+
+        }
+
+    }
+
+    #profilePageFollowListTab {
+        .participantSearchVisibilityControls .visibilityControlsLiner {
+            margin-bottom: $g5PageContentPaddingHoriz * 2 / 3;
+        }
+    }
+
+    #profilePageProxiesTab {
+        .participantSearchVisibilityControls .visibilityControlsLiner {
+            margin-bottom: $g5PageContentPaddingHoriz * 2 / 3;
+        }
+        .participantCollectionViewWrapper {
+            th {
+                text-align: left;
+            }
+
+            .edit,
+            .remove {
+                text-align: center;
+            }
+
+            .coreaccess ul {
+                margin-bottom: 0;
+            }
+
+            .modpromo dl {
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+
+            tr.info {
+                background: $profile_proxiesTab_highlightedPaxBgColor;
+            }
+        }
+
+        #profilePageProxiesTabEdit {
+            .participant {
+                overflow: hidden;
+
+                .participant-popover {
+                    font-weight: bold;
+                }
+                .avatar {
+                    display: inline;
+                    float: left;
+                    margin-right: 8px;
+                    width: 48px;
+                }
+                .org {
+                    display: block;
+                }
+            }
+
+            .control-label {
+                font-weight: bold;
+            }
+        }
+    }
+
+    #profilePagePreferencesTab #preferencesTabLegalCheckBox{
+        margin-bottom: 10px;
+        margin-top: 25px;
+    }
+
+    #profilePagePreferencesTab{
+        label{
+            text-align: left;
+        }
+
+        label.checkbox span{
+            margin-left: 5px;
+            border-left: 1px solid #AAA;
+            padding-left: 5px;
+        }
+
+        .controls{
+            margin-left: 160px;
+            @media (max-width: 479px){
+                margin-left: 0;
+            }
+        }
+
+        #profilePagePreferencesTabFieldsetTextMessages{
+            li:first-child{
+                display: block;
+            }
+        }
+
+        #profilePagePreferencesTabFieldsetEStatements {
+            .control-group {
+                float: left;
+            }
+            label {
+                float: left;
+                padding-top: 4px;
+            }
+
+            span {
+                border: none;
+                padding-left: 0;
+            }
+
+            .participantEmailUpdateCont {
+                display: inline-block;
+                margin-left: 10px;
+            }
+
+            .estatements {
+                margin-top: 2px;
+            }
+        }
+    }
+
+} /* /.page.profile */
+
+
+#profilePageStatementTabTransactionDetails {
+    h3 {
+        margin-top: 0; // fix align export icons
+    }
+}
+
+#profilePageActivityHistoryResponseData {
+    .pagination {
+        margin-top: 8px; // fix spacing export icons
+    }
+
+    #profilePageActivityHistoryTabSelectedTabs {
+        @media (max-width: 479px) {
+            background: #585858;
+            padding-bottom: 5px;
+
+            li{
+                width: 100%;
+                margin-top: 5px;
+
+                a{
+                    color: white;
+                    background: #323232;
+                    border: 0;
+                    padding: 6px 12px;
+                }
+
+                a:hover{
+                    background: #4398CA;
+                    border: 0;
+                }
+            }
+
+            li.active a{
+                background: black;
+                border: 0;
+                color: #4398CA;
+            }
+        }
+    }
+}
+
+#profilePageQuizDetailView {
+    dl dd img {
+        width: 50px;
+    }
+}
+
+
+
+/* badge styles are not namespaced sos they can be used in modals or elsewhere */
+.badge-group {
+    margin-bottom: $g5PageContentSpacingVertical;
+
+    .badge-group-title{
+        @media (max-width: 767px) {
+            font-size: 15px;
+            margin-bottom: 0px;
+        }
+    }
+
+    .badges {
+        ul {
+            width: 100%;
+            float: none;
+            list-style: none;
+            margin-bottom: 0;
+            margin-left: 0;
+
+            .badge-item {
+                list-style: none;
+                clear: left;
+                width: 48%;
+                display: inline-block;
+                vertical-align: top;
+                padding: 12px 0;
+                zoom: 1;
+                *display: inline;
+
+                img {
+                    margin-right: 12px;
+                    float: left;
+                }
+
+                @media (max-width: 767px) {
+                    width: 100%;
+                    display: block;
+                }
+
+                &.earned-false img {
+                    @include opacity(.3);
+                }
+                &.background-flash {
+                    background-color: #FFFFA3;
+                }
+            }
+
+            .badge-name,
+            .badge-how-to-earn,
+            .badge-contest-name,
+            .badge-date-earned {
+                line-height: 1.3;
+            }
+            .hide {
+                display: none;
+            }
+            .badge-name {
+                font-size: 14px;
+                font-weight: bold;
+                margin-top: 4px;
+                padding-top: 16px;
+            }
+
+            .hasHowToEarnText,
+            .hasContestName
+            {
+                padding-top: 12px;
+            }
+            .hasHowToEarnText.hasProgressBar,
+            .hasHowToEarnText.hasWasEarned,
+            .hasContestName.hasWasEarned
+            {
+                padding-top:0;
+            }
+
+
+
+
+            .skipHowToEarnText,
+            .skipDateProgress
+            {
+                padding-top: 16px;
+            }
+            .skipHowToEarnText.skipDateProgress,
+            .skipHowToEarnText.skipProgressVisible,
+            {
+                padding-top: 18px;
+            }
+            .badge-how-to-earn,
+            .badge-contest-name {
+                font-size: 13px;
+            }
+            .badge-date-earned {
+                color: $profile_badgesTab_badgeDateEarnedTextColor;
+                font-size: 13px;
+            }
+            .progress {
+                margin: 2px 0 0 0;
+                width: 66%;
+                height: 16px;
+                line-height: 16px;
+                filter: 80;
+
+                .bar {
+                    font-size: 11px;
+                }
+            }
+        }// ul
+    }// .badge
+
+    &.reformatted {
+        .badges {
+            overflow: hidden;
+
+            ul {
+                width: 50%;
+                float: left;
+
+                .badge-item {
+                    width: 100%;
+                }
+            }
+        }
+
+        @media (max-width: 767px) {
+            .badges {
+                ul {
+                    width: 100%;
+                    float: none;
+                }
+            }
+        }
+    }
+}// /.badge-group
+
+.lt-ie9 .page.profile {
+
+    #personalInformationFieldsetAnswers .form-actions{
+        margin-bottom: -35px;
+    }
+}
+
+.lt-ie8 .page.profile {
+    #personalInformationFieldsetAnswers .form-actions {
+        // for some reason IE7 is not respecting the 35px left padding, so we have to double it.
+        padding-left: 70px;
+    }
+}
+
+// alerts/messages detail modal lives outside the view container
+#detailModal {
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+    dl {
+        margin-top: 0;
+    }
+    dd {
+        margin-left: 0;
+        margin-bottom: $baseLineHeight / 2;
+    }
+}

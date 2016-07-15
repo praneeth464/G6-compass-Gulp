@@ -1,0 +1,72 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $clickThru_h3FontFamily: ;
+// $clickThru_pFontFamily: ;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "clickThru/scss/clickThru";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================
+
+
+// TODO 5.4: move this to a core variable
+// .module.clickThru {
+//     &.grid-dimension-2x2,
+//     &.grid-dimension-4x2,
+//     &.grid-dimension-4x4 {
+//         .wide-view {
+//             h3 {
+//                 font-weight: ;
+//             }
+//         }
+//     }
+// }
+
+
+// Turns out that 5.3 doesn't have much font control.
+// There's a 5.4 todo to fix this.
+// Until then, here is a sample of the things that may need to be done.
+// .module.clickThru {
+//     &.grid-dimension-2x2 {
+//         .wide-view {
+//             h3 {
+//                 font-size: 24px;
+//             }
+//             p {
+//                 font-size: $baseFontSize;
+//             }
+//         }
+//     }
+//     &.grid-dimension-4x2 {
+//         .wide-view {
+//             h3 {
+//                 font-size: 28px;
+//             }
+//             p {
+//                 font-size: $baseFontSize * 1.25;
+//             }
+//         }
+//     }
+//     &.grid-dimension-4x4 {
+//         .wide-view {
+//             h3 {
+//                 font-size: 36px;
+//                 font-weight: $titleFontWeightNormal;
+//             }
+//             p {
+//                 font-size: $baseFontSize * 1.5;
+//             }
+//         }
+//     }
+// }

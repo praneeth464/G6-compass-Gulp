@@ -1,0 +1,109 @@
+<!-- ======== CLAIM PREVIEW PAGE ======== -->
+
+<div id="claimPagePreviewView" class="claimPagePreview-liner page-content">
+    <form id="claimForm">
+        <div class="row">
+            <div class="span6">
+                <dl class="dl-horizontal">
+                    <dt>Claim Status</dt>
+                    <dd>Open</dd>
+                    <dt>Company Name</dt>
+                    <dd>Company Name</dd>
+                    <dt>First Name</dt>
+                    <dd>Firstname</dd>
+                    <dt>Last Name</dt>
+                    <dd>Lastname</dd>
+                    <dt>Telephone</dt>
+                    <dd>555-555-5555</dd>
+                    <dt>Email</dt>
+                    <dd>email@address.com</dd>
+                    <dt>Notes</dt>
+                    <dd>Lorum ipsum</dd>
+                    <dt>Invoice Number</dt>
+                    <dd>123456</dd>
+                    <dt>Invoice Date</dt>
+                    <dd>01/01/9999</dd>
+                </dl>
+            </div>
+            <div class="span5 offset1">
+                <h4>Team Members</h4>
+                <ul>
+                    <li>Firstname Lastname</li>
+                    <li>Firstname Lastname</li>
+                    <li>Firstname Lastname</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span12">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Quantity</th>
+                            <th>Category<i class="icon-sort-down"></i></th>
+                            <th>Subcategory<i class="icon-sort-down"></i></th>
+                            <th>Product<i class="icon-sort-down"></i></th>
+                            <th>Characteristics<i class="icon-sort-down"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Category</td>
+                            <td>Subcategory</td>
+                            <td>Product</td>
+                            <td>((definition list))</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Category</td>
+                            <td>Subcategory</td>
+                            <td>Product</td>
+                            <td>Field 1</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="form-actions pullBottomUp">
+                    <button class="btn btn-primary goToLink" id="claimButtonSend" type="submit">Submit</button>
+
+                    <button type="button" class="btn goToLink" id="ClaimButtonEdit" data-url="some/url/here">Edit</button>
+                    <button type="button" class="btn goToLink" id="claimButtonCancel" data-url="some/url/here">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="claimSendCancelDialog" style="display:none">
+        <p>
+            <i class="icon-question-sign"></i>
+            <b>Cancel Send Recognition?</b>
+        </p>
+        <p>
+            All changes will be discarded.
+        </p>
+        <p class="tc">
+            <button type="submit" id="claimCancelDialogConfirm" class="btn btn-primary dialog-option">Yes</button>
+            <button type="submit" id="claimCancelDialogCancel" class="btn dialog-option">No</button>
+        </p>
+    </div>
+</div>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function(){
+    //attach the view to an existing DOM element
+        var cpp = new ClaimPageView({
+            el:$('#claimPagePreviewView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html?tpl=claimPage&tplPath=apps/claim/tpl/'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Submit A Claim'
+        });
+    });
+</script>

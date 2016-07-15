@@ -1,0 +1,57 @@
+{
+    "tabularData": {
+        "meta": {
+            "columns": [
+                {
+                    "id": "1",
+                    "name": "News Story"
+                },
+                {
+                    "id": "2",
+                    "name": "Start Date"
+                },
+                {
+                    "id": "3",
+                    "name": "End Date"
+                },
+                {
+                    "id": "4",
+                    "name": "Edit"
+                }
+            ]
+        },
+        "results": [
+            {
+                "id" : "100",
+                "name": "News Story Name<?php echo( isset($_POST['statusType']) ? ' - ' . $_POST['statusType'] : ''); ?>",
+                "startDate": "06/15/14",
+                "endDate": "06/30/14",
+                "url": "layout.html?tplPath=apps/communications/tpl/&tpl=communicationsNewsEdit.html"
+            },
+            {
+                "id" : "101",
+                "name": "News Story Name2<?php echo( isset($_POST['statusType']) ? ' - ' . $_POST['statusType'] : ''); ?>",
+                "startDate": "07/05/14",
+                "endDate": "07/13/14",
+                "url": "layout.html?tplPath=apps/communications/tpl/&tpl=communicationsNewsEdit.html"
+            },
+            {
+                "id" : "102",
+                "name": "News Story Name3<?php echo( isset($_POST['statusType']) ? ' - ' . $_POST['statusType'] : ''); ?>",
+                "startDate": "07/15/14",
+                "endDate": "07/30/14",
+                "url": "layout.html?tplPath=apps/communications/tpl/&tpl=communicationsNewsEdit.html"
+            },
+            {
+                "id" : "103",
+                "name": "News Story Name4<?php echo( isset($_POST['statusType']) ? ' - ' . $_POST['statusType'] : ''); ?>",
+                "startDate": "08/15/14",
+                "endDate": "08/30/14",
+                "url": "layout.html?tplPath=apps/communications/tpl/&tpl=communicationsNewsEdit.html"
+            }
+        ]
+    },
+    "total": 10,
+    "storiesPerPage": 15,
+    "currentPage": 1
+}

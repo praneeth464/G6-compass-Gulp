@@ -1,0 +1,18 @@
+{
+	"messages":[],
+	"quizDetailsCollection":[
+		{
+			"id" : 2000,
+			"slideTitle": 		"The title for the slide. In this case, Quiz Details.",
+			"slideContent":
+			[
+				{
+					"numberOfQuestions":10,
+					"numberToPass":		6,
+					"contentMedia":		"",
+					"contentText":		"<p>If only <strong>contentText</strong> has a value, it displays across the width of the page. If contentMedia and contentText both have values, they each take up 6 columns. I've designed the JSON model to support multiple rows of content per slide, if needed.</p>        <p>Lorem ipsum onsectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex eacommodo consequat.</p><p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum.</p>"
+				}	
+			]
+		}
+	]
+}	

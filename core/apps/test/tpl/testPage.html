@@ -1,0 +1,552 @@
+
+
+<div id="testPageView" class="page-content">
+
+
+    <!-- WIZARD TABS DYNAMIC VERSION -->
+    <div class="row sectionWizardTabs">
+        <div class="span12">
+            <h4>WizardTabsView</h4>
+
+            <!-- see script tag at the bottom for instantiation deets -->
+            <ul id="exampleWizTabsViewDyn" class="wizardTabsView" data-content=".wizardTabsContentDyn" style="visibility:hidden">
+            </ul><!-- /.wizardTabsView -->
+
+            <!-- tab contents -->
+            <div class="wizardTabsContentDyn">
+                <div class="stepOne" style="display:none;height:400px;padding:12px;border:1px solid gray">
+                    <h2>Step One</h2>
+                    <p><button class="btn completeActive"><b>complete</b> current Step</button></p>
+                    <p><button class="btn unlock" data-tab="2"><b>unlock</b> Step 2</button></p>
+                    <p><button class="btn activate" data-tab="2"><b>activate</b> Step 2</button></p>
+                </div>
+                <div class="stepTwo" style="display:none;height:400px;padding:12px;border:1px solid gray">
+                    <h2>Step Two</h2>
+                    <p>Please agree by checking this box: <input class="agreeCheck" type="checkbox"> </p>
+                    <p><button class="btn goPrev">Prev</button> <button class="btn validateNext" data-validate-sel=".wizardTabsContentDyn .stepTwo .agreeCheck">Validate/Next</button></p>
+                </div>
+                <div class="stepThree" style="display:none;height:400px;padding:12px;border:1px solid gray">
+                    <h2>Step Three <i class="icon-bolt" style="color:#FFDF00"></i></h2>
+                    <p><button class="btn goPrev">Prev</button> <button class="btn goNext">Next</button></p>
+                </div>
+                <div class="stepFour" style="display:none;height:400px;padding:12px;border:1px solid gray">
+                    <h2>Step Four <i class="icon-bell" style="color:#FFDF00"></i></h2>
+                    <p><button class="btn completeActive"><b>complete</b> current Step</button></p>
+                    <p><button class="btn goPrev">Prev</button> <button class="btn goNext">Next</button></p>
+                </div>
+                <div class="stepFive" style="display:none;height:400px;padding:12px;border:1px solid gray">
+                    <h2>Step Five <i class="icon-star" style="color:#FFDF00"></i></h2>
+                    <p><button class="btn completeActive"><b>complete</b> current Step</button></p>
+                    <h2>All steps complete? <span class="allStepsComp" style="font-size: 55px"></span></h2>
+                    <p><button class="btn goPrev">Prev</button></p>
+                </div>
+            </div><!-- /.wizardTabsContentDyn -->
+
+        </div>
+    </div><!-- /.sectionWizardTabs -->
+
+
+    <!-- WIZARD TABS -->
+    <div class="row sectionWizardTabs">
+        <div class="span12">
+            <h4>WizardTabsView</h4>
+
+            <!-- see script tag at the bottom for instantiation deets -->
+            <ul id="exampleWizTabsView" class="wizardTabsView" data-content=".wizardTabsContent" style="visibility:hidden">
+
+                <li class="wtTab"
+                    data-tab-uid="1"
+                    data-tab-name="stepOne"
+                    data-tab-content=".wizardTabsContent .stepOne"
+                    data-tab-state="unlocked" >
+                    <div class="wtTabLiner">
+                        <div class="wtNumber"><span><!-- if empty, view will fill this in --></span></div>
+                        <div class="wtName"><span>First Step/Tab of This Wizard Has a Long Description</span></div>
+                        <div class="wtIconWrap">
+                            <span class="wtIcon iconLocked"><i class="icon-lock"></i></span>
+                            <span class="wtIcon iconUnlocked"><i class="icon-unlock"></i></span>
+                            <span class="wtIcon iconIncomplete"><i class="icon-remove-sign"></i></span>
+                            <span class="wtIcon iconComplete"><i class="icon-ok-sign"></i></span>
+                        </div>
+                    </div>
+                    <div class="wtDeedle">&nbsp;</div><!-- iff you want the nubbin -->
+                </li><!-- /.wtTab -->
+
+                <li class="wtTab"
+                    data-tab-uid="2"
+                    data-tab-name="stepTwo"
+                    data-tab-content=".wizardTabsContent .stepTwo"
+                    data-tab-state="locked" >
+                    <div class="wtTabLiner">
+                        <div class="wtNumber"><span><!-- if empty, view will fill this in --></span></div>
+                        <div class="wtName"><span>This Step/Tab of This Wizard Has an ULTRA Long Description Without a Doubt at All, Believe It</span></div>
+                        <div class="wtIconWrap">
+                            <span class="wtIcon iconLocked"><i class="icon-lock"></i></span>
+                            <span class="wtIcon iconUnlocked"><i class="icon-unlock"></i></span>
+                            <span class="wtIcon iconIncomplete"><i class="icon-remove-sign"></i></span>
+                            <span class="wtIcon iconComplete"><i class="icon-ok-sign"></i></span>
+                        </div>
+                    </div>
+                    <div class="wtDeedle">&nbsp;</div><!-- iff you want the nubbin -->
+                </li><!-- /.wtTab -->
+
+                <li class="wtTab"
+                    data-tab-uid="3"
+                    data-tab-name="stepThree"
+                    data-tab-content=".wizardTabsContent .stepThree"
+                    data-tab-state="locked" >
+                    <div class="wtTabLiner">
+                        <div class="wtNumber"><span><!-- if empty, view will fill this in --></span></div>
+                        <div class="wtName"><span>This is a Medium Sized Description</span></div>
+                        <div class="wtIconWrap">
+                            <span class="wtIcon iconLocked"><i class="icon-lock"></i></span>
+                            <span class="wtIcon iconUnlocked"><i class="icon-unlock"></i></span>
+                            <span class="wtIcon iconIncomplete"><i class="icon-remove-sign"></i></span>
+                            <span class="wtIcon iconComplete"><i class="icon-ok-sign"></i></span>
+                        </div>
+                    </div>
+                    <div class="wtDeedle">&nbsp;</div><!-- iff you want the nubbin -->
+                </li><!-- /.wtTab -->
+
+
+                <li class="wtTab"
+                    data-tab-uid="4"
+                    data-tab-name="stepFour"
+                    data-tab-content=".wizardTabsContent .stepFour"
+                    data-tab-state="incomplete" >
+                    <div class="wtTabLiner">
+                        <div class="wtNumber"><span><!-- if empty, view will fill this in --></span></div>
+                        <div class="wtName"><span>This Step/Tab of This Wizard Has a Long Description</span></div>
+                        <div class="wtIconWrap">
+                            <span class="wtIcon iconLocked"><i class="icon-lock"></i></span>
+                            <span class="wtIcon iconUnlocked"><i class="icon-unlock"></i></span>
+                            <span class="wtIcon iconIncomplete"><i class="icon-remove-sign"></i></span>
+                            <span class="wtIcon iconComplete"><i class="icon-ok-sign"></i></span>
+                        </div>
+                    </div>
+                    <div class="wtDeedle">&nbsp;</div><!-- iff you want the nubbin -->
+                </li><!-- /.wtTab -->
+
+                <li class="wtTab"
+                    data-tab-uid="5"
+                    data-tab-name="stepFive"
+                    data-tab-content=".wizardTabsContent .stepFive"
+                    data-tab-state="incomplete" >
+                    <div class="wtTabLiner">
+                        <div class="wtNumber"><span><!-- if empty, view will fill this in --></span></div>
+                        <div class="wtName"><span>Short Description</span></div>
+                        <div class="wtIconWrap">
+                            <span class="wtIcon iconLocked"><i class="icon-lock"></i></span>
+                            <span class="wtIcon iconUnlocked"><i class="icon-unlock"></i></span>
+                            <span class="wtIcon iconIncomplete"><i class="icon-remove-sign"></i></span>
+                            <span class="wtIcon iconComplete"><i class="icon-ok-sign"></i></span>
+                        </div>
+                    </div>
+                    <div class="wtDeedle">&nbsp;</div><!-- iff you want the nubbin -->
+                </li><!-- /.wtTab -->
+
+            </ul><!-- /.wizardTabsView -->
+
+            <!-- tab contents -->
+            <div class="wizardTabsContent">
+                <div class="stepOne" style="display:none;height:400px;padding:12px;border:1px solid gray">
+                    <h2>Step One</h2>
+                    <p><button class="btn completeActive"><b>complete</b> current Step</button></p>
+                    <p><button class="btn unlock" data-tab="2"><b>unlock</b> Step 2</button></p>
+                    <p><button class="btn activate" data-tab="2"><b>activate</b> Step 2</button></p>
+                </div>
+                <div class="stepTwo" style="display:none;height:400px;padding:12px;border:1px solid gray">
+                    <h2>Step Two</h2>
+                    <p>Please agree by checking this box: <input class="agreeCheck" type="checkbox"> </p>
+                    <p><button class="btn goPrev">Prev</button> <button class="btn validateNext" data-validate-sel=".wizardTabsContent .stepTwo .agreeCheck">Validate/Next</button></p>
+                </div>
+                <div class="stepThree" style="display:none;height:400px;padding:12px;border:1px solid gray">
+                    <h2>Step Three <i class="icon-bolt" style="color:#FFDF00"></i></h2>
+                    <p><button class="btn goPrev">Prev</button> <button class="btn goNext">Next</button></p>
+                </div>
+                <div class="stepFour" style="display:none;height:400px;padding:12px;border:1px solid gray">
+                    <h2>Step Four <i class="icon-bell" style="color:#FFDF00"></i></h2>
+                    <p><button class="btn completeActive"><b>complete</b> current Step</button></p>
+                    <p><button class="btn goPrev">Prev</button> <button class="btn goNext">Next</button></p>
+                </div>
+                <div class="stepFive" style="display:none;height:400px;padding:12px;border:1px solid gray">
+                    <h2>Step Five <i class="icon-star" style="color:#FFDF00"></i></h2>
+                    <p><button class="btn completeActive"><b>complete</b> current Step</button></p>
+                    <h2>All steps complete? <span class="allStepsComp" style="font-size: 55px"></span></h2>
+                    <p><button class="btn goPrev">Prev</button></p>
+                </div>
+            </div><!-- /.wizardTabsContent -->
+
+        </div>
+    </div><!-- /.sectionWizardTabs -->
+
+
+
+
+	<div class="row">
+		<div class="span12">
+			<h4>Modals</h4>
+
+			<!-- MODALS
+
+					- require an ID target DOM element in the page, refered to by the HREF attribute
+					- require an attribute of data-toggle='modal'
+					- option: include data-ajax-url to load remote content into modal body
+					- option: include data-ajax-data to send parameters with ajax request
+						(must have proper JSON string formatting: ' outside, " inside - see example)
+
+					* cache busting is currently used on all requests
+			-->
+
+			<a class="btn btn-primary"
+				href="#testPageModal"
+				data-toggle="modal"
+			>Modal Test</a>
+
+			<a class="btn btn-primary"
+				href="#testPageModal"
+				data-toggle="modal"
+				data-remote="ajax/lorem.html"
+			>Modal Test <b>ajax</b></a>
+
+			<a class="btn btn-primary"
+				href="#testPageModal"
+				data-toggle="modal"
+				data-remote="ajax/lorem.html?name=value&amp;anotherName=anotherValue"
+			>Modal Test <b>ajax + parameters</b></a>
+
+			<br/><br/>
+
+			<!-- PAGE STACK STYLE MODALS
+					- the modal element has a .modal-stack style
+					- the modal element must not have the .modal style
+					- the modal element must be placed within a relative .container
+			-->
+
+			<a class="btn "
+				href="#testPageStackModal"
+				data-toggle="modal"
+			>Stack Modal Test</a>
+
+			<a class="btn " Stack
+				href="#testPageStackModal"
+				data-toggle="modal"
+				data-remote="ajax/lorem.html"
+			>Stack Modal Test <b>ajax</b></a>
+
+			<a class="btn "
+				href="#testPageStackModal"
+				data-toggle="modal"
+				data-remote="ajax/lorem.html?name=value&amp;anotherName=anotherValue"
+			>Stack Modal Test <b>ajax + parameters</b></a>
+
+			<br/><br/>
+
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="span12"><h4>Grid Test</h4></div>
+		<div class="span12" style="background: #eee; margin-bottom: 12px;">span12</div>
+		<div class="span11" style="background: #eee; margin-bottom: 12px;">span11</div>
+		<div class="span1" style="background: #eee; margin-bottom: 12px;">span1</div>
+		<div class="span10" style="background: #eee; margin-bottom: 12px;">span10</div>
+		<div class="span2" style="background: #eee; margin-bottom: 12px;">span2</div>
+		<div class="span9" style="background: #eee; margin-bottom: 12px;">span9</div>
+		<div class="span3" style="background: #eee; margin-bottom: 12px;">span3</div>
+		<div class="span8" style="background: #eee; margin-bottom: 12px;">span8</div>
+		<div class="span4" style="background: #eee; margin-bottom: 12px;">span4</div>
+		<div class="span7" style="background: #eee; margin-bottom: 12px;">span7</div>
+		<div class="span5" style="background: #eee; margin-bottom: 12px;">span5</div>
+		<div class="span6" style="background: #eee; margin-bottom: 12px;">span6</div>
+		<div class="span6" style="background: #eee; margin-bottom: 12px;">span6</div>
+	</div><!-- /.row -->
+
+
+	<div class="row">
+		<div class="span12">
+			<h4>DisplayTableAjaxView</h4>
+			<!-- see script tag at the bottom for instantiation deets -->
+			<div class="displayTableAjaxView" data-url="ajax/displayTableAjaxResponse.html">
+				<!-- dynamic -->
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+
+<!-- inline modal -->
+<div class="modal hide fade" id="testPageModal">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+		<h3>Modal header</h3>
+	</div>
+	<div class="modal-body">
+		<p>One fine body…</p>
+	</div>
+	<div class="modal-footer">
+		<a href="#" class="btn" data-dismiss="modal">Close</a>
+		<a class="btn btn-primary" data-dismiss="modal">Save changes</a>
+	</div>
+</div>
+
+<!-- inline modal (stack style), the class .modal has been replaced by .modal-stack -->
+<div class="modal-stack container hide fade" id="testPageStackModal" data-y-offset="adjust">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+		<h3>Modal header</h3>
+	</div>
+	<div class="modal-body">
+		<p>One fine body…</p>
+	</div>
+	<div class="modal-footer">
+		<a href="#" class="btn" data-dismiss="modal">Close</a>
+		<a href="#" class="btn btn-primary" data-dismiss="modal">Save changes</a>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function(){
+
+        // generic PageView
+        window.testPageView = new PageView({
+        	el: $('#testPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Test Page'
+        });
+
+
+
+
+
+        /* ****************************************
+            DisplayTableAjaxView
+        ***************************************** */
+        window.dispTableView = new DisplayTableAjaxView({el:$('.displayTableAjaxView')});
+
+
+
+
+
+        /* ****************************************
+            WizardTabsViewDyn example interactions
+        ***************************************** */
+        window.wizTabsViewDyn = new WizardTabsView({
+            el: $('#exampleWizTabsViewDyn'),
+            tabsJsonUrl: G5.props.URL_ROOT+'ajax/wizardTabsTabsJson.json',
+            tabsJson : [
+                {
+                    "id" : 1,
+                    "name" : "stepOne",
+                    "isActive" : false,
+                    "state" : "unlocked",
+                    "contentSel" : ".wizardTabsContentDyn .stepOne",
+                    "wtNumber" : "",
+                    "wtName" : "First Step/Tab of This Wizard Has a Long Description",
+                    "hideDeedle" : false
+                },
+                {
+                    "id" : 2,
+                    "name" : "stepTwo",
+                    "isActive" : false,
+                    "state" : "locked",
+                    "contentSel" : ".wizardTabsContentDyn .stepTwo",
+                    "wtNumber" : "",
+                    "wtName" : "This Step/Tab of This Wizard Has an ULTRA Long Description Without a Doubt at All, Believe It",
+                    "hideDeedle" : false
+                },
+                {
+                    "id" : 3,
+                    "name" : "stepThree",
+                    "isActive" : false,
+                    "state" : "locked",
+                    "contentSel" : ".wizardTabsContentDyn .stepThree",
+                    "wtNumber" : "",
+                    "wtName" : "This is a Medium Sized Description",
+                    "hideDeedle" : false
+                },
+                {
+                    "id" : 4,
+                    "name" : "stepFour",
+                    "isActive" : false,
+                    "state" : "incomplete",
+                    "contentSel" : ".wizardTabsContentDyn .stepFour",
+                    "wtNumber" : "",
+                    "wtName" : "This Step/Tab of This Wizard Has a Long Description",
+                    "hideDeedle" : false
+                },
+                {
+                    "id" : 5,
+                    "name" : "stepFive",
+                    "isActive" : false,
+                    "state" : "incomplete",
+                    "contentSel" : ".wizardTabsContentDyn .stepFive",
+                    "wtNumber" : "",
+                    "wtName" : "Short Description",
+                    "hideDeedle" : false
+                }
+            ]
+        });
+
+        // btn to interact with WTV
+        $('.wizardTabsContentDyn .btn.unlock').click(function(){
+            wizTabsViewDyn.setTabState($(this).data('tab'),'unlocked');
+        });
+
+        // btn to interact with WTV
+        $('.wizardTabsContentDyn .btn.activate').click(function(){
+            var wasActivated, $l;
+            wasActivated = wizTabsViewDyn.activateTab($(this).data('tab'));
+
+            if(!wasActivated) {
+                $l = $(' <span class="label label-warning">Could not activate, probably locked.</span>');
+                $(this).after($l);
+                setTimeout(function(){$l.fadeOut();},2000);
+            }
+        });
+
+        // btn to interact with WTV
+        $('.wizardTabsContentDyn .btn.completeActive').click(function(){
+            wizTabsViewDyn.setTabState(wizTabsViewDyn.getActiveTab(),'complete');
+        });
+
+        // btn to go to next tab
+        $('.wizardTabsContentDyn .btn.goNext').click(function(){
+            wizTabsViewDyn.activateTab(wizTabsViewDyn.getNextTab());
+        });
+        // btn to go to prev tab
+        $('.wizardTabsContentDyn .btn.goPrev').click(function(){
+            wizTabsViewDyn.activateTab(wizTabsViewDyn.getPrevTab());
+        });
+
+        // btn to interact with WTV - validate a little form
+        $('.wizardTabsContentDyn .btn.validateNext').click(function(){
+            var $t = $(this),
+                $val = $($t.data('validateSel')),
+                curTab = wizTabsViewDyn.getActiveTab(),
+                $err;
+
+            // validate
+            if(!$val.is(':checked')) {
+                wizTabsViewDyn.getActiveTab().set('state','incomplete'); // set state to incomplete
+                $err = $(' <span class="label label-warning">Check the box please.</span>');
+                $t.after($err);
+                setTimeout(function(){$err.fadeOut();},2000);
+                return;
+            }
+
+            // change the current state and activate next
+            wizTabsViewDyn.getActiveTab().set('state','complete'); // set the state of the current tab
+            wizTabsViewDyn.getNextTab().set('state','complete'); // mark next as incomplete
+            wizTabsViewDyn.activateTab(wizTabsViewDyn.getNextTab()); // go to next tab
+        });
+
+        // listen to WTV and do something
+        wizTabsViewDyn.on('tabStateChange',function(x){
+            var allComp = _.every( wizTabsViewDyn.getTabs(), function(m){
+                return m.get('state') === 'complete';
+            });
+            $('.wizardTabsContentDyn .allStepsComp').html(allComp?'<i class="icon-thumbs-up"></i>':'<i class="icon-thumbs-down"></i>');
+        });
+
+
+
+
+
+        /* ****************************************
+            WizardTabsView example interactions
+        ***************************************** */
+        window.wizTabsView = new WizardTabsView({
+            el: $('#exampleWizTabsView'),
+            scrollOnTabActivate: true
+        });
+
+        // btn to interact with WTV
+        $('.wizardTabsContent .btn.unlock').click(function(){
+            wizTabsView.setTabState($(this).data('tab'),'unlocked');
+        });
+
+        // btn to interact with WTV
+        $('.wizardTabsContent .btn.activate').click(function(){
+            var wasActivated, $l;
+            wasActivated = wizTabsView.activateTab($(this).data('tab'));
+
+            if(!wasActivated) {
+                $l = $(' <span class="label label-warning">Could not activate, probably locked.</span>');
+                $(this).after($l);
+                setTimeout(function(){$l.fadeOut();},2000);
+            }
+        });
+
+        // btn to interact with WTV
+        $('.wizardTabsContent .btn.completeActive').click(function(){
+            wizTabsView.setTabState(wizTabsView.getActiveTab(),'complete');
+        });
+
+        // btn to go to next tab
+        $('.wizardTabsContent .btn.goNext').click(function(){
+            wizTabsView.activateTab(wizTabsView.getNextTab());
+        });
+        // btn to go to prev tab
+        $('.wizardTabsContent .btn.goPrev').click(function(){
+            wizTabsView.activateTab(wizTabsView.getPrevTab());
+        });
+
+        // btn to interact with WTV - validate a little form
+        $('.wizardTabsContent .btn.validateNext').click(function(){
+            var $t = $(this),
+                $val = $($t.data('validateSel')),
+                curTab = wizTabsView.getActiveTab(),
+                $err;
+
+            // validate
+            if(!$val.is(':checked')) {
+                wizTabsView.getActiveTab().set('state','incomplete'); // set state to incomplete
+                $err = $(' <span class="label label-warning">Check the box please.</span>');
+                $t.after($err);
+                setTimeout(function(){$err.fadeOut();},2000);
+                return;
+            }
+
+            // change the current state and activate next
+            wizTabsView.getActiveTab().set('state','complete'); // set the state of the current tab
+            wizTabsView.getNextTab().set('state','complete'); // mark next as incomplete
+            wizTabsView.activateTab(wizTabsView.getNextTab()); // go to next tab
+        });
+
+        // listen to WTV and do something
+        wizTabsView.on('tabStateChange',function(x){
+            var allComp = _.every( wizTabsView.getTabs(), function(m){
+                return m.get('state') === 'complete';
+            });
+            $('.wizardTabsContent .allStepsComp').html(allComp?'<i class="icon-thumbs-up"></i>':'<i class="icon-thumbs-down"></i>');
+        });
+
+
+
+
+
+
+
+    });
+</script>
+

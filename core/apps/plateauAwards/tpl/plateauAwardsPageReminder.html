@@ -1,0 +1,112 @@
+<!-- ======== PLATEAU AWARDS PAGE REMINDER ======== -->
+
+<div id="plateauAwardsPageReminderView" class="plateauAwardsPageReminder-liner page-content">
+    <div class="row">
+        <div class="span12">
+            <form id="plateauAwardsSendReminder" class="form-horizontal" action="layout.html" method="POST">
+                <fieldset id="outstandingAwardToRedeem">
+                <p>The following team members have an outstanding award to redeem as of &lt;date of nightly process&gt;. Send them a reminder.</p>
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" value="option1" id="selectAllCheckbox"></th>
+                            <th class="sortable nameColumn sorted ascending"><a href="#" id="plateauAwardsNameSort">Name <i class="icon-sort-down"></i><i class="icon-sort-up"></i></a></th>
+                            <th class="sortable promotionNameColumn unsorted ascending"><a href="#" id="plateauAwardsPromotionNameSort">Promotion Name <i class="icon-sort-down"></i><i class="icon-sort-up"></i></a></th>
+                            <th class="sortable dateIssuedColumn unsorted descending"><a href="#" id="plateauAwardsDateIssuedSort">Date Issued <i class="icon-sort-down"></i><i class="icon-sort-up"></i></a></th>
+                            <th class="sortable dateRemindedColumn unsorted descending"><a href="#" id="plateauAwardsDateRemindedSort">Date Reminded <i class="icon-sort-down"></i><i class="icon-sort-up"></i></a></th>
+                            <th class="sortable awardLevelColumn unsorted ascending"><a href="#" id="plateauAwardsAwardLevelSort">Award Level <i class="icon-sort-down"></i><i class="icon-sort-up"></i></a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" value="option1"></td>
+                            <td>Lastname, Firstname</td>
+                            <td>Promotion Name</td>
+                            <td>01/01/2012</td>
+                            <td></td>
+                            <td>Gold</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" value="option1"></td>
+                            <td>Lastname, Firstname</td>
+                            <td>Promotion Name</td>
+                            <td></td>
+                            <td></td>
+                            <td>Silver</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" value="option1"></td>
+                            <td>Lastname, Firstname</td>
+                            <td>Promotion Name</td>
+                            <td>01/01/2099</td>
+                            <td></td>
+                            <td>Meth</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset> <!-- outstandingAwardToRedeem -->
+            <fieldset id="emailReminder">
+                <div class="well well-small">
+                <h4>Reminder Email Message</h4>
+                    <p><b>Subject:</b> Claim Your {Promotion Name} Award Today!</br>
+                    Dear {Recipient First Name Last Name},</br>
+                    <p>A friendly reminder that you have an unredeemed {Promotion Name} {Award Level} award.</br>
+                    This award will expire on {mm/dd/yyyy HH:MM:SS AM/PM}.</p>
+                    <p>Click here to redeem your award</p>
+                    <p>Susan Martin says:</br>
+                    {Your comments will be added here.}</p>
+                    The BI Team</p>
+                 </div>
+                <p>Please enter your comments to go with the reminder email:</p>
+                <textarea rows="5" id="notifyMessage" name="notifyMessage" class="richtext input-xxlarge"></textarea>
+            </fieldset><!-- /#emailReminder -->
+            <fieldset id="plateauAwardsSendReminderActions" class="form-actions form-actions pullBottomUp">
+                <button class="btn btn-primary" type="submit" value="plateauAwardsSendReminderButtonSubmit" id="plateauAwardsSendReminderButtonSubmit">Submit</button>
+                <button class="btn" type="submit" value="plateauAwardsSendReminderButtonCancel" id="plateauAwardsSendReminderButtonCancel">Cancel</button>
+                <div class="plateauAwardsSendReminderCancelDialog" style="display:none">
+                    <p>
+                        <i class="icon-question-sign"></i>
+                        <b>Cancel email reminder?</b>
+                    </p>
+                    <p>
+                        Are you sure? All changes will be lost.
+                    </p>
+                    <p class="tc">
+                        <a href="path/to/homepage" id="plateauAwardsSendReminderCancelDialogConfirm" class="btn btn-primary">Yes</a>
+                        <button id="plateauAwardsSendReminderCancelDialogCancel" class="btn">No</button>
+                    </p>
+                </div><!-- /.plateauAwardsSendReminderCancelDialog -->
+            </fieldset><!-- /#plateauAwardsSendReminderActions -->
+            </form><!-- /#plateauAwardsSendReminder -->
+        </div>
+    </div>
+                <!-- informational tooltip for validation -->
+                <div class="validationTipWrapper" style="display:none">
+                        <div class="nextBtnMsg msgNoPartnerYesPref">
+                            <i class="icon-exclamation-sign"></i>
+                            Please select 'yes', or 'no'.
+                        </div>
+                </div>
+</div>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+
+    $(document).ready(function() {
+        //attach the view to an existing DOM element
+        var prpr = new PlateauAwardsPageReminderView({
+            el:$('#plateauAwardsPageReminderView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Send a Plateau Awards Reminder'
+        });
+    });
+</script>

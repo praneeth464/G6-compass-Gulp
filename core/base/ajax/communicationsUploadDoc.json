@@ -1,0 +1,12 @@
+<?php sleep(1); ?>
+{
+    "messages" : [
+            {
+            "type":"success",
+            "name":"Document Upload Success",
+            "isSuccess": true,
+            "text":"Some text explaining the nature of the success. If this is false, return the error message.",
+            "docURL": "example.pdf"
+            }
+        ]
+}

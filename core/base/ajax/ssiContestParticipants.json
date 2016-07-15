@@ -1,0 +1,8 @@
+<?php require_once('paxGenerator/paxGenerator.php'); sleep(1); ?>
+
+<?php
+
+$ed = array('userId' => 456);
+generatePaxesPaginatedJson(20,500,$ed);
+
+?>

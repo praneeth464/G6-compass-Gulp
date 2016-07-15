@@ -1,0 +1,57 @@
+<div class="modal hide fade autoModal autoModalInviteContributors">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+
+        <h3>Your invitations have been sent</h3>
+    </div>
+
+    <div class="modal-body">
+        <!-- status class is one of the following: successStatus, existsStatus, failStatus -->
+        <ul class="invitees unstyled">
+            <!-- successStatus -->
+            <li class="successStatus inviteeResultItem">
+                <i class="icon-ok goodRes"></i>
+                <!-- JAVA: this person is a participant in the program -->
+                <!-- <a class="participant-popover" href="#" data-participant-ids="[{{id}}]"> -->
+                <strong>
+                    <span class="name">lastName, firstName</span>
+
+                    <img src="img/flags/us.png" alt="us" class="countryFlag" />
+                </strong>
+                <!-- </a> -->
+                <span class="org">
+                    <!-- JAVA: you will need to convert the following Handlebars logic to JSP logic to make all the permutations of orgName/departmentName/jobName display correctly with bullets in between:
+                    {{orgName}} {{#if departmentName}}{{#if orgName}}&bull;{{/if}} {{departmentName}}{{/if}} {{#if jobName}}{{#if departmentName}}&bull;{{else}}{{#if orgName}}&bull;{{/if}}{{/if}} {{jobName}}{{/if}}
+                    -->
+                    orgName &bull; departmentName &bull; jobName
+                </span>
+            </li>
+            <!-- existsStatus -->
+            <li class="existsStatus inviteeResultItem">
+                <i class="icon-ok neutralRes"></i>
+                <!-- JAVA: this person is NOT a participant in the program -->
+                <!-- JAVA: if no first or last name exists, leave out this <span> entirely -->
+                <span class="name">lastName, firstName</span>
+                <span class="email">email@domain.com</span>
+            </li>
+            <!-- failStatus -->
+            <li class="failStatus inviteeResultItem">
+                <i class="icon-remove badRes"></i>
+                <!-- JAVA: this person is NOT a participant in the program -->
+                <span class="email">email@domain.com</span>
+            </li>
+        </ul>
+
+        <hr>
+
+        <i class="icon-ok goodRes"></i> added &nbsp;&nbsp;
+        <i class="icon-ok neutralRes"></i> exists &nbsp;&nbsp;
+        <i class="icon-remove badRes"></i> invite failed, please try again
+    </div><!-- /.modal-body -->
+
+    <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
+        <a class="btn btn-primary" data-dismiss="modal">Contribute to PURL</a>
+    </div>
+
+</div>

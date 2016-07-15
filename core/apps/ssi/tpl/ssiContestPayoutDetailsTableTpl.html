@@ -1,0 +1,96 @@
+<div class="paginationControls pagination pagination-right"></div>
+<div class="emptyMsg alert" style="display:none">You have not added anyone.</div>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th class="sortHeader">
+                    Participant
+                    <i data-sort="lastName" class="icon-sort"></i>
+                </th>
+                <th class="sortHeader date">
+                    Activity Date
+                    <i data-sort="activityDate" class="icon-sort"></i>
+                </th>
+                <th class="sortHeader">
+                    Activity Description
+                    <i data-sort="activityDescription" class="icon-sort"></i>
+                </th>
+                <th class="sortHeader number">
+                    Activity Amount
+                    <i data-sort="activityAmount" class="icon-sort"></i>
+                </th>
+                {{#eq payoutType "points"}}
+                <th class="sortHeader number">
+                    Payout
+                    <i data-sort="payoutValue" class="icon-sort"></i>
+                </th>
+                {{/eq}}
+                {{#eq payoutType "other"}}
+                <th class="sortHeader">
+                    Payout Description
+                    <i data-sort="payoutDescription" class="icon-sort"></i>
+                </th>
+                <th class="sortHeader number">
+                    Payout Value
+                    <i data-sort="payoutValue" class="icon-sort"></i>
+                </th>
+                {{/eq}}
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="totalDisp">
+                    Total
+                </td>
+                <td class="totalDisp number">
+                    {{totalActivity}}
+                </td>
+                <td class="totalDisp number" {{#eq payoutType "other"}}colspan="2"{{/eq}}>
+                    {{totalPayoutAmount}}
+                    {{#eq payoutType "points"}}
+                        points
+                    {{/eq}}
+                </td>
+            </tr>
+        </tfoot>
+        <tbody>
+        </tbody>
+    </table>
+
+<!-- <div class="paginationConts pagination pagination-right"></div> -->
+<div class="paginationControls pagination pagination-right"></div>
+
+<!--subTpl.recordRow=
+    {{debug}}
+    <tr class="summary-item" data-participant-id="{{id}}">
+
+        <td>
+            {{lastName}}, {{firstName}}
+        </td>
+        <td class="date">
+            {{activityDate}}
+        </td>
+        <td>
+            {{activityDescription}}
+        </td>
+        <td class="number">
+            {{activityAmount}}
+        </td>
+        {{#eq extraJSON.payoutType "points"}}
+            <td class="number">
+                {{payoutValue}}
+            </td>
+        {{/eq}}
+        {{#eq extraJSON.payoutType "other"}}
+            <td>
+                {{payoutDescription}}
+            </td>
+            <td class="number">
+                {{payoutValue}}
+            </td>
+        {{/eq}}
+
+    </tr>
+
+subTpl-->

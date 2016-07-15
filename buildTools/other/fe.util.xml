@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project name="G5FrontEnd" default="fe.help" basedir="../../.">
+    <tstamp>
+        <format property="fe.build.time"
+                pattern="MMMM d, yyyy hh:mm:ss"
+                locale="en,US" />
+    </tstamp>
+
+    <description>Front-End G5 utility build file</description>
+
+    <!-- (adds useful logic tasks like <if>) -->
+    <taskdef resource="net/sf/antcontrib/antlib.xml">
+        <classpath>
+            <pathelement location="${basedir}/buildTools/ant-contrib-1.0b3.jar"/>
+        </classpath>
+    </taskdef>
+
+    <target name="fe.help">
+        <echo>Ant build commands:</echo>
+        <echo></echo>
+        <echo>ant -f buildTools/fe.util.xml fe.CRLF</echo>
+        <echo> (Converts all text files to line ending of CRLF - .css,.html,.js,.json,.properties,.py,.rb,.scss,.sublime-*,.txt,.xml)</echo>
+        <echo></echo>
+
+        <echo>
+            ${basedir} 
+            is assumed to not end with buildTools\other, but rather reference it relatively via buildTools\other
+            (or in other words run from the same directory where the fe.build.xml file is located 
+             and be run like one of the above commands)
+        </echo>
+        <if>  <!-- This will cause an error if the above basedir is not used -->
+            <not>
+                <available file="${basedir}" />
+            </not>
+            <then>
+                <echo>then</echo>
+            </then>
+        </if>
+    </target>
+
+    <target name="fe.CRLF">
+        <echo>Converting all files to line ending of CRLF</echo>
+        <fixcrlf srcdir="${basedir}"
+                includes="**/*.css,**/*.html,**/*.js,**/*.json,**/*.properties,**/*.py,**/*.rb,**/*.scss,**/*.sublime-*,**/*.txt,**/*.xml"
+                fixlast="false"
+                eol="crlf" />
+    </target>
+</project>

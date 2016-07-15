@@ -1,0 +1,67 @@
+{
+    "messages":[],
+    "badgeInfo":{
+        "noBadgesCompleteText":"Simply diplayed text when no badges are complete.",
+        "badges":[
+            {
+                "id":               "23",
+                "type":             "progress",
+                "name":             "Earned Badge Name 1 2a",
+                "howToEarnText":    "1 How to earn badge",
+                "imgLarge":         "http://placehold.it/261x180",
+                "img":              "img/gamification_badge_placeholder1.jpg",
+                "earned":           true,
+                "dateEarned":       "2012-09-01 (< 2 wks)",
+                "progressNumerator":  "",
+                "progressDenominator":  ""
+            },
+            {
+                "id":               "24",
+                "type":             "progress",
+                "name":             "Earned Badge Name 2 2a",
+                "howToEarnText":    "2 How to earn badge",
+                "imgLarge":         "http://placehold.it/262x180",
+                "img":              "img/gamification_badge_placeholder1.jpg",
+                "earned":           true,
+                "dateEarned":       "2012-09-02 (< 2 wks)",
+                "progressNumerator":  "",
+                "progressDenominator":  ""
+            },
+            {
+                "id":               "25",
+                "type":             "progress",
+                "name":             "Earned Badge Name 3 2a",
+                "howToEarnText":    "3 How to earn badge",
+                "imgLarge":         "http://placehold.it/263x180",
+                "img":              "img/gamification_badge_placeholder1.jpg",
+                "earned":           true,
+                "dateEarned":       "2012-09-03 (< 2 wks)",
+                "progressNumerator":  "",
+                "progressDenominator":  ""
+            },
+            {
+                "id":               "26",
+                "type":             "progress",
+                "name":             "In Progress Badge Name 4 2b",
+                "howToEarnText":    "4 How to earn badge",
+                "imgLarge":         "http://placehold.it/264x180",
+                "img":              "img/gamification_badge_placeholder1.jpg",
+                "earned":           true,
+                "dateEarned":       null,
+                "progressNumerator":  "8",
+                "progressDenominator":  "10"
+            },
+            {
+                "id":               "27",
+                "type":             "progress",
+                "name":             "In Progress Badge Name 5 2b",
+                "howToEarnText":    "5 How to earn badge",
+                "img":              "img/gamification_badge_placeholder1.jpg",
+                "earned":           false,
+                "dateEarned":       null,
+                "progressNumerator":  "10",
+                "progressDenominator":  "20"
+            }
+        ]
+    }
+}

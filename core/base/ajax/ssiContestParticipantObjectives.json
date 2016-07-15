@@ -1,0 +1,67 @@
+<?php require_once('paxGenerator/paxGenerator.php'); sleep(1); ?>
+
+<?php
+
+$m = $_POST['method'];
+
+if( $m =='calcTotal' ) {
+
+    ?>
+    {
+        "messages":[],
+        "contestJson": {
+            "objectiveAmountTotal": 100000.12,
+            "objectivePayoutTotal": 10000,
+            "bonusPayoutTotal": 3000,
+            "bonusPayoutCapTotal": 5000,
+            "maxPayout": 10000,
+            "maxPayoutWithBonus": 15000,
+            "maxPotential": 100000.12
+        }
+    }
+    <?php
+
+} else if( $m == 'sameForAll' ) {
+?>
+
+    {
+        "messages":[],
+        "contestJson": {
+            "objectiveAmountTotal": 100000.12,
+            "objectivePayoutTotal": 10000,
+            "bonusPayoutTotal": 3000,
+            "bonusPayoutCapTotal": 5000,
+            "maxPayout": 10000,
+            "maxPayoutWithBonus": 15000,
+            "maxPotential": 100000.12
+        }
+    }
+
+<?php
+} else if( $m == 'saveAsDraft' ) {
+
+// saveAsDraft should return a forwarding url -- going to the list page
+?>
+{
+    "forwardUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiManagerPage.html#index"
+}
+<?php
+
+
+} else {
+
+    $ed = array(
+        'activityDescription' => 'Activity description from server',
+        'objectiveAmount' => 1500,
+        'objectivePayoutDescription' => "$50 gift card",
+        'objectivePayout' => 50,
+        'bonusForEvery' => 500,
+        'bonusPayout' => 50,
+        'bonusPayoutCap' => 300
+    );
+
+    generatePaxesPaginatedJson(5,500,$ed);
+
+}
+
+?>

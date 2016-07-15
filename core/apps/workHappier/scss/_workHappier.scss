@@ -1,0 +1,760 @@
+// App-specific variables
+// =========================
+$workHappier_bgColor: $g5ModuleBgColor !default;
+$workHappier_gradType: $g5ModuleGradType !default;
+$workHappier_gradMeta: $g5ModuleGradMeta !default;
+$workHappier_gradStops: $g5ModuleGradStops !default;
+
+$workHappier_tileTextColor: $white !default;
+
+$workHappier_modalBubbleTextColor: $white !default;
+$workHappier_modalCloseColor: $white !default;
+$workHappier_modalPastResultsTextColor: $white !default;
+$workHappier_modalHeaderColor: $white !default;
+$workHappier_modalSubHeaderColor: $white !default;
+$workHappier_modalPrivacyStatementColor: $white !default;
+$workHappier_modalPrivacyStatementLinkColor: $white !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// Mixins
+// =========================
+// Options:
+//
+// hand-and-up    -  bigger-than-phone and up
+// lap-and-up     -  laptops and up
+// desk-and-up    -  desktops and up
+// wall-and-up    -  widescreen desktops and up
+// below-lap      -  smaller than laptops
+// below-hand     -  isolates phones
+//
+// Without one of these parameters the mixin will accept a custom media query.
+
+$hand-start:   480px;
+$lap-start:    768px;
+$desk-start:   1024px;
+$wall-start:   1200px;
+
+@mixin media-query($media-query) {
+    // render styles without media queries if those breakpoints are false
+
+    @if $media-query == "hand-and-up" {
+        @if $hand-start != false {
+            @media only screen and ( min-width:$hand-start ) { @content; }
+        }
+
+        @else { @content; }
+    }
+
+    @else if $media-query == "lap-and-up" {
+        @if $lap-start != false {
+            @media only screen and ( min-width:$lap-start ) { @content; }
+        }
+
+        @else { @content; }
+    }
+
+    @else if $media-query == "desk-and-up" {
+        @if $desk-start != false {
+            @media only screen and ( min-width:$desk-start ) { @content; }
+        }
+
+        @else { @content; }
+    }
+
+    @else if $media-query == "wall-and-up" {
+        @if $wall-start != false {
+            @media only screen and ( min-width:$wall-start ) { @content; }
+        }
+
+        @else { @content; }
+    }
+
+    @else if $media-query == "below-wall" {
+        @if $wall-start != false {
+            @media only screen and ( max-width: ($wall-start - 1px) ) { @content; }
+        }
+
+        @else {}
+    }
+
+    @else if $media-query == "below-desk" {
+        @if $desk-start != false {
+            @media only screen and ( max-width: ($desk-start - 1px) ) { @content; }
+        }
+
+        @else {}
+    }
+
+    @else if $media-query == "below-lap" {
+        @if $lap-start != false {
+            @media only screen and ( max-width: ($lap-start - 1px) ) { @content; }
+        }
+        @else {}
+    }
+
+    @else if $media-query == "below-hand" {
+        @if $hand-start != false {
+            @media only screen and ( max-width: ($hand-start - 1px) ) { @content; }
+        }
+        @else {}
+    }
+
+    // custom breakpoints
+    @else {
+        @media only screen and ( $media-query ) { @content; }
+    }
+}
+
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+.workHappier {
+
+}
+
+/* ----- MODULE STYLES ----- */
+.module.workHappier {
+    .wide-view {
+        text-align: center;
+
+        h2 {
+            color: $workHappier_tileTextColor;
+        }
+    }
+
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $workHappier_bgColor,
+            $gradType: $workHappier_gradType,
+            $gradMeta: $workHappier_gradMeta,
+            $gradStops: $workHappier_gradStops
+        );
+    }
+
+    &.grid-dimension-4x2 {
+        .static-smily-face {
+            margin-top: 20px;
+        }
+    }
+
+    &.grid-dimension-4x4 {
+        .static-smily-face {
+            height: 400px;
+            margin-top: 80px;
+        }
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        .title-icon-view {
+            display: none;
+        }
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2 {
+        .static-smily-face {
+            height: 170px;
+        }
+    }
+}
+
+#whModal {
+    position: absolute;
+    left: 37%;
+    width: 70%;
+
+    @include media-query(below-wall) {
+        left: 34%;
+        width: 80%;
+    }
+
+    @include media-query(below-desk) {
+        width: 87%;
+    }
+
+    @media (max-width: 900px) {
+        width: 94%;
+    }
+
+    @media (max-width: 840px) {
+        left: 36%;
+    }
+
+    @media (max-width: 800px) {
+        left: 38%;
+    }
+
+    @include media-query(below-lap) {
+        left: 2%;
+        width: 96%;
+    }
+
+
+    .happiness--container {
+        // background: linear-gradient(to bottom,  #4bbd78 0%, #107043 100%);
+        height: 660px;
+        position: relative;
+        width: 100%;
+        z-index: 99999;
+
+        &.beta {
+            height: 690px;
+            padding-top: 30px;
+
+            #happiness--beta_tag {
+                display: block;
+            }
+        }
+
+        @include media-query(below-hand) {
+            height: 500px;
+
+            &.beta {
+                height: 535px;
+                padding-top: 35px;
+            }
+        }
+
+        .happiness--wrapper {
+            height: 100%;
+            margin: auto;
+            max-width: 1440px;
+            padding-top: 25px;
+            position: relative;
+            width: 100%;
+        }
+
+        .happiness--button_container {
+            padding: 0 1.5rem;
+            text-align: center;
+            width: 78%;
+            z-index: 1;
+
+            @include media-query(below-hand) {
+                width: 89%;
+            }
+
+            @media(max-width: 622px) {
+                width: 78%;
+            }
+        }
+
+        .happiness--bubble {
+            display: none;
+            height: 200px;
+            margin-top: -100px;
+            opacity: 0;
+            position: absolute;
+            top: 21%;
+            visibility: hidden;
+            width: 193px;
+
+            .happiness--bubble_text {
+                color: $workHappier_modalBubbleTextColor;
+                display: table;
+                font: bold $baseFontSize * 1.429 $bodyFont;
+                height: 106px;
+                line-height: $baseLineHeight * 1.35;
+                position: absolute;
+                top: 32px;
+                width: 130px;
+
+                @include media-query(below-hand) {
+                    font-size: $baseFontSize * 1.143;
+                    height: 68px;
+                    line-height: $baseLineHeight * 0.85;
+                    top: 35px;
+                    width: 108px;
+                }
+
+                @media (max-width: 375px) {
+                    top: 15px;
+                    width: 72px;
+                }
+
+                span {
+                    display: table-cell;
+                    text-align: center;
+                    vertical-align: middle;
+                }
+            }
+
+            @include media-query(below-hand) {
+                width: 150px;
+                height: 129px;
+                top: 29%;
+            }
+        }
+
+        @include media-query(below-lap) {
+            &.rating-submitted{
+                height: 960px;
+            }
+
+        }
+
+        @include media-query(below-hand) {
+            &.rating-submitted{
+                height: 880px;
+            }
+        }
+    }
+
+    .whModalClose {
+        color: $workHappier_modalCloseColor;
+        float: right;
+        font-size: $baseFontSize * 1.429;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+
+    .happiness--past_results {
+        color: $workHappier_modalPastResultsTextColor;
+        display: none;
+        float: right;
+        margin: 50px 40px 0 0;
+        width: 240px;
+
+        h3 {
+            font-size: $baseFontSize * 1.357;
+            font-weight: 400;
+            line-height: $baseLineHeight;
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+
+            li {
+                @include box-sizing(border-box);
+                background: rgba(0, 0, 0, 0.2);
+                float: left;
+                clear: left;
+                padding: 5px 10px;
+                width: 100%;
+
+                &.evenRow {
+                    background: rgba(0, 0, 0, 0.3);
+                }
+            }
+        }
+
+        .past_results_list {
+            background: rgba(0, 0, 0, 0.1);
+            height: 255px;
+            width: 100%;
+
+            .no_results {
+                color: rgba(0,0,0,.5);
+                display: block;
+                padding: 20px;
+                text-align: center;
+            }
+        }
+
+        div {
+            float: left;
+        }
+
+        @media (max-width: 900px) {
+            margin-right: 20px;
+            width: 210px;
+        }
+
+        @media (max-width: 800px) {
+            width: 180px;
+        }
+
+        @include media-query(below-lap) {
+            left: 35%;
+            bottom: 90px;
+            position: absolute;
+        }
+
+        @include media-query(below-hand) {
+            left: 26%;
+            bottom: 115px;
+        }
+
+        @include media-query("max-width: 375px") {
+            left: 21%;
+            bottom: 145px;
+        }
+    }
+
+    .happiness--past_results_date {
+        font-size: $baseFontSize * 0.867;
+    }
+
+    .happiness--past_results_mood {
+        display: block;
+        font-size: $baseFontSize * 1.1429;
+        font-style: italic;
+        padding-right: 5px;
+    }
+
+    .happiness--past_results_smily {
+        float: left;
+        height: 38px;
+        margin-right: 10px;
+        width: 30px;
+    }
+
+    #happiness--bubble_left {
+        @include safeImgUrls('workHappier/happiness-slider/bubble-left.png', $appImagesPath, $property: 'background-image');
+        background-position: top left;
+        background-size: 190px 169px;
+        background-repeat: no-repeat;
+        right: 50%;
+        margin-right: 55px;
+
+        @include media-query(below-hand) {
+            background-size: 150px 129px;
+            margin-right: 35px;
+        }
+
+        @include media-query("max-width: 375px") {
+            background-size: 120px 99px;
+            left: auto;
+            right: 48%;
+            margin-right: 0px;
+        }
+    }
+
+    #happiness--bubble_left .happiness--bubble_text {
+        left: 16px;
+
+        @include media-query(below-hand) {
+            left: 10px;
+        }
+    }
+
+    #happiness--bubble_right {
+        @include safeImgUrls('workHappier/happiness-slider/bubble-right.png', $appImagesPath, $property: 'background-image');
+        background-position: top left;
+        background-size: 190px 169px;
+        background-repeat: no-repeat;
+        left: 50%;
+        margin-left: 55px;
+
+        @include media-query(below-hand) {
+            background-size: 150px 129px;
+            margin-left: 35px;
+        }
+
+        @include media-query("max-width: 375px") {
+            background-size: 120px 99px;
+            margin-left: 0px;
+            left: 54%;
+            right: auto;
+        }
+    }
+
+    #happiness--bubble_right .happiness--bubble_text {
+        right: 16px;
+
+        @include media-query(below-hand) {
+            right: 10px;
+        }
+
+        @media (max-width: 375px) {
+            right: 45px;
+        }
+    }
+
+    #happiness--slide_me_cta {
+        @include safeImgUrls('workHappier/happiness-slider/slide-me.png', $appImagesPath, $property: 'background-image');
+        background-position: top left;
+        background-repeat: no-repeat;
+        display: block;
+        height: 31px;
+        position: absolute;
+        right: -145px;
+        top: 44%;
+        top: 50%\9;
+        width: 131px;
+
+        transform: translateX(0);
+        animation: happiness--slide_me_cta 1s infinite ease-in-out;
+
+        @include media-query("max-width: 622px") {
+            @include safeImgUrls('workHappier/happiness-slider/slide-me-right.png', $appImagesPath, $property: 'background-image');
+            background-position: top left;
+            background-repeat: no-repeat;
+            right: 55px;
+        }
+
+        @include media-query(below-hand) {
+            right: 55px;
+            top: 116px;
+        }
+
+        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+             top: 50%;
+        }
+    }
+
+    #happiness--analyze_smile_cta {
+        cursor: pointer;
+        display: none;
+        bottom: -52px;
+        left: 25%;
+        position: absolute;
+
+        a {
+            cursor: pointer;
+            font-size: 16px;
+            padding: 12px 30px;
+        }
+
+        @include media-query(below-hand) {
+            bottom: -20px;
+        }
+
+        @media (max-width: 622px) {
+            left: 0;
+        }
+    }
+
+    #happiness--work_happier_cta {
+        bottom: 16px;
+        display: none;
+        position: absolute;
+    }
+
+    #happiness--module_header {
+        color: $workHappier_modalHeaderColor;
+        font-size: 60px;
+        line-height: 1;
+        margin: 0px auto;
+        text-align: center;
+        width: 488px;
+
+        &.break {
+            max-width: 700px;
+
+            @include media-query(below-hand) {
+                max-width: 300px;
+            }
+        }
+
+        @include media-query(below-hand) {
+            font-size: 34px;
+            width: 270px;
+        }
+
+    }
+
+    #happiness--result_header {
+        bottom: 132px;
+        color: $workHappier_modalHeaderColor;
+        display: none;
+        font: italic bold $baseFontSize * 2.2857 $bodyFont;
+        line-height: $baseLineHeight * 1.5;
+        margin: 0px auto 0px auto;
+        padding: 0 1.5rem;
+        position: absolute;
+        text-align: center;
+        width: 80%;
+
+        @include media-query(below-hand) {
+            font-size: $baseFontSize * 1.5;
+            line-height: 1.2;
+            padding: 0px 20px;
+        }
+    }
+
+    #happiness--result_subheader {
+        bottom: 72px;
+        color: $workHappier_modalSubHeaderColor;
+        display: none;
+        font: 500 $baseFontSize * 0.875 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        left: 0px;
+        line-height: $baseLineHeight * 1.2;
+        margin: 0px auto 0px auto;
+        padding: 0 1.5rem;
+        position: absolute;
+        text-align: center;
+        width: 80%;
+
+        @include media-query(below-hand) {
+            bottom: 75px;
+            line-height: $baseLineHeight * 0.9;
+            padding: 0 0.5rem;
+            width: 100%;
+        }
+
+        span {
+            display: inline-block;
+            max-width: 400px;
+            width: 100%;
+        }
+    }
+
+    #happiness--privacy_statement {
+        bottom: -50px;
+        color: $workHappier_modalPrivacyStatementColor;
+        font-size: $baseFontSize * 0.857;
+        display: none;
+        left: 0px;
+        position: absolute;
+        text-align: center;
+        width: 90%;
+
+        @include media-query(below-hand) {
+            bottom: -360px;
+            left: 3%;
+            width: 100%;
+        }
+
+        @include media-query(below-lap) {
+            bottom: -370px;
+        }
+
+        a {
+            color: $workHappier_modalPrivacyStatementLinkColor;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    }
+
+    #happiness--confidential_feedback {
+        bottom: -40px;
+        color: $workHappier_modalPrivacyStatementColor;
+        font-size: $baseFontSize * 0.857;
+        display: none;
+        left: 0px;
+        position: absolute;
+        text-align: center;
+        width: 90%;
+
+        @include media-query(below-hand) {
+            bottom: -15px;
+            width: 100%;
+        }
+
+        a {
+            color: $workHappier_modalPrivacyStatementLinkColor;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    }
+
+    #happiness--slider_container {
+        display: block;
+        left: 0;
+        position: absolute;
+        top: 138px;
+        width: 70%;
+
+        .happiness-slider-container--inner {
+            display: block;
+            height: 400px;
+            left: 130px;
+            margin: auto;
+            max-width: 400px;
+            position: relative;
+            transform: translate3d(0,0,0);
+            width: 350px;
+
+            svg {
+                display: block;
+                overflow: visible;
+                width: 100%;
+            }
+
+            @include media-query(below-hand) {
+                height: 300px;
+                left: 0px;
+                width: 240px;
+            }
+        }
+
+        &.happiness--rating_submitted {
+            top: 190px;
+
+            .happiness-slider-container--inner {
+                left: 6%;
+            }
+        }
+
+        @include media-query(below-lap) {
+            &.happiness--rating_submitted {
+                left: 17%;
+
+                .happiness-slider-container--inner {
+                    width: 100%;
+                }
+            }
+        }
+
+        @include media-query(below-hand) {
+            left: 18%;
+            top: 90px;
+
+            &.happiness--rating_submitted {
+                left: 15%;
+                top: 120px;
+
+                .happiness-slider-container--inner {
+                    left: 18px;
+                    margin-bottom: 60px;
+                    transition: left 0.45s ease-in-out;
+                    width: 300px;
+                }
+            }
+        }
+
+        @media (max-width: 375px) {
+            &.happiness--rating_submitted {
+                .happiness-slider-container--inner {
+                    margin-bottom: 40px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
+        #slider-track {
+            filter: url(#inner-shadow-retina);
+        }
+    }
+
+    @keyframes happiness--slide_me_cta {
+        0% {
+            transform: translateX(0);
+        }
+        50% {
+            transform: translateX(15px);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+}
+
+#whPrivacyPolicyModal .modal-body {
+    max-height: 410px;
+    overflow: auto;
+}
+
+#whFeedbackModal {
+    textarea {
+        resize: none;
+        width: 97%;
+    }
+}
+
+#privacyPageView .row .span12 {
+    position: relative;
+    width: 94%;
+}

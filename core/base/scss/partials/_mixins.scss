@@ -1,0 +1,868 @@
+// GIVE ACCESS TO THE BOOTSTRAP MIXINS IF NEEDED
+@import "bootstrap/mixins";
+
+// calculate the width of the homeApp container depending on the number of available columns to show
+@function homeAppContainer($cols) {
+    @return $cols * $g5ModuleUnit - $g5ModuleGutter * 2;
+}
+
+// for the module liner to calculate the sizes
+@mixin module_moduleLiner(
+    $cols,
+    $rows,
+    $borderWidth: 0
+) {
+    width : ($g5ModuleUnit * $cols) - (2 * $g5ModuleGutter) - (2 * $borderWidth);
+    height : ($g5ModuleUnit * $rows) - (2 * $g5ModuleGutter) - (2 * $borderWidth);
+}
+
+// module liner backgrounds
+@mixin module_moduleLinerBackground(
+    $bgColor: $g5ModuleBgColor,
+    $gradType: $g5ModuleGradType,
+    $gradMeta: $g5ModuleGradMeta,
+    $gradStops: $g5ModuleGradStops,
+    $force: false
+) {
+    // check to see if any of the arguments have been passed values that are non-default OR if we're forcing this to run.
+    // because _allModules.scss sets the properties of every module to the global values, we don't need to run this mixin on a per-app basis unless it introduces custom values. Saves on code.
+    @if $bgColor != $g5ModuleBgColor or $gradType != $g5ModuleGradType or $gradMeta != $g5ModuleGradMeta or $gradStops != $g5ModuleGradStops or $force == true {
+
+        // enables SVG gradient support in Opera and IE9
+        $experimental-support-for-svg: true;
+
+        // check to see if $gradStops is supposed to be the default calculated list of values (passed value of false)
+        @if $gradStops == false {
+            $gradStops: (lighten($bgColor, 17%), $bgColor)
+        }
+
+        // check to see if we've turned off the gradient altogether
+        @if $gradType == none or $gradType == false {
+            @include background($bgColor);
+        }
+        // check to see if the gradient type has been switched from the default linear to radial
+        @elseif $gradType == radial {
+            // check to see if the gradient meta information is still the default linear-specific "top" value and hasn't been overridden
+            // note, there are other linear-specific values that can get past this check. This is simply for the defaults
+            @if $gradMeta == top {
+                // switch it to the default radial-specific "center center, circle" value
+                $gradMeta: center center, circle;
+            }
+            @include background($bgColor radial-gradient($gradMeta, $gradStops));
+        }
+        // otherwise, assume default linear style
+        @else {
+            @include background($bgColor linear-gradient($gradMeta, $gradStops));
+        }
+
+        // IE8 and down
+        .lt-ie9 & {
+            $start: nth($gradStops, 1);
+            $finish: nth($gradStops, length($gradStops));
+            @if length($start) > 1 {
+                $start: nth($start, 1);
+            }
+            @if length($finish) > 1 {
+                $finish: nth($finish, 1);
+            }
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str( $start )}', endColorstr='#{ie-hex-str( $finish )}', GradientType=0);
+        }
+
+    } // end @if
+}
+
+// exposes the module title-icon-view icon/text colors and text font family on a per-app basis
+@mixin module_titleIconView(
+    $iconColor: $g5ModuleIconColor,
+    $titleColor: $g5ModuleTitleColor,
+    $titleFontFamily: $g5ModuleTitleFontFamily,
+    $titleFontStyle: $g5ModuleTitleFontStyle,
+    $titleTextTransform: $g5ModuleTitleTextTransform,
+    $force: false
+) {
+    // check to see if any of the arguments have been passed values that are non-default OR if we're forcing this to run.
+    // because _allModules.scss sets the properties of every module to the global values, we don't need to run this mixin on a per-app basis unless it introduces custom values. Saves on code.
+    @if $force == true or $iconColor != $g5ModuleIconColor or $titleColor != $g5ModuleTitleColor or $titleFontFamily != $g5ModuleTitleFontFamily or $titleFontStyle != $g5ModuleTitleFontStyle or $titleTextTransform != $g5ModuleTitleTextTransform {
+
+        @if $iconColor != $g5ModuleIconColor or $force == true {
+            color: $iconColor;
+        }
+
+        h3 {
+            @if $titleFontFamily != $g5ModuleTitleFontFamily or $force == true {
+                font-family: $titleFontFamily;
+            }
+            @if $titleFontStyle and ($titleFontStyle != $g5ModuleTitleFontStyle or $force == true) {
+                font-style: $titleFontStyle;
+            }
+            @if $titleTextTransform and ($titleTextTransform != $g5ModuleTitleTextTransform or $force == true) {
+                text-transform: $titleTextTransform;
+            }
+            @if $titleColor != $iconColor and ($titleColor != $g5ModuleTitleColor or $force == true) {
+                color: $titleColor;
+            }
+        }
+    } // end @if
+}
+
+// exposes the module title-icon-view text size on a per-app basis
+@mixin module_titleIconViewFontSizesWeights(
+    $fontSizes: $g5ModuleTitleFontSizes,
+    $fontWeights: $g5ModuleTitleFontWeights,
+    $force: false
+) {
+    // check to see if any of the arguments have been passed values that are non-default OR if we're forcing this to run.
+    // because _allModules.scss sets the properties of every module to the global values, we don't need to run this mixin on a per-app basis unless it introduces custom values. Saves on code.
+    @if $fontSizes != $g5ModuleTitleFontSizes or $fontWeights != $g5ModuleTitleFontWeights or $force == true {
+        @if nth($fontSizes, 1) and nth($fontWeights, 1) and (nth($fontSizes, 1) != nth($g5ModuleTitleFontSizes, 1) or nth($fontWeights, 1) != nth($g5ModuleTitleFontWeights, 1) or $force == true) {
+            &.grid-dimension-1x1 {
+                .title-icon-view {
+                    h3 {
+                        @if nth($fontSizes, 1) != nth($g5ModuleTitleFontSizes, 1) or $force == true {
+                            font-size: nth($fontSizes, 1);
+                        }
+                        @if nth($fontWeights, 1) != nth($g5ModuleTitleFontWeights, 1) or $force == true {
+                            font-weight: nth($fontWeights, 1);
+                        }
+                    }
+                }
+            }
+        }
+        @if nth($fontSizes, 2) and nth($fontWeights, 2) and (nth($fontSizes, 2) != nth($g5ModuleTitleFontSizes, 2) or nth($fontWeights, 2) != nth($g5ModuleTitleFontWeights, 2) or $force == true) {
+            &.grid-dimension-2x1 {
+                .title-icon-view {
+                    h3 {
+                        @if nth($fontSizes, 2) != nth($g5ModuleTitleFontSizes, 2) or $force == true {
+                            font-size: nth($fontSizes, 2);
+                        }
+                        @if nth($fontWeights, 2) != nth($g5ModuleTitleFontWeights, 2) or $force == true {
+                            font-weight: nth($fontWeights, 2);
+                        }
+                    }
+                }
+            }
+        }
+        @if nth($fontSizes, 3) and nth($fontWeights, 3) and (nth($fontSizes, 3) != nth($g5ModuleTitleFontSizes, 3) or nth($fontWeights, 3) != nth($g5ModuleTitleFontWeights, 3) or $force == true) {
+            &.grid-dimension-2x2,
+            &.grid-dimension-4x2 {
+                .title-icon-view {
+                    h3 {
+                        @if nth($fontSizes, 3) != nth($g5ModuleTitleFontSizes, 3) or $force == true {
+                            font-size: nth($fontSizes, 3);
+                        }
+                        @if nth($fontWeights, 3) != nth($g5ModuleTitleFontWeights, 3) or $force == true {
+                            font-weight: nth($fontWeights, 3);
+                        }
+                    }
+                }
+            }
+        }
+        @if nth($fontSizes, 4) and nth($fontWeights, 4) and (nth($fontSizes, 4) != nth($g5ModuleTitleFontSizes, 4) or nth($fontWeights, 4) != nth($g5ModuleTitleFontWeights, 4) or $force == true) {
+            &.grid-dimension-4x2 {
+                .title-icon-view {
+                    h3 {
+                        @if nth($fontSizes, 4) != nth($g5ModuleTitleFontSizes, 4) or $force == true {
+                            font-size: nth($fontSizes, 4);
+                        }
+                        @if nth($fontWeights, 4) != nth($g5ModuleTitleFontWeights, 4) or $force == true {
+                            font-weight: nth($fontWeights, 4);
+                        }
+                    }
+                }
+            }
+        }
+        @if nth($fontSizes, 5) and nth($fontWeights, 5) and (nth($fontSizes, 5) != nth($g5ModuleTitleFontSizes, 5) or nth($fontWeights, 5) != nth($g5ModuleTitleFontWeights, 5) or $force == true) {
+            &.grid-dimension-4x4 {
+                .title-icon-view {
+                    h3 {
+                        @if nth($fontSizes, 5) != nth($g5ModuleTitleFontSizes, 5) or $force == true {
+                            font-size: nth($fontSizes, 5);
+                        }
+                        @if nth($fontWeights, 5) != nth($g5ModuleTitleFontWeights, 5) or $force == true {
+                            font-weight: nth($fontWeights, 5);
+                        }
+                    }
+                }
+            }
+        }
+
+    } // end @if
+}
+
+// for outputting the g5 fonticons on modules at specific sizes
+@mixin module_titleIconViewFonticonsSizes(
+    // $size of 1, 2, 4 are fully supported by images.
+    // Other sizes will not produce a background image for browsers that do not support background-size (see @mixin g5fonticons_image() for those conditions)
+    $size: 1,
+    $iconString: false,
+    $imageString: false,
+    $imageOnly: false, // pass true if you only want to output images
+    $force: false // pass true if you want to output an image icon regardless of the $g5fonticonsModulesMode value
+) {
+    $selector: '[class^="icon-g5-"], [class*=" icon-g5-"]';
+    @if $iconString {
+        $selector: '.icon-g5-'+$iconString;
+    }
+
+    $baseUnit: 108px;
+
+    @if $imageOnly == false {
+        #{$selector} {
+            @if $size == 1 {
+                font-size: 96px; // magic number // (roughly 88.9% of $baseUnit)
+                .lt-ie8 & { text-indent: 13px; } // magic number // (roughly 13.5% of font-size)
+            }
+            // @else if $size == 2 {
+            //     font-size: 172px; // magic number // (roughly 79.6% of $baseUnit*2)
+            //     .lt-ie8 & { text-indent: 34px; } // magic number // (roughly 19.8% of font-size)
+            // }
+            // @else if $size == 4 {
+            //     font-size: 348px; // magic number // (roughly 80.5% of $baseUnit*4)
+            //     .lt-ie8 & { text-indent: 67px; } // magic number // (roughly 19.3% of font-size)
+            // }
+            @else {
+                font-size: $baseUnit * $size * .8; // (80% of $baseUnit*$size)
+                .lt-ie8 & { text-indent: $baseUnit * $size * .8 * .2; } // (20% of font-size)
+            }
+            line-height: $baseUnit * $size;
+            width: $baseUnit * $size;
+            height: $baseUnit * $size;
+            margin: (-1 * $baseUnit * $size / 2) 0 0 (-1 * $baseUnit * $size / 2);
+        }
+    }
+
+    @if $imageString {
+        @if $g5fonticonsModulesMode == 'image' or $force == true {
+            @include g5fonticons(
+                $list: $imageString,
+                $image: true,
+                $single: true,
+                $imageScale: $size+'x'
+            );
+            @media only screen and (-webkit-min-device-pixel-ratio: 2),
+                   only screen and (min-resolution: 192dpi) {
+                $imageScale: '';
+                @if $size == 1 or $size == 2 or $size == 4 {
+                    $imageScale: ($size * 2) + 'x';
+                }
+                @else {
+                    $imageScale: $size + 'x';
+                }
+
+                @include g5fonticons(
+                    $list: $imageString,
+                    $image: true,
+                    $single: true,
+                    $imageScale: $imageScale
+                );
+            }
+        }
+    }
+}
+
+
+// set a module to display only icon view at the specified sizes
+@mixin module_renderAsIconViews(
+    $sizes: "&.grid-dimension-1x1, &.grid-dimension-2x1"
+) {
+    #{$sizes} {
+        .wide-view {
+            display: none;
+        }
+        .title-icon-view {
+            display: block;
+        }
+        @include module_visitAppBtnFullModule();
+    }
+}
+
+// convert the visitAppBtn in the upper-right of modules from a small clickable area to a full module clickable area
+@mixin module_visitAppBtnFullModule(
+    $iconVisible: true
+) {
+    .visitAppBtn{
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+
+        .icon-arrow-right {
+            @if $iconVisible == false {
+                display: none;
+            }
+            @else {
+                float: right;
+                margin-right: $g5ModuleVisitAppButtonOffset;
+                margin-top: $g5ModuleVisitAppButtonOffset;
+            }
+        }
+    }
+    .wide-view {
+        cursor: pointer;
+    }
+}
+
+// used to display a faded-out version of the module when data is loading
+@mixin module_fadeOnDataLoading(
+    $className: 'dataLoading',
+    $classesToHide: '.wide-view',
+    $classesToShow: '.title-icon-view',
+    $opacity: 0.25
+) {
+    &.#{$className} {
+        #{$classesToHide} {
+            display: none;
+        }
+        #{$classesToShow} {
+            display: block;
+
+            h3,
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                @include opacity($opacity);
+            }
+        }
+    }
+}
+
+// used to color the cycle dots on a per-module basis
+@mixin module_cycleDots(
+    $cycleDotWidth: 8px,
+    $cycleDotBkg: transparent,
+    $cycleDotBorder: 1px solid $white,
+    $cycleDotBkgHover: transparentize($white, .5),
+    $cycleDotBorderHover: 1px solid $white,
+    $cycleDotBkgActive: $white,
+    $cycleDotBorderActive: 1px solid $white,
+    $cycleDotBorderRadius: $cycleDotWidth
+) {
+    @if $cycleDotWidth or $cycleDotBkg or $cycleDotBorder or $cycleDotBkgHover or $cycleDotBorderHover or $cycleDotBkgActive or $cycleDotBorderActive or $cycleDotBorderRadius {
+        .cycleLegend {
+            @if $cycleDotWidth {
+                margin-left: $cycleDotWidth / 4;
+
+                .lt-ie8 & {
+                    bottom: $cycleDotWidth / 2;
+                }
+            }
+
+            .cycleDot {
+                @if $cycleDotWidth {
+                    margin: ($cycleDotWidth / 2) ($cycleDotWidth) 0 ($cycleDotWidth / -2);
+                    width: $cycleDotWidth;
+                    height: $cycleDotWidth;
+                }
+                @if $cycleDotBkg {
+                    @include safeBkgs($cycleDotBkg);
+                }
+                @if $cycleDotBorder {
+                    border: $cycleDotBorder;
+                }
+                @if $cycleDotBorderRadius {
+                    @include borderRadiusSlim($cycleDotBorderRadius);
+                }
+
+                @if $cycleDotBkgHover or $cycleDotBorderHover {
+                    &:hover {
+                        @if $cycleDotBkgHover {
+                            @include safeBkgs($cycleDotBkgHover);
+                        }
+                        @if $cycleDotBorderHover {
+                            border: $cycleDotBorderHover;
+                        }
+                    }
+                }
+
+                @if $cycleDotBkgActive or $cycleDotBorderActive {
+                    &.selected,
+                    &.selected:hover {
+                        @if $cycleDotBkgActive {
+                            @include safeBkgs($cycleDotBkgActive);
+                        }
+                        @if $cycleDotBorderActive {
+                            border: $cycleDotBorderActive;
+                        }
+                    }
+                }
+            }
+        }
+    } // /@if
+}
+
+// used for coloring/styling container-splitter wells
+@mixin page_containerSplitterDisplay(
+    $h2Color                : false,
+    $textColor              : false,
+    $linkColor              : false,
+    $linkHoverColor         : false,
+    $linkIconColor          : false,
+    $linkIconHoverColor     : false,
+    $bgColor                : false,
+    $bgGradType             : false,
+    $bgGradMeta             : false,
+    $bgGradStops            : false,
+    $borderTopBottomWidth   : false,
+    $borderTopBottomColor   : false,
+    $boxShadow              : false
+) {
+    @if $textColor {
+        color: $textColor;
+    }
+    @if $bgColor {
+        @if $bgGradType {
+            @include module_moduleLinerBackground(
+                $bgColor: $bgColor,
+                $gradType: $bgGradType,
+                $gradMeta: $bgGradMeta,
+                $gradStops: $bgGradStops
+            );
+        }
+        @else {
+            background: $bgColor;
+        }
+    }
+    @include border-radius(0);
+    @if $borderTopBottomWidth and $borderTopBottomWidth != 0 {
+        border: $borderTopBottomWidth solid $borderTopBottomColor;
+        border-left: 0;
+        border-right: 0;
+    }
+    @else {
+        border: 0;
+    }
+    @if $boxShadow {
+        @include box-shadow($boxShadow);
+    }
+    @include fontSmoothing($textColor, $bgColor);
+
+    @if $h2Color {
+        h2 {
+            color: $h2Color;
+        }
+    }
+
+    a {
+        @if $linkColor {
+            color: $linkColor;
+        }
+
+        i {
+            @if $linkIconColor {
+                color: $linkIconColor;
+                border-color: $linkIconColor;
+            }
+        }
+
+        &:hover {
+            @if $linkHoverColor {
+                color: $linkHoverColor;
+            }
+            @if $linkIconHoverColor {
+                i {
+                    color: $linkIconHoverColor;
+                    border-color: $linkIconHoverColor;
+                }
+            }
+        }
+    }
+}
+
+
+//hack the gridCore methods of bootstrap for page content
+@mixin gridCoreG5($columnWidth, $gutterWidth, $paddingHoriz) {
+    .row {
+        margin-left: ($gutterWidth * -1) + $paddingHoriz - $g5PageContentLeftRightBorderWidth;
+        @include clearfix();
+        //make sure nested rows have no effective margin
+        .row {
+            margin-left: ($gutterWidth * -1);
+        }
+    }
+
+    [class*="span"] {
+        float: left;
+        margin-left: $gutterWidth;
+    }
+
+    @include gridCoreSpanXg5($gridColumns, $columnWidth, $gutterWidth, $paddingHoriz);
+    @include gridCoreOffsetXg5($gridColumns, $columnWidth, $gutterWidth, $paddingHoriz);
+}
+@mixin gridCoreSpanXg5($cols, $columnWidth, $gutterWidth, $contPadding) {
+    @for $i from 1 through $cols {
+        .span#{$i} { @include gridCoreSpanG5($i, $columnWidth, $gutterWidth, $contPadding, $cols) };
+    }
+}
+@mixin gridCoreSpanG5($columns, $columnWidth, $gutterWidth, $contPadding, $numCols) {
+    width: ($columnWidth * $columns) + ($gutterWidth * ($columns - 1)) - ($contPadding * 2 * ( $columns / $numCols)) ;
+}
+@mixin gridCoreOffsetXg5($cols, $columnWidth, $gutterWidth, $contPadding) {
+    @for $i from 1 through $cols {
+        .offset#{$i} { @include gridCoreOffsetG5($i, $columnWidth, $gutterWidth, $contPadding, $cols); };
+    }
+}
+@mixin gridCoreOffsetG5($columns, $columnWidth, $gutterWidth, $contPadding, $numCols) {
+    margin-left: ($columnWidth * $columns) + ($gutterWidth * ($columns + 1)) - ($contPadding * 2 * ( $columns / $numCols)) ;
+}
+
+@mixin gridCoreSpanMobile($cols) {
+    @for $i from 1 through $cols {
+        .span#{$i} { width: 100%; };
+    }
+}
+//eof gridCore hack
+
+@mixin gridCoreInnerFullSplit($leftRightPad, $topBotPad: null, $leftRightBorder: 0, $topBotBorder: 0) {
+    @include gridCoreInnerNegMargin($leftRightPad, $topBotPad, $leftRightBorder, $topBotBorder);
+    @include gridCoreInnerPadding($leftRightPad, $topBotPad, $leftRightBorder, $topBotBorder);
+}
+
+@mixin gridCoreInnerNegMargin($leftRightPad, $topBotPad: null, $leftRightBorder: 0, $topBotBorder: 0) {
+    @if $leftRightPad != null {
+        margin-left: (-1 * $leftRightPad) + $leftRightBorder;
+        margin-right: (-1 * $leftRightPad) + $leftRightBorder;
+    }
+    @if $topBotPad != null {
+        margin-top: (-1 * $topBotPad) + $topBotBorder;
+        margin-bottom: (-1 * $topBotPad) + $topBotBorder;
+    }
+}
+@mixin gridCoreInnerPadding($leftRightPad, $topBotPad: null, $leftRightBorder: 0, $topBotBorder: 0) {
+    @if $leftRightPad != null {
+        padding-left: $leftRightPad - $leftRightBorder;
+        padding-right: $leftRightPad - $leftRightBorder;
+    }
+    @if $topBotPad != null {
+        padding-top: $topBotPad - $topBotBorder;
+        padding-bottom: $topBotPad - $topBotBorder;
+    }
+}
+
+@mixin mobileBtn($width) {
+    display: block;
+    width: $width;
+    padding-left: 0;
+    padding-right: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+// $circledAwesomeIcon[prop] variables are defined in _variables.scss
+@mixin circledAwesomeIcon(
+    $fontSize:      $circledAwesomeIconFontSize,
+    $lineHeight:    false,
+    $color:         $circledAwesomeIconColor,
+    $borderColor:   $circledAwesomeIconBorderColor,
+    $circleWidth:   $circledAwesomeIconCircleWidth,
+    $borderWidth:   $circledAwesomeIconBorderWidth,
+    $bgColor:       $circledAwesomeIconBgColor
+) {
+
+    // check to see if $gradStops is supposed to be the default calculated list of values (passed value of false)
+    @if $lineHeight == false {
+        $lineHeight: $fontSize * 1.42
+    }
+
+    width: $circleWidth + (2 * $borderWidth);
+    height: $circleWidth + (2 * $borderWidth);
+    font-size: $fontSize;
+    line-height: $lineHeight;
+    text-align: center;
+    color: $color;
+
+    .lt-ie8 & {
+        width: $circleWidth;
+        height: $circleWidth;
+    }
+
+    &::before {
+        margin: 0;
+        width: $circleWidth;
+        height: $circleWidth;
+        background: $bgColor;
+        border: $borderWidth solid transparentize($borderColor,.01);
+        border-radius: $circleWidth + ($borderWidth * 2);
+    }
+}
+@mixin circledAwesomeIconRecolored(
+    $color: false,
+    $borderColor: false,
+    $bgColor: false
+) {
+    @if $color {
+        color: $color;
+    }
+
+    &::before {
+        @if $bgColor {
+            background: $bgColor;
+        }
+        @if $borderColor {
+            border-color: transparentize($borderColor,.01);
+        }
+    }
+}
+
+// NOTE: icon-g5-drawtool sits on the baseline. The default measurement is calibrated for that icon at a 108px font-size (1x1 default size)
+@mixin g5HomeAppIconBoxReflect($adjust: -31px) {
+    // turning these off. Android browsers can't render them properly
+    // -webkit-box-reflect: below $adjust -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.5, transparent), to(rgba(255,255,255,.5)));
+}
+
+// used for instances when good browsers and bad browsers (old IE) need two separate background color techniques
+// this will attempt to create a transparent background using the filter property for IE when necessary
+// the filter can be suppressed with $filter: false if it causes problems
+@mixin safeBkgs(
+    $bgColor,
+    $property: background,
+    $filter: true
+) {
+    #{$property} : $bgColor;
+    @if $filter and $bgColor and $bgColor != 'transparent' and $bgColor != 'none' and alpha($bgColor) != 1 {
+        .lt-ie9 & {
+            background: image-url('ieCleaPicFix.png');
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str( $bgColor )}', endColorstr='#{ie-hex-str( $bgColor )}', GradientType=0);
+            zoom: 1;
+        }
+    }
+}
+
+// used for only including border radius if the property is explicit
+// in practice, if the radius is being set for the first time, any value greater than 0 will output border-radius code while a value of 0 won't output anything (slimming down the CSS)
+// however, when a radius has already been set and it needs to be overridden back to 0, the $override flag needs to be set to true
+@mixin borderRadiusSlim(
+    $radius,
+    $override: false // set to true to allow a radius of 0 to override the logic test
+) {
+    @if $radius and $radius != 0 or $override == true {
+        @include border-radius($radius);
+    }
+}
+
+// used to swap between skin images and core images
+// if an explicit $imgUrlPath is passed in, the property will use the regular CSS "url()" notation
+// if no $imgUrlPath is passed in, the property will use the smart Compass "image-url()" helper
+// note that even though this mixin lives in the core SCSS, when the mixin is called (directly or indirectly) from inside a skin, the image-url() helper uses the "images_dir" property defined in the skin's local config.rb
+// therefore, if a skin needs to use images from the core images directory, it should pass an explicit $imgUrlPath
+@mixin safeImgUrls(
+    $imgUrl,
+    $imgUrlPath,
+    $property: background
+) {
+    @if( $imgUrl ) {
+        @if( $imgUrlPath and $imgUrlPath != 'img/' ) {
+            #{$property} : url($imgUrlPath+$imgUrl);
+        } @else {
+            #{$property} : image-url($imgUrl);
+        }
+    }
+}
+
+// used to include the -webkit-font-smoothing: antialiased; when light text is on a dark background
+@mixin fontSmoothing($textColor, $bgColor) {
+    @if $textColor and $bgColor and lightness($textColor) > lightness($bgColor) {
+        -webkit-font-smoothing: antialiased; // makes light-on-dark text look a bit better
+    }
+    @else {
+        -webkit-font-smoothing: auto; // dark-on-light text we leave up to the browser
+    }
+}
+
+// helpful for overriding progress bar styles
+// doesn't include any classes, so this is really just a gradient generator
+@mixin progressBarHelper(
+    $bgColor,
+    $gradMeta: top, // pass false to do a solid color background
+    $gradStops: false
+) {
+    @if $gradMeta {
+        // enables SVG gradient support in Opera and IE9
+        $experimental-support-for-svg: true;
+
+        // check to see if $gradStops is supposed to be the default calculated list of values (passed value of false)
+        @if $gradStops == false {
+            $gradStops: ($bgColor, darken($bgColor, 15%))
+        }
+
+        @include background($bgColor linear-gradient($gradMeta, $gradStops));
+        // IE8 and down
+        .lt-ie9 & {
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str( nth($gradStops, 1) )}', endColorstr='#{ie-hex-str( nth($gradStops, length($gradStops)) )}', GradientType=0);
+        }
+    }
+    @else {
+        background: $bgColor;
+    }
+}
+
+// for creating entirely new progress bar styles
+// default values for each parameter were taken from bootstrap/_progress-bars (except the bar color using the $linkColor variable. That's a G5 thing)
+@mixin progressBarHelperFull(
+    $wellClass: '.progress',
+    // progress well
+    $bgColor: $grayLight,
+    $gradMeta: top, // no *GradType on this one. Always linear, but it can be right/left or top/bottom. A false value will cancel the gradient altogether
+    $gradStops: false,
+    $borderRadius: $baseBorderRadius,
+    $boxShadow: inset 0 1px 2px rgba(0,0,0,.1),
+    // progress bar
+    $barTextColor: $white,
+    $barTextShadow: 0 -1px 0 rgba(0,0,0,.25),
+    $barBgColor: $linkColor,
+    $barGradMeta: top, // no *GradType on this one. Always linear, but it can be right/left or top/bottom. A false value will cancel the gradient altogether
+    $barGradStops: false,
+    $barBoxShadow: inset 0 -1px 0 rgba(0,0,0,.15)
+) {
+    @if $gradMeta {
+        // enables SVG gradient support in Opera and IE9
+        $experimental-support-for-svg: true;
+
+        // check to see if $gradStops is supposed to be the default calculated list of values (passed value of false)
+        @if $gradStops == false {
+            $gradStops: ($bgColor, darken($bgColor, 15%))
+        }
+    }
+    @if $barGradMeta {
+        // enables SVG gradient support in Opera and IE9
+        $experimental-support-for-svg: true;
+
+        // check to see if $barGradStops is supposed to be the default calculated list of values (passed value of false)
+        @if $barGradStops == false {
+            $barGradStops: ($barBgColor, darken($barBgColor, 15%))
+        }
+    }
+
+    #{$wellClass} {
+        @if $bgColor {
+            @if $gradMeta {
+                @include background($bgColor linear-gradient($gradMeta, $gradStops));
+            }
+            @else {
+                background: $bgColor;
+            }
+        }
+        @if $boxShadow {
+            @include box-shadow($boxShadow);
+        }
+        @if $borderRadius {
+            @include border-radius($borderRadius);
+        }
+    }
+
+    // Bar of progress
+    #{$wellClass} .bar {
+        @if $barTextColor {
+            color: $barTextColor;
+        }
+        @if $barTextShadow {
+            text-shadow: $barTextShadow;
+        }
+        @if $barBgColor {
+            @if $barGradMeta {
+                @include background($barBgColor linear-gradient($barGradMeta, $barGradStops));
+            }
+            @else {
+                background: $barBgColor;
+            }
+        }
+        @if $barBoxShadow {
+            @include box-shadow($barBoxShadow);
+        }
+    }
+}
+
+// for generating the CSS necessary for G5 Fonticons
+@mixin g5fonticons(
+    $list,
+    $ie7: false,
+    $image: false,
+    $single: false,
+    $imageScale: false
+) {
+    @if $single {
+        @if $image {
+            @include g5fonticons_image( nth($list,1), $imageScale );
+        }
+        @else {
+            @if $ie7 {
+                @include g5fonticons_font( nth($list,1), nth($list,3), $ie7: true );
+            }
+            @else {
+                @include g5fonticons_font( nth($list,1), nth($list,2) );
+            }
+        }
+    }
+    @else {
+        @each $icon in $list {
+            @if $image {
+                @include g5fonticons_image( nth($icon,1), $imageScale );
+            }
+            @else {
+                @if $ie7 {
+                    @include g5fonticons_font( nth($icon,1), nth($icon,3), $ie7: true );
+                }
+                @else {
+                    @include g5fonticons_font( nth($icon,1), nth($icon,2) );
+                }
+            }
+        }
+    }
+}
+// g5fonticons helpers
+@mixin g5fonticons_font(
+    $identifier: '',
+    $unicode: '',
+    $ie7: false
+) {
+    @if $ie7 {
+        .icon-g5-#{$identifier} { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x#{$unicode};&nbsp;'); }
+    }
+    @else {
+        .icon-g5-#{$identifier}:before { content: "#{$unicode}"; }
+    }
+}
+@mixin g5fonticons_image(
+    $identifier: '',
+    $scale: false
+) {
+    @if $scale and ($scale == '2x' or $scale == '4x' or $scale == '8x') {
+        .icon-g5-#{$identifier} {
+            background-image: image-url('icon-g5-#{$identifier}-#{$scale}.png');
+        }
+    }
+    @else {
+        @if $scale and $scale != '1x' {
+            .icon-g5-#{$identifier} {
+                background-image: image-url('icon-g5-#{$identifier}.png');
+                background-size: 100%;
+            }
+            .no-backgroundsize & .icon-g5-#{$identifier} {
+                background-image: none;
+            }
+        }
+        @else {
+            .icon-g5-#{$identifier} {
+                background-image: image-url('icon-g5-#{$identifier}.png');
+            }
+        }
+    }
+}
+@function g5fonticons_getSelectorsFromList($list) {
+    $selectors: '';
+    // check to see if our $list is longer than 1 item and the second item in the list has no length (meaning it's a string)
+    // if this is true, our $list has only a single font item in it
+    @if length($list) > 1 and length(nth($list,2)) < 2 {
+        $selectors: '.icon-g5-' + nth($list, 1);
+    }
+    @else {
+        @each $font in $list {
+            @if nth($list, 1) == $font {
+                $selectors: '.icon-g5-' + nth($font, 1);
+            }
+            @else {
+                $selectors: $selectors + ', .icon-g5-' + nth($font, 1);
+            }
+        }
+    }
+    @return $selectors;
+}

@@ -1,0 +1,283 @@
+<!-- ======== APPROVALS: APPROVALS PENDING NOMINATIONS PAGE ======== -->
+
+<div id="approvalsPagePendingNominations" class="page-content">
+	<div id="pendingNominationsWrapper" class="approvalSearchWrapper">
+		<div class="row">
+			<div class="span6">
+            	<h3>Search for Nominations</h3>
+        	</div>
+			<div class="span6">
+	            <ul class="export-tools fr">
+	                <li><a href="#">Print</a></li>
+	                <li><a href="#"><i class="icon-print"></i></a></li>
+	            </ul>
+	        </div>
+	    </div>
+
+	   	<div class="row">
+	   		<div class="span12">
+				<form id="approvalsSearchForm" class="form-horizontal">
+					<div class="control-group">
+						Submittited Between:
+
+                        <div class="input-append datepickerTrigger showTodayBtn"
+                            data-date-format="mm/dd/yyyy"
+                            data-date-language="en_US"
+                            data-date-startdate="11/14/2012"
+                            data-date-todaydate="11/14/2012"
+                            data-date-autoclose="true">
+                            <input type="text" id="dateStart" name="dateStart" readonly="readonly" class="input-medium">
+                            <button class="btn awardDateIcon">
+                                <i class="icon-calendar"></i>
+                            </button>
+                        </div>
+
+						and
+
+                        <div class="input-append datepickerTrigger showTodayBtn"
+                            data-date-format="mm/dd/yyyy"
+                            data-date-language="en_US"
+                            data-date-startdate="11/14/2012"
+                            data-date-todaydate="11/14/2012"
+                            data-date-autoclose="true">
+                            <input type="text" id="dateEnd" name="dateEnd" readonly="readonly" class="input-medium">
+                            <button class="btn awardDateIcon">
+                                <i class="icon-calendar"></i>
+                            </button>
+                        </div>
+
+					</div>
+					<div class="control-group statusGroup">
+						Status: <select name="nominationStatus">
+									<option value="Pending">Pending</option>
+									<option value="Open">Open</option>
+									<option value="Winner">Winner</option>
+								</select>
+					</div>
+					<div class="control-group promotionGroup">
+						For Promotion: <select name="promotionSelected" id="promotionSelected">
+											<option value="123456">Signature Service Nomination*</option>
+											<option value="123457">Team Nomination</option>
+											<option value="123458">RecogitionApprovalsName</option>
+											<option value="123459">All Promotions</option>
+										</select>
+									<span>* = has pending</span>
+					</div>
+						<input type="submit" name="showNominations" value="Show Activity" class="btn btn-primary showActivityBtn"/>
+						<input type="hidden" id="currentPage" name="currentPage" value="1">
+						<input type="hidden" id="requestedPage" name="requestedPage" value="">
+				</form>
+
+				<div class="row">
+					<div id="paginationControls" class="pagination pagination-right">
+						<ul>
+						    <li class="first disabled" data-page="1">
+						        <a href="#"><i class="icon-double-angle-left"></i></a>
+						    </li>
+						    <li class="prev disabled" data-page="0">
+						        <a href="#"><i class="icon-angle-left"></i> Prev</a>
+						    </li>
+
+						    <li class="active" data-page="1">
+						        <a href="#">1</a>
+						    </li>
+
+						    <li data-page="2">
+						        <a href="#">2</a>
+						    </li>
+
+						    <li data-page="3">
+						        <a href="#">3</a>
+						    </li>
+
+						    <li data-page="4">
+						        <a href="#">4</a>
+						    </li>
+
+						    <li data-page="5">
+						        <a href="#">5</a>
+						    </li>
+
+						    <li class="disabled gap" data-page="">
+						        <a href="#">…</a>
+						    </li>
+
+						    <li data-page="67">
+						        <a href="#">67</a>
+						    </li>
+
+						    <li class="next" data-page="2">
+						        <a href="#">Next <i class="icon-angle-right"></i></a>
+						    </li>
+						    <li class="last" data-page="67">
+						        <a href="#"><i class="icon-double-angle-right"></i></a>
+						    </li>
+						</ul>
+					</div>
+				</div>
+
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Product Name</th>
+							<th>LastName, FirstName</th>
+							<th>02/04/2012</th>
+							<th class="hasSelects">Company Name</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<div class="tableSwipeHelp">
+                        <i class="icon-chevron-right"></i>
+                        <span>Swipe for more</span>
+                        <i class="icon-chevron-left"></i>
+                    </div>
+					<tbody>
+						<tr>
+							<td><a>productName</a></td>
+							<td>Firstname, lastName</td>
+							<td>
+								<select name="recognitionApprovalFormByClaimRecipientIdString(5121).levelId" id="recognitionApprovalFormByClaimRecipientIdString(5121).levelId" style="visibility: visible; ">
+									<option value="255">Gold&nbsp;(value&nbsp;19900)</option>
+									<option value="256" selected="">Silver&nbsp;(value&nbsp;29900)</option>
+									<option value="257">Platinum&nbsp;(value&nbsp;39900)</option>
+									<option value="258">Silver2&nbsp;(value&nbsp;49900)</option>
+									<option value="259">Platinum2&nbsp;(value&nbsp;67000)</option>
+								</select>
+								<a class="viewAwardLevels" title="View Awards" href="layout.html?tpl=plateauAwardsPage&tplPath=apps/plateauAwards/tpl/" target="_blank">
+						            <i class="icon-search"></i>
+						        </a>
+							</td>
+							<td>2</td>
+							<td class="hasSelects">
+								<select name="recognitionApprovalFormByClaimRecipientIdString(512212).approvalStatusType" style="visibility: visible; ">
+									<option value="approv">Approved</option>
+									<option value="deny">Denied</option>
+									<option value="pend" selected="selected">Pending</option>
+								</select>
+
+								<select name="recognitionApprovalFormByClaimRecipientIdString(512212).denyPromotionApprovalOptionReasonType" disabled="disabled" id="deny-applyAllClassClaimAndClaimRecipientId-10142-0-reason" style="visibility: visible; ">
+									<option value="">select one</option>
+									<option value="IncorInfo">Incorrect Information</option>
+									<option value="IncomInfo">Incomplete Information</option>
+									<option value="PaxINE">Participant is Ineligible</option>
+									<option value="Inv">Invalid</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>productName</td>
+							<td>Firstname, lastName</td>
+							<td>
+								<select name="recognitionApprovalFormByClaimRecipientIdString(51212).levelId" id="recognitionApprovalFormByClaimRecipientIdString(51212).levelId" style="visibility: visible; ">
+									<option value="255">Gold&nbsp;(value&nbsp;19900)</option>
+									<option value="256" selected="">Silver&nbsp;(value&nbsp;29900)</option>
+									<option value="257">Platinum&nbsp;(value&nbsp;39900)</option>
+									<option value="258">Silver2&nbsp;(value&nbsp;49900)</option>
+									<option value="259">Platinum2&nbsp;(value&nbsp;67000)</option>
+								</select>
+								<a class="viewAwardLevels" title="View Awards" href="layout.html?tpl=plateauAwardsPage&tplPath=apps/plateauAwards/tpl/" target="_blank">
+						            <i class="icon-search"></i>
+						        </a>
+							</td>
+							<td>1</td>
+							<td class="hasSelects">
+								<select name="recognitionApprovalFormByClaimRecipientIdString(51221).approvalStatusType" style="visibility: visible; ">
+									<option value="approv">Approved</option>
+									<option value="deny">Denied</option>
+									<option value="pend" selected="selected">Pending</option>
+								</select>
+
+								<select name="recognitionApprovalFormByClaimRecipientIdString(51221).denyPromotionApprovalOptionReasonType" disabled="disabled" id="deny-applyAllClassClaimAndClaimRecipientId-10142-0-reason" style="visibility: visible; ">
+									<option value="">select one</option>
+									<option value="IncorInfo">Incorrect Information</option>
+									<option value="IncomInfo">Incomplete Information</option>
+									<option value="PaxINE">Participant is Ineligible</option>
+									<option value="Inv">Invalid</option>
+								</select>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th><a>View Details</a></th>
+							<th>Product Name</th>
+							<th>LastName, FirstName</th>
+							<th>02/04/2012</th>
+							<th>Company Name</th>
+						</tr>
+					</thead>
+					<div class="tableSwipeHelp">
+	                    <i class="icon-chevron-right"></i>
+	                    <span>Swipe for more</span>
+	                    <i class="icon-chevron-left"></i>
+	                </div>
+					<tbody>
+						<tr>
+							<td></td>
+							<td>productName</td>
+							<td>
+								<select name="recognitionApprovalFormByClaimRecipientIdString(5121).levelId" id="recognitionApprovalFormByClaimRecipientIdString(5121).levelId" style="visibility: visible; ">
+									<option value="255">Gold&nbsp;(value&nbsp;19900)</option>
+									<option value="256" selected="">Silver&nbsp;(value&nbsp;29900)</option>
+									<option value="257">Platinum&nbsp;(value&nbsp;39900)</option>
+									<option value="258">Silver2&nbsp;(value&nbsp;49900)</option>
+									<option value="259">Platinum2&nbsp;(value&nbsp;67000)</option>
+								</select>
+								<a class="viewAwardLevels" title="View Awards" href="layout.html?tpl=plateauAwardsPage&tplPath=apps/plateauAwards/tpl/" target="_blank">
+						            <i class="icon-search"></i>
+						        </a>
+							</td>
+							<td>2</td>
+							<td class="hasSelects">
+								<select name="recognitionApprovalFormByClaimRecipientIdString(5122).approvalStatusType" style="visibility: visible; ">
+									<option value="approv">Approved</option>
+									<option value="deny">Denied</option>
+									<option value="pend" selected="selected">Pending</option>
+								</select>
+
+								<select name="recognitionApprovalFormByClaimRecipientIdString(5122).denyPromotionApprovalOptionReasonType" disabled="disabled" id="deny-applyAllClassClaimAndClaimRecipientId-10142-0-reason" style="visibility: visible; ">
+									<option value="">select one</option>
+									<option value="IncorInfo">Incorrect Information</option>
+									<option value="IncomInfo">Incomplete Information</option>
+									<option value="PaxINE">Participant is Ineligible</option>
+									<option value="Inv">Invalid</option>
+								</select>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>Note: Nomination will be sent immediately if Notification Date is not changed</p>
+				<button class="btn btn-primary">Save</button>
+				<button class="btn">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+	<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+
+<script>
+
+$(document).ready(function() {
+	//attach the view to an existing DOM element
+	var asmlp = new ApprovalsSearchModelView({
+		el:$('#approvalsPagePendingNominations'),
+        pageNav : {
+            back : {
+                text : 'Back',
+                url : 'layout.html?tpl=approvalsPageIndex&tplPath=apps/approvals/tpl/'
+            },
+            home : {
+                text : 'Home',
+                url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+            }
+        },
+        pageTitle : 'Approvals'
+	});
+
+});
+
+</script>

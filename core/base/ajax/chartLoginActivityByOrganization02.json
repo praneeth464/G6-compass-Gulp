@@ -1,0 +1,21 @@
+{
+  "chart": {},
+  "data": [
+    {
+      "label": "Client Services",
+      "value": "117"
+    },
+    {
+      "label": "Sales",
+      "value": "130"
+    },
+    {
+      "label": "TSG",
+      "value": "120"
+    },
+    {
+      "label": "Accounting",
+      "value": "10"
+    }
+  ]
+}

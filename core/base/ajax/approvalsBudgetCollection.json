@@ -1,0 +1,10 @@
+{
+	"messages":[],
+
+	"budgetedPoints":{
+		"availableBudget": 2000,
+		"calculatedBudgetDeduction": 50,	
+		"remainingBudget": 1950
+	}
+	
+}

@@ -1,0 +1,56 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $goalquest_bgColor: ;
+// $goalquest_gradType: ;
+// $goalquest_gradMeta: ; // list the gradient non-color properties such as position, shape, etc.
+// $goalquest_gradStops: ; // list the stops as one would a series of raw gradient stops
+
+// $goalquest_iconColor: ;
+// $goalquest_titleColor: ;
+// $goalquest_titleFontFamily: ;
+// $goalquest_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $goalquest_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+// $goalquest_cp_bgColor: ;
+// $goalquest_cp_gradType: ;
+// $goalquest_cp_gradMeta: ; // list the gradient non-color properties such as position, shape, etc.
+// $goalquest_cp_gradStops: ; // list the stops as one would a series of raw gradient stops
+
+// $goalquest_cp_iconColor: ;
+// $goalquest_cp_titleColor: ;
+// $goalquest_cp_titleFontFamily: ;
+// $goalquest_cp_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $goalquest_cp_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+// $goalquest_wideIconColor: ;
+// $goalquest_wideTitleColor: ;
+// $goalquest_wideTitleFontFamily: ;
+// $goalquest_wideSubtitleColor: ;
+// $goalquest_wideSubtitleFontFamily: ;
+// $goalquest_wideTextColor: ;
+// $goalquest_wideTextAccentColor: ;
+// $goalquest_cp_wideTextAccentColor: ;
+// $goalquest_multiItemBgColor: ;
+// $goalquest_levelChosenIconColor: ;
+// $goalquest_levelOpenIconColor: ;
+// $goalquest_progressBarBorderRadius: ;
+// $goalquest_statusTxtBgColor: ;
+
+// $goalquest_pageMultiItemBgColor: ;
+// $goalquest_pageActiveLevelBg: ;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "goalquest/scss/goalquest";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

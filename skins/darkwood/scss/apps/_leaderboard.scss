@@ -1,0 +1,60 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $leaderboard_bgColor: ;
+// $leaderboard_gradType: ;
+// $leaderboard_gradMeta: ; // list the gradient non-color properties such as position, shape, etc.
+// $leaderboard_gradStops: ; // list the stops as one would a series of raw gradient stops
+
+// $leaderboard_iconColor: ;
+// $leaderboard_titleColor: ;
+// $leaderboard_titleFontFamily: ;
+// $leaderboard_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $leaderboard_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+// $leaderboard_cycleDotWidth: ;
+// $leaderboard_cycleDotBkg: ;
+// $leaderboard_cycleDotBorder: ;
+// $leaderboard_cycleDotBkgHover: ;
+// $leaderboard_cycleDotBorderHover: ;
+// $leaderboard_cycleDotBkgActive: ;
+// $leaderboard_cycleDotBorderActive: ;
+// $leaderboard_cycleDotBorderRadius: ;
+
+$leaderboard_bgColorBig: $g5ModuleBgColor;
+// $leaderboard_gradTypeBig: ;
+// $leaderboard_gradMetaBig: ;
+$leaderboard_gradStopsBig: $black, $g5ModuleBgColor, $black;
+
+// $leaderboard_textColor: ;
+// $leaderboard_textAsOfColorModule: ;
+// $leaderboard_textAsOfColorPage: ;
+// $leaderboard_textLargeRankColorModule: ;
+// $leaderboard_textLargeRankColorPage: ;
+
+// $leaderboard_leaderLinkColorModule: ;
+// $leaderboard_leaderLinkColorHoverModule: ;
+// $leaderboard_leaderLinkColorPage: ;
+// $leaderboard_leaderLinkColorHoverPage: ;
+
+// $leaderboard_leaderBgModuleOdd: ;
+// $leaderboard_leaderBgModuleEven: ;
+// $leaderboard_leaderBgModuleYou: ;
+// $leaderboard_leaderBgPageOdd: ;
+// $leaderboard_leaderBgPageEven: ;
+// $leaderboard_leaderBgPageYou: ;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "leaderboard/scss/leaderboard";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

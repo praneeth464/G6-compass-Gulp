@@ -1,0 +1,28 @@
+{
+	"messages":[
+		{
+			"type":"error",
+			"code":"validationError",
+			"text":"You have already taken/passed/failed this quiz.",
+			"action":"layout.html?tpl=quizPageShell&tplPath=apps/quiz/tpl/",
+			"actionLabel":"View Results"
+		}
+    ],
+	"quizQuestion":[
+		{
+			"id" : 4000,
+			"claimId": 12345678,
+			"questionTitle":	"Question 1",
+			"questionText":		"This is the first question. Questions and answers are both loaded dynamically based on user interaction, to prevent peeking behind the scenes. What color is an orange?",
+			"questionChoices":
+			[
+				{"choice": "Purple"},
+				{"choice": "Orange"},
+				{"choice": "Blue"},
+				{"choice": "White"},
+				{"choice": "Red"}
+			],
+			"questionNumber": 1
+		}
+	]
+}

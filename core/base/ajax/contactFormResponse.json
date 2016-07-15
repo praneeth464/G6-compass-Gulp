@@ -1,0 +1,10 @@
+{
+    "messages":[
+        {
+            "type":"serverCommand",
+            "command":"modal",
+            "name":"Success.",
+            "text":"Cheers, old chap."
+        }
+    ]
+}

@@ -1,0 +1,240 @@
+// Give access to the Bootstrap variables
+@import "bootstrap/variables";
+
+$appSourcePath: '' !default;
+
+// application config.rb directory helpers (paths relative to this file, obviously)
+$appCssPath:         $appSourcePath+"css/" !default;
+$appSassPath:        $appSourcePath+"scss/" !default;
+$appImagesPath:      $appSourcePath+"img/" !default;
+$appFontsPath:       $appSourcePath+"rsrc/" !default;
+$appJavascriptsPath: $appSourcePath+"js/" !default;
+
+
+// Bootstrap variables (grouped by sections copied from that file)
+// ==================================================
+
+// FIXED GRID
+// --------------------------------------------------
+
+// Custom, Default 940px grid
+// -------------------------
+$gridColumns:             12 !default;
+$gridColumnWidth:         68px !default;
+$gridGutterWidth:         12px !default;
+
+// Custom, 1200px min
+// -------------------------
+$gridColumnWidth1200:    80px !default;
+$gridGutterWidth1200:    18px !default;
+
+// Custom, 768px-979px
+// -------------------------
+$gridColumnWidth768:     50px !default;
+$gridGutterWidth768:     $gridGutterWidth !default;
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+// Sprite icons path
+// -------------------------
+$iconSpritePath:          "" !default;
+$iconWhiteSpritePath:     "" !default;
+
+
+
+// G5 variables (grouped roughly by logical sense)
+// ==================================================
+
+// Typography
+// -------------------------
+$fontWeightLight: 300; // set the font weight value for "light" because it doesn't really exist ("lighter" isn't terribly useful)
+$fontWeightExBold: 900;
+
+$titleFont: 'din-condensed', $sansFontFamily !default;
+$titleFontWeightLight: $fontWeightLight !default;
+$titleFontWeightNormal: normal !default;
+$titleFontWeightBold: bold !default;
+$titleFontWeight: $titleFontWeightNormal !default;
+$bodyFont: $sansFontFamily !default;
+
+
+// Component sizing
+// -------------------------
+$progressBar_baseBorderRadius: $baseBorderRadius !default;
+$spinner_widthHeight: 60px !default;
+
+
+// Horizontal padding of page content, 960px
+// -------------------------
+$g5PageContentPaddingHoriz: 36px !default;
+$g5PageContentLeftRightBorderWidth: 1px !default;
+
+// Horizontal padding of page content, 768px
+// -------------------------
+$g5PageContentPaddingHoriz768: 24px !default;
+$g5PageContentLeftRightBorderWidth768: 1px !default;
+
+// Horizontal padding of page content, 1200px
+// -------------------------
+$g5PageContentPaddingHoriz1200: 48px !default;
+$g5PageContentLeftRightBorderWidth1200: 1px !default;
+
+// Horizontal padding of page content, Mobile
+// -------------------------
+$g5PageContentPaddingHorizMobile: 16px !default;
+
+// Vertical spacing of content sections
+// -------------------------
+$g5PageContentSpacingVertical: 36px !default;
+
+
+// HOME APP
+// --------------------------------------------------
+$g5ModuleGutter: 6px !default;
+$g5ModuleUnit: 160px !default;
+$g5ModulePadding: $g5ModuleGutter * 3 !default; // originally 20px, changed for now - JS
+
+$g5ModuleBgColor: $gray !default;
+$g5ModuleGradType: linear !default;
+$g5ModuleGradMeta: top !default;
+// NOTE: the module_moduleLinerBackground() mixin takes a false value and turns it into a string that looks like this: (lighten($bgColor, 17%), $bgColor)
+// It proved to be too difficult (impossible?) to set this variable as a calculated list that would dynamically take the background color
+$g5ModuleGradStops: false !default;
+
+$g5ModuleIconColor: $white !default;
+$g5ModuleTitleColor: $g5ModuleIconColor !default;
+$g5ModuleTitleFontFamily: $titleFont !default;
+$g5ModuleTitleFontStyle: false !default;
+$g5ModuleTitleTextTransform: false !default;
+// NOTE: these must be a list of five values, corresponding respectively to 1x1, 2x1, 2x2, 4x2, 4x4 modules sizes.
+// By default, 4x2 uses the same font size and weight as 2x2, which is why it is passed as false.
+$g5ModuleTitleFontSizes: 18px, 24px, 40px, false, 64px !default;
+$g5ModuleTitleFontWeights: $titleFontWeightBold, $titleFontWeightBold, $titleFontWeightNormal, false, $titleFontWeightLight !default;
+
+$g5ModuleVisitAppButtonOffset: $g5ModuleGutter * 1.5 !default;
+
+// HOME APP AND PAGES
+// --------------------------------------------------
+$g5ModPgBorderWidth: 1px !default;
+$g5ModPgBorderColor: $grayLight !default;
+$g5ModPgTopperBgColor: $gray !default;
+
+// FIXED GRID
+// --------------------------------------------------
+$g5GridGutterHeight: $gridGutterWidth * 1.5 !default;
+$g5GridGutterHeight768: $gridGutterWidth768 * 1.5 !default;
+$g5GridGutterHeight1200: $gridGutterWidth1200 * 1.5 !default;
+
+
+
+// Tables
+// -------------------------
+
+
+
+// AVATARS
+// --------------------------------------------------
+$g5AvatarBg: $linkColor !default;
+
+
+// ICONOGRAPHY
+// --------------------------------------------------
+
+// Export icons
+// -------------------------
+$exportIconWidth: 34px !default;
+$exportIconHeight: 34px !default;
+
+// Circled Font Awesome Icons (circledAwesomeIcon mixin)
+// -------------------------
+$circledAwesomeIconFontSize:        15px !default;
+// NOTE: the cirlcedAwesomeIcon() mixin takes a false value and turns it into a string that looks like this: $fontSize * 1.42
+// It proved to be too difficult (impossible?) to set this variable as a calculated value that would dynamically take the font size
+$circledAwesomeIconLineHeight:      false !default;
+$circledAwesomeIconColor:           $grayLight !default;
+$circledAwesomeIconBorderColor:     $gray !default;
+$circledAwesomeIconCircleWidth:     21px !default;
+$circledAwesomeIconBorderWidth:     3px !default;
+$circledAwesomeIconBgColor:         transparent !default;
+
+
+// G5 Fonticons toggles and list
+// ==================================================
+$g5fonticonsModulesMode: 'font' !default;
+
+// NOTE: the first unicode value is for "good" browsers, the second for ie7
+// NOTE: there is no !default on the end of these two variables. The list isn't overridable (for now)
+$g5fonticons_modules:   'plateau'               '\f000'    'f000',
+                        'gamification'          '\f001'    'f001',
+                        'recognize'             '\f002'    'f002',
+                        'publicrecognition'     '\f003'    'f003',
+                        'claims'                '\f004'    'f004',
+                        'reportsfav'            '\f005'    'f005',
+                        'reportsall'            '\f006'    'f006',
+                        'news'                  '\f007'    'f007',
+                        'purl'                  '\f008'    'f008',
+                        'forum'                 '\f009'    'f009',
+                        'goalquest'             '\f00a'    'f00a',
+                        'learning'              '\f00b'    'f00b',
+                        'shop'                  '\f00c'    'f00c',
+                        'diytravel'             '\f00d'    'f00d',
+                        'approvals'             '\f00e'    'f00e',
+
+                        'leaderboard'           '\f010'    'f010',
+                        'quiz'                  '\f011'    'f011',
+                        'experience'            '\f012'    'f012',
+                        'nomination'            '\f013'    'f013',
+                        'passporttravel'        '\f014'    'f014',
+                        'events'                '\f015'    'f015',
+                        'toolkit'               '\f016'    'f016',
+                        'travelgreatdeals'      '\f017'    'f017',
+                        'rewardcard'            '\f018'    'f018',
+                        'budgettracker'         '\f019'    'f019',
+                        'drawtool'              '\f01a'    'f01a',
+                        'manager-disc'          '\f01b'    'f01b',
+                        'tips'                  '\f01c'    'f01c',
+                        'awardcalculator'       '\f01d'    'f01d',
+                        'sendalerts'            '\f01e'    'f01e',
+
+                        'rightclass'            '\f021'    'f021',
+                        'shopintl'              '\f022'    'f022',
+                        'resourcecenter'        '\f023'    'f023',
+                        'greatdeals'            '\f024'    'f024',
+                        'envoytravel'           '\f025'    'f025',
+                        'realdeal'              '\f026'    'f026',
+                        'challengepoint'        '\f027'    'f027',
+                        'digitaldownloads'      '\f028'    'f028',
+                        'survey'                '\f029'    'f029',
+                        'instantpoll'           '\f02a'    'f02a',
+                        'throwdown'             '\f02b'    'f02b',
+                        'celebration'           '\f02c'    'f02c',
+                        'engagement'            '\f02d'    'f02d',
+                        'communications'        '\f02e'    'f02e',
+
+                        'stackrank'             '\f031'    'f031',
+                        'dothisgetthat'         '\f032'    'f032',
+                        'objective'             '\f033'    'f033',
+                        'awardnow'              '\f034'    'f034',
+                        'stepitup'              '\f035'    'f035',
+                        'createcontest'         '\f036'    'f036';
+
+
+$g5fonticons_utility:   'alerts'                '\f100'    'f100',
+                        'norecognitions'        '\f101'    'f101',
+                        'global'                '\f102'    'f102',
+                        'team'                  '\f103'    'f103',
+                        'following'             '\f104'    'f104',
+                        'profile'               '\f105'    'f105',
+                        'admin'                 '\f106'    'f106',
+                        'pencil'                '\f107'    'f107',
+                        'eraser'                '\f108'    'f108',
+                        'trash'                 '\f109'    'f109',
+                        'save'                  '\f10a'    'f10a',
+                        'engagement-recSent'    '\f10b'    'f10b',
+                        'engagement-recRecv'    '\f10c'    'f10c',
+                        'engagement-paxRecTo'   '\f10d'    'f10d',
+                        'engagement-paxRecBy'   '\f10e'    'f10e',
+
+                        'engagement-score'      '\f110'    'f110',
+                        'engagement-visits'     '\f111'    'f111';

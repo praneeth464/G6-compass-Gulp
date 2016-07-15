@@ -1,0 +1,308 @@
+<!-- ======== PUBLIC PROFILE PAGE ======== -->
+<div id="publicProfileWrapper" class="page-content profile"><!-- .profile was borrowed to apply the styles from that CSS -->
+
+    <div class="page-topper">
+        <!-- User info and user menu  -->
+        <div class="row">
+            <div class="span6">
+                <img id="partProfAvatar" alt="" src="http://placehold.it/60x60">
+                <h3><span id="partProfFirstName">firstName</span> <span id="partProfLastName">Lastname</span></h3>
+            </div>
+            <div class="span6">
+                <a href='#' class="btn btn-primary btn-large fr regonizeFromPubProfile" data-participant-id="9876543210" data-node-id="1234"><i class="icon-g5-team"></i> Recognize</a>
+                <a href='#' class="btn btn-danger btn-large fr miniProfFollowLink unfollow" style="display: none" data-participant-id="9876543210"><i class="icon-g5-profile"></i> Unfollow</a>
+                <a href='#' class="btn btn-primary btn-large fr miniProfFollowLink follow" data-participant-id="9876543210"><i class="icon-g5-following"></i> Follow</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span12" id="publicProfileTabs">
+                <ul class="nav nav-tabs">
+                    <li class="tabPersonalInfo active"><a href="#PersonalInfo" data-toggle="tab">Personal Info</a></li>
+                    <li class="tabBadges"><a href="#Badges" data-toggle="tab">Earned Badges</a></li>
+                    <li class="tabRecognition"><a href="#Recognition" data-toggle="tab">Recognition</a></li>
+                    <li class="tabPlayerStats"><a href="#PlayerStats" data-toggle="tab">Throwdown Player Stats</a></li>
+                </ul>
+            </div><!-- /#publicProfileTabs.span12 -->
+        </div><!-- /.row -->
+    </div><!-- /.page-topper -->
+
+    <div class="tab-content">
+        <div class="tab-pane active" id="PersonalInfo">
+            <div class="row" id="profilePagePersonalInfoTab"><!-- ID borrowed from the regular profile page -->
+
+                <div class="span12">
+                    <h3>Personal Information</h3>
+                </div>
+
+                <div class="span2">
+                    <img alt="User Profile Picture" id="personalInformationAvatar" src="http://placehold.it/160x160">
+                </div>
+
+                <div id="profileMainInfoWrapper" class="span5">
+                    <dl class="dl-horizontal">
+                        <dt>Name</dt>
+                        <dd>
+                            <span>Firstname Lastname</span>
+                        </dd>
+
+                        <dt>Org Name</dt>
+                        <dd>
+                            <p>Title - Org Name</p>
+                            <p>Title - Org Name2</p>
+                            <p>Title - Org Name3</p>
+                        </dd>
+
+                        <dt>Department</dt>
+                        <dd>
+                            <span>Department</span>
+                        </dd>
+
+                        <dt>Job Title</dt>
+                        <dd>
+                            <span>Job Title</span>
+                        </dd>
+
+                        <dt>Country</dt>
+                        <dd>
+                            <span>CountryName</span>
+                        </dd>
+
+                        <dt>Hire Date</dt>
+                        <dd>
+                            <span>MM/DD/YYYY</span>
+                        </dd>
+
+                        <dt>Birth Date</dt>
+                        <dd>
+                            <span>Month DD</span>
+                        </dd>
+                    </dl>
+                </div><!-- /#profileMainInfoWrapper.span5 -->
+
+                <div id="profileQuestionsWrapper" class="span12">
+                    <h3>About Me</h3>
+
+                    <label for="question1"><strong>Question 1</strong></label>
+                    <p id="question1">Answer to question 1 goes here</p>
+                    <label for="question2"><strong>Question 2</strong></label>
+                    <p id="question2">Answer to question 2 goes here</p>
+                    <label for="question3"><strong>Question 3</strong></label>
+                    <p id="question3">Answer to question 3 goes here</p>
+                    <label for="question4"><strong>Question 4</strong></label>
+                    <p id="question4">Answer to question 4 goes here</p>
+                    <label for="question5"><strong>Question 5</strong></label>
+                    <p id="question5">Answer to question 5 goes here</p>
+                </div><!-- /#profileQuestionsWrapper.span12 -->
+
+            </div><!-- /.row -->
+        </div><!-- /#PersonalInfo.tab-pane -->
+
+        <div class="tab-pane pubProfileBadgePane" id="Badges">
+            <div class="row" id="profilePageBadgesTab"><!-- ID borrowed from the regular profile page -->
+                <div class="span12">
+
+                    <div class="badge-groups"></div>
+
+                </div><!-- /.span12 -->
+            </div><!-- /.row -->
+        </div><!-- /#Badges.pubProfileBadgePane.tab-pane -->
+
+        <div class="tab-pane pubRecTabs publicRecognition page" id="Recognition"><!-- .publicRecognition and .page were borrowed to apply the pubRec styles -->
+            <!-- publicRecognition doesn't get row or span12 on purpose -->
+            <!-- <div class="publicRecognitionItems"></div> -->
+
+
+
+
+            <!-- Recognitions -->
+            <div class="page-liner pubRecItemsCont" data-msg-empty="No recognitions found">
+
+                <div class="publicRecognitionItems">
+                    <!-- dynamic - pubRecItems -->
+                </div>
+
+                <!-- shown when there are more recognitions -->
+                <div class="app-row">
+                    <p>
+                        <a href="#" class="viewAllRecognitions"  style="display: none">
+                            View More
+                        </a>
+                    </p>
+                </div>
+
+            </div>
+
+        </div><!-- /#Recognition.pubRecTabs.tab-pane -->
+
+		<div class="tab-pane pubProfilePlayerStats" id="PlayerStats">
+            <div class="row" id="profilePagePlayerStatsTab">
+                <div class="span12">
+
+                    <div class="row">
+                        <div class="span6">
+                            <form class="form-inline form-labels-inline">
+
+                                <fieldset>
+
+                                    <div class="control-group" id="controlMatchSelect">
+
+                                        <div class="controls">
+                                            <select id="promotionSelect" data-no-rankings="There are no promotions for this Match Filter.">
+                                                <option>Promotion 1</option>
+                                                <option>Promotion 2</option>
+                                            </select>
+                                        </div>
+
+                                    </div><!-- /.control-group -->
+
+                                </fieldset>
+
+                            </form>
+                        </div>
+
+                        <div class="span6">
+                            <ul class="export-tools fr">
+                                <li><a href="#">Print</a></li>
+                                <li><a href="#"><i class="icon-print"></i></a></li>
+                            </ul>
+                        </div>
+                    </div><!-- /.row -->
+
+                    <div id="tabPlayerStatsCont">
+                        <div class="row">
+                            <div class="span5">
+								<div class="fl avatarContainer">
+									<div class="fl avatarContainerBorder">
+										<img alt="" src="http://placehold.it/130x130" align="left" class="avatar" />
+									</div>
+								</div>
+								<div class="td-player-info">
+									<p class="firstName">Joe</p>
+									<p class="lastName">Smith</p>
+									<p class="tdRank">Rank 23</p>
+									<ul class="td-wl-count">
+										<li>W:<span class="tdWins">5</span></li>
+										<li>L:<span class="tdLoses">0</span></li>
+										<li>T:<span class="tdTies">0</span></li>
+									</ul>
+									<span>as of 05/05/2012</span>
+								</div>
+                            </div>
+
+                            <div class="span7">
+                                <div class="td-badges">
+                                    <ul class="td-match-badge-list">
+
+                                        <li>
+											<img src="img/throwdown/badges/gold_glove_sm.png" alt="Gold Badge!">
+											<span class="td-gold-badge">Gold Badge</span>
+											<span class="td-badge-earned-date">Earned 01/08/2013</span>
+										</li>
+
+                                        <li>
+											<img src="img/throwdown/badges/silver_glove_sm.png" alt="Silver Badge!">
+											<span class="td-silver-badge">Silver Badge</span>
+											<span class="td-badge-earned-date">Earned 03/28/2013</span>
+										</li>
+
+                                        <li>
+											<img src="img/throwdown/badges/bronze_glove_sm.png" alt="Bronze Badge!">
+											<span class="td-bronze-badge">Bronze Badge</span>
+											<span class="td-badge-earned-date">Earned 11/15/2013</span>
+										</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!-- /.row -->
+
+                        <div class="row td-player-schedule">
+                            <div class="span12">
+                                <h4>Schedule</h4>
+
+                                <table class="td-matches-schedule table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <td>Round</td>
+                                            <td>Date</td>
+                                            <td>Player</td>
+                                            <td class="td-record">Record</td>
+                                            <td colspan="3">Score</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="td-round-number">1</td>
+                                        <td class="td-round-dates">1/20/2013 - <br/>2/10/2013</td>
+                                        <td><img src="http://www.placebear.com/30/30" alt=""/><p class="currentParticipantProfile">Joe Smith</p> <br/> <img src="http://www.fillmurray.com/g/30/30" alt=""/> <p><a class="profile-popover" href="" data-participant-ids="1223">FirstName LastName</a></p></td>
+                                        <td class="td-record"><p>W:<span>4</span> L:<span>1</span> T:<span>0</span></p><br/> <p>W:<span>5</span> L:<span>0</span> T:<span>0</span></p></td>
+                                        <td colspan="2"><p class="td-round-score">12,000 <span class="td-win-tie">W</span></p><br/><p class="td-round-score">10,000 <span class="td-win-tie"></span></p></td>
+                                        <td><a href="#" class="btn throwdown-match-detail-btn">Match Details</a> <div class="app-col chevron"><a href="#"><i class="icon-chevron-right"></i></a></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-round-number">2</td>
+                                        <td class="td-round-dates">2/20/2013 - <br/>3/10/2013</td>
+                                        <td><img src="http://www.placebear.com/30/30" alt=""/><p class="currentParticipantProfile">Joe Smith</p> <br/> <img src="http://www.fillmurray.com/g/30/30" alt=""/> <p><a class="profile-popover" href="" data-participant-ids="1223">FirstName LastName</a></p></td>
+                                        <td class="td-record"><p>W:<span>4</span> L:<span>1</span> T:<span>0</span></p><br/> <p>W:<span>5</span> L:<span>0</span> T:<span>0</span></p></td>
+                                        <td colspan="2"><p class="td-round-score">600 <span class="td-win-tie"></span></p><br/><p class="td-round-score">2000 <span class="td-win-tie">W</span></p></td>
+                                        <td><a href="#" class="btn throwdown-match-detail-btn">Match Details</a> <div class="app-col chevron"><a href="#"><i class="icon-chevron-right"></i></a></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-round-number">3</td>
+                                        <td class="td-round-dates">3/20/2013 - <br/>4/10/2013</td>
+                                        <td><img src="http://www.placebear.com/30/30" alt=""/><p class="currentParticipantProfile">Joe Smith</p> <br/> <img src="http://www.fillmurray.com/g/30/30" alt=""/> <p><a class="profile-popover" href="" data-participant-ids="1223">FirstName LastName</a></p></td>
+                                        <td class="td-record"><p>W:<span>4</span> L:<span>1</span> T:<span>0</span></p><br/> <p>W:<span>5</span> L:<span>0</span> T:<span>0</span></p></td>
+                                        <td colspan="2"><p class="td-round-score">6 <span class="td-win-tie">T</span></p><br/><p class="td-round-score">6 <span class="td-win-tie">T</span></p></td>
+                                        <td><a href="#" class="btn throwdown-match-detail-btn">Match Details</a> <div class="app-col chevron"><a href="#"><i class="icon-chevron-right"></i></a></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-round-number">4</td>
+                                        <td class="td-round-dates">4/20/2013 - <br/>5/10/2013</td>
+                                        <td><img src="http://www.placebear.com/30/30" alt=""/><p class="currentParticipantProfile">Joe Smith</p> <br/> <img src="http://www.fillmurray.com/g/30/30" alt=""/> <p><a class="profile-popover" href="" data-participant-ids="1223">FirstName LastName</a></p></td>
+                                        <td class="td-record"><p>W:<span>4</span> L:<span>1</span> T:<span>0</span></p><br/> <p>W:<span>5</span> L:<span>0</span> T:<span>0</span></p></td>
+                                        <td colspan="2"><p class="td-round-score">&nbsp; <span class="td-win-tie"></span></p><br/><p class="td-round-score">&nbsp; <span class="td-win-tie"></span></p></td>
+                                        <td><a href="#" class="btn throwdown-match-detail-btn">Match Details</a> <div class="app-col chevron"><a href="#"><i class="icon-chevron-right"></i></a></div></td>
+                                    </tr>
+                                </tbody>
+                                </table>
+                            </div>
+                        </div><!-- /.row -->
+                    </div><!-- ./tabPlayerStatsCont -->
+
+                </div><!-- /.span12 -->
+            </div><!-- /.row -->
+
+        </div><!-- /#PlayerStats.pubProfilePlayerStats.tab-pane -->
+
+    </div><!-- /.tab-content -->
+
+    <div class="modal hide fade module recognition" id="ezRecognizeMiniProfileModal" data-backdrop="static" data-keyboard="false">
+    </div>
+
+</div><!-- /#publicProfileWrapper.publicProfileWrapper.page-content -->
+
+<input type="hidden" id="participantId" value="123456">
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+
+	$(document).ready(function() {
+		//attach the view to an existing DOM element
+		var $profileWrapper = $('#publicProfileWrapper');
+		window.PPP = new PublicProfilePageView({
+			el: $profileWrapper,
+			pageNav: {
+				back: {
+					text: 'Back',
+					url: 'layout.html'
+				},
+				home: {
+					text: 'Home',
+					url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+				}
+			},
+			pageTitle: 'Public Profile'
+		});
+	});
+
+</script>

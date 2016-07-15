@@ -1,0 +1,23 @@
+{
+    "tipsTable": {
+        "tips": [
+            {
+                "id":"1234",
+                "index": 0,
+                "languageDisplay": "U.S. English",
+                "language": "en_US",
+                "content": "Here is my tip content."
+            },
+            {
+                "id":"1235",
+                "index": 1,
+                "languageDisplay": "Spanish",
+                "language": "sp",
+                "content": "This is some different tip content."
+            }
+        ]
+    },
+    "tipTitle": "New Resource",
+    "tipStartDate": "05/23/2014",
+    "tipEndDate": "06/01/2014"
+}

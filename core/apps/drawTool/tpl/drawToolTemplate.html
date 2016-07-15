@@ -1,0 +1,138 @@
+<div id="drawToolView">
+    <div class="row">
+        <div class="span12">
+            <label class="checkbox">
+                <input type="checkbox" id="addAnECard"> Do not include an eCard
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <div id="drawingTool" style="">
+
+                <div class="" id="eCardThumbnailContainerParent">
+                    <div id="eCardThumbnailPager" class="">
+                        <a class="btn" data-pager="prev" title="previous"><i class="icon-chevron-up"></i></a>
+                        <a class="btn" data-pager="next" title="next"><i class="icon-chevron-down"></i></a>
+
+                        <!--subTpl.eCardThumbnailPagerMeta=
+                            <span id="eCardThumbnailPagerMeta"><span class="range">{{startNumber}}&#8211;{{endNumber}}</span> <i class="of">of</i> <span class="total">{{total}}</span></span>
+                        subTpl-->
+                    </div>
+
+                    <div class="" id="eCardThumbnailContainer">
+
+                        <ul id="eCardThumbnailSelect" class="">
+                            <!--dynamic content-->
+                        </ul>
+
+                    </div>
+                </div><!-- /#eCardThumbnailContainerParent -->
+
+                <div id="drawToolContainer" class="pull-left">
+                    <div id="drawToolQTips">
+                        <div id="drawToolStatusContainer">
+
+                            <div class="drawToolQTip beginToolTipTouch" style="display:none;">
+                                <div class="drawToolQTipContentContainer ">
+                                    <p>eCard selected! Do you want to personalize it?</p>
+                                    <button class="btn editMode"><i class="icon-g5-pencil"></i> Edit with drawing tools</button>
+                                    <button class="btn doneEditing"><i class="icon-ok"></i> Continue for now</button>
+                                </div>
+                            </div>
+
+                            <div class="drawToolQTip pauseToolTipTouch" style="display:none;">
+                                <div class="drawToolQTipContentContainer ">
+                                    <p>Done! Do you wish to make any changes?</p>
+                                    <button class="btn editMode"><i class="icon-g5-pencil"></i> Edit with drawing tools</button>
+                                    <button class="btn doneEditing"><i class="icon-ok"></i> Continue for now</button>
+                                </div>
+                            </div>
+
+                            <div class="drawToolQTip beginToolTip" style="display:none;">
+                                <div class="drawToolQTipContentContainer ">
+                                    <p>Select an eCard to begin.</p>
+                                </div>
+                            </div>
+
+                            <div class="drawToolQTip editingDisabledToolTip" style="display:none;">
+                                {{#if canDraw}}
+                                <div class="drawToolQTipContentContainer ">
+                                    <p>Drawing is disabled for this selection.</p>
+                                </div>
+                                {{/if}}
+                            </div>
+
+                            <div class="drawToolQTip clearToolTip" style="display:none;">
+                                <div class="drawToolQTipContentContainer ">
+                                    <p>Warning: This will clear all image data.</p>
+                                    <button class="btn btn-primary" id="clearImageConfirm"><i class="icon-trash"></i> Clear Drawing</button>
+                                    <button class="btn" id="clearImageCancel"><i class="icon-ban-circle"></i> Cancel</button>
+                                </div>
+                            </div>
+                        </div><!-- /#drawToolStatusContainer -->
+                    </div><!-- /#drawToolQTips -->
+
+                    <div id="drawToolMenu">
+                        <div class="btn-toolbar">
+
+                            <div class="btn-group drawTools">
+                                <button class="btn" id="pencilButton" data-tool-name="pencil" title="pencil"><i class="icon-g5-pencil"></i></button>
+                                <button class="btn" id="treeButton" data-tool-name="tree" title="tree" style="display:none"><i class="icon-leaf"></i></button>
+                                <button class="btn" id="starButton" data-tool-name="star" title="star" style="display:none"><i class="icon-star"></i></button>
+                                <button class="btn" id="eraserButton" data-tool-name="eraser" title="eraser"><i class="icon-g5-eraser"></i></button>
+
+                            </div>
+
+                            <div class="btn-group" id="drawToolPickSize">
+                                <button class="btn dropdown-toggle" data-toggle="dropdown" title="size">
+                                    <span class="draw"><i class="icon-circle"></i></span><span class="erase"><i class="icon-circle-blank"></i></span><span class="size"></span> <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" id="lineWidthSelect">
+                                    {{#each sizes}}
+                                    <li data-brush-width="{{this}}"><span class="draw"><i class="icon-circle"></i></span><span class="erase"><i class="icon-circle-blank"></i></span></li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+
+                            <div class="btn-group" id="drawToolPickColor">
+                                <button class="btn dropdown-toggle" data-toggle="dropdown" title="color">
+                                    <i class="icon-tint"></i> <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" id="colorSelectMenu">
+                                    {{#each colors}}
+                                    <li><div class="colorSelect" style="background:#{{hex}}" data-hex-color-code="{{this.hex}}" title="{{this.title}}"></div></li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+
+                            <div class="btn-group pull-right clearToolTipContainer">
+                                <button class="btn" id="clearImage" title="clear"><i class="icon-trash"></i></button>
+                            </div>
+
+                            <div id="drawingCompleteContainer" class="btn-group pull-right">
+                                <button class="btn" id="drawingComplete" title="finish drawing"><i class="icon-g5-save"></i></button>
+                            </div>
+                        </div>
+
+                    </div><!-- /#drawToolMenu -->
+
+                    <div id="drawToolHiddenInputs">
+                        <input type="hidden" id="drawToolCardType" name="cardType" value="">
+                        <input type="hidden" id="drawToolCardId" name="cardId" value="12345">
+                        <input type="hidden" id="drawToolCardUrl" name="cardUrl" value="">
+                        <input type="hidden" id="drawToolDrawingData" name="drawingData" value="">
+                        <input type="hidden" id="drawToolCardData" name="cardData" value="">
+                    </div>
+
+                    <div id="wPaint" class="">
+                        <div id="bgContainer" class=""></div>
+
+                        <!-- this is where the canvas sits -->
+                    </div><!-- /#wPaint -->
+                </div><!-- /#drawToolContainer -->
+
+            </div><!-- /#drawingTool -->
+        </div><!-- /.span12 -->
+    </div><!-- /.row -->
+</div><!-- /#drawToolView -->

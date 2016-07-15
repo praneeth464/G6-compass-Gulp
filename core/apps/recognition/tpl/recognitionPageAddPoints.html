@@ -1,0 +1,385 @@
+<!--
+    This page contains two possible views.
+    When a user is no longer active, we don't display the recognition at all and instead show a plain pageView with a message.
+    I used a little PHP logic to make it work. Those without PHP are S.O.L.
+-->
+<?php
+// PAGE SWITCH STARTS HERE
+// if the user is not inactive, show the normal page
+if( $_GET['userInactive'] != true ) { ?>
+
+<!--
+    This page combines the AwardeeCollectionView from RecognitionPageSendView with
+    the HTML from Public Recognition Detail (top portion only - ecard, to, from ... comments)
+-->
+
+
+<!--
+    IE7 likes the following div and row to have no space between them if they are not dynamically loaded
+    if they are not next to one another you may experience style issues
+-->
+<div id="recognitionPageAddPointsView"  class="page-content publicRecognition public-recognition-page-detail"><div class="row">
+
+
+        <!-- for errors -->
+        <div class="span12">
+            <div class="alert alert-block alert-error">
+                Server side error example.
+            </div>
+        </div>
+
+
+        <div class="span12">
+            <ul class="export-tools fr">
+                <li><a class="pageView_print" href="#">Print</a></li>
+                <li><i class="icon-print"></i></li>
+            </ul>
+            <h3>[Title Text]</h3>
+        </div>
+
+        <!-- using styles from Public Recognition Detail -->
+        <div class="public-recognition-item">
+
+            <div class="span4 ecard-span">
+                <img alt="Celebration" src="http://placehold.it/360x360">
+            </div>
+
+            <div class="span8 recognitionInformation">
+                <div class="row">
+                    <div class="span2">
+                        <p><strong>To:</strong></p>
+                    </div>
+                    <div class="span6">
+                        <p>
+                            <a class="profile-popover" href="#" data-participant-ids="[45]">
+                                <img alt="Ron Smith" class="recognition-detail-avatar" src="img/_samples/x-profile-pic2.jpg">
+                                Smith, Ron
+                            </a>
+                            <img class="flag" src="img/flags/us.png" title="United States">
+                            Sales, Director
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="span2">
+                        <p><strong>From:</strong></p>
+                    </div>
+                    <div class="span6">
+                        <p>
+                            <a class="profile-popover" href="#" data-participant-ids="[102]">
+                                <img alt="Jane Anderson" class="recognition-detail-avatar" src="img/_samples/x-profile-pic1.jpg">
+                                Anderson,Jane
+                            </a>
+                            <img class="flag" src="img/flags/us.png" title="United States">
+                            TSG, Director
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="span2">
+                        <p><strong>Date:</strong></p>
+                    </div>
+                    <div class="span6">
+                        <p>01/01/2013</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="span2">
+                        <p><strong>Behavior:</strong></p>
+                    </div>
+                    <div class="span6">
+                        <p>Above and Beyond</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="span2">
+                        <p><strong>Comments:</strong></p>
+                    </div>
+                    <div class="span6">
+                        <!-- do no wrap comment in P tag, it will have its own -->
+                        Great work, keep it up!
+                    </div>
+                </div>
+
+            </div><!-- /.span8 -->
+
+        </div><!-- /.publice-recognition-item -->
+
+
+    </div><!-- /.row -->
+
+
+
+    <div class="row">
+        <div class="span12">
+            <!-- JAVA NOTE: struts populated (see Send A Recongition) -->
+            <!-- DATA FORM -->
+            <form id="dataForm" method="post" style="display:none">
+
+                <!-- JAVA NOTE: struts method -->
+                <input type="hidden" name="method" value="someValue" />
+
+                <!-- JAVA NOTE: value = pointsRange|pointsFixed -->
+                <input type="hidden" name="awardType" value="pointsRange" />
+
+                <!-- JAVA NOTE: for awardType=pointsFixed only -->
+                <input type="hidden" name="awardFixed" value="5000" />
+
+                <!-- JAVA NOTE: for awardType=pointRange only -->
+                <input type="hidden" name="awardMin" value="100" />
+                <input type="hidden" name="awardMax" value="2000" />
+
+                <!-- JAVA NOTE: single recipient -->
+                <input type="hidden" name="claimRecipientFormBeansCount" value="1" />
+                <input type="hidden" name="claimRecipientFormBeans[1].id" value="456777" />
+                <input type="hidden" name="claimRecipientFormBeans[1].awardQuantity" value="0" />
+                <input type="hidden" name="claimRecipientFormBeans[1].countryCode" value="de" />
+                <input type="hidden" name="claimRecipientFormBeans[1].countryRatio" value=".7" />
+                <input type="hidden" name="claimRecipientFormBeans[1].countryName" value="United States" />
+                <input type="hidden" name="claimRecipientFormBeans[1].firstName" value="Bradley" />
+                <input type="hidden" name="claimRecipientFormBeans[1].lastName" value="Smithson" />
+                <input type="hidden" name="claimRecipientFormBeans[1].departmentName" value="Department Name" />
+                <input type="hidden" name="claimRecipientFormBeans[1].jobName" value="Job Name" />
+                <input type="hidden" name="claimRecipientFormBeans[1].emailAddr" value="katie.desmet@biworldwide.com" />
+                <input type="hidden" name="claimRecipientFormBeans[1].nodeId" value="12377" />
+
+                <!-- JAVA NOTE: selected nodeId -->
+                <input type="hidden" name="nodeId" value="34">
+
+                <!-- JAVA NOTE: budget and node info as a JSON string inside of a TEXTAREA -->
+                <textarea name="nodes">
+                    [
+                        {
+                            "id":12,
+                            "name":"Node A",
+                            "budgetId":123456,
+                            "amount":9000,
+                            "amountUsed":1000,
+                            "isSoftCap":false
+                        },
+                        {
+                            "id":34,
+                            "name":"Node B",
+                            "budgetId":123457,
+                            "amount":1500,
+                            "amountUsed":1000,
+                            "isSoftCap":false
+                        },
+                        {
+                            "id":56,
+                            "name":"Node C",
+                            "budgetId":123458,
+                            "amount":4000,
+                            "amountUsed":1000,
+                            "isSoftCap":false
+                        }
+                    ]
+                </textarea>
+
+            </form>
+
+            <!-- JAVA NOTE: this form is not struts powered, it will use #dataForm above, which is struts -->
+            <!-- SEND FORM -->
+            <form id="sendForm" method="post">
+
+                <!-- method -->
+                <input type="hidden" name="method" id="sendFormMethod" />
+
+
+                <!-- RECIPIENT(s) -->
+                <fieldset class="formSection recipientsSection" id="recognitionFieldsetRecipients">
+                    <div class="well container-splitter participantCollectionViewWrapper"
+                        data-msg-validation-over-budget="Over budget, please reduce points usage." >
+
+                        <div class="nodesWrapper"><!-- FE - dynamic --></div>
+                        <script id="nodesTpl" type="text/x-handlebars-template">
+                            {{! tricky check to see if there is > 1 item in nodes }}
+                            {{#if nodes.1.id}}
+                                <select id="orgUnitSelect" name="orgUnit" title="Select Org Unit">
+                                    {{#nodes}}
+                                        <option value="{{id}}">{{name}}</option>
+                                    {{/nodes}}
+                                </select>
+                            {{else}}
+                                Org Unit: {{nodes.0.name}}
+                            {{/if}}
+                        </script>
+
+                        <input type="hidden" name="dynamic" value="0" class="participantCount" />
+
+                        <h3>Add Points</h3>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="participant">Recipient</th>
+                                    <th data-msg-points-range="Award Range"
+                                        data-msg-points-fixed="Award"
+                                        data-msg-levels="Award Level"
+                                        data-msg-calculated="Award"
+                                        class="award"><!-- dynamic --></th>
+                                    <th class="calcDeduction">Calculated Budget Deduction</th>
+                                    <!--th class="remove">Remove</th-->
+                                </tr>
+                            </thead>
+
+                            <tbody id="recipientsView"
+                                class="participantCollectionView"
+                                data-msg-empty="You have not added anyone."
+                                data-hide-on-empty="false">
+                            </tbody>
+                        </table>
+
+                        <div class="budgetDeduction">
+                            <h3>Budget Deduction</h3>
+                            <div class="progress">
+                                <div class="bar bar-success" style="width: 0%;"></div>
+                            </div>
+                            <div class="totals clearfix">
+                                <div class="budgetMin">0</div>
+                                <div class="budgetMax"></div>
+                            </div>
+                            <p class="discrepancyWarning" style="display:none">
+                                <small><i>Budget deduction amounts may not add up due to rounding</i></small>
+                            </p>
+                        </div>
+
+                    </div><!-- /.participantCollectionViewWrapper -->
+                </fieldset><!-- /#recognitionFieldsetRecipients -->
+
+
+                <!-- COMMENT - public recognition comment -->
+                <fieldset class="formSection commentSection" id="recognitionFieldsetMessage">
+                    <div class="controls validateme"
+                        data-validate-fail-msgs='{"nonempty":"You must enter a comment.","maxlength":"Character limit of 300 exceeded"}'
+                        data-validate-flags='nonempty,maxlength'
+                        data-validate-max-length="300" >
+                        <label>Comments</label>
+                        <textarea name="comment" id="comments"
+                            class="comment-input commentInputTxt richtext"
+                            placeholder="Leave A Comment"
+                            maxlength="300"
+                            rows="4"></textarea>
+                    </div>
+                </fieldset><!-- /#recognitionFieldsetMessage -->
+
+                <!-- ACTIONS -->
+                <fieldset class="form-actions formSection actionsSection pullBottomUp" id="recognitionFieldsetActions">
+
+                    <button class="btn btn-primary"
+                        value="recognitionButtonSubmit"
+                        name="button"
+                        id="recognitionButtonSubmit"
+                        type="submit">
+                        Submit
+                    </button>
+
+                    <button class="btn"
+                        value="recognitionButtonCancel"
+                        name="button"
+                        id="recognitionButtonCancel"
+                        data-url="layout.html">
+                        Cancel
+                    </button>
+
+                    <div class="recognitionSendCancelDialog" style="display:none">
+                        <p>
+                            <i class="icon-question-sign"></i>
+                            <b>Cancel Send Recognition?</b>
+                        </p>
+                        <p>
+                            All changes will be discarded.
+                        </p>
+                        <p class="tc">
+                            <button type="submit" id="recognitionSendCancelDialogConfirm" class="btn btn-primary">Yes</button>
+                            <button type="submit" id="recognitionSendCancelDialogCancel" class="btn">No</button>
+                        </p>
+                    </div>
+
+                </fieldset><!-- /recognitionFieldsetActions -->
+
+
+            </form><!-- /#sendForm -->
+
+        </div>
+
+    </div><!-- /.row -->
+</div><!-- /#recognitionPageSendView -->
+
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function(){
+
+        // attach the view to an existing DOM element
+        window.recognitionPageAddPointsView = new RecognitionPageAddPointsView({
+            el: $('#recognitionPageAddPointsView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Recognition Detail - Add Points'
+        });
+
+    });
+</script>
+
+
+
+<?php
+// PAGE SWITCH CONTINUES HERE
+// otherwise, if the user is inactive, show the warning message
+} else { ?>
+
+
+
+<div id="recognitionPageAddPointsView"  class="page-content publicRecognition public-recognition-page-detail"><div class="row">
+
+        <div class="span12">
+            <div class="alert alert-info">
+                <h4>Recipient Inactive</h4>
+                The recipient of this recognition is no longer active in the system.
+            </div>
+        </div>
+
+    </div><!-- /.row -->
+</div><!-- /#recognitionPageSendView -->
+
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function(){
+
+        // attach the view to an existing DOM element
+        window.recognitionPageAddPointsView = new PageView({
+            el: $('#recognitionPageAddPointsView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Recognition Detail - Recipient Inactive'
+        });
+
+    });
+</script>
+
+
+<?php
+// PAGE SWITCH ENDS HERE
+} ?>

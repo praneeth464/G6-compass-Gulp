@@ -1,0 +1,41 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $drawTool_width                  : ;
+// $drawTool_widthMobile            : ;
+// $drawTool_thumbnailWidth         : ;
+// $drawTool_thumbnailWidth1200     : ;
+// $drawTool_thumbnailWidth768      : ;
+// $drawTool_thumbnailWidthMobile   : ;
+// $drawTool_borderWidth            : ;
+// $drawTool_borderColor            : ;
+// $drawTool_borderColorSelected    : ;
+// $drawTool_canEditIconColor       : ;
+
+// maths to compute various thumbnail sizes
+// $drawTool_numFit                 : ;
+// $drawTool_numFit768              : ;
+// $drawTool_numFitMobile           : ;
+// $drawTool_liWidth                : ;
+// $drawTool_liWidth768             : ;
+// $drawTool_liWidthMobile          : ;
+
+// maths borrowed from _mixins/gridCoreSpanG5
+// $drawTool_span12Width            : ;
+// $drawTool_span12Width1200        : ;
+// $drawTool_span12Width768         : ;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "drawTool/scss/drawTool";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

@@ -1,0 +1,24 @@
+<?php sleep(2); ?>
+{
+    "messages":[
+        {
+            "type":"error",
+            "code":"validationError",
+            
+            "name":"Leaderboard Create Failed",
+            "text":"There are errors in the form blah blah blah fake message.",
+            
+            "fields":[
+                {
+                    "name" : "name",
+                    "text" : "Promotion name has already been used. Please pick another."
+                },
+                {
+                    "name" : "startDate",
+                    "text" : "Start date has already passed."
+                }
+            ]
+        }
+    ]
+
+}

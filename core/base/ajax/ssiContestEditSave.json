@@ -1,0 +1,40 @@
+<?php
+sleep(2);
+$isError = rand(0,10) > 8;
+$m = isset($_POST['method']) ? $_POST['method'] : false;
+?>
+
+{
+<?php if($isError) { ?>
+
+    "messages":[
+        {
+            "type":"error",
+            "code":"validationError",
+            "name":"Name of error",
+            "text":"Details of error"
+        }
+    ]
+
+<?php } else if($m && $m == 'create') { ?>
+
+
+    "forwardUrl": "layout.html?tplPath=./tpl/&tpl=modulesPage.html#filter/home"
+
+
+<?php } else if($m == 'saveAtn' || $m == 'cancelAtn' || $m == 'issueAwardsAtn') { ?>
+
+
+    "forwardUrl": "layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiContestSummaryATN.html"
+
+
+<?php } else { ?>
+
+    "contest": {
+        "id":"9999",
+        "ssiContestClientState": "ANewStateFromSave"
+    }
+
+<?php } ?>
+
+}

@@ -1,0 +1,1048 @@
+// App-specific variables
+// =========================
+$throwdownMatchModuleBadgeWidth: 36px !default;
+$throwdownMatchModuleBadgeHeight: 36px !default;
+
+$throwdownMatchModule_bgGradColor: $throwdown_secondaryAccentColor !default;
+$throwdownMatchModule_bgGradStops: scale-color($throwdownMatchModule_bgGradColor, $lightness: 30.9%, $saturation: -47.5%), $throwdownMatchModule_bgGradColor !default;
+$throwdownMatchModule_buttonGradColor: $throwdown_primaryAccentColor !default;
+$throwdownMatchModule_buttonGradStops: scale-color($throwdownMatchModule_buttonGradColor, $lightness: 29.7%, $saturation: -28.8%), $throwdownMatchModule_buttonGradColor !default;
+// $throwdownCustomSelect_gradColor : $grayLight !default;
+// $throwdownCustomSelect_gradStops: scale-color($grayLight, $lightness: 75%), $grayLight !default;
+// $throwdownCustomSelect_arrowColor: $gray !default;
+
+$throwdown_MatchFontSize: $baseFontSize !default; // 14px
+$throwdown_MatchLineHeight: $baseLineHeight !default; //20px
+
+$throwdownMatchModule_letterColor: $black !default;
+$throwdownMatchModule_numberColor: $white !default;
+$throwdownMatchModule_winnerColor: $grayDark !default;
+$throwdownMatchModule_buttonTextColor: $white !default;
+$throwdownMatch_aheadColor: $throwdown_secondaryAccentColor !default;
+
+$throwdownMatchModule_countdownBackgroundColor: $black !default;
+$throwdownMatchModule_countdownDigitColor: $white !default;
+$throwdownMatchModule_countdownLabelColor: $gray !default;
+
+$throwdown_matchDetail_containerBgColor: $white !default;
+$throwdown_matchDetail_commentBgColor: scale-color($linkColor, $lightness: 93.75%) !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.throwdownMatch {
+    color: $throwdown_textColor;
+
+    .td-match-profile-pic {
+        .avatarContainerBorder {
+            &.winner {
+                background: $throwdownMatchModule_winnerColor !important;
+                border-color: lighten($throwdownMatchModule_winnerColor, 10%) !important;
+                img {
+                    border-color: lighten($throwdownMatchModule_winnerColor, 10%) !important;
+                }
+            }
+        }
+    }
+
+    .td-match-rank {
+        font-size: $throwdown_MatchFontSize * 2;
+        line-height: 1;
+        margin-bottom: 5px;
+
+        a {
+            color: $throwdownMatchModule_letterColor;
+        }
+        span {
+            color: $throwdownMatchModule_numberColor;
+            font-weight: 900; /* bold digits */
+            text-shadow: 0 1px 4px rgba(0,0,0,0.33);
+        }
+    }
+
+    .td-match-round-info {
+        p {
+            color: $throwdownMatchModule_letterColor;
+            font-size: $throwdown_MatchFontSize * 2; //~28px
+            line-height: $throwdown_MatchLineHeight + 5;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        span {
+            color: $throwdownMatchModule_numberColor;
+            font-weight: 900;
+        }
+    }
+
+    .td-match-participant-name {
+        color: $throwdownMatchModule_letterColor;
+        font-size: $throwdown_MatchFontSize * 1.75; //~24px
+        margin-bottom: 2px;
+
+        span {
+            color: $throwdownMatchModule_numberColor;
+        }
+    }
+
+    .td-match-participant-units {
+        color: $throwdownMatchModule_numberColor;
+        font-size: $throwdown_MatchFontSize * 3.2; //~49px
+        font-weight: 900; /* bold digits */
+        text-shadow: 0 1px 4px rgba(0,0,0,0.33);
+        line-height: $throwdown_MatchLineHeight * 2.4; //54px
+        margin-bottom: 4px;
+    }
+
+    .td-progress-text {
+        color: lighten($throwdown_secondaryAccentColor, 5%);
+        font-size: $throwdown_MatchFontSize * 1.4;
+        font-weight: bold;
+        text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+        display: block;
+        line-height: $throwdown_MatchLineHeight;
+        margin-bottom: 5px;
+    }
+
+    .td-match-badge-list {
+        margin: 0 0 0 -4px;
+        min-width: $throwdownMatchModuleBadgeWidth * 3 + 8px;
+
+        li {
+            @include inline-block;
+            position: relative;
+
+            span {
+                color: $throwdownMatchModule_numberColor;
+                font-size: $throwdown_MatchFontSize * 1.25;
+                left: 38%;
+                position: absolute;
+                top: 25%;
+            }
+        }
+    }
+
+    .td-match-wl-count {
+        border-bottom: 1px solid scale-color($throwdownMatchModule_bgGradColor, $saturation: -43%, $lightness: 15%);
+        border-top: 1px solid scale-color($throwdownMatchModule_bgGradColor, $saturation: -43%, $lightness: 15%);
+        margin: 0;
+        padding: 5px 0;
+        white-space: nowrap;
+
+        li {
+            @include inline-block;
+            color: $throwdownMatchModule_letterColor;
+            font-size: $throwdown_MatchFontSize * 1.4; //~23px
+            margin-right: 5px;
+
+            span {
+                color: $throwdownMatchModule_numberColor;
+                margin-left: 3px;
+                font-weight: 900; /* bold digits */
+                text-shadow: 0 1px 4px rgba(0,0,0,0.33);
+            }
+        }
+    }
+
+    .td-match-winner {
+        color: $throwdownMatchModule_winnerColor;
+        font-size: $throwdown_MatchFontSize * 1.5;
+        font-weight: bold;
+        text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+        display: block;
+        line-height: $throwdown_MatchLineHeight;
+        margin-bottom: 5px;
+    }
+
+    .td-match-button {
+        @include module_moduleLinerBackground(
+                $bgColor: $throwdownMatchModule_buttonGradColor,
+                $gradType: $throwdown_gradTypeLinear,
+                $gradMeta: $throwdown_gradMetaTop,
+                $gradStops: $throwdownMatchModule_buttonGradStops
+        );
+        @include box-shadow( rgba(0,0,0,.6) 0 0 16px);
+        border-bottom-color: scale-color($throwdownMatchModule_buttonGradColor, $lightness: -25%);
+        border-top-color: scale-color($throwdownMatchModule_buttonGradColor, $lightness: 50%);
+        border-left: none;
+        border-right: none;
+        color: $throwdownMatchModule_buttonTextColor;
+        font-size: $throwdown_MatchFontSize * 1.4; //~19px
+        padding: 8px;
+        text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+    }
+
+    .td-match-button:hover {
+        @include box-shadow(
+            rgba(0,0,0,.6) 0 0 16px,
+            inset scale-color($throwdownMatchModule_buttonGradColor, $lightness: 20%) 0 0 20px
+        );
+    }
+
+    .td-match-button:active {
+        position: relative;
+        top: 1px;
+        @include box-shadow(
+            rgba(0,0,0,.3) 0 0 8px,
+            inset scale-color($throwdownMatchModule_buttonGradColor, $lightness: 20%) 0 0 20px
+        );
+    }
+
+    .td-fine-print {
+        bottom: 0;
+        color: $white;
+        font: 13px $throwdown_secondaryFontFamily;
+        margin-right: 15px;
+        position: absolute;
+        text-transform: none;
+        @include opacity(0.6);
+    }
+
+}/* /.throwdownMatch */
+
+/* ----- MODULE STYLES ----- */
+.module.throwdownMatch {
+    text-transform: uppercase;
+
+    .module-liner {
+        font-family: $throwdown_primaryFontFamily;
+
+        @include module_moduleLinerBackground(
+                $bgColor: $throwdownMatchModule_bgGradColor,
+                $gradType: $throwdown_gradTypeLinear,
+                $gradMeta: $throwdown_gradMetaTop,
+                $gradStops: $throwdownMatchModule_bgGradStops
+            );
+
+        .row {
+            margin-left: 0; /* Override base.css setting */
+        }
+    }
+    .spin {
+        .spinner {
+            div > div {
+                background-color: $white !important;
+            }
+        }
+    }
+
+    &.grid-dimension-2x2 {
+
+        .td-match-details-wide {
+            display: none;
+        }
+
+        .td-match-details-condensed {
+            display: block;
+
+            .td-match-primary-team,
+            .td-match-secondary-team,
+            .td-match-vs,
+            .td-match-stats-info,
+            .td-match-profile-pic,
+            .td-match-primary-units,
+            .td-match-secondary-units,
+            .td-match-round-info {
+                float: left;
+            }
+
+            .td-match-profile-pic {
+                @include throwdown_fancyProfile($throwdown_fancyAvatar_avatarDimensionSmall, $throwdown_fancyAvatar_avatarPaddingSmall, $throwdown_fancyAvatar_border);
+            }
+
+            .td-match-stats-info {
+                margin-left: 8px;
+
+                .td-match-participant-name,
+                .td-match-rank,
+                .td-match-participant-units {
+                    margin-bottom: 0px;
+                    line-height: 1;
+                }
+
+                .td-match-participant-name {
+                    font-size: $throwdown_MatchFontSize * 1.45; //~20px
+                }
+
+                .td-match-rank {
+                    font-size: $throwdown_MatchFontSize * 1.45;
+                }
+
+                .td-match-participant-units {
+                    font-size: $throwdown_MatchFontSize * 2.5; //~35px
+                }
+            }
+
+            .td-match-primary-team,
+            .td-match-secondary-team {
+                width: 100%;
+            }
+
+            .td-match-vs {
+                @include box-shadow( rgba(0,0,0,.5) 0 2px 1px -1px);
+                color: $throwdownMatchModule_letterColor;
+                font-size: 17px;
+                line-height: $throwdown_MatchLineHeight / 2;
+                margin: 9px 43px;
+                position: relative;
+                text-align: center;
+                width: 7%;
+            }
+
+            .td-match-round-info {
+                margin-top: 15px;
+                width: 100%;
+
+                p {
+                    @include inline-block;
+                    font-size: $throwdown_MatchFontSize * 2;
+                }
+
+                .td-match-button {
+                    @include inline-block;
+                    font-size: $throwdown_MatchFontSize + 1;
+                    margin-left: 7%;
+                    padding: 5px 0;
+                    position: relative;
+                    top: -4px;
+                    width: 40%;
+                }
+            }
+
+        }
+    }
+
+    &.grid-dimension-4x2 {
+        .td-match-primary-team,
+        .td-match-secondary-team,
+        .td-match-vs,
+        .td-match-stats-info,
+        .td-match-secondary-pic,
+        .td-match-primary-units,
+        .td-match-secondary-units,
+        .td-match-round-info {
+            float: left;
+        }
+
+        .td-match-profile-pic {
+            @include throwdown_fancyProfile($throwdown_fancyAvatar_avatarDimensionBig, $throwdown_fancyAvatar_avatarPaddingBig, $throwdown_fancyAvatar_border);
+        }
+
+        .td-match-stats-info {
+            margin-top: 30px;
+            padding-left: 9px;
+            width: 38%;
+        }
+
+        .td-match-primary-units {
+            margin-top: 10px;
+            width: 34%;
+        }
+
+        .td-match-secondary-units {
+            margin-top: 10px;
+            text-align: right;
+            width: 34%;
+        }
+
+        .td-match-round-info {
+            margin-top: 20px;
+            width: 32%;
+        }
+
+        .td-match-primary-team {
+            width: 45%;
+
+            .td-match-profile-pic {
+                float: left;
+            }
+        }
+
+        .td-match-secondary-team {
+            width: 46%;
+
+            .td-match-profile-pic {
+                float: right;
+            }
+
+            .td-match-rank,
+            .td-match-wl-count {
+                text-align: right;
+            }
+
+        }
+
+        .td-match-vs {
+            @include box-shadow( rgba(0,0,0,.5) 0 2px 1px -1px);
+            color: $throwdownMatchModule_letterColor;
+            font-size: 30px;
+            line-height: 19px;
+            margin: 72px 1.4% 0;
+            position: relative;
+            text-align: center;
+            width: 6%;
+
+            .reflect {
+                @include opacity(.15);
+                @include scaleY(-1);
+                left: 4px;
+                line-height: 8px;
+                overflow: hidden;
+                position: absolute;
+                top: 100%;
+            }
+        }
+        .td-match-winner {
+            color: $throwdownMatchModule_winnerColor;
+            font-size: $throwdown_MatchFontSize * 1.7;
+            line-height: $throwdown_MatchLineHeight;
+            margin-bottom: 4px;
+        }
+
+        .td-match-button {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .td-match-badge-list {
+            img {
+                height: $throwdownMatchModuleBadgeHeight;
+                max-width: none;
+                width: $throwdownMatchModuleBadgeWidth;
+            }
+        }
+
+        .td-match-details-condensed {
+            display: none;
+        }
+    }
+
+} /* /.module.throwdownMatch */
+
+/* ----- PAGE STYLES ----- */
+.page.throwdownMatch {
+    $imgWidth : 48px;
+    $imgWidthComment : 36px;
+
+    .page-topper {
+        margin-bottom: 10px;
+        // @include throwdown_customSelectBox($throwdownCustomSelect_gradColor, $throwdownCustomSelect_gradStops, $throwdownCustomSelect_arrowColor);
+
+        .control-group {
+            margin-right: 0;
+            width: 100%;
+
+            .controls {
+                width: 100%;
+                select {
+                    width: auto;
+                    min-width: 220px;
+                    max-width: 100%;
+                }
+            }
+        }
+
+    }
+
+    .promotionInfo {
+        float: left;
+        margin-bottom: 15px;
+
+        h4 {
+            font: $throwdown_primaryFontWeight 23px $throwdown_primaryFontFamily;
+            margin-bottom: 0;
+        }
+
+        span {
+            color: $throwdown_textLight;
+
+            strong {
+                color: $throwdown_textNormal;
+            }
+        }
+
+        @media (max-width: 979px) {
+            float: none;
+        }
+    }
+
+    .td-promo-countdown {
+        float: right;
+        font-family: $throwdown_primaryFontFamily;
+        margin-top: 15px;
+
+        h4 {
+            color: $throwdown_secondaryAccentColor;
+            font-size: $throwdown_MatchFontSize * 1.4;
+            text-transform: uppercase;
+            float: left;
+
+            @media (max-width: 480px) {
+                float: none;
+            }
+        }
+
+        ul {
+            list-style-type: none;
+            float: left;
+
+            @include promotionCountdown($throwdownMatchModule_countdownBackgroundColor, $throwdownMatchModule_countdownDigitColor, $throwdownMatchModule_countdownLabelColor);
+
+            @media (max-width: 480px) {
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 979px) {
+            float: none;
+        }
+    }
+
+    .round-start-end-message {
+        float: right;
+    }
+
+    .td-match-detail-container {
+        font-family: $throwdown_primaryFontFamily;
+        padding: 30px 18px;
+        text-transform: uppercase;
+
+        @include module_moduleLinerBackground(
+                $bgColor: $throwdownMatchModule_bgGradColor,
+                $gradType: $throwdown_gradTypeLinear,
+                $gradMeta: $throwdown_gradMetaTop,
+                $gradStops: $throwdownMatchModule_bgGradStops
+            );
+        position: relative;
+
+        .row {
+            margin-left: 0; /* Override base.css setting */
+        }
+    }
+
+    .td-match-primary-team,
+    .td-match-secondary-team,
+    .td-match-vs,
+    .td-match-profile-pic,
+    .td-match-stats-info,
+    .td-match-secondary-pic,
+    .td-match-primary-units,
+    .td-match-secondary-units,
+    .td-match-round-info {
+        float: left;
+    }
+    .td-match-details-condensed {
+        display: none;
+    }
+
+    .td-match-profile-pic {
+        @include throwdown_fancyProfile($throwdown_fancyAvatar_avatarDimensionBig, $throwdown_fancyAvatar_avatarPaddingBig, $throwdown_fancyAvatar_border);
+    }
+
+    .td-match-stats-info {
+        margin-top: 30px;
+        padding-left: 9px;
+        width: 41%;
+
+        @media (min-width: 1200px) {
+            width: 52%;
+        }
+    }
+
+    .td-match-primary-units {
+        margin: 15px 0 0 12%;
+        position: relative;
+        width: 23%;
+    }
+
+    .td-match-secondary-units {
+        margin: 15px 12% 0 0;
+        position: relative;
+        width: 22%;
+        text-align: right;
+    }
+
+    .td-match-round-info {
+        margin-top: 20px;
+        width: 30%;
+
+        span {
+            // @include inline-block;
+        }
+    }
+
+    .td-match-primary-team {
+        margin-left: 12%;
+        width: 33%;
+
+        .td-match-profile-pic {
+            float: left;
+        }
+    }
+
+    .td-match-secondary-team {
+        margin-right: 12%;
+        width: 33%;
+
+        .td-match-profile-pic {
+            float: right;
+        }
+
+        .td-match-rank,
+        .td-match-wl-count {
+            text-align: right;
+        }
+
+        .td-match-badge-list {
+            text-align: right;
+        }
+
+    }
+
+    .td-match-vs {
+        @include box-shadow(rgba(0,0,0,.7) 0 3px 2px -2px);
+        color: $throwdownMatchModule_letterColor;
+        font-size: 39px;
+        line-height: 23px;
+        margin: 72px 2.5% 0;
+        position: relative;
+        text-align: center;
+        width: 4%;
+
+        .reflect {
+            @include opacity(.1);
+            @include scaleY(-1);
+            left: 2px;
+            line-height: 13px;
+            overflow: hidden;
+            position: absolute;
+            top: 100%;
+        }
+    }
+
+    .td-match-button {
+        display: block;
+        margin: 0 auto;
+        width: 50%;
+    }
+
+    .td-match-badge-list {
+        img {
+            height: $throwdownMatchModuleBadgeHeight;
+            width: $throwdownMatchModuleBadgeWidth;
+        }
+    }
+
+    .td-fine-print {
+        text-transform: none;
+        margin-left: 11%;
+
+        @media (max-width: 979px) {
+            margin-left: 0;
+        }
+    }
+
+    .td-match-smack-talk {
+        h4 {
+            font: $throwdown_primaryFontWeight 23px $throwdown_primaryFontFamily;
+            margin-bottom: 0;
+        }
+    }
+
+    .comment-block {
+        .readMore .readMoreTrigger {
+                background-color: $throwdown_matchDetail_commentBgColor; // hide bg text
+        }
+    }
+
+    .readMore {
+        max-width: 900px;
+        overflow: hidden;
+        position: relative;
+
+        .readMoreTrigger {
+            background-color: $throwdown_matchDetail_containerBgColor; // hide bg text
+            bottom: 0;
+            cursor: pointer;
+            padding-left: 6px;
+            position: absolute;
+            right: 0;
+        }
+    }
+
+    .app-row {
+        @include gridCoreInnerNegMargin($leftRightPad: ($g5PageContentPaddingHoriz * -1), $leftRightBorder: ($g5PageContentLeftRightBorderWidth * -1));
+        margin: 0;
+        width: auto;
+
+        .app-col {
+            float:left;
+        }
+
+        @media (min-width: 1200px) {
+            @include gridCoreInnerNegMargin($leftRightPad: ($g5PageContentPaddingHoriz1200 * -1), $leftRightBorder: ($g5PageContentLeftRightBorderWidth1200 * -1));
+
+            &.detail-row {
+                .profile-popover img {
+                    // margin-right: $gridGutterWidth1200;
+                }
+                .smack-talk-block {
+                    margin: 0 0 $gridGutterWidth1200 ($imgWidth + $gridGutterWidth1200);
+                }
+            }
+
+            &.comment-block {
+                padding: 0 $gridGutterWidth1200;
+
+                .smackTalkCommentForm {
+                    margin-bottom: $gridGutterWidth1200 / 2;
+                }
+                &::before {
+                    margin-top: (-1 * $gridGutterWidth1200 / 2);
+                    margin-bottom: $gridGutterWidth1200;
+                }
+            }
+
+            .commentInputWrapper {
+                padding: 0 0 0 0; //($imgWidthComment + $gridGutterWidth1200);
+            }
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+
+
+            @include gridCoreInnerNegMargin($leftRightPad: ($g5PageContentPaddingHoriz768 * -1), $leftRightBorder: ($g5PageContentLeftRightBorderWidth768 * -1));
+
+            &.detail-row {
+                .profile-popover img {
+                    margin-right: $gridGutterWidth768;
+                }
+                .smack-talk-block {
+                    margin: 0 0 $gridGutterWidth768 ($imgWidth + $gridGutterWidth768);
+                }
+            }
+
+            &.comment-block {
+                padding: 0 $gridGutterWidth768;
+
+                .commentInputWrapper,
+                &.smackTalkCommentsComment {
+                    padding-top: $gridGutterWidth768 / 2;
+                    padding-bottom: $gridGutterWidth768 / 2;
+                }
+                .smackTalkCommentForm {
+                    margin-bottom: $gridGutterWidth768 / 2;
+                }
+            }
+
+            .commentInputWrapper {
+                padding: 0 0 0 0; //($imgWidthComment + $gridGutterWidth768);
+            }
+        }
+        @media (max-width: 767px) {
+            @include gridCoreInnerNegMargin($leftRightPad: ($g5PageContentPaddingHorizMobile * -1));
+
+        }
+    } /* /.app-row */
+} /* /.page.throwdownMatch */
+
+
+/* IE styles */
+.lt-ie9 .module.throwdownMatch .td-match-vs {
+    line-height: 19px;
+}
+.lt-ie9 .module.throwdownMatch .td-match-vs {
+    line-height: 27px;
+    margin-top: 70px;
+}
+.lt-ie8 .page.throwdownMatch .td-match-vs {
+    line-height: 35px;
+    margin-top: 67px;
+}
+.lt-ie9 .throwdownMatch .reflect {
+    display: none;
+}
+.lt-ie9 .throwdownMatch .td-match-winner {
+    left: -87px;
+    top: 48px;
+}
+.lt-ie9 .throwdownMatch .td-match-badge-list li img {
+    max-width: none;
+}
+.lt-ie8 .throwdownMatch .promotionInfo {
+    margin-top: -35px;
+    padding-bottom: 10px;
+}
+.lt-ie8 .throwdownMatch .td-promo-countdown {
+    margin-top: -25px;
+    padding-bottom: 10px;
+}
+.lt-ie8 .page.throwdownMatch {
+        .td-promo-countdown {
+            h4 {
+                float: left;
+            }
+            ul li hr {
+                width: 35px;
+            }
+        }
+}
+
+//Media Queries
+@media (max-width: 979px) and (min-width: 768px) {
+    .page.throwdownMatch {
+
+        .td-match-detail-container {
+            padding: 20px 18px 50px;
+        }
+
+        .td-match-primary-team,
+        .td-match-secondary-team {
+            margin: 0;
+            width: 43%;
+        }
+
+        .td-match-primary-units,
+        .td-match-secondary-units {
+            margin:15px 0 0 0;
+            width: 30%;
+        }
+
+        .td-match-button {
+            width: 68%;
+        }
+
+        .td-promo-countdown {
+            h4 {
+                font-size: $throwdown_MatchFontSize * 1.25; //~17px
+            }
+            ul {
+                margin-left: 10px;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .page.throwdownMatch {
+
+        .td-promo-countdown {
+            clear: left;
+            float: left;
+            margin-top: 0px;
+        }
+
+        .td-match-detail-container {
+            padding: 20px 0 50px;
+        }
+
+        .td-match-primary-team {
+            margin-left: 5%;
+            width: 41%;
+        }
+
+        .td-match-secondary-team {
+            margin-right: 3%;
+            width: 42%;
+        }
+
+        .td-match-primary-units {
+            margin-left: 5%;
+            width: 30%;
+        }
+
+        .td-match-secondary-units {
+            margin-right: 3%;
+            width: 30%;
+        }
+
+        .td-match-round-info {
+            width: 32%;
+
+            .td-match-button {
+                width: 64%;
+            }
+        }
+
+        .td-fine-print {
+            margin-left: 5%;
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .page.throwdownMatch {
+
+        .row {
+            margin-right: 1%;
+        }
+
+        .td-match-primary-team,
+        .td-match-secondary-team {
+            width: 43%;
+        }
+
+        .td-match-profile-pic {
+            @include throwdown_fancyProfile($throwdown_fancyAvatar_avatarDimensionMed, $throwdown_fancyAvatar_avatarPaddingBig, $throwdown_fancyAvatar_border);
+        }
+
+        .td-match-stats-info {
+            margin-top: 20px;
+            padding-left: 7%;
+            width: 44%;
+
+            .td-match-rank {
+                font-size: $throwdown_MatchFontSize * 1.7; //~25px
+                line-height: $throwdown_MatchLineHeight;
+                margin-bottom: 5px;
+            }
+
+            .td-match-wl-count li {
+                font-size: $throwdown_MatchFontSize * 1.5;
+            }
+
+        }
+
+        .td-match-vs {
+            font-size: $throwdown_MatchFontSize * 2;
+            line-height: 17px;
+            margin: 52px 0 0 1%;
+        }
+
+        .td-match-participant-name {
+            font-size: $throwdown_MatchFontSize * 1.5;
+        }
+
+        .td-match-participant-units {
+
+        }
+
+        .td-match-winner {
+
+        }
+
+        .td-match-round-info {
+            p {
+                font-size: $throwdown_MatchFontSize * 1.7;
+            }
+
+            .td-match-button {
+                font-size: $throwdown_MatchFontSize * 1.2; //~17px
+                padding: 8px 8px;
+            }
+        }
+
+        .td-fine-print {
+            margin-left: 5%;
+        }
+    }
+}
+
+@media (max-width: 610px) {
+    .page.throwdownMatch {
+
+        .td-match-stats-info {
+            padding-left: 5%;
+            width: 42%;
+        }
+    }
+}
+
+@media (max-width: 585px) {
+    .page.throwdownMatch {
+
+        .td-match-detail-container {
+            padding-top: 20px;
+        }
+
+        .td-match-details-wide {
+            display: none;
+        }
+
+        .td-match-details-condensed {
+            display: block;
+
+            .td-match-primary-team,
+            .td-match-secondary-team,
+            .td-match-vs,
+            .td-match-stats-info,
+            .td-match-profile-pic,
+            .td-match-primary-units,
+            .td-match-secondary-units,
+            .td-match-round-info {
+                float: left;
+            }
+
+            .td-match-profile-pic {
+                @include throwdown_fancyProfile($throwdown_fancyAvatar_avatarDimensionSmall, $throwdown_fancyAvatar_avatarPaddingSmall, $throwdown_fancyAvatar_border);
+            }
+
+            .td-match-stats-info {
+                margin: 0 0 0 15px;
+                padding: 0;
+
+                .td-match-participant-name {
+                    font-size: $throwdown_MatchFontSize * 1.45; //~20px
+                    font-weight: bold;
+                }
+
+                .td-match-rank {
+                    font-size: $throwdown_MatchFontSize * 1.45;
+                }
+
+                .td-match-participant-units {
+                    font-size: $throwdown_MatchFontSize * 2.5; //~35px
+                    line-height: $throwdown_MatchLineHeight * 1.5;
+                }
+            }
+
+            .td-match-primary-team {
+                width: 100%;
+            }
+
+            .td-match-secondary-team {
+                margin: 0 0 0 5%;
+                width: 100%;
+
+                .td-match-rank {
+                    text-align: left;
+                }
+            }
+
+            .td-match-vs {
+                @include box-shadow( rgba(0,0,0,.5) 0 2px 1px -1px);
+                color: $throwdownMatchModule_letterColor;
+                font-size: 17px;
+                line-height: $throwdown_MatchLineHeight / 2;
+                margin: 9px 60px;
+                position: relative;
+                text-align: center;
+                width: 5%;
+            }
+
+            .td-match-round-info {
+                margin: 15px 0 0 5%;
+                width: 100%;
+
+                p {
+                    @include inline-block;
+                    font-size: $throwdown_MatchFontSize * 2;
+                }
+
+                .td-match-button {
+                    @include inline-block;
+                    font-size: $throwdown_MatchFontSize + 1;
+                    margin-left: 9%;
+                    padding: 5px 0;
+                    position: relative;
+                    top: -4px;
+                    width: 36%;
+                }
+            }
+
+        }
+    }
+}

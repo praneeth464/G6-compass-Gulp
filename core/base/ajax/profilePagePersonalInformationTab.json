@@ -1,0 +1,18 @@
+{
+	"messages":[],
+
+	"ProfilePagePersonalInformationTab":[
+	{
+		"name": "Christian Smith",
+		"orgName": [{"title": "Title1", "thisOrgName": "Org Name 1"}, {"title": "Title2", "thisOrgName": "Org Name 2" }],
+		"department": "Department",
+		"email": "myEmail@home.com",
+		"address": { "line1": "123 Fake Street", "line2": "FakeTown, Georgia 12345"},
+		"country": "USA",
+		"phone": "1-555-555-5555 x5555",
+		"avatarUrl": "this is an address for the src of the profile image.",
+		"questionList": [{ "question": "What is your favorite color?", "answer": "My favorite color is blue."}, { "question": "This is another example of a question.", "answer": "This is the answer to that question."}]
+	}
+	]
+
+}

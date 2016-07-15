@@ -1,0 +1,712 @@
+// App-specific variables
+// =========================
+$purlContribute_bgColor: $g5ModuleBgColor !default;
+$purlContribute_gradType: $g5ModuleGradType !default;
+$purlContribute_gradMeta: $g5ModuleGradMeta !default;
+$purlContribute_gradStops: $g5ModuleGradStops !default;
+
+$purlContribute_iconColor: $g5ModuleIconColor !default;
+$purlContribute_titleColor: $g5ModuleTitleColor !default;
+$purlContribute_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$purlContribute_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$purlContribute_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$purlContribute_detailsH2Color: scale-color($linkColor, $lightness: -25%) !default;
+$purlContribute_detailsTextColor: false !default;
+$purlContribute_detailsLinkColor: false !default;
+$purlContribute_detailsLinkHoverColor: false !default;
+$purlContribute_detailsLinkIconColor: false !default;
+$purlContribute_detailsLinkIconHoverColor: false !default;
+$purlContribute_detailsMutedTextColor: false !default;
+$purlContribute_detailsBgColor: scale-color($linkColor, $lightness: 75%) !default;
+$purlContribute_detailsBgGradType: false !default;
+$purlContribute_detailsBgGradMeta: false !default;
+$purlContribute_detailsBgGradStops: false !default;
+$purlContribute_detailsBorderTopBottomWidth: 1px !default;
+$purlContribute_detailsBorderTopBottomColor: $g5ModPgBorderColor !default;
+$purlContribute_detailsBoxShadow: none !default;
+
+$purlContribute_contributeBgColor: $pages_splitterBgColor !default; // if $pages_splitterBgColor is set in _pages.scss, the contribute box will take that background color by default
+$purlContribute_contributeCommentBgColor: darken($purlContribute_contributeBgColor,10%) !default;
+$purlContribute_contributeAttachBgColor: darken($purlContribute_contributeBgColor,20%) !default;
+$purlContribute_contributeAttachTabTextColor: false !default;
+$purlContribute_contributeAttachMutedTextColor: false !default;
+$purlContribute_contributeCloseFontSize: 11px !default;
+$purlContribute_contributeCloseIconColor: $grayLight !default;
+$purlContribute_contributeCloseBorderColor: $purlContribute_contributeCloseIconColor !default;
+$purlContribute_contributeCloseCircleWidth: 15px !default;
+$purlContribute_contributeCloseBorderWidth: 2px !default;
+$purlContribute_contributeRemoveMediaFontSize: 11px !default;
+$purlContribute_contributeRemoveMediaIconColor: $grayLighter !default;
+$purlContribute_contributeRemoveMediaBorderColor: $grayDark !default;
+$purlContribute_contributeRemoveMediaCircleWidth: 15px !default;
+$purlContribute_contributeRemoveMediaBorderWidth: 2px !default;
+$purlContribute_contributeRemoveMediaBgColor: scale-color($red, $lightness: -50%) !default;
+
+$purlContribute_commentBgColorOdd: $grayLighter !default;
+$purlContribute_commentBgColorEven: false !default;
+
+$purlContribute_commentBorderColorOdd: scale-color($purlContribute_commentBgColorOdd, $lightness: -12.5%) !default;
+$purlContribute_commentBorderColorEven: scale-color($purlContribute_commentBgColorEven or $white, $lightness: -12.5%) !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- MODULE STYLES ----- */
+.module.purlContribute {
+
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $purlContribute_bgColor,
+            $gradType: $purlContribute_gradType,
+            $gradMeta: $purlContribute_gradMeta,
+            $gradStops: $purlContribute_gradStops
+        );
+    }
+
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $purlContribute_iconColor,
+            $titleColor: $purlContribute_titleColor,
+            $titleFontFamily: $purlContribute_titleFontFamily
+        );
+
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            @include g5HomeAppIconBoxReflect(-47px);
+        }
+    }
+
+    @include module_titleIconViewFontSizesWeights($purlContribute_titleFontSizes, $purlContribute_titleFontWeights);
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2 {
+        .title-icon-view {
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                @include g5HomeAppIconBoxReflect(-126px);
+            }
+        }
+    }
+
+    &.grid-dimension-4x4 {
+        .title-icon-view {
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                @include g5HomeAppIconBoxReflect(-241px);
+            }
+        }
+    }
+
+} /* /.module.purlContribute */
+
+
+/* purlTermsPageView */
+#purlTermsPageView {
+    .termsBlock {
+        height: 320px;
+        overflow: auto;
+    }
+
+    .purlContributeTermsRadios {
+        label {
+            font-weight: bold;
+        }
+    }
+}
+
+
+/* purlContrubutePage */
+#PURLContributeListView {
+    .purlContributers span {
+        display: block;
+    }
+
+    thead {
+        white-space: nowrap;
+    }
+}
+
+
+/* .purlPage (new purl page scss) */
+.purlPage {
+
+    .upSpin {
+        display: inline-block;
+        @include ie7-inline-block();
+        width: 28px;
+        height: 28px;
+    }
+
+    // initial contributor modal
+    #purlInitialModal {
+        img.avatar {
+            width: 72px;
+        }
+    }
+
+    // outer container of contribute section and details section
+    .contributeToPurlSection,
+    .purlDetailsSection {
+        .well {
+            margin-bottom: 0;
+        }
+    }
+
+    // comment stuffz
+    .contribTopControls {
+        margin-top: $baseLineHeight;
+        @include clearfix();
+    }
+
+    .translateLinkDisabled {
+        color: #999999;
+    }
+
+    // responsive embedded video
+    // see: http://webdesignerwall.com/tutorials/css-elastic-videos
+    .videoWrapper {
+        position: relative;
+        width: 400px;
+        max-width: 100%;
+        // overflow: hidden;
+
+        .responsiveVideoContainer {
+            position: relative;
+            padding-bottom: 56.25%;
+            padding-top: 30px;
+            height: 0;
+            overflow: hidden;
+
+            iframe, object, embed {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    // video positioning fix for ie7 -- remove this and try to add a comment w/media
+    // notice the main video and first comment video not move down
+    // http://stackoverflow.com/questions/2473171/ie7-relative-absolute-positioning-bug-with-dynamically-modified-page-content
+    .lt-ie8 & /* & is .purlPage */ {
+        overflow: hidden;
+    }
+
+    .contribCommentWrapper {
+        position: relative;
+        margin-top: $baseLineHeight;
+        margin-right: -1 * ($baseLineHeight / 2);
+        margin-left: -1 * ($baseLineHeight / 2);
+        padding: $baseLineHeight / 2;
+        background: $purlContribute_contributeCommentBgColor;
+        @include clearfix();
+
+        .mask {
+            position: absolute;
+            z-index: 100;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: black;
+            @include opacity(.5);
+        }
+        .spin {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: (-1 * $spinner_widthHeight / 2) 0 0 (-1 * $spinner_widthHeight / 2);
+        }
+        .contribAvatar {
+            float: left;
+            width: 60px;
+            height: 60px;
+        }
+        .contribName {
+            display: inline;
+            float: left;
+            font-weight: bold;
+            min-height: $baseLineHeight;
+            margin-bottom: 4px;
+        }
+        .commentTools {
+            text-align: right;
+            font-size: .9em;
+
+            .lt-ie8 & { // ie7
+                width: 95%;
+            }
+            .remChars {
+                font-weight: bold;
+            }
+            .checkSpellingDdBtn {
+                display: inline-block;
+                width: auto;
+                padding: 0 2px;
+                line-height: 16px;
+                margin-bottom: 2px;
+            }
+        }
+        .contribCommentInp {
+            @include input-block-level();
+            margin-bottom: 2px;
+
+            .lt-ie8 & { // ie7
+                width: 95%;
+            }
+        }
+        .dropdown-menu {
+            color: black;
+            text-align: left;
+            left: auto;
+            right: 0;
+
+            & a { color: black; }
+            & .check:hover{ color:black; background:inherit;}
+        }
+        .attachTools {
+            a { // tab styles
+                padding: 2px 8px;
+                display: inline-block;
+                @include ie7-inline-block();
+                color: $purlContribute_contributeAttachTabTextColor;
+
+                &:hover,&:focus {
+
+                    text-decoration: none;
+                }
+            } // tab stylings
+            &.photoMode .attachPhotoBtn,
+            &.videoMode .attachVideoBtn {
+                background: $purlContribute_contributeAttachBgColor;
+            }
+            &.photoMode .attachPhotoBtn,
+            &.photoMode .attachPhotoBtn i,
+            &.videoMode .attachVideoBtn,
+            &.videoMode .attachVideoBtn i {
+                cursor: default;
+            }
+            .muted {
+                @if $purlContribute_contributeAttachMutedTextColor {
+                    color: $purlContribute_contributeAttachMutedTextColor;
+                }
+            }
+        }
+        .attachPhotoWrapper,
+        .attachVideoWrapper {
+            padding: 4px 8px;
+            background: $purlContribute_contributeAttachBgColor;
+
+            .closeAttModeBtn {
+                margin-top: 4px;
+                font-size: 20px;
+
+                @include circledAwesomeIcon(
+                    $fontSize: $purlContribute_contributeCloseFontSize,
+                    $color: $purlContribute_contributeCloseIconColor,
+                    $borderColor: $purlContribute_contributeCloseBorderColor,
+                    $circleWidth: $purlContribute_contributeCloseCircleWidth,
+                    $borderWidth: $purlContribute_contributeCloseBorderWidth
+                );
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+        .attachedMediaDisplayWrapper {
+            margin-top: 12px;
+
+            .cmtImgWrap {
+                position: relative;
+                display: inline-block;
+                @include ie7-inline-block();
+            }
+        }
+
+        // set responsive default width for videos
+        .videoWrapper { width: 400px; }
+
+
+        // rmBtn (button for removing attached video/image)
+        .rmBtn {
+            cursor: pointer;
+
+            @include circledAwesomeIcon(
+                $fontSize: $purlContribute_contributeRemoveMediaFontSize,
+                $color: $purlContribute_contributeRemoveMediaIconColor,
+                $borderColor: $purlContribute_contributeRemoveMediaBorderColor,
+                $circleWidth: $purlContribute_contributeRemoveMediaCircleWidth,
+                $borderWidth: $purlContribute_contributeRemoveMediaBorderWidth,
+                $bgColor: transparentize($purlContribute_contributeRemoveMediaBgColor, 0.2)
+            );
+
+            .lt-ie9 & {
+                background: $purlContribute_contributeRemoveMediaBgColor;
+            }
+        }
+
+        .videoWrapper,
+        .cmtImgWrap {
+            // special style for remove btn in these elements
+            .rmBtn {
+                z-index: 10;
+                position: absolute;
+                left: -6px;
+                top: -6px;
+            }
+        }
+
+        // inside the responsive video wrapper
+        .lt-ie8 & .videoWrapper .rmBtn { // can't click on it in ie7 - this is quick and dirty fix
+            right: -20px;
+        }
+
+        .contribBottomControls {
+            margin-top: 8px;
+        }
+        .indent {
+            margin-left: 70px;
+            padding-left: 10px;
+            border-left: 1px solid $purlContribute_contributeCloseBorderColor;
+        }
+
+        @media (max-width: 480px) {
+            .contribAvatar {
+                margin-right: 10px;
+                margin-bottom: 0px;
+                width: 30px;
+                height: 30px;
+            }
+            .indent {
+                margin-left: 0;
+                padding-left: 0;
+                border-left: 0;
+            }
+            .contribName {
+                display: block;
+                float: none;
+                margin-left: 40px;
+                padding-bottom: 9px;
+                border-bottom: 1px solid $purlContribute_contributeCloseBorderColor;
+            }
+            .commentTools {
+                clear: both;
+                // margin-top: 10px;
+                padding-top: 10px;
+            }
+        }
+    }// .contribCommentWrapper
+
+
+    .purlDetailsSection {
+        .container-splitter {
+            @include page_containerSplitterDisplay(
+                $h2Color :              $purlContribute_detailsH2Color,
+                $textColor :            $purlContribute_detailsTextColor,
+                $linkColor :            $purlContribute_detailsLinkColor,
+                $linkHoverColor :       $purlContribute_detailsLinkHoverColor,
+                $linkIconColor :        $purlContribute_detailsLinkIconColor,
+                $linkIconHoverColor :   $purlContribute_detailsLinkIconHoverColor,
+                $bgColor :              $purlContribute_detailsBgColor,
+                $bgGradType :           $purlContribute_detailsBgGradType,
+                $bgGradMeta :           $purlContribute_detailsBgGradMeta,
+                $bgGradStops :          $purlContribute_detailsBgGradStops,
+                $borderTopBottomWidth : $purlContribute_detailsBorderTopBottomWidth,
+                $borderTopBottomColor : $purlContribute_detailsBorderTopBottomColor,
+                $boxShadow :            $purlContribute_detailsBoxShadow
+            );
+
+            // never have a top border on this box
+            border-top: 0;
+        }
+
+        h2 {
+            margin-bottom: 0;
+            // color: #fff;
+        }
+        h4 {
+            margin-top: 0;
+            // color: darken(#fff,30%);
+        }
+    }
+    .purlDetailsWrapper {
+        .purlVideoWrapper {
+            width: 432px;
+
+            @media (min-width: 768px) and (max-width: 979px) {
+                width: 324px;
+            }
+            @media (max-width: 767px) {
+                width: 100%;
+            }
+        }
+        .purlTextWrapper {
+            float: none;
+            width: auto;
+            margin-left: 432px + $gridGutterWidth + $gridGutterWidth;
+
+            @media (min-width: 1200px) {
+                margin-left: 432px + $gridGutterWidth1200 + $gridGutterWidth1200;
+            }
+            @media (min-width: 768px) and (max-width: 979px) {
+                margin-left: 324px + $gridGutterWidth768 + $gridGutterWidth768;
+            }
+            @media (max-width: 767px) {
+                margin-left: 0;
+            }
+        }
+
+        .purlMainImage {
+            width: 100%;
+        }
+
+        .purlDetailText {
+            // good values depend on video height + height of purlDetailsRecipientControls
+            @media (min-width: 1200px) {
+                min-height: 160px;
+            }
+            @media (min-width: 980px) and (max-width: 1199px) {
+                min-height: 120px;
+            }
+            @media (min-width: 768px) and (max-width: 979px) {
+                min-height: 60px;
+            }
+            @media (max-width: 767px) {
+                margin-top: 10px;
+            }
+        }
+
+        .expirationNote {
+            @if purlContribute_detailsMutedTextColor {
+                color: purlContribute_detailsMutedTextColor;
+            }
+        }
+
+        .share-print {
+            float: none;
+            margin-left: 0;
+            text-align: left;
+
+            @media (min-width: 1200px),
+                   (min-width: 480px) and (max-width: 767px) {
+                float: right;
+                margin: 10px 0 10px 25px;
+                text-align: right;
+            }
+            // @media (max-width: 979px) and (min-width: 768px),
+            //        (max-width: 479px) {
+            // }
+        }
+
+        .btn {
+            margin-bottom: $baseLineHeight / 2;
+            margin-right: 10px;
+
+            & + .btn {
+                margin-left: 0;
+            }
+        }
+    }// .purlDetailsWrapper
+
+    .commentsListWrapper {
+        margin-top: $baseLineHeight / 2;
+        zoom: 1;
+
+        .spin {
+            display: block;
+            margin: 0 auto;
+            width: $spinner_widthHeight;
+            height: $spinner_widthHeight;
+        }
+    }
+    .commentItemWrapper {
+        padding-bottom: $baseLineHeight / 2;
+        padding-top: $baseLineHeight;
+        zoom: 1;
+
+        .innerCommentWrapper {
+            margin: (-1 * $baseLineHeight / 2) (-1 * $baseLineHeight / 2) 0;
+            padding: $baseLineHeight / 2;
+            zoom: 1;
+            @if $purlContribute_commentBgColorEven {
+                background: $purlContribute_commentBgColorEven;
+            }
+
+            &.flashBg {
+                background: $linkColor !important;
+            }
+        }
+        .avatarImg {
+            float: left;
+            width: 60px;
+            height: 60px;
+        }
+        .userInfo {
+            font-weight: bold;
+        }
+        .indent {
+            margin-left: 70px;
+            padding-left: 10px;
+            min-height: 60px;
+            border-left: 1px solid $purlContribute_commentBorderColorEven;
+        }
+        .media {
+            img {
+                // max-width: 100%;
+                max-width: 432px;
+                width: 100%;
+
+                // fix for ie8 not properly resizing images vertically - https://basecamp.com/1829100/projects/2650983/todos/121904751
+                .lt-ie9 & {
+                    width: auto;
+                }
+            }
+            // set responsive default width for videos
+            .videoWrapper { width: 432px; }
+        }
+
+        @media (max-width: 480px) {
+            .avatar {
+                margin-right: 10px;
+                margin-bottom: 0px;
+                width: 30px;
+                height: 30px;
+            }
+            .indent {
+                margin-left: 0;
+                padding-left: 0;
+                border-left: 0;
+            }
+            .userInfo {
+                margin-left: 40px;
+                padding-bottom: 9px;
+                border-bottom: 1px solid $purlContribute_commentBorderColorEven;
+            }
+            .author {
+                display: block;
+                float: none;
+            }
+            .text {
+                clear: both;
+                // margin-top: 10px;
+                padding-top: 10px;
+            }
+        }
+    }// .commentItemWrapper
+    .commentItemWrapper:nth-of-type(2n+1) {
+        @if $purlContribute_commentBgColorOdd {
+            .innerCommentWrapper {
+                background: $purlContribute_commentBgColorOdd;
+            }
+            .indent,
+            .userInfo {
+                border-color: $purlContribute_commentBorderColorOdd;
+            }
+        }
+    }
+
+
+    // invite contribs qtip etc...
+    .inviteContribsQTipOuter {
+        max-width: 100%;
+
+        #inviteContribsTip {
+            width: 440px;
+            @media (max-width: 479px) {
+                width: 100%;
+            }
+        }
+        .inviteContribsEmailsInp {
+            height: 70px;
+            @include input-block-level();
+            .lt-ie8 & { // ie7
+                padding: 0; // cheap and effective
+            }
+        }
+        .parseEmailsControls {
+            margin-bottom: 2px;
+        }
+        .addEmailsToInviteListBtn {
+            margin-bottom: 4px;
+        }
+        .parseEmailsFeedback {
+            display: inline-block;
+            @include ie7-inline-block();
+            vertical-align: top;
+            margin-bottom: 0;
+            width: 390px;
+        }
+        .pendingContribItem {
+            font-size: 14px;
+            line-height: 18px;
+            margin-top: 6px;
+            .remBtn i{
+                color: $grayLight;
+                font-size: 1.1em;
+            }
+            .remBtn:hover {
+                cursor: pointer;
+                i {
+                    color: $gray;
+                }
+            }
+        }
+        .pendingContribsControls {
+            margin: 6px 0 2px 0;
+        }
+        .addedContribsTitle {
+            border-top: 1px solid #cccccc;
+            padding-top: 4px;
+            margin-top: 6px;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+        .addedContribs {
+            line-height: 19px; // so labels look good wrapping
+        }
+        .inviteeResultItem {
+            font-size: 14px;
+            line-height: 18px;
+        }
+        .goodRes { color: $green; }
+        .neutralRes { color: $grayLight; }
+        .badRes { color: $red; }
+
+        .spincover {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(255, 255, 255, .5);
+        }
+        .spin {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: (-1 * $spinner_widthHeight / 2) 0 0 (-1 * $spinner_widthHeight / 2);
+            width: $spinner_widthHeight;
+            height: $spinner_widthHeight;
+        }
+    }// .inviteContribsQTipOuter
+
+
+    #purlThankEveryoneModal {
+        .spinner {
+            height: $spinner_widthHeight;
+            padding: 20px;
+        }
+    }// #purlThankEveryoneModal
+
+}/* /.purlPage */
+
+
+
+

@@ -1,0 +1,47 @@
+{{! NOTE: extraJSON is set in the JavaScript }}
+
+<div class="row">
+    <div class="span12">
+        <table id="" class="table table-bordered table-striped atnTable">
+            <thead>
+                <tr>
+                    <th class="sortHeader">
+                        Contest Name
+                        <i data-sort="name" class="sortControl icon-sort"></i>
+                    </th>
+                    <th class="sortHeader">
+                        Start Date
+                        <i data-sort="startDate" class="sortControl icon-sort asc icon-sort-up"></i>
+                    </th>
+                    <th class="sortHeader">
+                        End Date
+                        <i data-sort="endDate" class="sortControl icon-sort"></i>
+                    </th>
+                    <th class="sortHeader">
+                        Issue Awards
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {{#each contests}}
+                <tr>
+                    <td>
+                        <a href="{{extraJSON.contestSummaryUrl}}&amp;id={{id}}" title="">{{name}}</a>
+                        <!-- {{name}} -->
+                    </td>
+                    <td>
+                        {{startDate}}
+                    </td>
+                    <td>
+                        {{endDate}}
+                    </td>
+                    <td>
+                        <a href="{{extraJSON.issueAwardsUrl}}&amp;id={{id}}" class="btn btn-primary">Issue Awards</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

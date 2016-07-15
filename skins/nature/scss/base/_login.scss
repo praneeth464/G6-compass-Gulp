@@ -1,0 +1,95 @@
+// Partial-specific variables (uncomment to use)
+// =========================
+// $login_bgColor: ;
+// $login_bgImgUrlPath: ; // setting this to $appImagesPath points at core/base/img. Leave blank to use images in this skin
+// $login_bgImg: ;
+// $login_bgImgMobile: ;
+// $login_bgImgPosition: ;       // default 0% 0%
+// $login_bgImgRepeat: ;      // default repeat
+// $login_bgImgSize: ;              // default auto
+// $login_bgImgAttachment: ;     // default fixed
+
+$login_useFancyLoginLayout: true; // setting this to false this will prevent anything below here from taking effect
+
+// $login_textColor: ;
+// $login_introFontFamily: ;
+$login_introFontWeight: normal;
+$login_introFontSize: $baseFontSize;
+// $login_introTextColor: ;
+
+// $login_formBorderWidth: ;
+$login_formBorderColor: #242424;
+// $login_fieldLabelFontFamily: ;
+// $login_fieldLabelFontSize: ;
+$login_fieldLabelColor: #242424;
+
+$login_useFancyLoginPizazz: false; // only applies when self-enrollment is off
+// $login_pizazzHeight: 250px;
+// $login_pizazzBgImgUrlPath: ; // setting this to $appImagesPath points at core/base/img. Leave blank to use images in this skin
+// $login_pizazzBgImg: "login-arrow-bg.png";
+
+// $login_languagesBgColor: ;
+
+// $login_footerBorderWidth: ;
+// $login_footerBorderColor: ;
+
+// $login_footerLinksBgColor: ;
+// $login_footerLinksColor: ;
+// $login_footerLinksDisabledColor: ;
+// $login_footerCopyrightTextColor: ;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "partials/login";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// Partial-specific code for this skin
+// ==================================================
+
+
+// TODO 5.4: add font controls for the big "Welcome" text at the top
+body.loginPage {
+    @if $login_useFancyLoginLayout {
+        #pageNav {
+            #pageTitle {
+                color: #242424;
+
+                @media (max-width: 767px) {
+                    font-size: 48px;
+                }
+            }
+        }
+    }
+}
+
+// TODO 5.4: add text-shadow controls to the help links
+body.loginPage {
+    .btn-link {
+        // @include text-shadow(none);
+    }
+}
+
+
+// custom *sigh*
+// body.loginPage {
+//     #globalHeaderView .logo {
+//         margin-top: $baseLineHeight;
+
+//         @media (max-width: 767px) {
+//             margin-top: 0;
+//         }
+//     }
+//     #contents {
+//         padding-top: $baseLineHeight;
+//         padding-bottom: $baseLineHeight;
+//         @include safeBkgs(rgba(0,0,0,0.5));
+//     }
+// }

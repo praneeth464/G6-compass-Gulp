@@ -1,0 +1,383 @@
+<?php sleep(1); // simulate server delay
+
+
+
+/*
+
+{
+	"messages":[],
+	"formSetup": {
+		"promotions": [
+			{
+				"id": 1,
+				"name": "Sample Promotion",
+                "rulesText":"<p>I am some rules text</p><p><b>I am bold</b></p>.",
+                "customSections": [
+                    "myNewSection" 
+                ],
+				"products": [
+					{
+						"id": 1111,
+						"name": "product 1",
+						"characteristics": [
+							{
+								"type": "boolean",
+								"name":"Boolean input label",
+								"id": 1,
+								"required": false
+							},
+							{
+								"type": "date",
+								"dateStart":"11/11/2011 11:59am",
+								"dateEnd":"11/11/2012 11:59am ",
+								"name":"Date Input label",
+								"id": 2,
+								"required": true
+							},
+							{
+								"type": "decimal",
+								"min":"0.0",
+								"max":"0.1",
+								"name":"decimal input label",
+								"id": 3,
+								"required": true
+							},
+							{
+								"type": "integer",
+								"min":"1",
+								"max":"10",
+								"name":"integer",
+								"id": 4,
+								"required": true,
+								"unique": true
+							},
+							{
+								"type": "multipleSelectList",
+								"list": [
+									{
+										"name": "select list option",
+										"id":  1
+									},
+									{ ... },
+									{ ... }
+								],
+								"name":"multiple select label",
+								"id": 5,
+								"required": true
+							},
+							{
+								"type": "singleSelectList",
+								"list": [
+									{
+										"name": "select list option",
+										"id":  1
+									},
+									{ ... },
+									{ ... }
+								],
+								"name":"single select label",
+								"id": 6,
+								"required": true
+							},
+							{
+								"type": "text",
+								"maxSize": "100",
+								"name":"text input label",
+								"id": 7,
+								"required": true,
+								"unique": true
+							},
+							{ ... },
+							{ ... }
+						]
+					},
+					{ ... },
+					{ ... }
+				]
+			},
+			{ ... },
+			{ ... }
+		],
+		"nodes": [
+			{"id":1, "name":"Node A"}, 
+			{"id":2, "name":"Node B"},
+			{"id":3, "name":"Node C"}
+		]
+	}
+}
+*/
+
+?>
+{
+	"messages": [],
+	"formSetup": {
+		"promotions": [
+			{
+				"id": 1,
+				"name": "Sample Promotion", 
+                "rulesText":"<p>I am some rules text</p><p><b>I am bold</b></p>.",
+                "teamActive": true,
+                "customSections": [
+                    "myNewSection" 
+                ],
+				"products": [
+					{
+						"id": 1111,
+						"name": "product 1",
+						"category": "example category",
+						"subcategory": "example sub category",
+						"characteristics": [
+							{
+								"type": "boolean",
+								"name":"Boolean input label",
+								"id": 1,
+								"required": false
+							},
+							{
+								"type": "date",
+								"dateStart":"11/11/2011 11:59am",
+								"dateEnd":"11/11/2012 11:59am ",
+								"name":"Date Input label",
+								"id": 2,
+								"required": true
+							},
+							{
+								"type": "decimal",
+								"min":"0.0",
+								"max":"0.1",
+								"name":"decimal input label",
+								"id": 3,
+								"required": true
+							},
+							{
+								"type": "integer",
+								"min":"1",
+								"max":"10",
+								"name":"integer",
+								"id": 4,
+								"required": true,
+								"unique": true
+							},
+							{
+								"type": "multipleSelectList",
+								"list": [
+									{
+										"name": "select list option",
+										"id":  1
+									},
+									{
+										"name": "select list option 2",
+										"id": 2
+									},
+									{
+										"name": "select list option 3",
+										"id": 3
+									}
+								],
+								"name":"multiple select label",
+								"id": 5,
+								"required": true
+							},
+							{
+								"type": "singleSelectList",
+								"list": [
+									{
+										"name": "select list option",
+										"id":  1
+									},
+									{
+										"name": "select list option 2",
+										"id": 2
+									},
+									{
+										"name": "select list option 3",
+										"id": 3
+									}
+								],
+								"name":"single select label",
+								"id": 6,
+								"required": true
+							},
+							{
+								"type": "text",
+								"maxSize": "100",
+								"name":"text input label",
+								"id": 7,
+								"required": true,
+								"unique": true
+							}
+						]
+					},
+					{
+						"id": 2222,
+						"name": "product 2",
+						"category": "example category",
+						"subcategory": "example sub category",
+						"characteristics": [
+							{
+								"type": "boolean",
+								"name":"Boolean input label",
+								"id": 1,
+								"required": false
+							},
+							{
+								"type": "text",
+								"maxSize": "100",
+								"name":"text input label",
+								"id": 7,
+								"required": true,
+								"unique": true
+							}
+						]
+					},
+					{
+						"id": 3333,
+						"name": "product 3",
+						"characteristics": [
+							{
+								"type": "date",
+								"dateStart":"11/11/2011 11:59am",
+								"dateEnd":"11/11/2012 11:59am ",
+								"name":"Date Input label",
+								"id": 2,
+								"required": true
+							},
+							{
+								"type": "decimal",
+								"min":"0.0",
+								"max":"0.1",
+								"name":"decimal input label",
+								"id": 3,
+								"required": true
+							},
+							{
+								"type": "integer",
+								"min":"1",
+								"max":"10",
+								"name":"integer",
+								"id": 4,
+								"required": true,
+								"unique": true
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": 2,
+				"name": "Another Promotion", 
+                "customSections": false,
+                "teamActive": true,
+				"products": [
+					{
+						"id": 1111,
+						"name": "product 1",
+						"characteristics": [
+							{
+								"type": "boolean",
+								"name":"Boolean input label",
+								"id": 1,
+								"required": false
+							}
+						]
+					},
+					{
+						"id": 2222,
+						"name": "product 2",
+						"characteristics": [
+							{
+								"type": "multipleSelectList",
+								"list": [
+									{
+										"name": "select list option",
+										"id":  1
+									},
+									{
+										"name": "select list option 2",
+										"id": 2
+									},
+									{
+										"name": "select list option 3",
+										"id": 3
+									}
+								],
+								"name":"multiple select label",
+								"id": 5,
+								"required": true
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": 3,
+				"name": "Third Promotion", 
+                "teamActive": false,
+                "customSections": [
+                    "myNewSection" 
+                ],
+				"products": [
+					{
+						"id": 1111,
+						"name": "product 1",
+						"characteristics": []
+					},
+					{
+						"id": 2222,
+						"name": "product 2",
+						"characteristics": [
+							{
+								"type": "integer",
+								"min":"1",
+								"max":"10",
+								"name":"integer",
+								"id": 4,
+								"required": true,
+								"unique": true
+							},
+							{
+								"type": "multipleSelectList",
+								"list": [
+									{
+										"name": "select list option",
+										"id":  1
+									},
+									{
+										"name": "select list option 2",
+										"id": 2
+									},
+									{
+										"name": "select list option 3",
+										"id": 3
+									}
+								],
+								"name":"multiple select label",
+								"id": 5,
+								"required": true
+							}
+						]
+					},
+					{
+						"id": 3333,
+						"name": "product 3",
+						"characteristics": [
+							{
+								"type": "date",
+								"dateStart":"11/11/2011 11:59am",
+								"dateEnd":"11/11/2012 11:59am ",
+								"name":"Date Input label",
+								"id": 2,
+								"required": true
+							}
+						]
+					}
+				]
+			}
+		],
+		"nodes": [
+			{"id":1, "name":"Node A"}, 
+			{"id":2, "name":"Node B"},
+			{"id":3, "name":"Node C"}
+		]
+	}
+}

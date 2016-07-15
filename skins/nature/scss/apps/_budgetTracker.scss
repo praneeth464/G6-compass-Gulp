@@ -1,0 +1,54 @@
+// App-specific variables (uncomment to use)
+// =========================
+// $budgetTracker_bgColor: ;
+// $budgetTracker_gradType: ;
+// $budgetTracker_gradMeta: ; // list the gradient non-color properties such as position, shape, etc.
+// $budgetTracker_gradStops: ; // list the stops as one would a series of raw gradient stops
+
+// $budgetTracker_iconColor: ;
+// $budgetTracker_titleColor: ;
+// $budgetTracker_titleFontFamily: ;
+// $budgetTracker_titleFontSizes: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, 30px, false, 72px"
+// $budgetTracker_titleFontWeights: ; // must be a comma-separated list of five values corresponding to 1x1, 2x1, 2x2, 4x2, 4x4. Pass false for any value you don't want to set. i.e. "false, false, bold, false, $titleFontWeightLight"
+
+// $budgetTracker_textColor: ;
+
+// $budgetTracker_transferBtnBg: ;          // false will fall back to $btnPrimaryBackground
+// $budgetTracker_transferBtnBgHighlight: ; // false will fall back to $btnPrimaryBackgroundHighlight
+// $budgetTracker_transferBtnTextColor: ;   // false will fall back to #fff
+
+// $budgetTracker_reloadLinkColor: ; // false will fall back to $linkColor
+// $budgetTracker_reloadIconColor: ; // false will fall back to $linkColor
+
+// $budgetTracker_itemBgColorOdd: ;
+// $budgetTracker_itemBgColorEven: ;
+// $budgetTracker_promoNameColor: ; // false will fall back to $linkColor
+// $budgetTracker_minColor: ;
+// $budgetTracker_maxColor: ;
+
+// $budgetTracker_progressBackColor: ; // progress bar background color
+// $budgetTracker_progressBackMeta: ;  // progress bar background gradient meta. pass false for a solid background. to work, requires a value for the Color above or Stops below
+// $budgetTracker_progressBackStops: ; // progress bar background gradient stops. pass false to use default gradient shading
+// $budgetTracker_progressBarColor: ;  // progress bar foreground color
+// $budgetTracker_progressBarMeta: ;   // progress bar foreground gradient meta. pass false for a solid background. to work, requires a value for the Color above or Stops below
+// $budgetTracker_progressBarStops: ;  // progress bar foreground gradient stops. pass false to use default gradient shading
+// $budgetTracker_progressBarToolTipBgColor: ;
+// $budgetTracker_progressBarToolTipBorderColor: ;
+// $budgetTracker_progressBarToolTipBoxShadow: ;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "budgetTracker/scss/budgetTracker";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================
+

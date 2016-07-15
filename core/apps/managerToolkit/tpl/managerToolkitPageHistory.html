@@ -1,0 +1,87 @@
+<!-- ======== MANAGER TOOLKIT PAGE BUDGET ALLOCATION HISTORY ======== -->
+
+<div id="managerToolkitPageHistoryView" class="managerToolkitPageHistory-liner page-content">
+    <div class="row">
+        <div class="span12">
+            <h3>Manager to Employee</h3>
+            <form id="managerToolkitFormHistoryDatePicker" class="form-inline">
+                <fieldset>
+
+
+                    <div class="form-inline">
+                        <div class="control-group">
+                            <label class="control-label" for="managerToolkitReallocateHistoryDateStart">From</label>
+                            <div class="controls">
+                                <span class="input-append datepickerTrigger"
+                                    data-date-format="mm/dd/yyyy"
+                                    data-date-language="en_US"
+                                    data-date-startdate="03/01/2012"
+                                    data-date-autoclose="true">
+                                    <input type="text" id="startDate" name="managerToolkitReallocateHistoryDateStart" value="03/01/2012" readonly="readonly" class="date"><button class="btn" type="button"><i class="icon-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="endDate">To</label>
+                            <div class="controls">
+                                <span class="input-append datepickerTrigger"
+                                    data-date-format="mm/dd/yyyy"
+                                    data-date-language="en_US"
+                                    data-date-startdate="12/25/2012"
+                                    data-date-autoclose="true">
+                                    <input type="text" id="endDate" name="managerToolkitReallocatHistoryDateEnd" value="12/25/2012" readonly="readonly" class="date"><button class="btn" type="button"><i class="icon-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                        <button name="refreshBudgetReallocationTable" class="btn btn-primary" type="submit">Refresh</button>
+                    </div>
+                </fieldset>
+            </form>
+            <table id="valueBean" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th class="sortable dateColumn sorted ascending">
+                            <a href="/beacon2/budgetAllocatorHistory.do?d-3699279-p=1&amp;d-3699279-o=1&amp;d-3699279-s=0&amp;cryptoPass=1&amp;clientState=AlY01PSM1juDesAVNC5olTvtDaKv%2FigT5abqEcBR%2BzGBR7QUVLsL5H9u%2BBEm20kVqrp4DJuXxgkq%0AJr9CT%2FIX83fP4gJ0pyt9RkHyBXtXuZYTdWN45zLngf0WGCNeswjLyiHMFOP9%2B9huArPENnsImAoO%0AjBcNi2aSEAkcYMmzZxLB7eKCOSZWIEq0HC5p01L2I1lqcSQiVxRxVjWQqE5W4g7yp6%2BZHnMuPzGd%0A45OueXoC82%2BbOy3lg9g3K1BmjSiV4kmKe4FdDYfBR%2BDHMsaZw0zNL1mKpneTDGZe%2BdH2AdUv%2B3xG%0A7u19lRNP8jI%3D">Date <i class="icon-sort-down"></i><i class="icon-sort-up"></i></a>
+                        </th>
+                        <th class="crud-table-header-row">
+                            Name
+                        </th>
+                        <th class="crud-table-header-row">
+                            Amount
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="crud-content" align="left">
+                        <td colspan="3">
+                             Nothing found to display.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+
+    //attach the view to an existing DOM element
+    var mtpbv = new ManagerToolkitPageHistoryView({
+        el:$('#managerToolkitPageHistoryView'),
+        pageNav : {
+            back : {
+                text : 'Back',
+                url : 'layout.html?tpl=managerToolkitPageBudget&tplPath=apps/managerToolkit/tpl/'
+            },
+            home : {
+                text : 'Home',
+                url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+            }
+        },
+        pageTitle : 'Budget Reallocation History'
+    });
+
+</script>
+

@@ -1,0 +1,27 @@
+<?php sleep(1); ?>
+
+<!-- ======== ENGAGEMENT MODULE ======== -->
+<div class="module-liner">
+
+    {{#eq mode "team"}}
+    <a class="visitAppBtn" href="layout.html?tplPath=apps/engagement/tpl/&amp;tpl=engagementPageTeamDashboard.html">
+    {{else}}
+    <a class="visitAppBtn" href="layout.html?tpl=profilePage&amp;tplPath=apps/profile/tpl/#tab/Dashboard">
+    {{/eq}}
+        <i class="icon-arrow-right"></i>
+    </a>
+
+    <div class="title-icon-view">
+        <h3>{{#eq mode "team"}}Team Dashboard{{else}}My Dashboard{{/eq}}</h3>
+        <i class="icon-g5-engagement"></i>
+    </div>
+
+    <div class="wide-view">
+        <div class="module-topper">
+            <h3>{{#eq mode "team"}}Team Dashboard{{else}}My Dashboard{{/eq}}</h3>
+        </div>
+        <!-- the EngagementSummaryCollectionView should always be inserted into an element with class 'engagementSummaryCollectionView' -->
+        <div class="engagementSummaryCollectionView moduleSummary"></div><!-- /.engagementSummaryCollectionView -->
+    </div>
+
+</div>

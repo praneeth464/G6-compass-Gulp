@@ -1,0 +1,1132 @@
+// App-specific variables
+// =========================
+$smackTalk_bgColor: #000 !default;
+$smackTalk_gradType: $g5ModuleGradType !default;
+$smackTalk_gradMeta: $g5ModuleGradMeta !default;
+$smackTalk_gradStops: $g5ModuleGradStops !default;
+
+$smackTalk_iconColor: $g5ModuleIconColor !default;
+$smackTalk_titleColor: $throwdown_primaryAccentColor !default;
+$smackTalk_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$smackTalk_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$smackTalk_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$smackTalk_tabsNavBgColor: $black !default;
+$smackTalk_tabsNavBorderWidth: $g5ModPgBorderWidth !default;
+$smackTalk_tabsNavBorderColor: $g5ModPgBorderColor !default;
+
+$smackTalk_tabsIconColor: #7d7d7d !default;
+$smackTalk_tabsIconShadow: 0 -1px 0 rgba(0,0,0,.875) !default;
+$smackTalk_tabsTabBgColor: false !default;
+
+$smackTalk_tabsIconColorHover: $white !default;
+$smackTalk_tabsIconShadowHover: $smackTalk_tabsIconShadow !default;
+$smackTalk_tabsTabBgHover: $throwdown_primaryAccentColor !default;
+$smackTalk_tabsTabBoxShadowClick: rgba(0,0,0, 0.4) 0 2px 5px inset !default;
+
+$smackTalk_tabsIconColorActive: $throwdown_primaryAccentColor !default;
+$smackTalk_tabsIconShadowActive: none !default;
+$smackTalk_tabsTabBgActive: $white !default;
+
+$smackTalk_containerLinkColor: false !default;
+$smackTalk_containerChevronColor: $grayLight !default;
+$smackTalk_containerBgColor: $white !default;
+$smackTalk_containerBorderWidth: $g5ModPgBorderWidth !default;
+$smackTalk_containerBorderColor: $g5ModPgBorderColor !default;
+$smackTalk_commentBgColor: #efefef !default;
+
+$smackTalk_VS_textColor: #bbb !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+$imgWidth : 48px;
+$imgWidthComment : 36px;
+$appRowPadding : $g5ModuleGutter * 3;
+$appRowGutter : $g5ModuleGutter * 2;
+
+
+/* ----- CUSTOM TOOLTIP STYLES ----- */
+/* The Bootstrap tooltips that display above the tabs sit outside of the .smackTalk container */
+.tooltip.smack-talk-tooltip {
+    &.in {
+        opacity: 1;
+        filter: alpha(opacity=100);
+        text-shadow: 0 1px 1px #000;
+    }
+
+    .tooltip-arrow {
+        border-top-color: darken($smackTalk_tabsIconColor, 10%);
+    }
+
+    .tooltip-inner {
+        background-color: darken($smackTalk_tabsIconColor, 10%);
+        @include box-shadow(rgba(0, 0, 0, .5) 0 0 12px);
+
+    }
+}
+
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.smackTalk {
+
+    a {
+        // font-weight: bold;
+    }
+
+    .page-topper{
+        padding-bottom: 0;
+        @include gradient-vertical($smackTalk_tabsNavBgColor, $black);
+    }
+
+    .nav-tabs.smackTalkTabs {
+        li {
+            a {
+                color: $smackTalk_tabsIconColor;
+                text-shadow: $smackTalk_tabsIconShadow;
+                overflow: hidden;
+
+                &:hover {
+                    @if $smackTalk_tabsIconColorHover {
+                        color: $smackTalk_tabsIconColorHover;
+                    }
+                    @if $smackTalk_tabsIconShadowHover and $smackTalk_tabsIconShadowHover != $smackTalk_tabsIconShadow {
+                        text-shadow: $smackTalk_tabsIconShadowHover;
+                    }
+                    @if smackTalk_tabsTabBgHover {
+                        background-color: $smackTalk_tabsTabBgHover;
+                    }
+                }
+                &:active {
+                    @if $smackTalk_tabsTabBoxShadowClick {
+                        @include box-shadow($smackTalk_tabsTabBoxShadowClick);
+                    }
+                }
+                // &:focus {
+                //     border: 0;
+                // }
+
+                span {
+                    display: inline-block;
+                    text-indent: -9999px;
+                    white-space: nowrap;
+                }
+                i {
+                    font-size: 20px;
+                    line-height: 24px;
+                    margin: 0 -10px;
+                    height: 24px;
+                    width: 36px;
+                    vertical-align: middle;
+                }
+                .icon-g5-pubrec-global {
+                    font-size: 26px;
+                    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf102;');
+
+                    &:before {
+                        content: "\f102";
+                    }
+                }
+                .icon-g5-pubrec-team {
+                    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf103;');
+
+                    &:before {
+                        content: "\f103";
+                    }
+                }
+                .icon-g5-pubrec-followed {
+                    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf104;');
+
+                    &:before {
+                        content: "\f104";
+                    }
+                }
+                .icon-g5-pubrec-mine {
+                    *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf105;');
+
+                    &:before {
+                        content: "\f105";
+                    }
+                }
+            }
+            &.active {
+                a {
+                    color: $smackTalk_tabsIconColorActive;
+                    @if $smackTalk_tabsIconShadowActive {
+                        text-shadow: $smackTalk_tabsIconShadowActive;
+                    }
+                    background-color: $smackTalk_tabsTabBgActive;
+
+                    &:hover {
+                        background-color: $smackTalk_tabsTabBgActive;
+                    }
+                    &:active {
+                        @include box-shadow(none);
+                    }
+                }
+            }
+        }
+        @media (max-width: 767px) {
+
+            li {
+                float: left;
+                margin-right: 4px;
+            }
+        }
+    }
+
+    .smackTalkItemsCont,
+    .smackTalkItems,
+    .createFollowListWrapper {
+        position: relative;
+
+        &.emptySet {
+            a {
+                display: block;
+                font-size: $baseFontSize * 1.25;
+                line-height: $baseLineHeight * 1.25;
+                text-align: center;
+                color: $grayLight;
+                overflow: hidden;
+
+                i {
+                    display: block;
+                    width: 100%;
+                    height: auto;
+                    font-size: 96px;
+                    line-height: 96px;
+                }
+            }
+        }
+
+        .app-row {
+            h2 {
+                font-size: $baseFontSize * 1.25;
+                line-height: $baseLineHeight * 1.25;
+                text-align: center;
+                color: $grayLight;
+                overflow: hidden;
+
+                i {
+                    display: block;
+                    width: 100%;
+                    height: auto;
+                    font-size: 96px;
+                    line-height: 96px;
+                }
+            }
+        }
+    }
+    .createFollowListWrapper {
+        position: relative;
+        padding-right: 0 !important;
+        text-align: center;
+        color: $grayLight;
+    }
+
+    .st-title-row {
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    /* ----- PROFILE POPOVER IMAGES ----- */
+    .profile-popover-left {
+        float: left;
+        width: 70px;
+        margin: 0 0 0 10px;
+    }
+
+    .profile-popover-right,
+    .profile-popover-right .nav-list {
+        float: left;
+        max-width: 200px;
+    }
+
+    .profile-popover-right .nav-list li {
+        float: left;
+        margin: 0 20px 0 0;
+    }
+
+    .profile-popover-left-sm {
+        float: left;
+        width: 35px;
+        margin: 0 0 0 30px;
+    }
+
+    .profile-popover-right-sm {
+        float: left;
+        width: 180px;
+    }
+
+    .profile-slider-sm {
+        height: 150px;
+        overflow-y: auto;
+    }
+
+    .st-vs {
+        position: relative;
+        margin: 0 8px;
+        padding-top: 2px;
+        border-top: 1px solid lighten($smackTalk_VS_textColor, 10%);
+        border-bottom: 1px solid lighten($smackTalk_VS_textColor, 10%);
+        @include box-shadow(
+            rgba(0,0,0,.3) 0 2px 2px -2px,
+            rgba(0,0,0,.3) 0 -2px 2px -2px
+        );
+        background-color: $smackTalk_containerBgColor;
+        color: $smackTalk_VS_textColor;
+        font-family: $throwdown_primaryFontFamily;
+        font-size: 20px;
+        line-height: 1;
+        vertical-align: middle;
+    }
+
+    /* public smack-talk item (shared)*/
+    .smack-talk-item {
+        position: relative;
+
+        .app-row {
+            margin: 0;
+            width: auto;
+
+            .app-col {
+                float:left;
+
+                &.chevron {
+                    position: absolute;
+                    top: 20px;
+                    right: 0;
+                    float: none;
+                    text-align: center;
+
+                    a {
+                        color: $smackTalk_containerChevronColor;
+                    }
+                    a:hover {
+                        color: $linkColor;
+                        text-decoration: none;
+                    }
+                }
+            }
+
+
+            &.detail-row {
+                img.avatar {
+                    width: $imgWidth;
+                    min-width: $imgWidth;
+                    height: $imgWidth;
+                }
+                .smack-talk-block {
+                    float: none;
+                    margin: 0 0 $appRowGutter 146px;
+                }
+            }
+
+            &.comment-block {
+                display: block;
+                background: $smackTalk_commentBgColor;
+                overflow: hidden;
+                padding-left: $appRowGutter;
+                padding-right: $appRowGutter;
+                margin-left: $appRowPadding + $imgWidth !important;
+
+                &.darken {
+                    background: darken($smackTalk_commentBgColor,30%);
+                }
+
+                .comment {
+                    float: none;
+                    margin-left: $imgWidthComment + $gridGutterWidth;
+                    word-wrap: break-word;
+
+                    p {
+                        margin-bottom: 0;
+
+                        & ~ p {
+                            margin-bottom: $baseLineHeight / 2; // borrowed from bootstrap/_type.scss
+                        }
+                    }
+                }
+
+                img {
+                    // display: none;
+                    width: 36px;
+                    height: 36px;
+                }
+
+                .likeInfoWrapper div {
+                    // display: block;
+                    margin: ($gridGutterWidth / 3) 0;
+                    span {display: inline;}
+                }
+
+                .smackTalkCommentForm,
+                .smackTalkAddPointsForm {
+                    margin-bottom: $appRowGutter / 3;
+                }
+
+                &.viewAllCommentsWrapper {
+                    padding-top: ($gridGutterWidth / 3) !important;
+                }
+            }
+
+            .likeInfoWrapper,
+            .viewAllCommentsWrapper,
+            .commentInputWrapper,
+            .addPointsWrapper {
+                display: block;
+                float: none !important;
+
+                .alert {
+                    position: relative;
+                }
+            }
+        } /* /.app-row */
+
+
+        .smackTalkCommentsComment {
+            padding-top: $gridGutterWidth / 2;
+            // border-top: 1px solid lighten($smackTalk_commentBgColor, 3%);
+        }
+
+        .st-meta-separator {
+            // padding-top: $gridGutterWidth / 4;
+            margin-left: $appRowPadding + $imgWidth !important;
+            border-top: 1px solid darken($smackTalk_commentBgColor, 10%);
+            border-bottom: 1px solid lighten($smackTalk_commentBgColor, 3%);
+            background-color: $smackTalk_commentBgColor;
+        }
+
+        .comment-input {width:98%; max-width: 98%; height:18px;}
+
+        .readMore {
+            position: relative;
+            overflow: hidden;
+            max-width: 900px;
+
+            .readMoreTrigger {
+                position: absolute;
+                cursor: pointer;
+                right: 0;
+                bottom: 0;
+                padding-left: 6px;
+                background-color: $smackTalk_containerBgColor; // hide bg text
+            }
+        }
+
+        .comment-block {
+            overflow: hidden;
+
+            .readMore .readMoreTrigger {
+                background-color: $smackTalk_commentBgColor; // hide bg text
+            }
+        }
+
+    } /* /.smack-talk-item */
+
+    .smack-talk-comment {
+        margin:3px 0;
+        overflow: hidden;
+    }
+} /* /.smackTalk */
+
+
+
+/* ----- MATCH DETAIL SPECIFIC STYLE ----- */
+.matchDetail {
+    .smackTalk {
+
+        .comment-input {
+            height: 38px;
+            max-width: 98%;
+            width: 98%;
+        }
+
+        .commentInputWrapper {
+            display: block;
+            float: none !important;
+            padding: 0 0 0 0; //($imgWidthComment + $gridGutterWidth);
+
+            .alert {
+                position: relative;
+            }
+        }
+
+        .smack-talk-item {
+            margin-top: $gridGutterWidth * 1.5;
+
+            .app-row {
+                &.detail-row {
+                    .smack-talk-block {
+                        float: none;
+                        margin: 0 0 $appRowGutter ($appRowPadding + $imgWidth);
+                    }
+                }
+            }
+
+            .commentInputWrapper {
+                margin: ($gridGutterWidth / 3) 0;
+            }
+        }
+    }
+}
+
+
+/* ----- MODULE STYLES ----- */
+.module.smackTalk {
+    font-size: 12px;
+    line-height: 18px;
+    .module-liner {
+        background: $smackTalk_bgColor;
+    }
+    .moduleTitle {
+        margin:0 12px;
+        font-size: 25px;
+        line-height: 45px;
+        font-weight: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: $smackTalk_titleColor;
+        font-family: "akzidenz-condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: bold;
+        text-transform: uppercase;
+        float: left;
+    }
+
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $smackTalk_iconColor,
+            $titleColor: $smackTalk_titleColor,
+            $titleFontFamily: $throwdown_primaryFontFamily
+        );
+
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            @include g5HomeAppIconBoxReflect(-50px);
+        }
+    }
+
+    @include module_titleIconViewFontSizesWeights($smackTalk_titleFontSizes, $smackTalk_titleFontWeights);
+
+    .main-nav {
+        margin: 0;
+        overflow: hidden;
+        @include gradient-vertical($smackTalk_tabsNavBgColor, $black);
+
+        ul {
+            float: right;
+            margin: 0 45px 0 0;
+            -webkit-font-smoothing: antialiased; // makes light-on-dark text look a bit better
+        }
+        .app-col {
+            width: 100%;
+        }
+    }
+
+    .wide-view {
+        position: relative;
+        padding: 0;
+        @if $smackTalk_containerBgColor {
+            background: $smackTalk_containerBgColor;
+        }
+        @if $smackTalk_containerBorderWidth and $smackTalk_containerBorderWidth > 0 {
+            border: $smackTalk_containerBorderWidth solid $smackTalk_containerBorderColor;
+            border-top: 0;
+        }
+
+        .st-title-row {
+            font-size: 14px;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        a {
+            font-weight: bold;
+            @if $smackTalk_containerLinkColor {
+                color: $smackTalk_containerLinkColor;
+            }
+        }
+
+        .app-slider {
+            padding: $g5ModulePadding ($appRowPadding - $smackTalk_containerBorderWidth) 0 0;
+            overflow-y: auto;
+            // heights set below
+        }
+
+        .smackTalkItems,
+        .follow-list-links {
+            padding-left: $appRowPadding - $smackTalk_containerBorderWidth;
+
+            .smack-talk-item {
+                margin-left: -1 * ($appRowPadding - $smackTalk_containerBorderWidth);
+                margin-bottom: $appRowPadding;
+            }
+
+            &.emptySet {
+                position: static;
+
+                h2 {
+                    position: absolute;
+                    top: 18px;
+                    left: 0;
+                    width: 100%;
+                }
+            }
+        }
+        .createFollowListWrapper .app-row {
+            margin: 0 5%;
+            width: 90%;
+        }
+
+        .follow-list-links {
+            position: relative;
+            z-index: 1;
+            display: block;
+            padding-top: $g5ModulePadding;
+
+            a:hover i,
+            i:hover {
+                text-decoration: none;
+            }
+
+            i {
+                font-size: 18px;
+            }
+        }
+
+        .app-row {
+            width: auto;
+            margin-bottom: 0;
+
+            @include gridCoreInnerNegMargin($leftRightPad: ($appRowPadding * -1), $leftRightBorder: ($smackTalk_containerBorderWidth * -1));
+
+            .app-col {
+                &.chevron {
+                    right: -1 * ($appRowPadding - $smackTalk_containerBorderWidth);
+                    width: $appRowPadding * 2;
+                    height: $appRowPadding * 2;
+                    font-size: $appRowPadding * 4 / 3;
+                    line-height: $appRowPadding * 2;
+                }
+            }
+
+            &.detail-row {
+                .profile-popover img {
+                    margin-right: $appRowGutter;
+                    &.player1 {
+                        margin-right: 0;
+                    }
+                }
+            }
+
+            .commentInputWrapper, .addPointsWrapper {
+                padding: 0 0 0 0;//($imgWidthComment + $appRowGutter);
+            }
+        } /* /.app-row */
+    }
+
+    &.grid-dimension-2x1 {
+        .main-nav,
+        .spin {
+            display: none;
+        }
+
+        h3 {
+            font-size: 39px;
+            font-weight: $throwdown_secondaryFontWeight;
+            padding: 0 0 0 40%;
+            margin-right: 3%;
+            text-align: center;
+            text-transform: uppercase;
+            word-spacing: 150px;
+        }
+    }
+
+    &.grid-dimension-1x1 {
+        .main-nav,
+        .spin {
+            display: none;
+        }
+        .title-icon-view {
+            h3 {
+                font-size: $baseFontSize * 1.15;
+                font-weight: $throwdown_secondaryFontWeight;
+                text-align: center;
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        .title-icon-view {
+            display: none;
+        }
+
+        &.uninitialized {
+            .main-nav,
+            .wide-view {
+                display: none;
+            }
+            .title-icon-view {
+                display: block;
+                @include opacity(.25);
+            }
+        }
+    }
+
+    &.grid-dimension-2x2 {
+        .comment-block{
+            display: none;
+            overflow: hidden;
+        }
+        ul.smack-talk-props {
+            display: none;
+        }
+        .smack-talk-block {
+            margin: 0;
+            overflow: hidden;
+        }
+        .main-nav {
+            ul {
+                margin: 0 162px 0 0;
+                padding: 0 !important;
+            }
+        }
+    }
+
+    /* ----- Add SCROLL BARS FOR THE 2X2 AND 4X2 GRIDS ----- */
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2 {
+        .app-slider {
+            // x2 module height - 2 * module gutter - tabs top border - content bottom border - 45px magic number for height of tabs - top padding of this element
+            height: ($g5ModuleUnit * 2) - ($g5ModuleGutter * 2) - $smackTalk_tabsNavBorderWidth - $smackTalk_containerBorderWidth - 44px - $g5ModulePadding;
+        }
+        // the name for a specific tab comes from the JSON property 'nameId'
+        .app-slider.smackTalkItemsCont.followedCollection {
+            // same calculated height from above - padding-top/(magical) height/margin-bottom of the add/edit follow list text
+            height: ($g5ModuleUnit * 2) - ($g5ModuleGutter * 2) - $smackTalk_tabsNavBorderWidth - $smackTalk_containerBorderWidth - 44px - $g5ModulePadding - ($g5ModulePadding + 21px + 9px);
+        }
+    }
+
+    /* ----- Add SCROLL BARS FOR THE 4X4 GRID ----- */
+    &.grid-dimension-4x4 {
+        .app-slider {
+            // x4 module height - 2 * module gutter - tabs top border - content bottom border - 45px magic number for height of tabs - top padding of this element
+            height: ($g5ModuleUnit * 4) - ($g5ModuleGutter * 2) - $smackTalk_tabsNavBorderWidth - $smackTalk_containerBorderWidth - 44px - $g5ModulePadding;
+        }
+        // the name for a specific tab comes from the JSON property 'nameId'
+        .app-slider.smackTalkItemsCont.followedCollection {
+            // same calculated height from above - padding-top/(magical) height/margin-bottom of the add/edit follow list text
+            height: ($g5ModuleUnit * 4) - ($g5ModuleGutter * 2) - $smackTalk_tabsNavBorderWidth - $smackTalk_containerBorderWidth - 44px - $g5ModulePadding - ($g5ModulePadding + 21px + 9px);
+        }
+    }
+
+    &.grid-dimension-4x4 {
+        .wide-view {
+            .smackTalkItems,
+            .follow-list-links {
+                &.emptySet {
+                    h2 {
+                        top: 25%;
+                        font-size: $baseFontSize * 2.25;
+                        line-height: $baseLineHeight * 2.25;
+
+                        i {
+                            font-size: 192px;
+                            line-height: 192px;
+                        }
+                    }
+                }
+            }
+            .createFollowListWrapper .app-row {
+                position: absolute;
+                top: 25%;
+                left: 0;
+
+                h2 {
+                    font-size: $baseFontSize * 2.25;
+                    line-height: $baseLineHeight * 2.25;
+
+                    i {
+                        font-size: 192px;
+                        line-height: 192px;
+                    }
+                }
+            }
+        }
+    }
+
+} /* /.module.smackTalk */
+
+/* ----- PAGE STYLES ----- */
+.page.smackTalk {
+    position: relative;
+    @if $smackTalk_containerBgColor {
+        background: $smackTalk_containerBgColor;
+    }
+    @if $smackTalk_containerBorderColor {
+        border-color: $smackTalk_containerBorderColor;
+    }
+
+    .spin {
+        position: absolute;
+        top: 120px;
+        left: 50%;
+        margin: -30px 0 0 -30px;
+        width: 60px;
+        height: 60px;
+
+        &.more {
+            display: block;
+            position: relative;
+            top: auto;
+            left: auto;
+            margin: 0 auto;
+        }
+    }
+
+    .follow-list-links{
+        // float: right;
+        display: block;
+        text-align: right;
+        margin-right: $g5PageContentPaddingHoriz - $g5PageContentLeftRightBorderWidth;
+        // margin-top: -15px;
+
+        li {
+            display: inline;
+            @include ie7-inline-block();
+        }
+
+        a:hover i,
+        i:hover{
+            text-decoration: none;
+        }
+
+        i{
+            font-size: 18px;
+        }
+        @media (min-width: 1200px) {
+            margin-right: $g5PageContentPaddingHoriz1200 - $g5PageContentLeftRightBorderWidth1200;
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+            margin-right: $g5PageContentPaddingHoriz768 - $g5PageContentLeftRightBorderWidth768;
+        }
+        @media (max-width: 767px) {
+            margin-right: $g5PageContentPaddingHorizMobile;
+        }
+    }
+
+    .smackTalkItem.smack-talk-item{
+        .span7{
+            width: 498px;
+            margin-left: 20px;
+        }
+
+        @media (max-width: 979px) and (min-width: 768px){
+            .span1{
+                float: none;
+                margin-left: 0;
+                width: 100%;
+                p{
+                    margin-bottom: 2px;
+                }
+            }
+
+            .span7{
+                margin-top: 5px;
+            }
+        }
+    }
+
+    .smackTalkItems,
+    .follow-list-links {
+        padding-left: $g5PageContentPaddingHoriz - $g5PageContentLeftRightBorderWidth;
+
+        @if $smackTalk_containerLinkColor {
+            a {
+                color: $smackTalk_containerLinkColor;
+            }
+        }
+
+        .smack-talk-item {
+            margin-left: -1 * ($g5PageContentPaddingHoriz - $g5PageContentLeftRightBorderWidth);
+            margin-bottom: $g5PageContentPaddingHoriz * 2 / 3;
+
+            .app-row.comment-block,
+            .st-meta-separator {
+                margin-left: $appRowGutter + $appRowPadding + $imgWidth !important;
+            }
+        }
+
+        &.emptySet {
+            padding-left: 0;
+            clear: both;
+            // overflow: hidden;
+
+            h2 {
+                // display: inline;
+                // float: left;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            padding-left: $g5PageContentPaddingHoriz1200 - $g5PageContentLeftRightBorderWidth1200;
+            .smack-talk-item {
+                margin-left: -1 * ($g5PageContentPaddingHoriz1200 - $g5PageContentLeftRightBorderWidth1200);
+                margin-bottom: $g5PageContentPaddingHoriz1200 * 2 / 3;
+            }
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+            padding-left: $g5PageContentPaddingHoriz768 - $g5PageContentLeftRightBorderWidth768;
+            .smack-talk-item{
+                margin-left: -1 * ($g5PageContentPaddingHoriz768 - $g5PageContentLeftRightBorderWidth768);
+                margin-bottom: $g5PageContentPaddingHoriz768 * 2 / 3;
+            }
+        }
+        @media (max-width: 767px) {
+            padding-left: $g5PageContentPaddingHorizMobile;
+            .smack-talk-item{
+                margin-left: -1 * $g5PageContentPaddingHorizMobile;
+                margin-bottom: $g5PageContentPaddingHorizMobile * 3 / 4;
+            }
+        }
+    }
+
+    .app-row{
+        @include gridCoreInnerNegMargin($leftRightPad: ($g5PageContentPaddingHoriz * -1), $leftRightBorder: ($g5PageContentLeftRightBorderWidth * -1));
+
+        .app-col {
+            &.chevron {
+                width: $g5PageContentPaddingHoriz;
+                height: $g5PageContentPaddingHoriz;
+                font-size: $g5PageContentPaddingHoriz * 2 / 3;
+                line-height: $g5PageContentPaddingHoriz;
+            }
+        }
+
+        &.comment-block {
+            padding-left: $gridGutterWidth;
+            padding-right: $gridGutterWidth;
+
+            .likeInfoWrapper span a {
+                margin-top: $gridGutterWidth / 2;
+            }
+            .smackTalkCommentForm,
+            .smackTalkAddPointsForm {
+                margin-bottom: $gridGutterWidth / 2;
+
+                .help-inline { // the label next to the add points text field
+                    padding-left: 0;
+                    padding-right: $baseLineHeight / 2;
+                }
+                .pointsInputTxt { // add points text field
+                    text-align: right;
+                }
+            }
+            &::before {
+                // margin-top: (-1 * $gridGutterWidth / 2);
+                // margin-bottom: $gridGutterWidth;
+                // margin: $gridGutterWidth 0;
+            }
+        }
+
+        .commentInputWrapper, .addPointsWrapper {
+            padding: 0 0 0 0; //($imgWidthComment + $gridGutterWidth);
+        }
+
+        @media (min-width: 1200px) {
+            @include gridCoreInnerNegMargin($leftRightPad: ($g5PageContentPaddingHoriz1200 * -1), $leftRightBorder: ($g5PageContentLeftRightBorderWidth1200 * -1));
+
+            .app-col {
+                &.chevron {
+                    width: $g5PageContentPaddingHoriz1200;
+                    height: $g5PageContentPaddingHoriz1200;
+                    font-size: $g5PageContentPaddingHoriz1200 * 2 / 3;
+                    line-height: $g5PageContentPaddingHoriz1200;
+                }
+            }
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+            @include gridCoreInnerNegMargin($leftRightPad: ($g5PageContentPaddingHoriz768 * -1), $leftRightBorder: ($g5PageContentLeftRightBorderWidth768 * -1));
+
+            .app-col {
+                &.chevron {
+                    width: $g5PageContentPaddingHoriz768;
+                    height: $g5PageContentPaddingHoriz768;
+                    font-size: $g5PageContentPaddingHoriz768 * 2 / 3;
+                    line-height: $g5PageContentPaddingHoriz768;
+                }
+            }
+
+            &.detail-row {
+                .profile-popover img {
+                    margin-right: $gridGutterWidth768;
+                }
+                .smack-talk-block {
+                    margin: 0 0 $gridGutterWidth768 ($imgWidth + $gridGutterWidth768);
+                }
+            }
+        }
+
+        @media (max-width: 767px) {
+            @include gridCoreInnerNegMargin($leftRightPad: ($g5PageContentPaddingHorizMobile * -1));
+
+            .app-col {
+                &.chevron {
+                    width: $g5PageContentPaddingHoriz768;
+                    height: $g5PageContentPaddingHoriz768;
+                    font-size: $g5PageContentPaddingHoriz768 * 2 / 3;
+                    line-height: $g5PageContentPaddingHoriz768;
+                }
+            }
+        }
+    } /* /.app-row */
+
+    &.uninitialized {
+        > * {
+            display: none;
+        }
+        .spin {
+            display: block;
+            position: static;
+            margin: 0 auto;
+        }
+    }
+
+    /* DETAIL PAGE */
+    &.smack-talk-page-detail{
+        padding-top: 25px;
+
+        .smack-talk-item{
+            h2{
+                margin-top: -5px;
+            }
+            .span2 {
+                @media (min-width: 976px){
+                    width: 90px;
+                }
+            }
+
+            // pad this span a bit
+            .ecard-span {
+                margin-bottom: 14px;
+                *padding-bottom: 14px; // ie7
+            }
+            // style of titles/labels in detail (a bit gross)
+            .row .span8 .row .span2 p {
+                // goes to stacking mode under 767, then we want less spacing after label
+                @media (max-width: 767px){
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        .smackTalkItem.smack-talk-item .span7{
+            @media (max-width: 470px){
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+
+        .span7 p .profile-popover{
+            text-decoration: none;
+
+            img{
+                margin-right: 8px;
+            }
+        }
+        .smack-talk-detail-avatar {
+            width: 36px;
+        }
+        .smack-talk-container {
+            padding-top: $gridGutterWidth / 2;
+            padding-bottom: $gridGutterWidth / 2;
+        }
+
+        @media (min-width: 1200px) {
+            .smack-talk-container {
+                padding-top: $gridGutterWidth1200 / 2;
+                padding-bottom: $gridGutterWidth1200 / 2;
+            }
+            .comment-block {
+                margin-left: $g5PageContentPaddingHoriz1200 - $g5PageContentLeftRightBorderWidth1200;
+            }
+        }
+        @media (min-width: 768px) and (max-width: 979px) {
+            .smack-talk-container {
+                padding-top: $gridGutterWidth768 / 2;
+                padding-bottom: $gridGutterWidth768 / 2;
+            }
+            .comment-block {
+                margin-left: $g5PageContentPaddingHoriz768 - $g5PageContentLeftRightBorderWidth768;
+            }
+        }
+        @media (max-width: 767px) {
+
+        }
+    }
+
+
+    &#smackTalkPageFollowListView {
+        // padding-top: 30px;
+        h3{
+            // margin-bottom: 0;
+        }
+        .container-splitter {
+            // margin-left: 0;
+            // margin-right: 0;
+            // margin-top: 0;
+        }
+    }
+
+} /* /.page.smackTalk */
+
+
+
+
+
+/* ----- HEADER LINK LISTS ----- */
+
+ul.smack-talk-controls,
+ul.smack-talk-props {
+    display: inline;
+    list-style-type: disc;
+    list-style-position: inside;
+    margin: 0 0 9px 0;
+}
+
+ul.smack-talk-controls li,
+ul.smack-talk-props li {
+    display: inline;
+}
+
+ul.share-print {
+    display:block;
+    list-style-position: inside;
+    margin-top:10px;
+    text-align: right;
+}
+
+ul.share-print li {
+    display: inline;
+    margin: 0 0 0 0;
+    font-weight:bold;
+    &.print-wrap {
+        margin: 0 0 0 8px;
+    }
+}
+
+
+/* ---- misc ---- */
+.budgetPopoverTrigger{
+    @include inline-block;
+}
+
+

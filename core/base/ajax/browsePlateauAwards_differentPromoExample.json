@@ -1,0 +1,127 @@
+{
+	"messages":[],
+	"promotions":[
+		{"id":"1","name":"Promotion Name"},
+		{"id":"73","name":"Another Promotion Name"},
+		{"id":"7","name":"Super Promo Name"},
+		{"id":"9","name":"Promotion Name from the Future",
+			"levels":[
+				{
+					"id":"41",
+					"name":"Peon",
+					"desc":"Instructional and potential <b>bronze</b> marketing message goes here.",
+					"products":[
+						{
+							"id":"213",
+							"name":"Nintendo® DSi™ Handheld Video Game System",
+							"desc":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+							"thumbnail":"http://placehold.it/160x160",
+							"img":"http://placehold.it/260x180"
+						},
+
+						{
+							"id":"515",
+							"name":"Something Else for Sale",
+							"desc":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+							"thumbnail":"http://placehold.it/160x160",
+							"img":"http://placehold.it/320x320"
+						}
+					]
+				},
+				{
+					"id":"101",
+					"name":"Sycophant",
+					"desc":"Instructional and potential <b>silver</b> marketing message goes here.",
+					"products":[
+						{
+							"id":"133",
+							"name":"Golden Hairpin",
+							"desc":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+							"thumbnail":"http://placehold.it/160x160",
+							"img":"http://placehold.it/320x320"
+						},
+
+						{
+							"id":"985",
+							"name":"Nine Lives",
+							"desc":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+							"thumbnail":"http://placehold.it/160x160",
+							"img":"http://placehold.it/320x320"
+						},
+
+						{
+							"id":"554",
+							"name":"Something Else for Sale",
+							"desc":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+							"thumbnail":"http://placehold.it/160x160",
+							"img":"http://placehold.it/320x320"
+						},
+
+						{
+							"id":"553",
+							"name":"Something Else for Sale",
+							"desc":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+							"thumbnail":"http://placehold.it/160x160",
+							"img":"http://placehold.it/320x320"
+						},
+
+						{
+							"id":"525",
+							"name":"Something Else for Sale",
+							"desc":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+							"thumbnail":"http://placehold.it/160x160",
+							"img":"http://placehold.it/320x320"
+						},
+
+						{
+							"id":"5151",
+							"name":"Something Else for Sale",
+							"desc":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+							"thumbnail":"http://placehold.it/160x160",
+							"img":"http://placehold.it/320x320"
+						},
+
+						{
+							"id":"515",
+							"name":"Something Else for Sale",
+							"desc":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+							"thumbnail":"http://placehold.it/160x160",
+							"img":"http://placehold.it/320x320"
+						},
+
+						{
+							"id":"551",
+							"name":"Something Else for Sale",
+							"desc":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+							"thumbnail":"http://placehold.it/160x160",
+							"img":"http://placehold.it/320x320"
+						}
+					]
+				},
+				{
+					"id":"321",
+					"name":"Advisor",
+					"desc":"Instructional and potential <b>gold</b> marketing message goes here.",
+					"products":[
+						{
+							"id":"271",
+							"name":"Golden Fiddle",
+							"desc":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+							"thumbnail":"http://placehold.it/160x160",
+							"img":"http://placehold.it/320x320"
+						},
+
+						{
+							"id":"451",
+							"name":"Nintendo® DSi™ Handheld Video Game System",
+							"desc":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+							"thumbnail":"http://placehold.it/160x160",
+							"img":"http://placehold.it/320x320"
+						}
+					]
+				}
+			]
+		}
+	]
+
+}

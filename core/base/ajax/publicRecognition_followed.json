@@ -1,0 +1,88 @@
+{
+	"messages":[],
+
+	"recognitionSets":[
+		{
+			"nameId":"global",
+			"name":"Global",
+			"desc":"Company wide recognitions",
+			"totalCount":0,
+			"recognitions":[]
+		},
+		{
+			"nameId":"team",
+			"name":"Team",
+			"desc":"Recognitions within my team/org unit",
+			"totalCount":0,
+			"recognitions":[]
+		},
+		{
+			"nameId":"followed",
+			"name":"Followed",
+			"desc":"Recognitions of those I follow",
+			"totalCount":1,
+			"hasFollowees":false,
+			"isDefault": false,
+			"recognitions":[
+				{
+					"id":1020304,
+					"publicRecognitionPageDetailUrl":"layout.html?tpl=publicRecognitionPageDetail&tplPath=apps/publicRecognition/tpl/&promotionId=1020304",
+					"recipients":[
+						{
+							"id":45,
+							"firstName":"Charlton",
+							"lastName":"Heston",
+							"avatarUrl":"img/_samples/x-profile-pic2.jpg"
+						}
+					],
+					"recognizer":{
+						"id":102,
+						"firstName":"Henry",
+						"lastName":"Kissinger",
+						"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+					},
+					"comment":"Some comments lorem ipsum text. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+					"numLikers":12,
+					"isLiked":true,
+					"isNew":true,
+					"isPublicClaim":true,
+					"time": "2 days ago",
+					"allowAddPoints":true,
+					"awardAmountMin":1,
+					"awardAmountMax":50,
+					"countryRatio":1.0,
+					"comments":[
+						{
+							"id":23,
+							"commenter":{
+								"id":12,
+								"firstName":"Willford",
+								"lastName":"Brimley",
+								"avatarUrl":"img/_samples/x-profile-pic1.jpg"
+							},
+							"comment":"Some comment loremitty ipsummy. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+						},
+						{
+							"id":833,
+							"commenter":{
+								"id":12,
+								"firstName":"Willford",
+								"lastName":"Brimley",
+								"avatarUrl":"img/_samples/x-profile-pic2.jpg"
+							},
+							"comment":"ANOTHER comment loremitty ipsummy. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+						}
+					]
+				}
+			]
+		},
+		{
+			"nameId":"mine",
+			"name":"Mine",
+			"desc":"Recognitions I've received",
+			"totalCount":0,
+			"recognitions":[]
+		}
+	]
+
+}

@@ -1,0 +1,408 @@
+<!-- ======== QUIZ PAGE ======== -->
+
+<div id="ssiApprovePayout" class="page-content ssiApprovePayoutTablePage">
+    <div id="ssiApprovePayoutDynamicContent"></div>
+
+    <div class="promptContent" style="display:none">
+        <p>These are your contest's final results. Participant's activity cannot be edited once the payouts are issued.</p>
+        <p>Are you sure you want to issue payouts?</p>
+        <p>
+            <button type="button" class="btn btn-primary authorizePayout">Yes, issue payouts</button>
+            <button type="button" class="btn closePrompt">No</button>
+        </p>
+    </div>
+
+    <div class="promptContentClostContest" style="display:none">
+        <p>This will close the contest without issuing payouts. Participants' activity cannot be edited once the contest is closed.</p>
+        <p>Are you sure you want to close the contest?</p>
+        <form id="ssiCloseContestForm" action="ajax/serverCommand_redirect.json" method="post">
+            <p>
+                <button class="btn btn-primary closeContest" name="closeContest" value="yes">Yes, close contest</button>
+                <button class="btn closeContest" name="closeContest" value="no">No</button>
+            </p>
+        </form>
+    </div>
+
+    <div class="modal hide fade" id="ssiExtractResultsModal" data-backdrop="static"data-keyboard="false">
+        <div class="modal-header text-center">
+            <h4>Would you like to get a report of the contest results?</h4>
+            <a href="link/to/extract/results" class="btn btn-primary extractResults">Yes</a>
+            <button class="btn extractResults">No</button>
+        </div>
+    </div>
+</div>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function() {
+
+        // JAVA NOTE: this url is where the approval will post to.
+        // It should return either an error or a success response message following G5 standard behavior
+        G5.props.URL_JSON_SSI_APPROVE_PAYOUT = G5.props.URL_ROOT + 'ajax/ssiContestPayoutApprove.json';
+
+        // JAVA NOTE: this url is where stack rank updates are sent
+        G5.props.URL_JSON_SSI_APPROVE_PAYOUT_UPDATE = G5.props.URL_ROOT + 'ajax/ssiContestPayoutUpdate.json';
+
+        // JAVA NOTE: this is the url to redirect the browser to after payouts are successfully approved
+        G5.props.URL_SSI_APPROVE_PAYOUT_SUCCESS_REDIRECT =  G5.props.URL_ROOT + 'layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiCreatorPage.html';
+
+        // JAVA NOTE: front end needs these for individual contests types
+        // but only URL_JSON_SSI_APPROVE_PAYOUT_PARTICIPANTS is needed on the backend
+        G5.props.URL_JSON_SSI_APPROVE_PAYOUT_PARTICIPANTS_SIU        = G5.props.URL_ROOT + 'ajax/ssiContestPayoutParticipantData_SIU.json';
+        G5.props.URL_JSON_SSI_APPROVE_PAYOUT_PARTICIPANTS_OBJECTIVES = G5.props.URL_ROOT + 'ajax/ssiContestPayoutParticipantData_objectives.json';
+        G5.props.URL_JSON_SSI_APPROVE_PAYOUT_PARTICIPANTS_DTGT       = G5.props.URL_ROOT + 'ajax/ssiContestPayoutParticipantData_DTGT.json';
+        G5.props.URL_JSON_SSI_APPROVE_PAYOUT_PARTICIPANTS_STACKRANK  = G5.props.URL_ROOT + 'ajax/ssiContestPayoutParticipantData_stackRank.json';
+        G5.props.URL_JSON_SSI_APPROVE_PAYOUT_PARTICIPANTS            = G5.props.URL_ROOT + 'ajax/ssiContestPayoutParticipantData_stackRank.json';
+
+        // JAVA NOTE: this is the url to the participant detail page
+        // G5.props.URL_SSI_PARTICIPANT_DETAIL_PAGE  = G5.props.URL_ROOT + 'layout.html?tplPath=../apps/ssi/tpl/&tpl=ssiParticipantPage.html';
+
+        // JAVA NOTE: `contestData` represents a single bootstrapped contest.
+        // A single object from `EXAMPLE_DATA` should be set as contestData - zach
+        /*
+        var contestData = {
+            "id": "1",
+            "contestType": "stepItUp"
+        };
+        */
+        var contestData;
+
+        // FE ONLY - this should be removed before pushing to production
+        // this section can be use to switch between different data types
+        // using a GET value in the URL like:
+        // ssiApprovePayout.html&contestType=stepItUp&payoutType=other
+        (function(){
+            if (!window.location.search) return;
+
+            var EXAMPLE_DATA = {
+                    objectives: {
+                        id: '3',
+                        contestType: 'objectives',
+                        totalGoal: '2,000,000.0100',
+                        totalProgress: '2,042,00.0100',
+                        totalObjectivePayout: '1,200',
+                        totalBonusPayout: '3,400',
+                        includeBonus: true,
+                        totalPayout: '4,600',
+                        sortedOn: 'lastName',
+                        sortedBy: 'asc',
+                        payoutType: 'points',
+                        hasQualifiedPayouts: true,
+                        includeSubmitClaim: true,
+                        name: 'Objectives Example Contest'
+                    },
+                    objectives_other: {
+                        id: '3other',
+                        contestType: 'objectives',
+                        totalGoal: '2,000,000',
+                        totalProgress: '2,042,00',
+                        totalQty: '3,400',
+                        totalPayoutValue: '4,600',
+                        sortedOn: 'lastName',
+                        sortedBy: 'asc',
+                        payoutType: 'other',
+                        hasQualifiedPayouts: true,
+                        includeSubmitClaim: false,
+                        name: 'Objectives Example Contest'
+                    },
+
+                    stepItUp: {
+                        id: '1',
+                        contestType: 'stepItUp',
+
+                        totalActivity: '2,000,000',
+                        totalLevelPayout: '1,200',
+                        totalBonusPayout: '3,400',
+                        totalPayout: '4,600',
+                        payoutType: 'points',
+
+                        sortedOn: 'lastName',
+                        sortedBy: 'asc',
+                        hasQualifiedPayouts: true,
+                        includeSubmitClaim: false,
+                        name: 'Step It Up Example Contest'
+                    },
+                    stepItUp_other: {
+                        id: '1other',
+                        contestType: 'stepItUp',
+
+                        totalActivity: '2,000,000',
+                        totalQty: '3,400',
+                        totalPayoutValue: '4,600',
+                        payoutType: 'other',
+
+                        sortedOn: 'lastName',
+                        sortedBy: 'asc',
+                        hasQualifiedPayouts: true,
+                        includeSubmitClaim: false,
+                        name: 'Step It Up Example Contest'
+                    },
+
+                    doThisGetThat: {
+                        id: '2',
+                        contestType: 'doThisGetThat',
+
+                        sortedOn: 'lastName',
+                        sortedBy: 'asc',
+                        name: 'Do This Get That Example Contest',
+
+                        // are these unique to activity?
+                        payoutType: 'points',
+                        updatedOnDate: '03/01/2014',
+                        hasQualifiedPayouts: false,
+                        includeSubmitClaim: true,
+
+                        activities: [
+                            {
+                                activityId: '1',
+                                activityDescription: 'example achievement',
+                                forEvery: '1.0100',
+                                willEarn: '1,600',
+                                minQualifier: '3.0100',
+                                totalActivity: '300.0110',
+                                qualifiedActivity: '200.0100',
+                                totalIncrementPayout: '40',
+                                totalPayout: '4,600'
+                            },
+                            {
+                                activityId: '2',
+                                activityDescription: 'alt achievement',
+                                forEvery: '5',
+                                willEarn: '1,600',
+                                minQualifier: '10',
+                                totalActivity: '400',
+                                qualifiedActivity: '200',
+                                totalIncrementPayout: '130',
+                                totalPayout: '4,600'
+                            },
+                            {
+                                activityId: '3',
+                                activityDescription: 'alt achievement 2',
+                                forEvery: '5',
+                                willEarn: '1,600',
+                                minQualifier: '10',
+                                totalActivity: '400',
+                                qualifiedActivity: '200',
+                                totalIncrementPayout: '130',
+                                totalPayout: '4,600'
+                            }
+                        ]
+                    },
+                    doThisGetThat_other: {
+                        id: '2other',
+                        contestType: 'doThisGetThat',
+
+                        sortedOn: 'lastName',
+                        sortedBy: 'asc',
+                        name: 'Do This Get That Example Contest',
+
+                        // are these unique to activity?
+                        payoutType: 'other',
+                        updatedOnDate: '03/01/2014',
+                        hasQualifiedPayouts: true,
+                        includeSubmitClaim: false,
+
+                        activities: [
+                            {
+                                activityId: '1',
+                                activityDescription: 'example achievement',
+                                forEvery: '1',
+                                willEarn: '1,600',
+                                minQualifier: '3',
+                                totalActivity: '300',
+                                qualifiedActivity: '200',
+                                totalIncrementPayout: '40',
+                                totalPayoutValue: '4,600',
+                                payoutOtherCurrency: '$',
+                                payoutDescription: '25 Gift Card'
+                            },
+                            {
+                                activityId: '2',
+                                activityDescription: 'alt achievement',
+                                forEvery: '5',
+                                willEarn: '1,600',
+                                minQualifier: '10',
+                                totalActivity: '400',
+                                qualifiedActivity: '200',
+                                totalIncrementPayout: '130',
+                                totalPayoutValue: '4,600',
+                                payoutOtherCurrency: '$',
+                                payoutDescription: '25 Gift Card'
+                            }
+                        ]
+                    },
+
+                    stackRank: {
+                        id: '4',
+                        contestType: 'stackRank',
+                        method: 'load',
+                        sortedOn: 'lastName',
+                        sortedBy: 'asc',
+                        name: 'Stack Rank Example Contest',
+                        hasQualifiedPayouts: true,
+                        includeSubmitClaim: false,
+                        payoutType: 'points',
+                        totalActivity: '350,000.0110',
+                        totalPayout: '4,600'
+                    },
+                    stackRank_other: {
+                        id: '4other',
+                        contestType: 'stackRank',
+
+                        sortedOn: 'lastName',
+                        sortedBy: 'asc',
+                        name: 'Stack Rank Example Contest',
+                        hasQualifiedPayouts: true,
+                        includeSubmitClaim: false,
+                        payoutType: 'other',
+                        totalActivity: '350,000',
+                        totalPayoutValue: '4,600'
+                    },
+                    stackRank_tied: {
+                        id: '4tie',
+                        contestType: 'stackRank',
+                        sortedOn: 'rank',
+                        sortedBy: 'asc',
+                        name: 'Stack Rank Example Contest',
+                        hasQualifiedPayouts: true,
+                        includeSubmitClaim: false,
+                        payoutType: 'points',
+                        totalActivity: '350,000.0110',
+                        totalPayout: '4,600',
+                        payoutCap: "10,000",
+                        hasTie: true,
+
+                        payouts: [
+                            {
+                                rank: 1,
+                                badge: {
+                                    id: 2504,
+                                    type: '1 Year Anniversary',
+                                    name: 'Badge Name',
+                                    img: '//placehold.it/50x50'
+                                },
+                                payout: 200,
+                                payoutDescription: '$10 gift card'
+                            },
+                            {
+                                rank: 2,
+                                badge: {
+                                    id: 2504,
+                                    type: '1 Year Anniversary',
+                                    name: 'Badge Name',
+                                    img: '//placehold.it/50x50'
+                                },
+                                payout: 75,
+                                payoutDescription: '$10 gift card'
+                            },
+                            {
+                                rank: 3,
+                                badge: {
+                                    id: 2504,
+                                    type: '1 Year Anniversary',
+                                    name: 'Badge Name',
+                                    img: '//placehold.it/50x50'
+                                }
+                            },
+                            {
+                                rank: 4,
+                                badge: {
+                                    id: 2504,
+                                    type: '1 Year Anniversary',
+                                    name: 'Badge Name',
+                                    img: '//placehold.it/50x50'
+                                }
+                            }
+                        ]
+                    },
+                    stackRank_tied_other: {
+                        id: '4tieother',
+                        contestType: 'stackRank',
+
+                        sortedOn: 'rank',
+                        sortedBy: 'asc',
+                        name: 'Stack Rank Example Contest',
+                        hasQualifiedPayouts: true,
+                        includeSubmitClaim: false,
+                        payoutType: 'other',
+                        totalActivity: '350,000',
+                        totalPayoutValue: '4,600',
+                        currencySymbol: '$',
+                        payoutCap: "10,000",
+                        hasTie: true
+                    }
+                },
+                search = window.location.search,
+                parts  = search.split(/&(?:amp;)?/), // split at "&" or "&amp;"
+                pairs  = function (key, str) {
+                        var regex = (/^(?:(?:.+)?\?)?(\w+)=(.+)$/i), // get "layout.html?foo=bar" as "foo", "bar"
+                            res   = regex.exec(str);
+                        map[res[1]] = res[2];
+                    },
+                map = {};
+
+            $.each(parts, pairs);
+
+            // use GET value to over write contestData
+            switch (map.contestType) {
+                case 'stepItUp':
+                    // contestData = {
+                    //     // use "Xother" to tell the server to respond with payoutType = other
+                    //     "id": map.payoutType === "other" ? "1other" : "1",
+                    //     "contestType": "stepItUp",
+                    // };
+                    contestData = map.payoutType === 'other' ? EXAMPLE_DATA.stepItUp_other : EXAMPLE_DATA.stepItUp;
+                    break;
+                case 'objectives':
+                    contestData = map.payoutType === 'other' ? EXAMPLE_DATA.objectives_other : EXAMPLE_DATA.objectives;
+                    break;
+                case 'doThisGetThat':
+                    contestData = map.payoutType === 'other' ? EXAMPLE_DATA.doThisGetThat_other : EXAMPLE_DATA.doThisGetThat;
+                    break;
+                case 'stackRank':
+                    if (!!map.hasTie && JSON.parse(map.hasTie)) {
+                        if (map.payoutType === 'other') {
+                            contestData = EXAMPLE_DATA.stackRank_tied_other;
+                        } else {
+                            contestData = EXAMPLE_DATA.stackRank_tied;
+                        }
+                    } else {
+                        if (map.payoutType === 'other') {
+                            contestData = EXAMPLE_DATA.stackRank_other;
+                        } else {
+                            contestData = EXAMPLE_DATA.stackRank;
+                        }
+                    }
+
+                    // contestData = {
+                    //     "id": "1",
+                    //     "contestType": "stackRank",
+                    // };
+                    // if (map.payoutTie) {
+                        // ...
+                    // }
+                    break;
+                default:
+                    break;
+            }
+        }());
+        // END FE ONLY
+
+        //attach the view to an existing DOM element
+        var ssiNav = new SSIApprovePayoutView({
+            contestData: contestData,
+            el: $('#ssiApprovePayout'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'moduleSandbox.html'
+                }
+            },
+            pageTitle : 'SSI'
+        });
+    });
+</script>

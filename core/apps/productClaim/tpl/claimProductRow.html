@@ -1,0 +1,41 @@
+{{! debug}}
+<tr class="participant-item" id="row-{{this.cid}}">
+    <td class="quantity">{{{this.quantity}}}</td>
+    <td>{{this.name}}</td>
+    <td>{{this.category}}</td>
+    <td>{{this.subcategory}}</td>
+    <td>
+        {{#if this.characteristics}}
+            <dl>
+                {{#each this.characteristics}}
+                    {{#or this.value this.values}}
+                    <dt>{{this.name}}</dt>
+                    {{/or}}
+
+                    {{#if this.display}}
+                        {{#each this.display}}
+                        <dd>{{this.name}}</dd>
+                        {{/each}}
+                    {{else}}
+                        <dd>{{this.value}}</dd>
+                    {{/if}}
+                {{/each}}
+            </dl>
+        {{/if}}
+    </td>
+    <td class="edit">
+        <a class="editProduct" data-row-id="{{this.cid}}"><i class="icon-pencil"></i></a>
+    </td>
+    <td class="remove">
+        <a class="removeProduct" title="remove this product"><i class="icon-remove"></i></a>
+        <div class="deleteProductQtip" style="display:none">
+            <p>
+                Are you sure?
+            </p>
+            <p class="tc">
+                <button class="btn btn-primary genericRemoveProduct" data-row-id="{{this.cid}}">Yes</button>
+                <button class="btn genericCloseQtip">No</button>
+            </p>
+        </div>
+    </td>
+</tr>

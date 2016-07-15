@@ -1,0 +1,81 @@
+<!-- ======== RANKINGS PAGE ======== -->
+<div id="rankingsPageView" class="page-content throwdownRankings">
+
+    <div class="page-topper">
+        <div class="row">
+            <div class="span6 rankings-topper-liner">
+
+                <form class="form-inline form-labels-inline" > <!-- Java side: Add type and action here, this form will submit when the user changes the promotion -->
+                    <div class="control-group" id="controlRankingsSelect">
+
+                        <div class="controls"> <!--Java side: build this select list dynamicly, the default selected drop down must have a selected tag-->
+                            <select id="promotionSelect" data-no-rankings="There are no promotions for this Match Filter.">
+                                <option value="1236" selected>Promotion 1</option>
+                                <option value="1237" >Promotion 2</option>
+                            </select>
+                        </div>
+
+                    </div> <!-- /#controlRankingsSelect -->
+                </form>
+
+            </div><!-- /.rankings-topper-liner -->
+            <div class="span6">
+                <a href="#" class="btn btn-primary rulesBtn">View Rules</a>
+            </div>
+        </div>
+    </div><!-- /.page-topper -->
+
+    <!-- Page Body -->
+    <div class="row">
+        <div class="span12">
+            <form class="form-inline formRankingsSetSelect">
+                <div class="control-group" id="controlRankingsOrgSelect">
+                    <label class="control-label" for="controlRankingsOrgSelect">Display Rankings For:</label>
+                    <div class="controls">
+                        <select id="rankingsOrgSelect">
+                            <option value="1236">Eau Claire</option>
+                            <option value="1237" >West Bank</option>
+                            <option value="1237" >Egan</option>
+                        </select>
+                    </div>
+                </div><!-- /.control-group -->
+
+                <div class="control-group" id="controlRankingsSetSelect">
+
+                    <div class="controls">
+                        <select id="rankingsSetSelect">
+                            <!-- dynamic -->
+                        </select>
+                    </div>
+                </div><!-- /.control-group -->
+            </form>
+
+            <div class="selectedRankingsView">
+                <!-- NOTE: dynamically loaded using template rankingsSet.html -->
+            </div>
+        </div>
+    </div><!-- /.row -->
+</div><!-- /#rankingsPageView -->
+
+<script>
+    $(document).ready(function() {
+
+        //attach the view to an existing DOM element
+        throwdownRankingsPageView = new ThrowdownRankingsPageView({
+            el: $('#rankingsPageView'),
+            userRole: 'manager', // 'manager' or 'participant'
+            //showRankings : 1234,
+            pageNav: {
+                back: {
+                    text: 'Back',
+                    url: 'layout.html'
+                },
+                home: {
+                    text: 'Home',
+                    url: 'layout.html'
+                }
+            },
+            pageTitle: 'Throwdown Rankings'
+        });
+    });
+</script>

@@ -1,0 +1,91 @@
+<div id="ssiParticipantSubmitClaimPageView" class="page-content">
+    <div class="row">
+        <div class="span12">
+            <h3>Contest Name</h3>
+
+            <!--JAVA NOTE: Display error text in the below list when page submit returns an error and set the hidden input value to true. -->
+            <!--<div id="ssiSubmitClaimErrorBlock" class="alert alert-block alert-error">
+                <h4>The following errors occurred</h4>
+                <ul>
+                    <li>This is an example of a specific error message</li>
+                </ul>
+                <input type="hidden" id="serverReturnedErrored" value="false">
+            </div>-->
+
+            <form action="ajax/ssiSubmitClaim.json" class="ssiPaxSubmitClaimForm" method="POST">
+                <fieldset id="ssiClaimFormTpl">
+                <!-- dynamic from ssiSubmitClaimFormTpl.html -->
+                </fieldset>
+
+                <fieldset class="ssiClaimFormActions">
+                    <button class="btn btn-primary ssiClaimFormPreview">Preview</button>
+                    <button class="btn ssiClaimFormCancel">Cancel</button>
+                </fieldset>
+
+                <fieldset class="ssiClaimPreviewView" style="display:none">
+                    <dl class="dl-horizontal">
+                        <!-- dynamic generated in JS -->
+                    </dl>
+                </fieldset>
+
+                <fieldset class="ssiClaimPreviewActions" style="display:none">
+                    <button type="submit" class="btn btn-primary ssiClaimFormSubmit">Submit</button>
+                    <button class="btn ssiClaimFormEdit">Edit</button>
+                    <button class="btn ssiClaimFormCancel">Cancel</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <!-- Confirm Cancel Popover -->
+    <div class="ssiClaimCancelConfirm" style="display:none">
+        <p>
+            <i class="icon-question-sign"></i>
+            <b>Are you sure? All changes will be lost.</b>
+        </p>
+        <p class="tc">
+            <button type="submit" class="btn btn-primary ssiClaimDialogConfirm" data-url="layout.html?tplPath=apps/ssi/tpl/&tpl=ssiParticipantPage.html#contest/1">Yes</button>
+            <button type="button" class="btn ssiClaimDialogCancel">No</button>
+        </p>
+    </div>
+
+    <!-- modal to catch errors from server on submit OR save draft -->
+    <div class="modal hide fade contestErrorsModal">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+            <h3>
+                <i class="icon-exclamation-sign"></i>
+                            Error(s) encountered
+            </h3>
+        </div>
+        <div class="modal-body">
+            <ul class="errorsList">
+                <!-- dynamic -->
+            </ul>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+        </div>
+    </div><!-- /.contestErrorsModal -->
+</div><!--/#ssiParticipantSubmitClaimPageView -->
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function() {
+        //attach the view to an existing DOM element
+        var ssiNav = new SSIParticipantSubmitClaimPageView({
+            el: $('#ssiParticipantSubmitClaimPageView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'moduleSandbox.html'
+                }
+            },
+            pageTitle : 'Submit Claim'
+        });
+    });
+</script>

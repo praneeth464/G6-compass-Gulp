@@ -1,0 +1,359 @@
+<!-- ======== MANAGER TOOLKIT PAGE ROSTER EDIT/ADD ======== -->
+
+<!-- roster edit and add are very similar, so we will just have a single file for both here -->
+
+<div id="managerToolkitPageRosterEditView" class="managerToolkitPageRosterEdit-liner page-content">
+    <!-- NOTE: form.action is set in the buttons (view js) at the bottom since the
+         same form needs to be submitted to dif URLS -->
+    <form id="managerToolkitFormEditParticipant" class="form-horizontal" method="post" action="">
+
+        <div class="row">
+            <div class="span6 colA">
+                <fieldset>
+                    <h3>Personal Information</h3>
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please select a Participant Status."}'>
+                        <label for="participantStatus" class="control-label">Participant Status</label>
+                        <div class="controls">
+                            <select id="participantStatus" name="participantStatus">
+                                <option>Active</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="participantRole" class="control-label">Participant Role</label>
+                        <div class="controls">
+                            <select name="participantRole" id="participantRole">
+                                <option>Member</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter a First Name."}'>
+                        <label for="firstName" class="control-label">First Name</label>
+                        <div class="controls">
+                            <input type="text" name="firstName" id="firstName" class="input-large">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="middleName" class="control-label">Middle Name</label>
+                        <div class="controls">
+                            <input type="text" id="middleName" name="middleName" class="input-large">
+                            <span class="optional">(optional)</span>
+                        </div>
+                    </div>
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter a Last Name."}'>
+                        <label for="lastName" class="control-label">Last Name</label>
+                        <div class="controls">
+                            <input type="text" id="lastName" name="lastName" class="input-large">
+                        </div>
+                    </div>
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter a User ID."}' style="position: relative;">
+                        <label for="userName" class="control-label">Login ID</label>
+                        <div class="controls">
+                            <span class="input-append">
+                            <input type="text" id="userName" name="userName" class="input-large">
+                            <button class="generateId btn" type="button">Generate ID</button>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="enrollmentDate" class="control-label">Enrollment Date</label>
+                        <div class="controls">
+                            <p>01/01/001</p>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="enrollmentSource" class="control-label">Enrollment Source</label>
+                        <div class="controls">
+                            <p>Web</p>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="jobTitle" class="control-label">Job Title</label>
+                        <div class="controls">
+                            <select id="jobTitle" name="jobTitle">
+                                <option>select one</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <span class="optional">(optional)</span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="department" class="control-label">Department</label>
+                        <div class="controls">
+                            <select id="department" name="department">
+                                <option>select one</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <span class="optional">(optional)</span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="languagePreference" class="control-label">Language Preference</label>
+                        <div class="controls">
+                            <select id="languagePreference" name="languagePreference">
+                                <option>English</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <span class="optional">(optional)</span>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <h3>Email Address</h3>
+                    <div class="control-group">
+                        <label for="primaryEmailAddressType" class="control-label">Primary Email Address Type</label>
+                        <div class="controls">
+                            <select id="primaryEmailAddressType" name="primaryEmailAddressType">
+                                <option>Work</option>
+                                <option>Home</option>
+                                <option>Other</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <span class="optional">(optional)</span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="emailAddress" class="control-label">Email Address</label>
+                        <div class="controls">
+                            <input type="text" id="emailAddress" name="emailAddress" class="input-large">
+                            <span class="optional">(optional)</span>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="span6 colB">
+                <fieldset>
+                    <h3>Address</h3>
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter a Primary Address Type."}'>
+                        <label for="primaryAddressType" class="control-label">Primary Address Type</label>
+                        <div class="controls">
+                            <select id="primaryAddressType" name="primaryAddressType">
+                                <option>Business</option>
+                                <option>Home</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter a Country."}'>
+                        <label for="country" class="control-label">Country</label>
+                        <div class="controls">
+                            <!-- disabled for edit mode: disabled="disabled" -->
+                            <select id="country" name="country">
+                                <option>United States</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter at least one line of an Address."}'>
+                        <label for="address1" class="control-label">Address 1</label>
+                        <div class="controls">
+                            <input type="text" id="address1" name="address1" class="input-large">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="address2" class="control-label">Address 2</label>
+                        <div class="controls">
+                            <input type="text" id="address2" name="address2" class="input-large">
+                            <span class="optional">(optional)</span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="address3" class="control-label">Address 3</label>
+                        <div class="controls">
+                            <input type="text" id="address3" name="address3" class="input-large">
+                            <span class="optional">(optional)</span>
+                        </div>
+                    </div>
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter a City."}'>
+                        <label for="city" class="control-label">City</label>
+                        <div class="controls">
+                            <input type="text" id="city" name="city" class="input-large">
+                        </div>
+                    </div>
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter a State/Location."}'>
+                        <label for="state" class="control-label">State/Location</label>
+                        <div class="controls">
+                            <select id="state" name="state">
+                                <!--
+                                    ajax by country
+                                    Ex: statesOrLocationsForCountry.json
+                                    Set: G5.props.URL_JSON_MANAGER_LOCATIONS
+                                -->
+                                <!-- EDIT mode will have pre populated -->
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option selected value="mn">Minnesota</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter a Postal Code."}'>
+                        <label for="postalCode" class="control-label">Postal Code</label>
+                        <div class="controls">
+                            <input type="text" id="postalCode" name="postalCode" class="input-large">
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <h3>Telephone Number</h3>
+                    <div class="control-group">
+                        <label for="primaryTelephoneType" class="control-label">Primary Telephone Type</label>
+                        <div class="controls">
+                            <select id="primaryTelephoneType" name="primaryTelephoneType">
+                                <option>select one</option>
+                                <option>Work</option>
+                                <option>Home</option>
+                                <option>Cell Phone</option>
+                                <option>Other</option>
+                            </select>
+                            <span class="optional">(optional)</span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="countryCode" class="control-label">Country &amp; Country Code</label>
+                        <div class="controls">
+                            <select id="countryCode" name="countryCode">
+                                <option>select one</option>
+                                <option>United States +1</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <span class="optional">(optional)</span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="telephoneNumber" class="control-label">Telephone Number</label>
+                        <div class="controls">
+                            <input type="text" placeholder="xxx-xxx-xxxx" id="telephoneNumber" name="telephoneNumber" class="input-large">
+                            <span class="optional">(optional)</span>
+                        </div>
+                    </div>
+
+                    <div class="control-group validateme" data-validate-flags="regex" data-validate-fail-msgs='{"regex" : "Please enter valid extention."}' data-validate-regex="(^\d)">
+                    <label class="control-label" for="extension">Extension</label>
+                        <div class="controls">
+                            <input type="text" id="extension" name="extension" class="input-small">
+                            <span class="help-inline">(4 digit extension)</span>
+                            <span class="optional">(optional)</span>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <h3>Additional Information</h3>
+                    <div class="control-group">
+                        <label for="additionalInfo" class="control-label">Additional Information
+                            <span class="optional">(optional)</span></label>
+                        <div class="controls">
+                            <textarea id="additionalInfo" name="additionalInfo" rows="5"></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <h3>Custom Field</h3>
+                    <div class="control-group">
+                        <label for="customDateField" class="control-label">Custom Date</label>
+                        <div class="controls">
+                            <span class="input-append datepickerTrigger"
+                                    data-date-format="mm/dd/yyyy"
+                                    data-date-language="en_US"
+                                    data-date-startdate="11/14/2012"
+                                    data-date-todaydate="11/14/2012"
+                                    data-date-autoclose="true">
+                                <input type="text" id="customDateField" name="customDateField" placeholder="" readonly="readonly" class="date">
+                                <button class="btn" type="button"><i class="icon-calendar"></i></button>
+                            </span>
+                            <span class="optional">(optional)</span>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span12">
+                <fieldset class="form-actions pullBottomUp">
+
+                    <!-- ADD: fill in data-action with apropo url -->
+                    <button class="btn btn-primary addBtn" type="submit"
+                        data-action="layout.html?tpl=managerToolkitPageRoster&tplPath=apps/managerToolkit/tpl/">
+                        Add
+                    </button>
+
+                    <!-- EDIT: fill in data-action with apropo url -->
+                    <button class="btn btn-primary editBtn" type="submit"
+                        data-action="layout.html?tpl=managerToolkitPageRoster&tplPath=apps/managerToolkit/tpl/">
+                        Edit
+                    </button>
+
+                    <button class="btn cancelBtn">
+                        Cancel
+                    </button>
+
+                    <div class="questionTip cancelTip" style="display:none">
+                        <p>
+                            <i class="icon-question-sign"></i>
+                            <b>Cancel Roster Edit?</b>
+                        </p>
+                        <p>
+                            All changes will be discarded.
+                        </p>
+                        <p class="tc">
+                            <!-- CANCEL: fill in href with apropo url -->
+                            <a href="layout.html?tpl=managerToolkitPageRoster&tplPath=apps/managerToolkit/tpl/" class="btn btn-primary yes cancelBtnConfirm">Yes</a>
+                            <a class="btn no closeTip">No</a>
+                        </p>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+    $(document).ready(function(){
+        //attach the view to an existing DOM element
+            G5.props.URL_JSON_MANAGER_ROSTEREDIT_GENERATE_USERID = G5.props.URL_ROOT+'ajax/rosterEditGeneratedUserId.json';
+            G5.props.URL_JSON_MANAGER_ROSTEREDITCHECK_USERID = G5.props.URL_ROOT+'ajax/rosterEditDuplicateUserId.json';
+        window.mtprv = new ManagerToolkitPageRosterEditView({
+            el:$('#managerToolkitPageRosterEditView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html?tpl=managerToolkitPageRoster&tplPath=apps/managerToolkit/tpl/'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Edit Participant'
+        });
+    });
+</script>

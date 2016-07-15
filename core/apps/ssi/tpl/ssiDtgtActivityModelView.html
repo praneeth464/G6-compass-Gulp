@@ -1,0 +1,205 @@
+<div class="activityItem{{#_isActiveNew}} isActiveNew{{/_isActiveNew}}" data-activity-id="{{id}}">
+
+    {{#unless _isActiveNew}}
+    <div class="activityHeaders">
+        <div class="activityHeader activityDesc">
+            <span data-model-key="description">&nbsp;</span>
+        </div>
+        <div class="activityHeader activityForEvery">
+            <span class="currSymb act"></span><span data-model-key="forEvery">&nbsp;</span>
+        </div>
+        <div class="activityHeader activityEarn">
+            <span class="currSymb pay"></span><span data-model-key="willEarn">&nbsp;</span>
+        </div>
+        <div class="activityHeader activityMinQual">
+            <span class="currSymb act"></span><span data-model-key="minQualifier">&nbsp;</span>
+        </div>
+        <div class="activityHeader activityIndPayCap">
+            <span class="currSymb pay"></span><span data-model-key="individualPayoutCap">&nbsp;</span>
+        </div>
+        <div class="activityHeader activityMaxActPay">
+            <span class="currSymb pay"></span><span data-model-key="maxPayout">&nbsp;</span>
+        </div>
+        <div class="activityHeader activityActGoal">
+            <span class="currSymb act"></span><span data-model-key="goal">&nbsp;</span>
+        </div>
+        <div class="activityHeader activityMaxActPot">
+            <span class="currSymb act"></span><span data-model-key="maxPotential">&nbsp;</span>
+        </div>
+        <div class="activityHeader activityEdit">
+            <i class="icon-pencil editControl"></i>
+        </div>
+        <div class="activityHeader activityRemove">
+            <i class="icon-remove removeControl"></i>
+        </div>
+    </div><!-- /.activityHeaders -->
+    {{/unless}}{{!-- _isActiveNew --}}
+
+    <div class="activityDetails" style="display:none">
+        {{#if _isActiveNew}}
+            <h5>
+                <i class="icon-plus-sign"></i>
+                Add Contest Activity
+            </h5>
+        {{else}}
+            <h5>
+                <i class="icon-pencil"></i>
+                Edit Activity Details
+            </h5>
+        {{/if}}
+
+        <div class="activityDetailDesc clearfix">
+            <label for="description{{id}}">
+                Activity Description
+                <i class="icon-info-sign pageView_help"
+                    data-help-content="Describe the specific activity that the participants will be measured against."></i>
+            </label>
+            <input type="text" id="description{{id}}" data-model-key="description" maxlength="50" />
+        </div>
+
+        <div class="clearfix">
+            <div class="activityDetailForEvery">
+                <label for="forEvery{{id}}">For every</label>
+                <i class="icon-info-sign pageView_help"
+                    data-help-content="Value of the award"></i> 
+                <input type="text" id="forEvery{{id}}" data-model-key="forEvery" />
+                <span class="currSymb act"></span>
+                <span class="currDisp act"></span>
+            </div>
+        </div>
+
+        <div class="activityDetailValueDesc clearfix" style="display:none">
+            <label for="valueDescription{{id}}">
+                the participant will earn
+            </label>
+            <input type="text"  id="valueDescription{{id}}" data-model-key="valueDescription" maxlength="50" />
+        </div>
+
+        <div class="activityDetailEarn clearfix">
+            <label class="pointsPayoutTypeMsg" for="willEarn{{id}}">
+                the participant will earn
+            </label>
+            <i class="icon-info-sign pageView_help"  data-help-content="Define the activity amount required to achieve the
+corresponding award.” e the corresponding award."></i>
+            <label class="otherPayoutTypeMsg" for="willEarn{{id}}">
+                Value of award
+                <i class="icon-info-sign pageView_help"
+                    data-help-content="[explanation of what 'value of award' is]"></i>
+            </label>
+            <input type="text" id="willEarn{{id}}" data-model-key="willEarn" />
+            <span class="currSymb pay"></span>
+            <span class="currDisp pay"></span>
+        </div>
+
+        <div class="activityDetailMinQual clearfix">
+            <label for="minQualifier{{id}}">Minimum Qualifier</label>
+            <input type="text"  for="minQualifier{{id}}" data-model-key="minQualifier" />
+            <span class="currSymb act"></span>
+            <span class="currDisp act"></span>
+        </div>
+
+        <div class="activityDetailIndPayCap clearfix">
+            <label for="individualPayoutCap{{id}}">Individual Payout Cap</label>
+            <input type="text"  for="individualPayoutCap{{id}}" data-model-key="individualPayoutCap" />
+            <span class="currSymb pay"></span>
+            <span class="currDisp pay"></span>
+        </div>
+
+        <br>
+
+        <div class="activityDetailPaxCount clearfix">
+            <label># of Participants</label>
+            <span data-model-key="participantCount"></span>
+        </div>
+
+        <br>
+
+        {{!-- REMOVED 5/27
+        <div class="activityDetailMaxActPay">
+            <label>Maximum Activity Payout</label>
+            <span class="currSymb pay"></span><span class="maxPay">--</span>
+            <span class="currDisp pay"></span>
+        </div>
+
+        <div class="activityDetailMaxActPot">
+            <label>Maximum Activity Potential</label>
+            <span class="currSymb act"></span><span class="maxPot">--</span>
+            <span class="currDisp act"></span>
+        </div>
+        --}}
+
+        <div class="contestEstimatorWrapper clearfix">
+            <div class="contestEstimator">
+
+                <h5>Activity Goal</h5>
+                <p>
+                    Your Activity Goal has been pre-calculated based on your total activity amount and the number of participants. To adjust this amount, use the slider below to estimate your contest’s performance or simply type a modified amount into the text box.
+                </p>
+
+                <div class="activityDetailActGoal ib">
+                    <label for="goal{{id}}" class="ib">
+                        Your Activity Goal
+                        <div class="goalPercent"><!-- dyn --></div>
+                        <i class="icon-info-sign pageView_help" data-help-content="[explanation of what 'goal' is]"></i>
+                    </label>
+                    &nbsp;
+                    <span class="currSymb act"></span>
+                    <input type="text"  for="goal{{id}}" data-model-key="goal" />
+                    <span class="currDisp act"></span>
+                </div>
+
+                <div class="maxPayoutSection ib">
+                    <div class="maxPayoutWrapper">
+                        Payout:
+                        <span class="currSymb pay"></span><span class="estPay">--</span>
+                        <span class="currDisp pay"></span>
+                    </div>
+                </div>
+
+                {{!-- REMOVED 5/27
+                <div>
+                    <div>
+                        Estimated Activity Potential:
+                        <span class="currSymb act"></span><span class="estPot">--</span>
+                        <span class="currDisp act"></span>
+                    </div>
+                </div>
+                --}}
+
+                <div><b>Estimated Participant Achievement %</b></div>
+                <div class="sliderContainer">
+                    <span class="sliderMin">0%</span>
+                    <input class="estimateSlider" type="text" />
+                    <span class="sliderMax">100%</span>
+                </div>
+
+            </div><!-- /.contestEstimator -->
+        </div><!-- /.contestEstimatorWrapper -->
+
+
+        <div class="activityDetailItemActions">
+            <button class="btn btn-primary btn-small saveActivityBtn">
+                Save
+            </button>
+            <button class="btn btn-small cancelActivityBtn">
+                Cancel
+            </button>
+        </div>
+
+    </div>
+
+
+
+    <div class="ssiDtgtActivityModelViewErrorMsgs" style="display:none">
+        <b class="req">This field is required.</b>
+        <b class="reqNum">Please enter a whole number.</b>
+        <b class="reqDec_2">Please enter a number with up to 2 decimals.</b>
+        <b class="reqDec_4">Please enter a number with up to 4 decimals.</b>
+        <b class="reqDec_2_pos">Please enter a positive number with up to 2 decimals.</b>
+        <b class="reqDec_4_pos">Please enter a positive number with up to 4 decimals.</b>
+        <b class="numBeyondMax">This number must be less than 10000000000.</b>
+        <b class="mustEditSave">Please save or cancel.</b>
+        <b class="uniqueDescReq">Please make sure all descriptions are unique.</b>
+    </div><!-- /.ssiDtgtActivityModelViewErrorMsgs -->
+
+</div>

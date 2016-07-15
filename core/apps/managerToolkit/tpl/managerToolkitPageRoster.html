@@ -1,0 +1,104 @@
+<!-- ======== MANAGER TOOLKIT PAGE ROSTER ======== -->
+
+<div id="managerToolkitPageRosterView" class="managerToolkitPageRoster-liner page-content">
+
+    <div class="page-topper">
+        <div class="row"><div class="span12 leaderboard-topper-liner">
+
+                <form class="form-inline form-labels-inline addPaxForm" method="post" action="layout.html">
+                    <fieldset>
+
+                        <div class="control-group control-group-pull-right">
+                            <a href="#" class="addPaxBtn topper-control-link"
+                                data-msg-validate="Org unit required.">
+                                <i class="icon-plus-sign"></i> Add Participant
+                            </a>
+                        </div><!-- /.control-group -->
+
+                        <!--
+                            TEST CASES:
+                            1 - one org only
+                            2 - more than one org
+                            3 - no org and no status selected
+                            4 - org selected, no status selected
+                            5 - org and status selected
+                        -->
+
+                        <div class="control-group">
+                            <div class="controls">
+                                <label class="control-label"><b>Org Unit:</b></label>
+                                <span class="singleOrgUnitDisplay" style="display:none">
+                                    <span><!-- dyn --></span>
+                                </span>
+                                <span class="controls">
+                                <select id="orgUnitSelect" name="orgUnit" title="Select Org Unit">
+                                    <!-- JSP populate -->
+                                    <option>Select Org Unit</option><!-- required -->
+                                    <option value="1">Org Unit 1</option>
+                                    <option value="2">Org Unit 2</option>
+                                    <option value="3" selected>Org Unit 4</option>
+                                    <option value="4">Org Unit 5</option>
+                                </select>
+                            </span>
+                            </div>
+                        </div><!-- /.control-group -->
+
+                        <input type="hidden" value="" name="orgUnitLabel" id="orgUnitLabel" />
+
+                        <div class="control-group" id="controlLeaderboardSelect">
+                                <label class="control-label"><b>Participant Status:</b></label>
+                            <div class="controls">
+                                <select id="statusSelect" name="status" title="Select Status">
+                                    <!-- JSP populate -->
+                                    <option>Select Status</option><!-- required -->
+                                    <option value="1">Active</option>
+                                    <option value="2">Pending</option>
+                                    <option value="3" selected>Status 3</option>
+                                    <option value="4">Status 4</option>
+                                </select>
+                            </div>
+                        </div><!-- /.control-group -->
+
+                    </fieldset>
+                </form>
+
+            </div>
+        </div>
+    </div><!-- /.page-topper -->
+
+
+    <div class="row">
+        <div class="span12">
+            <h3>My Team</h3>
+            <!-- DisplayTableAjaxView below -->
+            <div class="displayTableAjaxView" data-url="../apps/managerToolkit/tpl/managerToolkitPageRoster_tableResponse.html">
+                <!-- dynamic -->
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+
+    $(document).ready(function(){
+        //attach the view to an existing DOM element
+        window.mtprv = new ManagerToolkitPageRosterView({
+            el:$('#managerToolkitPageRosterView'),
+            pageNav : {
+                back : {
+                    text : 'Back',
+                    url : 'layout.html'
+                },
+                home : {
+                    text : 'Home',
+                    url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+                }
+            },
+            pageTitle : 'Roster Management'
+        });
+    });
+
+
+</script>

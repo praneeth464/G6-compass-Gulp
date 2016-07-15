@@ -1,0 +1,16 @@
+// Partial-specific variables
+// =========================
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+.sharePopoverQtip {
+    padding: $g5ModulePadding / 2;
+
+    a {
+        margin: 0 2px;
+    }
+}

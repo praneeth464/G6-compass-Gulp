@@ -1,0 +1,23 @@
+<?php sleep(1); ?>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th class="title">Score Details</th>
+            <th class="actual number">Actual</th>
+            <th class="target number">Target</th>
+            <th class="diff number">Difference</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {{#each .}}
+        <tr class="{{ontrack}}">
+            <td class="title">{{title}}</td>
+            <td class="actual number">{{actual}}</td>
+            <td class="target number">{{target}}</td>
+            <td class="diff number">{{diff}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

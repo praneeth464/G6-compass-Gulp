@@ -1,0 +1,2049 @@
+// App-specific variables
+// =========================
+$goalquest_bgColor: $g5ModuleBgColor !default;
+$goalquest_gradType: $g5ModuleGradType !default;
+$goalquest_gradMeta: $g5ModuleGradMeta !default;
+$goalquest_gradStops: $g5ModuleGradStops !default;
+
+$goalquest_iconColor: $g5ModuleIconColor !default;
+$goalquest_titleColor: $g5ModuleTitleColor !default;
+$goalquest_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$goalquest_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$goalquest_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$goalquest_cp_bgColor: $g5ModuleBgColor !default;
+$goalquest_cp_gradType: $g5ModuleGradType !default;
+$goalquest_cp_gradMeta: $g5ModuleGradMeta !default;
+$goalquest_cp_gradStops: $g5ModuleGradStops !default;
+
+$goalquest_cp_iconColor: $g5ModuleIconColor !default;
+$goalquest_cp_titleColor: $g5ModuleTitleColor !default;
+$goalquest_cp_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$goalquest_cp_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$goalquest_cp_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+$goalquest_wideIconColor: $g5ModuleIconColor !default;
+$goalquest_wideTitleColor: $g5ModuleTitleColor !default;
+$goalquest_wideTitleFontFamily: $g5ModuleTitleFontFamily !default;
+$goalquest_wideSubtitleColor: $g5ModuleTitleColor !default;
+$goalquest_wideSubtitleFontFamily: $g5ModuleTitleFontFamily !default;
+$goalquest_wideTextColor: $white !default;
+$goalquest_wideTextAccentColor: scale-color($goalquest_bgColor, $lightness: 60%, $saturation: 80%) !default;
+$goalquest_cp_wideTextAccentColor: scale-color($goalquest_cp_bgColor, $lightness: 60%, $saturation: 80%) !default;
+$goalquest_multiItemBgColor: transparentize($white, 0.9) !default;
+$goalquest_levelChosenIconColor: #00cc00 !default;
+$goalquest_levelOpenIconColor: #cc0000 !default;
+$goalquest_progressBarBorderRadius: $progressBar_baseBorderRadius !default;
+$goalquest_statusTxtBgColor: rgba(0,0,0,.7) !default;
+
+$goalquest_pageMultiItemBgColor: $grayLighter !default;
+$goalquest_pageActiveLevelBg: scale-color($linkColor, $lightness: 80%) !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.goalquest {
+
+} /* /.goalquest */
+
+
+
+/* ----- MODULE STYLES ----- */
+.module.goalquest {
+    color: $goalquest_wideTextColor;
+
+    // never show the dataLoading spinner on the icon versions of this module
+    &.grid-dimension-1x1.dataLoading,
+    &.grid-dimension-2x1.dataLoading {
+        .spin {
+            display: none;
+        }
+    }
+    // special dataLoading rules for the big version start here
+    &.grid-dimension-2x2.dataLoading .title-icon-view,
+    &.grid-dimension-4x2.dataLoading .title-icon-view,
+    &.grid-dimension-4x4.dataLoading .title-icon-view {
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            position: absolute;
+            top: 37.5%;
+        }
+        h3 {
+            display: block;
+        }
+    }
+    &.grid-dimension-2x2.dataLoading .title-icon-view,
+    &.grid-dimension-4x2.dataLoading .title-icon-view {
+        @include module_titleIconViewFonticonsSizes(2);
+        @include module_titleIconViewFonticonsSizes(2, 'goalquest', 'goalquest', $imageOnly: true);
+        @include module_titleIconViewFonticonsSizes(2, 'challengepoint', 'challengepoint', $imageOnly: true);
+    }
+    &.grid-dimension-4x4.dataLoading .title-icon-view {
+        @include module_titleIconViewFonticonsSizes(4);
+        @include module_titleIconViewFonticonsSizes(4, 'goalquest', 'goalquest', $imageOnly: true);
+        @include module_titleIconViewFonticonsSizes(4, 'challengepoint', 'challengepoint', $imageOnly: true);
+    }
+    // special dataLoading rules for the big version end here
+
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $goalquest_bgColor,
+            $gradType: $goalquest_gradType,
+            $gradMeta: $goalquest_gradMeta,
+            $gradStops: $goalquest_gradStops
+        );
+    }
+
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $goalquest_iconColor,
+            $titleColor: $goalquest_titleColor,
+            $titleFontFamily: $goalquest_titleFontFamily
+        );
+
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            @include g5HomeAppIconBoxReflect(-46px);
+        }
+    }
+
+    .wide-view .gqBtn2x2 {
+        color: $goalquest_wideTextAccentColor;
+    }
+
+    @include module_titleIconViewFontSizesWeights($goalquest_titleFontSizes, $goalquest_titleFontWeights);
+
+    &.challengepoint {
+        .module-liner {
+            @include module_moduleLinerBackground(
+                $bgColor: $goalquest_cp_bgColor,
+                $gradType: $goalquest_cp_gradType,
+                $gradMeta: $goalquest_cp_gradMeta,
+                $gradStops: $goalquest_cp_gradStops,
+                $force: $goalquest_bgColor != $goalquest_cp_bgColor or $goalquest_gradType != $goalquest_cp_gradType or $goalquest_gradMeta != $goalquest_cp_gradMeta or $goalquest_gradStops != $goalquest_cp_gradStops
+            );
+        }
+
+        .title-icon-view {
+            @include module_titleIconView(
+                $iconColor: $goalquest_cp_iconColor,
+                $titleColor: $goalquest_cp_titleColor,
+                $titleFontFamily: $goalquest_cp_titleFontFamily
+            );
+
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                // @include g5HomeAppIconBoxReflect(-46px);
+            }
+        }
+
+        .wide-view .gqBtn2x2 {
+            color: $goalquest_cp_wideTextAccentColor;
+        }
+
+        @include module_titleIconViewFontSizesWeights($goalquest_cp_titleFontSizes, $goalquest_cp_titleFontWeights);
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        // hide the big version of this module when we're loading data and show a faded version of the title-icon-view
+        @include module_fadeOnDataLoading();
+
+        .title-icon-view {
+            h3 {
+                display: none;
+            }
+
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                // line-height: normal;
+                color: $goalquest_wideIconColor;
+            }
+        }
+        .wide-view {
+            padding-top: $g5ModulePadding / 2;
+
+            h3 {
+                font-family: $goalquest_wideTitleFontFamily;
+                color: $goalquest_wideTitleColor;
+            }
+        }
+    }
+
+
+    /* *****************************************************
+        Core styles for the GQ module elements
+        * default mostly to 4x4 module size style
+        * it is safest to edit for a particular mod size
+
+        Style permutations may include any of the following
+        attributes identified by classes:
+        - single goal
+        - multiple goals
+        - goal status (open, started, ended)
+        - level (hasLevel, noLevel)
+
+        * Recommendation:
+            FOLD the different cases denoted by // NAME [- NAME]
+            to greatly increase readability
+    /* *****************************************************/
+    .goalquestItemsWrapper {
+        position: absolute;
+        right: $g5ModulePadding / 2;
+        bottom: $g5ModulePadding / 2;
+        left: $g5ModulePadding / 2;
+        overflow-y: auto;
+    }
+
+    .levelLabelName {
+        color: $goalquest_wideTextAccentColor;
+    }
+    &.challengepoint .levelLabelName {
+        color: $goalquest_cp_wideTextAccentColor;
+    }
+    .levelLabel {
+        color: $goalquest_wideTextColor;
+    }
+
+    .levelChosen {
+        color: $goalquest_levelChosenIconColor;
+    }
+    .levelOpen {
+        color: $goalquest_levelOpenIconColor;
+    }
+
+    .progress {
+        margin-bottom: 0;
+        font-weight: bold;
+        @if $goalquest_progressBarBorderRadius and $goalquest_progressBarBorderRadius > 0 {
+            @include border-radius($goalquest_progressBarBorderRadius);
+        }
+    }
+
+    // SINGLE GOAL
+    .module-liner.gqSingle {
+        position: relative;
+
+        .goalquestItemsWrapper.single {
+            position: static;
+            overflow: hidden !important; // turn off scroll for all single promo/goal modules
+        }
+
+        .promotionItem.single {
+            position: static;
+            font-family: $goalquest_wideTitleFontFamily;
+
+            // padding: 12px 12px 12px 20px;
+            .promotionTitle {
+                margin: 0;
+                max-height: $baseLineHeight * 2.5 * 2;
+                overflow: hidden;
+                font-size: $baseFontSize * 3;
+                line-height: $baseLineHeight * 2.5;
+                font-weight: normal;
+                text-align: center;
+            }
+        }// .promotionItem.single
+
+        .levelLabelName {
+            display: block;
+            font-size: $baseFontSize * 4;
+            line-height: $baseLineHeight * 3;
+            max-height: $baseLineHeight * 3 * 2;
+            overflow: hidden;
+        }
+        .levelLabel {
+            font-size: $baseFontSize * 2.5;
+            line-height: normal;
+        }
+        .levelName {
+        }
+        .levelDesc {
+            font-size: $baseFontSize * 1.25;
+            line-height: $baseLineHeight * 1.25;
+        }
+        .btnWrap {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 0 $g5ModulePadding ($g5ModulePadding * 2) $g5ModulePadding;
+            text-align: center;
+        }
+        .gqBtn2x2 {
+            display: none;
+        }
+        .progressUnit {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: left;
+
+            .asOf {
+                position: absolute;
+                bottom: 100%;
+                left: 0;
+            }
+        }
+
+        // STATUS OPEN - NO LEVEL
+        &.gqStatus_open.gqNoLevel {
+            .goalItem {
+                position: static;
+                text-align: center;
+            }
+            .subTitle {
+                margin: ($baseLineHeight * 3) 0 0 0;
+            }
+            .btnWrap {
+                padding-bottom: 42px + ($g5ModulePadding * 2); // 42 is line-height from below
+            }
+            .gqBtn {
+                // outline: 5px solid yellow;
+                font-size: 34px;
+                padding: 16px 28px;
+                *vertical-align: baseline; // oh ie7 how I love thee!
+            }
+            .statusTxt {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+
+                span {
+                    display: block;
+                    padding: 0 ($g5ModulePadding / 2);
+                    font-size: 22px;
+                    line-height: 42px;
+                    @include text-overflow();
+                    @include safeBkgs($goalquest_statusTxtBgColor);
+                }
+            }
+        }// .gqStatus_open
+
+        // STATUS OPEN - HAS LEVEL
+        &.gqStatus_open.gqHasLevel{
+            .goalItem {
+                // text-align: center;
+            }
+            .subTitle {
+                display: block;
+                text-align: left;
+                margin-top: $baseLineHeight * 2;
+                @include clearfix();
+            }
+            .subTitle.partner {
+                text-align: center;
+                margin: $baseLineHeight 0 0 0;
+            }
+            .levelChooseVisual {
+                display: inline;
+                float: left;
+                text-align: center;
+            }
+            // .levelLabel {}
+            // .levelName {}
+            .levelDesc {
+                display: block;
+            }
+        }// &.gqStatus_open.gqHasLevel
+
+        // STATUS STARTED - HAS LEVEL
+        &.gqStatus_started.gqHasLevel{
+            .subTitle {
+                display: block;
+                text-align: left;
+                overflow: hidden;
+                &.partner {
+                    margin: 0;
+                }
+            }
+            .levelChooseVisual {
+                display: none;
+            }
+            // .levelLabel {}
+            // .levelName {}
+            .levelDesc {
+                display: block;
+            }
+            .btnWrap {
+                text-align: right;
+            }
+        }// &.gqStatus_started.gqHasLevel
+
+        // STATUS STARTED - NO LEVEL
+        &.gqStatus_started.gqNoLevel,
+        &.gqStatus_ended.gqNoLevel {
+            .goalItem {
+                text-align: center;
+            }
+            .subTitle {
+                display: block;
+                text-align: left;
+                margin: ($baseLineHeight * 3) 0 0 $g5ModulePadding;
+                overflow: hidden;
+            }
+            .subTitle.partner {
+                text-align: center;
+                margin: $baseLineHeight 0 ($baseLineHeight / 2) 0;
+            }
+            .statusTxt {
+                clear: both;
+                margin-top: $baseLineHeight / 2;
+                text-align: left;
+
+                .sorryTxt {
+                    display: inline-block;
+                    line-height: normal;
+                    vertical-align: middle;
+
+                    .lt-ie8 & {
+                        vertical-align: top;
+                    }
+                }
+            }
+        }// &.gqStatus_started.gqNoLevel
+        &.gqStatus_ended.gqNoLevel {
+            .btnWrap {
+                display: none;
+                background: orange;
+            }
+        }// &.gqStatus_ended.gqNoLevel
+
+        // STATUS ENDED - HAS LEVEL
+        &.gqStatus_ended.gqHasLevel{
+            .subTitle {
+                display: block;
+                margin-left: 0;
+                text-align: left;
+                overflow: hidden;
+
+                &.partner {
+                    margin: 0;
+                }
+            }
+            .levelChooseVisual {
+                display: none;
+            }
+            // .levelLabel {}
+            // .levelName {}
+            .levelDesc {
+                display: block;
+            }
+            .btnWrap {
+                text-align: right;
+            }
+            .statusTxt {
+                position: absolute;
+                left: $g5ModulePadding;
+                right: $g5ModulePadding;
+                bottom: 0;
+                text-align: center;
+                line-height: normal;
+                @include text-overflow();
+            }
+        }// &.gqStatus_ended.gqHasLevel
+
+    }// .module-liner.gqSingle
+
+
+    // MULTIPLE GOALS
+    .promotionItem.multiple {
+        position: relative;
+        // background: $goalquest-item-bg-color;
+        background: $goalquest_multiItemBgColor;
+
+        // rgba for ie 8/7
+        .lt-ie9 & {
+            background: transparent;
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#10FFFFFF,endColorstr=#10FFFFFF);
+            zoom: 1;
+        }
+
+        padding: 12px ($g5ModulePadding / 2) 12px ($g5ModulePadding / 2);
+        margin-bottom: 5px;
+
+        .goalItem {
+            margin-top: 6px;
+            position: relative;
+        }
+        .goalItem ~ .goalItem {
+            margin-top: 18px;
+        }
+
+        .promotionTitle {
+            margin: 0 0 0 0;
+            line-height: 27px;
+            @include text-overflow();
+        }
+
+        .subTitle {
+            margin-bottom: 0;
+            font-family: $goalquest_wideSubtitleFontFamily;
+            @if $goalquest_wideSubtitleColor {
+                color: $goalquest_wideSubtitleColor;
+            }
+
+        }
+        .subTitle:last-child {
+            margin-bottom: 10px;
+        }
+
+        .levelChooseVisual,
+        .visualItem {
+            display: inline;
+            color: $goalquest_wideTextColor;
+        }
+
+        .levelName {
+        }
+        .levelDesc {
+            display: block;
+        }
+
+        .gqBtn {
+            margin: 8px 0 6px 0;
+            -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; //ie goodness
+            filter: alpha(opacity=100);
+        }
+        .gqBtn2x2 {
+            display: none;
+        }
+
+        .statusTxt {
+            line-height: 0;
+
+            span {
+                line-height: $baseLineHeight;
+            }
+        }
+
+        .progressUnit {
+            display: inline;
+            float: left;
+            width: auto;
+
+            .asOf {
+                display: inline-block;
+                @include ie7-inline-block();
+                margin-right: 4px;
+                margin-bottom: 0;
+                font-size: 90%;
+            }
+            .progress {
+                display: inline-block;
+                @include ie7-inline-block();
+                margin-bottom: 0;
+                width: 200px;
+                vertical-align: top;
+            }
+        }
+
+        &.open {
+            .subTitle {
+                float: left;
+                clear: left;
+            }
+            .lt-ie8 & {
+                .partner {
+                    float: none;
+                }
+                .gqNoLevel .partner {
+                    float: left;
+                }
+            }
+            .statusTxt {
+                clear: left;
+            }
+        }
+
+        &.started,
+        &.ended {
+            .gqNoLevel {
+                .levelChooseVisual,
+                .visualItem {
+                    display: inline;
+                }
+            }
+        }
+
+        &.ended {
+            .progressUnit {
+                margin-top: -24px;
+
+                .lt-ie8 & {
+                    margin-top: 18px;
+                }
+            }
+
+            .statusTxt {
+                .visualItem {
+                    display: inline;
+                }
+            }
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    } // .promotionItem.multiple
+
+    // useful measurements for positioning icons
+    // these are all magic numbers
+    // repeated below in the manager module section (update both spots if these change)
+    $icon_1x_top: 54px;
+    $icon_1x_left: 54px;
+    $icon_2x_top: 92px;
+    $icon_2x_left: 108px;
+
+
+    &.grid-dimension-2x2 {
+        .module-liner {
+            $topSpace: 108px - $g5ModulePadding * 1.5; // 1x icon height - module padding (to tighten things up a bit)
+            $leftSpace: 96px;
+            $iconSize: 84px;
+
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                top: $icon_1x_top;
+            }
+            @include module_titleIconViewFonticonsSizes(1);
+            @include module_titleIconViewFonticonsSizes(1, 'goalquest', 'goalquest', $imageOnly: true);
+            @include module_titleIconViewFonticonsSizes(1, 'challengepoint', 'challengepoint', $imageOnly: true);
+
+            // MULTIPLE
+            &.gqMultiple {
+                // customizations for 2x2
+                .goalquestItemsWrapper {
+                    height: $g5ModuleUnit * 2 - $g5ModuleGutter * 2 - $g5ModulePadding * 1.5 - $topSpace;
+
+                    .promotionItem.multiple {
+                        padding: 8px ($g5ModulePadding / 2) 8px ($g5ModulePadding / 2);
+
+                        .promotionTitle {
+                            font-size: 20px;
+                            line-height: 22px;
+                        }
+
+                        .goalItem {}
+
+                        .subTitle {
+                            float: none;
+                            clear: none;
+                        }
+
+                        .gqBtn {
+                            display:none;
+                        }
+                        .gqBtn2x2 {
+                            display: inline;
+                        }
+
+                        // .statusTxt {
+                        //     display: none;
+                        // }
+
+                        .progressUnit {
+                            display: none;
+                        }
+                    }
+                }
+            }// &.gqMultiple .wide-view
+
+
+            // SINGLE - generic styles
+            &.gqSingle {
+                [class^="icon-g5-"],
+                [class*=" icon-g5-"] {
+                    left: $icon_1x_left;
+                }
+                .promotionItem.single .promotionTitle {
+                    font-size: 22px;
+                    line-height: 24px;
+                    text-align: left;
+                    max-height: 24px * 3;
+
+                    margin-left: $leftSpace;
+                    margin-top: 6px;
+                    *padding-top: 6px; //ie7
+                    //@include text-overflow();
+
+                    // width: 160px;
+                    margin-right: 16px; // leave room for the visitAppBtn
+                }
+
+                .subTitle {
+                    margin: ($baseLineHeight / 2) 0 0 0 !important;
+                }
+                .subTitle.partner {
+                    font-size: 14px;
+                    @include text-overflow();
+
+                    .partnerName {
+                        font-size: 20px;
+                    }
+                }
+
+                .levelLabelName {
+                    font-size: $baseFontSize * 2;
+                    line-height: normal;
+                }
+                .levelLabel {
+                    display: block;
+                    font-size: $baseFontSize * 1.25;
+                    line-height: normal;
+                }
+                .levelName {
+                    display: block;
+                    @include text-overflow();
+                }
+
+                .progressUnit {
+                    padding: 0 $g5ModulePadding $g5ModulePadding;
+
+                    .asOf {
+                        left: $g5ModulePadding;
+                        font-size: $baseFontSize;
+                        margin-bottom: 6px;
+                    }
+                }
+            }
+
+            // SINGLE - NO LEVEL
+            &.gqStatus_open.gqSingle.gqNoLevel {
+                [class^="icon-g5-"],
+                [class*=" icon-g5-"] {
+                    left: 50%;
+                }
+                .goalquestItemsWrapper {
+                    padding-top: $g5ModulePadding + $iconSize;
+                }
+
+                .promotionItem {
+                    padding-top: 0;
+                }
+
+                .promotionItem.single .promotionTitle {
+                    text-align: center;
+                    margin: 0;
+                    width: auto;
+                }
+
+                .goalItem {
+
+                }
+                .subTitle {
+                    // margin: ($baseLineHeight / 2) 0 (-1 * $baseLineHeight) 0 !important;
+                }
+                .btnWrap {
+                    padding-bottom: 32px + $g5ModulePadding; // 32 is line-height from below
+                }
+                .gqBtn {
+                    // outline: 5px solid orange;
+                    font-size: 24px;
+                    padding: 10px 16px;
+                }
+                .statusTxt {
+                    span {
+                        font-size: 16px;
+                        line-height: 32px;
+                    }
+                }
+            }// &.gqStatus_open.gqSingle.gqNoLevel
+
+            // SINGLE - OPEN - HAS LEVEL
+            &.gqSingle.gqStatus_open.gqHasLevel {
+                .promotionTitle {
+                    height: auto !important;
+                    // $iconSize is font size of the icon, then take away the top padding of the module and the top margin/padding of this element
+                    height: $iconSize - ($g5ModulePadding / 2) - 6px;
+                    min-height: $iconSize - ($g5ModulePadding / 2) - 6px;
+                }
+                .goalItem {
+                    text-align: center;
+                }
+                .subTitle {
+                    padding-left: $leftSpace;
+                    text-align: left;
+                }
+                // .subTitle.partner {}
+                .levelChooseVisual {
+                    display: inline;
+                    float: left;
+                    margin-left: -$iconSize;
+                    width: $iconSize;
+                    font-size: $iconSize * 0.9;
+                    text-align: center;
+                }
+                .visualItem {
+                    margin: 0 0 40px 0;
+                }
+
+                .levelDesc {
+                    display: block;
+                    font-size: 15px;
+                    @include text-overflow();
+                }
+                .gqBtn {
+                    // outline: 5px solid red;
+                    font-size: 24px;
+                    padding: 10px 20px;
+                    *vertical-align: baseline; // oh ie7 how I love thee!
+                }
+            }// &.gqSingle.gqStatus_open.gqHasLevel
+
+            // SINGLE - STARTED - HAS LEVEL
+            &.gqSingle.gqStatus_started.gqHasLevel {
+                .promotionTitle {
+                    height: auto !important;
+                    // $iconSize is font size of the icon, then take away the top padding of the module and the top margin/padding of this element
+                    height: $iconSize - ($g5ModulePadding / 2) - 6px;
+                    min-height: $iconSize - ($g5ModulePadding / 2) - 6px;
+                }
+                .goalItem {
+                    margin: $baseLineHeight 0 0 0px;
+                }
+                .visualItem {
+                    margin: 0 20px 0 0;
+                }
+                // .levelLabel {}
+                // .levelName {}
+                // .levelDesc {}
+                .btnWrap {
+                    // height of the progress bar + space beneath the bar + 3px extra for spacing
+                    padding-bottom: $baseLineHeight + $g5ModulePadding + 3px;
+
+                    .gqBtn {
+                        // three rules borrowed from bootstrap/_buttons.scss
+                        padding: $paddingSmall;
+                        font-size: $fontSizeSmall;
+                        @include border-radius($borderRadiusSmall);
+                    }
+                }
+            }// &.gqSingle.gqStatus_started.gqHasLevel
+
+            // SINGLE - STARTED - NO LEVEL
+            // SINGLE - ENDED - NO LEVEL
+            &.gqSingle.gqStatus_started.gqNoLevel,
+            &.gqSingle.gqStatus_ended.gqNoLevel {
+                .promotionTitle {
+                    height: auto !important;
+                    // $iconSize is font size of the icon, then take away the top padding of the module and the top margin/padding of this element
+                    height: $iconSize - ($g5ModulePadding / 2) - 6px;
+                    min-height: $iconSize - ($g5ModulePadding / 2) - 6px;
+                }
+
+                .goalItem {
+                }
+                .subTitle {
+                    padding-left: $leftSpace;
+                    text-align: left;
+                }
+                // .subTitle.partner {}
+
+                .statusTxt {
+                    margin-left: $leftSpace; // customize for mod sizes
+                    margin-right: $g5ModulePadding;
+                    font-size: 20px;
+                    line-height: $iconSize;
+
+                    .lt-ie8 & {
+                        .sorryTxt {
+                            margin-top: 20px;
+                        }
+                    }
+                }
+                .levelChooseVisual {
+                    display: inline;
+                    float: left;
+                    margin-left: -$iconSize;
+                    width: $iconSize;
+                    font-size: 76px;
+                    text-align: center;
+                }
+                .visualItem {
+                    margin: 0 0 0 0;
+                    *vertical-align: middle;
+                }
+                .gqBtn {
+                    // outline: 5px solid green;
+                    font-size: 24px;
+                    padding: 8px 18px;
+                    *vertical-align: baseline; // oh ie7 how I love thee!
+                }
+            }// &.gqSingle.gqStatus_started.gqNoLevel
+            &.gqSingle.gqStatus_ended.gqNoLevel {
+            }// &.gqSingle.gqStatus_ended.gqNoLevel
+
+            // SINGLE - ENDED - HAS LEVEL
+            &.gqSingle.gqStatus_ended.gqHasLevel {
+                .promotionTitle {
+                    height: auto !important;
+                    // $iconSize is font size of the icon, then take away the top padding of the module and the top margin/padding of this element
+                    height: $iconSize - ($g5ModulePadding / 2) - 6px;
+                    min-height: $iconSize - ($g5ModulePadding / 2) - 6px;
+                }
+                // .goalItem {}
+                // .subTitle {}
+                // .levelLabel {}
+                // .levelName {}
+                // .levelDesc {}
+                .btnWrap {
+                    // height of the progress bar + space beneath the bar + 3px extra for spacing
+                    padding-bottom: $baseLineHeight + ($g5ModulePadding * 2) + 3px;
+
+                    .gqBtn {
+                        // three rules borrowed from bootstrap/_buttons.scss
+                        padding: $paddingSmall;
+                        font-size: $fontSizeSmall;
+                        @include border-radius($borderRadiusSmall);
+                    }
+                }
+                .progressUnit {
+                    padding-bottom: $g5ModulePadding * 2;
+                }
+                .statusTxt {
+                    padding: 0 0 ($g5ModulePadding / 2) 0;
+                    font-size: 18px;
+                    line-height: $g5ModulePadding;
+                }
+            }// &.gqSingle.gqStatus_ended.gqHasLevel
+
+        }// .module-liner
+    }
+
+    &.grid-dimension-4x2 {
+        .module-liner {
+            $topSpace: 108px - $g5ModulePadding * 1.5; // 1x icon height - module padding (to tighten things up a bit)
+            $leftSpace: 196px;
+            $iconSize: 90px;
+
+            // MULTIPLE
+            &.gqMultiple {
+                [class^="icon-g5-"],
+                [class*=" icon-g5-"] {
+                    top: $icon_1x_top;
+                }
+                @include module_titleIconViewFonticonsSizes(1);
+                @include module_titleIconViewFonticonsSizes(1, 'goalquest', 'goalquest', $imageOnly: true);
+                @include module_titleIconViewFonticonsSizes(1, 'challengepoint', 'challengepoint', $imageOnly: true);
+
+                // customizations for 4x2
+                .goalquestItemsWrapper {
+                    height: $g5ModuleUnit * 2 - $g5ModuleGutter * 2 - $g5ModulePadding * 1.5 - $topSpace;
+
+                    .promotionItem.multiple {
+                        padding: 8px ($g5ModulePadding / 2) 8px ($g5ModulePadding / 2);
+
+                        .promotionTitle {
+                            font-size: 20px;
+                            line-height: 22px;
+                        }
+
+                        .goalItem {
+                            @include clearfix();
+                        }
+
+                        .subTitle {
+                            font-size: 16px;
+
+                            &.partner {
+                                font-size: 14px;
+
+                                .partnerName {
+                                    font-size: 16px;
+                                }
+                            }
+
+                            .levelName {
+                                margin-right: 2px;
+                                font-size: 22px;
+                            }
+                        }
+
+                        .gqBtn {
+                            display: inline;
+                            float: right;
+                            margin: 0 0 0 8px;
+                        }
+
+                        .statusTxt {
+                            display: block;
+                            margin: 6px 0 0 0; // vertical alignment with button to the right
+                        }
+
+                        &.ended {
+                            .gqBtn {
+                                margin-bottom: 6px;
+                            }
+                            .progressUnit {
+                                margin-top: -30px;
+
+                                .lt-ie8 & {
+                                    margin-top: 6px;
+                                }
+                            }
+                            .statusTxt {
+                                clear: both;
+                                margin: 0 -100% 0 0;
+                                width: 100%;
+                                float: left;
+
+                                .lt-ie8 & {
+                                    margin-top: 30px;
+                                }
+                            }
+                            .gqNoLevel {
+                                .statusTxt {
+                                    .lt-ie8 & {
+                                        margin-top: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }// &.gqMultiple .wide-view
+
+            // SINGLE
+            &.gqSingle {
+                [class^="icon-g5-"],
+                [class*=" icon-g5-"] {
+                    top: $icon_2x_top;
+                    left: $icon_2x_left;
+                }
+                @include module_titleIconViewFonticonsSizes(2);
+                @include module_titleIconViewFonticonsSizes(2, 'goalquest', 'goalquest', $imageOnly: true);
+                @include module_titleIconViewFonticonsSizes(2, 'challengepoint', 'challengepoint', $imageOnly: true);
+
+                .promotionItem.single .promotionTitle {
+                    margin: ($g5ModulePadding / 2) 30px 0 $leftSpace;
+                    *padding-top: 6px; //ie7
+                    max-height: $baseLineHeight * 4;
+                    overflow: hidden;
+                    font-size: 32px;
+                    line-height: $baseLineHeight * 2;
+                    text-align: left;
+                }
+
+                .subTitle.partner {
+                    margin-bottom: -4px;
+                    font-size: 14px;
+
+                    .partnerName {
+                        font-size: 20px;
+                    }
+                }
+
+                .levelLabelName {
+                    font-size: $baseFontSize * 2.5;
+                    line-height: $baseLineHeight * 2;
+                    @include text-overflow();
+                }
+                .levelLabel {
+                    font-size: $baseFontSize * 1.5;
+                }
+
+                .progressUnit {
+                    padding: 0 $g5ModulePadding $g5ModulePadding;
+
+                    .asOf {
+                        left: $g5ModulePadding;
+                        font-size: $baseFontSize * 1.25;
+                        line-height: $baseLineHeight;
+                        margin-bottom: 8px;
+                    }
+                }
+
+                .progress {
+                    margin-bottom: 0;
+                }
+            }// .gqSingle
+
+            // SINGLE - NO LEVEL
+            &.gqStatus_open.gqSingle.gqNoLevel {
+                .goalItem {
+                    position: static;
+                    text-align: center;
+                    clear: both;
+                }
+                .subTitle {
+                    text-align: left;
+                    margin: 10px 0 0 $leftSpace;
+                }
+                .gqBtn {
+                    // outline: 5px solid blue;
+                    padding: 16px 28px;
+                    font-size: 34px;
+                }
+                .statusTxt {
+                    font-size: 22px;
+                    line-height: 42px;
+                }
+            }// &.gqStatus_open.gqSingle.gqNoLevel
+
+            // SINGLE - OPEN - HAS LEVEL
+            &.gqSingle.gqStatus_open.gqHasLevel {
+                .goalItem {
+                    text-align: center;
+                }
+                .subTitle {
+                    display: block;
+                    text-align: left;
+                    margin: 10px 0 10px $leftSpace;
+                    overflow: hidden;
+                }
+                .subTitle.partner {
+                    margin-bottom: 10px;
+                }
+                .levelChooseVisual {
+                    display: block;
+                    float: left;
+                    width: $iconSize;
+                    font-size: $iconSize * 0.9;
+                    text-align: center;
+                }
+                .visualItem {
+                }
+                // .levelLabel {}
+                // .levelName {}
+                // .levelDesc {}
+                .btnWrap {
+                    padding-bottom: $g5ModulePadding;
+                }
+                .gqBtn {
+                    // outline: 5px solid purple;
+                    font-size: 24px;
+                    padding: 10px 20px;
+                    *vertical-align: baseline; // oh ie7 how I love thee!
+                }
+            }// &.gqSingle.gqStatus_open.gqHasLevel
+
+            // SINGLE - STARTED - HAS LEVEL
+            &.gqSingle.gqStatus_started.gqHasLevel{
+                .goalItem {
+                    margin: 10px 0 30px $leftSpace;
+                }
+                .visualItem {
+                    margin: 0 20px 0 0;
+                }
+                // .levelLabel {}
+                // .levelName {}
+                // .levelDesc {}
+                .btnWrap {
+                    // height of the progress bar + space beneath the bar + 4px extra for spacing
+                    padding-bottom: $baseLineHeight + $g5ModulePadding + 4px;
+
+                    .gqBtn {
+                        font-size: $baseFontSize * 1.25;
+                    }
+                }
+            }// &.gqSingle.gqStatus_started.gqHasLevel
+
+            // SINGLE - STARTED - NO LEVEL
+            // SINGLE - ENDED - NO LEVEL
+            &.gqSingle.gqStatus_started.gqNoLevel,
+            &.gqSingle.gqStatus_ended.gqNoLevel {
+                .goalItem {
+                    text-align: center;
+                }
+                .subTitle {
+                    margin: 10px 0 10px $leftSpace;
+                    text-align: left;
+                }
+                // .subTitle.partner {}
+                .btnWrap {
+                    padding-bottom: $g5ModulePadding;
+                }
+                .statusTxt {
+                    margin: 0 $g5ModulePadding 0 $leftSpace + $iconSize;
+                    font-size: $baseFontSize * 2;
+                    line-height: $iconSize;
+
+                    .lt-ie8 & {
+                        .sorryTxt {
+                            margin-top: 12px;
+                        }
+                    }
+                }
+                .levelChooseVisual {
+                    display: inline;
+                    float: left;
+                    margin-left: -$iconSize;
+                    width: $iconSize;
+                    font-size: $iconSize * 0.9;
+                    text-align: center;
+                }
+                .visualItem {
+                    *vertical-align: middle;
+                }
+                .gqBtn {
+                    // outline: 5px solid pink;
+                    font-size: 24px;
+                    padding: 8px 18px;
+                    *vertical-align: baseline; // oh ie7 how I love thee!
+                }
+            }// &.gqSingle.gqStatus_started.gqNoLevel
+            &.gqSingle.gqStatus_ended.gqNoLevel {
+            }// &.gqSingle.gqStatus_ended.gqNoLevel
+
+            // SINGLE - ENDED - HAS LEVEL
+            &.gqSingle.gqStatus_ended.gqHasLevel{
+                .goalItem {
+                    margin: 10px 0 30px $leftSpace;
+                }
+                .subTitle.partner {
+                    margin-bottom: -4px;
+                }
+                // .levelLabel {}
+                // .levelName {}
+                // .levelDesc {}
+                .btnWrap {
+                    // height of the progress bar + space beneath the bar + 4px extra for spacing
+                    padding-bottom: $baseLineHeight + ($g5ModulePadding * 3) + 4px;
+
+                    .gqBtn {
+                        font-size: $baseFontSize * 1.25;
+                    }
+                }
+                .progressUnit {
+                    padding-bottom: $g5ModulePadding * 3;
+                }
+                .statusTxt {
+                    padding: 0 0 $g5ModulePadding 0;
+                    font-size: 24px;
+                    line-height: $g5ModulePadding;
+                }
+            }// &.gqSingle.gqStatus_ended.gqHasLevel
+
+        }// .module-liner
+
+    }
+
+    &.grid-dimension-4x4 {
+        .module-liner {
+            $topSpace: 156px; // magic number
+            $iconSize: 120px;
+
+            [class^="icon-g5-"],
+            [class*=" icon-g5-"] {
+                top: $icon_2x_top;
+            }
+            @include module_titleIconViewFonticonsSizes(2);
+            @include module_titleIconViewFonticonsSizes(2, 'goalquest', 'goalquest', $imageOnly: true);
+            @include module_titleIconViewFonticonsSizes(2, 'challengepoint', 'challengepoint', $imageOnly: true);
+
+            // MULTIPLE
+            &.gqMultiple {
+                // customizations for 4x4
+                .goalquestItemsWrapper {
+                    height: $g5ModuleUnit * 4 - $g5ModuleGutter * 2 - $g5ModulePadding * 1.5 - $topSpace;
+
+                    &.multiple {
+                        margin-top: 30px;
+                    }
+
+                    .promotionItem.multiple {
+                        .goalItem {
+                            @include clearfix();
+                        }
+
+                        .subTitle {
+                            font-size: 18px;
+                            line-height: 22px;
+
+                            &.partner {
+                                font-size: 14px;
+
+                                .partnerName {
+                                    font-size: 18px;
+                                }
+                            }
+
+                            .levelName {
+                                margin-right: 4px;
+                                font-size: 24px;
+                            }
+                        }
+
+                        .gqBtn {
+                            display: inline;
+                            float: right;
+                            margin: 0 0 0 8px;
+                        }
+
+                        .statusTxt {
+                            display: block;
+                            margin: 6px 0 0 0; // vertical alignment with button to the right
+                        }
+
+                        &.ended {
+                            .gqBtn {
+                                margin-bottom: 6px;
+                            }
+                            .progressUnit {
+                                margin-top: -30px;
+
+                                .lt-ie8 & {
+                                    margin-top: 6px;
+                                }
+                            }
+                            .statusTxt {
+                                clear: both;
+                                margin: 0 -100% 0 0;
+                                width: 100%;
+                                float: left;
+
+                                .lt-ie8 & {
+                                    margin-top: 30px;
+                                }
+                            }
+                            .gqNoLevel {
+                                .statusTxt {
+                                    .lt-ie8 & {
+                                        margin-top: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }// .promotionItem.multiple
+                }
+            }// &.gqMultiple .wide-view
+
+            // SINGLE
+            &.gqSingle {
+                .goalquestItemsWrapper {
+                    padding-top: $g5ModulePadding / 2 + 12px + $topSpace;
+                }
+
+                .subTitle {
+                    margin-left: $iconSize;
+                    padding-left: 0;
+                }
+
+                .subTitle.partner {
+                    margin-left: 0;
+                    font-size: 16px;
+
+                    .partnerName {
+                        font-size: 22px;
+                    }
+                }
+
+                .levelChooseVisual {
+                    margin-left: -$iconSize;
+                    width: $iconSize;
+                    font-size: $iconSize * 0.9;
+                    text-align: center;
+                }
+
+                .btnWrap {
+                    padding: 0 ($g5ModulePadding * 2) ($g5ModulePadding * 2);
+                }
+
+                .progress {
+                    margin-bottom: 0;
+                    height: $baseLineHeight * 2;
+                    @if $goalquest_progressBarBorderRadius and $goalquest_progressBarBorderRadius > 0 {
+                        @include border-radius($goalquest_progressBarBorderRadius * 2);
+                    }
+
+                    .bar {
+                        font-size: 24px; // doubling the 12px hardcoded in bootstrap/_progress-bars.scss
+                        line-height: $baseLineHeight * 2;
+                    }
+                }
+
+                .progressUnit {
+                    padding: 0 ($g5ModulePadding * 2) ($g5ModulePadding * 2);
+
+                    .asOf {
+                        left: $g5ModulePadding * 2;
+                        font-size: $baseFontSize * 1.75;
+                        line-height: $baseLineHeight * 2;
+                        margin-bottom: 6px;
+                    }
+                }
+            }// .gqSingle
+
+            // SINGLE - OPEN - HAS LEVEL
+            &.gqSingle.gqStatus_open.gqHasLevel {
+                .goalItem {
+                    position: static;
+                    text-align: center;
+                }
+                // .visualItem {}
+                .gqBtn {
+                    // outline: 5px solid lime;
+                    font-size: 34px;
+                    padding: 16px 28px;
+                    *vertical-align: baseline; // oh ie7 how I love thee!
+                }
+                .statusTxt {
+
+                }
+            }// &.gqSingle.gqStatus_open.gqHasLevel
+
+            // SINGLE - STARTED - HAS LEVEL
+            &.gqSingle.gqStatus_started.gqHasLevel{
+                .goalItem {
+                    margin: $baseLineHeight 0 0 $g5ModulePadding;
+                }
+                .subTitle {
+                    margin-left: 0;
+                }
+                // .visualItem {}
+                // .levelLabel {}
+                // .levelName {}
+                // .levelDesc {}
+                .btnWrap {
+                    // height of the progress bar + space beneath the bar + 6px extra for spacing
+                    padding-bottom: ($baseLineHeight * 2) + ($g5ModulePadding * 2) + 6px;
+
+                    .gqBtn {
+                        // three rules borrowed from bootstrap/_buttons.scss
+                        padding: $paddingLarge;
+                        font-size: $baseFontSize * 1.75;
+                        @include border-radius($borderRadiusLarge);
+                    }
+                }
+            }// &.gqSingle.gqStatus_started.gqHasLevel
+
+            // SINGLE - STARTED - NO LEVEL
+            // SINGLE - ENDED - NO LEVEL
+            &.gqSingle.gqStatus_started.gqNoLevel,
+            &.gqSingle.gqStatus_ended.gqNoLevel {
+                .promotionTitle {
+                    margin-top: 5px; // there is a very strange bug when a promo has ended and no level has been selected: this text gets cut off at the top. No clue why.
+                }
+                .goalItem {
+                    text-align: center;
+                }
+                .statusTxt {
+                    top: 340px; // customize this for module sizes
+                    margin-left: $iconSize + $g5ModulePadding; // customize for mod sizes
+                    margin-right: ($g5ModulePadding * 2);
+                    font-size: $baseFontSize * 3;
+                    line-height: $iconSize;
+                    overflow: visible;
+                    *left: 0;
+                }
+                .levelChooseVisual {
+                    display: inline;
+                    float: left;
+                    margin-left: -$iconSize;
+                    width: $iconSize;
+                    font-size: $iconSize * 0.9;
+                    text-align: center;
+                }
+                // .visualItem {}
+                .gqBtn {
+                    // outline: 5px solid indigo;
+                    font-size: 34px;
+                    padding: 16px 28px;
+                    *vertical-align: baseline; // oh ie7 how I love thee!
+                }
+            }// &.gqSingle.gqStatus_started.gqNoLevel
+
+            // SINGLE - ENDED - HAS LEVEL
+            &.gqSingle.gqStatus_ended.gqHasLevel{
+                .goalItem {
+                    margin: $baseLineHeight $g5ModulePadding 0 $g5ModulePadding;
+                }
+                .subTitle.partner {
+                    font-size: 16px;
+
+                    .partnerName {
+                        font-size: 22px;
+                    }
+                }
+                // .levelLabel {}
+                // .levelName {}
+                // .levelDesc {}
+                .btnWrap {
+                    // height of the progress bar + space beneath the bar + 6px extra for spacing
+                    padding-bottom: ($baseLineHeight * 2) + ($g5ModulePadding * 3) + 6px;
+
+                    .gqBtn {
+                        // three rules borrowed from bootstrap/_buttons.scss
+                        padding: $paddingLarge;
+                        font-size: $baseFontSize * 1.75;
+                        @include border-radius($borderRadiusLarge);
+                    }
+                }
+                .progressUnit {
+                    padding-bottom: $g5ModulePadding * 3;
+                }
+                .statusTxt {
+                    padding: 0 0 $g5ModulePadding 0;
+                    font-size: 24px;
+                    line-height: $g5ModulePadding;
+                }
+            }// &.gqSingle.gqStatus_ended.gqHasLevel
+        }
+    }
+
+} /* /.module.goalquest,.module.challengepoint */
+
+
+
+
+/* managerModule styles */
+.module.goalquest.goalquestManager,
+.module.goalquest.challengepointManager {
+    .wide-view { text-align: center; }
+
+    // useful measurements for positioning icons
+    // these are all magic numbers
+    // repeated above in the regular module section (update both spots if these change)
+    $icon_1x_top: 54px;
+    $icon_1x_left: 54px;
+    $icon_2x_top: 92px;
+    $icon_2x_left: 108px;
+
+    .wide-view {
+        font-family: $goalquest_wideTitleFontFamily;
+
+        h3 {
+            display: none;
+        }
+    }
+    .btnWrap {
+        text-align: center;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 60px;
+    }
+    .btn {
+        font-size: 34px;
+        padding: 16px 28px;
+        *vertical-align: baseline; // oh ie7 how I love thee!
+    }
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        .title-icon-view {
+            h3 {
+                display: block;
+            }
+        }
+    }
+
+    &.grid-dimension-2x2 {
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            top: $icon_1x_top + $g5ModulePadding;
+        }
+
+        h3 {
+            top: $icon_1x_top * 2 + $g5ModulePadding;
+        }
+        .btnWrap {
+            bottom: 30px;
+        }
+        .btn {
+            font-size: 26px;
+            padding: 11px 20px;
+        }
+    }
+
+    &.grid-dimension-4x2 {
+        $leftSpace: 196px;
+
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            top: $icon_2x_top;
+            left: $icon_2x_left;
+        }
+
+        h3 {
+            top: 60px;
+            margin: 0 0 0 $leftSpace;
+            text-align: left;
+        }
+    }
+
+    &.grid-dimension-4x4 {
+        .module-liner {
+            @include module_titleIconViewFonticonsSizes(4);
+            @include module_titleIconViewFonticonsSizes(4, 'goalquest', 'goalquest', $imageOnly: true);
+            @include module_titleIconViewFonticonsSizes(4, 'challengepoint', 'challengepoint', $imageOnly: true);
+        }
+        [class^="icon-g5-"],
+        [class*=" icon-g5-"] {
+            top: 33%;
+        }
+        h3 {
+            top: 60%;
+        }
+        .btnWrap {
+            bottom: 48px;
+        }
+    }
+
+} /* /.module.goalquest.goalquestManager/challengepointManager */
+
+
+/* ----- LIST PAGE STYLES ----- */
+#goalquestPageListView {
+    .spin {
+        display: block;
+        margin: 0 auto;
+        width: $spinner_widthHeight;
+        height: $spinner_widthHeight;
+    }
+    .promotionItem {
+        margin: 0 (-1 * $baseLineHeight / 2);
+        padding: $baseLineHeight / 2;
+        background: $goalquest_pageMultiItemBgColor;
+        margin-bottom: $baseLineHeight / 2;
+        overflow: hidden;
+    }
+    .promotionTitle {
+        margin: 0;
+        line-height: $baseLineHeight * 1.5;
+    }
+    .goalItem {
+        position: relative;
+        margin-top: $baseLineHeight / 2;
+        @include clearfix();
+        // overflow: hidden;
+    }
+    .goalItem ~ .goalItem {
+        margin-top: $baseLineHeight;
+    }
+
+    .gqBtn {
+        display: inline;
+        float: right;
+        margin: 0 0 0 8px;
+    }
+
+    .subTitle {
+        display: block;
+        margin-bottom: 0;
+        // overflow: hidden;
+
+        .levelChooseVisual {
+            float: left;
+            display: none;
+            margin-right: 3px;
+            margin-top: ($baseLineHeight / 4);
+
+            .levelChosen {
+                color: $goalquest_levelChosenIconColor;
+            }
+            .noLevel {
+                color: $goalquest_levelOpenIconColor;
+            }
+        }
+        .levelLabelName {
+            display: block;
+            margin: ($baseLineHeight / 4) 0;
+        }
+        .levelLabel {
+            font-size: .9em;
+        }
+        .levelName {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .levelDesc {
+            display: block;
+        }
+    }
+
+    .subTitle.partner {
+        .partnerName {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+    }
+    .promotionItem.open .levelChooseVisual {
+        display: inline;
+    }
+    .progressUnit {
+        display: inline;
+        float: left;
+        overflow: hidden;
+
+        .asOf {
+            display: inline-block;
+            @include ie7-inline-block();
+            margin-right: 4px;
+            margin-bottom: 0;
+            font-size: 90%;
+        }
+        .progress {
+            display: inline-block;
+            @include ie7-inline-block();
+            margin-bottom: 0;
+            width: 400px;
+            vertical-align: top;
+
+            @media (max-width: 979px) {
+                width: 200px;
+            }
+        }
+    }
+
+    .gqBtn2x2 {
+        display: none;
+    }
+    .statusTxt {
+        display: block;
+        margin: 6px 0 0 0; // vertical alignment with button to the right
+
+        .levelOpen { color: $goalquest_levelOpenIconColor; }
+    }
+
+    .open {
+        .subTitle {
+            float: left;
+            clear: left;
+        }
+        .lt-ie8 & {
+            .partner {
+                float: none;
+            }
+            .gqNoLevel .partner {
+                float: left;
+            }
+        }
+        .statusTxt {
+            clear: left;
+        }
+    }
+
+    .ended {
+        .gqBtn {
+            margin-bottom: 6px;
+        }
+        .progressUnit {
+            margin-top: -30px;
+
+            .lt-ie8 & {
+                margin-top: 6px;
+            }
+        }
+        .statusTxt {
+            clear: both;
+            margin: 0 -100% 0 0;
+            width: 100%;
+            float: left;
+
+            .lt-ie8 & {
+                margin-top: 30px;
+            }
+        }
+        .gqNoLevel {
+            .statusTxt {
+                .lt-ie8 & {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+
+
+    @media (max-width: 479px) {
+        .subTitle {
+            display: block;
+            float: none !important;
+            clear: both !important;
+        }
+        .gqBtn {
+            display: block;
+            float: none;
+            clear: both;
+            margin: 60px 0 0 0;
+        }
+        .open .gqBtn,
+        .gqNoLevel .gqBtn {
+            margin-top: 10px;
+        }
+        .progressUnit {
+            margin-top: -85px !important;
+            width: 100%;
+
+            .asOf {
+                display: block;
+            }
+            .progress {
+                display: block;
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+
+
+/* ----- RULES PAGE STYLES ----- */
+#goalquestPageRulesView {
+    .dl-horizontal dt {
+        text-align: left;
+    }
+}
+
+
+
+
+
+/* ----- EDIT PAGE STYLES ----- */
+#goalquestPageEditView {
+
+    .wizardTabsView {
+        margin-top: $baseLineHeight;
+    }
+
+    .gqEditForm {
+        margin-bottom: 0;
+    }
+
+    .stepContent {
+        margin-top: 30px;
+        // min-height: 350px;
+    }
+
+    .stepContent .stepContentControls {
+        margin-top: ($baseLineHeight * 2);
+    }
+
+
+    // .stepGoalContent styles
+    .stepGoalContent h4 {
+        margin-bottom: 2px;
+    }
+    .stepGoalContent h4:first-child {
+        margin-top: 0;
+    }
+    .stepGoalContent dl {
+        margin: 0;
+    }
+
+
+    .goalDesc {
+        margin: 0 0 0 0;
+    }
+    .selectBy {
+        font-size: .9em;
+        font-weight: bold;
+        color: $gray;
+    }
+
+    .levelsWrapper {
+        position: relative; // pay heed, absolute pos qtip within
+        *min-height: 400px; //ie7 position issue with qtip
+    }
+    .levelItem {
+        clear: both;
+        padding: 12px 12px 12px 35px;
+        margin-bottom: 8px;
+    }
+    .levelItem:hover {
+        background: mix($goalquest_pageActiveLevelBg, #fff);
+    }
+    .levelItem.active,
+    .levelItem.active:hover {
+        background: $goalquest_pageActiveLevelBg;
+    }
+    .levelItem.active.isNarrow.isSelectable {
+        margin-bottom: 100px; // room for empty selected item qtip
+    }
+    .levelItem.active.isNarrow.isSelectable.isSelected {
+        margin-bottom: 150px; // room selected item qtip
+    }
+
+    .levelName {
+        margin-bottom: 0;
+    }
+
+    .levelDesc {
+    }
+
+    .levelDeets {
+        @include clearfix();
+
+        .deetLabels {
+            float: left;
+            padding: 0 8px 0 0;
+            font-size: .9em;
+            font-weight: bold;
+            span { display: block; }
+        }
+        .deetValues {
+            span { display: block; }
+            .wideValue, .awardBtn { display: inline; }
+        }
+    }
+
+    .partnerSearchSlidingWrapper {
+        margin-top: 20px;
+    }
+
+    .submitPartners {
+
+    }
+
+    .submitPlateauAwardImageContent {
+        float: left;
+        text-align: center;
+        .paTitle {
+            font-weight: bold;
+        }
+    }
+
+    .dl-horizontal dt {
+        text-align: left;
+    }
+}
+
+// this qtip contains .selectedPlateauAward
+.selectedPlateauAwardQTip {
+    max-width: 380px;
+    // inside a qtip
+    .selectedPlateauAward {
+        text-align: center;
+        padding: 20px 20px 10px 20px;
+        width: 280px; //ie8
+        img {width: 280px; height: 280px;}
+        .noAwardContent {
+            display: none;
+            font-size: 14px;
+            i {
+                font-size: 35px;
+                color: $grayLight;
+            }
+        }
+        &.noAward .noAwardContent {
+            display: block;
+        }
+        &.noAward .hasAwardContent {
+            display: none;
+        }
+        h5 {
+            margin-bottom: 0;
+        }
+        &.isNarrow {
+            padding: 4px 0 0 0;
+            width: 200px; // ie8
+            max-width: 200px;
+            img {width:100px;height:100px;}
+            h5 {font-size: 12px; line-height: 14px; margin-top: 4px;}
+        }
+        }
+    }
+
+// this qtip contains .nextBtnTip
+.gqNextBtnQTip {
+    max-width: 180px;
+    .nextBtnTip {
+        .nextBtnMsg {
+            display: none;
+            i {
+                font-size: 18px;
+                float: left;
+                padding: 0 4px 0 0;
+            }
+    }
+}
+}
+
+
+
+/* ----- DETAIL PAGE STYLES ----- */
+#goalquestPageDetailView {
+    .rulesLinkWrapper {
+        position: relative;
+    }
+    .rulesLinkWrapper + .row h3 {
+        margin-top: -1 * $baseLineHeight;
+    }
+
+    @media (min-width: 768px) {
+        .cpProgramWrapper .dl-horizontal dt,
+        .gqDescWrapper .dl-horizontal dt {
+            margin-bottom: 10px;
+            width: 20%; // room for long titles
+            white-space: normal;
+        }
+        .cpProgramWrapper .dl-horizontal dd,
+        .gqDescWrapper .dl-horizontal dd {
+            float: left;
+            margin: 0 0 10px 10px;
+            width: 20%
+        }
+    }
+
+    .partnerTitle {
+        margin-top: -1 * $baseLineHeight / 2;
+        font-size: $baseFontSize;
+
+        .partnerName {
+            font-size: $baseFontSize * 1.25;
+        }
+    }
+
+    .gqProgressAsOf {
+        font-size: .9em;
+        margin-bottom: 2px;
+    }
+    .statusTxt {
+        font-weight: bold;
+
+        &.noGoalSel {
+            font-size: 24px;
+            line-height: normal;
+            margin-bottom: 20px;
+
+            .sorry {
+                display: block;
+                font-size: 1.2em;
+                line-height: normal;
+                margin-bottom: 8px;
+            }
+            .levelOpen {
+                color: $goalquest_levelOpenIconColor;
+            }
+        }
+        &.notAchieved {
+
+        }
+        &.achieved {
+
+        }
+    }
+    .gqPlateauAward {
+        text-align: center;
+        .paTitle {
+            font-weight: bold;
+            margin-top: 6px;
+        }
+    }
+}
+/*.lt-ie9 #goalquestPageDetailView {
+    .cpProgramWrapper .dl-horizontal dt {
+        width: 250px; // room for long titles
+    }
+    .cpProgramWrapper .dl-horizontal dd {
+        margin-left: 270px; // room for long titles
+    }
+}*/
+
+
+/* ----- AUTO MODAL STYLES ----- */
+.autoModalGoalquest {
+    .dl-horizontal dt {
+        text-align: left;
+    }
+}

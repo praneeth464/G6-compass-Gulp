@@ -1,0 +1,214 @@
+{
+  "messages": [],
+  "report": {
+    "id": "1",
+    "reportDisplayName": "Login Activity",
+    "parameterGroups": [
+      {
+        "name": "Basics",
+        "fields": [
+          {
+            "type": "datePicker",
+            "label": "between",
+            "id": "fromDate",
+            "name": "fromDate",
+            "value": "01/01/2012"
+          },
+          {
+            "type": "datePicker",
+            "label": "and",
+            "id": "toDate",
+            "name": "toDate",
+            "value": "08/02/2012"
+          }
+        ]
+      }
+    ],
+    "tabularData": [
+      {
+        "meta": {
+          "columns": [
+            {
+              "id": "1",
+              "name": "Organization",
+              "description": "",
+              "type": "string",
+              "alignment": "",
+              "nameId": "",
+              "sortable": true,
+              "sortUrl": "/beacon2/reports/loginActivityReport.do?reportName=loginactivity&method=showReport",
+              "summary": "Total"
+            },
+            {
+              "id": "2",
+              "name": "Organization drill-down URL",
+              "description": "",
+              "type": "URL",
+              "alignment": "",
+              "nameId": "",
+              "sortable": false,
+              "sortUrl": "",
+              "summary": ""
+            },
+            {
+              "id": "3",
+              "name": "Eligible Participants",
+              "description": "",
+              "type": "number",
+              "alignment": "",
+              "nameId": "",
+              "sortable": false,
+              "sortUrl": "",
+              "summary": "9"
+            },
+            {
+              "id": "4",
+              "name": "Have Logged In",
+              "description": "",
+              "type": "number",
+              "alignment": "",
+              "nameId": "",
+              "sortable": false,
+              "sortUrl": "",
+              "summary": "0"
+            },
+            {
+              "id": "5",
+              "name": "Have Logged In %",
+              "description": "",
+              "type": "number",
+              "alignment": "",
+              "nameId": "",
+              "sortable": false,
+              "sortUrl": "",
+              "summary": "0"
+            },
+            {
+              "id": "6",
+              "name": "Have Not Logged In",
+              "description": "",
+              "type": "number",
+              "alignment": "",
+              "nameId": "",
+              "sortable": false,
+              "sortUrl": "",
+              "summary": "9"
+            },
+            {
+              "id": "7",
+              "name": "Have Not Logged In %",
+              "description": "",
+              "type": "number",
+              "alignment": "",
+              "nameId": "",
+              "sortable": false,
+              "sortUrl": "",
+              "summary": "100"
+            },
+            {
+              "id": "8",
+              "name": "Total Visits",
+              "description": "",
+              "type": "number",
+              "alignment": "",
+              "nameId": "total",
+              "sortable": false,
+              "sortUrl": "",
+              "summary": "0"
+            }
+          ],
+          "sortedOn": "Organization",
+          "sortedBy": "asc",
+          "maxRows": 3
+        },
+        "results": [
+          {
+            "Organization": "Texas",
+            "url": "http://sedey2-dv.biperf.com:7001/beacon2/reports/drillDownReport.do?reportName=loginactivitytoplevel&nodeId=5008",
+            "Eligible Participants": "3",
+            "Have Logged In": "0",
+            "Have Logged In %": "0",
+            "Have Not Logged In": "3",
+            "Have Not Logged In %": "100",
+            "Total Visits": "0"
+          },
+          {
+            "Organization": "Florida",
+            "url": "http://sedey2-dv.biperf.com:7001/beacon2/reports/drillDownReport.do?reportName=loginactivitytoplevel&nodeId=5009",
+            "Eligible Participants": "3",
+            "Have Logged In": "0",
+            "Have Logged In %": "0",
+            "Have Not Logged In": "3",
+            "Have Not Logged In %": "100",
+            "Total Visits": "0"
+          },
+          {
+            "Organization": "Georgia",
+            "url": "http://sedey2-dv.biperf.com:7001/beacon2/reports/drillDownReport.do?reportName=loginactivitytoplevel&nodeId=5011",
+            "Eligible Participants": "3",
+            "Have Logged In": "0",
+            "Have Logged In %": "0",
+            "Have Not Logged In": "3",
+            "Have Not Logged In %": "100",
+            "Total Visits": "0"
+          }
+        ]
+      }
+    ],
+    "chartSet": [
+      {
+        "displayName": "Total Login Activity by Month",
+        "category": "Login Activity",
+        "chartType": "Column3D",
+        "dataUrl": "http://sedey2-dv.biperf.com:7001/beacon2/reports/loginActivityBarchartReport.do?reportName=loginactivity",
+        "fusionChartsParameters": {
+          "caption": "Monthly Login Activity",
+          "subcaption": "For Organization, Monthly",
+          "xAxisName": "Month",
+          "yAxisName": "Logins"
+        },
+        "pdfUrl": "/beacon2/loginActivityBarchartReport.do?reportName=loginactivity&pdf=1"
+      },
+      {
+        "displayName": "Unique Login Activity by Timeframe",
+        "category": "Login Activity",
+        "chartType": "Column3D",
+        "dataUrl": "http://sedey2-dv.biperf.com:7001/beacon2/reports/loginActivityByTimeBarchartReport.do?reportName=loginactivitybytime",
+        "fusionChartsParameters": {
+          "caption": "Unique Login Activity",
+          "subcaption": "For Organization, Monthly",
+          "xAxisName": "Logged In",
+          "yAxisName": "Not Logged In"
+        },
+        "pdfUrl": "/beacon2/loginActivityByTimeBarchartReport.do?reportName=loginactivitybytime&pdf=1"
+      },
+      {
+        "displayName": "Organization Login Activity",
+        "category": "Login Activity",
+        "chartType": "Column3D",
+        "dataUrl": "http://sedey2-dv.biperf.com:7001/beacon2/reports/loginActivityByOrganizationBarchartReport.do?reportName=loginactivitybyorganization",
+        "fusionChartsParameters": {
+          "caption": "Login Activity by Organization",
+          "subcaption": "For Organization",
+          "xAxisName": "Organization",
+          "yAxisName": "Logins"
+        },
+        "pdfUrl": "/beacon2/loginActivityByOrganizationBarchartReport.do?reportName=loginactivitybyorganization&pdf=1"
+      },
+      {
+        "displayName": "Organization Login %",
+        "category": "Login Activity",
+        "chartType": "StackedColumn3D",
+        "dataUrl": "http://sedey2-dv.biperf.com:7001/beacon2/reports/loginActivityPercentageBarchartReport.do?reportName=loginactivitypercentage",
+        "fusionChartsParameters": {
+          "caption": "Organization Login %",
+          "subcaption": "",
+          "xAxisName": "Logins",
+          "yAxisName": "Organization",
+          "showlegend": "1"
+        },
+        "pdfUrl": "/beacon2/reports/loginActivityPercentageBarchartReport.do?reportName=loginactivitypercentage&pdf=1"
+      }
+    ]
+  }
+}

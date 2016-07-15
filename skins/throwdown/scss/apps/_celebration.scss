@@ -1,0 +1,187 @@
+// App-specific variables (uncomment to use)
+// =========================
+
+// Main Celebration Styles
+// ------------------------
+// $celebration_bgColor: ;
+// $celebration_gradType: ;
+// $celebration_gradMeta: ;
+// $celebration_gradStops: ;
+
+// $celebration_bgImg: ;
+// $celebration_bgImgUrlPath: ; // uses $appImagesPath by default. change to "false" or some other path to use the skin img folder
+// $celebration_bgImgPosition: ;
+// $celebration_bgImgRepeat: ;
+// $celebration_bgImgSize: ;
+// $celebration_bgImgAttachment: ;
+
+// $celebration_iconColor: ;
+// $celebration_tileColor: ;
+// $celebration_tileGradType: ;
+// $celebration_tileGradMeta: ;
+// $celebration_tileGradStops: ;
+// $celebration_titleFontSizes: ;
+// $celebration_titleFontSizes: ;
+
+// $celebration_linkColor: ;
+// $celebration_linkHoverColor: ;
+// $celebration_primaryFontFamily: ;
+
+// $celebrationMainTile_congratsMsgColor: ;
+// $celebrationMainTile_congratsNameColor: ;
+// $celebrationMainTile_largeMsgColor: ;
+
+
+// Anniversary Facts Module
+// ------------------------
+// $celebrationAnniversaryFacts_bgColor: ;
+// $celebrationAnniversaryFacts_gradType: ;
+// $celebrationAnniversaryFacts_gradMeta: ;
+// $celebrationAnniversaryFacts_gradStops: ;
+
+// $celebrationAnniversaryFacts_yearTitleColor: ;
+// $celebrationAnniversaryFacts_yearBgColor: ;
+// $celebrationAnniversaryFacts_yearTextColor: ;
+
+
+// Browse Awards Module
+// ------------------------
+// $celebrationBrowseAwards_bgColor: ;
+// $celebrationBrowseAwards_gradType: ;
+// $celebrationBrowseAwards_gradMeta: ;
+// $celebrationBrowseAwards_gradStops: ;
+
+// $celebrationBrowseAwards_linkColor: ;
+// $celebrationBrowseAwards_linkHoverColor: ;
+
+// $celebrationBrowseAwards_headerBgColor: ;
+// $celebrationBrowseAwards_headerFontColor: ;
+// $celebrationBrowseAwards_footerBgColor: ;
+
+// $celebrationBrowseAwards_carouselControlColor: ;
+
+
+// Choose Award Module
+// ------------------------
+// $celebrationChooseAward_bgColor: ;
+// $celebrationChooseAward_gradType: ;
+// $celebrationChooseAward_gradMeta: ;
+// $celebrationChooseAward_gradStops: ;
+// $celebrationChooseAward_ImgUrlPath: ; // uses $appImagesPath by default. change to "false" or some other path to use the skin img folder
+// $celebrationChooseAward_ImgUrl2x2: ;
+
+// $celebrationChooseAward_fontColor: ;
+// $celebrationChooseAward_numberColor: ;
+
+
+// Company Timeline Module
+// ------------------------
+// $celebrationCompanyTimeline_bgColor: ;
+// $celebrationCompanyTimeline_gradType: ;
+// $celebrationCompanyTimeline_gradMeta: ;
+// $celebrationCompanyTimeline_gradStops: ;
+
+// $celebrationCompanyTimeline_linkColor: ;
+// $celebrationCompanyTimeline_linkHoverColor: ;
+
+// $celebrationCompanyTimeline_captionBgColor: ;
+// $celebrationCompanyTimeline_captionTextColor: ;
+// $celebrationCompanyTimeline_yearBgColor: ;
+// $celebrationCompanyTimeline_yearTextColor: ;
+// $celebrationCompanyTimeline_yearFontFamily: ;
+
+// $celebrationCompanyTimeline_arrowColor: ;
+
+
+// Congrats Module
+// ------------------------
+// $celebrationCongrats_bgColor: ;
+// $celebrationCongrats_gradType: ;
+// $celebrationCongrats_gradMeta: ;
+// $celebrationCongrats_gradStops: ;
+// $celebrationCongrats_ImgUrlPath: ; // uses $appImagesPath by default. change to "false" or some other path to use the skin img folder
+// $celebrationCongrats_ImgUrl4x2: ; // congrats bg should be split to 2 images one for this tile and second for ecard tile. Image should appear seamless.
+
+// $celebrationCongrats_fontColor: ;
+// $celebrationCongrats_nameFontColor: ;
+
+
+// Corporate Video Module
+// ------------------------
+// $celebrationCorporateVideo_bgImg: ;
+// $celebrationCorporateVideo_bgImgPath: ; // uses $appImagesPath by default. change to "false" or some other path to use the skin img folder
+// $celebrationCorporateVideo_bgImgRepeat: ;
+
+// $celebrationCorporateVideo_playBtnColor: ;
+// $celebrationCorporateVideo_playBtnBg: ;
+// $celebrationCorporateVideo_closeBtnColor: ;
+
+
+// Ecard
+// ------------------------
+// $celebrationEcard_bgColor: ;
+// $celebrationEcard_gradType: ;
+// $celebrationEcard_gradMeta: ;
+// $celebrationEcard_gradStops: ;
+// $celebrationEcard_ImgUrl2x2: ;
+// $celebrationEcard_ImgUrlPath: ; // uses $appImagesPath by default. change to "false" or some other path to use the skin img folder
+
+
+// Image Filler
+// ------------------------
+// $celebrationImageFiller_numberBgImgUrl: ;
+// $celebrationImageFiller_numberBgImgUrlPath: ; // uses $appImagesPath by default. change to "false" or some other path to use the skin img folder
+// $celebrationImageFiller_numberFontFullString: ; // font-style font-variant font-weight font-size[req]/line-height font-family[req]
+
+
+// Manager Message Module
+// ------------------------
+// $celebrationManagerMessage_bgColor: ;
+// $celebrationManagerMessage_gradType: ;
+// $celebrationManagerMessage_gradMeta: ;
+// $celebrationManagerMessage_gradStops: ;
+// $celebrationManagerMessage_bgNoGrad: ;
+
+// $celebrationManagerMessage_linkColor: ;
+// $celebrationManagerMessage_linkHoverColor: ;
+$celebrationManagerMessage_commentTitleLargeColor: $white;
+$celebrationManagerMessage_commentTitleSmallColor: $white;
+$celebrationManagerMessage_commentTextColor: $white;
+$celebrationManagerMessage_commenterMetaColor: $white;
+
+// $celebrationManagerMessage_cycleDotColor: ;
+// $celebrationManagerMessage_cycleDotSelectedColor: ;
+// $celebrationManagerMessage_cycleDotTextColor: ;
+// $celebrationManagerMessage_cycleDotSelectedTextColor: ;
+
+
+// Recognition PURL Module
+// ------------------------
+// $celebrationRecognitionPurl_bgColor: ;
+// $celebrationRecognitionPurl_gradType: ;
+// $celebrationRecognitionPurl_gradMeta: ;
+// $celebrationRecognitionPurl_gradStops: ;
+
+// $celebrationRecognitionPurl_headerLinkColor: ;
+// $celebrationRecognitionPurl_headerLinkHoverColor: ;
+// $celebrationRecognitionPurl_headlineColor: ;
+
+// $celebrationRecognitionPurl_commentBg: ;
+// $celebrationRecognitionPurl_commenterNameColor: ;
+// $celebrationRecognitionPurl_commenterTextColor: ;
+// $celebrationRecognitionPurl_commentLinkColor: ;
+// $celebrationRecognitionPurl_commentLinkHoverColor: ;
+
+
+// App SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "celebration/scss/celebration";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// App-specific code for this skin
+// ==================================================

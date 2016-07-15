@@ -1,0 +1,32 @@
+// Partial-specific variables (uncomment to use)
+// =========================
+// $tables_stripedBordered_theadTextColor: ;
+// $tables_stripedBordered_theadBgColor: ;
+// $tables_stripedBordered_theadSortControlColor: ;
+// $tables_stripedBordered_theadSortedTextColor: ;
+// $tables_stripedBordered_theadSortedBgColor: ;
+// $tables_stripedBordered_theadSortedSortControlColor: ;
+
+// $tables_stripedBordered_tfootFontWeight: ;
+// $tables_stripedBordered_tfootTextColor: ;
+// $tables_stripedBordered_tfootBgColor: ;
+
+// $tables_bordered_borderRadius: ;
+
+// $tables_striped_sortedColumnBgColorAdjustment: ;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "partials/tables";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// Partial-specific code for this skin
+// ==================================================

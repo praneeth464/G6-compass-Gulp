@@ -1,0 +1,14 @@
+<?php sleep(1); ?>
+
+{
+    "messages": [
+    <?php // error example
+        // {
+        //     "type":"error",
+        //     "code":"validationError",
+        //     "name":"Something something",
+        //     "text":"Some problems were encountered."
+        // }
+    ?>
+    ]
+}

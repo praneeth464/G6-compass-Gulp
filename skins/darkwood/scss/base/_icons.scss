@@ -1,0 +1,30 @@
+// Partial-specific variables (uncomment to use)
+// =========================
+// $icons_socialIconWidthHeight: ;
+// $icons_socialIconWidthHeightSmall: ;
+
+$icons_socialIconImgPath: $appImagesPath; // setting this to $appImagesPath points at core/base/img. Leave blank to use images in this skin
+// $icons_socialIconChatter: ;
+// $icons_socialIconChatterSmall: ;
+// $icons_socialIconFacebook: ;
+// $icons_socialIconFacebookSmall: ;
+// $icons_socialIconLinkedin: ;
+// $icons_socialIconLinkedinSmall: ;
+// $icons_socialIconTwitter: ;
+// $icons_socialIconTwitterSmall: ;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "partials/icons";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// Partial-specific code for this skin
+// ==================================================

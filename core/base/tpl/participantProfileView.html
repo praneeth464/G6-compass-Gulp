@@ -1,0 +1,151 @@
+
+
+<button class="btn btn-inverse btn-mini" id="participantProfileMobileToggle" data-toggle="button">
+    <i class="icon-plus"></i><i class="icon-minus"></i>
+</button>
+
+{{#if avatarUrl}}
+    <a class="profile-pic-wrapper"
+        {{#unless isDelegate}}
+            href="layout.html?tpl=profilePage&amp;tplPath=apps/profile/tpl/"
+        {{/unless}}>
+        <img class="profile-pic avatar" src="{{avatarUrl}}" />
+    </a>
+{{/if}}
+
+<div class="profile-meta">
+
+    <div class="profile-head">
+        {{#if isDelegate}}
+        <span class="profile-before-delegator-name">
+            Acting as
+        </span>
+        <span class="profile-name">{{firstName}} {{lastName}}</span>
+        {{else}}
+        <a href="layout.html?tpl=profilePage&amp;tplPath=apps/profile/tpl/">
+            <span class="profile-name">{{firstName}} {{lastName}}</span>
+        </a>
+        {{/if}}
+    </div>
+
+    <div class="profile-body">
+        {{#if showPoints}}
+            <span class="profile-points">
+                {{#if points}}
+                    {{formatNumber points}}{{else}}&nbsp;
+                {{/if}}
+            </span>
+            <span class="profile-points-label">
+                Points
+            </span>
+        {{/if}}
+
+        {{#if isDelegate}}
+            <a class="profile-switch-back" href="layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html">
+                Switch to {{delegateFirstName}} {{delegateLastName}}
+            </a>
+        {{/if}}
+    </div>
+
+    <div class="profile-foot">
+        {{#if largeAudience}}
+            <!--
+            This href will need to be changed -->
+            <a href="layout.html?tplPath=base/tpl/&amp;tpl=participantAdvancedSearchPage.html" class="profile-gps-trigger"><i class="icon-search"></i>Find Others</a>
+        {{else}}
+            <a href="#" class="profile-gps-trigger"><i class="icon-search"></i>Find Others</a>
+        {{/if}}
+
+        {{#if delegators}}
+        	{{#if isDelegate}}
+					<a href="#" class="profile-act-as-delegate"><i class="icon-group"></i>Change Delegate</a>
+				 {{else}}
+                	<a href="#" class="profile-act-as-delegate"><i class="icon-group"></i>Act as Delegate</a>
+			{{/if}}
+            <div class="profile-delegators" style="display:none">
+                <!--
+                    Java: if the 'act as delegate' URL is insufficient
+                    for your needs, please let me know. (Aaron Stricker)
+                -->
+                {{#delegators}}
+                <a data-delegator-id="{{id}}"
+                    {{#unless active}}href="${pageContext.request.contextPath}{{delegatorUrl}}"{{/unless}}
+                    class="{{#if active}} active {{/if}}" >
+                    {{firstName}} {{lastName}}
+                </a>
+                {{/delegators}}
+            </div>
+        {{/if}}
+
+        {{#unless isDelegate}}
+        <a href="layout.html?tpl=profilePage&amp;tplPath=apps/profile/tpl/#tab/AlertsAndMessages" class="profile-messages">
+            <i class="icon-g5-alerts"></i>
+            <span class="profile-alerts-text">Alerts</span>
+            <span class="profile-num-messages">{{numMessages}}</span>
+        </a>
+        {{/unless}}
+
+        {{#unless isDelegate}}
+        <a href="#"><i class="icon-g5-admin"></i>Admin</a>
+        {{/unless}}
+
+        <a href="layout.html?tplPath=base/tpl/&amp;tpl=loginPage.html" class="profile-logout">
+            <i class="icon-signout"></i>
+            Logout
+        </a>
+    </div><!-- /.profile-foot -->
+
+</div><!-- /.profile-meta -->
+
+<!--subTpl.alertTpl=
+<div id="participantProfileViewAlert" class="alert-box alert">
+    <a class='close' href='#'><i class='icon-remove'></i></a>
+    <p>
+        <i class='icon-g5-alerts'></i>
+        <span class='alertText'>{{alertTitle}}</span>
+        <a href='{{alertLink}}' {{#if openNewWindow}} target='blank' {{/if}}>{{alertLinkText}}</a>
+    </p>
+</div>
+subTpl-->
+
+
+<!--subTpl.gpSearchTpl=
+<div class="profile-global-participant-search" id="profile-global-participant-search" style="display:none">
+    <form id="gps-form">
+
+        <label for="gps-name-input">Search</label>
+        <div class="control-group validateme input-append searchWrap"
+            data-validate-fail-msgs='{"minlength":"Enter at least 2 characters to start"}'
+            data-validate-flags='minlength'
+            data-validate-min-length="3">
+
+            <input class="gps-name-input" id="gps-name-input" type="text" placeholder="Last Name"
+                data-autocomp-delay="500"
+                data-autocomp-min-chars="2" autocomplete="off">
+
+            <span class="spinnerWrap"></span>
+            <button class="btn searchBtn"><i class="icon-search"></i></button>
+        </div>
+        <div class="searchList"></div>
+        <p class="advanced"><a href="layout.html?tplPath=base/tpl/&tpl=participantAdvancedSearchPage.html">Advanced Search</a></p>
+    </form>
+</div>
+subTpl-->
+
+
+<!--subTpl.gpsResultsListTpl=
+<ul id="gpsResultsListWrapper">
+{{#each this}}
+    <li class="gpsResultWrapper {{#if this.isLocked}}locked{{/if}}" data-tabindex="{{this.index}}" data-recipientId="{{this.id}}" data-recipientNodeId="{{this.nodeId}}" data-participant-url="{{this.participantUrl}}">
+        <h1>{{this.firstName}} {{this.lastName}} {{#if isLocked}}<i class='icon-lock'></i>{{/if}}</h1>
+        <h2>{{this.orgName}}</h2>
+        <h3>{{#if this.departmentName}}{{this.departmentName}}, {{/if}}{{this.jobName}}</h3>
+    </li>
+{{else}}
+    <li>
+        No results
+    </li>
+{{/each}}
+</ul>
+subTpl-->
+

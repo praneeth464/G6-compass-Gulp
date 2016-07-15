@@ -1,0 +1,36 @@
+{
+    "messages": [
+        {
+            "type": "error",
+            "name": "",
+            "text": "Report Engine did not find any records matching criteria."
+        }
+    ],
+    "report": {
+        "id": "<?php echo( $_GET['reportId'] ); ?>",
+        "reportDisplayName": "Participant Export",
+        "parameters": [],
+        "tabularData": [
+            {
+                "meta": {
+                    "columns": [],
+                    "sortedOn": "",
+                    "sortedBy": "",
+                    "maxRows": "0",
+                    "exportFullReportUrl": [
+                        {
+                            "label" : "Export One",
+                            "url" : "ajax/reportsExportFullReportLargeAudience.json"
+                        }
+                    ],
+                    "exportCurrentView": {},
+                    "inlineTextDescription": ""
+                },
+                "results": []
+            }
+        ],
+        "chartSet": [],
+        "selectedChartId": "",
+        "reportDetailAsOfTimestamp": "12/05/2012, 05:42:03 CST"
+    }
+}

@@ -1,0 +1,171 @@
+<!--
+isPayoutTypeOther
+showActivityDescription
+measureCurrencyLabel
+showPayoutDescription
+payoutCurrencyLabel
+id
+lastName
+firstName
+activityDescription
+objectiveAmount
+objectivePayoutDescription
+-->
+
+<div class="spincover" style="display:none;"><div class="spin"></div></div>
+<div class="paginationConts pagination pagination-right"></div>
+<div class="emptyMsg alert" style="display:none">You have not added anyone.</div>
+<div class="hasPax well container-splitter participantCollectionViewWrapper" style="display:none">
+    <table class="paxPayoutTable">
+        <thead>
+            <tr>
+                <th rowspan="2" class="participant sortHeader">
+                    Participant
+                    <i data-sort="lastName" class="sortControl icon-sort"></i>
+                </th>
+                <th rowspan="4" class="activityDescription sortHeader">
+                    Activity Description
+                    <i class="icon-info-sign pageView_help"
+                        data-help-content="[explanation of what 'activity description' is]"></i>
+                </th>
+
+                <th rowspan="2" class="activityAmount sortHeader tr">
+                    Activity Amount
+                    <i data-sort="objectiveAmount" class="sortControl icon-sort"></i>
+                </th>
+
+
+
+                {{#extraJson.isPayoutTypeOther}}
+                    <th rowspan="2" class="objectivePayoutDescription sortHeader">
+                        Payout Description
+                        <i class="icon-info-sign pageView_help"
+                            data-help-content="[explanation of what 'payout description' is]"></i>
+                        <i data-sort="objectivePayoutDescription" class="sortControl icon-sort"></i>
+                    </th>
+                    <th rowspan="2" class="objectivePayout sortHeader">
+                        Value
+                        <i class="icon-info-sign pageView_help"
+                            data-help-content="Monetary value of the award. This will not be displayed to the participants."></i>
+                        <i data-sort="objectivePayout" class="sortControl icon-sort"></i>
+                    </th>
+                {{else}}
+                    <th rowspan="2" class="objectivePayout sortHeader">
+                        Payout
+                        <i data-sort="objectivePayout" class="sortControl icon-sort"></i>
+                    </th>
+                {{/extraJson.isPayoutTypeOther}}
+
+
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <!-- {{#extraJson.showActivityDescription}}colspan="2"{{/extraJson.showActivityDescription}} -->
+                <td colspan="2">
+                    <button class="calculateTotalsBtn btn btn-primary btn-small" data-msg-loading="calculating...">Calculate Totals</button>
+                </td>
+                <td class="totalDisp">
+                    <span class="currSymb act">
+                    </span><span class="calcTotalsAutoBind" data-model-key="objectiveAmountTotal">--</span>
+                    <span class="currDisp act"></span>
+                </td>
+                {{#extraJson.showPayoutDescription}}
+                    <td><!-- no total --></td>
+                {{/extraJson.showPayoutDescription}}
+                <td class="totalDisp">
+                    <span class="currSymb pay">
+                    </span><span class="calcTotalsAutoBind" data-model-key="objectivePayoutTotal">--</span>
+                    <span class="currDisp pay"></span>
+                </td>
+            </tr>
+        </tfoot>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+<div class="paginationConts pagination pagination-right"></div>
+
+<!-- VALIDATION MSGS - informational tooltip for validation -->
+<div class="participantPaginatedViewErrorTipWrapper" style="display:none">
+    <div class="errorTip">
+
+        <div class="errorMsg msgNumeric" style="display:none" >
+            This field must be a number.
+        </div>
+        <div class="errorMsg msg_natural" style="display:none" >
+            This field must be a positive whole number (no decimals).
+        </div>
+        <div class="errorMsg msgDecimal2 msg_decimal_2" style="display:none" >
+            Please enter a number with up to 2 decimals. Do not enter currency symbol or commas/period/spaces.
+        </div>
+        <div class="errorMsg msgDecimal4 msg_decimal_4" style="display:none" >
+            Please enter a number with up to 4 decimals. Do not enter commas/periods/space.
+        </div>
+        <div class="errorMsg msgNumberTooLarge" style="display:none" >
+            This number must be less than 10000000000.
+        </div>
+        <div class="errorMsg msgRequired" style="display:none" >
+            One or more required <br>
+            fields are missing.
+        </div>
+
+    </div><!-- /.errorTip -->
+</div><!-- /.participantPaginatedViewErrorTipWrapper -->
+
+<div id="sameForAllTipTpl" class="sameForAllTip" style="display:none">
+    <a href="#">same for all<br>participants</a>
+</div><!-- /#sameForAllTipTpl -->
+
+<!--subTpl.paxRow=
+
+    <tr class="participant-item" data-participant-id="{{id}}">
+
+
+        <td class="participant">
+            <a class="participant-popover" href="#" data-participant-ids="[{{userId}}]">
+                {{lastName}}, {{firstName}}
+            </a>
+        </td>
+
+        <td class="textInputCell">
+            <input type="text"
+                class="paxDatTextInput paxDatActivityDesc"
+                data-model-key="activityDescription"
+                data-model-id="{{id}}"
+                value="{{activityDescription}}"
+                maxlength="50"  />
+        </td>
+
+        <td class="textInputCell">
+            <input type="text"
+                class="paxDatTextInput paxDatObjAmount tr"
+                data-model-key="objectiveAmount"
+                data-model-id="{{id}}"
+                data-validation="number"
+                value="{{objectiveAmount}}" />
+        </td>
+
+        {{#extraJson.isPayoutTypeOther}}
+            {{! todo}}
+            <td class="textInputCell">
+                <input type="text"
+                    class="paxDatTextInput paxDatObjPayoutDesc"
+                    data-model-key="objectivePayoutDescription"
+                    data-model-id="{{id}}"
+                    value="{{objectivePayoutDescription}}"
+                    maxlength="50"  />
+            </td>
+        {{/extraJson.isPayoutTypeOther}}
+
+        <td class="textInputCell">
+            <input type="text"
+                class="paxDatTextInput tr"
+                data-model-key="objectivePayout"
+                data-model-id="{{id}}"
+                value="{{objectivePayout}}" />
+        </td>
+
+    </tr>
+
+subTpl-->

@@ -1,0 +1,52 @@
+// Partial-specific variables
+// =========================
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+// TABS
+// ----
+
+// Give the tabs something to sit on
+.nav-tabs {
+}
+
+// Make the list-items overlay the bottom border
+.nav-tabs > li {
+    margin-right: 4px;
+}
+
+// Actual tabs (as links)
+.nav-tabs > li > a {
+    margin: 0;
+    line-height: 24px;
+    outline: none;
+    @include border-radius(0);
+}
+
+// Active state, and it's :hover to override normal :hover
+.nav-tabs > .active > a,
+.nav-tabs > .active > a:hover {
+    // border-bottom: 0;
+}
+
+// ON DARK BACKGROUNDS IN MODULE AND PAGE TOPS
+// see _allModules.scss and _pages.scss for further refinement
+.module .nav-tabs,
+.page-topper .nav-tabs {
+    padding-top: 4px;
+    border-bottom: 0;
+
+    > li {
+        margin-bottom: 0;
+
+        > a,
+        &.active > a,
+        &.active > a:hover {
+            border: 0;
+        }
+    }
+}

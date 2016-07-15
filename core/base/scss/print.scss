@@ -1,0 +1,254 @@
+@import "partials/mixins";
+
+// resetting part of Bootstrap's reset. We don't want to print URLs
+a[href]:after {
+    content: "";
+}
+
+
+//@media (min-width: 0px) and (max-width: 6000px) {
+    body {
+        margin: 0px;
+        min-width: 1062px;
+        color: black;
+        background: none !important;
+        display: block;
+        font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+    }
+    #pageNav {
+        padding: 12px;
+
+        #pageTitle {
+            display: block;
+            float: none;
+            margin: 0;
+        }
+    }
+    #profilePageView .page-topper {
+        color: black;
+        background: none;
+    }
+    .page.profile .page-topper .span6 .span4 h4 {
+    font-family: "din-light-condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: black;
+    }
+    a:link,
+    a:visited {
+        background: none;
+        color: black;
+        font-weight: bold;
+    }
+    h1, h2, h3 {
+        background: none;
+        color: black;
+        padding-bottom: 1px;
+/*        width: 1062px;
+*/    }
+    .comment-block {
+        border-top: 1px solid gray;
+    }
+
+    #participantProfileView .profile-meta .profile-head {
+        font-family: din-light-condensed, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 20px;
+    }
+    #header,
+    #participantProfileViewAlert,
+    #pageNavLinks,
+    #footer .nav a,
+    #participantProfileMobileToggle,
+    .share-print,
+    .profile-foot,
+    #profilePageShellUpperRightTabSet,
+    .export-tools,
+    #statementTabUpdateTransactionDetailsButton,
+    .btn,
+    .form-actions,
+    #PURLContributeListViewWrapper h5,
+    #PURLShareIcons,
+    #PURLAttachLinksWrapper,
+    #PURLActivityPanelCommentWrapper,
+    .quizPageTake .wizardTabsView,
+    .quizPageTake #printPage,
+    textarea.span12,
+    #approverActions,
+    #approverActions .approverAction,
+    #approvalsPageClaims #printPage {
+        display: none !important;
+    }
+    header#header {
+        background: none !important;
+    }
+    #footer .container {
+        padding: 0;
+    }
+    #globalFooterView {
+        border: 0;
+        padding: 12px;
+
+        .nav {
+            margin: 0;
+        }
+
+        .copyright {
+            float: none;
+            text-align: left;
+        }
+    }
+    #profilePageShellTabs li,
+    #profilePageActivityHistoryTabSelectedTabs li {
+        display: none !important;
+    }
+
+    #profilePageShellTabs .active,
+    #profilePageActivityHistoryTabSelectedTabs .active {
+        display: block !important;
+        color: black;
+        border-top-color: #DDD;
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-bottom-color: transparent;
+    }
+    #recognitionsSent .progress-info {
+        border: 1px solid gray;
+    }
+    #recognitionsSent .progress-info .bar {
+        background-color: black;
+        border: 3px solid black;
+    }
+    .page-content {
+        // padding: 0px;
+        // background: none;
+        border-left: 0;
+        border-right: 0;
+    }
+    .page-content .span1 {
+        width: 72px;
+    }
+    .page-content .span7 {
+        width: 612px;
+    }
+    .page-content .span12 {
+        width: 1062px;
+    }
+    #profilePageStatementTabSummary dt {
+        width:180px;
+    }
+    .dl-horizontal dl {
+        width: 100%;
+        overflow: hidden;
+    }
+    .dl-horizontal dt {
+        text-align: left !important;
+    }
+    .dl-horizontal dd {
+        width:50%;
+    }
+    .page-content [class*="span"] {
+        float: left;
+        margin-left: 18px;
+    }
+    .page-content .row::before,
+    .page-content .row::after {
+        display: table;
+        content: '';
+        line-height: 0;
+    }
+    .page-content .row {
+        margin-left: 29px;
+    }
+    .page-content .row::after {
+        clear: both;
+    }
+    .row {
+        overflow-x:hidden;
+        overflow-y:hidden;
+        width: 1080px;
+    }
+    .page-content .row .row {
+        float: left;
+        margin-left: -18px;
+    }
+    div {
+        display: block;
+    }
+    .page-content .span8 {
+        width: 702px;
+    }
+    .page-content .span4 {
+        width: 342px;
+    }
+    .page.publicRecognition .publicRecognitionItems .public-recognition-item {
+        margin-left: -47px;
+        margin-bottom: 32px;
+    }
+    .publicRecognition .public-recognition-item {
+        position: relative;
+    }
+    .page.publicRecognition .publicRecognitionItems,
+    .page.publicRecognition .follow-list-links {
+        padding-left: 0px !important;
+    }
+    input.date {
+        background: none;
+        color: black;
+    }
+    #PURLContributeListTable .PURLContributeListTable th {
+        background: black;
+        color: white;
+    }
+    #PURLContributeListTable .PURLContributeListTable th:first-child {
+        display: none !important;
+    }
+    #PURLContributeListTable .PURLContributeListTable th:last-child {
+        display: none !important;
+    }
+    #PURLContributeListTable .PURLContributeListTable td:first-child {
+        display: none !important;
+    }
+    #PURLContributeListTable .PURLContributeListTable td:last-child {
+        display: none !important;
+    }
+    .container {
+        width: auto !important;
+        // margin-left: 0px;
+    }
+    #PURLCongratsColumn {
+        display: inline-block;
+        border-bottom: 1px solid #CCC;
+        padding-bottom: 10px;
+        margin-top: 15px;
+    }
+
+    // when a modal is open...
+    .modal-open {
+        #wrapper_outer,
+        .modal-backdrop,
+        .modal-header .close {
+            display: none;
+        }
+
+        .modal, .modal-stack {
+            position: relative;
+            top: auto !important;
+            left: auto !important;
+            margin: auto !important;
+            width: auto !important;
+            border: 0 !important;
+            @include box-shadow(none);
+        }
+
+        .modal-header {
+            padding: 12px;
+            border: 0;
+        }
+        .modal-body {
+            .page-content {
+                margin: -15px;
+            }
+        }
+        .modal-footer {
+            display: none;
+        }
+    }
+//}

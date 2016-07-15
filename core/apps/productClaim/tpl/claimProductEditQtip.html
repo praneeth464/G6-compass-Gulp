@@ -1,0 +1,51 @@
+{{debug}}
+<div class="editProductForm form-horizontal" style="display:none">
+    <button type="button" class="btn close genericCloseQtip">&times;</button>
+    <div class="consistentInputs">
+
+        <div class="control-group">
+            <label for="productId-{{this.cid}}" class="control-label">Product</label>
+            <div class="productSelectInputWrap controls">
+                <select id="productId-{{this.cid}}" name="productId-{{this.cid}}" disabled>
+                    <option>{{this.name}}</option>
+                </select>
+            </div><!-- /.productSelectInputWrap -->
+        </div><!-- /.control-group -->
+
+        <div class="control-group">
+            <label for="quantity" class="control-label">Quantity Sold</label>
+            <div class="controls validateme" data-validate-max-length="6" data-validate-flags="nonempty,numeric,maxlength" data-validate-fail-msgs='{"maxlength": "Please enter a valid value under 6 digits in length.", "numeric": "Please enter a numeric value.", "nonempty" : "Please enter quantity sold."}'>
+                <input name="quantity" id="quantity" type="text" value="{{this.quantity}}" required {{#if readonlyQuantity}}readonly="readonly"{{/if}}/>
+            </div><!-- /.controls -->
+        </div>
+
+        {{#if this.category}}
+        <div class="control-group" data-predefined-row="category">
+            <label for="category" class="control-label">Category</label>
+            <div class="controls">
+                <input name="category" id="category" type="text" value="{{this.category}}" disabled/>
+            </div>
+        </div>
+        {{/if}}
+
+        {{#if this.subcategory}}
+        <div class="control-group" data-predefined-row="subcategory">
+            <label for="subcategory" class="control-label">Subcategory</label>
+            <div class="controls">
+                <input name="subcategory" id="subcategory" type="text" value="{{this.subcategory}}" disabled/>
+            </div>
+        </div>
+        {{/if}}
+
+    </div>
+
+    <div class="customFields">
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+            <button class="updateProduct btn btn-primary" data-row-id="{{this.cid}}">Save</button>
+            <button class="genericCloseQtip btn">Cancel</button>
+        </div>
+    </div>
+</div>

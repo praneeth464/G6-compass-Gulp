@@ -1,0 +1,10 @@
+{
+    "messages":[
+        {
+            "type":"serverCommand",
+            "command":"modal",
+            "name":"Your preferences have been saved.",
+            "text":"Some text explaining the nature of the success."
+        }
+    ]
+}

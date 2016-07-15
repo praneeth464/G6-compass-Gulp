@@ -1,0 +1,342 @@
+{{! NOTE: this src needs to point to the javascript lib}}
+<div class="raphael" data-src="../libs/raphael-min.js"></div>
+
+{{! NOTE: these variables are set via JavaScript:
+		isCreator, lastLevel }}
+
+<div class="tabWrap">
+	<div class="row">
+		<div class="span12">
+			<ul class="nav nav-tabs">
+				<li class="active">
+					<a data-toggle="tab" data-tab-name="levels" data-target=".levels">
+						Goal Levels
+					</a>
+				</li>
+				<li >
+					<a data-toggle="tab" data-tab-name="participants" data-target=".participants">
+						Participant Breakdown by Level
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span12 tab-content">
+			<div class="tab-pane active levels">
+				{{#ueq status "finalize_results"}}
+				<div class="row">
+					<div class="span12 contestData">
+						<div class="row">
+							<div class="span4 dataSection activityGoal">
+								<h5>{{goal}}</h5><br>
+								{{#if isCreator}}
+								<span>Goal</span>
+								{{else}}
+								<span>Team Goal</span>
+								{{/if}}
+							</div>
+							<div class="span4 dataSection activityProgress">
+								<h5>{{progress}} </h5><br>
+								{{#if isCreator}}
+								<span>Activity</span>
+								{{else}}
+								<span>Team Activity</span>
+								{{/if}}
+							</div>
+							<div class="span3 dataSection activityToGo">
+								{{#unless goalAchieved}}
+									<h5>{{remaining}}</h5><br>
+									<span>To Go</span>
+								{{else}}
+									<h5 class="activityGoalAchieved"><i class="icon-ok-circle"></i></h5>
+									<span>Goal Achieved</span>
+								{{/unless}}
+							</div>
+						</div>
+					</div>
+				</div>
+				{{else}}
+				<div class="row">
+					<div class="span12 contestData">
+						<div class="row">
+							<div class="span6 dataSection activityGoal">
+								<h5>{{goal}}</h5><br>
+								{{#if isCreator}}
+								<span>Goal</span>
+								{{else}}
+								<span>Team Goal</span>
+								{{/if}}
+							</div>
+							<div class="span6 dataSection activityProgress">
+								<h5>{{progress}} </h5><br>
+								{{#if isCreator}}
+								<span>Final Activity</span>
+								{{else}}
+								<span>Final Activity</span>
+								{{/if}}
+							</div>
+						</div>
+					</div>
+				</div>
+				{{/ueq}}
+
+				<div class="row">
+					<div class="span2 text-right goalLabels">
+						<span>Level</span> <br>
+						<span>Goal</span> <br>
+						<span>Contest Payout</span>
+					</div>
+
+					{{#each contestLevels}}
+						<div class="span2 goalLevels">
+							<strong>{{name}} </strong><br>
+							<span>{{#ueq ../baselineType "no"}}Baseline + {{/ueq}} {{goalPercent}}%</span> <br>
+							{{#eq ../payoutType "points"}}
+								<span>{{payout}} points</span>
+							{{/eq}}
+							{{#eq ../payoutType "other"}}
+								<span>{{payout}}</span>
+							{{/eq}}
+						</div>
+					{{/each}}
+
+				</div>
+				{{#if includeBonus}}
+					<div class="row">
+						<div class="span12 goalBonus">
+							<b>Bonus:</b> For every {{bonusForEvery}} over level {{lastLevel.name}} - Earn
+							{{#eq payoutType "points"}}
+								{{bonusPayout}} points
+							{{/eq}}
+							{{#eq payoutType "other"}}
+								{{bonusPayout}}
+							{{/eq}}
+						</div>
+					</div>
+				{{/if}}
+			</div> {{! #levels }}
+
+			<div class="tab-pane participants">
+				{{#ueq status "finalize_results"}}
+				<div class="row">
+					<div class="span12 contestData">
+						<div class="row">
+							<div class="span4 dataSection activityGoal">
+								<h5>{{goal}}</h5><br>
+								{{#if isCreator}}
+								<span>Goal</span>
+								{{else}}
+								<span>Team Goal</span>
+								{{/if}}
+							</div>
+							<div class="span4 dataSection activityProgress">
+								<h5>{{progress}} </h5><br>
+								{{#if isCreator}}
+								<span>Activity</span>
+								{{else}}
+								<span>Team Activity</span>
+								{{/if}}
+							</div>
+							<div class="span3 dataSection activityToGo">
+								{{#unless goalAchieved}}
+									<h5>{{remaining}}</h5><br>
+									<span>To Go</span>
+								{{else}}
+									<h5 class="activityGoalAchieved"><i class="icon-ok-circle"></i></h5>
+									<span>Goal Achieved</span>
+								{{/unless}}
+							</div>
+						</div>
+					</div>
+				</div>
+				{{else}}
+				<div class="row">
+					<div class="span12 contestData">
+						<div class="row">
+							<div class="span6 dataSection activityGoal">
+								<h5>{{goal}}</h5><br>
+								{{#if isCreator}}
+								<span>Goal</span>
+								{{else}}
+								<span>Team Goal</span>
+								{{/if}}
+							</div>
+							<div class="span6 dataSection activityProgress">
+								<h5>{{progress}} </h5><br>
+								{{#if isCreator}}
+								<span>Activity</span>
+								{{else}}
+								<span>Team Activity</span>
+								{{/if}}
+							</div>
+						</div>
+					</div>
+				</div>
+				{{/ueq}}
+
+				<div class="row-fluid barChartContainer">
+			        <div class="span9">
+			            <div class="row-fluid">
+			                <div class="chartHolder barChart"
+			                    data-chart-type="bar"
+			                    data-x-axis-label="Level"
+			                    data-y-axis-label="Participants"
+			                    data-bonus-label="Bonus">
+			                </div>
+			                <div class="span9 barChartWrapper"></div>
+			            </div>
+			        </div>
+			    </div>
+				<div class="row">
+					<div class="span12 participantAchieved text-center">
+						<p><strong>{{unaccountedParticipants}}</strong> participants
+						{{#eq daysToEnd "0"}}
+							did not reach
+						{{else}}
+							have yet to reach
+						{{/eq}}
+						<strong>Level 1</strong></p>
+					</div>
+				</div>
+			</div> {{! #participants }}
+		</div> <!-- /.tab-content -->
+	</div>
+</div> <!-- /.tabWrap -->
+
+<!-- <div class="barGraphWrap">
+	<div class="row">
+		<div class="span8">
+			<div class="row">
+				<div class="span2">
+					Participants
+				</div>
+				<div class="span10">
+					<div class="row">
+						{{#each contestLevels}}
+							<div class="span2">
+								{{participantsCount}}<br>
+								{{name}}
+							</div>
+						{{/each}}
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span12">
+					Level
+				</div>
+			</div>
+		</div>
+		<div class="span4">
+			<div class="row">
+				<div class="span6 text-center">
+					{{goal}}<br>goal
+				</div>
+				<div class="span6 text-center">
+					{{progress}}<br>Team Activity
+				</div>
+			</div>
+		</div>
+	</div>
+</div> -->
+
+
+{{#if isCreator}}
+	<div class="row">
+		<div class="span12 payoutData">
+			<div class="row">
+				<div class="span12 payoutTitle">
+					{{#eq status "finalize_results"}}
+						<p><span class="graphFlow">Final Payout</span></p>
+					{{else}}
+						{{#eq payoutType "other"}}
+							<p><span class="graphFlow">Potential Payout Value</span></p>
+						{{else}}
+							<p><span class="graphFlow">Potential Payout</span></p>
+						{{/eq}}
+					{{/eq}}
+				</div>
+			</div>
+			<div class="row">
+				<div class="span7 offset1">
+					<div class="ssiPayoutGraph" data-model-id="{{id}}" data-chart-type="payoutProgress">
+						<div class="ssiPayoutGraphBar">
+							<div class="barFill"></div>
+						</div>
+						<div class="ssiPayoutGraphProgressMarker">
+							<i class="arrow"></i>
+							<div class="number">
+								<p class="val">{{payoutProgress}}</p> <p class="percent">({{payoutPercentProgress}}%)</p>
+							</div>
+
+						</div>
+						<div class="ssiPayoutGraphGoalMarker payout">
+							<span class="goalMarkerCount">{{payoutCap}}</span>
+							<span class="goalMarkerLabel">Payout</span>
+						</div>
+						<div class="ssiPayoutGraphGoalMarker bonus">
+							<span class="goalMarkerCount">{{payoutBonusCap}}</span>
+							<span class="goalMarkerLabel">with Bonus</span>
+						</div>
+					</div>
+				</div>
+				<div class="span4 dataSection activityRemaining">
+					{{#if payoutProgress}}
+						{{#eq status "finalize_results"}}
+							{{#eq payoutType "points"}}
+								<h5>{{payoutProgress}}</h5>
+								<span>points issued</span>
+							{{/eq}}
+							{{#eq payoutType "other"}}
+								<h5>{{payoutProgress}}</h5>
+								<span>Payout Issued</span>
+							{{/eq}}
+						{{else}}
+							{{#eq payoutType "points"}}
+								<h5>{{payoutRemaining}}</h5>
+							{{/eq}}
+							{{#eq payoutType "other"}}
+								<h5>{{payoutRemaining}}</h5>
+							{{/eq}}
+							<span>remaining</span>
+						{{/eq}}
+					{{/if}}
+				</div>
+			</div>
+
+		</div>
+	</div>
+{{/if}}
+
+{{#if includeStackRanking}}
+{{#if isProgressLoaded}}
+<div class="row">
+	<div class="span12 stackRankWrap">
+		<div class="row">
+			<div class="span6">
+				<p class="sectionTitle">Stack Rank</p>
+			</div>
+			<div class="span6 text-right">
+				<!-- <a href="{{stackRankDetailPageUrl}}" title="" class="viewAll">view all</a> -->
+				<button type="button" class="viewAll viewAllStackRank btn btn-link">view all</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span12">
+				<ol>
+					{{#each stackRankParticipants}}
+					<li value="{{rank}}">
+						<span class="score">{{score}}</span>
+						<b class="rank">{{rank}}.</b>
+						<img src="{{avatarUrl}}" alt="{{lastName}}, {{firstName}}" class="avatar">
+						<a href="{{contestUrl}}" class="leaderName" title="">{{lastName}}, {{firstName}}</a>
+					</li>
+					{{/each}}
+				</ol>
+			</div>
+		</div>
+	</div>
+</div>
+{{/if}}
+{{/if}}

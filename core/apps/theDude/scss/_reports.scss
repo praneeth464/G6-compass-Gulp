@@ -1,0 +1,24 @@
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.reports {
+
+} /* /.reports */
+
+/* ----- MODULE STYLES ----- */
+.module.reports {
+    
+    .module-liner {
+        color:white;
+        background: image-url('reports_reports_bg.jpg') 50% 50% no-repeat;
+        .reports-content{
+            padding:20px;
+        }
+    }
+
+} /* /.module.reports */
+
+/* ----- PAGE STYLES ----- */
+.page.reports {
+
+} /* /.page.reports */
+

@@ -1,0 +1,30 @@
+{
+    "payoutType": "other",
+    "ranks": [
+        {
+            "number": "1",
+            "payoutDescription": "$50 gift card",
+            "payoutAmount": "1,000 points",
+            "badge": {
+                "name": "BadgeName",
+                "url": "img/badges/service1_sm.png"
+            }
+        },
+        {
+            "number": "2",
+            "payoutDescription": "$25 gift card",
+            "payoutAmount": "500 points",
+            "badge": {
+                "name": "BadgeName",
+                "url": "img/badges/service1_sm.png"
+            }
+        },
+        {
+            "number": "3",
+            "payoutDescription": "$15 gift card",
+            "payoutAmount": "100 points"
+        }
+    ],
+    "payoutTotal": "1,600 USD",
+    "hasBadge": true
+}

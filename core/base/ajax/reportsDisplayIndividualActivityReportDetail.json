@@ -1,0 +1,311 @@
+<?php
+if( $_POST['method'] == 'loadReportParameters' ) {
+    include('temp_reportsParams1.html');
+    return false;
+}
+?>
+{
+    "messages": [],
+    "report": {
+        "id": "5023",
+        "reportDisplayName": "Individual Activity",
+        "parameters": [
+            {
+                "name": "Dates",
+                "value": "01/01/2012 - 12/05/2012"
+            }
+        ],
+        "tabularData": [
+            {
+                "meta": {
+                    "columns": [
+                        {
+                            "id": "1",
+                            "name": "Activity",
+                            "description": "Shows the summarized activity list of the user",
+                            "type": "string",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "https://pentagpprd.performnet.com/pentag/reports/displayIndividualActivityReport.do?method=displaySummaryReport&sortedOn=1&sortedBy=",
+                            "summary": "Totals"
+                        },
+                        {
+                            "id": "2",
+                            "name": "Individual Activity Detail URL",
+                            "description": "",
+                            "type": "URL",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": false,
+                            "sortUrl": "",
+                            "summary": ""
+                        },
+                        {
+                            "id": "3",
+                            "name": "Points",
+                            "description": "Award points",
+                            "type": "string",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "https://pentagpprd.performnet.com/pentag/reports/displayIndividualActivityReport.do?method=displaySummaryReport&sortedOn=3&sortedBy=",
+                            "summary": "13032"
+                        },
+                        {
+                            "id": "4",
+                            "name": "Plateau Earned",
+                            "description": "Shows the count of plateau's earned",
+                            "type": "string",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "https://pentagpprd.performnet.com/pentag/reports/displayIndividualActivityReport.do?method=displaySummaryReport&sortedOn=4&sortedBy=",
+                            "summary": "4"
+                        },
+                        {
+                            "id": "5",
+                            "name": "Game Attempts",
+                            "description": "Shows the number of game attempts taken by participant",
+                            "type": "string",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "https://pentagpprd.performnet.com/pentag/reports/displayIndividualActivityReport.do?method=displaySummaryReport&sortedOn=5&sortedBy=",
+                            "summary": "0"
+                        },
+                        {
+                            "id": "6",
+                            "name": "Sweepstakes Won",
+                            "description": "Shows the number of attempts earned",
+                            "type": "string",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": true,
+                            "sortUrl": "https://pentagpprd.performnet.com/pentag/reports/displayIndividualActivityReport.do?method=displaySummaryReport&sortedOn=6&sortedBy=",
+                            "summary": "1"
+                        },
+                        {
+                            "id": "7",
+                            "name": "???report.individual.activity.VIEW_ALL_AWARDS???",
+                            "description": "",
+                            "type": "string",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": false,
+                            "sortUrl": "https://pentagpprd.performnet.com/pentag/reports/displayIndividualActivityReport.do?method=displaySummaryReport&sortedOn=7&sortedBy=",
+                            "summary": ""
+                        },
+                        {
+                            "id": "8",
+                            "name": "Individual Activity Detail URL",
+                            "description": "",
+                            "type": "URL",
+                            "alignment": "",
+                            "nameId": "",
+                            "sortable": false,
+                            "sortUrl": "",
+                            "summary": ""
+                        }
+                    ],
+                    "sortedOn": "1",
+                    "sortedBy": "asc",
+                    "maxRows": "10",
+                    "exportFullReportUrl": [
+                        {
+                            "label" : "Export One",
+                            "url" : "https://pentagpprd.performnet.com/pentag/reports/displayIndividualActivityReport.do?method=extractReport&exportViewType=fullView"
+                        }
+                    ],
+                    "exportCurrentView": {
+                        "label" : "Export Current View",
+                        "url" : "https://pentagpprd.performnet.com/pentag/reports/displayIndividualActivityReport.do?method=extractReport&exportViewType=currentView"
+                    },
+                    "inlineTextDescription": ""
+                },
+                "results": [
+                    [
+                        "Nominations Given",
+                        false,
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        ""
+                    ],
+                    [
+                        "Nominations Received",
+                        false,
+                        "32",
+                        "0",
+                        "0",
+                        "1",
+                        ""
+                    ],
+                    [
+                        "Product Claims",
+                        false,
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        ""
+                    ],
+                    [
+                        "Quizzes",
+                        false,
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        ""
+                    ],
+                    [
+                        "Recognitions Given",
+                        false,
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        ""
+                    ],
+                    [
+                        "Recognitions Received",
+                        false,
+                        "0",
+                        "1",
+                        "0",
+                        "0",
+                        ""
+                    ],
+                    [
+                        "Recognitions Received",
+                        false,
+                        "0",
+                        "3",
+                        "0",
+                        "0",
+                        ""
+                    ],
+                    [
+                        "Recognitions Received",
+                        false,
+                        "120",
+                        "0",
+                        "0",
+                        "0",
+                        ""
+                    ],
+                    [
+                        "Recognitions Received",
+                        false,
+                        "6000",
+                        "0",
+                        "0",
+                        "0",
+                        ""
+                    ],
+                    [
+                        "Recognitions Received",
+                        false,
+                        "7000",
+                        "0",
+                        "0",
+                        "0",
+                        ""
+                    ]
+                ]
+            }
+        ],
+        "chartSet": [
+            {
+                "displayName": "Individual Points Received",
+                "category": "Core",
+                "chartType": "Column3D",
+                "dataUrl": "ajax/reportsDisplayLoginActivityByPaxReport-0.json",
+                "fusionChartsParameters": {
+                    "exportFileName": "Individual Points Received",
+                    "exportAtClient": "0",
+                    "exportFormat": "PDF",
+                    "exportAction": "download",
+                    "html5ExportHandler": "exportToPDF.do",
+                    "exportTargetWindow": "_blank",
+                    "showLabels": "1",
+                    "showLegend": "1",
+                    "enableSmartLabels": "0",
+                    "xAxisName": "Timeframe",
+                    "yAxisName": "Total Points"
+                },
+                "pdfUrl": "https://pentagpprd.performnet.com/pentag/reports/displayIndividualActivityReport.do?method=displayPointsReceivedChart&amp;pdf=1",
+                "id": "5088"
+            },
+            {
+                "displayName": "Points Given and Received",
+                "category": "Core",
+                "chartType": "MSColumn3D",
+                "dataUrl": "ajax/reportsDisplayLoginActivityByPaxReport-1.json",
+                "fusionChartsParameters": {
+                    "exportFileName": "Points Given and Received",
+                    "exportAtClient": "0",
+                    "exportFormat": "PDF",
+                    "exportAction": "download",
+                    "html5ExportHandler": "exportToPDF.do",
+                    "exportTargetWindow": "_blank",
+                    "showLabels": "1",
+                    "showLegend": "1",
+                    "enableSmartLabels": "0",
+                    "xAxisName": "Promotion",
+                    "yAxisName": "Total Points"
+                },
+                "pdfUrl": "https://pentagpprd.performnet.com/pentag/reports/displayIndividualActivityReport.do?method=displayPointsGivenReceivedChart&amp;pdf=1",
+                "id": "5089"
+            },
+            {
+                "displayName": "Total Activity",
+                "category": "Core",
+                "chartType": "Pie3D",
+                "dataUrl": "ajax/reportsDisplayLoginActivityByPaxReport-2.json",
+                "fusionChartsParameters": {
+                    "exportFileName": "Total Activity",
+                    "exportAtClient": "0",
+                    "exportFormat": "PDF",
+                    "exportAction": "download",
+                    "html5ExportHandler": "exportToPDF.do",
+                    "exportTargetWindow": "_blank",
+                    "showLabels": "0",
+                    "showLegend": "1",
+                    "enableSmartLabels": "0",
+                    "showPercentValues": "1",
+                    "stack100Percent": "1",
+                    "xAxisName": "BONFIRE HOME DESIGNS",
+                    "yAxisName": ""
+                },
+                "pdfUrl": "https://pentagpprd.performnet.com/pentag/reports/displayIndividualActivityReport.do?method=displayTotalActivityChart&amp;pdf=1",
+                "id": "5090"
+            },
+            {
+                "displayName": "Recognition Metrics",
+                "category": "Core",
+                "chartType": "MSBar3D",
+                "dataUrl": "ajax/reportsDisplayLoginActivityByPaxReport-3.json",
+                "fusionChartsParameters": {
+                    "exportFileName": "Recognition Metrics",
+                    "exportAtClient": "0",
+                    "exportFormat": "PDF",
+                    "exportAction": "download",
+                    "html5ExportHandler": "exportToPDF.do",
+                    "exportTargetWindow": "_blank",
+                    "showLabels": "1",
+                    "showLegend": "1",
+                    "enableSmartLabels": "0",
+                    "xAxisName": "# of recognitions submitted / received",
+                    "yAxisName": "Company Avg, Org Avg, Pax"
+                },
+                "pdfUrl": "https://pentagpprd.performnet.com/pentag/reports/displayIndividualActivityReport.do?method=displayMetricsChart&amp;pdf=1",
+                "id": "5091"
+            }
+        ],
+        "selectedChartId": "",
+        "reportDetailAsOfTimestamp": "12/05/2012, 05:42:03 CST"
+    }
+}

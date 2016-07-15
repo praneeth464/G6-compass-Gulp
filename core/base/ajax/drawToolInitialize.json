@@ -1,0 +1,35 @@
+{	
+	"messages":[],
+	"drawToolSettings":[
+		{
+			"drawToolCardType": "upload",
+			"drawToolCardId": "",
+			"drawToolCardUrl": "ajax/drawToolImage.gif",
+			"canDraw": false,
+			"canUpload": false,
+			"eCards": [
+				{
+					"id":1,
+					"name":"Mountains",
+					"smallImage":"http://placehold.it/120x120",
+					"largeImage":"ajax/drawToolImage.gif",
+					"canEdit": true
+				},
+				{
+					"id":2,
+					"name":"Forest",
+					"smallImage":"http://placehold.it/120x120",
+					"largeImage":"ajax/drawToolImage.gif",
+					"canEdit": false
+				},
+				{
+					"id":3,
+					"name":"Canoe",
+					"smallImage":"http://placehold.it/120x120",
+					"largeImage":"ajax/drawToolImage.gif",
+					"canEdit": true
+				}
+			]
+		}
+	]
+}

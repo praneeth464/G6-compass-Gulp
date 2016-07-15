@@ -1,0 +1,250 @@
+
+// #previewClaimForm modal lives on step 4 (data collection) of the contest creator
+#ssiParticipantSubmitClaimPageView,
+#previewClaimFormModal {
+    h3 {
+        margin-bottom: 30px;
+    }
+
+    .dtgtActivityLables {
+        font-weight: bold;
+    }
+
+    .dtgtActivityWrap {
+        margin: 20px 0;
+
+        .controls {
+            float: left;
+        }
+
+        label.span2 {
+            float: left;
+            margin-left: 0;
+        }
+
+        .control-group {
+            clear: left;
+        }
+    }
+
+    #ssiActivityHidden {
+        visibility: hidden;
+    }
+
+    #ssiClaimDocHidden {
+          background-color: transparent;
+          border: none;
+          box-shadow: none;
+          height: 0;
+          outline: none;
+          padding: 0;
+          position: absolute;
+          top: 35px;
+          width: 170px;
+          z-index: 0;
+    }
+
+    .removeLink {
+        display: none;
+    }
+
+    .ssiFileUploadWrap {
+        position: relative;
+
+        i {
+            margin-left: 10px;
+        }
+
+        .spin {
+            position: absolute;
+            display: block;
+            margin: 0 auto;
+            width: $spinner_widthHeight /2;
+            height: $spinner_widthHeight /2;
+            top: 26px;
+            left: 200px;
+        }
+    }
+
+    .dl-horizontal {
+        @media (min-width: 768px){
+            dt {
+                margin-bottom: 10px;
+                width: 15%;
+                white-space: normal;
+            }
+            dd {
+                float: left;
+                margin: 0 0 10px 10px;
+                width: 30%;
+            }
+        }
+
+         @media (max-width: 767px) {
+            dt {
+                width: auto;
+            }
+            dd {
+                margin-left: 0;
+            }
+        }
+    }
+
+
+    .spinner {
+        height: 30px;
+        width: 30px;
+        position: absolute;
+        margin-left: 10px;
+
+        @media (max-width: 415px){
+            right: 30px;
+            top: 55px;
+        }
+    }
+
+    .spincover {
+        position: absolute;
+        top: 20%;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 10000;
+    }
+
+    .spin {
+        display: block;
+        margin: 0 auto;
+        width: $spinner_widthHeight;
+        height: $spinner_widthHeight;
+    }
+}
+
+#ssiApproveClaimsPageView {
+    .spincover {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 20%;
+        z-index: 10000;
+    }
+
+    .spin {
+        display: block;
+        height: $spinner_widthHeight;
+        margin: 0 auto;
+        width: $spinner_widthHeight;
+    }
+
+    .btn-primary {
+        -webkit-font-smoothing: subpixel-antialiased;
+    }
+
+    td {
+        .btn {
+            margin-bottom: 8px;
+
+            & + .btn {
+                margin-left: 0;
+            }
+        }
+    }
+
+    .checkSpellingDdBtn {
+        padding: 0 2px 0 4px;
+    }
+
+    .stats {
+        text-align: center;
+        margin-bottom: $baseLineHeight;
+
+        .stat {
+            @include inline-block();
+            width: 22%;
+            vertical-align: top;
+
+            .count,
+            .name {
+                display: block;
+            }
+
+            .count {
+                font-size: $baseFontSize * 4;
+                line-height: $baseLineHeight * 4;
+            }
+
+            @media (max-width: 767px) {
+                width: 48%;
+
+                .count {
+                    font-size: $baseFontSize * 2;
+                    line-height: $baseLineHeight * 2;
+                }
+            }
+
+            @media (max-width: 479px) {
+                display: block;
+                width: auto !important;
+
+                .count,
+                .name {
+                    display: inline-block;
+                    @include inline-block();
+                }
+
+                .count {
+                    padding-right: 6px;
+                    font-size: $baseFontSize * 1.5;
+                }
+            }
+        }
+    }
+
+    form {
+        margin: 0;
+    }
+
+    .filterClaimsWrapper{
+        select {
+            margin-bottom: 0;
+        }
+
+        .exportXlsButton {
+            margin-left: 10px;
+        }
+    }
+
+    // taken from _autoModal.scss
+    .ssiClaimsApprovalModal {
+        h1 {
+            font-family: $titleFont;
+            font-weight: normal;
+            color: $linkColor;
+        }
+
+        .modal-body {
+            .badge-group {
+                margin-bottom: 0;
+            }
+
+            .badge-item {
+                width: 100%;
+            }
+        }
+    }
+}
+
+#ssiApproveClaimsDetailPageView {
+    .ssiClaimActivitiesTable {
+        width: auto;
+    }
+
+    .checkSpellingDdBtn {
+        padding: 0 2px 0 4px;
+    }
+
+    .spincover {
+        display: none;
+    }
+}

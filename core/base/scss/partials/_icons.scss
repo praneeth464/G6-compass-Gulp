@@ -1,0 +1,65 @@
+// Partial-specific variables
+// =========================
+$icons_socialIconWidthHeight: 32px !default;
+$icons_socialIconWidthHeightSmall: 16px !default;
+
+$icons_socialIconImgPath: false !default;
+$icons_socialIconChatter: 'socialIcons/chatter_32.png' !default;
+$icons_socialIconChatterSmall: 'socialIcons/chatter_16.png' !default;
+$icons_socialIconFacebook: 'socialIcons/facebook_32.png' !default;
+$icons_socialIconFacebookSmall: 'socialIcons/facebook_16.png' !default;
+$icons_socialIconLinkedin: 'socialIcons/linkedin_32.png' !default;
+$icons_socialIconLinkedinSmall: 'socialIcons/linkedin_16.png' !default;
+$icons_socialIconTwitter: 'socialIcons/twitter_32.png' !default;
+$icons_socialIconTwitterSmall: 'socialIcons/twitter_16.png' !default;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial-specific code
+// ==================================================
+
+//SOCIAL ICONS
+.social-icon {
+    width: $icons_socialIconWidthHeight;
+    height: $icons_socialIconWidthHeight;
+    background-repeat: none;
+    background-position: 0 0;//resolve bootstrap conflict
+    @include inline-block;
+
+    &.icon-size-16 {
+        vertical-align: top;
+        width: $icons_socialIconWidthHeightSmall;
+        height: $icons_socialIconWidthHeightSmall;
+    }
+
+    &.chatter {
+        @include safeImgUrls($icons_socialIconChatter, $icons_socialIconImgPath, $property: 'background-image');
+
+        &.icon-size-16 {
+            @include safeImgUrls($icons_socialIconChatterSmall, $icons_socialIconImgPath, $property: 'background-image');
+        }
+    }
+    &.facebook {
+        @include safeImgUrls($icons_socialIconFacebook, $icons_socialIconImgPath, $property: 'background-image');
+
+        &.icon-size-16 {
+            @include safeImgUrls($icons_socialIconFacebookSmall, $icons_socialIconImgPath, $property: 'background-image');
+        }
+    }
+    &.linkedin {
+        @include safeImgUrls($icons_socialIconLinkedin, $icons_socialIconImgPath, $property: 'background-image');
+
+        &.icon-size-16 {
+            @include safeImgUrls($icons_socialIconLinkedinSmall, $icons_socialIconImgPath, $property: 'background-image');
+        }
+    }
+    &.twitter {
+        @include safeImgUrls($icons_socialIconTwitter, $icons_socialIconImgPath, $property: 'background-image');
+
+        &.icon-size-16 {
+            @include safeImgUrls($icons_socialIconTwitterSmall, $icons_socialIconImgPath, $property: 'background-image');
+        }
+    }
+
+}

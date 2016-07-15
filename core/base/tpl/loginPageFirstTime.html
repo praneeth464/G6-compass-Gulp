@@ -1,0 +1,224 @@
+<div id="firstTimeLoginPage" class="firstTimeLoginPage page-content">
+
+    <div class="row">
+        <div class="span12">
+
+            <div id="firstTimeLoginErrorBlock" class="alert alert-block alert-error" style="display:none;">
+                <h4>The following errors occurred:</h4>
+                <ul>
+                    <li>This is an error</li>
+                    <li>This is another error</li>
+                </ul>
+            </div>
+
+            <form id="firstTimeLoginPageForm" action="layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html" method="POST">
+                <fieldset id="termsAndConditions" class="firstTimeLoginFieldSet form" >
+                    <legend>Terms and Conditions</legend>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et ipsum dolor. Aliquam in diam id odio dictum congue sed non purus. Aenean velit odio, venenatis eu convallis quis, fringilla vel tortor.</p>
+                    <p>Ut vel justo nec nulla varius rhoncus. Donec tincidunt neque eget nunc posuere tempor laoreet velit ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec dignissim faucibus ligula id tristique.</p>
+                    <p>Integer at urna dui, eu venenatis justo. Duis luctus justo non dui pulvinar ut dictum dui posuere. Morbi ipsum lectus, convallis sed vestibulum eu, commodo a erat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed ut lectus odio. Aenean vehicula imperdiet turpis, a eleifend dui sollicitudin et. Sed pretium vehicula molestie. Pellentesque quis arcu at urna viverra suscipit.</p>
+                    <div class="control-group validateme" data-validate-flags="nonempty"  data-validate-fail-msgs='{"nonempty" : "You must accept the Terms and Conditions to continue"}'>
+                        <label class="control-label radio bold">
+                            <input type="radio" name="TermsAndConditionsRadios" id="TermsAndConditionsRadio1" value="accept"> Accept Terms and Conditions
+                        </label>
+                        <label class="control-label radio bold">Decline Terms and Conditions <input type="radio" name="TermsAndConditionsRadios" id="TermsAndConditionsRadio2" value="decline"></label>
+                        <div class= "controls"></div>
+                    </div>
+                    <button class="btn btn-primary nextandClearSectionBtn">Continue</button>
+                    <a href="link-to-appropreate-location"><button class='btn button'>Cancel</button></a>
+                </fieldset>
+
+                <fieldset id="securitySettings" class="form-horizontal firstTimeLoginFieldSet" style="display:none">
+                    <legend>Change Security Settings</legend>
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please enter your password"}'>
+                        <label class="control-label" for="inputPassword" > New Password</label>
+                        <div class="controls">
+                            <input type="password" id="inputPassword" name="inputPassword">
+                        </div>
+                    </div>
+                    <div class="control-group validateme" data-validate-flags="nonempty,match" data-validate-match="inputPassword" data-validate-fail-msgs='{"nonempty" : "Please confirm password","match" : "Passwords do not match"}'>
+                        <label class="control-label" for="inputPasswordConfirm"> Confirm New Password</label>
+                        <div class="controls">
+                            <input type="password" id="inputPasswordConfirm" name="inputPasswordConfirm">
+                        </div>
+                    </div>
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please confirm new password", "match" : "Passwords do not match"}'>
+                        <label class="control-label" for="securityQuestion"> Security Question</label>
+                        <div class="controls">
+                            <select id="securityQuestion" name="securityQuestion">
+                                <option value="">Choose a question</option>
+                                <option value="What is the square root of everything?">What is the square root of everything?</option>
+                                <option value="Who do you think is the best persone ever?">Who do you think is the best persone ever?</option>
+                                <option value="Where did you last lose your keys?">Where did you last lose your keys?</option>
+                                <option value="Are you more than 13 feet tall?">Are you more than 13 feet tall?</option>
+                                <option value="How old will you be when the iPhone 8 is released?">How old will you be when the iPhone 8 is released?</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group validateme" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "Please answer the security question"}'>
+                        <label class="control-label" for="securityQuestionAnswer"> Answer</label>
+                        <div class="controls">
+                            <input type="text" id="securityQuestionAnswer" name="securityQuestionAnswer">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary nextSectionBtn">Continue</button>
+                </fieldset>
+
+                 <fieldset id="emailAddress" class="firstTimeLoginFieldSet form-horizontal" style="display:none">
+                    <legend>Email Address</legend>
+                    <div class="control-group validateme" data-validate-flags="nonempty,email" data-validate-fail-msgs='{"nonempty" : "Please enter an email address.", "email" : "Please enter a valid email address."}'>
+                        <label class="control-label" for="emailAddress" > Email Address</label>
+                        <div class="controls">
+                            <input type="email" id="emailAddress" name="emailAddress">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary nextSectionBtn">Continue</button>
+                </fieldset>
+
+                <fieldset id="personalInfo" class="firstTimeLoginFieldSet form-horizontal" style="display:none">
+                    <legend>My Info</legend>
+                    <div class="control-group">
+                        <label class="control-label">Profile Picture
+                            <span class="optional">(optional)</span>
+                        </label>
+                        <div class="controls">
+                            <img src="../../skins/default/img/avatar-blank-72.png" width="60px" height="60px" class="avatar" />
+                                <input id="profilePicUpload" type="file" >
+                                <p class="muted">File size limit 10mb. Supports Jpeg, PNG and GIF</p>
+                                <p class="alert alert-info hide no-fileinput">Sorry! Your device does not support file uploads. Please use a desktop browser to complete this upload.</p>
+                        </div>
+                    </div>
+
+                    <div id="aboutMeSection">
+                        <div class="control-group">
+                            <label class="control-label" for="aboutMeQuestion1">Question 1</label>
+                            <div class="controls">
+                                <input type="text" id="aboutMeQuestion1" name="aboutMeQuestion1">
+                                <span class="optional">(optional)</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="aboutMeQuestion2">Question 2</label>
+                            <div class="controls">
+                                <input type="text" id="aboutMeQuestion2" name="aboutMeQuestion2">
+                                <span class="optional">(optional)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary nextSectionBtn">Continue</button>
+                </fieldset>
+
+                <fieldset id="myPreferences" class="firstTimeLoginFieldSet form-horizontal" style="display:none">
+                    <legend>My Preferences</legend>
+                    <div class="control-group">
+                        <div class="control-label">Text Messages
+                            <span class="optional">(optional)</span></div>
+                        <div class="controls">
+                            <label class="checkbox selectToggle">
+                                <a href="#" class="selectTextAlerts selectAll">Select all</a> | <a href="#" class="selectTextAlerts deselectAll">Uncheck all</a>
+                            </label>
+
+                            <div id="allTextAlertsWrapper" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "No text alert types picked"}'>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="txtAlerts" value="txtAlerts">
+                                    Alerts
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="txtBudgetEnd" value="txtBudgetEnd">
+                                    Budget end Alerts
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="txtDepositNotifications" value="txtDepositNotifications">
+                                    Deposit notifications
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="txtGoalReminders" value="txtGoalReminders">
+                                    Goal reminders
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="txtNewPromotion" value="txtNewPromotion">
+                                    New promotion start
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="txtPromotionExpire" value="txtPromotionExpire">
+                                    Promotion about to expire
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="txtPomotionalMessages" value="txtPomotionalMessages">
+                                    Promotional messages
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="txtRecognitionReceived" value="txtRecognitionReceived">
+                                    Recognition received
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="controls"><strong>Send text messages to:</strong></div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="telephoneCountryCode">Country Code</label>
+                        <div class="controls">
+                            <select id="telephoneCountryCode" name="telephoneCountryCode">
+                                <option value="1">United States +1</option>
+                                <option value="49">United Kingdom +49</option>
+                                <option value="61">Australia +61</option>
+                                <option value="86">China +86</option>
+                                <option value="56">Easter Island +56</option>
+                                <option value="30">Germany +30</option>
+                                <option value="91">India +91</option>
+                                <option value="81">Japan +81</option>
+                                <option value="379">Vatican City +379</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "You must enter a phone number for text alerts"}'>
+                        <label class="control-label" for="phoneNumber">Phone Number</label>
+                        <div class="controls">
+                            <input type="text" id="phoneNumber" name="phoneNumber">
+                        </div>
+                    </div>
+
+                    <div class="control-group" data-validate-flags="nonempty" data-validate-fail-msgs='{"nonempty" : "To receive text alerts, you must accept the Terms and Conditions for Text Messages"}'>
+                        <div class="controls">
+                            <label class="checkbox">
+                                <input type="checkbox" name="txtAlertTerms" id="txtAlertTerms" value="accept">
+                                I accept the Terms and Conditions for Text Messages
+                            </label>
+
+                            <div class="txtTerms">
+                                <label>Terms and Conditions for Text Messages</label>
+                                <p>Mobile Phone number is required as you signed up for text message notices. Note that the frequency of notices is unlimited. Standard messaging charges apply. You must be the account owner or have authorization of the account holder to subscribe. To opt out, text STOP when replying to any text message. Text HELP or use Contact Us for additional information. Participating carriers include: Alltel®, AT&amp;T Mobility®, Boost®, Cellular One®, Cincinnati Bell®, Nextel®, Sprint®, T-Mobile®, US Cellular®, Verizon Wireless®, Virgin Mobile®.</p>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="form-actions pullBottomUp" style="display:none">
+                    <button class="btn btn-primary" type="submit" id="submitBtn">Submit</button>
+                </div>
+
+            </form>
+            <!-- prefix urls for uploaded images. stager for thumbnail, final for full image. -->
+            <input type="hidden" id="finalPrefixURL" value="../apps/purlContribute/img/">
+            <input type="hidden" id="stagerPrefixURL" value="../apps/purlContribute/img/">
+            <input type="hidden" id="serverReturnedErrored" value="false">
+            <input type="hidden" id="previousPhotoUrl" value="http://metaversemodsquad.files.wordpress.com/2011/06/hello-kitty-cat-clothing-011.jpg">
+
+        </div><!-- /.span12 -->
+    </div><!-- /.row -->
+
+</div><!-- /#firstTimeLoginPage -->
+
+<script>
+    $(document).ready(function(){
+        //attach the view to an existing DOM element
+        window.loginPageFirstTimeView = new LoginPageFirstTimeView({
+            el:$('#firstTimeLoginPage'),
+            pageNav : {},
+            pageTitle : ''
+        });
+    });
+</script>

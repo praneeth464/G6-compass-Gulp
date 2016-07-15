@@ -1,0 +1,29 @@
+// Partial-specific variables (uncomment to use)
+// =========================
+// $global_header_logoHeight: ;
+// $global_header_logoHeight1200: ;
+// $global_header_logoHeight768: ;
+
+// Global variables (overridden for this partial only)
+// =========================
+
+// Partial SCSS from G5 Core (above variables override those in this file)
+// =========================
+@import "partials/globalHeader";
+
+// Global variables (overridden for this file only)
+// =========================
+
+// File-specific variables
+// =========================
+
+// Partial-specific code for this skin
+// ==================================================
+
+#globalHeaderView {
+    width: 40%;
+
+    .proglogo {
+        display: none;
+    }
+}

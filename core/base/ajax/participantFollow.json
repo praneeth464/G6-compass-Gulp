@@ -1,0 +1,8 @@
+{
+	"messages":[
+		{
+			"isSuccess": true,
+			"text": "This is the error text is isSuccess returns false."
+		}
+	]
+}

@@ -1,0 +1,53 @@
+<!-- ======== DESTINATIONS PAGE ======== -->
+
+<div id="destinationsPageView" class="desinationsPage-liner page-content">
+
+    <div class="row"> <!-- Filter results -->
+        <div class="span10">
+            <form class="form-inline">
+                <label>Filter Results By:</label>
+                <select data-filter-type="country">
+                    <option value="default">Country</option>
+                    <!-- dynamic -->
+                </select>
+                <select data-filter-type="locale" disabled>
+                    <option value="default">Province/State</option>
+                    <!-- dynamic -->
+                </select>
+                <select data-filter-type="destination" disabled>
+                    <option value="default">City/Destination</option>
+                    <!-- dynamic -->
+                </select>
+            </form>
+        </div>
+        <div class="span2">
+            <button class="btn" id="planATrip" disabled="disabled">Plan A Trip</button>
+        </div>
+    </div>
+
+    <div id="destinationList" class="row">
+        <!--dynamic -->
+    </div>
+
+</div>
+
+<!-- Instantiate the PageView - this goes here as it expresses the DOM element the PageView is getting attached to -->
+<script>
+
+    //attach the view to an existing DOM element
+    var dpv = new DestinationsPageView({
+        el:$('#destinationsPageView'),
+        pageNav : {
+            back : {
+                text : 'Back',
+                url : 'layout.html'
+            },
+            home : {
+                text : 'Home',
+                url : 'layout.html?tplPath=base/tpl/&amp;tpl=modulesPage.html'
+            }
+        },
+        pageTitle : 'Destinations'
+    });
+
+</script>

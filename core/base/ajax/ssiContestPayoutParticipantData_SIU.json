@@ -1,0 +1,34 @@
+<?php
+header('Content-Type: application/json');
+sleep(1);
+require_once('paxGenerator/paxGenerator.php');
+
+/*
+ * STEP IT UP
+ */
+
+$payoutTypeIsOther = false;
+
+if (isset($_POST['id']) && strpos($_POST['id'], "other")) {
+    $payoutTypeIsOther = true;
+}
+
+if ($payoutTypeIsOther) {
+    $ed = array(
+        'activityAmount' => "125,000",
+        'levelAchieved' => "2",
+        'payoutDescription' => "lorum ipsom",
+        'qty' => "2",
+        'payoutValue' => "100"
+    );
+} else {
+    $ed = array(
+        'activityAmount' => "125,000",
+        'levelAchieved' => "2",
+        'levelPayout' => "200",
+        'bonusPayout' => "40",
+        'totalPayout' => "100"
+    );
+}
+
+generatePaxesPaginatedJson(6,500,$ed);

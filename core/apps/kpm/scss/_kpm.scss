@@ -1,0 +1,170 @@
+// App-specific variables
+// =========================
+$kpm_bgColor: $g5ModuleBgColor !default;
+$kpm_gradType: $g5ModuleGradType !default;
+$kpm_gradMeta: $g5ModuleGradMeta !default;
+$kpm_gradStops: $g5ModuleGradStops !default;
+
+$kpm_iconColor: $g5ModuleIconColor !default;
+$kpm_titleColor: $g5ModuleTitleColor !default;
+$kpm_titleFontFamily: $g5ModuleTitleFontFamily !default;
+$kpm_titleFontSizes: $g5ModuleTitleFontSizes !default;
+$kpm_titleFontWeights: $g5ModuleTitleFontWeights !default;
+
+// Global variables (overridden for this app only)
+// =========================
+
+// App-specific code
+// ==================================================
+
+/* ----- GLOBAL APP STYLES ----- */
+// Note that every module and page and related instance of this app should be namespaced with the appName
+.kpm {
+    .timeframe {
+        margin-bottom: $baseLineHeight;
+
+        .controls {
+            display: inline-block;
+            margin-right: $baseLineHeight;
+            margin-bottom: 0;
+            line-height: $baseLineHeight * 1.5; // make this the same height as the buttons to the right
+        }
+    }
+
+    // shared styles for the KPMSummaryCollectionView
+    .kpmSummaryCollectionView {
+
+    }
+
+    // shared styles for the KPMDetailView
+    .kpmDetailView {
+        .chartContainer {
+            height: 300px;
+        }
+
+        // score
+
+        // recognitions
+        .byPromo {
+
+        }
+
+        // team
+
+        // visits
+    }
+
+    // shared styles for the KPMTeamMembersCollectionView
+    .kpmTeamMembersView {
+        .actual,
+        .target,
+        .diff {
+            width: 20%;
+            display: none;
+        }
+        &.type-score {
+            .score {
+                display: table-cell;
+            }
+            outline: 4px solid transparentize(red, 0.9);
+        }
+        &.type-recSent {
+            .recSent {
+                display: table-cell;
+            }
+            outline: 4px solid transparentize(orange, 0.9);
+        }
+        &.type-recRecv {
+            .recRecv {
+                display: table-cell;
+            }
+            outline: 4px solid transparentize(yellow, 0.9);
+        }
+        &.type-teamRec {
+            .teamRec {
+                display: table-cell;
+            }
+            outline: 4px solid transparentize(green, 0.9);
+        }
+        &.type-teamRecBy {
+            .teamRecBy {
+                display: table-cell;
+            }
+            outline: 4px solid transparentize(blue, 0.9);
+        }
+        &.type-visits {
+            .visits {
+                display: table-cell;
+            }
+            outline: 4px solid transparentize(purple, 0.9);
+        }
+
+        .asc .icon-sort-down,
+        .desc .icon-sort-up {
+            display: none;
+        }
+
+        .kpmTeamMembersCollectionView ~ .kpmTeamMembersCollectionView {
+            margin-top: $baseLineHeight;
+            padding-top: $baseLineHeight / 2;
+            border-top: 1px solid gray;
+        }
+    }
+} /* /.kpm */
+
+/* ----- MODULE STYLES ----- */
+.module.kpm {
+
+    .module-liner {
+        @include module_moduleLinerBackground(
+            $bgColor: $kpm_bgColor,
+            $gradType: $kpm_gradType,
+            $gradMeta: $kpm_gradMeta,
+            $gradStops: $kpm_gradStops
+        );
+    }
+
+    .title-icon-view {
+        @include module_titleIconView(
+            $iconColor: $kpm_iconColor,
+            $titleColor: $kpm_titleColor,
+            $titleFontFamily: $kpm_titleFontFamily
+        );
+    }
+
+    @include module_titleIconViewFontSizesWeights($kpm_titleFontSizes, $kpm_titleFontWeights);
+
+    .wide-view {
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2,
+    &.grid-dimension-4x4 {
+        .visitAppBtn {
+            display: none;
+        }
+        .wide-view {
+        }
+        .title-icon-view {
+            display: none;
+        }
+    }
+
+    &.grid-dimension-2x2,
+    &.grid-dimension-4x2 {
+    }
+
+    &.grid-dimension-2x2 {
+    }
+
+    &.grid-dimension-4x2 {
+    }
+
+    &.grid-dimension-4x4 {
+    }
+
+} /* /.module.kpm */
+
+/* ----- PAGE STYLES ----- */
+.page.kpm {
+}
